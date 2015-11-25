@@ -1,33 +1,25 @@
-/* fread example: read an entire file */
 #include <stdio.h>
-#include <stdlib.h>
 
 int main () {
-  FILE * pFile;
-  long lSize;
-  char * buffer;
-  size_t result;
 
-  pFile = fopen ( "myfile.bin" , "rb" );
-  if (pFile==NULL) {fputs ("File error",stderr); exit (1);}
+   int  var = 20;   /* actual variable declaration */
+   int  *ip;        /* pointer variable declaration */
 
-  // obtain file size:
-  fseek (pFile , 0 , SEEK_END);
-  lSize = ftell (pFile);
-  rewind (pFile);
+   ip = &var;  /* store address of var in pointer variable*/
 
-  // allocate memory to contain the whole file:
-  buffer = (char*) malloc (sizeof(char)*lSize);
-  if (buffer == NULL) {fputs ("Memory error",stderr); exit (2);}
+   printf("Address of var variable: %x\n", &var  );
 
-  // copy the file into the buffer:
-  result = fread (buffer,1,lSize,pFile);
-  if (result != lSize) {fputs ("Reading error",stderr); exit (3);}
+   /* address stored in pointer variable */
+   printf("Address stored in ip variable: %x\n", ip );
 
-  /* the whole file is now loaded in the memory buffer. */
+   /* access the value using the pointer */
+   printf("Value of *ip variable: %d\n", *ip );
+   printf("Value of *ip+1 variable: %d\n", *(ip+1) );
 
-  // terminate
-  fclose (pFile);
-  free (buffer);
-  return 0;
+   /*
+   QUESTION:
+   how to use just the address to get the value?
+   */
+
+   return 0;
 }

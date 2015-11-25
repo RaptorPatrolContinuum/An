@@ -147,7 +147,6 @@ int main(void){
     F("FILEOP", "INPUT", "INP", "txt", "r");
     F("FILECLOSE", "INPUT", "INP", "txt", "r");
 
-
     printf("Origin End. (Press any key to exit) \n");
     scanf("");
     }
