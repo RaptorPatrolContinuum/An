@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <time.h>
+#define _CRT_SECURE_NO_WARNINGS
+#include <process.h>
+#include <stdarg.h>
+/*
+
+void masterfunc( int X, ...){
+
+    switch(X){
+        // read text file and separate words based on spaces
+        case 1 :
+           ;
+           break;
+        case constant-expression  :
+           statement(s);
+           break;
+
+
+        default :
+           statement(s);
+    }
+
+    }
+
+*/
+int main(void){
+    printf("Origin Start \n");
+    spawnl( P_WAIT, "Test1.exe",
+    "child.exe", "Using spawnl", "Arg1", "Arg2", NULL );
+
+    printf("Origin End. (Press any key to exit) \n");
+    scanf("");
+    }
+

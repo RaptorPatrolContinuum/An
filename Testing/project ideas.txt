@@ -1,0 +1,36 @@
+float masterfunc( int X, ...){
+
+    switch(X){
+        // read text file and separate words based on spaces
+        case 1 :
+           ;
+           break;
+        case constant-expression  :
+           statement(s);
+           break;
+
+
+        default :
+           statement(s);
+    }
+
+    }
+	va_list is a type that stores a variable length argument
+	va_start, which initializes the list,
+	va_arg, which returns the next argument in the list,
+	va_end, which cleans up the variable argument list. 
+	
+To use these functions, we need a variable capable of storing a variable-length argument
+ list--this variable will be of 
+ type va_list. 
+	va_list is like any other type.
+ 
+ va_start is a macro which accepts two arguments, a va_list and the name of the variable 
+ that directly precedes the ellipsis ("...").
+	va_start( a va_list, variable that precedes the ellipsis)
+ 
+ va_arg takes a va_list and a variable type, =>  returns the next argument in the list in the form of whatever variable type it is told. 
+ It then moves down the list to the next argument.
+	va_arg ( a_list, double ) will return the next argument, assuming it exists, in the form of a double.
+ 
+ use va_end to clean up the list: va_end( a_list );
