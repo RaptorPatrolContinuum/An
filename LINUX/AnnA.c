@@ -8,7 +8,11 @@
 #include <sys/types.h>
 #endif /*_MSC_VER*/
 
+//declare function
+
+//
+
 main (){
 	printf("Hello World! \n");
-	int status = system("./nA.exe");
+	//int status = system("./nA.exe");
 }
