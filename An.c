@@ -1,9 +1,20 @@
+#ifdef _MSC_VER // Windows
+#include <windows.h>
+#include <direct.h>
+#include <process.h>
+#else // Linux
+#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#endif /*_MSC_VER*/
+
+
+
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
 #define _CRT_SECURE_NO_WARNINGS
-#include <process.h>
 #include <stdarg.h>
 #include <string.h>
 //the master function

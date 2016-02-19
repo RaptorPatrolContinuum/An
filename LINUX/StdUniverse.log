@@ -1,0 +1,88 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=latex 2016.2.17)  19 FEB 2016 05:35
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**StdUniverse.tex
+(./StdUniverse.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
+aded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (./StdUniverse.aux)
+\openout1 = `StdUniverse.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 10.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.25 StdUniverse={\|
+                    
+? 
+! Extra }, or forgotten $.
+l.35 }
+      
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.39 
+     
+? 
+
+Overfull \hbox (92.70235pt too wide) in paragraph at lines 25--39
+[]\OT1/cmr/m/n/12 StdUniverse=$\OMS/cmsy/m/n/12 k\OT1/cmr/m/n/12 #\OML/cmm/m/it
+/12 axioms \OT1/cmr/m/n/12 : #\OML/cmm/m/it/12 LemmasProofs \OT1/cmr/m/n/12 : #
+\OML/cmm/m/it/12 functions \OT1/cmr/m/n/12 : #\OML/cmm/m/it/12 InferenceRulesse
+tactions \OT1/cmr/m/n/12 :
+ []
+
+[1
+
+] (./StdUniverse.aux) )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 25 ({)
+### bottom level 
+Here is how much of TeX's memory you used:
+ 228 strings out of 495060
+ 2468 string characters out of 3182053
+ 48148 words of memory out of 3000000
+ 3486 multiletter control sequences out of 15000+200000
+ 7651 words of font info for 27 fonts, out of 3000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 22i,4n,19p,158b,113s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on StdUniverse.dvi (1 page, 1740 bytes).
