@@ -7,7 +7,9 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #endif /*_MSC_VER*/
+#include <stdio.h>
 
 main (){
 	printf("Hello World! \n");
+	int status = system("./nA.exe");
 }
