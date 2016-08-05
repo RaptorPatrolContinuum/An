@@ -86,17 +86,16 @@ int main(void){
 	char basis[] = "abcdefghijklmnopqrstuvwxyz0123456789";
 
 	//test characters next
-	int size = sizeof(basis)/sizeof(basis[0]);
+	int charbasissize = sizeof(basis)/sizeof(basis[0]);
 	int i;
 	//clear the array:
-	for (i = 0; i < size; i++ ){
+	for (i = 0; i < charbasissize; i++ ){
 		//problem: strings are char arrays and I'm trying to make char arrays of char arrays 
-		//WTF
 		//so use char*basis for strings: basis[i]="ab"
 		//use char basis for single characters: basis[i]= 'a'
 		//basis[i] = 'a';
 		//check I didn't make a basic mistake
-		//printf("basic mistake? basis[%i]:%c \n",i,basis[i]);
+		printf("basis[%i]:%c \n",i,basis[i]);
 		}
 	//now construct the NxN array (assume that longest word is 100 char long)
 	//PLAN: basis + 100 numbers
@@ -113,6 +112,51 @@ int main(void){
 	//then after that, have the extra functions, like if X in concept space, or try subgraph isom of a particular function/sequence of functions then try to identify, finding curried functions 
 
 	// FUCK WHAT HAPPENS IF THE BASIS CHANGES, every number description gets fucked in the new basis
+
+	//WOW I fucked up the basis. Since I know what they are supposed to mean I can just keep this and keep going
+	char intbasis[50];
+	for (i = 0; i < 50; i++){
+		intbasis[i]= i +'0';
+		printf("intbasis[%i]:%c \n",i,intbasis[i]);
+		}
+	//get the size of intbasis
+	int intbasissize = sizeof(intbasis)/sizeof(intbasis[0]);
+	//get unirverse size:
+	int Universesize = charbasissize + intbasissize;
+
+	//did I fuck up
+	//printf("check size of universe:%i \n", Universesize);
+	
+	char Universe[Universesize];
+	//populate the universe:
+	for (i = 0; i < Universesize; i++){
+		if(i<charbasissize-1){
+			Universe[i]=basis[i];
+			}
+		else{
+		int j = i - charbasissize;
+			Universe[i]=intbasis[j];
+			}		 
+		}
+	//check Universe:
+	for (i = 0; i < Universesize; i++){
+		intbasis[i]=i;
+		printf("Universe[%i]:%c \n",i,Universe[i]);
+		}
+	char NxN[Universesize][Universesize]; 
+	//PLAN:
+	//now that I have NxN I just have to take the powerset of the input text, then map all of them into NxN
+	//make the powerset function of an array (AKA powerset the input text AND powerset of Un X Un)
+	//map the powerset into Un X Un 
+		//HOW:
+		//is X in P(Input) in P(Un X Un)?
+			//yes: turn on (aka put a 1) that element in P (Un X Un)
+			//no: 
+				//1. not in there as basis element (in which case: append to basis)
+				//2. not in the right powerset (in which case I PP(Un X Un) then turn i ton)
+	//make the epsilon function
+	//make the union function
+	//
 
 
 	//terminate
