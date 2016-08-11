@@ -4,29 +4,33 @@
 #include <stdarg.h>
 #include <string.h>
 #define getName(var) #var
+#include <limits.h>
 
 //int ArrayCheck
 //takes an array to a pointer and prints out all the elements
-int *ArrayCheck(char *Array, char *X);
+int *ArrayCheck(char *Array, char *X, int Y);
 //int PowerSet:();
-int *PowerSet(int *Array);
+int *PowerSet(char *Array, char *X, int Y );
 void F(char* X, ...);
 
-int *ArrayCheck(char *Array, char *X){
-	int Arraysize = sizeof(Array)/sizeof(Array[0]);
+int *ArrayCheck(char *Array, char *X, int Y){
 	int i;
-	//sizes are wrong:
-	printf("check sizes %i %i \n", sizeof(Array),sizeof(Array[0]));
 	//print the array:
-	for (i = 0; i < Arraysize; i++ ){
+	for (i = 0; i < Y; i++ ){
 		printf("ArrayCheck %s[%i]:%c \n",X,i,Array[i]);
 		}
 	}
 	
-int *PowerSet(int *Array){
+int *PowerSet(char *Array, char *X, int Y){
+	// pointer to first elem---name of array---size of array
 	//need to set pointer to powerset as static:
+	//clear the arrat:
+	int Powersetsize = pow(2,Y);
+	//check
+	printf("check sizes %i %i %i \n", Powersetsize, Y, INT_MAX);
+	static char *PArray;
 	//static *PArray
-	
+	//return ????
 	}
 void F(char* X, ...){
 	// init arg list
@@ -167,7 +171,11 @@ int main(void){
 		}
 	//check if ArrayCheck works:
 	printf("check if ArrayCheck works \n");
-	ArrayCheck(Universe,getName(Universe));
+	ArrayCheck(Universe,getName(Universe),sizeof(Universe)/sizeof(Universe[0]));
+	//check if Pset works
+	printf("check if Pset works \n");
+	PowerSet(Universe,getName(Universe),sizeof(Universe)/sizeof(Universe[0]));
+
 	char NxN[Universesize][Universesize]; 
 	//PLAN:
 	//now that I have NxN I just have to take the powerset of the input text, then map all of them into NxN
