@@ -8,9 +8,10 @@
 
 //append func
 //copy the old array +1 then clear the old array: return 
-
+//char array pointer, char to be added, size of the array
+char *ArrAppend(char *Array, char *X, int Y);
 //epsilon func
-//takes a character array, a character, the size of the char array  and returns 1 for true and 0 for false
+//takes a character array, a character, the size of the char array and returns 1 for true and 0 for false
 int E(char *Array, char X, int Y);
 //int ArrayCheck
 //takes an array to a pointer and prints out all the elements
@@ -18,6 +19,15 @@ int *ArrayCheck(char *Array, char *X, int Y);
 //int PowerSet:();
 int *PowerSet(char *Array, char *X, int Y );
 void F(char* X, ...);
+
+char *ArrAppend(char *Array, char *X, int Y){
+	//clone array
+		//copy old array
+		//free old array
+	//append the new element (char *X)
+	//return pointer to new array
+	//return
+	}
 
 int E(char *Array, char X, int Y){
 	int i = 0;
@@ -116,16 +126,15 @@ int main(void){
 	//CONSTRUCT PROPER BASIS:
 	int i;
 	//init basis:
-	char basis[] = "abcdefghijklmnopqrstuvwxyz";
+	//char basis[] = "abcdefghijklmnopqrstuvwxyz";
+	char basis[] = "ab";
 	int CharBasisSize = sizeof(basis)/sizeof(basis[0]);
 	for (i = 0; i < lSize; i++){
 		printf("check Epsilon relation: basis: %s checkFor: %c result: %i \n",getName(basis),buffer[i],E(basis,buffer[i],CharBasisSize));
-		if(E(basis,buffer[i] ,CharBasisSize)){
-			//since it's in basis, do nothing
+		if(E(basis,buffer[i] ,CharBasisSize) == 0){
+			//since it's not basis, clone basis and append to new basis and free old basis
+			
 			}
-//		else{
-		
-//			}
 		}
 
 	//TODO:
