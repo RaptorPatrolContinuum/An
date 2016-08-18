@@ -6,6 +6,12 @@
 #define getName(var) #var
 #include <limits.h>
 
+//append func
+//copy the old array +1 then clear the old array: return 
+
+//epsilon func
+//takes a character array, a character, the size of the char array  and returns 1 for true and 0 for false
+int E(char *Array, char X, int Y);
 //int ArrayCheck
 //takes an array to a pointer and prints out all the elements
 int *ArrayCheck(char *Array, char *X, int Y);
@@ -13,6 +19,17 @@ int *ArrayCheck(char *Array, char *X, int Y);
 int *PowerSet(char *Array, char *X, int Y );
 void F(char* X, ...);
 
+int E(char *Array, char X, int Y){
+	int i = 0;
+	while (i < Y){
+		if (X == Array[i]){
+			return 1;
+			}
+		i++;
+		}
+	//else:
+	return 0;
+	}
 int *ArrayCheck(char *Array, char *X, int Y){
 	int i;
 	//print the array:
@@ -84,12 +101,33 @@ int main(void){
 	result = fread (buffer,1,lSize,FILEVAR);
 	if (result != lSize) {fputs ("Reading error", stderr); exit(3);}
 
-	/*the whole file is not loaded in the memory buffer*/
+	/*the whole file is now loaded in the memory buffer*/
 
 	//write the whole file into console to check:
 	printf("checking if file is in buffer \n %s", buffer);
 	printf("end \n");
 	//FUCK IT FINALLY WORKED:
+
+	//construct proper basis:
+	//while (fseek != EOF)
+	//testing
+	printf("messing with buffer \n %c %c \n", buffer[0], buffer[1]);
+	//printf("check if epsilon func works (R in test text): %i \n",E(buffer,'R',lSize));
+	//CONSTRUCT PROPER BASIS:
+	int i;
+	//init basis:
+	char basis[] = "abcdefghijklmnopqrstuvwxyz";
+	int CharBasisSize = sizeof(basis)/sizeof(basis[0]);
+	for (i = 0; i < lSize; i++){
+		printf("check Epsilon relation: basis: %s checkFor: %c result: %i \n",getName(basis),buffer[i],E(basis,buffer[i],CharBasisSize));
+		if(E(basis,buffer[i] ,CharBasisSize)){
+			//since it's in basis, do nothing
+			}
+//		else{
+		
+//			}
+		}
+
 	//TODO:
 	//construct well ordered basis
 	//choice:
@@ -109,20 +147,21 @@ int main(void){
 	//char basis[10];
 	//preinitialize:
 	//char basis[] = "abcdefghijklmnopqrstuvwxyz";
-	char basis[] = "abcdefghijklmnopqrstuvwxyz0123456789";
 
-	//test characters next
-	int charbasissize = sizeof(basis)/sizeof(basis[0]);
-	int i;
-	//clear the array:
-	for (i = 0; i < charbasissize; i++ ){
-		//problem: strings are char arrays and I'm trying to make char arrays of char arrays 
-		//so use char*basis for strings: basis[i]="ab"
-		//use char basis for single characters: basis[i]= 'a'
-		//basis[i] = 'a';
-		//check I didn't make a basic mistake
-		printf("basis[%i]:%c \n",i,basis[i]);
-		}
+//		char basis[] = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+		//test characters next
+//		int CharBasisSize = sizeof(basis)/sizeof(basis[0]);
+//		int i;
+		//clear the array:
+//		for (i = 0; i < CharBasisSize; i++ ){
+			//problem: strings are char arrays and I'm trying to make char arrays of char arrays 
+			//so use char*basis for strings: basis[i]="ab"
+			//use char basis for single characters: basis[i]= 'a'
+			//basis[i] = 'a';
+			//check I didn't make a basic mistake
+//			printf("basis[%i]:%c \n",i,basis[i]);
+//			}
 	//now construct the NxN array (assume that longest word is 100 char long)
 	//PLAN: basis + 100 numbers
 	//idea: treat each word as a transversal of the alphanumeric basis
@@ -148,7 +187,7 @@ int main(void){
 	//get the size of intbasis
 	int intbasissize = sizeof(intbasis)/sizeof(intbasis[0]);
 	//get unirverse size:
-	int Universesize = charbasissize + intbasissize;
+	int Universesize = CharBasisSize + intbasissize;
 
 	//did I fuck up
 	//printf("check size of universe:%i \n", Universesize);
@@ -156,11 +195,11 @@ int main(void){
 	char Universe[Universesize];
 	//populate the universe:
 	for (i = 0; i < Universesize; i++){
-		if(i<charbasissize-1){
+		if(i<CharBasisSize-1){
 			Universe[i]=basis[i];
 			}
 		else{
-		int j = i - charbasissize;
+		int j = i - CharBasisSize;
 			Universe[i]=intbasis[j];
 			}		 
 		}
