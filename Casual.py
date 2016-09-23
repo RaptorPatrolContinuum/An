@@ -24,7 +24,7 @@ def Address(string, file):
     #make Xn
     Xn = []
     n = 1
-    for x in charbasis:
+    for x in range(getSize(file)):
          Xn.append(n)
          n += 1
     print("Xn is :", Xn)
@@ -50,7 +50,7 @@ def Address(string, file):
         #-1 since binary starts with 0 and the count I have starts at 1
         #so partial binary is the values at which 2^[partialbinary]^[control] and control = 1
         #then the actual address is enuming through partial binary then summing 2^[partial.item(0)]+2^[partial.item(1)], etc...
-        print("wtf is happenning", i,c,x,y,L,TOP,MIDDLE,TOP+MIDDLE)
+        print("wtf is happenning", i,c,x,y,L,TOP,MIDDLE,TOP+MIDDLE-1)
         i += 1
     print("partialbin is: ", partialbinary)
     return [basis,1,partialbinary]
@@ -78,6 +78,7 @@ print(getSize(file))
 #print("test address func2: \n", file.read())
 
 print("checking address return", Address("don't", file))
+print("checking address return", Address("don't forget to put shit in your input text file", file))
 
 N = []
 delimiters = [" ", "."]
