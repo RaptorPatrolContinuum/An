@@ -104,12 +104,11 @@ def Cheat(string):
     for x in string:
         #you need a hierarchy to get sentence start pos to ignore pairdelimiter rules
         if x in splicedelimiters:
-            if max(SentenceStartPos,SpliceStartPos) in range(int(PairPosList[-2]),int(PairPosList[-1])+1):
+            if max(SentenceStartPos,SpliceStartPos) in range(int(PairPosList[-2]),int(PairPosList[-1])+1) and len(PairPosList)>=4:
                 #find one that isn't in most recent pair
                 k = 1
                 for y in SentenceStartPosList:
                     K = len(SentenceStartPosList)
-                    print("yyyyyy",SentenceStartPosList,K-k)
                     if SentenceStartPosList[K-k] not in range(int(PairPosList[-2]),int(PairPosList[-1])+1):
                         delimstart = SentenceStartPosList[K-k]
                     else:
@@ -118,31 +117,23 @@ def Cheat(string):
             else:
                 delimstart = max(SentenceStartPos,SpliceStartPos)
             Morphemes.append(string[delimstart:i+1])
-            print("splicedelim")
-            print(x,string[delimstart:i+1],max(SentenceStartPos,SpliceStartPos),range(int(PairPosList[-2]),int(PairPosList[-1])),max(SentenceStartPos,SpliceStartPos) in range(int(PairPosList[-2]),int(PairPosList[-1])))
             SpliceStartPos = i
         if x in pairdelimiters:
-            print("pairdelims")
-            print(x,PairStart,PairStartPos)
             if PairStart == 0:
                 PairStart = 1
                 PairStartPos = i
             else:
-                print("========",string[PairStartPos:i+1])
-                print("========",Cheat(string[PairStartPos+1:i]))
                 Morphemes.append(string[PairStartPos:i+1])
                 Morphemes.append(Cheat(string[PairStartPos+1:i]))
             PairPosList.append(i)
         if x in sentencedelimiters:
             #know the last .?! , (if any) then cut between first and last .?!
             #ignore pair delimiters
-            print("gggg",SentenceStartPos,range(int(PairPosList[-2]),int(PairPosList[-1])+1))
             if SentenceStartPos in range(int(PairPosList[-2]),int(PairPosList[-1])+1) and len(PairPosList)>=4:
                 #find one that isn't in most recent pair
                 k = 1
                 for y in SentenceStartPosList:
                     K = len(SentenceStartPosList)
-                    print("yyyyyy",SentenceStartPosList,K-k)
                     if SentenceStartPosList[K-k] not in range(int(PairPosList[-2]),int(PairPosList[-1])+1):
                         delimstart = SentenceStartPosList[K-k]
                     else:
@@ -150,24 +141,12 @@ def Cheat(string):
                     k += 1
             else:
                 delimstart = SentenceStartPos
-
-
-
-            
             Morphemes.append(string[delimstart:i+1])
-            print("sentence delims")
-            print(x,SentenceStartPos,i,string[delimstart:i+1])
             SentenceStartPos = i+1
             SentenceStartPosList.append(i+1)
-            
-            
         i += 1
-    '''
-        elif x == ",":
-            #split between beginning of sentence and rest of sentence [did I word it right]
-            print(",")
-    '''
-    return Morphemes
+    #Morphemes
+    return str(Morphemes)
     
 
 '''
@@ -185,8 +164,17 @@ file = open('INP.txt', 'r')
 print("checking address return:", Address("don't", file))
 print("checking vision return:", Vision(Address("don't", file)))
 print("checking stringify return:", Stringify(Vision(Address("don't", file))))
-print("cheating by preprogramming stuff \n", Cheat("let's test this out. \"Shall we?\", she said."))
-print("let's test this out. \"Shall we?\", she said.")
+#print("cheating by preprogramming stuff \n", Cheat("let's test this out. \"Shall we?\", she said."))
+#print("let's test this out. \"Shall we?\", she said.")
+file2 = open('Test Text.txt', 'r')
+file3 = open('OUTPUT.txt', 'a')
+MORPH = Cheat(file2.read())
+file3.write(MORPH)
+for x in MORPH:
+    file3.write(Address(MORPH,file2)+ "\n")
+#file3.write("TEST")
+file3.close()
+#print("testing out test text", Cheat(file2.read()))
 
 
 N = []
