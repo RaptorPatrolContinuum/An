@@ -1,1 +1,2 @@
-don't forget to put shit in your input text file
+	don't forget to put shit in your input text file! checking if it does the whole thing or just parts.
+(Also ["checking" {if it works with pairs] well}:)

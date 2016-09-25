@@ -1,12 +1,4 @@
 from math import *
-print("START")
-
-#input("Write a command here.")
-#FML I am not going to do a set implementation in C just yet
-#f = open('INP.txt', 'r')
-#print(f.read())
-#f.seek(0)
-#construct basis:
 
 def getSize(fileobject):
     fileobject.seek(0,2) # move the cursor to the end of the file
@@ -15,12 +7,11 @@ def getSize(fileobject):
 
 def Address(string, file):
     #make charbasis
-    charbasis = []
+    charbasis = ["[","]", "\\","\""]
     file.seek(0)
     for c in file.read():
         if c not in charbasis:
             charbasis.append(c)
-    #check charbasis:
     #make Xn
     Xn = []
     n = 1
@@ -31,24 +22,6 @@ def Address(string, file):
     i = 1
     partialbinary= []
     for c in string:
-        '''
-        #(i,c) is the function we see
-        # now we need to map it into EXtension(function)
-        
-        x = basis.index(i)+1
-        y = basis.index(c)+1
-        L = x + y - 1
-        TOP = (((L-1)**2)+(L-1))/2
-        if x % 2 == 0:
-            MIDDLE = x
-        else:
-            MIDDLE = y
-        partialbinary.append(TOP+MIDDLE-1)
-        #-1 since binary starts with 0 and the count I have starts at 1
-        #so partial binary is the values at which 2^[partialbinary]^[control] and control = 1
-        #then the actual address is enuming through partial binary then summing 2^[partial.item(0)]+2^[partial.item(1)], etc...
-        print("wtf is happenning", i,c,x,y,L,TOP,MIDDLE,TOP+MIDDLE-1)
-        '''
         #use cantor pairing func because my func is hard to invert although maybe this might not preserve some continuity
         #(x,y)= (1/2)(x+y)(x+y+1)+y
         x = basis.index(i)+1
@@ -57,6 +30,36 @@ def Address(string, file):
         partialbinary.append((1/2)*(x+y)*(x+y+1)+y)
         i += 1
     return [basis,1,partialbinary]
+
+def Address2(string, *args):
+    value = []
+    #*args should be a list of bases
+    for basis in args:
+        i = 1
+        partialbinary= []
+        missing = []
+        for c in string:
+            #use cantor pairing func because my func is hard to invert although maybe this might not preserve some continuity
+            #(x,y)= (1/2)(x+y)(x+y+1)+y
+            err = []
+            try:
+                x = basis.index(str(i))+1
+            except(ValueError,IndexError):
+                err.append(i)
+            try:
+                y = basis.index(c)+1
+            except(ValueError,IndexError):
+                err.append(c)
+            if len(err) >= 1:
+                missing.append([i,c])
+            else:
+                appendthis = (1/2)*(x+y)*(x+y+1)+y
+                partialbinary.append((1/2)*(x+y)*(x+y+1)+y)
+            i += 1
+        value.append([[basis,1,partialbinary],missing])
+    #retun a list of addresses:
+        #element of value looks like: [[basis,1,address],missing chars]
+    return value
 
 def Vision(Addresslist):
     #Addresslist = [basis,1,partialbinary]
@@ -86,30 +89,37 @@ def Cheat(string):
     #.?!,;:-—)}]'"...
     #line break
     #paragraph break(?)
-    Morphemes = []
-    sentencedelimiters = [".", "?", "!"] #...
-    pairdelimiters=["(",")", "{", "}", "[", "]", "\""]
+    
     #FUCKING USE CASES FOR "'"
-    splicedelimiters=[",", ";", ":", "-", "—"]
-    worddelimiters= [" "]
-    #FML I NEED A BREAK
-
+    Morphemes = []
+    
+    sentencedelimiters = [".", "?", "!"] #...
     SentenceStartPos = 0
     SentenceStartPosList = []
-    PairStartPos = 0
-    PairPosList = ["0","0"]
-    PairStart = 0
+
+    pairdelimiters=["(",")", "{", "}", "[", "]", "\"", " "]
+    pairdelimiterpos={}
+    #EACH PAIR CHAR NEEDS ITS OWN START POS
+    for pair in pairdelimiters:
+        #use dictionaries
+        pairdelimiterpos[pair + "On"]= 0
+        pairdelimiterpos[pair + "Location"]= 0
+        pairdelimiterpos[pair + "List"]= ["0","0"]
+
+    pairdelimiterpos["AllList"] = ["0","0"]
+
+    splicedelimiters=[",", ";", ":", "-", "—"]
     SpliceStartPos = 0
     i = 0
     for x in string:
         #you need a hierarchy to get sentence start pos to ignore pairdelimiter rules
         if x in splicedelimiters:
-            if max(SentenceStartPos,SpliceStartPos) in range(int(PairPosList[-2]),int(PairPosList[-1])+1) and len(PairPosList)>=4:
+            if max(SentenceStartPos,SpliceStartPos) in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1) and len(pairdelimiterpos["AllList"])>=4:
                 #find one that isn't in most recent pair
                 k = 1
                 for y in SentenceStartPosList:
                     K = len(SentenceStartPosList)
-                    if SentenceStartPosList[K-k] not in range(int(PairPosList[-2]),int(PairPosList[-1])+1):
+                    if SentenceStartPosList[K-k] not in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1):
                         delimstart = SentenceStartPosList[K-k]
                     else:
                         delimstart = 0
@@ -119,22 +129,49 @@ def Cheat(string):
             Morphemes.append(string[delimstart:i+1])
             SpliceStartPos = i
         if x in pairdelimiters:
-            if PairStart == 0:
-                PairStart = 1
-                PairStartPos = i
+            '''
+
+                #use dictionaries
+                #pairdelimiterpos[x + "On"]= 0
+                #pairdelimiterpos[x + "Location"]= 0
+                #pairdelimiterpos[x + "List"]= ["0","0"]
+            print("check everything============")
+            print("x is:",x,";",string.index(x),string)
+            if pairdelimiterpos[x + "On"] == 0:
+                print("pairdelimiterpos[x + "+"On"+"] == 0")
+                print(pairdelimiterpos[x + "On"])
+                print(pairdelimiterpos[x + "Location"])
+                pairdelimiterpos[x + "On"] = 1
+                pairdelimiterpos[x + "Location"] = i
+                print("after setting")
+                print(pairdelimiterpos[x + "On"])
+                print(pairdelimiterpos[x + "Location"])
             else:
-                Morphemes.append(string[PairStartPos:i+1])
-                Morphemes.append(Cheat(string[PairStartPos+1:i]))
-            PairPosList.append(i)
+                print("pairdelims on")
+                print(Morphemes.append(string[pairdelimiterpos[x + "Location"]:i+1]))
+                Morphemes.append(string[pairdelimiterpos[x + "Location"]:i+1])
+                print(Cheat(string[pairdelimiterpos[x + "Location"]+1:i]) != [])
+                if (Cheat(string[pairdelimiterpos[x + "Location"]+1:i]) != []):
+                    print(Morphemes.append(Cheat(string[pairdelimiterpos[x + "Location"]+1:i])))
+                    Morphemes.append(Cheat(string[pairdelimiterpos[x + "Location"]+1:i]))
+                print("before:",pairdelimiterpos[x + "On"])
+                pairdelimiterpos[x + "On"] = 0
+                print("after:",pairdelimiterpos[x + "On"])
+            print(pairdelimiterpos[x + "List"].append(i))
+            pairdelimiterpos[x + "List"].append(i)
+            print(pairdelimiterpos["AllList"].append(i))
+            pairdelimiterpos["AllList"].append(i)
+            print("check everything END========")
+            '''
         if x in sentencedelimiters:
             #know the last .?! , (if any) then cut between first and last .?!
             #ignore pair delimiters
-            if SentenceStartPos in range(int(PairPosList[-2]),int(PairPosList[-1])+1) and len(PairPosList)>=4:
+            if SentenceStartPos in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1) and len(pairdelimiterpos["AllList"])>=4:
                 #find one that isn't in most recent pair
                 k = 1
                 for y in SentenceStartPosList:
                     K = len(SentenceStartPosList)
-                    if SentenceStartPosList[K-k] not in range(int(PairPosList[-2]),int(PairPosList[-1])+1):
+                    if SentenceStartPosList[K-k] not in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1):
                         delimstart = SentenceStartPosList[K-k]
                     else:
                         delimstart = 0
@@ -146,19 +183,13 @@ def Cheat(string):
             SentenceStartPosList.append(i+1)
         i += 1
     #Morphemes
-    return str(Morphemes)
-    
+    return Morphemes
 
-'''
-TODO
-be able to write to text file
-be able to run text files and test them out
-"see itself" by running address func on the text files
-be able to eval a text file by running it and putting that in the vision
-have a persistent basis
-figure out how to curry or just use address func
-magic is when it attempts to simulate actors and gets y/n then uses that info to make future  decisions
-'''
+def readable(file):
+    for x in file:
+        if x == ",":
+            file.write("\n")
+
 
 file = open('INP.txt', 'r')
 print("checking address return:", Address("don't", file))
@@ -166,22 +197,37 @@ print("checking vision return:", Vision(Address("don't", file)))
 print("checking stringify return:", Stringify(Vision(Address("don't", file))))
 #print("cheating by preprogramming stuff \n", Cheat("let's test this out. \"Shall we?\", she said."))
 #print("let's test this out. \"Shall we?\", she said.")
-file2 = open('Test Text.txt', 'r')
+#file2 = open('Test Text.txt', 'r')
+file.seek(0)
+print("checking morphology return:", str(Cheat(file.read())))
+'''
+file2 = open('INP2.txt', 'r')
 file3 = open('OUTPUT.txt', 'a')
 MORPH = Cheat(file2.read())
-file3.write(MORPH)
+#file3.write(str(MORPH) + " \n")
+
+J = 0
+file3.write(str(Address(str(MORPH[J]),file2)[0]))
 for x in MORPH:
-    file3.write(Address(MORPH,file2)+ "\n")
-#file3.write("TEST")
+    test =str(MORPH[J]) 
+    #file3.write("test START \n" + test + "\n" + "test END \n")
+    #file3.write(str(Address(test,file2)) + "\n")
+    file3.write("['" + str(Address(test,file2)[1]) + "', '" + str(Address(test,file2)[2]) + "']" + "\n")
+    
+    #file3.write(str(Address(test,file2)) + " \n")
+    #file3.write(str(Address(x,file2)[2]) + " \n")
+    #print("wtf life", x, Address(x,file2)[1],Address(x,file2)[2],str(Address(x,file2)[1])+str(Address(x,file2)[2]))
+    #file3.write(str(Address(test,file2)[2])+ " \n")
+    J+=1
+'''
+
+#readable(file3)
+    
 file3.close()
+
 #print("testing out test text", Cheat(file2.read()))
 
-
-N = []
-
-
-
-
-
-
-print("END")
+file.seek(0)
+#print("address2check",Address2("don't", file.read(), ["2","3","4"]))
+#print("address2check",Address2("don't", ["d","o","n","'","t","2","3","4"],["d","o","n","'","t","2","3","4","5","6"],["2","d","o","n","'","t","2","3","4","5","6"]))
+print("end")
