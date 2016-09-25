@@ -32,8 +32,8 @@ def Address(string, file):
     return [basis,1,partialbinary]
 
 def Address2(string, *args):
-    value = []
     #*args should be a list of bases
+    value = []
     for basis in args:
         i = 1
         partialbinary= []
@@ -96,15 +96,15 @@ def Cheat(string):
     sentencedelimiters = [".", "?", "!"] #...
     SentenceStartPos = 0
     SentenceStartPosList = []
-
-    pairdelimiters=["(",")", "{", "}", "[", "]", "\"", " "]
+    #every even is start and odd is close for each pair
+    pairdelimiters=["(", ")", "{", "}", "[", "]", "\"", "\"", " ", " "]
     pairdelimiterpos={}
     #EACH PAIR CHAR NEEDS ITS OWN START POS
     for pair in pairdelimiters:
         #use dictionaries
         pairdelimiterpos[pair + "On"]= 0
-        pairdelimiterpos[pair + "Location"]= 0
-        pairdelimiterpos[pair + "List"]= ["0","0"]
+        pairdelimiterpos[pair + "Location"]= [0]
+        pairdelimiterpos[pair + "List"]= []
 
     pairdelimiterpos["AllList"] = ["0","0"]
 
@@ -130,39 +130,26 @@ def Cheat(string):
             SpliceStartPos = i
         if x in pairdelimiters:
             '''
-
-                #use dictionaries
-                #pairdelimiterpos[x + "On"]= 0
-                #pairdelimiterpos[x + "Location"]= 0
-                #pairdelimiterpos[x + "List"]= ["0","0"]
-            print("check everything============")
-            print("x is:",x,";",string.index(x),string)
-            if pairdelimiterpos[x + "On"] == 0:
-                print("pairdelimiterpos[x + "+"On"+"] == 0")
-                print(pairdelimiterpos[x + "On"])
-                print(pairdelimiterpos[x + "Location"])
-                pairdelimiterpos[x + "On"] = 1
-                pairdelimiterpos[x + "Location"] = i
-                print("after setting")
-                print(pairdelimiterpos[x + "On"])
-                print(pairdelimiterpos[x + "Location"])
-            else:
-                print("pairdelims on")
-                print(Morphemes.append(string[pairdelimiterpos[x + "Location"]:i+1]))
-                Morphemes.append(string[pairdelimiterpos[x + "Location"]:i+1])
-                print(Cheat(string[pairdelimiterpos[x + "Location"]+1:i]) != [])
-                if (Cheat(string[pairdelimiterpos[x + "Location"]+1:i]) != []):
-                    print(Morphemes.append(Cheat(string[pairdelimiterpos[x + "Location"]+1:i])))
-                    Morphemes.append(Cheat(string[pairdelimiterpos[x + "Location"]+1:i]))
-                print("before:",pairdelimiterpos[x + "On"])
-                pairdelimiterpos[x + "On"] = 0
-                print("after:",pairdelimiterpos[x + "On"])
-            print(pairdelimiterpos[x + "List"].append(i))
-            pairdelimiterpos[x + "List"].append(i)
-            print(pairdelimiterpos["AllList"].append(i))
-            pairdelimiterpos["AllList"].append(i)
-            print("check everything END========")
+            THEY ARE BEING TREATED AS A SINGLE INSTEAD OF AS A PAIR
             '''
+            if x == " " or x == "\"":
+                #append the slice from the last location to this location
+                Morphemes.append(string[pairdelimiterpos[x + "Location"][-1]:i+1])
+                #make note of the last location
+                pairdelimiterpos[x + "Location"].append(i)
+            else:
+                #if it's on for this particular character, slice the string then turn off
+                if pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] == 1:
+                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] = 0
+                    #slice the string and append to Morphemes
+                    Morphemes.append(string[pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"][-1]:i+1])
+                    #add to location list
+                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"].append(i)
+                else:
+                    pairdelimiterpos[x + "Location"].append(i)
+                #be smart about how to turn this on:
+                if pairdelimiters.index(x)%2 == 0:
+                    pairdelimiterpos[x + "On"] = 1
         if x in sentencedelimiters:
             #know the last .?! , (if any) then cut between first and last .?!
             #ignore pair delimiters
@@ -189,17 +176,27 @@ def readable(file):
     for x in file:
         if x == ",":
             file.write("\n")
+def readable2(listcode, file):
+    for x in str(listcode):
+        file.write(x)
+        if x == ",":
+            file.write("\n")
 
 
-file = open('INP.txt', 'r')
-print("checking address return:", Address("don't", file))
-print("checking vision return:", Vision(Address("don't", file)))
-print("checking stringify return:", Stringify(Vision(Address("don't", file))))
+#file = open('INP.txt', 'r')
+#print("checking address return:", Address("don't", file))
+#print("checking vision return:", Vision(Address("don't", file)))
+#print("checking stringify return:", Stringify(Vision(Address("don't", file))))
 #print("cheating by preprogramming stuff \n", Cheat("let's test this out. \"Shall we?\", she said."))
 #print("let's test this out. \"Shall we?\", she said.")
 #file2 = open('Test Text.txt', 'r')
-file.seek(0)
-print("checking morphology return:", str(Cheat(file.read())))
+#file.seek(0)
+#print("checking morphology return:", str(Cheat(file.read())))
+#OUTPUTFILE = open('OUT.txt','a')
+#OUTPUTFILE.write(str(Cheat(file.read())))
+#OUTPUTFILE.write("==================== /n")
+#readable2(Cheat(str(file.read())),OUTPUTFILE)
+#OUTPUTFILE.close()
 '''
 file2 = open('INP2.txt', 'r')
 file3 = open('OUTPUT.txt', 'a')
@@ -219,15 +216,15 @@ for x in MORPH:
     #print("wtf life", x, Address(x,file2)[1],Address(x,file2)[2],str(Address(x,file2)[1])+str(Address(x,file2)[2]))
     #file3.write(str(Address(test,file2)[2])+ " \n")
     J+=1
-'''
+
 
 #readable(file3)
     
 file3.close()
-
+'''
 #print("testing out test text", Cheat(file2.read()))
 
-file.seek(0)
+#file.seek(0)
 #print("address2check",Address2("don't", file.read(), ["2","3","4"]))
 #print("address2check",Address2("don't", ["d","o","n","'","t","2","3","4"],["d","o","n","'","t","2","3","4","5","6"],["2","d","o","n","'","t","2","3","4","5","6"]))
 print("end")
