@@ -227,4 +227,19 @@ file3.close()
 #file.seek(0)
 #print("address2check",Address2("don't", file.read(), ["2","3","4"]))
 #print("address2check",Address2("don't", ["d","o","n","'","t","2","3","4"],["d","o","n","'","t","2","3","4","5","6"],["2","d","o","n","'","t","2","3","4","5","6"]))
+
+
+
+#IDLE TIME:
+
+
+
+#make persistent basis:
+#check if mem.txt exists:
+#if not create it
+
+
+mem = open("memory.txt",'a')
+#put in everything in there
+mem.close()
 print("end")
