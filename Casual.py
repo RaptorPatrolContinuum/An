@@ -6,6 +6,7 @@ def getSize(fileobject):
     return size
 
 def Address(string, file):
+    #returns [basis,1,partialbinary]
     #make charbasis
     charbasis = ["[","]", "\\","\""]
     file.seek(0)
@@ -76,6 +77,7 @@ def Vision(Addresslist):
     return representation
 
 def Stringify(representation):
+    #returns string
     #representation = list of pairs
     #takes function representation and just shows the y values in a list (AKA the string value since pairs are implicit in the representation)
     show = []
@@ -108,7 +110,7 @@ def Cheat(string):
 
     pairdelimiterpos["AllList"] = ["0","0"]
 
-    splicedelimiters=[",", ";", ":", "-", "—"]
+    splicedelimiters=[",", ";", ":", "-", "—", "\n"]
     SpliceStartPos = 0
     i = 0
     for x in string:
@@ -134,7 +136,7 @@ def Cheat(string):
             '''
             if x == " " or x == "\"":
                 #append the slice from the last location to this location
-                Morphemes.append(string[pairdelimiterpos[x + "Location"][-1]:i+1])
+                Morphemes.append(string[pairdelimiterpos[x + "Location"][-1]+1:i])
                 #make note of the last location
                 pairdelimiterpos[x + "Location"].append(i)
             else:
@@ -143,8 +145,10 @@ def Cheat(string):
                     pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] = 0
                     #slice the string and append to Morphemes
                     Morphemes.append(string[pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"][-1]:i+1])
-                    #add to location list
+                    #add to both location lists
                     pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"].append(i)
+                    #NEW
+                    #pairdelimiterpos["AllList"].append(i)
                 else:
                     pairdelimiterpos[x + "Location"].append(i)
                 #be smart about how to turn this on:
@@ -166,6 +170,105 @@ def Cheat(string):
             else:
                 delimstart = SentenceStartPos
             Morphemes.append(string[delimstart:i+1])
+            #NEW
+            #adding this line since words "stuck" next to punctuation get lost:
+            #Morphemes.append(string[int(pairdelimiterpos["AllList"][-1]):i+1])
+            
+            SentenceStartPos = i+1
+            SentenceStartPosList.append(i+1)
+        i += 1
+    #Morphemes
+    return Morphemes
+
+def kys(string):
+    #take a string and return a list of strings that represent the important morphemes:
+    #punctuation:
+    #.?!,;:-—)}]'"...
+    #line break
+    #paragraph break(?)
+    
+    #FUCKING USE CASES FOR "'"
+    Morphemes = []
+    
+    sentencedelimiters = [] #...
+    SentenceStartPos = 0
+    SentenceStartPosList = []
+    #every even is start and odd is close for each pair
+    pairdelimiters=[ "[", "]"]
+    pairdelimiterpos={}
+    #EACH PAIR CHAR NEEDS ITS OWN START POS
+    for pair in pairdelimiters:
+        #use dictionaries
+        pairdelimiterpos[pair + "On"]= 0
+        pairdelimiterpos[pair + "Location"]= [0]
+        pairdelimiterpos[pair + "List"]= []
+
+    pairdelimiterpos["AllList"] = ["0","0"]
+
+    splicedelimiters=[]
+    SpliceStartPos = 0
+    i = 0
+    for x in string:
+        #you need a hierarchy to get sentence start pos to ignore pairdelimiter rules
+        if x in splicedelimiters:
+            if max(SentenceStartPos,SpliceStartPos) in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1) and len(pairdelimiterpos["AllList"])>=4:
+                #find one that isn't in most recent pair
+                k = 1
+                for y in SentenceStartPosList:
+                    K = len(SentenceStartPosList)
+                    if SentenceStartPosList[K-k] not in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1):
+                        delimstart = SentenceStartPosList[K-k]
+                    else:
+                        delimstart = 0
+                    k += 1
+            else:
+                delimstart = max(SentenceStartPos,SpliceStartPos)
+            Morphemes.append(string[delimstart:i+1])
+            SpliceStartPos = i
+        if x in pairdelimiters:
+            '''
+            THEY ARE BEING TREATED AS A SINGLE INSTEAD OF AS A PAIR
+            '''
+            if x == " " or x == "\"":
+                #append the slice from the last location to this location
+                Morphemes.append(string[pairdelimiterpos[x + "Location"][-1]+1:i])
+                #make note of the last location
+                pairdelimiterpos[x + "Location"].append(i)
+            else:
+                #if it's on for this particular character, slice the string then turn off
+                if pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] == 1:
+                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] = 0
+                    #slice the string and append to Morphemes
+                    Morphemes.append(string[pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"][-1]:i+1])
+                    #add to both location lists
+                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"].append(i)
+                    #NEW
+                    #pairdelimiterpos["AllList"].append(i)
+                else:
+                    pairdelimiterpos[x + "Location"].append(i)
+                #be smart about how to turn this on:
+                if pairdelimiters.index(x)%2 == 0:
+                    pairdelimiterpos[x + "On"] = 1
+        if x in sentencedelimiters:
+            #know the last .?! , (if any) then cut between first and last .?!
+            #ignore pair delimiters
+            if SentenceStartPos in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1) and len(pairdelimiterpos["AllList"])>=4:
+                #find one that isn't in most recent pair
+                k = 1
+                for y in SentenceStartPosList:
+                    K = len(SentenceStartPosList)
+                    if SentenceStartPosList[K-k] not in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1):
+                        delimstart = SentenceStartPosList[K-k]
+                    else:
+                        delimstart = 0
+                    k += 1
+            else:
+                delimstart = SentenceStartPos
+            Morphemes.append(string[delimstart:i+1])
+            #NEW
+            #adding this line since words "stuck" next to punctuation get lost:
+            #Morphemes.append(string[int(pairdelimiterpos["AllList"][-1]):i+1])
+            
             SentenceStartPos = i+1
             SentenceStartPosList.append(i+1)
         i += 1
@@ -182,8 +285,89 @@ def readable2(listcode, file):
         if x == ",":
             file.write("\n")
 
+def MstringtoList(string):
+    #format is matrix with spaces between them and newlines for new rows
+    #format is:
+    #MstringtoList(string)[row # starting from 0][column # starting from 0]
+    Value = []
+    row = []
+    i = 0
+    lastpos = 0
+    for x in string:
+        if x == " ":
+            #check how strings with newlines work
+            row.append(string[lastpos:i].strip(" "))
+            lastpos = i
+        if x == "\n":
+            row.append(string[lastpos:i].strip(" "))
+            lastpos = i+1
+            Value.append(row)
+            row = []
+        if i == len(string)-1:
+            row.append(string[lastpos:i+1].strip(" "))
+            lastpos = i+1
+            Value.append(row)
+            row = []
+        i+=1
+    return Value
+    
+def MlistMult(LeftM, RightM):
+    #left and right matrices need to be matrix lists[list of rows]
+    #return Matrix List:
+    #format: Matrix[row # from 0][column # from 0]
+    MList = []
+    #check if they fit size req:
+    #columns left matrix =/= # rows of right matrix
+    if len(LeftM[0]) != len(RightM):
+        print("fix your sizes")
+        MList = []
+    #multiply matrices (row by row):
+    #row
+    i = 0
+    #column
+    j = 0
+    row = []
+    for i in range(0, len(LeftM)):
+        #construct the row:
+        #print("range(0,len(RightM[0])):",range(int(len(RightM[0]))))
+        ''''''
+        for j in range(0,len(RightM[0])):
+            #construct AB[i][j]
+            #do the sum of A[i][k]B[k][j] from k = 0 to #rows of A -1
+            k = 0
+            value = 0
+            for k in range(0, len(LeftM[0])):
+                value = value + int(LeftM[i][k])*int(RightM[k][j])
+            #append value to the row:
+            row.append(value)
+            if j == len(RightM)-1:
+                #append row to MList
+                MList.append(row)
+                #clear row
+                row = []
+        
+    return MList
 
-#file = open('INP.txt', 'r')
+def UllmanSI(used_columns, cur_row, G, P, M):
+    #checks if graph G has a subgraph G' isom to graph P
+    #checks if graph G' has a subgraph H isom to graph G
+    cur_row = 0
+    #if cur_row == len (M):
+        #P = M(MG)^transpose
+        #M encoded as:
+        # M = [[],[],[]]
+        #Omega(M) <-> matrix
+            #file omega to matrix as list (->)
+            #MstringtoList(Stringify(Vision(Address(str(matrix.read()),matrix))))
+        #need matrix multiplication
+        
+        #need matrix transpose
+        
+    
+    
+    
+
+file = open('INP.txt', 'r')
 #print("checking address return:", Address("don't", file))
 #print("checking vision return:", Vision(Address("don't", file)))
 #print("checking stringify return:", Stringify(Vision(Address("don't", file))))
@@ -192,11 +376,12 @@ def readable2(listcode, file):
 #file2 = open('Test Text.txt', 'r')
 #file.seek(0)
 #print("checking morphology return:", str(Cheat(file.read())))
-#OUTPUTFILE = open('OUT.txt','a')
+OUTPUTFILE = open('OUT.txt','a')
 #OUTPUTFILE.write(str(Cheat(file.read())))
 #OUTPUTFILE.write("==================== /n")
-#readable2(Cheat(str(file.read())),OUTPUTFILE)
-#OUTPUTFILE.close()
+readable2(Cheat(str(file.read())),OUTPUTFILE)
+OUTPUTFILE.close()
+file.close()
 '''
 file2 = open('INP2.txt', 'r')
 file3 = open('OUTPUT.txt', 'a')
@@ -242,4 +427,42 @@ file3.close()
 mem = open("memory.txt",'a')
 #put in everything in there
 mem.close()
+'''
+def Vision(Addresslist):
+    #Addresslist = [basis,1,partialbinary]
+ 
+ Vision(Addresslist)
+'''
+
+matrix = open('matrix check.txt', 'r')
+cleanfile = open('test3.txt', 'a')
+#cleanfile.write(str(Vision(Address(str(matrix.read()), matrix.read()))))
+
+#print("vision is ",Vision(Address(str(matrix.read()),matrix.read())))
+#Stringify
+OGstring = Stringify(Vision(Address(str(matrix.read()),matrix)))
+
+#OGSTRING2 = matrix.read().splitlines().split(',')
+print(OGstring)
+print("lastchar is ", OGstring[-1])
+#print("check1", OGstring[2]==" ")
+#print("check2", OGstring[9]=="\n")
+print(MstringtoList(OGstring))
+print(MstringtoList(OGstring)[2][0])
+#print(kys(OGstring[1:-1]))
+#print(kys(OGstring[1:-1])[0][1:-1])
+#print(kys(OGstring[1:-1])[0][1:-1].strip("\"").strip("'").split(","))
+#.replace() makes a copy!
+#print(kys(OGstring[1:-1])[0][1:-1].replace(',', ""))
+#print(OGSTRING2[1][3])
+print("kys3",MlistMult(MstringtoList(OGstring), MstringtoList(OGstring)))
+matrix.close()
+
+
+#ListTEST = []
+#ListTEST.append(["1", "2", "3"])
+#ListTEST.append(["5", "6", "7"])
+#ListTEST.append(["3", "4", "5"])
+#print("ListTEST is ", ListTEST)
+
 print("end")
