@@ -286,6 +286,7 @@ def readable2(listcode, file):
             file.write("\n")
 
 def MstringtoList(string):
+    #MAKE SURE THAT LINES DON'T HAVE SPACES BEFORE NEWLINE ON THE FIRST LINE
     #format is matrix with spaces between them and newlines for new rows
     #format is:
     #MstringtoList(string)[row # starting from 0][column # starting from 0]
@@ -296,7 +297,8 @@ def MstringtoList(string):
     for x in string:
         if x == " ":
             #check how strings with newlines work
-            row.append(string[lastpos:i].strip(" "))
+            if string[lastpos:i].strip(" ") != "":
+                row.append(string[lastpos:i].strip(" "))
             lastpos = i
         if x == "\n":
             row.append(string[lastpos:i].strip(" "))
@@ -320,7 +322,7 @@ def MlistMult(LeftM, RightM):
     #columns left matrix =/= # rows of right matrix
     if len(LeftM[0]) != len(RightM):
         print("fix your sizes")
-        MList = []
+        return False
     #multiply matrices (row by row):
     #row
     i = 0
@@ -340,28 +342,103 @@ def MlistMult(LeftM, RightM):
                 value = value + int(LeftM[i][k])*int(RightM[k][j])
             #append value to the row:
             row.append(value)
-            if j == len(RightM)-1:
+            #if j == len(RightM)-1:
+            if j == len(RightM[0])-1:
                 #append row to MList
                 MList.append(row)
                 #clear row
                 row = []
-        
     return MList
 
+def MlistTranspose(M):
+    #takes a Matrix List
+    MList = []
+    #switch the x,y coords
+    #X coord
+    i = 0
+    #Y coord
+    j = 0
+    #clean row:
+    row = []
+    print("start",M)
+    #switch for i and for j, 
+    for i in range(len(M[0])):
+        for j in range(len(M)):
+            #build the row
+            print("values",j,i,M[j],M[j][i])
+            row.append(M[j][i])
+            if j == len(M)-1:
+                #append the row
+                MList.append(row)
+                #clear the row
+                row = []
+    return MList
+
+def MlistLSComponent(check,test):
+    #check and test are Mlists
+    #you check against the test and see if check matrix has the same values as test at each value
+    #check if size(check) < size(test)
+    if len(check)> len(test) or len(check[0])> len(test[0]):
+        return False
+    #x
+    i = 0
+    #y
+    j = 0
+    #enumerate through check:
+    for i in range(len(check)):
+        for j in range(len(check[0])):
+            #at each point, check if value at check is the same as value at test:
+            #if not, return false:
+            if check[i][j] != test[i][j]:
+                return False
+    else: 
+        return True
+
 def UllmanSI(used_columns, cur_row, G, P, M):
+    #G, P, M are all Matrix lists
     #checks if graph G has a subgraph G' isom to graph P
-    #checks if graph G' has a subgraph H isom to graph G
+        #returns True/False if P isom to some subgraph of G
+    '''
+    #M encoded as Matrix List:
+    # M = [[],[],[]]
+    #Omega(M) <-> matrix
+        #file omega to matrix as list (->)
+        #MstringtoList(Stringify(Vision(Address(str(matrix.read()),matrix))))
+
+    PARTS:
+    def MstringtoList(string):
+        #MAKE SURE THAT LINES DON'T HAVE SPACES BEFORE NEWLINE ON THE FIRST LINE
+        #format is matrix with spaces between them and newlines for new rows
+        #format is:
+        #MstringtoList(string)[row # starting from 0][column # starting from 0]
+    def MlistMult(LeftM, RightM):
+        #left and right matrices need to be matrix lists[list of rows]
+        #return Matrix List:
+        #format: Matrix[row # from 0][column # from 0]
+    def MlistTranspose(M):
+        #takes a Matrix List
+    def MlistLSComponent(check,test):
+        #check and test are Mlists
+    '''
     cur_row = 0
-    #if cur_row == len (M):
-        #P = M(MG)^transpose
-        #M encoded as:
-        # M = [[],[],[]]
-        #Omega(M) <-> matrix
-            #file omega to matrix as list (->)
-            #MstringtoList(Stringify(Vision(Address(str(matrix.read()),matrix))))
-        #need matrix multiplication
+    if cur_row == len (M):
+        #if M is isom: (where P =< M(MG)^transpose (componentwise))
+        if MlistLSComponent(P,MlistMult(M, MlistTranspose(MlistMult(M,G)))):
+            return True
+        MClone = M
+        prune(MClone)
+
         
-        #need matrix transpose
+
+#def prune(MList):
+    #pruning function
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
+        
+        
+        
+        
+
         
     
     
@@ -379,7 +456,7 @@ file = open('INP.txt', 'r')
 OUTPUTFILE = open('OUT.txt','a')
 #OUTPUTFILE.write(str(Cheat(file.read())))
 #OUTPUTFILE.write("==================== /n")
-readable2(Cheat(str(file.read())),OUTPUTFILE)
+#readable2(Cheat(str(file.read())),OUTPUTFILE)
 OUTPUTFILE.close()
 file.close()
 '''
@@ -435,12 +512,14 @@ def Vision(Addresslist):
 '''
 
 matrix = open('matrix check.txt', 'r')
+matrix2 = open('matrix check2.txt', 'r')
 cleanfile = open('test3.txt', 'a')
 #cleanfile.write(str(Vision(Address(str(matrix.read()), matrix.read()))))
 
 #print("vision is ",Vision(Address(str(matrix.read()),matrix.read())))
 #Stringify
 OGstring = Stringify(Vision(Address(str(matrix.read()),matrix)))
+OGstring2nd = Stringify(Vision(Address(str(matrix2.read()),matrix2)))
 
 #OGSTRING2 = matrix.read().splitlines().split(',')
 print(OGstring)
@@ -455,9 +534,15 @@ print(MstringtoList(OGstring)[2][0])
 #.replace() makes a copy!
 #print(kys(OGstring[1:-1])[0][1:-1].replace(',', ""))
 #print(OGSTRING2[1][3])
-print("kys3",MlistMult(MstringtoList(OGstring), MstringtoList(OGstring)))
-matrix.close()
+#print("kys3",MlistMult(MstringtoList(OGstring), MstringtoList(OGstring)))
 
+
+#TURN THIS ON
+print("multiplying",MlistMult(MstringtoList(OGstring), MstringtoList(OGstring2nd)))
+matrix.close()
+print("transpose is", MlistTranspose(MstringtoList(OGstring2nd)))
+print("LSComponent is",MlistLSComponent(MstringtoList(OGstring), MstringtoList(OGstring2nd)))
+#MlistLSComponent(check,test)
 
 #ListTEST = []
 #ListTEST.append(["1", "2", "3"])
