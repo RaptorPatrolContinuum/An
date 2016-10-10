@@ -1,4 +1,7 @@
 from math import *
+import networkx as nx
+from networkx.algorithms import isomorphism
+from collections import Counter
 
 def getSize(fileobject):
     fileobject.seek(0,2) # move the cursor to the end of the file
@@ -8,7 +11,7 @@ def getSize(fileobject):
 def Address(string, file):
     #returns [basis,1,partialbinary]
     #make charbasis
-    charbasis = ["[","]", "\\","\""]
+    charbasis = ["[","]", "\\","\"", "True", "False"]
     file.seek(0)
     for c in file.read():
         if c not in charbasis:
@@ -64,6 +67,7 @@ def Address2(string, *args):
 
 def Vision(Addresslist):
     #Addresslist = [basis,1,partialbinary]
+    #representation is a list of values: (x,f(x))
     function = []
     representation = []
     for pair in Addresslist[2]:
@@ -360,12 +364,12 @@ def MlistTranspose(M):
     j = 0
     #clean row:
     row = []
-    print("start",M)
+    #print("start",M)
     #switch for i and for j, 
     for i in range(len(M[0])):
         for j in range(len(M)):
             #build the row
-            print("values",j,i,M[j],M[j][i])
+            #print("values",j,i,M[j],M[j][i])
             row.append(M[j][i])
             if j == len(M)-1:
                 #append the row
@@ -375,6 +379,28 @@ def MlistTranspose(M):
     return MList
 
 def MlistLSComponent(check,test):
+    #new version only considers nonzero elements for componentwise checking
+    #check and test are Mlists
+    #you check against the test and see if check matrix has the same values as test at each value
+    #check if size(check) < size(test)
+    if len(check)> len(test) or len(check[0])> len(test[0]):
+        return False
+    #x
+    i = 0
+    #y
+    j = 0
+    #enumerate through check:
+    for i in range(len(check)):
+        for j in range(len(check[0])):
+            #at each point, check if value at check is the same as value at test:
+            #if not, return false:
+            if check[i][j] != 0 and check[i][j] != test[i][j]:
+                return False
+    else: 
+        return True
+
+def MlistLSComponentOG(check,test):
+    #OG checks componentwise
     #check and test are Mlists
     #you check against the test and see if check matrix has the same values as test at each value
     #check if size(check) < size(test)
@@ -394,56 +420,254 @@ def MlistLSComponent(check,test):
     else: 
         return True
 
+def AddresstoMlist(Address):
+    MList = []
+    #create null matrix
+    #x
+    i = 0
+    #y
+    j = 0
+    row = []
+    for x in range(len(Address[0])):
+        for y in range(len(Address[0])):
+            row.append(0)
+            if y == len(Address[0])-1:
+                MList.append(row)
+                row = []
+    #MList[2][2] = "tree"
+    #print("checking modifiers") (works as intended with the null matrix)
+    #need address -> matrix list function
+    for pair in Vision(Address):
+        #X value should always be int:
+        #check if x val is int
+        if type(pair[0]) is int:
+            #y value should be checked with relation to basis: Address[0].index(pair[1])
+            #then make MList[x][y] = 1
+            MList[Address[0].index(pair[0])][Address[0].index(pair[1])] = 1
+        else:
+            print("x val for Address was not an int")
+            return MList
+    return MList
+
+def MList1Square(size):
+    #makes Mlist square matrix of specified size 
+    x = 0
+    y = 0
+    MList = []
+    for x in range(size):
+        row = []
+        for y in range(size):
+            row.append(1)
+            if y == len(range(size))-1:
+                MList.append(row)
+                row = []
+    return MList
+
+
+
+
+
+
 def UllmanSI(used_columns, cur_row, G, P, M):
+    #note: to start UllmanSI
+        #used_columns={range of columns of G as list}
+            #format is:
+            #column number: "used" or "unused"
+            #set them all to "unused" ON INIT
+        #cur_row = 0
     #G, P, M are all Matrix lists
     #checks if graph G has a subgraph G' isom to graph P
         #returns True/False if P isom to some subgraph of G
-    '''
-    #M encoded as Matrix List:
-    # M = [[],[],[]]
-    #Omega(M) <-> matrix
-        #file omega to matrix as list (->)
-        #MstringtoList(Stringify(Vision(Address(str(matrix.read()),matrix))))
-
-    PARTS:
-    def MstringtoList(string):
-        #MAKE SURE THAT LINES DON'T HAVE SPACES BEFORE NEWLINE ON THE FIRST LINE
-        #format is matrix with spaces between them and newlines for new rows
-        #format is:
-        #MstringtoList(string)[row # starting from 0][column # starting from 0]
-    def MlistMult(LeftM, RightM):
-        #left and right matrices need to be matrix lists[list of rows]
-        #return Matrix List:
-        #format: Matrix[row # from 0][column # from 0]
-    def MlistTranspose(M):
-        #takes a Matrix List
-    def MlistLSComponent(check,test):
-        #check and test are Mlists
-    '''
-    cur_row = 0
-    if cur_row == len (M):
-        #if M is isom: (where P =< M(MG)^transpose (componentwise))
+    #print("what the fuck do I have", used_columns, cur_row, G, P, M)
+    if cur_row == len(M)-1:
+        print("tried the check at cur row=", cur_row)
+        print("M is ", M)
         if MlistLSComponent(P,MlistMult(M, MlistTranspose(MlistMult(M,G)))):
             return True
-        MClone = M
-        prune(MClone)
+    MClone = M
+    #print("M and Mclone",M,MClone)
+    #prune(MClone)
+    for W in range(len(M)):
+        if used_columns[W] == "unused":
+            #set column c in M' to 1 and other columns to 0
+            i = 0
+            j = 0
+            for i in range(len(M)):
+                for j in range(len(M[0])):
+                    if j == W:
+                        M[i][W] = 1
+                    else:
+                        M[i][j] = 0
+            #mark c as used
+            used_columns[W] = "used"
+            #print("new used   is [w]",W,used_columns)
+            UllmanSI(used_columns, cur_row+1, G, P, MClone)
+            #print("new unused is [w]",W,used_columns)
+            used_columns[W] = "unused"
+    '''
+    M' = M
+    prune(M')
 
-        
+    for all unused columns c
+        set column c in M' to 1 and other columns to 0
+        mark c as used
+        recurse(used_column, cur_row+1, G, P, M')
+        mark c as unused
 
-#def prune(MList):
-    #pruning function
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+    output no
+    '''
+    return "random shit"
 
-        
-        
-        
-        
+def prune(M):
+    #M is an MList
+    i = 0
+    j = 0
+    for i in range(len(M)):
+        for j in range(len(M[0])):
+            if M[i][j] == 1:
+                #find neighbors x of i in P:
+                z = 0
+                #all neighbors are on the same row (and exclude itself):
+                neighborsinP = []
+                for z in range(len(M[0])):
+                    if M[i][z] != 1 and z != j:
+                        neighborsinP.append(j)
+                
+    '''
+    do
+        for all (i,j) where M is 1
+            for all neighbors x of vi in P
+                if there is no neighbor y of vj s.t. M(x,y)=1
+                    M(i,j)=0
+    while M was changed
+    '''
+    pass
+    
+def SI(P, G, Basis):
+    #checks if P subgraph isomorphic to G
+    #P,G MLists
+    #Basis is a list
+    G1 = nx.Graph()
+    #if P[i][j] == 1, then add i and j as nodes and add their edge
+    i = 0
+    j = 0
+    for i in range(len(P)):
+        for j in range(len(P[0])):
+            if P[i][j] == 1:
+                G1.add_node(Basis[i])
+                G1.add_node(Basis[j])
+                G1.add_edge(Basis[i],Basis[j])
+    print("WTF???", G1.nodes(),G1.edges())
+    G2 = nx.Graph()
+    i = 0
+    j = 0
+    for i in range(len(G)):
+        for j in range(len(G[0])):
+            if G[i][j] == 1:
+                G2.add_node(Basis[i])
+                G2.add_node(Basis[j])
+                G2.add_edge(Basis[i],Basis[j])
+    GM = isomorphism.GraphMatcher(G1,G2)
+    print("WTF???", G1.nodes(),G1.edges())
+    return GM.is_isomorphic()
+'''
+def ShittySI():
+    #make MasterListByEdgeCountP:=[[count of 5][count of 4][count of 3]...]
+    #make MasterListByEdgeCountG:=[[count of 5][count of 4][count of 3]...]
+    for Vp in MLBECP:
+        make exhaustVpOG
+        make exhaustVpClone
+    Pindex = 0
+    for Vg in Exhaust(Vp)Clone# the first Vp in MLBECP
+        map Vp to exhaustVpClone[0]
+        remove Vp from exhaustVpClone
+        if (map passes connection check):
+            [go to next Pindex]
+            Pindex += 1
+            GoToNextP()
+        else:
+            remove 
 
-        
+    return False
+
+def GoToNextP():
+'''    
+
+def SINaive(P, G, Basis):
+    #P, G MLists
+    Answer = False
+    #check trivial:
+    if MlistLSComponent(P,G):
+        print("use trivial isom")
+        Answer = True
+    #fuck it just enum through all possible transformation matrices:
+    #take M to be a function from P->G
+    MTemp = []
+    Temprow = []
+    #MSequence powerset of M
+    #plan is to just go through all the possible isomorphisms because I'm stupid and can't do VF2 properly for some reason
+    MSequence = []
+    row = []
+    for i in range(2 ** (len(P)* len(G[0]))):
+        for j in range(len(P)* len(G[0])):
+            if ceil((i + 1)/((2 ** (len(P)*len(G[0])))/(2 ** (j + 1)))) % 2 == 0:
+                 row.append(0)
+            else:
+                 row.append(1)
+            if j == len(P)* len(G[0])-1:
+                MSequence.append(row)
+                #print("what is row?", row)
+                #the row is a matrix so just check if P <= M(MG)^transpose:
+                s = 1
+                for elem in row:
+                    Temprow.append(elem)
+                    #print("wtf check: len, s, scheck", len(G[0]), s, s % len(G[0]) == 0)
+                    if s % len(G[0]) == 0:
+                        MTemp.append(Temprow)
+                        Temprow = []
+                    s += 1
+                #map the "isom"
+                    ###TODO
+                print("check for isom", MlistLSComponent(P,MlistMult(MTemp, MlistTranspose(MlistMult(MTemp,G)))))
+                print("MTemp is:", MTemp)
+                if MlistLSComponent(P,MlistMult(MTemp, MlistTranspose(MlistMult(MTemp,G)))):
+                    #then after going through the whole row, check out MTemp:
+                    #print("checking MTemp", MTemp)
+                    #if yes, check if MTemp really is an isom:
+                    #@ most one 1 in a row and one 1 in a column
+                    isomQuery = True
+                    sumCheck = 0
+                    columnCheck = []
+                    rowPos = 0
+                    for theRow in MTemp:
+                        for theElement in theRow:
+                            #print("varchecks", theRow, theElement, sumCheck, rowPos)
+                            sumCheck += theElement
+                            rowPos += 1
+                            if sumCheck > 1:
+                                #print("MTemp not isom in row!")
+                                isomQuery = False
+                            if theElement == 1:
+                                #print("colcheck", columnCheck)
+                                columnCheck.append(rowPos)
+                                #print("colcheckEND", columnCheck)
+                                #check if there are duplicates in columnCheck
+                                if len([k for k,v in Counter(columnCheck).items() if v>1])>=1:
+                                    #print("MTemp not isom in column!")
+                                    isomQuery = False
+                        sumCheck = 0
+                        rowPos = 0
+                    if isomQuery == True:
+                        print("The isom matrix is:", MTemp)
+                        return True
+                #clear MTemp:
+                MTemp = []
+                
+                row = []
+    #print("check powerset", MSequence)
+    return Answer
     
     
-    
-
 file = open('INP.txt', 'r')
 #print("checking address return:", Address("don't", file))
 #print("checking vision return:", Vision(Address("don't", file)))
@@ -520,14 +744,20 @@ cleanfile = open('test3.txt', 'a')
 #Stringify
 OGstring = Stringify(Vision(Address(str(matrix.read()),matrix)))
 OGstring2nd = Stringify(Vision(Address(str(matrix2.read()),matrix2)))
+matrix.seek(0)
+OGstring3 = Address(str(matrix.read()),matrix)
+#Vision(Address(str(matrix.read()),matrix))
+
 
 #OGSTRING2 = matrix.read().splitlines().split(',')
 print(OGstring)
+print("what am I doing", OGstring3)
+print("what am I doing2", AddresstoMlist(OGstring3))
 print("lastchar is ", OGstring[-1])
 #print("check1", OGstring[2]==" ")
 #print("check2", OGstring[9]=="\n")
 print(MstringtoList(OGstring))
-print(MstringtoList(OGstring)[2][0])
+#print(MstringtoList(OGstring)[2][0])
 #print(kys(OGstring[1:-1]))
 #print(kys(OGstring[1:-1])[0][1:-1])
 #print(kys(OGstring[1:-1])[0][1:-1].strip("\"").strip("'").split(","))
@@ -537,9 +767,10 @@ print(MstringtoList(OGstring)[2][0])
 #print("kys3",MlistMult(MstringtoList(OGstring), MstringtoList(OGstring)))
 
 
+
 #TURN THIS ON
 print("multiplying",MlistMult(MstringtoList(OGstring), MstringtoList(OGstring2nd)))
-matrix.close()
+
 print("transpose is", MlistTranspose(MstringtoList(OGstring2nd)))
 print("LSComponent is",MlistLSComponent(MstringtoList(OGstring), MstringtoList(OGstring2nd)))
 #MlistLSComponent(check,test)
@@ -550,4 +781,52 @@ print("LSComponent is",MlistLSComponent(MstringtoList(OGstring), MstringtoList(O
 #ListTEST.append(["3", "4", "5"])
 #print("ListTEST is ", ListTEST)
 
+print("fml")
+matrix.seek(0)
+matrix2.seek(0)
+#make M:
+#assumption that everything was w.r.t. a basis:
+#Address(string, file):
+UllmanSTART = {}
+for r in range(len(AddresstoMlist(Address(matrix2.read(), matrix2)))):
+    UllmanSTART[r] = "unused"
+print("PARTS",UllmanSTART)
+#, 0, AddresstoMlist(Address(matrix2.read(), matrix2)), AddresstoMlist(Address(matrix.read(), matrix2)), MListNullSquare(len(AddresstoMlist(Address(matrix2.read(), matrix2))))
+matrix.seek(0)
+matrix2.seek(0)
+g = AddresstoMlist(Address(matrix2.read(), matrix2))
+matrix.seek(0)
+matrix2.seek(0)
+p = AddresstoMlist(Address(matrix.read(), matrix2))
+m = MList1Square(len(AddresstoMlist(Address(matrix2.read(), matrix2))))
+matrix2.seek(0)
+basis = Address(matrix.read(), matrix2)[0]
+print("fuck me up", m)
+#print("SI is",UllmanSI(UllmanSTART, 0, g, p, m))
+
+
+'''
+def UllmanSI(used_columns, cur_row, G, P, M):
+    #note: to start UllmanSI
+        #used_columns={range of columns of G as list}
+            #format is:
+            #column number: "used" or "unused"
+            #set them all to "unused" ON INIT
+        #cur_row = 0
+    #G, P, M are all Matrix lists
+    #checks if graph G has a subgraph G' isom to graph P
+        #returns True/False if P isom to some subgraph of G
+'''
+matrix.close()
+
+print("kys")
+#print(SINaive([[1, 1], [1, 1]], [[1, 0],[0, 1]], basis))
+print("SINaive:",SINaive([[0, 0, 1], [1, 0, 1], [0, 0, 0]], [[0, 0, 0], [1, 0, 0], [1, 1, 0]], basis))
+
+print("what is p?",p)
+print("what is g?",g)
+#print(SINaive(p, g, basis))
+
+print("kys end")
 print("end")
+
