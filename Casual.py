@@ -1,6 +1,6 @@
 from math import *
-import networkx as nx
-from networkx.algorithms import isomorphism
+#import networkx as nx
+#from networkx.algorithms import isomorphism
 from collections import Counter
 
 def getSize(fileobject):
@@ -666,167 +666,41 @@ def SINaive(P, G, Basis):
                 row = []
     #print("check powerset", MSequence)
     return Answer
-    
-    
+'''
+def Idle(number, basis, listsofaddresses):
+    #number: is how many more do you want to do
+    #basis: is the basis you are using
+        #from basis.txt
+    #listsofaddresses: list of all the stuff you've seen, it's ASSUMED that lists has no "holes":
+        #listsofaddresses is from memory.txt
+    ######
+    #what happens to old addresses if I add an element to basis????
+    #I think it's ok to leave as-is since we already know the powerset # since our bases contain each other
+    #Answer: at each powerset level, the numbering is preserved if I use my numbering scheme + one basis is contained in the other
+    ######
+    #plan:
+    for i in range(number):
+        go to last of lists + 1:
+        eval that element
+        map successively higher subgraph isom to high objects
+'''
+
+def Active():
+    #????
+    pass
+
+while True:
+    input = input("Exit or logout to leave \n")
+    if input == "exit" or input == "logout":
+        break
+    else:
+        #have conversation
+        pass
+
+
 file = open('INP.txt', 'r')
-#print("checking address return:", Address("don't", file))
-#print("checking vision return:", Vision(Address("don't", file)))
-#print("checking stringify return:", Stringify(Vision(Address("don't", file))))
-#print("cheating by preprogramming stuff \n", Cheat("let's test this out. \"Shall we?\", she said."))
-#print("let's test this out. \"Shall we?\", she said.")
-#file2 = open('Test Text.txt', 'r')
-#file.seek(0)
-#print("checking morphology return:", str(Cheat(file.read())))
-OUTPUTFILE = open('OUT.txt','a')
-#OUTPUTFILE.write(str(Cheat(file.read())))
-#OUTPUTFILE.write("==================== /n")
-#readable2(Cheat(str(file.read())),OUTPUTFILE)
-OUTPUTFILE.close()
+basis = open('Basis.txt', 'r+')
+memory = open('Memory.txt', 'r+')
 file.close()
-'''
-file2 = open('INP2.txt', 'r')
-file3 = open('OUTPUT.txt', 'a')
-MORPH = Cheat(file2.read())
-#file3.write(str(MORPH) + " \n")
-
-J = 0
-file3.write(str(Address(str(MORPH[J]),file2)[0]))
-for x in MORPH:
-    test =str(MORPH[J]) 
-    #file3.write("test START \n" + test + "\n" + "test END \n")
-    #file3.write(str(Address(test,file2)) + "\n")
-    file3.write("['" + str(Address(test,file2)[1]) + "', '" + str(Address(test,file2)[2]) + "']" + "\n")
-    
-    #file3.write(str(Address(test,file2)) + " \n")
-    #file3.write(str(Address(x,file2)[2]) + " \n")
-    #print("wtf life", x, Address(x,file2)[1],Address(x,file2)[2],str(Address(x,file2)[1])+str(Address(x,file2)[2]))
-    #file3.write(str(Address(test,file2)[2])+ " \n")
-    J+=1
-
-
-#readable(file3)
-    
-file3.close()
-'''
-#print("testing out test text", Cheat(file2.read()))
-
-#file.seek(0)
-#print("address2check",Address2("don't", file.read(), ["2","3","4"]))
-#print("address2check",Address2("don't", ["d","o","n","'","t","2","3","4"],["d","o","n","'","t","2","3","4","5","6"],["2","d","o","n","'","t","2","3","4","5","6"]))
-
-
-
-#IDLE TIME:
-
-
-
-#make persistent basis:
-#check if mem.txt exists:
-#if not create it
-
-
-mem = open("memory.txt",'a')
-#put in everything in there
-mem.close()
-'''
-def Vision(Addresslist):
-    #Addresslist = [basis,1,partialbinary]
- 
- Vision(Addresslist)
-'''
-
-matrix = open('matrix check.txt', 'r')
-matrix2 = open('matrix check2.txt', 'r')
-cleanfile = open('test3.txt', 'a')
-#cleanfile.write(str(Vision(Address(str(matrix.read()), matrix.read()))))
-
-#print("vision is ",Vision(Address(str(matrix.read()),matrix.read())))
-#Stringify
-OGstring = Stringify(Vision(Address(str(matrix.read()),matrix)))
-OGstring2nd = Stringify(Vision(Address(str(matrix2.read()),matrix2)))
-matrix.seek(0)
-OGstring3 = Address(str(matrix.read()),matrix)
-#Vision(Address(str(matrix.read()),matrix))
-
-
-#OGSTRING2 = matrix.read().splitlines().split(',')
-print(OGstring)
-print("what am I doing", OGstring3)
-print("what am I doing2", AddresstoMlist(OGstring3))
-print("lastchar is ", OGstring[-1])
-#print("check1", OGstring[2]==" ")
-#print("check2", OGstring[9]=="\n")
-print(MstringtoList(OGstring))
-#print(MstringtoList(OGstring)[2][0])
-#print(kys(OGstring[1:-1]))
-#print(kys(OGstring[1:-1])[0][1:-1])
-#print(kys(OGstring[1:-1])[0][1:-1].strip("\"").strip("'").split(","))
-#.replace() makes a copy!
-#print(kys(OGstring[1:-1])[0][1:-1].replace(',', ""))
-#print(OGSTRING2[1][3])
-#print("kys3",MlistMult(MstringtoList(OGstring), MstringtoList(OGstring)))
-
-
-
-#TURN THIS ON
-print("multiplying",MlistMult(MstringtoList(OGstring), MstringtoList(OGstring2nd)))
-
-print("transpose is", MlistTranspose(MstringtoList(OGstring2nd)))
-print("LSComponent is",MlistLSComponent(MstringtoList(OGstring), MstringtoList(OGstring2nd)))
-#MlistLSComponent(check,test)
-
-#ListTEST = []
-#ListTEST.append(["1", "2", "3"])
-#ListTEST.append(["5", "6", "7"])
-#ListTEST.append(["3", "4", "5"])
-#print("ListTEST is ", ListTEST)
-
-print("fml")
-matrix.seek(0)
-matrix2.seek(0)
-#make M:
-#assumption that everything was w.r.t. a basis:
-#Address(string, file):
-UllmanSTART = {}
-for r in range(len(AddresstoMlist(Address(matrix2.read(), matrix2)))):
-    UllmanSTART[r] = "unused"
-print("PARTS",UllmanSTART)
-#, 0, AddresstoMlist(Address(matrix2.read(), matrix2)), AddresstoMlist(Address(matrix.read(), matrix2)), MListNullSquare(len(AddresstoMlist(Address(matrix2.read(), matrix2))))
-matrix.seek(0)
-matrix2.seek(0)
-g = AddresstoMlist(Address(matrix2.read(), matrix2))
-matrix.seek(0)
-matrix2.seek(0)
-p = AddresstoMlist(Address(matrix.read(), matrix2))
-m = MList1Square(len(AddresstoMlist(Address(matrix2.read(), matrix2))))
-matrix2.seek(0)
-basis = Address(matrix.read(), matrix2)[0]
-print("fuck me up", m)
-#print("SI is",UllmanSI(UllmanSTART, 0, g, p, m))
-
-
-'''
-def UllmanSI(used_columns, cur_row, G, P, M):
-    #note: to start UllmanSI
-        #used_columns={range of columns of G as list}
-            #format is:
-            #column number: "used" or "unused"
-            #set them all to "unused" ON INIT
-        #cur_row = 0
-    #G, P, M are all Matrix lists
-    #checks if graph G has a subgraph G' isom to graph P
-        #returns True/False if P isom to some subgraph of G
-'''
-matrix.close()
-
-print("kys")
-#print(SINaive([[1, 1], [1, 1]], [[1, 0],[0, 1]], basis))
-print("SINaive:",SINaive([[0, 0, 1], [1, 0, 1], [0, 0, 0]], [[0, 0, 0], [1, 0, 0], [1, 1, 0]], basis))
-
-print("what is p?",p)
-print("what is g?",g)
-#print(SINaive(p, g, basis))
-
-print("kys end")
-print("end")
-
+basis.close()
+memory.close()
