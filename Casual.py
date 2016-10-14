@@ -37,6 +37,8 @@ def Address(string, file):
 
 def Address2(string, *args):
     #*args should be a list of bases
+    #return a list of addresses:
+        #element of value looks like: [[basis,1,address],missing chars]
     value = []
     for basis in args:
         i = 1
@@ -61,7 +63,7 @@ def Address2(string, *args):
                 partialbinary.append((1/2)*(x+y)*(x+y+1)+y)
             i += 1
         value.append([[basis,1,partialbinary],missing])
-    #retun a list of addresses:
+    #return a list of addresses:
         #element of value looks like: [[basis,1,address],missing chars]
     return value
 
@@ -109,23 +111,28 @@ def Cheat(string):
     for pair in pairdelimiters:
         #use dictionaries
         pairdelimiterpos[pair + "On"]= 0
-        pairdelimiterpos[pair + "Location"]= [0]
+        pairdelimiterpos[pair + "Location"]= [-1]
+        #starts at -1 so that it gets the first word even though there is no space[might be a problem]
         pairdelimiterpos[pair + "List"]= []
 
-    pairdelimiterpos["AllList"] = ["0","0"]
+    pairdelimiterpos["AllList"] = [-1,-1]
+    #starts at -1 so that it gets the first word even though there is no space[might be a problem]
 
     splicedelimiters=[",", ";", ":", "-", "—", "\n"]
     SpliceStartPos = 0
     i = 0
     for x in string:
+        if i == len(string)-1:
+            #get the last morpheme:
+            Morphemes.append(string[pairdelimiterpos["AllList"][-1]+1:])
         #you need a hierarchy to get sentence start pos to ignore pairdelimiter rules
         if x in splicedelimiters:
-            if max(SentenceStartPos,SpliceStartPos) in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1) and len(pairdelimiterpos["AllList"])>=4:
+            if max(SentenceStartPos,SpliceStartPos) in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1) and len(pairdelimiterpos["AllList"])>=4:
                 #find one that isn't in most recent pair
                 k = 1
                 for y in SentenceStartPosList:
                     K = len(SentenceStartPosList)
-                    if SentenceStartPosList[K-k] not in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1):
+                    if SentenceStartPosList[K-k] not in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1):
                         delimstart = SentenceStartPosList[K-k]
                     else:
                         delimstart = 0
@@ -133,6 +140,8 @@ def Cheat(string):
             else:
                 delimstart = max(SentenceStartPos,SpliceStartPos)
             Morphemes.append(string[delimstart:i+1])
+            #keep track of everything
+            pairdelimiterpos["AllList"].append(i)
             SpliceStartPos = i
         if x in pairdelimiters:
             '''
@@ -143,6 +152,8 @@ def Cheat(string):
                 Morphemes.append(string[pairdelimiterpos[x + "Location"][-1]+1:i])
                 #make note of the last location
                 pairdelimiterpos[x + "Location"].append(i)
+                #keep track of everything
+                pairdelimiterpos["AllList"].append(i)
             else:
                 #if it's on for this particular character, slice the string then turn off
                 if pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] == 1:
@@ -151,8 +162,8 @@ def Cheat(string):
                     Morphemes.append(string[pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"][-1]:i+1])
                     #add to both location lists
                     pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"].append(i)
-                    #NEW
-                    #pairdelimiterpos["AllList"].append(i)
+                    #keep track of everything
+                    pairdelimiterpos["AllList"].append(i)
                 else:
                     pairdelimiterpos[x + "Location"].append(i)
                 #be smart about how to turn this on:
@@ -161,12 +172,12 @@ def Cheat(string):
         if x in sentencedelimiters:
             #know the last .?! , (if any) then cut between first and last .?!
             #ignore pair delimiters
-            if SentenceStartPos in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1) and len(pairdelimiterpos["AllList"])>=4:
+            if SentenceStartPos in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1) and len(pairdelimiterpos["AllList"])>=4:
                 #find one that isn't in most recent pair
                 k = 1
                 for y in SentenceStartPosList:
                     K = len(SentenceStartPosList)
-                    if SentenceStartPosList[K-k] not in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1):
+                    if SentenceStartPosList[K-k] not in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1):
                         delimstart = SentenceStartPosList[K-k]
                     else:
                         delimstart = 0
@@ -174,9 +185,11 @@ def Cheat(string):
             else:
                 delimstart = SentenceStartPos
             Morphemes.append(string[delimstart:i+1])
+            #keep track of everything
+            pairdelimiterpos["AllList"].append(i)
             #NEW
             #adding this line since words "stuck" next to punctuation get lost:
-            #Morphemes.append(string[int(pairdelimiterpos["AllList"][-1]):i+1])
+            #Morphemes.append(string[pairdelimiterpos["AllList"][-1]:i+1])
             
             SentenceStartPos = i+1
             SentenceStartPosList.append(i+1)
@@ -689,18 +702,47 @@ def Active():
     #????
     pass
 
-while True:
-    input = input("Exit or logout to leave \n")
-    if input == "exit" or input == "logout":
-        break
-    else:
-        #have conversation
-        pass
-
-
 file = open('INP.txt', 'r')
 basis = open('Basis.txt', 'r+')
 memory = open('Memory.txt', 'r+')
+while True:
+    inputtext = str(input("Exit or logout to leave \n"))
+    if inputtext == "exit" or inputtext == "logout":
+        break
+    else:
+        #have conversation
+        #idea: information>read>analyze>response
+        for char in inputtext:
+            #update basistext knowledge:
+            basis.seek(0)
+            basistext = str(basis.read())
+            #if stuff is not in the basis:
+            #print("char is\"", char,"\"")
+            #print(basistext)
+            #print("bool is",char in basistext)
+            if char in basistext:
+                pass
+            else:
+                #append to basis
+                basis.seek(0, 2)
+                basis.write(char)
+        #then do address of cheat(inputtext)
+
+        #if address is not in memory, then add it
+        #print(Cheat(inputtext))
+        for char in Cheat(inputtext):
+            if char == ",":
+                print("\n")
+                print(char)
+            else:
+                print(char)
+        #Address2(string, *args):
+            #*args should be a list of bases
+        basis.seek(0)
+        basistext = str(basis.read())
+        print(Address2(inputtext, list(basistext)))
+        #PROBLEM: BASIS.TXT IS MISSING NUMBERS
+            
 file.close()
 basis.close()
 memory.close()
