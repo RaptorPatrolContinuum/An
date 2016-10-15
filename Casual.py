@@ -50,6 +50,7 @@ def Address2(string, *args):
             #(x,y)= (1/2)(x+y)(x+y+1)+y
             err = []
             try:
+                #pairing func starts at 1!(?)
                 x = basis.index(str(i))+1
             except(ValueError,IndexError):
                 print("i is missing", i)
@@ -69,6 +70,37 @@ def Address2(string, *args):
     #return a list of addresses:
         #element of value looks like: [[basis,1,address],missing chars]
     return value
+
+def ConcatAddress(elem, AddressElem):
+    #takes an element in the basis, and and Addresslist = [basis,L,partialbinary]
+    #returns the set {elem, representation(AddressElem)} in the form of an Addresslist
+    '''
+    idea:
+    [address of parts] is subset in Powerset^some power
+    address(total)= sum of [address of parts] is element in Powerset^some power +1
+    WANT:{(1,1),address(total)}
+    since we do powerset again, and our basis is well ordered by our address func, can straight up calculate the address of parts again on the old powerset:
+    [address((1,1)), address^2(total)] in Powerset^some power + 1
+    sum([address((1,1)), address^2(total)]) is address of this element in Powerset^some power + 2
+    hints:
+        partial binary starts at 2^0
+        powerset indexing starts at 0
+        partial binary is always a subset
+    old idea:
+    #pairing func starts at 1!(?)
+    #takes coord locations and returns the address
+    #Number = (1/2)*(x+y)*(x+y+1)+y
+    '''
+    if elem in AddressElem[0]:
+        #append address of elem to AddressElem
+        #print("wtf?", Address2(elem,AddressElem[0])[0][0][2])
+        for number in Address2(elem,AddressElem[0])[0][0][2]:
+            AddressElem[2].append(number)
+        return [AddressElem[0],AddressElem[1]+1,AddressElem[2]]
+    else:
+        print("something went wrong with ConcatAddress")
+        
+    
 
 def Vision(Addresslist):
     #Addresslist = [basis,1,partialbinary]
@@ -588,118 +620,6 @@ def SINaive(P, G, Basis):
     #print("check powerset", MSequence)
     return Answer
 
-
-def BasisStringtoList(string):
-    #take a string and return a list of strings that represent the important morphemes:
-    #punctuation:
-    #.?!,;:-—)}]'"...
-    #line break
-    #paragraph break(?)
-    
-    #FUCKING USE CASES FOR "'"
-    Morphemes = []
-    
-    sentencedelimiters = [] #...
-    #".", "?", "!"
-    SentenceStartPos = 0
-    SentenceStartPosList = []
-    #every even is start and odd is close for each pair
-    #"(", ")", "{", "}", "[", "]", "\"", "\"", " ", " "
-    pairdelimiters=["\""]
-    pairdelimiterpos={}
-    #EACH PAIR CHAR NEEDS ITS OWN START POS
-    for pair in pairdelimiters:
-        #use dictionaries
-        pairdelimiterpos[pair + "On"]= 0
-        pairdelimiterpos[pair + "Location"]= [-1]
-        #starts at -1 so that it gets the first word even though there is no space[might be a problem]
-        pairdelimiterpos[pair + "List"]= []
-
-    pairdelimiterpos["AllList"] = [-1,-1]
-    #starts at -1 so that it gets the first word even though there is no space[might be a problem]
-
-    #splicedelimiters=[",", ";", ":", "-", "—", "\n"]
-    splicedelimiters=[]
-    SpliceStartPos = 0
-    i = 0
-    for x in string:
-        '''
-        if i == len(string)-1:
-            #get the last morpheme:
-            Morphemes.append(string[pairdelimiterpos["AllList"][-1]+1:])
-        '''
-        #you need a hierarchy to get sentence start pos to ignore pairdelimiter rules
-        if x in splicedelimiters:
-            if max(SentenceStartPos,SpliceStartPos) in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1) and len(pairdelimiterpos["AllList"])>=4:
-                #find one that isn't in most recent pair
-                k = 1
-                for y in SentenceStartPosList:
-                    K = len(SentenceStartPosList)
-                    if SentenceStartPosList[K-k] not in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1):
-                        delimstart = SentenceStartPosList[K-k]
-                    else:
-                        delimstart = 0
-                    k += 1
-            else:
-                delimstart = max(SentenceStartPos,SpliceStartPos)
-            Morphemes.append(string[delimstart:i+1])
-            #keep track of everything
-            pairdelimiterpos["AllList"].append(i)
-            SpliceStartPos = i
-        if x in pairdelimiters:
-            '''
-            THEY ARE BEING TREATED AS A SINGLE INSTEAD OF AS A PAIR
-            '''
-            if x == " " or x == "\"":
-                #append the slice from the last location to this location
-                Morphemes.append(string[pairdelimiterpos[x + "Location"][-1]+1:i])
-                #make note of the last location
-                pairdelimiterpos[x + "Location"].append(i)
-                #keep track of everything
-                pairdelimiterpos["AllList"].append(i)
-            else:
-                #if it's on for this particular character, slice the string then turn off
-                if pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] == 1:
-                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] = 0
-                    #slice the string and append to Morphemes
-                    Morphemes.append(string[pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"][-1]:i+1])
-                    #add to both location lists
-                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"].append(i)
-                    #keep track of everything
-                    pairdelimiterpos["AllList"].append(i)
-                else:
-                    pairdelimiterpos[x + "Location"].append(i)
-                #be smart about how to turn this on:
-                if pairdelimiters.index(x)%2 == 0:
-                    pairdelimiterpos[x + "On"] = 1
-        if x in sentencedelimiters:
-            #know the last .?! , (if any) then cut between first and last .?!
-            #ignore pair delimiters
-            if SentenceStartPos in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1) and len(pairdelimiterpos["AllList"])>=4:
-                #find one that isn't in most recent pair
-                k = 1
-                for y in SentenceStartPosList:
-                    K = len(SentenceStartPosList)
-                    if SentenceStartPosList[K-k] not in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1):
-                        delimstart = SentenceStartPosList[K-k]
-                    else:
-                        delimstart = 0
-                    k += 1
-            else:
-                delimstart = SentenceStartPos
-            Morphemes.append(string[delimstart:i+1])
-            #keep track of everything
-            pairdelimiterpos["AllList"].append(i)
-            #NEW
-            #adding this line since words "stuck" next to punctuation get lost:
-            #Morphemes.append(string[pairdelimiterpos["AllList"][-1]:i+1])
-            
-            SentenceStartPos = i+1
-            SentenceStartPosList.append(i+1)
-        i += 1
-    #Morphemes
-    return Morphemes
-
 '''
 def Idle(number, basis, listsofaddresses):
     #number: is how many more do you want to do
@@ -719,6 +639,20 @@ def Idle(number, basis, listsofaddresses):
         map successively higher subgraph isom to high objects
 '''
 
+def Train():
+    #idea: have a question-answer key:
+        #two options,
+            #interact
+            #premade question-answer key
+    #then it tries each question:
+    #fail> metatheorem about truth is "False"
+    #pass> metatheorem about truth is "True"
+    '''
+    problem: don't memorize everything, rather train it so that it knows how to navigate the upper concept spaces very fast
+    '''
+    
+    return
+
 file = open('INP.txt', 'r')
 basis = open('Basis.txt', 'r+')
 memory = open('Memory.txt', 'r+')
@@ -727,13 +661,22 @@ while True:
     if inputtext == "exit" or inputtext == "logout":
         break
     else:
+        #init basis
         basis.seek(0)
         if len(basis.read()) == 0:
-            basislist = []
+            basislist = ["True","False"]
         else:
             #get basistext as list:
             basis.seek(0)
             basislist = ast.literal_eval(basis.read())
+        #init memory:
+        memory.seek(0)
+        if len(memory.read()) == 0:
+            memorylist = []
+        else:
+            #get basistext as list:
+            memory.seek(0)
+            memorylist = ast.literal_eval(memory.read())
         #have conversation
         #idea: information>read>analyze>response
         for char in inputtext:
@@ -745,29 +688,40 @@ while True:
                 basislist.append(char)
         
         #then do address of cheat(inputtext)
-        #PROBLEM: BASIS.TXT IS MISSING NUMBERS
         if len(inputtext) in basislist:
             pass
         else:
             for k in range(len(inputtext)+1):
-                if k in basislist:
+                if str(k) in basislist:
                     pass
                 else:
                     basislist.append(str(k))
-        
-        #print("checkin")
         #if address is not in memory, then add it
         #print(Cheat(inputtext))
-        for char in Cheat(inputtext):
-            if char == ",":
-                print("\n")
-                print(char)
+        for morpheme in Cheat(inputtext):
+            if len(Address2(morpheme, basislist)) == 0:
+                print("basis is missing", Address2(inputtext, basislist)[0][1])
             else:
-                print(char)
+                #if you can find Address2(inputtext, basislist)[0][0] in memory
+                if Address2(inputtext, basislist)[0][0] in memorylist:
+                    #do nothing
+                    pass
+                else:
+                    #add Address2(inputtext, basislist)[0][0] to memory
+                    memorylist.append(Address2(inputtext, basislist)[0][0])
         #Address2(string, *args):
             #*args should be a list of bases
         basis.seek(0)
-        print(Address2(inputtext, basislist))
+        #print(Address2(inputtext, basislist)[0])
+        #print(Address2(inputtext, basislist)[0][0]) #this is what I need to add to memory if missing elements list is null
+        #print(Address2(inputtext, basislist)[0][1]) #this is the missing elements list
+
+        
+        print(ConcatAddress("1", Address2(inputtext, basislist)[0][0]))
+        print(Vision(ConcatAddress("1", Address2(inputtext, basislist)[0][0])))
+        #ConcatAddress(elem, AddressElem)
+        #Vision(Addresslist)
+        
         
         #update basis
         #clear basis:
@@ -776,6 +730,12 @@ while True:
         #then write the basis:
         basis.write(str(basislist))
 
+        #update memory
+        #clear memory:
+        memory.seek(0)
+        memory.truncate()
+        #then write the memory:
+        memory.write(str(memorylist))
         
 
 
