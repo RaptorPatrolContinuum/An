@@ -2,6 +2,7 @@ from math import *
 #import networkx as nx
 #from networkx.algorithms import isomorphism
 from collections import Counter
+import ast
 
 def getSize(fileobject):
     fileobject.seek(0,2) # move the cursor to the end of the file
@@ -51,10 +52,12 @@ def Address2(string, *args):
             try:
                 x = basis.index(str(i))+1
             except(ValueError,IndexError):
+                print("i is missing", i)
                 err.append(i)
             try:
                 y = basis.index(c)+1
             except(ValueError,IndexError):
+                print("char is missing", c)
                 err.append(c)
             if len(err) >= 1:
                 missing.append([i,c])
@@ -190,101 +193,6 @@ def Cheat(string):
             #NEW
             #adding this line since words "stuck" next to punctuation get lost:
             #Morphemes.append(string[pairdelimiterpos["AllList"][-1]:i+1])
-            
-            SentenceStartPos = i+1
-            SentenceStartPosList.append(i+1)
-        i += 1
-    #Morphemes
-    return Morphemes
-
-def kys(string):
-    #take a string and return a list of strings that represent the important morphemes:
-    #punctuation:
-    #.?!,;:-—)}]'"...
-    #line break
-    #paragraph break(?)
-    
-    #FUCKING USE CASES FOR "'"
-    Morphemes = []
-    
-    sentencedelimiters = [] #...
-    SentenceStartPos = 0
-    SentenceStartPosList = []
-    #every even is start and odd is close for each pair
-    pairdelimiters=[ "[", "]"]
-    pairdelimiterpos={}
-    #EACH PAIR CHAR NEEDS ITS OWN START POS
-    for pair in pairdelimiters:
-        #use dictionaries
-        pairdelimiterpos[pair + "On"]= 0
-        pairdelimiterpos[pair + "Location"]= [0]
-        pairdelimiterpos[pair + "List"]= []
-
-    pairdelimiterpos["AllList"] = ["0","0"]
-
-    splicedelimiters=[]
-    SpliceStartPos = 0
-    i = 0
-    for x in string:
-        #you need a hierarchy to get sentence start pos to ignore pairdelimiter rules
-        if x in splicedelimiters:
-            if max(SentenceStartPos,SpliceStartPos) in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1) and len(pairdelimiterpos["AllList"])>=4:
-                #find one that isn't in most recent pair
-                k = 1
-                for y in SentenceStartPosList:
-                    K = len(SentenceStartPosList)
-                    if SentenceStartPosList[K-k] not in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1):
-                        delimstart = SentenceStartPosList[K-k]
-                    else:
-                        delimstart = 0
-                    k += 1
-            else:
-                delimstart = max(SentenceStartPos,SpliceStartPos)
-            Morphemes.append(string[delimstart:i+1])
-            SpliceStartPos = i
-        if x in pairdelimiters:
-            '''
-            THEY ARE BEING TREATED AS A SINGLE INSTEAD OF AS A PAIR
-            '''
-            if x == " " or x == "\"":
-                #append the slice from the last location to this location
-                Morphemes.append(string[pairdelimiterpos[x + "Location"][-1]+1:i])
-                #make note of the last location
-                pairdelimiterpos[x + "Location"].append(i)
-            else:
-                #if it's on for this particular character, slice the string then turn off
-                if pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] == 1:
-                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] = 0
-                    #slice the string and append to Morphemes
-                    Morphemes.append(string[pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"][-1]:i+1])
-                    #add to both location lists
-                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"].append(i)
-                    #NEW
-                    #pairdelimiterpos["AllList"].append(i)
-                else:
-                    pairdelimiterpos[x + "Location"].append(i)
-                #be smart about how to turn this on:
-                if pairdelimiters.index(x)%2 == 0:
-                    pairdelimiterpos[x + "On"] = 1
-        if x in sentencedelimiters:
-            #know the last .?! , (if any) then cut between first and last .?!
-            #ignore pair delimiters
-            if SentenceStartPos in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1) and len(pairdelimiterpos["AllList"])>=4:
-                #find one that isn't in most recent pair
-                k = 1
-                for y in SentenceStartPosList:
-                    K = len(SentenceStartPosList)
-                    if SentenceStartPosList[K-k] not in range(int(pairdelimiterpos["AllList"][-2]),int(pairdelimiterpos["AllList"][-1])+1):
-                        delimstart = SentenceStartPosList[K-k]
-                    else:
-                        delimstart = 0
-                    k += 1
-            else:
-                delimstart = SentenceStartPos
-            Morphemes.append(string[delimstart:i+1])
-            #NEW
-            #adding this line since words "stuck" next to punctuation get lost:
-            #Morphemes.append(string[int(pairdelimiterpos["AllList"][-1]):i+1])
             
             SentenceStartPos = i+1
             SentenceStartPosList.append(i+1)
@@ -679,6 +587,119 @@ def SINaive(P, G, Basis):
                 row = []
     #print("check powerset", MSequence)
     return Answer
+
+
+def BasisStringtoList(string):
+    #take a string and return a list of strings that represent the important morphemes:
+    #punctuation:
+    #.?!,;:-—)}]'"...
+    #line break
+    #paragraph break(?)
+    
+    #FUCKING USE CASES FOR "'"
+    Morphemes = []
+    
+    sentencedelimiters = [] #...
+    #".", "?", "!"
+    SentenceStartPos = 0
+    SentenceStartPosList = []
+    #every even is start and odd is close for each pair
+    #"(", ")", "{", "}", "[", "]", "\"", "\"", " ", " "
+    pairdelimiters=["\""]
+    pairdelimiterpos={}
+    #EACH PAIR CHAR NEEDS ITS OWN START POS
+    for pair in pairdelimiters:
+        #use dictionaries
+        pairdelimiterpos[pair + "On"]= 0
+        pairdelimiterpos[pair + "Location"]= [-1]
+        #starts at -1 so that it gets the first word even though there is no space[might be a problem]
+        pairdelimiterpos[pair + "List"]= []
+
+    pairdelimiterpos["AllList"] = [-1,-1]
+    #starts at -1 so that it gets the first word even though there is no space[might be a problem]
+
+    #splicedelimiters=[",", ";", ":", "-", "—", "\n"]
+    splicedelimiters=[]
+    SpliceStartPos = 0
+    i = 0
+    for x in string:
+        '''
+        if i == len(string)-1:
+            #get the last morpheme:
+            Morphemes.append(string[pairdelimiterpos["AllList"][-1]+1:])
+        '''
+        #you need a hierarchy to get sentence start pos to ignore pairdelimiter rules
+        if x in splicedelimiters:
+            if max(SentenceStartPos,SpliceStartPos) in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1) and len(pairdelimiterpos["AllList"])>=4:
+                #find one that isn't in most recent pair
+                k = 1
+                for y in SentenceStartPosList:
+                    K = len(SentenceStartPosList)
+                    if SentenceStartPosList[K-k] not in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1):
+                        delimstart = SentenceStartPosList[K-k]
+                    else:
+                        delimstart = 0
+                    k += 1
+            else:
+                delimstart = max(SentenceStartPos,SpliceStartPos)
+            Morphemes.append(string[delimstart:i+1])
+            #keep track of everything
+            pairdelimiterpos["AllList"].append(i)
+            SpliceStartPos = i
+        if x in pairdelimiters:
+            '''
+            THEY ARE BEING TREATED AS A SINGLE INSTEAD OF AS A PAIR
+            '''
+            if x == " " or x == "\"":
+                #append the slice from the last location to this location
+                Morphemes.append(string[pairdelimiterpos[x + "Location"][-1]+1:i])
+                #make note of the last location
+                pairdelimiterpos[x + "Location"].append(i)
+                #keep track of everything
+                pairdelimiterpos["AllList"].append(i)
+            else:
+                #if it's on for this particular character, slice the string then turn off
+                if pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] == 1:
+                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] = 0
+                    #slice the string and append to Morphemes
+                    Morphemes.append(string[pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"][-1]:i+1])
+                    #add to both location lists
+                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"].append(i)
+                    #keep track of everything
+                    pairdelimiterpos["AllList"].append(i)
+                else:
+                    pairdelimiterpos[x + "Location"].append(i)
+                #be smart about how to turn this on:
+                if pairdelimiters.index(x)%2 == 0:
+                    pairdelimiterpos[x + "On"] = 1
+        if x in sentencedelimiters:
+            #know the last .?! , (if any) then cut between first and last .?!
+            #ignore pair delimiters
+            if SentenceStartPos in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1) and len(pairdelimiterpos["AllList"])>=4:
+                #find one that isn't in most recent pair
+                k = 1
+                for y in SentenceStartPosList:
+                    K = len(SentenceStartPosList)
+                    if SentenceStartPosList[K-k] not in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1):
+                        delimstart = SentenceStartPosList[K-k]
+                    else:
+                        delimstart = 0
+                    k += 1
+            else:
+                delimstart = SentenceStartPos
+            Morphemes.append(string[delimstart:i+1])
+            #keep track of everything
+            pairdelimiterpos["AllList"].append(i)
+            #NEW
+            #adding this line since words "stuck" next to punctuation get lost:
+            #Morphemes.append(string[pairdelimiterpos["AllList"][-1]:i+1])
+            
+            SentenceStartPos = i+1
+            SentenceStartPosList.append(i+1)
+        i += 1
+    #Morphemes
+    return Morphemes
+
 '''
 def Idle(number, basis, listsofaddresses):
     #number: is how many more do you want to do
@@ -698,10 +719,6 @@ def Idle(number, basis, listsofaddresses):
         map successively higher subgraph isom to high objects
 '''
 
-def Active():
-    #????
-    pass
-
 file = open('INP.txt', 'r')
 basis = open('Basis.txt', 'r+')
 memory = open('Memory.txt', 'r+')
@@ -710,24 +727,35 @@ while True:
     if inputtext == "exit" or inputtext == "logout":
         break
     else:
+        basis.seek(0)
+        if len(basis.read()) == 0:
+            basislist = []
+        else:
+            #get basistext as list:
+            basis.seek(0)
+            basislist = ast.literal_eval(basis.read())
         #have conversation
         #idea: information>read>analyze>response
         for char in inputtext:
-            #update basistext knowledge:
-            basis.seek(0)
-            basistext = str(basis.read())
             #if stuff is not in the basis:
-            #print("char is\"", char,"\"")
-            #print(basistext)
-            #print("bool is",char in basistext)
-            if char in basistext:
+            if char in basislist:
                 pass
             else:
                 #append to basis
-                basis.seek(0, 2)
-                basis.write(char)
+                basislist.append(char)
+        
         #then do address of cheat(inputtext)
-
+        #PROBLEM: BASIS.TXT IS MISSING NUMBERS
+        if len(inputtext) in basislist:
+            pass
+        else:
+            for k in range(len(inputtext)+1):
+                if k in basislist:
+                    pass
+                else:
+                    basislist.append(str(k))
+        
+        #print("checkin")
         #if address is not in memory, then add it
         #print(Cheat(inputtext))
         for char in Cheat(inputtext):
@@ -739,10 +767,18 @@ while True:
         #Address2(string, *args):
             #*args should be a list of bases
         basis.seek(0)
-        basistext = str(basis.read())
-        print(Address2(inputtext, list(basistext)))
-        #PROBLEM: BASIS.TXT IS MISSING NUMBERS
-            
+        print(Address2(inputtext, basislist))
+        
+        #update basis
+        #clear basis:
+        basis.seek(0)
+        basis.truncate()
+        #then write the basis:
+        basis.write(str(basislist))
+
+        
+
+
 file.close()
 basis.close()
 memory.close()
