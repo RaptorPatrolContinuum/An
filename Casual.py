@@ -91,12 +91,17 @@ def ConcatAddress(elem, AddressElem):
     #takes coord locations and returns the address
     #Number = (1/2)*(x+y)*(x+y+1)+y
     '''
+    newPartial = []
     if elem in AddressElem[0]:
         #append address of elem to AddressElem
         #print("wtf?", Address2(elem,AddressElem[0])[0][0][2])
+        newPartial.append(Address2(elem,AddressElem[0])[0][0][2])
+        newPartial.append(AddressElem[2])
+        '''
         for number in Address2(elem,AddressElem[0])[0][0][2]:
-            AddressElem[2].append(number)
-        return [AddressElem[0],AddressElem[1]+1,AddressElem[2]]
+            newPartial.append(number)
+        '''
+        return [AddressElem[0],AddressElem[1]+1,newPartial]
     else:
         print("something went wrong with ConcatAddress")
         
@@ -104,19 +109,26 @@ def ConcatAddress(elem, AddressElem):
 
 def Vision(Addresslist):
     #Addresslist = [basis,1,partialbinary]
+    #note: partialbinary now is a list of lists which contain values
     #representation is a list of values: (x,f(x))
-    function = []
     representation = []
-    for pair in Addresslist[2]:
-        z = pair
-        w = floor((sqrt(8*z+1)-1)/2)
-        t = (w*w+w)/2
-        y = z - t
-        x = w - y
-        function.append([x,y])
-        representation.append([Addresslist[0][int(x)-1],Addresslist[0][int(y)-1]])
+    for listseq in Addresslist[2]:
+        function = []
+        i = 1
+        for pair in listseq:
+            z = pair
+            w = floor((sqrt(8*z+1)-1)/2)
+            t = (w*w+w)/2
+            y = z - t
+            x = w - y
+            if i == len(listseq):
+                function.append([Addresslist[0][int(x)-1],Addresslist[0][int(y)-1]])
+                representation.append(function)
+            else:
+                function.append([Addresslist[0][int(x)-1],Addresslist[0][int(y)-1]])
+            i+= 1
     return representation
-
+    
 def Stringify(representation):
     #returns string
     #representation = list of pairs
@@ -717,8 +729,9 @@ while True:
         #print(Address2(inputtext, basislist)[0][1]) #this is the missing elements list
 
         
-        print(ConcatAddress("1", Address2(inputtext, basislist)[0][0]))
-        print(Vision(ConcatAddress("1", Address2(inputtext, basislist)[0][0])))
+        #print(ConcatAddress("1", Address2(inputtext, basislist)[0][0]))
+        #print(Vision(ConcatAddress("1", Address2(inputtext, basislist)[0][0])))
+
         #ConcatAddress(elem, AddressElem)
         #Vision(Addresslist)
         
