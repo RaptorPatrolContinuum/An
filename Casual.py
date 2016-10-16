@@ -25,6 +25,8 @@ def Address(string, file):
          n += 1
     basis = charbasis + Xn
     i = 1
+    #have to make a list of lists since I need vision to work on higher powersets
+    upperresult = []
     partialbinary= []
     for c in string:
         #use cantor pairing func because my func is hard to invert although maybe this might not preserve some continuity
@@ -34,7 +36,8 @@ def Address(string, file):
         appendthis = (1/2)*(x+y)*(x+y+1)+y
         partialbinary.append((1/2)*(x+y)*(x+y+1)+y)
         i += 1
-    return [basis,1,partialbinary]
+    upperresult.append(partialbinary)
+    return [basis,1,upperresult]
 
 def Address2(string, *args):
     #*args should be a list of bases
@@ -43,6 +46,7 @@ def Address2(string, *args):
     value = []
     for basis in args:
         i = 1
+        upperresult = []
         partialbinary= []
         missing = []
         for c in string:
@@ -66,7 +70,8 @@ def Address2(string, *args):
                 appendthis = (1/2)*(x+y)*(x+y+1)+y
                 partialbinary.append((1/2)*(x+y)*(x+y+1)+y)
             i += 1
-        value.append([[basis,1,partialbinary],missing])
+        upperresult.append(partialbinary)
+        value.append([[basis,1,upperresult],missing])
     #return a list of addresses:
         #element of value looks like: [[basis,1,address],missing chars]
     return value
@@ -94,18 +99,17 @@ def ConcatAddress(elem, AddressElem):
     newPartial = []
     if elem in AddressElem[0]:
         #append address of elem to AddressElem
-        #print("wtf?", Address2(elem,AddressElem[0])[0][0][2])
-        newPartial.append(Address2(elem,AddressElem[0])[0][0][2])
-        newPartial.append(AddressElem[2])
+        #print("REMOVING EXTRA PAIRS", Address2(elem,AddressElem[0])[0][0][2][0])
+        #print("REMOVING EXTRA PAIRS", AddressElem[2][0])
+        newPartial.append(Address2(elem,AddressElem[0])[0][0][2][0])
+        newPartial.append(AddressElem[2][0])
         '''
         for number in Address2(elem,AddressElem[0])[0][0][2]:
             newPartial.append(number)
         '''
         return [AddressElem[0],AddressElem[1]+1,newPartial]
     else:
-        print("something went wrong with ConcatAddress")
-        
-    
+        print("something went wrong with ConcatAddress")    
 
 def Vision(Addresslist):
     #Addresslist = [basis,1,partialbinary]
@@ -113,6 +117,7 @@ def Vision(Addresslist):
     #representation is a list of values: (x,f(x))
     representation = []
     for listseq in Addresslist[2]:
+        #print("what is listseq?", listseq)
         function = []
         i = 1
         for pair in listseq:
@@ -301,7 +306,6 @@ def MlistMult(LeftM, RightM):
     for i in range(0, len(LeftM)):
         #construct the row:
         #print("range(0,len(RightM[0])):",range(int(len(RightM[0]))))
-        ''''''
         for j in range(0,len(RightM[0])):
             #construct AB[i][j]
             #do the sum of A[i][k]B[k][j] from k = 0 to #rows of A -1
@@ -427,11 +431,6 @@ def MList1Square(size):
                 MList.append(row)
                 row = []
     return MList
-
-
-
-
-
 
 def UllmanSI(used_columns, cur_row, G, P, M):
     #note: to start UllmanSI
@@ -632,6 +631,84 @@ def SINaive(P, G, Basis):
     #print("check powerset", MSequence)
     return Answer
 
+def ChainEval(AList1, AList2):
+    #idea: takes two objects in some "finite extension" then composes their arrows togther
+    #so then f compose g is taking arrows of g and following them to the range of f
+    #function takes two address lists then returns the addresslist of the their "composition"
+
+    #f compose g means do g first then f:
+
+    data = [AList1, AList2]
+    #AList# is an addresslist
+    #IDEA: Use a dictionary implementation
+    '''
+    EX:
+    >>> tel = {'jack': 4098, 'sape': 4139}
+    >>> tel['guido'] = 4127
+    >>> tel
+    {'sape': 4139, 'guido': 4127, 'jack': 4098}
+    >>> tel['jack']
+    4098
+    >>> del tel['sape']
+    >>> tel['irv'] = 4127
+    >>> tel
+    {'guido': 4127, 'irv': 4127, 'jack': 4098}
+    >>> list(tel.keys())
+    ['irv', 'guido', 'jack']
+    >>> sorted(tel.keys())
+    ['guido', 'irv', 'jack']
+    >>> 'guido' in tel
+    True
+    >>> 'jack' not in tel
+    False
+    '''
+    ENCYCLO = {}
+    i = 0
+    for function in data:
+        #have a dynamic dict name:
+        ENCYCLO["function" + str(i) + "dom"] = None
+        ENCYCLO["function" + str(i) + "ran"] = None
+        print("function is ", function[2])
+        print("vision is ", Vision(function))
+        #PROBLEM: Not respecting the upper level pairs
+        for thing in Vision(function):
+            print("what isthing?", thing)
+            for pairelem in thing:
+                #print("what is pairelem?", pairelem[0], pairelem[1], ENCYCLO["function" + str(i) + "dom"], ENCYCLO["function" + str(i) + "ran"])
+                #check if they are empty> init lists:
+                if ENCYCLO["function" + str(i) + "dom"] is None:
+                    ENCYCLO["function" + str(i) + "dom"] =  [pairelem[0]]
+                    #print("NONETYPE",ENCYCLO["function" + str(i) + "dom"])
+                else:
+                    #print("before append",ENCYCLO["function" + str(i) + "dom"])
+                    ENCYCLO["function" + str(i) + "dom"].append(pairelem[0])
+                    #print("after append",ENCYCLO["function" + str(i) + "dom"])
+                if ENCYCLO["function" + str(i) + "ran"] is None:
+                    ENCYCLO["function" + str(i) + "ran"] =  [pairelem[1]]
+                    #print("NONETYPE",ENCYCLO["function" + str(i) + "ran"])
+                else:
+                    #print("before append",ENCYCLO["function" + str(i) + "ran"])
+                    ENCYCLO["function" + str(i) + "ran"].append(pairelem[1])
+                    #print("after append",ENCYCLO["function" + str(i) + "ran"])
+                
+                
+                
+                
+        print("======","function" + str(i) + "dom",ENCYCLO["function" + str(i) + "dom"])
+        print("======","function" + str(i) + "ran",ENCYCLO["function" + str(i) + "ran"])
+        #function.ran
+        #function.dom
+        i += 1
+        pass
+
+    #then for each value in the domain of AList2:
+    #    look at same pos in AList2.range = ValueX
+    #    if ValueX is in range of AList1.dom:
+    #       for all those values:
+    #           return.append([ValueX, value at pos in f])
+    
+    return 
+
 '''
 def Idle(number, basis, listsofaddresses):
     #number: is how many more do you want to do
@@ -681,6 +758,7 @@ while True:
             #get basistext as list:
             basis.seek(0)
             basislist = ast.literal_eval(basis.read())
+
         #init memory:
         memory.seek(0)
         if len(memory.read()) == 0:
@@ -689,8 +767,10 @@ while True:
             #get basistext as list:
             memory.seek(0)
             memorylist = ast.literal_eval(memory.read())
+
         #have conversation
         #idea: information>read>analyze>response
+
         for char in inputtext:
             #if stuff is not in the basis:
             if char in basislist:
@@ -708,8 +788,8 @@ while True:
                     pass
                 else:
                     basislist.append(str(k))
+
         #if address is not in memory, then add it
-        #print(Cheat(inputtext))
         for morpheme in Cheat(inputtext):
             if len(Address2(morpheme, basislist)) == 0:
                 print("basis is missing", Address2(inputtext, basislist)[0][1])
@@ -721,13 +801,19 @@ while True:
                 else:
                     #add Address2(inputtext, basislist)[0][0] to memory
                     memorylist.append(Address2(inputtext, basislist)[0][0])
-        #Address2(string, *args):
-            #*args should be a list of bases
+        
         basis.seek(0)
+
+
+        
         #print(Address2(inputtext, basislist)[0])
         #print(Address2(inputtext, basislist)[0][0]) #this is what I need to add to memory if missing elements list is null
         #print(Address2(inputtext, basislist)[0][1]) #this is the missing elements list
-
+        #    print("what about everyone else?", Address2(inputtext, basislist)[0][0])
+        #print("what about everyone else?", Vision(Address2(inputtext, basislist)[0][0]))
+        #    print("fuck", ConcatAddress("1", Address2(inputtext, basislist)[0][0]))
+        #    print(Vision(ConcatAddress("1", Address2(inputtext, basislist)[0][0])))
+        print(ChainEval(ConcatAddress("1", Address2(inputtext, basislist)[0][0]), Address2(inputtext, basislist)[0][0]))
         
         #print(ConcatAddress("1", Address2(inputtext, basislist)[0][0]))
         #print(Vision(ConcatAddress("1", Address2(inputtext, basislist)[0][0])))
@@ -735,6 +821,8 @@ while True:
         #ConcatAddress(elem, AddressElem)
         #Vision(Addresslist)
         
+
+
         
         #update basis
         #clear basis:
