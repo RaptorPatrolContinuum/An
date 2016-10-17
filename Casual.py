@@ -26,7 +26,6 @@ def Address(string, file):
     basis = charbasis + Xn
     i = 1
     #have to make a list of lists since I need vision to work on higher powersets
-    upperresult = []
     partialbinary= []
     for c in string:
         #use cantor pairing func because my func is hard to invert although maybe this might not preserve some continuity
@@ -36,8 +35,7 @@ def Address(string, file):
         appendthis = (1/2)*(x+y)*(x+y+1)+y
         partialbinary.append((1/2)*(x+y)*(x+y+1)+y)
         i += 1
-    upperresult.append(partialbinary)
-    return [basis,1,upperresult]
+    return [basis,1,partialbinary]
 
 def Address2(string, *args):
     #*args should be a list of bases
@@ -46,7 +44,6 @@ def Address2(string, *args):
     value = []
     for basis in args:
         i = 1
-        upperresult = []
         partialbinary= []
         missing = []
         for c in string:
@@ -70,8 +67,7 @@ def Address2(string, *args):
                 appendthis = (1/2)*(x+y)*(x+y+1)+y
                 partialbinary.append((1/2)*(x+y)*(x+y+1)+y)
             i += 1
-        upperresult.append(partialbinary)
-        value.append([[basis,1,upperresult],missing])
+        value.append([[basis,1,partialbinary],missing])
     #return a list of addresses:
         #element of value looks like: [[basis,1,address],missing chars]
     return value
@@ -96,6 +92,7 @@ def ConcatAddress(elem, AddressElem):
     #takes coord locations and returns the address
     #Number = (1/2)*(x+y)*(x+y+1)+y
     '''
+    #EVERYTHING DEPENDS ON THE L-VALUE
     newPartial = []
     if elem in AddressElem[0]:
         #append address of elem to AddressElem
@@ -115,6 +112,32 @@ def Vision(Addresslist):
     #Addresslist = [basis,1,partialbinary]
     #note: partialbinary now is a list of lists which contain values
     #representation is a list of values: (x,f(x))
+    '''
+    L VALUE TELLS YOU HOW FAR TO LOOK DOWN BEFORE "UNRAVELING"
+    idea: insteadof repeated for loops you can screw with the brackets:
+    define a bracket distance that defines each braket's "nestedness" then clear them appropriately
+    '''
+    if Addresslist[1] == 1:
+        representation = []
+        print("check list", Addresslist[2])
+        for pair in Addresslist[2]:
+            print("what is pari?",pair)
+            z = pair
+            w = floor((sqrt(8*z+1)-1)/2)
+            t = (w*w+w)/2
+            y = z - t
+            x = w - y
+            representation.append([Addresslist[0][int(x)-1],Addresslist[0][int(y)-1]])
+        print("what is representation?", representation)    
+        return representation
+    else:
+        newList= []
+        #remove some brackets:
+        for stuff in Addresslist[2]:
+            newList.append(stuff)
+        print("original?", Addresslist)
+        Vision([Addresslist[0],Addresslist[1]-1,newList])
+    '''
     representation = []
     for listseq in Addresslist[2]:
         #print("what is listseq?", listseq)
@@ -133,7 +156,8 @@ def Vision(Addresslist):
                 function.append([Addresslist[0][int(x)-1],Addresslist[0][int(y)-1]])
             i+= 1
     return representation
-    
+    '''
+
 def Stringify(representation):
     #returns string
     #representation = list of pairs
@@ -668,11 +692,12 @@ def ChainEval(AList1, AList2):
         #have a dynamic dict name:
         ENCYCLO["function" + str(i) + "dom"] = None
         ENCYCLO["function" + str(i) + "ran"] = None
-        print("function is ", function[2])
+        print("function is ", function)
         print("vision is ", Vision(function))
         #PROBLEM: Not respecting the upper level pairs
         for thing in Vision(function):
             print("what isthing?", thing)
+            '''
             for pairelem in thing:
                 #print("what is pairelem?", pairelem[0], pairelem[1], ENCYCLO["function" + str(i) + "dom"], ENCYCLO["function" + str(i) + "ran"])
                 #check if they are empty> init lists:
@@ -690,6 +715,7 @@ def ChainEval(AList1, AList2):
                     #print("before append",ENCYCLO["function" + str(i) + "ran"])
                     ENCYCLO["function" + str(i) + "ran"].append(pairelem[1])
                     #print("after append",ENCYCLO["function" + str(i) + "ran"])
+            '''
                 
                 
                 
@@ -813,6 +839,8 @@ while True:
         #print("what about everyone else?", Vision(Address2(inputtext, basislist)[0][0]))
         #    print("fuck", ConcatAddress("1", Address2(inputtext, basislist)[0][0]))
         #    print(Vision(ConcatAddress("1", Address2(inputtext, basislist)[0][0])))
+        print("original input1", Address2(inputtext, basislist)[0][0])
+        print("original input", ConcatAddress("1", Address2(inputtext, basislist)[0][0]))
         print(ChainEval(ConcatAddress("1", Address2(inputtext, basislist)[0][0]), Address2(inputtext, basislist)[0][0]))
         
         #print(ConcatAddress("1", Address2(inputtext, basislist)[0][0]))
