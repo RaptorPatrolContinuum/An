@@ -37,6 +37,27 @@ def Address(string, file):
         i += 1
     return [basis,1,partialbinary]
 
+def STRcompose(address1, address2):
+    #do address1 first then address2
+    #find ran(address1) = ranA1 first
+    #do address2(ran(address1))
+    ranA1 = []
+    for number in address1[2]:
+        ranA1.append(Vision([address1[0],address1[1],[number]])[0][1])
+    '''
+    idea is that since we are only transversing through sets all we do is find if X in ranA1 and X in domA2 then return A2(X)
+    '''
+    domA2 = []
+    for number in address2[2]:
+        domA2.append(Vision([address2[0],address2[1],[number]])[0][0])
+    Value = []
+    for elem in ranA1:
+        for pair in address2[2]:
+            if elem == Vision([address2[0],address2[1],[pair]])[0][0]:
+                if Vision([address2[0],address2[1],[pair]])[0][1] not in Value:
+                    Value.append(Vision([address2[0],address2[1],[pair]])[0][1])
+    return Value
+    
 def Address2(string, *args):
     #*args should be a list of bases
     #return a list of addresses:
@@ -73,7 +94,7 @@ def Address2(string, *args):
     return value
 
 def ConcatAddress(elem, AddressElem):
-    #takes an element in the basis, and and Addresslist = [basis,L,partialbinary]
+    #takes an element in the basis(?????) and Addresslist = [basis,L,partialbinary]
     #returns the set {elem, representation(AddressElem)} in the form of an Addresslist
     '''
     idea:
@@ -93,6 +114,8 @@ def ConcatAddress(elem, AddressElem):
     #Number = (1/2)*(x+y)*(x+y+1)+y
     '''
     #EVERYTHING DEPENDS ON THE L-VALUE
+    #if both L values are 1 then just concat together what they have
+    #if one L value is 2, 
     newPartial = []
     if elem in AddressElem[0]:
         #append address of elem to AddressElem
@@ -114,28 +137,28 @@ def Vision(Addresslist):
     #representation is a list of values: (x,f(x))
     '''
     L VALUE TELLS YOU HOW FAR TO LOOK DOWN BEFORE "UNRAVELING"
-    idea: insteadof repeated for loops you can screw with the brackets:
+    idea: instead of repeated for loops you can screw with the brackets:
     define a bracket distance that defines each braket's "nestedness" then clear them appropriately
     '''
     if Addresslist[1] == 1:
         representation = []
-        print("check list", Addresslist[2])
+        #print("check list", Addresslist[2])
         for pair in Addresslist[2]:
-            print("what is pari?",pair)
+            #print("what is pair?",pair)
             z = pair
             w = floor((sqrt(8*z+1)-1)/2)
             t = (w*w+w)/2
             y = z - t
             x = w - y
             representation.append([Addresslist[0][int(x)-1],Addresslist[0][int(y)-1]])
-        print("what is representation?", representation)    
+        #print("what is representation?", representation)    
         return representation
     else:
         newList= []
         #remove some brackets:
         for stuff in Addresslist[2]:
             newList.append(stuff)
-        print("original?", Addresslist)
+        #print("original?", Addresslist)
         Vision([Addresslist[0],Addresslist[1]-1,newList])
     '''
     representation = []
@@ -278,6 +301,7 @@ def readable(file):
         if x == ",":
             file.write("\n")
 def readable2(listcode, file):
+    #what is listcode???
     for x in str(listcode):
         file.write(x)
         if x == ",":
@@ -831,7 +855,11 @@ while True:
         basis.seek(0)
 
 
+        print(Address2(inputtext, basislist)[0][0])
+        print(Vision(Address2(inputtext, basislist)[0][0]))
         
+        #STRcompose([['True', 'False', 't', 'e', 's', '0', '1', '2', '3', '4'], 1, [58.0, 82.0, 110.0, 94.0]],[['True', 'False', 't', 'e', 's', '0', '1', '2', '3', '4'], 1, [58.0, 82.0, 110.0, 94.0]])
+        STRcompose([['True', 'False', 't', 'e', 's', '0', '1', '2', '3', '4'], 1, [112.0, 127.0, 143.0]],[['True', 'False', 't', 'e', 's', '0', '1', '2', '3', '4'], 1, [112.0, 127.0, 143.0]])
         #print(Address2(inputtext, basislist)[0])
         #print(Address2(inputtext, basislist)[0][0]) #this is what I need to add to memory if missing elements list is null
         #print(Address2(inputtext, basislist)[0][1]) #this is the missing elements list
@@ -839,9 +867,11 @@ while True:
         #print("what about everyone else?", Vision(Address2(inputtext, basislist)[0][0]))
         #    print("fuck", ConcatAddress("1", Address2(inputtext, basislist)[0][0]))
         #    print(Vision(ConcatAddress("1", Address2(inputtext, basislist)[0][0])))
-        print("original input1", Address2(inputtext, basislist)[0][0])
-        print("original input", ConcatAddress("1", Address2(inputtext, basislist)[0][0]))
-        print(ChainEval(ConcatAddress("1", Address2(inputtext, basislist)[0][0]), Address2(inputtext, basislist)[0][0]))
+            #print("original input1", Address2(inputtext, basislist)[0][0])
+            #print("kmn1", Vision(Address2(inputtext, basislist)[0][0]))
+            #print("original input", ConcatAddress("1", Address2(inputtext, basislist)[0][0]))
+            #print("kmn", Vision(ConcatAddress("1", Address2(inputtext, basislist)[0][0])))
+        #print(ChainEval(ConcatAddress("1", Address2(inputtext, basislist)[0][0]), Address2(inputtext, basislist)[0][0]))
         
         #print(ConcatAddress("1", Address2(inputtext, basislist)[0][0]))
         #print(Vision(ConcatAddress("1", Address2(inputtext, basislist)[0][0])))
