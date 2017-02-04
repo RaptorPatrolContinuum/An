@@ -10,6 +10,9 @@ def getSize(fileobject):
     return size
 
 def Address(string, file):
+    '''
+    returns the address of the string with respect to file but doesn't say if file is missing elements wtf
+    '''
     #returns [basis,1,partialbinary]
     #make charbasis
     charbasis = ["[","]", "\\","\"", "True", "False"]
@@ -30,34 +33,13 @@ def Address(string, file):
     for c in string:
         #use cantor pairing func because my func is hard to invert although maybe this might not preserve some continuity
         #(x,y)= (1/2)(x+y)(x+y+1)+y
-        x = basis.index(i)+1
-        y = basis.index(c)+1
+        x = basis.index(i)
+        y = basis.index(c)
         appendthis = (1/2)*(x+y)*(x+y+1)+y
         partialbinary.append((1/2)*(x+y)*(x+y+1)+y)
         i += 1
     return [basis,1,partialbinary]
 
-def STRcompose(address1, address2):
-    #do address1 first then address2
-    #find ran(address1) = ranA1 first
-    #do address2(ran(address1))
-    ranA1 = []
-    for number in address1[2]:
-        ranA1.append(Vision([address1[0],address1[1],[number]])[0][1])
-    '''
-    idea is that since we are only transversing through sets all we do is find if X in ranA1 and X in domA2 then return A2(X)
-    '''
-    domA2 = []
-    for number in address2[2]:
-        domA2.append(Vision([address2[0],address2[1],[number]])[0][0])
-    Value = []
-    for elem in ranA1:
-        for pair in address2[2]:
-            if elem == Vision([address2[0],address2[1],[pair]])[0][0]:
-                if Vision([address2[0],address2[1],[pair]])[0][1] not in Value:
-                    Value.append(Vision([address2[0],address2[1],[pair]])[0][1])
-    return Value
-    
 def Address2(string, *args):
     #*args should be a list of bases
     #return a list of addresses:
@@ -72,13 +54,13 @@ def Address2(string, *args):
             #(x,y)= (1/2)(x+y)(x+y+1)+y
             err = []
             try:
-                #pairing func starts at 1!(?)
-                x = basis.index(str(i))+1
+                #pairing func starts at 1!(?) F U C K
+                x = basis.index(str(i))
             except(ValueError,IndexError):
                 print("i is missing", i)
                 err.append(i)
             try:
-                y = basis.index(c)+1
+                y = basis.index(c)
             except(ValueError,IndexError):
                 print("char is missing", c)
                 err.append(c)
@@ -90,8 +72,73 @@ def Address2(string, *args):
             i += 1
         value.append([[basis,1,partialbinary],missing])
     #return a list of addresses:
-        #element of value looks like: [[basis,1,address],missing chars]
+        #element of value looks like: [[[basis, L-value, partialbinary], missingchars with respect to 1st basis]...]
     return value
+
+def CantorPair(x,y):
+    return (1/2)*(x+y)*(x+y+1)+y
+
+def GraphAddress(graph, *args):
+    #graph is a list of nodes: [[pair],[pair],...]
+    #*args should be a list of bases
+    #return a list of addresses:
+        #element of value looks like: [[basis,1,address],missing chars]
+    value = []
+    for basis in args:
+        partialbinary= []
+        missing = []
+        '''
+        WANT:
+        [basis,L value,partialbinary]
+        '''
+        for pair in graph:
+            #use cantor pairing func because my func is hard to invert although maybe this might not preserve some continuity
+            #do some error catching
+            err = []
+            try:
+                x = basis.index(pair[0])
+            except(ValueError,IndexError):
+                print("x is missing", pair[0])
+                err.append(i)
+            try:
+                y = basis.index(pair[1])
+            except(ValueError,IndexError):
+                print("char is missing", pair[1])
+                err.append(pair[1])
+            if len(err) >= 1:
+                missing.append([pair[0],pair[1]])
+            else:
+                partialbinary.append(CantorPair(x,y))
+        value.append([[basis,1,partialbinary],missing])
+        
+        '''
+        for c in string:
+            #use cantor pairing func because my func is hard to invert although maybe this might not preserve some continuity
+            #(x,y)= (1/2)(x+y)(x+y+1)+y
+            err = []
+            try:
+                #pairing func starts at 1!(?) F U C K
+                x = basis.index(str(i))
+            except(ValueError,IndexError):
+                print("i is missing", i)
+                err.append(i)
+            try:
+                y = basis.index(c)
+            except(ValueError,IndexError):
+                print("char is missing", c)
+                err.append(c)
+            if len(err) >= 1:
+                missing.append([i,c])
+            else:
+                appendthis = (1/2)*(x+y)*(x+y+1)+y
+                partialbinary.append((1/2)*(x+y)*(x+y+1)+y)
+            i += 1
+        
+        value.append([[basis,1,partialbinary],missing])
+        '''
+    #return a list of addresses:
+        #element of value looks like: [[[basis, L-value, partialbinary], missingchars with respect to 1st basis]...]
+    return value    
 
 def ConcatAddress(elem, AddressElem):
     #takes an element in the basis(?????) and Addresslist = [basis,L,partialbinary]
@@ -140,6 +187,31 @@ def Vision(Addresslist):
     idea: instead of repeated for loops you can screw with the brackets:
     define a bracket distance that defines each braket's "nestedness" then clear them appropriately
     '''
+    representation = []
+    print("check list", Addresslist[2])
+    for pair in Addresslist[2]:
+        print("what is pair?",pair)
+        '''
+        #if pair is too big(>= P^(L)(|basis|^2)):
+        size = len(Addresslist[0])**2
+        for wtf in range(0,2):
+            size = 1 << size
+            print("enum size is", size)
+            break
+        if pair >= :
+            print("Vision can't handle this kind of integer")
+            break
+        '''
+        z = pair
+        w = floor((sqrt(8*z+1)-1)/2)
+        t = (w*w+w)/2
+        y = z - t
+        x = w - y
+        print("wtf???",Addresslist[2],x,y)
+        representation.append([Addresslist[0][int(x)],Addresslist[0][int(y)]])
+    print("what is representation?", representation)    
+    return representation
+    '''
     if Addresslist[1] == 1:
         representation = []
         #print("check list", Addresslist[2])
@@ -160,6 +232,7 @@ def Vision(Addresslist):
             newList.append(stuff)
         #print("original?", Addresslist)
         Vision([Addresslist[0],Addresslist[1]-1,newList])
+        '''
     '''
     representation = []
     for listseq in Addresslist[2]:
@@ -180,6 +253,80 @@ def Vision(Addresslist):
             i+= 1
     return representation
     '''
+
+def STRcompose(address1, address2):
+    #do address1 first then address2
+    #find ran(address1) = ranA1 first
+    #do address2(ran(address1))
+    ranA1 = []
+    for number in address1[2]:
+        ranA1.append(Vision([address1[0],address1[1],[number]])[0][1])
+    '''
+    idea is that since we are only transversing through sets all we do is find if X in ranA1 and X in domA2 then return A2(X)
+    '''
+    domA2 = []
+    for number in address2[2]:
+        domA2.append(Vision([address2[0],address2[1],[number]])[0][0])
+    Value = []
+    for elem in ranA1:
+        for pair in address2[2]:
+            if elem == Vision([address2[0],address2[1],[pair]])[0][0]:
+                if Vision([address2[0],address2[1],[pair]])[0][1] not in Value:
+                    Value.append(Vision([address2[0],address2[1],[pair]])[0][1])
+    return Value
+
+def topartialbin(number):
+    thing = "{0:b}".format(number)[::-1]
+    partialbinary = []
+    for g in range(0,len(thing)):
+        if thing[g] == str(1):
+            partialbinary.append(g)
+    return partialbinary
+def idle(basis,X,Y,M):
+    #info to keep track of:
+    '''
+    where we are:
+    top level: M
+    right now:
+    x,y,l
+    then, as x,y,l -> M:
+    compute and print
+    (x,y) is where to start, just do 1,1,M for now
+    '''
+    for m in range(1,M+1):
+        for x in range(X,M+1):
+            for y in range(Y,M+1):
+                #now do x compose y:
+                thing = "{0:b}".format(x)[::-1]
+                #print("reverse binary is",thing)
+                '''
+                partialbinary = []
+                for g in range(0,len(thing)):
+                    if thing[g] == str(1):
+                        #print("test is :", thing[g], str[1],thing[g] == str(1))
+                        #print("test is", thing[g],g)
+                        partialbinary.append(g+1)
+                #print("thing, partial",thing, partialbinary)
+
+                thingy = "{0:b}".format(y)[::-1]
+                partialbinaryY = []
+                for g in range(0,len(thingy)):
+                    if thingy[g] == str(1):
+                        partialbinaryY.append(g+1)
+                '''
+                #print("what M value?", m)
+                #print("setup", x,y,m,partialbinary,partialbinaryY)
+                #print("x is ",[basis,m,partialbinary])
+                #print("y is ",[basis,m,partialbinaryY])
+                '''
+                size = len(basis) ** 2
+                for wtf in range(0,m):
+                    check = 2 ** size
+                    AKA holy fucking shit what I'm doing takes too long when L>=3
+                '''    
+                    
+                print(Vision([basis,m,[x]]),Vision([basis,m,[y]]),STRcompose([basis,m,[x]],[basis,m,[y]]))
+                #print(Vision([basis,m,partialbinary]),Vision([basis,m,partialbinaryY]),STRcompose([basis,m,partialbinary],[basis,m,partialbinaryY]))
 
 def Stringify(representation):
     #returns string
@@ -854,12 +1001,36 @@ while True:
         
         basis.seek(0)
 
+        #print("wtf1")
+        #print(GraphAddress([['B', 'A'], ['B', 'B'], ['A', 'C']], ["A","B","C"]))
+        #print(Vision(GraphAddress([['B', 'A'], ['B', 'B'], ['A', 'C']], ["A","B","C"])[0][0]))
+        #print(Vision(Address2(inputtext, basislist)[0][0]))
+        #print("wtf")
+            
+        print(Vision([["A","B","C"],1,topartialbin(316)]))
+        #print(STRcompose([["A","B","C"],1,[2,1,12]], [["A","B","C"],1,[0,3,5]]))
+        print("==")
+        #idle(["A","B","C"],0,0,3)
 
-        print(Address2(inputtext, basislist)[0][0])
-        print(Vision(Address2(inputtext, basislist)[0][0]))
+
         
+        #print(Address2(inputtext, basislist)[0][0])
+        #print(Vision(Address2(inputtext, basislist)[0][0]))
+        #print(Vision([['True', 'False', 't', 'e', 's', '0', '1', '2', '3', '4'],1,[1]]))
+
+        #print(Vision([["A","B"],1,[1]]))
+
+        
+        #print(Address(inputtext, basis))
+
+        
+        #idle(['True', 'False', 't', 'e', 's', '0', '1', '2', '3', '4'],0,0,3)
+
+
+
+
         #STRcompose([['True', 'False', 't', 'e', 's', '0', '1', '2', '3', '4'], 1, [58.0, 82.0, 110.0, 94.0]],[['True', 'False', 't', 'e', 's', '0', '1', '2', '3', '4'], 1, [58.0, 82.0, 110.0, 94.0]])
-        STRcompose([['True', 'False', 't', 'e', 's', '0', '1', '2', '3', '4'], 1, [112.0, 127.0, 143.0]],[['True', 'False', 't', 'e', 's', '0', '1', '2', '3', '4'], 1, [112.0, 127.0, 143.0]])
+            #STRcompose([['True', 'False', 't', 'e', 's', '0', '1', '2', '3', '4'], 1, [112.0, 127.0, 143.0]],[['True', 'False', 't', 'e', 's', '0', '1', '2', '3', '4'], 1, [112.0, 127.0, 143.0]])
         #print(Address2(inputtext, basislist)[0])
         #print(Address2(inputtext, basislist)[0][0]) #this is what I need to add to memory if missing elements list is null
         #print(Address2(inputtext, basislist)[0][1]) #this is the missing elements list
