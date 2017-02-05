@@ -138,7 +138,7 @@ def GraphAddress(graph, *args):
         '''
     #return a list of addresses:
         #element of value looks like: [[[basis, L-value, partialbinary], missingchars with respect to 1st basis]...]
-    return value    
+    return value
 
 def ConcatAddress(elem, AddressElem):
     #takes an element in the basis(?????) and Addresslist = [basis,L,partialbinary]
@@ -178,6 +178,34 @@ def ConcatAddress(elem, AddressElem):
     else:
         print("something went wrong with ConcatAddress")    
 
+def BL(B,L):
+    '''
+    B is size of basis
+    L is current L value
+    BL(B,L) returns max size of powerset seq
+    '''
+    size = B ** 2
+    for wtf in range(0,L):
+        size = 1 << size
+    return size
+
+def PBL(z,B,L):
+    '''
+    "Problem of BL"
+    if Z > BL(B,L), what is minimal L such that Z < BL(B,new L)?
+    since BL increases super fast, naive solution should either solve fast or integer overflow LOL
+    so PBL(z,B,L) returns the minimal L such that Z < BL(B,new L) where
+    Z is number
+    B is size of basis
+    L is current L value
+    '''
+    while z > BL(B,L):
+        L += 1
+        if z <= BL(B,L):
+            return L
+    else:
+        print("z<BL(B,L)",z,BL(B,L))
+
 def Vision(Addresslist):
     #Addresslist = [basis,1,partialbinary]
     #note: partialbinary now is a list of lists which contain values
@@ -190,7 +218,6 @@ def Vision(Addresslist):
     representation = []
     print("check list", Addresslist[2])
     for pair in Addresslist[2]:
-        print("what is pair?",pair)
         '''
         #if pair is too big(>= P^(L)(|basis|^2)):
         size = len(Addresslist[0])**2
@@ -202,13 +229,36 @@ def Vision(Addresslist):
             print("Vision can't handle this kind of integer")
             break
         '''
-        z = pair
-        w = floor((sqrt(8*z+1)-1)/2)
-        t = (w*w+w)/2
-        y = z - t
-        x = w - y
-        print("wtf???",Addresslist[2],x,y)
-        representation.append([Addresslist[0][int(x)],Addresslist[0][int(y)]])
+        '''
+        then:
+        if X > BL(B,L) in Vision, calculate PBL(z,B,L)
+        try:
+            PBL(z,B,L)
+        except(OverflowError):
+            print(Overflow in PBL)
+            break
+        if it's ok, then look for z in P^(newL)(|B|^2) (make sure to not forget about the shifting!!)
+        '''
+        z = tointeger(Addresslist[2])
+        B = len(Addresslist[0])
+        L = Addresslist[1]
+        if z <= BL(B,L):
+            w = floor((sqrt(8*z+1)-1)/2)
+            t = (w*w+w)/2
+            y = z - t
+            x = w - y
+            #print("wtf???",Addresslist[2],x,y)
+            representation.append([Addresslist[0][int(x)],Addresslist[0][int(y)]])
+        else:
+            print(z, ">", "BL(",B,",",L,")")
+            '''
+            look for z in higher powerset:
+            make z w/o making powerset
+            1. make basis of the current L:
+            OMG
+            '''
+            print("PBL pls",PBL(z,B,L))
+    
     print("what is representation?", representation)    
     return representation
     '''
@@ -282,6 +332,13 @@ def topartialbin(number):
         if thing[g] == str(1):
             partialbinary.append(g)
     return partialbinary
+
+def tointeger(listX):
+    sum = 0
+    for x in range(0,len(listX)):
+        sum = sum + 2 ** listX[x] ** 1
+    return sum
+
 def idle(basis,X,Y,M):
     #info to keep track of:
     '''
@@ -1007,7 +1064,7 @@ while True:
         #print(Vision(Address2(inputtext, basislist)[0][0]))
         #print("wtf")
             
-        print(Vision([["A","B","C"],1,topartialbin(316)]))
+        print(Vision([["A","B","C"],1,topartialbin(31600)]))
         #print(STRcompose([["A","B","C"],1,[2,1,12]], [["A","B","C"],1,[0,3,5]]))
         print("==")
         #idle(["A","B","C"],0,0,3)
