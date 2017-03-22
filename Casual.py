@@ -4,6 +4,13 @@ from math import *
 from collections import Counter
 import ast
 
+def STAddress(string, *args):
+    return "not done"
+
+def STVision(Addresslist):
+    return "not done"
+
+
 def getSize(fileobject):
     fileobject.seek(0,2) # move the cursor to the end of the file
     size = fileobject.tell()
@@ -1123,7 +1130,7 @@ while True:
         memory.truncate()
         #then write the memory:
         memory.write(str(memorylist))
-        
+        eval(inputtext)
 
 
 file.close()
