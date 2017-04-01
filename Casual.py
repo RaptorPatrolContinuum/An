@@ -8,6 +8,19 @@ def STAddress(string, *args):
     return "not done"
 
 def STVision(Addresslist):
+    '''
+    note: this func is expecting aa # from 1>2^some N
+    addresslist:
+    [basis, L value, number]
+    take addresslist and return ??? [fk I can only return algorithms]
+    [it's ok because you have an ordered basis and dealing with directed graphs so you just use lexicographic ordering to produce algorithm for everything]
+    '''
+    #do PBL?
+    #check if error (?)(?)(?)(?)
+        #tobinary
+        #return the algorithm
+    #problem: how to do L>2
+    
     return "not done"
 
 
