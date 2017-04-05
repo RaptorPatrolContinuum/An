@@ -1,5 +1,6 @@
 #import itertools
 from itertools import *
+from math import *
 def powerset(iterable):
     "powerset([1,2,3]) --> () (1,) (2,) (3,) (1,2) (1,3) (2,3) (1,2,3)"
     s = list(iterable)
@@ -100,4 +101,104 @@ OOO = powerset("abc")
 for x in list(OOO)[0:30]:
     print(x)
     
-
+def Vision(Addresslist):
+    #Addresslist = [basis,1,partialbinary]
+    #note: partialbinary now is a list of lists which contain values
+    #representation is a list of values: (x,f(x))
+    '''
+    L VALUE TELLS YOU HOW FAR TO LOOK DOWN BEFORE "UNRAVELING"
+    idea: instead of repeated for loops you can screw with the brackets:
+    define a bracket distance that defines each braket's "nestedness" then clear them appropriately
+    '''
+    representation = []
+    print("check list", Addresslist[2])
+    for pair in Addresslist[2]:
+        '''
+        #if pair is too big(>= P^(L)(|basis|^2)):
+        size = len(Addresslist[0])**2
+        for wtf in range(0,2):
+            size = 1 << size
+            print("enum size is", size)
+            break
+        if pair >= :
+            print("Vision can't handle this kind of integer")
+            break
+        '''
+        '''
+        then:
+        if X > BL(B,L) in Vision, calculate PBL(z,B,L)
+        try:
+            PBL(z,B,L)
+        except(OverflowError):
+            print(Overflow in PBL)
+            break
+        if it's ok, then look for z in P^(newL)(|B|^2) (make sure to not forget about the shifting!!)
+        '''
+        #TOINTEGER MIGHT BE A PROBLEM
+        z = tointeger(Addresslist[2])
+        B = len(Addresslist[0])
+        L = Addresslist[1]
+        if z <= BL(B,L):
+            w = floor((sqrt(8*z+1)-1)/2)
+            t = (w*w+w)/2
+            y = z - t
+            x = w - y
+            #print("wtf???",Addresslist[2],x,y)
+            representation.append([Addresslist[0][int(x)],Addresslist[0][int(y)]])
+        else:
+            print(z, ">", "BL(",B,",",L,")")
+            '''
+            look for z in higher powerset:
+            make z w/o making powerset
+            1. make basis of the current L:
+            OMG
+            '''
+            print("PBL pls",PBL(z,B,L))
+    
+    print("what is representation?", representation)    
+    return representation
+def Address2(string, *args):
+    #*args should be a list of bases
+    #return a list of addresses:
+        #element of value looks like: [[basis,1,address],missing chars]
+    value = []
+    for basis in args:
+        i = 1
+        partialbinary= []
+        missing = []
+        for c in string:
+            #use cantor pairing func because my func is hard to invert although maybe this might not preserve some continuity
+            #(x,y)= (1/2)(x+y)(x+y+1)+y
+            err = []
+            try:
+                #pairing func starts at 1!(?) F U C K
+                x = basis.index(str(i))
+            except(ValueError,IndexError):
+                print("i is missing", i)
+                err.append(i)
+            try:
+                y = basis.index(c)
+            except(ValueError,IndexError):
+                print("char is missing", c)
+                err.append(c)
+            if len(err) >= 1:
+                missing.append([i,c])
+            else:
+                appendthis = (1/2)*(x+y)*(x+y+1)+y
+                partialbinary.append((1/2)*(x+y)*(x+y+1)+y)
+            i += 1
+        value.append([[basis,1,partialbinary],missing])
+    #return a list of addresses:
+        #element of value looks like: [[[basis, L-value, partialbinary], missingchars with respect to 1st basis]...]
+    return value
+def CantorPair (x,y):
+    return (1/2)*(x+y)*(x+y+1)+y
+def CantorInv (z):
+    w = floor((sqrt(8*z+1)-1)/2)
+    t = (w*w+w)/2
+    y = z - t
+    x = w - y
+    print("return is ",x,y)
+print("WTF=======")
+print(Vision([["A","B"],1,topartialbin(4)]))
+#print(Address2("BA",[["A","B"]]))
