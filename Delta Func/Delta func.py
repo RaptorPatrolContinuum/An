@@ -1,6 +1,3 @@
-f = open("INPUT.txt", "r+")
-g = open("INPUT2.txt", "r+")
-
 #insert into a list at the right index
 def InsertAt (List,obj,Index):
     '''
@@ -437,5 +434,9 @@ def delta(LHS,RHS):
 #example where RHS gets picked but is not long enough
 #uh oh print(delta("154zyxgb","gb123zyx"))#<------------ F U C K E D
 #print(delta("154zyxgb","gb123zyx"))
-f = open("MACHINE TASKLIST.tdl", "r+")
-f = open("MACHINE TASKLIST.tdl", "r+")
+f = open("MACHINE TASKLIST.tdl", "r+", encoding="utf-16")
+g = open("othercomp.tdl", "r+")
+h = open("OUT.txt", "w+")
+#delta(f.read(),g.read())
+h.write(f.read())
+h.close()

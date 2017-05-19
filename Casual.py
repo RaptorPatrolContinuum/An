@@ -226,6 +226,23 @@ def PBL(z,B,L):
     else:
         print("z<BL(B,L)",z,BL(B,L))
 
+def wtfVision(Addresslist):
+    #Addresslist = [basis,1,partialbinary]
+    #note: partialbinary now is a list of lists which contain values
+    #representation is a list of values: (x,f(x))
+    '''
+    L VALUE TELLS YOU HOW FAR TO LOOK DOWN BEFORE "UNRAVELING"
+    idea: instead of repeated for loops you can screw with the brackets:
+    define a bracket distance that defines each braket's "nestedness" then clear them appropriately
+    '''
+    representation = []
+    print("check list", Addresslist[2])
+    for pair in Addresslist[2]:
+        print("pair is: ", pair)
+    
+    print("what is representation?", representation)    
+    return representation         
+
 def Vision(Addresslist):
     #Addresslist = [basis,1,partialbinary]
     #note: partialbinary now is a list of lists which contain values
@@ -259,7 +276,7 @@ def Vision(Addresslist):
             break
         if it's ok, then look for z in P^(newL)(|B|^2) (make sure to not forget about the shifting!!)
         '''
-        z = tointeger(Addresslist[2])
+        z = pair
         B = len(Addresslist[0])
         L = Addresslist[1]
         if z <= BL(B,L):
@@ -267,19 +284,18 @@ def Vision(Addresslist):
             t = (w*w+w)/2
             y = z - t
             x = w - y
-            #print("wtf???",Addresslist[2],x,y)
             representation.append([Addresslist[0][int(x)],Addresslist[0][int(y)]])
         else:
-            print(z, ">", "BL(",B,",",L,")")
+            #print(z, ">", "BL(",B,",",L,")")
             '''
             look for z in higher powerset:
             make z w/o making powerset
             1. make basis of the current L:
             OMG
             '''
-            print("PBL pls",PBL(z,B,L))
+            #print("PBL pls",PBL(z,B,L))
     
-    print("what is representation?", representation)    
+    #print("what is representation?", representation)    
     return representation
     '''
     if Addresslist[1] == 1:
@@ -1016,6 +1032,20 @@ def Train():
     
     return
 
+def gcomposition(graph1,graph2):
+    ### composes graph 1 with graph 2 by following arrows and returns a graph
+    #g2dom = []
+    ANS= []
+    #for y in graph2:
+    #    g2dom.append(y[0])
+    for x in graph1:
+        #print(x[1],Eps(x[1],g2dom))
+        #if Eps(x[1],g2dom) > -1:
+        for y in graph2:
+            if y[0] == x[1]:
+                ANS.append([x[0],y[1]])
+    return ANS
+
 file = open('INP.txt', 'r')
 basis = open('Basis.txt', 'r+')
 memory = open('Memory.txt', 'r+')
@@ -1053,7 +1083,6 @@ while True:
                 #append to basis
                 basislist.append(char)
         
-        #then do address of cheat(inputtext)
         if len(inputtext) in basislist:
             pass
         else:
@@ -1084,9 +1113,9 @@ while True:
         #print(Vision(Address2(inputtext, basislist)[0][0]))
         #print("wtf")
             
-        print(Vision([["A","B","C"],1,topartialbin(31600)]))
+        ### LAST TIME print(Vision([["A","B","C"],1,topartialbin(31600)]))
         #print(STRcompose([["A","B","C"],1,[2,1,12]], [["A","B","C"],1,[0,3,5]]))
-        print("==")
+        ### print("==")
         #idle(["A","B","C"],0,0,3)
 
 
@@ -1127,7 +1156,27 @@ while True:
         #ConcatAddress(elem, AddressElem)
         #Vision(Addresslist)
         
-
+        #####then do address of cheat(inputtext)
+        ##### W T F   print(Cheat(inputtext))
+        ##print(Address2(inputtext, basislist)[0][0])
+        ##print(Vision(Address2(inputtext, basislist)[0][0]))
+        #[['True', 'False', 'w', 'h', 'a', 't', ' ', 'e', 'c', 'u', 'l', 'f', 'k', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', 's', 'm'], 1, [1210.0, 1310.0, 214.0, 388.0, 416.0]]
+        #print(Vision([['True', 'False', 'w', 'h', 'a', 't', ' ', 'e', 'c', 'u', 'l', 'f', 'k', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', 's', 'm'], 1, topartialbin(1000)]))
+        '''
+        what is address of something that went through cheat:
+        '''
+        printout = []
+        for x in Cheat(inputtext):
+            printout.append(Address2(x,basislist)[0][0][2:])
+        #print(printout)
+        
+        #it's saying it's missing chars F U C K .
+        #checking out autocomposer
+        G1 = [[1,2],["A","B"],[[3,4],[5,6]],[7,["yuku yo"]],["so transiently","Kotoko"]]
+        G2 = [["subversively",[1,5]],[[1,2],[1,2]],["B","D"],["B","F"],["Kotoko","works with strings"],[9,10],[11,5],["Dwarf fortress","wtf"]]
+        
+        print(gcomposition(Vision(Address2(G1, basislist)[0][0]),Vision(Address2(G2, basislist)[0][0])))
+        print("the issue is that I haven't implemented lemma 1.5.1/2 (? this actually might be its own theorem) because address is complaining but each element is part of the basis so basically I just have to bump up the L-value and return the address properly")
 
         
         #update basis
@@ -1143,7 +1192,8 @@ while True:
         memory.truncate()
         #then write the memory:
         memory.write(str(memorylist))
-        eval(inputtext)
+        #maybe python eval is a special case
+        #eval(inputtext)
 
 
 file.close()
