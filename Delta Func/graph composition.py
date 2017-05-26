@@ -26,3 +26,20 @@ G1 = [[1,2],["A","B"],[[3,4],[5,6]],[7,["yuku yo"]],["so transiently","Kotoko"]]
 G2 = [["subversively",[1,5]],[[1,2],[1,2]],["B","D"],["B","F"],["Kotoko","works with strings"],[9,10],[11,5],["Dwarf fortress","wtf"]]
 #print(gcomposition(G1,G2))
 
+
+def LSkip(List, number):
+    '''
+    takes a list and a number, then returns a list that "goes down" based on that number
+    '''
+    ANS = []
+    for x in List:
+        L = 0
+        while L < number-1:
+            x=x[0]
+            L+=1   
+        ANS.append(x)
+    return ANS
+
+print(LSkip([[[4]]],3))
+
+#print([[[4]]][0][0][0])

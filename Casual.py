@@ -243,102 +243,55 @@ def wtfVision(Addresslist):
     print("what is representation?", representation)    
     return representation         
 
+def LSkip(List, number):
+    '''
+    takes a list and a number, then returns a list that "goes down" based on that number
+    '''
+    ANS = []
+    for x in List:
+        L = 0
+        while L < number-1:
+            x=x[0]
+            L+=1   
+        ANS.append(x)
+    return ANS
+
 def Vision(Addresslist):
     #Addresslist = [basis,1,partialbinary]
     #note: partialbinary now is a list of lists which contain values
     #representation is a list of values: (x,f(x))
     '''
+    what do you fucking know the Addresslist is supposed to fucking tell you
+    because I am dealing with graphs they all have to have the same # of brackets so LSkip works just fine
+
+
     L VALUE TELLS YOU HOW FAR TO LOOK DOWN BEFORE "UNRAVELING"
     idea: instead of repeated for loops you can screw with the brackets:
     define a bracket distance that defines each braket's "nestedness" then clear them appropriately
     '''
     representation = []
-    print("check list", Addresslist[2])
+    LVal = 1
+    print("input", Addresslist[2])
     for pair in Addresslist[2]:
-        '''
-        #if pair is too big(>= P^(L)(|basis|^2)):
-        size = len(Addresslist[0])**2
-        for wtf in range(0,2):
-            size = 1 << size
-            print("enum size is", size)
-            break
-        if pair >= :
-            print("Vision can't handle this kind of integer")
-            break
-        '''
-        '''
-        then:
-        if X > BL(B,L) in Vision, calculate PBL(z,B,L)
-        try:
-            PBL(z,B,L)
-        except(OverflowError):
-            print(Overflow in PBL)
-            break
-        if it's ok, then look for z in P^(newL)(|B|^2) (make sure to not forget about the shifting!!)
+        print("pair is", pair)
+        while type(pair) is not int:
+            print(pair, "is not int!")
+            #go down one more
+            pair = pair[0]
+            LVal += 1
+        print("LVal is ", LVal)
         '''
         z = pair
         B = len(Addresslist[0])
         L = Addresslist[1]
-        if z <= BL(B,L):
-            w = floor((sqrt(8*z+1)-1)/2)
-            t = (w*w+w)/2
-            y = z - t
-            x = w - y
-            representation.append([Addresslist[0][int(x)],Addresslist[0][int(y)]])
-        else:
-            #print(z, ">", "BL(",B,",",L,")")
-            '''
-            look for z in higher powerset:
-            make z w/o making powerset
-            1. make basis of the current L:
-            OMG
-            '''
-            #print("PBL pls",PBL(z,B,L))
-    
+        w = floor((sqrt(8*z+1)-1)/2)
+        t = (w*w+w)/2
+        y = z - t
+        x = w - y
+        representation.append([Addresslist[0][int(x)],Addresslist[0][int(y)]])
+        '''
     #print("what is representation?", representation)    
     return representation
-    '''
-    if Addresslist[1] == 1:
-        representation = []
-        #print("check list", Addresslist[2])
-        for pair in Addresslist[2]:
-            #print("what is pair?",pair)
-            z = pair
-            w = floor((sqrt(8*z+1)-1)/2)
-            t = (w*w+w)/2
-            y = z - t
-            x = w - y
-            representation.append([Addresslist[0][int(x)-1],Addresslist[0][int(y)-1]])
-        #print("what is representation?", representation)    
-        return representation
-    else:
-        newList= []
-        #remove some brackets:
-        for stuff in Addresslist[2]:
-            newList.append(stuff)
-        #print("original?", Addresslist)
-        Vision([Addresslist[0],Addresslist[1]-1,newList])
-        '''
-    '''
-    representation = []
-    for listseq in Addresslist[2]:
-        #print("what is listseq?", listseq)
-        function = []
-        i = 1
-        for pair in listseq:
-            z = pair
-            w = floor((sqrt(8*z+1)-1)/2)
-            t = (w*w+w)/2
-            y = z - t
-            x = w - y
-            if i == len(listseq):
-                function.append([Addresslist[0][int(x)-1],Addresslist[0][int(y)-1]])
-                representation.append(function)
-            else:
-                function.append([Addresslist[0][int(x)-1],Addresslist[0][int(y)-1]])
-            i+= 1
-    return representation
-    '''
 
 def STRcompose(address1, address2):
     #do address1 first then address2
@@ -1169,16 +1122,30 @@ while True:
         for x in Cheat(inputtext):
             printout.append(Address2(x,basislist)[0][0][2:])
         #print(printout)
+
         
         #it's saying it's missing chars F U C K .
         #checking out autocomposer
+        '''
+        one problem: in G1, the L-val is fucked because they all don't have the same amt of paren pairs
+        '''
         G1 = [[1,2],["A","B"],[[3,4],[5,6]],[7,["yuku yo"]],["so transiently","Kotoko"]]
         G2 = [["subversively",[1,5]],[[1,2],[1,2]],["B","D"],["B","F"],["Kotoko","works with strings"],[9,10],[11,5],["Dwarf fortress","wtf"]]
         
         print(gcomposition(Vision(Address2(G1, basislist)[0][0]),Vision(Address2(G2, basislist)[0][0])))
         print("the issue is that I haven't implemented lemma 1.5.1/2 (? this actually might be its own theorem) because address is complaining but each element is part of the basis so basically I just have to bump up the L-value and return the address properly")
+        print("really need to fix address so that it inputs the right Lvalues")
 
-        
+        #so composition works, just have to use N as basis now and keep going:
+        #address of x when L > 1?
+        print(Vision([[0,1,2,3],3,[3,6,11]]))
+        print(Vision([[0,1,2,3],5,[[3,6,11]]]))
+        '''
+        print("does this return an error?", 
+              gcomposition(Vision([[0,1,2,3],1,[5]]),Vision([[0,1,2,3],1,[6]])
+                  )
+              )
+        '''
         #update basis
         #clear basis:
         basis.seek(0)
