@@ -1,10 +1,5 @@
 from math import *
-'''
-top = 5
-for x in range(0,top):
-    for y in range(0,top):
-        print(x,y)
-'''
+
 '''
     problem: what is the int "mean"?
     facts:
@@ -106,7 +101,6 @@ def AutoVision(int,Lval):
         i = 0
         for x in binary:
             if x == "1":
-                print("yes at", i)
                 '''
                 what do we do?
                 L-1
@@ -115,7 +109,66 @@ def AutoVision(int,Lval):
                 ANS.append(AutoVision(i,Lval-1))
             i += 1
     return ANS
+
 #print(AutoVision(128,2))
-print(AutoVision(3,1))
+#print(AutoVision(1,2))#GOTEM
+#print(AutoVision(78,2))
+#note: 0,2 fails, 0,y fails for y>1
 #note: remove extra brackets
+'''
+need an example:
+
+
+NOTE: ISN"T THIS IT????? WE DON't NEED TO KEEP CANTOR PAIRING TO GET PAST L-VALS
+'''
+
+def gcomposition(graph1,graph2):
+    ### composes graph 1 with graph 2 by following arrows and returns a graph
+    #g2dom = []
+    ANS= []
+    #for y in graph2:
+    #    g2dom.append(y[0])
+    for x in graph1:
+        #print(x[1],Eps(x[1],g2dom))
+        #if Eps(x[1],g2dom) > -1:
+        for y in graph2:
+            print("x,y", x,y)
+            print(x,"wtf",y)
+            #print(y[0])
+            #print(x[1])
+            yfail = 0
+            xfail = 0
+            try:
+                y[0]
+            except(ValueError,IndexError):
+                #print("y failed")
+                yfail = 1
+            try:
+                x[1]
+            except(ValueError,IndexError):
+                #print("x failed")
+                xfail = 1
+            '''
+            HINT:
+            use the try: except block hax
+            
+            '''
+            if xfail == 0 and yfail == 0:
+                if y[0] == x[1]:
+                    ANS.append([x[0],y[1]])
+    return ANS
+
+#print(gcomposition(AutoVision(1,1),AutoVision(2,2)))
+file = open('Auto.txt', 'r+')
+
+final = 5
+for top in range(0,final):
+    for x in range(0,top+1):
+        for y in range(0,top+1):
+            print(x,y,top)
+            print("input first:" ,AutoVision(x,top),AutoVision(y,top))
+            
+            file.write(str([[AutoVision(x,top),AutoVision(y,top)],gcomposition(AutoVision(x,top),AutoVision(y,top))]))
     
+###this has a problem with objects that aren't in there:: "IndexError: list index out of range"
+file.close()
