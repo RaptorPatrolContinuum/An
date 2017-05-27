@@ -30,7 +30,14 @@ def Address2(string, *args):
     value = []
 
     #PART 3: FINDING ADDRESSES IF L-VAL > 1
+    #[[1,2],["A","B"],[[3,4],[5,6]],[7,["yuku yo"]],["so transiently","Kotoko"]]
+    '''
+    does [1,2] keeps its number from L = 1 to L =3 ????
 
+    no do basis z basis of the new powerset then you apply cantor pairing on that to get the address
+    holy shit wtf
+    NO WAY THE NUMBER IS TOO BIG
+    '''
     for basis in args:
         i = 1
         partialbinary= []
