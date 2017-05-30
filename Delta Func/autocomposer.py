@@ -1,5 +1,217 @@
 from math import *
 
+def CheatOG(string):
+    #take a string and return a list of strings that represent the important morphemes:
+    #punctuation:
+    #.?!,;:-—)}]'"...
+    #line break
+    #paragraph break(?)
+    
+    #FUCKING USE CASES FOR "'"
+    Morphemes = []
+    
+    sentencedelimiters = [".", "?", "!"] #...
+    SentenceStartPos = 0
+    SentenceStartPosList = []
+    #every even is start and odd is close for each pair
+    pairdelimiters=["(", ")", "{", "}", "[", "]", "\"", "\"", " ", " "]
+    pairdelimiterpos={}
+    #EACH PAIR CHAR NEEDS ITS OWN START POS
+    for pair in pairdelimiters:
+        #use dictionaries
+        pairdelimiterpos[pair + "On"]= 0
+        pairdelimiterpos[pair + "Location"]= [-1]
+        #starts at -1 so that it gets the first word even though there is no space[might be a problem]
+        pairdelimiterpos[pair + "List"]= []
+
+    pairdelimiterpos["AllList"] = [-1,-1]
+    #starts at -1 so that it gets the first word even though there is no space[might be a problem]
+
+    splicedelimiters=[",", ";", ":", "-", "—", "\n"]
+    SpliceStartPos = 0
+    i = 0
+    for x in string:
+        if i == len(string)-1:
+            #get the last morpheme:
+            Morphemes.append(string[pairdelimiterpos["AllList"][-1]+1:])
+        #you need a hierarchy to get sentence start pos to ignore pairdelimiter rules
+        if x in splicedelimiters:
+            if max(SentenceStartPos,SpliceStartPos) in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1) and len(pairdelimiterpos["AllList"])>=4:
+                #find one that isn't in most recent pair
+                k = 1
+                for y in SentenceStartPosList:
+                    K = len(SentenceStartPosList)
+                    if SentenceStartPosList[K-k] not in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1):
+                        delimstart = SentenceStartPosList[K-k]
+                    else:
+                        delimstart = 0
+                    k += 1
+            else:
+                delimstart = max(SentenceStartPos,SpliceStartPos)
+            Morphemes.append(string[delimstart:i+1])
+            #keep track of everything
+            pairdelimiterpos["AllList"].append(i)
+            SpliceStartPos = i
+        if x in pairdelimiters:
+            '''
+            THEY ARE BEING TREATED AS A SINGLE INSTEAD OF AS A PAIR
+            '''
+            if x == " " or x == "\"":
+                #append the slice from the last location to this location
+                Morphemes.append(string[pairdelimiterpos[x + "Location"][-1]+1:i])
+                #make note of the last location
+                pairdelimiterpos[x + "Location"].append(i)
+                #keep track of everything
+                pairdelimiterpos["AllList"].append(i)
+            else:
+                #if it's on for this particular character, slice the string then turn off
+                if pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] == 1:
+                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] = 0
+                    #slice the string and append to Morphemes
+                    Morphemes.append(string[pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"][-1]:i+1])
+                    #add to both location lists
+                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"].append(i)
+                    #keep track of everything
+                    pairdelimiterpos["AllList"].append(i)
+                else:
+                    pairdelimiterpos[x + "Location"].append(i)
+                #be smart about how to turn this on:
+                if pairdelimiters.index(x)%2 == 0:
+                    pairdelimiterpos[x + "On"] = 1
+        if x in sentencedelimiters:
+            #know the last .?! , (if any) then cut between first and last .?!
+            #ignore pair delimiters
+            if SentenceStartPos in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1) and len(pairdelimiterpos["AllList"])>=4:
+                #find one that isn't in most recent pair
+                k = 1
+                for y in SentenceStartPosList:
+                    K = len(SentenceStartPosList)
+                    if SentenceStartPosList[K-k] not in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1):
+                        delimstart = SentenceStartPosList[K-k]
+                    else:
+                        delimstart = 0
+                    k += 1
+            else:
+                delimstart = SentenceStartPos
+            Morphemes.append(string[delimstart:i+1])
+            #keep track of everything
+            pairdelimiterpos["AllList"].append(i)
+            #NEW
+            #adding this line since words "stuck" next to punctuation get lost:
+            #Morphemes.append(string[pairdelimiterpos["AllList"][-1]:i+1])
+            
+            SentenceStartPos = i+1
+            SentenceStartPosList.append(i+1)
+        i += 1
+    #Morphemes
+    return Morphemes
+
+def Cheattest(string):
+    #take a string and return a list of strings that represent the important morphemes:
+    #punctuation:
+    #.?!,;:-—)}]'"...
+    #line break
+    #paragraph break(?)
+    
+    #FUCKING USE CASES FOR "'"
+    Morphemes = []
+    
+    sentencedelimiters = [] #...
+    SentenceStartPos = 0
+    SentenceStartPosList = []
+    #every even is start and odd is close for each pair
+    pairdelimiters=["[", "]"]
+    pairdelimiterpos={}
+    #EACH PAIR CHAR NEEDS ITS OWN START POS
+    for pair in pairdelimiters:
+        #use dictionaries
+        pairdelimiterpos[pair + "On"]= 0
+        pairdelimiterpos[pair + "Location"]= [-1]
+        #starts at -1 so that it gets the first word even though there is no space[might be a problem]
+        pairdelimiterpos[pair + "List"]= []
+
+    pairdelimiterpos["AllList"] = [-1,-1]
+    #starts at -1 so that it gets the first word even though there is no space[might be a problem]
+
+    splicedelimiters=[","]
+    SpliceStartPos = 0
+    i = 0
+    for x in string:
+        if i == len(string)-1:
+            #get the last morpheme:
+            Morphemes.append(string[pairdelimiterpos["AllList"][-1]+1:])
+        #you need a hierarchy to get sentence start pos to ignore pairdelimiter rules
+        if x in splicedelimiters:
+            if max(SentenceStartPos,SpliceStartPos) in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1) and len(pairdelimiterpos["AllList"])>=4:
+                #find one that isn't in most recent pair
+                k = 1
+                for y in SentenceStartPosList:
+                    K = len(SentenceStartPosList)
+                    if SentenceStartPosList[K-k] not in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1):
+                        delimstart = SentenceStartPosList[K-k]
+                    else:
+                        delimstart = 0
+                    k += 1
+            else:
+                delimstart = max(SentenceStartPos,SpliceStartPos)
+            Morphemes.append(string[delimstart:i+1])
+            #keep track of everything
+            pairdelimiterpos["AllList"].append(i)
+            SpliceStartPos = i
+        if x in pairdelimiters:
+            '''
+            THEY ARE BEING TREATED AS A SINGLE INSTEAD OF AS A PAIR
+            '''
+            if x == " " or x == "\"":
+                #append the slice from the last location to this location
+                Morphemes.append(string[pairdelimiterpos[x + "Location"][-1]+1:i])
+                #make note of the last location
+                pairdelimiterpos[x + "Location"].append(i)
+                #keep track of everything
+                pairdelimiterpos["AllList"].append(i)
+            else:
+                #if it's on for this particular character, slice the string then turn off
+                if pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] == 1:
+                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] = 0
+                    #slice the string and append to Morphemes
+                    Morphemes.append(string[pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"][-1]:i+1])
+                    #add to both location lists
+                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"].append(i)
+                    #keep track of everything
+                    pairdelimiterpos["AllList"].append(i)
+                else:
+                    pairdelimiterpos[x + "Location"].append(i)
+                #be smart about how to turn this on:
+                if pairdelimiters.index(x)%2 == 0:
+                    pairdelimiterpos[x + "On"] = 1
+        if x in sentencedelimiters:
+            #know the last .?! , (if any) then cut between first and last .?!
+            #ignore pair delimiters
+            if SentenceStartPos in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1) and len(pairdelimiterpos["AllList"])>=4:
+                #find one that isn't in most recent pair
+                k = 1
+                for y in SentenceStartPosList:
+                    K = len(SentenceStartPosList)
+                    if SentenceStartPosList[K-k] not in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1):
+                        delimstart = SentenceStartPosList[K-k]
+                    else:
+                        delimstart = 0
+                    k += 1
+            else:
+                delimstart = SentenceStartPos
+            Morphemes.append(string[delimstart:i+1])
+            #keep track of everything
+            pairdelimiterpos["AllList"].append(i)
+            #NEW
+            #adding this line since words "stuck" next to punctuation get lost:
+            #Morphemes.append(string[pairdelimiterpos["AllList"][-1]:i+1])
+            
+            SentenceStartPos = i+1
+            SentenceStartPosList.append(i+1)
+        i += 1
+    #Morphemes
+    return Morphemes
+
 '''
     problem: what is the int "mean"?
     facts:
@@ -291,6 +503,7 @@ def pairfinder(string,charpair):
     return [thefuckinganswer,maxi]
 
 
+
 '''
 FUCK THIS MIGHT BE WRONG BECAUSE IT DOESN"T GIVE METATHEOREMS????
 MIGHT NEED ANOTHER FUNC FOR THAT
@@ -309,6 +522,11 @@ def Addresspls(info):
             basisyes = 0
     #now we try to assign values
     #interim tells you which parts of a binary number is 1
+
+    if info[3] == 1 and basisyes == 0:
+        print("missing chars in basis")
+        return
+
     Interim = []
     for x in list(info[0]):
         if basisyes == 1:
@@ -333,6 +551,51 @@ def Addresspls(info):
     ANS = int(ANS, 2)
     return ANS
 
+'''
+problem: I need to know what kind of string to give addresspls AND how to start at the bottom then make the right number
+'''
+
+def Addressplsffff(info):
+    #info = [string,basis,pairchars,Lval]
+    #NOTE: WE ARE GIVEN LVAL
+    ANS = []
+    #check if every element is in basis:
+    basisyes = 1
+    for x in list(info[0]):
+        try:
+            info[1].index(x)
+        except(ValueError,IndexError):
+            basisyes = 0
+    #now we try to assign values
+    #interim tells you which parts of a binary number is 1
+
+    if info[3] == 1 and basisyes == 0:
+        print("missing chars in basis")
+        return
+
+    Interim = []
+    for x in list(info[0]):
+        if basisyes == 1 and info[3] == 1:
+            #assign a number then return answer
+            #assign a number:
+            Interim.append(info[1].index(x))
+        else:
+            #call this function again with one less l-val on each element of element in list
+            Addresspls([x,info[1],info[2],info[3]-1])
+    #change interim into actual binary:
+    #findmaxlength:
+    longest = 0
+    for x in Interim:
+        if x > longest:
+            longest = x
+    #init binary:
+    
+    ANS="1".zfill(int(longest)+1)
+    Interim = list(filter(lambda x: x != longest, Interim))
+    for x in Interim:
+        ANS = ANS[:x] + "1" + ANS[x+1:]
+    ANS = int(ANS, 2)
+    return ANS
 
 
 #now to modify AutoVision to work with an arbitrary basis:
@@ -357,7 +620,7 @@ def Vision(number,basis,Lval):
         '''
         for each one, construct the part recursively:
 	go down 1 Lval
-	'''	
+	'''
         i = 0
         for x in binary:
             if x == "1":
@@ -366,7 +629,7 @@ def Vision(number,basis,Lval):
                 L-1
                 because L == 1 we eval and append
                 '''
-                ANS.append(AutoVision(i,basis,Lval-1))
+                ANS = ANS + Vision(i,basis,Lval-1)
             i += 1
     return ANS
 
@@ -375,7 +638,18 @@ compress = Addresspls(["cat",["c","a","t"],[],pairfinder("cat",["[","]"])[1]])
 print(compress)
 #print("checking vision",AutoVision(7,pairfinder("cat",["[","]"])[1]))
 print(Vision(compress,["c","a","t"],1))
-
+print("try L >1 ")
+#theinput = "[c,[t,[a],[t]],cat]"
+theinput = ["c",["t",["a"],["t"]],"cat"]
+print("what does pairfinder say", pairfinder(theinput,["[","]"])[1])
+LL = Addresspls([theinput,["c","a","t","[","]",","," "],[],pairfinder(theinput,["[","]"])[1]])
+'''
+problem: addresspls gives a "dead" number in the sense that it is the same syntactically (the way it's written) but not semantically because compposing the number doesn't give the "right" values
+'''
+print(LL)
+print("check vision", Vision(3,["c","a","t","[","]",","," "],3))
+#print("check cheattest","\n",theinput,"\n", Cheattest(theinput))
+print("check cheattestOG","\n",theinput,"\n", CheatOG(str(theinput)),"\n",CheatOG(theinput),"\n",CheatOG("Why [[What [the] fuck] it doesn't look like it works as intended.]"))
 #problem: we need to be given an L-val first instead of figuring it out beforehand... :/
 def AddressplsWRONG(info):
     #info = [string,basis,pairchars,Lval]
