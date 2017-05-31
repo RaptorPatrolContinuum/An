@@ -1,6 +1,52 @@
 from math import *
 
-def CheatOG(string):
+'''
+TODO:
+finish this then update casual with fixed cheat and all these dumb functions
+then plow through the paperslist and respond to real life
+'''
+
+def pairfinder(string,charpair):
+    #delete pairs:
+    thefuckinganswer = []
+    i = 1
+    #we start at 1 because we are already using for loop AKA for loop assumes we already have 1 level
+    index = 0
+    maxi = 0
+    for x in string:
+        if x == charpair[0]:
+            thefuckinganswer.append([index,i])
+            if i > maxi:
+                maxi = i
+            i+= 1
+        if x == charpair[1]:
+            i= i - 1
+            thefuckinganswer.append([index,i])
+        index += 1
+    return [thefuckinganswer,maxi]
+
+def pairfinderSTRING(finderlist,string):
+    '''
+    takes pairfinder and the original string and returns the right morphemes
+    '''
+    ANS = []
+    Indexers = {}
+    for y in range(1,finderlist[1]+1):
+        Indexers[y] = []
+    for x in finderlist[0]:
+        #print("flist", finderlist)
+        #print("cstats", x, Indexers[x[1]],x[0])
+        '''
+        why is Indexers[x[1]] have a keyerror wtf
+        '''
+        Indexers[x[1]].append(x[0])
+    for y in range(1,finderlist[1]+1):
+        for z in range(0,len(Indexers[y])):
+            if z % 2 == 0:
+                ANS.append(string[Indexers[y][z]:Indexers[y][z+1]+1])
+    return ANS
+
+def Cheat(string):
     #take a string and return a list of strings that represent the important morphemes:
     #punctuation:
     #.?!,;:-—)}]'"...
@@ -29,117 +75,27 @@ def CheatOG(string):
 
     splicedelimiters=[",", ";", ":", "-", "—", "\n"]
     SpliceStartPos = 0
+
+    for g in range(0,len(pairdelimiters)):
+        if g % 2 == 0 and pairdelimiters[g] != " ":
+            toappend = pairfinderSTRING(pairfinder(string,[pairdelimiters[g],pairdelimiters[g+1]]),string)
+            if len(toappend) != 0:
+                Morphemes.append(toappend)
+
+    
     i = 0
     for x in string:
         if i == len(string)-1:
-            #get the last morpheme:
-            Morphemes.append(string[pairdelimiterpos["AllList"][-1]+1:])
-        #you need a hierarchy to get sentence start pos to ignore pairdelimiter rules
-        if x in splicedelimiters:
-            if max(SentenceStartPos,SpliceStartPos) in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1) and len(pairdelimiterpos["AllList"])>=4:
-                #find one that isn't in most recent pair
-                k = 1
-                for y in SentenceStartPosList:
-                    K = len(SentenceStartPosList)
-                    if SentenceStartPosList[K-k] not in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1):
-                        delimstart = SentenceStartPosList[K-k]
-                    else:
-                        delimstart = 0
-                    k += 1
-            else:
-                delimstart = max(SentenceStartPos,SpliceStartPos)
-            Morphemes.append(string[delimstart:i+1])
-            #keep track of everything
-            pairdelimiterpos["AllList"].append(i)
-            SpliceStartPos = i
-        if x in pairdelimiters:
-            '''
-            THEY ARE BEING TREATED AS A SINGLE INSTEAD OF AS A PAIR
-            '''
-            if x == " " or x == "\"":
-                #append the slice from the last location to this location
-                Morphemes.append(string[pairdelimiterpos[x + "Location"][-1]+1:i])
-                #make note of the last location
-                pairdelimiterpos[x + "Location"].append(i)
-                #keep track of everything
-                pairdelimiterpos["AllList"].append(i)
-            else:
-                #if it's on for this particular character, slice the string then turn off
-                if pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] == 1:
-                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "On"] = 0
-                    #slice the string and append to Morphemes
-                    Morphemes.append(string[pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"][-1]:i+1])
-                    #add to both location lists
-                    pairdelimiterpos[pairdelimiters[pairdelimiters.index(x)-1] + "Location"].append(i)
-                    #keep track of everything
-                    pairdelimiterpos["AllList"].append(i)
-                else:
-                    pairdelimiterpos[x + "Location"].append(i)
-                #be smart about how to turn this on:
-                if pairdelimiters.index(x)%2 == 0:
-                    pairdelimiterpos[x + "On"] = 1
-        if x in sentencedelimiters:
-            #know the last .?! , (if any) then cut between first and last .?!
-            #ignore pair delimiters
-            if SentenceStartPos in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1) and len(pairdelimiterpos["AllList"])>=4:
-                #find one that isn't in most recent pair
-                k = 1
-                for y in SentenceStartPosList:
-                    K = len(SentenceStartPosList)
-                    if SentenceStartPosList[K-k] not in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1):
-                        delimstart = SentenceStartPosList[K-k]
-                    else:
-                        delimstart = 0
-                    k += 1
-            else:
-                delimstart = SentenceStartPos
-            Morphemes.append(string[delimstart:i+1])
-            #keep track of everything
-            pairdelimiterpos["AllList"].append(i)
-            #NEW
-            #adding this line since words "stuck" next to punctuation get lost:
-            #Morphemes.append(string[pairdelimiterpos["AllList"][-1]:i+1])
-            
-            SentenceStartPos = i+1
-            SentenceStartPosList.append(i+1)
-        i += 1
-    #Morphemes
-    return Morphemes
-
-def Cheattest(string):
-    #take a string and return a list of strings that represent the important morphemes:
-    #punctuation:
-    #.?!,;:-—)}]'"...
-    #line break
-    #paragraph break(?)
-    
-    #FUCKING USE CASES FOR "'"
-    Morphemes = []
-    
-    sentencedelimiters = [] #...
-    SentenceStartPos = 0
-    SentenceStartPosList = []
-    #every even is start and odd is close for each pair
-    pairdelimiters=["[", "]"]
-    pairdelimiterpos={}
-    #EACH PAIR CHAR NEEDS ITS OWN START POS
-    for pair in pairdelimiters:
-        #use dictionaries
-        pairdelimiterpos[pair + "On"]= 0
-        pairdelimiterpos[pair + "Location"]= [-1]
-        #starts at -1 so that it gets the first word even though there is no space[might be a problem]
-        pairdelimiterpos[pair + "List"]= []
-
-    pairdelimiterpos["AllList"] = [-1,-1]
-    #starts at -1 so that it gets the first word even though there is no space[might be a problem]
-
-    splicedelimiters=[","]
-    SpliceStartPos = 0
-    i = 0
-    for x in string:
-        if i == len(string)-1:
-            #get the last morpheme:
-            Morphemes.append(string[pairdelimiterpos["AllList"][-1]+1:])
+            #check if last morpheme is already in the list:
+            inside = 0
+            try:
+                Morphemes.index(string[pairdelimiterpos["AllList"][-1]+1:])
+            except(ValueError,IndexError):
+                #print("already inside!","\n",string[pairdelimiterpos["AllList"][-1]+1:],"\n", Morphemes)
+                inside = 1
+            if inside == 0:
+                #get the last morpheme:
+                Morphemes.append(string[pairdelimiterpos["AllList"][-1]+1:])
         #you need a hierarchy to get sentence start pos to ignore pairdelimiter rules
         if x in splicedelimiters:
             if max(SentenceStartPos,SpliceStartPos) in range(pairdelimiterpos["AllList"][-2],pairdelimiterpos["AllList"][-1]+1) and len(pairdelimiterpos["AllList"])>=4:
@@ -484,23 +440,6 @@ def InsertAt (List,obj,Index):
         VALUE.append(List[Index + x])
     return VALUE
 
-def pairfinder(string,charpair):
-    #delete pairs:
-    thefuckinganswer = []
-    i = 0
-    index = 0
-    maxi = 0
-    for x in string:
-        index += 1
-        if x == charpair[0]:
-            i+= 1
-            thefuckinganswer.append([index,i])
-            if i > maxi:
-                maxi = i
-        if x == charpair[1]:
-            i= i - 1
-            thefuckinganswer.append([index,i])
-    return [thefuckinganswer,maxi]
 
 
 
@@ -510,15 +449,96 @@ MIGHT NEED ANOTHER FUNC FOR THAT
 '''
 #note: this has no cantor pairings
 def Addresspls(info):
+    #info = [string,basis,pairchars,Lval,maxLval]
+    #NOTE: WE ARE GIVEN LVAL
+    ANS = []
+    
+    ##print("checking Lval", info[3])
+    if info[3] == info[4]:
+        #check if every element is in basis:
+        basisyes = 1
+        for x in list(info[0]):
+            try:
+                info[1].index(x)
+            except(ValueError,IndexError):
+                print("this is fucking it up","\n", x,"\n", info[0])
+                basisyes = 0
+                
+    #now we try to assign values
+    #interim tells you which parts of a binary number is 1
+
+    Interim = []
+    print("need right amount of 0's")
+    '''
+    trick: converting string of numbers into 'binary'"
+    idea:
+    turn string into list
+    for x in list:
+        if ????
+
+    problem:
+    L = 2
+    [t, [[]]]
+    where is t in L = 2????
+
+    the object is :
+    [[t]]
+    know:
+    t is in basis
+    but for L = 2 there is some kind of fuckery with the pairings
+    theorem:
+    L = n, then each object SHOULD have n pairings of brackets
+    new question
+    [t, [[]]] == [[t], [[]]]
+
+    '''
+    
+
+    
+    ##print("stats", list(info[0]))
+    for x in list(info[0]):
+        if basisyes == 1:
+            #assign a number then return answer
+            #assign a number:
+            #print(info[1].index(x))
+            Interim.append(info[1].index(x))
+        else:
+            #fucking stop this
+            if int(info[3]) < 1:
+                print("stats3", info)
+                print("it's time to STOP")
+                return
+            print("morestats", info, x, [x,info[1],info[2],info[3]-1])
+            #call this function again with one less l-val on each element of element in list
+            Addresspls([x,info[1],info[2],info[3]-1])
+    #change interim into actual binary:
+    #findmaxlength:
+    longest = 0
+    for x in Interim:
+        if x > longest:
+            longest = x
+    #init binary:
+    
+    ANS="1".zfill(int(longest)+1)
+    Interim = list(filter(lambda x: x != longest, Interim))
+    for x in Interim:
+        ANS = ANS[:x] + "1" + ANS[x+1:]
+    ANS = int(ANS, 2)
+    return ANS
+
+def AddressplsAME(info):
     #info = [string,basis,pairchars,Lval]
     #NOTE: WE ARE GIVEN LVAL
     ANS = []
+    
+    ##print("checking Lval", info[3])
     #check if every element is in basis:
     basisyes = 1
     for x in list(info[0]):
         try:
             info[1].index(x)
         except(ValueError,IndexError):
+            print("this is fucking it up","\n", x,"\n", info[0])
             basisyes = 0
     #now we try to assign values
     #interim tells you which parts of a binary number is 1
@@ -528,12 +548,20 @@ def Addresspls(info):
         return
 
     Interim = []
+    ##print("stats", list(info[0]))
     for x in list(info[0]):
         if basisyes == 1:
             #assign a number then return answer
             #assign a number:
+            #print(info[1].index(x))
             Interim.append(info[1].index(x))
         else:
+            #fucking stop this
+            if int(info[3]) < 1:
+                print("stats3", info)
+                print("it's time to STOP")
+                return
+            print("morestats", info, x, [x,info[1],info[2],info[3]-1])
             #call this function again with one less l-val on each element of element in list
             Addresspls([x,info[1],info[2],info[3]-1])
     #change interim into actual binary:
@@ -634,22 +662,23 @@ def Vision(number,basis,Lval):
     return ANS
 
 #print("checking addresspls")
-compress = Addresspls(["cat",["c","a","t"],[],pairfinder("cat",["[","]"])[1]])
+compress = Addresspls(["cat",["c","a","t"],["[","]"],pairfinder("cat",["[","]"])[1],pairfinder("cat",["[","]"])[1]])
 print(compress)
 #print("checking vision",AutoVision(7,pairfinder("cat",["[","]"])[1]))
-print(Vision(compress,["c","a","t"],1))
+##print(Vision(compress,["c","a","t"],1))
 print("try L >1 ")
-#theinput = "[c,[t,[a],[t]],cat]"
-theinput = ["c",["t",["a"],["t"]],"cat"]
-print("what does pairfinder say", pairfinder(theinput,["[","]"])[1])
-LL = Addresspls([theinput,["c","a","t","[","]",","," "],[],pairfinder(theinput,["[","]"])[1]])
+theinput = "[c,[t,[a],[t]],cat]"
+#theinput = ["c",["t",["a"],["t"]],"cat"]
+print("what is the string to use for manual numbering?", str(theinput))
+LL = Addresspls([str(theinput),["c","a","t","[","]",","," ","'"],[],pairfinder(theinput,["[","]"])[1],pairfinder(theinput,["[","]"])[1]])
 '''
 problem: addresspls gives a "dead" number in the sense that it is the same syntactically (the way it's written) but not semantically because compposing the number doesn't give the "right" values
 '''
 print(LL)
-print("check vision", Vision(3,["c","a","t","[","]",","," "],3))
-#print("check cheattest","\n",theinput,"\n", Cheattest(theinput))
-print("check cheattestOG","\n",theinput,"\n", CheatOG(str(theinput)),"\n",CheatOG(theinput),"\n",CheatOG("Why [[What [the] fuck] it doesn't look like it works as intended.]"))
+print("what does pairstrings say","\n", pairfinderSTRING(pairfinder(str(theinput),["[","]"]),str(theinput)),"\n",pairfinder(str(theinput),["[","]"]))
+print("check vision arbitrary", Vision(3,["c","a","t","[","]",","," "],3))
+print("check vision", Vision(LL,["c","a","t","[","]",","," "],3))
+##print("check cheat","\n",str(theinput),"\n", Cheat(str(theinput)),"\n",Cheat(str(theinput)),"\n",Cheat("Why [[What [the] fuck] it doesn't look like it works as intended.]"))
 #problem: we need to be given an L-val first instead of figuring it out beforehand... :/
 def AddressplsWRONG(info):
     #info = [string,basis,pairchars,Lval]

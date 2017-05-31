@@ -180,6 +180,18 @@ def Cheat(string):
 
     splicedelimiters=[",", ";", ":", "-", "—", "\n"]
     SpliceStartPos = 0
+
+    for g in range(0,len(pairdelimiters)):
+        if g % 2 == 0 and pairdelimiters[g] != " ":
+            print("oh god wtf")
+            print("stats", string, g, pairdelimiters[g],pairdelimiters[g+1])
+            print("more stats", pairfinderSTRING(pairfinder(string,[pairdelimiters[g],pairdelimiters[g+1]]),string))
+            print("end stats")
+            toappend = pairfinderSTRING(pairfinder(string,[pairdelimiters[g],pairdelimiters[g+1]]),string)
+            if len(toappend) != 0:
+                Morphemes.append(toappend)
+
+    
     i = 0
     for x in string:
         if i == len(string)-1:
@@ -283,7 +295,7 @@ theinput = "[a][b][c][d]"
 #maxnesting = "[a,[b,[c,t],d],[d,f,g][[1,2],[3,4]]]"
 maxnesting = "[a,[b,[c,t],d]]"
 maxnestingNOCOMMA = "[a[b[ct]d][dfg][[12][34]]]"
-normal = "Let's just try a normal sentence as well. "+"Did she say something?"+", said Operator."
+normal = "Let's [just [try] a] normal sentence as well. "+"Did she say something?"+", said Operator."
 print("testing")
 print(theinput)
 print(Cheat(theinput))

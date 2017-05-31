@@ -5,8 +5,9 @@ def powerset(iterable):
     return chain.from_iterable(combinations(s, r) for r in range(len(s)+1))
 
 #for x in list(powerset(list(powerset([[0,0],[0,1],[1,0],[2,0]])))):
+for x in (list(powerset(list(powerset("cat"))))):
 #for x in list(powerset("12")):
-#    print(x)
+    print(x)
 
 #print(list(powerset([[0,0],[1,0],[0,1][1,1]])))
 
