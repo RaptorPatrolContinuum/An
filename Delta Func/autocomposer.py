@@ -511,6 +511,9 @@ def Addresspls(info):
     TODO
     when do I check for fucked up basis
     return the right amount for LVAL
+
+    plan: get the number manually
+    fucking fix this
     '''
 
 
@@ -525,8 +528,8 @@ def Addresspls(info):
 
     
     for x in fixedeval(info[0]):
-        #print(x)
-        #print("wtf is failure anymore",pairfinder(str(x),info[2])[1])
+        print(x)
+        print("wtf is failure anymore",pairfinder(str(x),info[2])[1])
         if pairfinder(str(x),info[2])[1] == 0:
             try:
                 Interim.append(info[1].index(x))
@@ -535,7 +538,8 @@ def Addresspls(info):
                 Addresspls([x,info[1],info[2],info[3],info[4]])
         else:
             Addresspls([x,info[1],info[2],info[3],info[4]])
-            
+    print("where I'm at======================", info[0])
+    print("Interim value", Interim)    
     longest = 0
     for x in Interim:
         if x > longest:
