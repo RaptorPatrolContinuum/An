@@ -11,13 +11,38 @@ def fixedeval(theinput):
     fixed = theinput
     i = 0
     for x in fixed:
+    #for i in range(0,len(fixed)):
+        #x = fixed[i]
         #if it's not a number, assume character:
+        g = i
+        maxlength = 0
+        y = fixed[g+1]
+        if str(x) != "\"" and str(x) != "[" and str(x) != "]" and str(x) != ",":
+            #1: figure out the length of alphas:
+            while str(y) != "\"" and str(y) != "[" and str(y) != "]" and str(y) != ",":
+                maxlength += 1
+                if g+1 < len(fixed):
+                    y = fixed[g+1]
+                g += 1
+            try:
+                int(x)
+            except(NameError,ValueError):
+                if maxlength > 0:
+                    FASTLANE = fixed[i:i+maxlength]
+                    TAKEITSLOW = fixed[i+maxlength:]
+                else:
+                    FASTLANE = FASTLANE = fixed[i]
+                    TAKEITSLOW = fixed[i+maxlength+1:]
+                fixed = fixed[:i] + "\"" + FASTLANE + "\"" + TAKEITSLOW
+                if maxlength > 0:
+                    i += 2 + maxlength
+                else:
+                    i += 2
+        i += 1
         try:
-            int(x)
-        except(NameError):
-            InsertAt(list(fixed),"\"",i)
-            i+=i
-        i += 1    
+            fixed[i]
+        except(IndexError):
+            return eval(fixed)
     return eval(fixed)
 
 def pairfinder(string,charpair):
@@ -475,12 +500,29 @@ def Addresspls(info):
     if pairs > 0:
         # go up or down
         #print("gg", eval(info[0])) #IF I TAKE THE EVAL ROUTE I NEED TO ADD ' or " TO THE STRING WHICH FUCKING SUCKS
-        tlist = pairfinderSTRING(pairfinder(info[0],info[2]),info[0])
-        print("DOING WAY TOO MUCH FOR ONE FUNCTION", tlist)
+        #tlist = pairfinderSTRING(pairfinder(info[0],info[2]),info[0])
+        tlist = fixedeval(info[0])
+        print("DOING WAY TOO MUCH FOR ONE FUNCTION", tlist, "MAX IS", len(tlist))
         #print("pairfinder pls don't fuck up", tlist[0],tlist[1],tlist[2],tlist[3])
-        print("pairfinder pls don't fuck up", tlist[0],len(tlist[0]), tlist[0][3])
-        #for x in eval(info[0]):
-        #    print(x)
+        
+        for x in fixedeval(info[0]):
+            print(x)
+            print("Lval is", pairfinder(str(x),info[2])[1])
+            if pairfinder(str(x),info[2])[1] == 0:
+                #check if it's in basis:
+                basisyes = 1
+                for y in list(str(x)):
+                    print("what is y?", y)
+                    try:
+                        info[1].index(y)
+                    except(ValueError,IndexError):
+                        basisyes = 0
+                        print("THE CULPRIT IS",y)
+                    if basisyes == 1:
+                        print("appending this", info[1].index(y))
+                        Interim.append(info[1].index(y))
+            else:
+                Addresspls([x,info[1],info[2],pairfinder(str(x),info[2])[1],info[4]])
         return
     else:
         #assume Lval = 1:
@@ -496,7 +538,8 @@ def Addresspls(info):
                 Interim.append(info[1].index(x))
 
 
-    print("This function is doing like way too much shit, interim", Interim, info[0])
+    print("This function is doing like way too much shit, interim")#, info[0]
+    print(Interim)
     
     # if we're at pairs, then for each elem:
         #if local lval == 1:
