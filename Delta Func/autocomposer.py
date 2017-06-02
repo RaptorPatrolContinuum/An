@@ -257,12 +257,14 @@ def AutoVision(number,Lval):
     '''
     ANS = []
     binary = "{0:b}".format(number)[::-1]
+    print("number, binary", number, binary, Lval)
     if Lval == 1:
         z = number
         w = floor((sqrt(8*z+1)-1)/2)
         t = (w*w+w)/2
         y = z - t
         x = w - y
+        print("number, append", number, [x,y])
         ANS.append([x,y])
     else:
         '''
@@ -452,7 +454,28 @@ def Addresspls(info):
     #info = [string,basis,pairchars,Lval,maxLval]
     #NOTE: WE ARE GIVEN LVAL
     ANS = []
+
+    # go up or down
+    # if we're at pairs, then for each elem:
+        #if local lval == 1:
+            #check if it's in basis:
+                #yes: return #
+                #no: print missing char and what it is
+        #if lval != 1:
+            #call this again with a smaller lval
+    #### somewhere in here we need a function that turns a list of ints into a binary
     
+    
+
+
+
+
+
+
+
+
+
+
     ##print("checking Lval", info[3])
     if info[3] == info[4]:
         #check if every element is in basis:
@@ -678,6 +701,9 @@ print(LL)
 print("what does pairstrings say","\n", pairfinderSTRING(pairfinder(str(theinput),["[","]"]),str(theinput)),"\n",pairfinder(str(theinput),["[","]"]))
 print("check vision arbitrary", Vision(3,["c","a","t","[","]",","," "],3))
 print("check vision", Vision(LL,["c","a","t","[","]",","," "],3))
+#print("checking if at each level you need to have same amt of pairs", AutoVision(550,10))
+print("checking if at each level you need to have same amt of pairs", AutoVision(550,3))
+print("I don't know how to check AutoVision", AutoVision(64,3))
 ##print("check cheat","\n",str(theinput),"\n", Cheat(str(theinput)),"\n",Cheat(str(theinput)),"\n",Cheat("Why [[What [the] fuck] it doesn't look like it works as intended.]"))
 #problem: we need to be given an L-val first instead of figuring it out beforehand... :/
 def AddressplsWRONG(info):
@@ -693,3 +719,13 @@ def AddressplsWRONG(info):
         Addresspls([info[0],info[1],info[2],info[3]-1])
     return ANS
 
+
+def omg(number):
+    z = number
+    w = floor((sqrt(8*z+1)-1)/2)
+    t = (w*w+w)/2
+    y = z - t
+    x = w - y
+    return [x,y]
+    
+print("why the fuck is autovision failing", omg(0))
