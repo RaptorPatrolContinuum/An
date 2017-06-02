@@ -9,14 +9,25 @@ then plow through the paperslist and respond to real life
 def fixedeval(theinput):
     #takes a string and preps 'naked' alphanumeric chars as strings:
     fixed = theinput
+    #if there's nothing to do return the string:
+    if pairfinder(theinput,["[","]"])[1] == 0:
+        return theinput
     i = 0
+    print(fixed,i)
     for x in fixed:
     #for i in range(0,len(fixed)):
         #x = fixed[i]
         #if it's not a number, assume character:
         g = i
         maxlength = 0
+        #print(maxlength)
         y = fixed[g+1]
+        #if g+1 < len(fixed):
+        #    y = fixed[g+1]
+        '''
+
+        '''
+        #print("y",y)
         if str(x) != "\"" and str(x) != "[" and str(x) != "]" and str(x) != ",":
             #1: figure out the length of alphas:
             while str(y) != "\"" and str(y) != "[" and str(y) != "]" and str(y) != ",":
@@ -38,6 +49,10 @@ def fixedeval(theinput):
                     i += 2 + maxlength
                 else:
                     i += 2
+            try:
+                y = fixed[i+2]
+            except(IndexError):
+                return eval(fixed)
         i += 1
         try:
             fixed[i]
@@ -488,21 +503,81 @@ def InsertAt (List,obj,Index):
 FUCK THIS MIGHT BE WRONG BECAUSE IT DOESN"T GIVE METATHEOREMS????
 MIGHT NEED ANOTHER FUNC FOR THAT
 '''
-#note: this has no cantor pairings
+
 def Addresspls(info):
+    #info = [string,basis,pairchars,Lval,maxLval]
+
+    '''
+    TODO
+    when do I check for fucked up basis
+    return the right amount for LVAL
+    '''
+
+
+    
+    ANS = []
+    Interim = []
+    #IT"S TIME TO STOP
+    '''
+    if info[3] < 0:
+        print("IT'S TIME TO STOP")
+    '''
+
+    
+    for x in fixedeval(info[0]):
+        #print(x)
+        #print("wtf is failure anymore",pairfinder(str(x),info[2])[1])
+        if pairfinder(str(x),info[2])[1] == 0:
+            try:
+                Interim.append(info[1].index(x))
+            except(ValueError):
+                print("when do I check for fucked up basis")
+                Addresspls([x,info[1],info[2],info[3],info[4]])
+        else:
+            Addresspls([x,info[1],info[2],info[3],info[4]])
+            
+    longest = 0
+    for x in Interim:
+        if x > longest:
+            longest = x
+    #init binary:
+
+    ANS="1".zfill(int(longest)+1)
+    Interim = list(filter(lambda x: x != longest, Interim))
+    for x in Interim:
+        ANS = ANS[:x] + "1" + ANS[x+1:]
+    ANS = int(ANS, 2)
+    return ANS
+
+#note: this has no cantor pairings
+def AddressCANCER(info):
+    print("==========================WHEN DO I START", info[0])
     #info = [string,basis,pairchars,Lval,maxLval]
     #NOTE: WE ARE GIVEN LVAL
     ANS = []
+    maxLval = info[4]
     Interim = []
 
     #does this have pairs:
     pairs = pairfinder(info[0],info[2])[1]
     if pairs > 0:
         # go up or down
+        up = 0
+        maxL = 0
+        for I in range(0,len(fixedeval(info[0]))-1):
+            #print("check the pairs and the equals")
+            #print(str(fixedeval(info[0])[I]))
+            #print(pairfinder(str(fixedeval(info[0])[I]),info[2])[1])
+            #print(str(fixedeval(info[0])[I+1]))
+            #print(pairfinder(str(fixedeval(info[0])[I+1]),info[2])[1])
+            #print(pairfinder(str(fixedeval(info[0])[I]),info[2])[1] != pairfinder(str(fixedeval(info[0])[I+1]),info[2])[1])
+            if pairfinder(str(fixedeval(info[0])[I]),info[2])[1] != pairfinder(str(fixedeval(info[0])[I+1]),info[2])[1]:
+                up = 1
+                maxLval += 1
         #print("gg", eval(info[0])) #IF I TAKE THE EVAL ROUTE I NEED TO ADD ' or " TO THE STRING WHICH FUCKING SUCKS
         #tlist = pairfinderSTRING(pairfinder(info[0],info[2]),info[0])
         tlist = fixedeval(info[0])
-        print("DOING WAY TOO MUCH FOR ONE FUNCTION", tlist, "MAX IS", len(tlist))
+        #print("DOING WAY TOO MUCH FOR ONE FUNCTION", tlist, "MAX IS", len(tlist))
         #print("pairfinder pls don't fuck up", tlist[0],tlist[1],tlist[2],tlist[3])
         
         for x in fixedeval(info[0]):
@@ -522,8 +597,26 @@ def Addresspls(info):
                         print("appending this", info[1].index(y))
                         Interim.append(info[1].index(y))
             else:
-                Addresspls([x,info[1],info[2],pairfinder(str(x),info[2])[1],info[4]])
-        return
+                print("too big", x)
+                print(Addresspls([x,info[1],info[2],pairfinder(str(x),info[2])[1],info[4]]))
+                print("what are results?")
+        print("stats", fixedeval(info[0]),len(fixedeval(info[0])))    
+        print("Interim is??????????????????????", Interim)    
+        
+        #findmaxlength:
+        longest = 0
+        for x in Interim:
+            if x > longest:
+                longest = x
+        #init binary:
+    
+        ANS="1".zfill(int(longest)+1)
+        Interim = list(filter(lambda x: x != longest, Interim))
+        for x in Interim:
+            ANS = ANS[:x] + "1" + ANS[x+1:]
+        ANS = int(ANS, 2)
+        return ANS
+
     else:
         #assume Lval = 1:
         
@@ -538,8 +631,8 @@ def Addresspls(info):
                 Interim.append(info[1].index(x))
 
 
-    print("This function is doing like way too much shit, interim")#, info[0]
-    print(Interim)
+    #print("This function is doing like way too much shit, interim")#, info[0]
+    #print(Interim)
     
     # if we're at pairs, then for each elem:
         #if local lval == 1:
@@ -786,18 +879,21 @@ def Vision(number,basis,Lval):
 
 #print("checking addresspls")
 compress = Addresspls(["cat",["c","a","t"],["[","]"],pairfinder("cat",["[","]"])[1],pairfinder("cat",["[","]"])[1]])
-print("A1",compress)
-#print("checking vision",AutoVision(7,pairfinder("cat",["[","]"])[1]))
+print("A1","cat",compress)
+print("checking A1", Vision(compress,["c","a","t"],1))
+print("checking vision",AutoVision(compress,pairfinder("cat",["[","]"])[1]))
 ##print(Vision(compress,["c","a","t"],1))
 print("try L >1 ")
-theinput = "[c,[t,[a],[t]],cat]"
+#theinput = "[c,[t,[a],[t]],cat]"
+theinput = "[[c],[[t],[a],[t]],[cat]]" #this is proper parens right
 #theinput = ["c",["t",["a"],["t"]],"cat"]
 print("what is the string to use for manual numbering?", theinput)
 LL = Addresspls([theinput,["c","a","t","[","]",","," ","'"],["[","]"],pairfinder(theinput,["[","]"])[1],pairfinder(theinput,["[","]"])[1]])
 '''
 problem: addresspls gives a "dead" number in the sense that it is the same syntactically (the way it's written) but not semantically because compposing the number doesn't give the "right" values
 '''
-print("A2",LL)
+print("A2",theinput,LL)
+print("check A2", Vision(LL,["c","a","t","[","]",","," ","'"],4))
 ##print("what does pairstrings say","\n", pairfinderSTRING(pairfinder(str(theinput),["[","]"]),str(theinput)),"\n",pairfinder(str(theinput),["[","]"]))
 print("check vision arbitrary", Vision(3,["c","a","t","[","]",","," "],3))
 print("check vision", Vision(LL,["c","a","t","[","]",","," "],3))
