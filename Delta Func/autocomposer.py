@@ -6,6 +6,20 @@ finish this then update casual with fixed cheat and all these dumb functions
 then plow through the paperslist and respond to real life
 '''
 
+def fixedeval(theinput):
+    #takes a string and preps 'naked' alphanumeric chars as strings:
+    fixed = theinput
+    i = 0
+    for x in fixed:
+        #if it's not a number, assume character:
+        try:
+            int(x)
+        except(NameError):
+            InsertAt(list(fixed),"\"",i)
+            i+=i
+        i += 1    
+    return eval(fixed)
+
 def pairfinder(string,charpair):
     #delete pairs:
     thefuckinganswer = []
@@ -257,14 +271,14 @@ def AutoVision(number,Lval):
     '''
     ANS = []
     binary = "{0:b}".format(number)[::-1]
-    print("number, binary", number, binary, Lval)
+    #print("number, binary", number, binary, Lval)
     if Lval == 1:
         z = number
         w = floor((sqrt(8*z+1)-1)/2)
         t = (w*w+w)/2
         y = z - t
         x = w - y
-        print("number, append", number, [x,y])
+        #print("number, append", number, [x,y])
         ANS.append([x,y])
     else:
         '''
@@ -454,8 +468,36 @@ def Addresspls(info):
     #info = [string,basis,pairchars,Lval,maxLval]
     #NOTE: WE ARE GIVEN LVAL
     ANS = []
+    Interim = []
 
-    # go up or down
+    #does this have pairs:
+    pairs = pairfinder(info[0],info[2])[1]
+    if pairs > 0:
+        # go up or down
+        #print("gg", eval(info[0])) #IF I TAKE THE EVAL ROUTE I NEED TO ADD ' or " TO THE STRING WHICH FUCKING SUCKS
+        tlist = pairfinderSTRING(pairfinder(info[0],info[2]),info[0])
+        print("DOING WAY TOO MUCH FOR ONE FUNCTION", tlist)
+        #print("pairfinder pls don't fuck up", tlist[0],tlist[1],tlist[2],tlist[3])
+        print("pairfinder pls don't fuck up", tlist[0],len(tlist[0]), tlist[0][3])
+        #for x in eval(info[0]):
+        #    print(x)
+        return
+    else:
+        #assume Lval = 1:
+        
+        #check if every element is in basis:
+        basisyes = 1
+        for x in list(info[0]):
+            try:
+                info[1].index(x)
+            except(ValueError,IndexError):
+                basisyes = 0
+            if basisyes == 1:
+                Interim.append(info[1].index(x))
+
+
+    print("This function is doing like way too much shit, interim", Interim, info[0])
+    
     # if we're at pairs, then for each elem:
         #if local lval == 1:
             #check if it's in basis:
@@ -464,7 +506,22 @@ def Addresspls(info):
         #if lval != 1:
             #call this again with a smaller lval
     #### somewhere in here we need a function that turns a list of ints into a binary
+
+
+
+    #findmaxlength:
+    longest = 0
+    for x in Interim:
+        if x > longest:
+            longest = x
+    #init binary:
     
+    ANS="1".zfill(int(longest)+1)
+    Interim = list(filter(lambda x: x != longest, Interim))
+    for x in Interim:
+        ANS = ANS[:x] + "1" + ANS[x+1:]
+    ANS = int(ANS, 2)
+    return ANS
     
 
 
@@ -473,7 +530,7 @@ def Addresspls(info):
 
 
 
-
+def Addresspieces(stuff):
 
 
     ##print("checking Lval", info[3])
@@ -686,19 +743,19 @@ def Vision(number,basis,Lval):
 
 #print("checking addresspls")
 compress = Addresspls(["cat",["c","a","t"],["[","]"],pairfinder("cat",["[","]"])[1],pairfinder("cat",["[","]"])[1]])
-print(compress)
+print("A1",compress)
 #print("checking vision",AutoVision(7,pairfinder("cat",["[","]"])[1]))
 ##print(Vision(compress,["c","a","t"],1))
 print("try L >1 ")
 theinput = "[c,[t,[a],[t]],cat]"
 #theinput = ["c",["t",["a"],["t"]],"cat"]
-print("what is the string to use for manual numbering?", str(theinput))
-LL = Addresspls([str(theinput),["c","a","t","[","]",","," ","'"],[],pairfinder(theinput,["[","]"])[1],pairfinder(theinput,["[","]"])[1]])
+print("what is the string to use for manual numbering?", theinput)
+LL = Addresspls([theinput,["c","a","t","[","]",","," ","'"],["[","]"],pairfinder(theinput,["[","]"])[1],pairfinder(theinput,["[","]"])[1]])
 '''
 problem: addresspls gives a "dead" number in the sense that it is the same syntactically (the way it's written) but not semantically because compposing the number doesn't give the "right" values
 '''
-print(LL)
-print("what does pairstrings say","\n", pairfinderSTRING(pairfinder(str(theinput),["[","]"]),str(theinput)),"\n",pairfinder(str(theinput),["[","]"]))
+print("A2",LL)
+##print("what does pairstrings say","\n", pairfinderSTRING(pairfinder(str(theinput),["[","]"]),str(theinput)),"\n",pairfinder(str(theinput),["[","]"]))
 print("check vision arbitrary", Vision(3,["c","a","t","[","]",","," "],3))
 print("check vision", Vision(LL,["c","a","t","[","]",","," "],3))
 #print("checking if at each level you need to have same amt of pairs", AutoVision(550,10))
