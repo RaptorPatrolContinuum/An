@@ -1,3 +1,43 @@
+def pairfinder(string,charpair):
+    #delete pairs:
+    thefuckinganswer = []
+    i = 1
+    #we start at 1 because we are already using for loop AKA for loop assumes we already have 1 level
+    index = 0
+    maxi = 0
+    for x in string:
+        if x == charpair[0]:
+            thefuckinganswer.append([index,i])
+            if i > maxi:
+                maxi = i
+            i+= 1
+        if x == charpair[1]:
+            i= i - 1
+            thefuckinganswer.append([index,i])
+        index += 1
+    return [thefuckinganswer,maxi]
+
+def pairfinderSTRING(finderlist,string):
+    '''
+    takes pairfinder and the original string and returns the right morphemes
+    '''
+    ANS = []
+    Indexers = {}
+    for y in range(1,finderlist[1]+1):
+        Indexers[y] = []
+    for x in finderlist[0]:
+        #print("flist", finderlist)
+        #print("cstats", x, Indexers[x[1]],x[0])
+        '''
+        why is Indexers[x[1]] have a keyerror wtf
+        '''
+        Indexers[x[1]].append(x[0])
+    for y in range(1,finderlist[1]+1):
+        for z in range(0,len(Indexers[y])):
+            if z % 2 == 0:
+                ANS.append(string[Indexers[y][z]:Indexers[y][z+1]+1])
+    return ANS
+
 def fixedeval(theinput):
     #takes a string and preps 'naked' alphanumeric chars as strings:
     fixed = theinput
@@ -15,9 +55,13 @@ def fixedeval(theinput):
         print("g, max",g, len(fixed))
         maxlength = 0
         #print(maxlength)
-        y = fixed[g+1]
+        #y = fixed[g+1]
         #if g+1 < len(fixed):
         #    y = fixed[g+1]
+        try:
+            y = fixed[g+1]
+        except(IndexError):
+            return eval(fixed)
         '''
 
         '''
@@ -70,3 +114,4 @@ print(cnacer)
 #print(fixed[:3])
 #print(fixed[3:])
 print("wtf is the answer", fixedeval(cnacer))
+print(fixedeval("[[c]]"))

@@ -21,9 +21,13 @@ def fixedeval(theinput):
         g = i
         maxlength = 0
         #print(maxlength)
-        y = fixed[g+1]
+        #y = fixed[g+1]
         #if g+1 < len(fixed):
         #    y = fixed[g+1]
+        try:
+            y = fixed[g+1]
+        except(IndexError):
+            return eval(fixed)
         '''
 
         '''
@@ -496,7 +500,88 @@ def InsertAt (List,obj,Index):
         VALUE.append(List[Index + x])
     return VALUE
 
+def Addresspls(info):
+    #info = [string,basis,pairchars,Lval,maxLval]
+    ANS = []
+    Interim = []
+    '''
+    PLAN:
+    make the metaalgorithm first
+    then .... ? ? ? ?
+    recurse somehow
 
+    basis has to be changed
+    ?
+    ?
+    ?
+    '''
+    return 7777777
+
+def AddressplsREMAKE_FROM_SCRATCH(info):
+    #info = [string,basis,pairchars,Lval,maxLval]
+
+    
+    ANS = []
+    Interim = []
+    '''
+    #CHAOS XYZ CHANGE
+    for x in fixedeval(info[0]):
+        print("stats of x",x, pairfinder(str(x),info[2])[1])
+        Interim.append(x)
+
+    '''
+    #print("chexking stats",info)
+    for x in fixedeval(info[0]):
+        print("what is interim?",Interim)
+        print("stats on x", x)
+        #print("stats", info)
+        if pairfinder(str(x),info[2])[1] == 0:
+            try:
+                print("this is append for",x,info[1].index(x))
+                Interim.append(info[1].index(x))
+                #print("111111111111111111check x I1",x,Interim)
+            except(ValueError):
+                #Interim.append(Addresspls([x,info[1],info[2],info[3],info[4]]))
+                #print("222222222222222222check x I2",x,Interim)
+                print("need to check this append!!!!!!!!!!!!!!!!!!!!!!!", x,Addresspls([x,info[1],info[2],info[3]-1,info[4]]))
+                Interim.append(Addresspls([x,info[1],info[2],info[3]-1,info[4]]))
+        else:
+            #IT'S TIME TO STOP
+            if info[3] < 0:
+                print("IT'S TIME TO STOP", info)
+            else:
+                #print("need facts",x,Addresspls([x,info[1],info[2],info[3]-1,info[4]]))
+                #print("IT'S TIME TO CONTINUE",info[0],x,pairfinder(str(x),info[2])[1],info[3],info[3]-1,Addresspls([x,info[1],info[2],info[3]-1,info[4]]))
+                print("IT'S TIME TO CONTINUE",info[0])
+                print("INPUT X",x)
+                print("PAIRFINDER", pairfinder(str(x),info[2])[1])
+                print("BAMBOOZLED",x, Addresspls([x,info[1],info[2],info[3]-1,info[4]]))
+                #[x,info[1],info[2],info[3]-1,info[4]]
+                #Interim.append(Addresspls([x,info[1],info[2],info[3]-1,info[4]]))
+                Interim.append(Addresspls([x,info[1],info[2],info[3]-1,info[4]]))
+                #print("what the fuck does recursion give","\n",info,"\n",[x,info[1],info[2],info[3]-1,info[4]])
+                
+            
+        #print("333333333333333check x",x,Interim)
+    
+    print("AFTER LOOO", Interim, "level", info[3])
+    longest = 0
+    for x in Interim:
+        if x > longest:
+            longest = x
+    #init binary:
+    print("what is longest?",longest)
+    print("bcheck", info[1])
+    print("what the fuck is happening to Interim?", Interim)
+    ANS="1".zfill(int(longest)+1)
+    Interim = list(filter(lambda x: x != longest, Interim))
+    for x in Interim:
+        ANS = ANS[:x] + "1" + ANS[x+1:]
+    print("what is binary ANS?", ANS)
+    print("FML I need to reverse ANS to get actual basis")
+    ANS = int(ANS[::-1], 2)
+    print("What is ANS?",ANS)
+    return ANS
 
 
 '''
@@ -504,7 +589,7 @@ FUCK THIS MIGHT BE WRONG BECAUSE IT DOESN"T GIVE METATHEOREMS????
 MIGHT NEED ANOTHER FUNC FOR THAT
 '''
 
-def Addresspls(info):
+def AddressplsRECURSION(info):
     #info = [string,basis,pairchars,Lval,maxLval]
 
     '''
@@ -514,6 +599,11 @@ def Addresspls(info):
 
     plan: get the number manually
     fucking fix this
+
+
+
+
+    I'M NOT PASSING INTERIM VALUE (?)
     '''
 
 
@@ -528,29 +618,38 @@ def Addresspls(info):
 
     
     for x in fixedeval(info[0]):
-        print(x)
-        print("wtf is failure anymore",pairfinder(str(x),info[2])[1])
+        print("Interim value", Interim)
+        print(x,"GG",fixedeval(info[0]))
+        print("why is failure anymore running twice",str(x),pairfinder(str(x),info[2])[1])
         if pairfinder(str(x),info[2])[1] == 0:
             try:
+                print("iiii",info[1],x,info[1].index(x))
                 Interim.append(info[1].index(x))
             except(ValueError):
                 print("when do I check for fucked up basis")
-                Addresspls([x,info[1],info[2],info[3],info[4]])
+                Interim.append(Addresspls([x,info[1],info[2],info[3],info[4]]))
         else:
-            Addresspls([x,info[1],info[2],info[3],info[4]])
+            Interim.append(Addresspls([x,info[1],info[2],info[3],info[4]]))
     print("where I'm at======================", info[0])
-    print("Interim value", Interim)    
+    print("-------------------Interim value", info[0], Interim)    
     longest = 0
     for x in Interim:
         if x > longest:
             longest = x
     #init binary:
+    print("what is longest?",longest)
+    '''
+    -------------------Interim value ['c'] [0]
+what is longest? 0
+-------------------Interim value2 1
 
+    '''
     ANS="1".zfill(int(longest)+1)
     Interim = list(filter(lambda x: x != longest, Interim))
     for x in Interim:
         ANS = ANS[:x] + "1" + ANS[x+1:]
     ANS = int(ANS, 2)
+    print("-------------------Interim value2", ANS)
     return ANS
 
 #note: this has no cantor pairings
@@ -896,6 +995,7 @@ LL = Addresspls([theinput,["c","a","t","[","]",","," ","'"],["[","]"],pairfinder
 '''
 problem: addresspls gives a "dead" number in the sense that it is the same syntactically (the way it's written) but not semantically because compposing the number doesn't give the "right" values
 '''
+print("WHAT THE FUCK IS WRONG WITH ME",Addresspls(["[[c]]",["c","a","t","[","]",","," ","'"],["[","]"],pairfinder(theinput,["[","]"])[1],pairfinder(theinput,["[","]"])[1]]))
 print("A2",theinput,LL)
 print("check A2", Vision(LL,["c","a","t","[","]",","," ","'"],4))
 ##print("what does pairstrings say","\n", pairfinderSTRING(pairfinder(str(theinput),["[","]"]),str(theinput)),"\n",pairfinder(str(theinput),["[","]"]))
