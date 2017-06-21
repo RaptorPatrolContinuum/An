@@ -13,7 +13,7 @@ def fixedeval(theinput):
     if pairfinder(theinput,["[","]"])[1] == 0:
         return theinput
     i = 0
-    print(fixed,i)
+    #print(fixed,i)
     for x in fixed:
     #for i in range(0,len(fixed)):
         #x = fixed[i]
@@ -982,28 +982,28 @@ def Vision(number,basis,Lval):
 
 #print("checking addresspls")
 compress = Addresspls(["cat",["c","a","t"],["[","]"],pairfinder("cat",["[","]"])[1],pairfinder("cat",["[","]"])[1]])
-print("A1","cat",compress)
-print("checking A1", Vision(compress,["c","a","t"],1))
-print("checking vision",AutoVision(compress,pairfinder("cat",["[","]"])[1]))
+####print("A1","cat",compress)
+####print("checking A1", Vision(compress,["c","a","t"],1))
+####print("checking vision",AutoVision(compress,pairfinder("cat",["[","]"])[1]))
 ##print(Vision(compress,["c","a","t"],1))
-print("try L >1 ")
+####print("try L >1 ")
 #theinput = "[c,[t,[a],[t]],cat]"
 theinput = "[[c],[[t],[a],[t]],[cat]]" #this is proper parens right
 #theinput = ["c",["t",["a"],["t"]],"cat"]
-print("what is the string to use for manual numbering?", theinput)
+####print("what is the string to use for manual numbering?", theinput)
 LL = Addresspls([theinput,["c","a","t","[","]",","," ","'"],["[","]"],pairfinder(theinput,["[","]"])[1],pairfinder(theinput,["[","]"])[1]])
 '''
 problem: addresspls gives a "dead" number in the sense that it is the same syntactically (the way it's written) but not semantically because compposing the number doesn't give the "right" values
 '''
-print("WHAT THE FUCK IS WRONG WITH ME",Addresspls(["[[c]]",["c","a","t","[","]",","," ","'"],["[","]"],pairfinder(theinput,["[","]"])[1],pairfinder(theinput,["[","]"])[1]]))
-print("A2",theinput,LL)
-print("check A2", Vision(LL,["c","a","t","[","]",","," ","'"],4))
+####print("WHAT THE FUCK IS WRONG WITH ME",Addresspls(["[[c]]",["c","a","t","[","]",","," ","'"],["[","]"],pairfinder(theinput,["[","]"])[1],pairfinder(theinput,["[","]"])[1]]))
+####print("A2",theinput,LL)
+####print("check A2", Vision(LL,["c","a","t","[","]",","," ","'"],4))
 ##print("what does pairstrings say","\n", pairfinderSTRING(pairfinder(str(theinput),["[","]"]),str(theinput)),"\n",pairfinder(str(theinput),["[","]"]))
-print("check vision arbitrary", Vision(3,["c","a","t","[","]",","," "],3))
-print("check vision", Vision(LL,["c","a","t","[","]",","," "],3))
+####print("check vision arbitrary", Vision(3,["c","a","t","[","]",","," "],3))
+####print("check vision", Vision(LL,["c","a","t","[","]",","," "],3))
 #print("checking if at each level you need to have same amt of pairs", AutoVision(550,10))
-print("checking if at each level you need to have same amt of pairs", AutoVision(550,3))
-print("I don't know how to check AutoVision", AutoVision(64,3))
+####print("checking if at each level you need to have same amt of pairs", AutoVision(550,3))
+####print("I don't know how to check AutoVision", AutoVision(64,3))
 ##print("check cheat","\n",str(theinput),"\n", Cheat(str(theinput)),"\n",Cheat(str(theinput)),"\n",Cheat("Why [[What [the] fuck] it doesn't look like it works as intended.]"))
 #problem: we need to be given an L-val first instead of figuring it out beforehand... :/
 def AddressplsWRONG(info):
@@ -1028,4 +1028,4 @@ def omg(number):
     x = w - y
     return [x,y]
     
-print("why the fuck is autovision failing", omg(0))
+####print("why the fuck is autovision failing", omg(0))
