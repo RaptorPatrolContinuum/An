@@ -310,12 +310,15 @@ def Cheat(string):
 
 
 def AutoVision(number,Lval):
+    #print("==========statspls", number,Lval)
+    #print("plsonlyonce",Lval,Lval == 1)
     '''
     this is for 
     '''
     ANS = []
     binary = "{0:b}".format(number)[::-1]
     #print("number, binary", number, binary, Lval)
+    #print("thebin",binary)
     if Lval == 1:
         z = number
         w = floor((sqrt(8*z+1)-1)/2)
@@ -323,6 +326,7 @@ def AutoVision(number,Lval):
         y = z - t
         x = w - y
         #print("number, append", number, [x,y])
+        #print("how the fuck do you even get empty pair", number,[x,y])
         ANS.append([x,y])
     else:
         '''
@@ -339,8 +343,13 @@ def AutoVision(number,Lval):
                 '''
                 ANS.append(AutoVision(i,Lval-1))
             i += 1
+        #FUCKING ZERO ALWAYS IS AN EXCEPTION THE DAMN BASTARD
+        if number == 0:
+            #ANS.append(AutoVision(0,Lval-1))
+            ANS.append([[0.0, 0.0]])
+    if ANS == []:
+        print("stats", number,Lval)
     return ANS
-
 #print(AutoVision(128,2))
 #print(AutoVision(1,2))#GOTEM
 #print(AutoVision(78,2))

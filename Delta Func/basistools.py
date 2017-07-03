@@ -1,5 +1,7 @@
 from autocomposer import *
-
+#from Casual import *
+def CantorPair(x,y):
+    return (1/2)*(x+y)*(x+y+1)+y
 
 '''
 FACTS:
@@ -54,7 +56,7 @@ def PERSISTENTfixer(Chi_basis,string):
                 ANS.append(y)
     return ANS
 
-print(PERSISTENTfixer(Chi_basis1,"wtf man") == SomeChi_basis1)
+print(PERSISTENTfixer(SomeChi_basis,"wtf man") == SomeChi_basis)
 
 #now to do address function
 '''
@@ -89,12 +91,70 @@ TEST = "[c,a,t]"
 
 #need: fixedeval
 def AddressThis(Chi_Basis1,string1):
-    FixedBasis = PERSISTENTfixer(Chi_basis1,string1)
-    ANS = 0
+    print("oldbasis", Chi_Basis1)
+    FixedBasis = PERSISTENTfixer(Chi_Basis1,string1)
+    print("basus is", FixedBasis)
+    ANS = []
+    i = 0
+    Interim = []
     for x in fixedeval(string1):
         try:
+            print(string1,i,x,[FixedBasis.index(i),FixedBasis.index(x)],CantorPair(FixedBasis.index(i),FixedBasis.index(x)))
+            Interim.append(CantorPair(FixedBasis.index(i),FixedBasis.index(x)))
             #???FixedBasis.index([])
         except(ValueError,IndexError):
+            print("F U C K")
+        i+=1
+    print("Interim is this guy",Interim)
+    #===
+
+    longest = 0
+    for x in Interim:
+        if x > longest:
+            longest = x
+    #init binary:
+    #print("what is longest?",longest)
+    #print("what the fuck is happening to Interim?", Interim)
+    ANS="1".zfill(int(longest)+1)
+    Interim = list(filter(lambda x: x != longest, Interim))
+    for x in Interim:
+        ANS = ANS[:int(x)] + "1" + ANS[int(x+1):]
+    #print("what is binary ANS?", ANS)
+    #print("FML I need to reverse ANS to get actual basis")
+    ANS = int(ANS[::-1], 2)
+    #print("What is ANS?",ANS)
+    '''
+    HOW TO FIGURE OUT L-VAL
+    def: L-val is where the object lives in:
+    example:
+    single elements are in L == 1
+    collection like "cat" are in L == 2,
+    etc..
+    '''
+    
+
     return ANS
 
-print(fixedeval(TEST)[0][0])  
+
+
+
+thenumber = AddressThis([],TEST)
+print(thenumber)
+print(AutoVision(thenumber,2))
+
+print(CantorPair(300,200))
+print(AutoVision(int(CantorPair(300,200)),1))
+print("turn your lvoe around")
+print(AutoVision(30000,4))
+print("ffffffffffffffffff")
+def manualkys(number):
+    z = number
+    w = floor((sqrt(8*z+1)-1)/2)
+    t = (w*w+w)/2
+    y = z - t
+    x = w - y
+    print([x,y])
+manualkys(0)
+print("{0:b}".format(0)[::-1])
+
+
