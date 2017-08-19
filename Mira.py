@@ -8,6 +8,11 @@ memory = open('Memory.txt', 'r+')
 
 def ARB(function, replacelist):
     '''
+    ANSWER:
+    need to map everything to concept space
+    then ARB is just a basis remapping
+
+
     god fucking damn it I hate writing one function I just want to abstract as fast as possible
 
     FML IF I HAD A CONVERTER TO CONCEPT SPACE STRUCTURE I COULD DO THIS ALMOST INSTANTLY
@@ -169,7 +174,7 @@ def Compose(f1,f2):
                 ALG.append([x[0],y[1]])
     return ALG
 
-def M_compose(alg1, alg2):
+def M_Compose(alg1, alg2):
     '''
     do ALG2 THEN ALG1!!!!
     problem: what if alg2 or alg1 don't map to functions???
@@ -182,11 +187,50 @@ def M_compose(alg1, alg2):
     #construct f1 and f2
     for x in alg1:
         f1.append(x[1])
+    for x in alg2:
+        f2.append(x[1])
     #check if they are functions
-    
+    if fCheck(f1) == False or fCheck(f2) == False:
+        print("f1 is function?", fCheck(f1), "f2 is function?", fCheck(f2))
+        return
     #compose them
-    
-    return ALG
+    return Compose(f1,f2)
+
+def PreImage(f1):
+    ANS = []
+    #check if f is a function:
+    if fCheck(f1) == False:
+        print("f1 is function?", fCheck(f1))
+        return
+    #reverse pair ordering:
+    for x in f1:
+        ANS.append([x[1],x[0]])
+    return ANS
+
+def Inspector_M(y):
+    '''
+    Inspector (y) = M_(y) compose M_^(-1)(y)
+
+    (here we assume that y is already M_y!!!!!)
+    '''
+    #check if y is a function:
+    if fCheck(y) == False:
+        print("y is function?", fCheck(y))
+        return
+    return Compose(y,PreImage(y))
+
+def Elem(x,y):
+    '''
+    #1: why is this important?
+    >>>ALL THE FUNCTIONS ARE IN THE CONCEPT SPACE
+
+
+    this function says if x in y or not:
+    idea:
+    Q_(x) compose Inspector(y)
+    Inspector (y) = M_(y) compose M_^(-1)(y)
+    '''
+    return Compose(Q_(x),)
 
 def pairfinder(string,charpair):
     #delete pairs:
@@ -401,10 +445,13 @@ while True:
         #print("fml", Address(basislist,M_(inputtext)))
         print(AutoVision(Address(basislist,M_(inputtext)),1))
         #test
-        #f2 = [[4,5]]
-        #f1 = [[3,1],['g','t'],['r','y'],['y',"art"],[7,7],[90,9],[0,9],['o','o']]
-        #print(f1)
-        #print(f2)
-        #print(Compose(f1,f2))
-        #testing
-        print(getsourcelines(M_))
+        f2 = [[4,5],['r','g'],[1,3],[7,7],["t","y"],[555,33],[8746,8946]]
+        f1 = [[3,1],['g','t'],['r','y'],['y',"art"],[7,7],[90,9],[0,9],['o','o']]
+        print(f1)
+        print(f2)
+        print(Compose(f1,f2))
+        print(M_Compose(M_(f1),M_(f2)))
+        print(PreImage(f1))
+        print("more tests!")
+        print(M_(f2))
+        print(Inspector_M(M_(f2)))
