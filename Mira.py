@@ -117,11 +117,11 @@ def Address(basis,obj):
     '''
     Interim = []
     for x in obj:
-        print("Cantor Data", basis.index(x[0]),basis.index(x[1]))
+        #print("Cantor Data", basis.index(x[0]),basis.index(x[1]))
         Interim.append(CantorPair(basis.index(x[0]),basis.index(x[1])))
     
     ANS="1".zfill(int(max(Interim))+1)
-    print("need Interim Data", Interim)
+    #print("need Interim Data", Interim)
     Interim = list(filter(lambda x: x != max(Interim), Interim))
     for x in Interim:
         ANS = ANS[:int(x)] + "1" + ANS[int(x)+1:]
@@ -141,7 +141,7 @@ def AutoVision(number,Lval):
     #print("first index must match", str(binary).index('1'))
     #so we're going the right direction
     if Lval == 1:
-        print("right choice!")
+        #print("right choice!")
         indexer = 0
         for d in str(binary):
             if d == '1':
@@ -219,7 +219,7 @@ def Inspector_M(y):
         return
     return Compose(y,PreImage(y))
 
-def Elem(x,y):
+def Elem_My(x,y):
     '''
     #1: why is this important?
     >>>ALL THE FUNCTIONS ARE IN THE CONCEPT SPACE
@@ -230,7 +230,19 @@ def Elem(x,y):
     Q_(x) compose Inspector(y)
     Inspector (y) = M_(y) compose M_^(-1)(y)
     '''
-    return Compose(Q_(x),)
+    if len(Compose(Q_(x),Inspector_M(y))) > 0:
+        return True
+    else:
+        return False
+
+def VisionBasis(basis,vision):
+    ANS = []
+    if fCheck(vision) == False:
+        print("vision is function?", fCheck(vision))
+        return
+    for x in vision:
+        ANS.append([basis[int(x[0])],basis[int(x[1])]])
+    return ANS
 
 def pairfinder(string,charpair):
     #delete pairs:
@@ -402,6 +414,17 @@ while True:
     else:
         '''
         What's the plan?
+
+        for U unknown, see M_U
+        fix basis to accomodate info
+        \omega(I_basis_U,U) & vision
+        eval info: M_U compose MIRA and M_U in MIRA?
+        append basus w/ M_U compose MIRA and M_U in MIRA
+        pattern recognition:
+        ~
+        \cong
+        "use delta < some # " and look in some topo space
+        append basis again
         
         '''
         #init basis
@@ -443,15 +466,45 @@ while True:
 
         #print("basislist", basislist)
         #print("fml", Address(basislist,M_(inputtext)))
-        print(AutoVision(Address(basislist,M_(inputtext)),1))
+        #print(AutoVision(Address(basislist,M_(inputtext)),1))
         #test
-        f2 = [[4,5],['r','g'],[1,3],[7,7],["t","y"],[555,33],[8746,8946]]
-        f1 = [[3,1],['g','t'],['r','y'],['y',"art"],[7,7],[90,9],[0,9],['o','o']]
-        print(f1)
-        print(f2)
-        print(Compose(f1,f2))
-        print(M_Compose(M_(f1),M_(f2)))
-        print(PreImage(f1))
-        print("more tests!")
-        print(M_(f2))
-        print(Inspector_M(M_(f2)))
+        #f2 = [[4,5],['r','g'],[1,3],[7,7],["t","y"],[555,33],[8746,8946]]
+        #f1 = [[3,1],['g','t'],['r','y'],['y',"art"],[7,7],[90,9],[0,9],['o','o']]
+        #print(f1)
+        #print(f2)
+        #print(Compose(f1,f2))
+        #print(M_Compose(M_(f1),M_(f2)))
+        #print(PreImage(f1))
+        #print("more tests!")
+        #print(M_(f2))
+        #print(Inspector_M(M_(f2)))
+        #print(Elem_My(['r','g'],Inspector_M(M_(f2))))
+        #print(Elem_My([''],Inspector_M(M_(f2))))
+
+
+
+
+        #for U unknown, see M_U
+        print("what is input", inputtext)
+        print(M_(inputtext))
+        #\omega(I_basis_U,U) & vision
+        ##print("fml", Address(basislist,M_(inputtext)))
+        ##print(AutoVision(Address(basislist,M_(inputtext)),1))
+        ##print(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)))
+
+        #eval info: M_U compose MIRA and M_U in MIRA?
+        for x in memorylist:
+            print(memorylist)
+            print(Compose(x,M_(inputtext)))
+
+        Elem_My(M_(inputtext),Inspector_M(M_(memorylist)))
+        
+        #memorylist = list of functions
+
+        
+        #append basis w/ M_U compose MIRA and M_U in MIRA
+        #pattern recognition:
+        #~
+        #\cong
+        #"use delta < some # " and look in some topo space
+        #append basis again
