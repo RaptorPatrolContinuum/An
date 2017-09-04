@@ -90,24 +90,27 @@ while True:
         ##test SI condition: I_G \circ phi, number and I_H \circ phi, number
         print("TESTING SI CONDITION ON A BASIC LEVEL")
         '''
-        G = fml, I_G = [[f,1],[m,2][l,3]] = ["f","m","l","0","1","2"]
-        H = abc, I_H = [[a,1],[b,3],[c,3]] = ["a","b","c","0","1","2"]
-        DID I FUCK UP THE ORDER???
-        no i didn't but the address func in python just takes the actual object instead of the index of the obj
-        REMAKE ADDRESS FUNC
-    
-        
-        new graph is abc
-        phi is gonna be
-        [["f","a"],["m","b"],["l","c"],["a","f"],["b","m"],["c","l"]]
         
         '''
-        print("fml", Address(["f","m","l","0","1","2"],M_("fml")))
-        print("abc", Address(["a","b","c","0","1","2"],M_("abc")))
-        #print("CAN'T FUCKING READ",Minv_(["f","m","l","0","1","2"]))
-        #print("wtf does compose give", Compose(Minv_(["f","m","l","0","1","2"]),[["f","a"],["m","b"],["l","c"],["a","f"],["b","m"],["l","c"]]))
-        print("I_G circ phi")
-        print(Address(toString(PreImage(Compose(Minv_(["a","b","c","0","1","2"]),[["f","a"],["m","b"],["l","c"],["a","f"],["b","m"],["c","l"]]))),M_("fml")))
-        print("I_H circ phi")
-        print(Address(toString(PreImage(Compose(Minv_(["f","m","l","0","1","2"]),[["f","a"],["m","b"],["l","c"],["a","f"],["b","m"],["c","l"]]))),M_("abc")))
+        V_G = ["A","B","C","H"]
+        E_G = [["A","B"],["B","C"],["C","H"],["H","B"],["H","A"]]
+        Basis_G = V_G + E_G + rchi(E_G)
 
+        #print(Minv_(Basis_G))
+        print("ARU", AddressFunc(Minv_(Basis_G),E_G))
+        #print(AutoVision(AddressFunc(Minv_(Basis_G),E_G),1))
+        print(AutoVisionHAX(AutoVision(AddressFunc(Minv_(Basis_G),E_G),1),M_(Basis_G)))
+
+        V_H = ["Z","Y","X","V"]
+        E_H = [["Z","Y"],["Y","X"],["X","V"],["V","Y"],["V","Z"]]
+        Basis_H = V_H + E_H + rchi(E_H)
+        print("TACHI", AddressFunc(Minv_(Basis_H),E_H))
+        print(AutoVisionHAX(AutoVision(AddressFunc(Minv_(Basis_H),E_H),1),M_(Basis_H)))
+
+        phi = [["A","Z"],["B","Y"],["C","X"],["H","V"],["Z","A"],["Y","B"],["X","C"],["V","H"]]
+        #condition is: (I_B_G compose phi, H),(I_B_H compose phi, G)
+        print("fuck I feel like compose will miss a lot", Compose(Minv_(Basis_G),phi))
+        print("G,H", AddressFunc(Compose(Minv_(Basis_G),phi),E_H))
+        print("H,G", AddressFunc(Compose(Minv_(Basis_H),phi),E_G))
+        
+        

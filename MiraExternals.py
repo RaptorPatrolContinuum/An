@@ -124,11 +124,35 @@ def toString(f):
     '''
     ANS = ""
     if fCheck(f) == False:
-        print("f1 is function?", fCheck(f1))
+        print("f1 is function? toString", fCheck(f1))
         return
     for x in f:
         ANS = ANS + x[1]
     print("hoping lists retain some kind of order",f,ANS)
+    return ANS
+
+def Beta_(obj):
+    '''
+    fuck this is an almost useless function
+    here we make the basis = \rchi_obj union obj
+    '''
+    ANS = []
+    i = 0
+    for x in obj:
+        ANS.append(x)
+        ANS.append([x,i])
+        i += 1
+    for y in range(i):
+        #oh shit this is crazy because by the Duality theorem + kuratowski pair lemma that means these are actual numbers
+        ANS.append([y,y])
+    return ANS
+
+def rchi(obj):
+    ANS = []
+    i = 0
+    for x in obj:
+        ANS.append(str(i))
+        i += 1
     return ANS
 
 def Address(basis,obj):
@@ -139,8 +163,8 @@ def Address(basis,obj):
     '''
     Interim = []
     for x in obj:
-        print("wat is x?", x, type(x), basis)
-        print("Cantor Data", basis.index(x[0]),basis.index(x[1]))
+        #print("wat is x?", x, type(x), basis)
+        #print("Cantor Data", basis.index(x[0]),basis.index(x[1]))
         Interim.append(CantorPair(basis.index(x[0]),basis.index(x[1])))
     
     ANS="1".zfill(int(max(Interim))+1)
@@ -149,6 +173,43 @@ def Address(basis,obj):
     for x in Interim:
         ANS = ANS[:int(x)] + "1" + ANS[int(x)+1:]
     ANS = int(ANS[::-1], 2)
+    return ANS
+
+def AddressFunc(index,obj):
+    '''
+    index is a finitefunction going from objects -> rchi objects
+    object is the finitefunction we are addressing
+    
+
+    takes a function and optionally an index
+    returns the address
+    NOTE: THIS FUNC TAKES THE ALGORITHM OF THE OBJECT
+
+    option: algorithm before or after?
+
+    let obj be an arbitrary object (string or list)
+    let index be a written function of the form: func => \rchi+func
+    '''
+    Interim = []
+    
+    for x in obj:
+        Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+    
+    ANS="1".zfill(int(max(Interim))+1)
+    #print("need Interim Data", Interim)
+    Interim = list(filter(lambda x: x != max(Interim), Interim))
+    for x in Interim:
+        ANS = ANS[:int(x)] + "1" + ANS[int(x)+1:]
+    ANS = int(ANS[::-1], 2)
+    return ANS
+
+def AutoVisionHAX(AVlist,replacementlist):
+    '''
+    some hax because I'm a dumbass
+    '''
+    ANS = []
+    for x in AVlist:
+        ANS.append([RelEval(replacementlist,[str(int(x[0]))])[0],RelEval(replacementlist,[str(int(x[1]))])[0]])
     return ANS
 
 def AutoVision(number,Lval):
@@ -188,7 +249,7 @@ def Compose(f1,f2):
     '''
     #check if f1,f2 are functions:
     if fCheck(f1) == False or fCheck(f2) == False:
-        print("f1 is function?", fCheck(f1), "f2 is function?", fCheck(f2))
+        print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
         return
     ALG = []
     for x in f2:
@@ -196,6 +257,23 @@ def Compose(f1,f2):
             if x[1] == y[0]:
                 ALG.append([x[0],y[1]])
     return ALG
+
+def RelEval(f1,arglist):
+    '''
+    "RELationEval"
+    evals f1 using arglist and returns list
+    f1 is finite function
+    arg is singleton
+
+    question: "composing" using list vs 1 obj
+    '''
+    ANS = []
+    for y in arglist:
+        for x in Compose(f1,Q_(y)):
+            ANS.append(x[1])
+    return ANS
+
+    #print(RelEval([[1,2],[2,2],[7,8]],[1,2,7]))
 
 def M_Compose(alg1, alg2):
     '''
@@ -214,7 +292,7 @@ def M_Compose(alg1, alg2):
         f2.append(x[1])
     #check if they are functions
     if fCheck(f1) == False or fCheck(f2) == False:
-        print("f1 is function?", fCheck(f1), "f2 is function?", fCheck(f2))
+        print("f1 is function? M_COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
         return
     #compose them
     return Compose(f1,f2)
@@ -223,7 +301,7 @@ def PreImage(f1):
     ANS = []
     #check if f is a function:
     if fCheck(f1) == False:
-        print("f1 is function?", fCheck(f1))
+        print("f1 is function? PREIMAGE", fCheck(f1))
         return
     #reverse pair ordering:
     for x in f1:
@@ -238,7 +316,7 @@ def Inspector_M(y):
     '''
     #check if y is a function:
     if fCheck(y) == False:
-        print("y is function?", fCheck(y))
+        print("y is function? INSPECTOR", fCheck(y))
         return
     return Compose(y,PreImage(y))
 
