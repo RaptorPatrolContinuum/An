@@ -345,6 +345,77 @@ def VisionBasis(basis,vision):
         ANS.append([basis[int(x[0])],basis[int(x[1])]])
     return ANS
 
+def EdgeSortbyLinks(E_G):
+    Start = {}
+    for x in E_G:
+        if x[0] in Start:
+            Start[x[0]].append(x[1])
+        else:
+            Start[x[0]] = [x[1]]
+    Filter = {}
+    for x in Start:
+        if len(Start[x]) in Filter:
+            Filter[len(Start[x])].append(x)
+        else:
+            Filter[len(Start[x])] = [x]
+    return Filter
+
+def ShittySI(E_G,E_H):
+    '''
+    organize by # of links
+    then make picks
+    test with SI until picks are exhausted
+    if picks are exhausted then G not SI H
+    '''
+
+    if fCheck(E_G) == False or fCheck(E_H) == False:
+        print("shittysi funcchecking E_G is", fCheck(E_G), "E_H is ",fCheck(E_H))
+        return
+    #figure out which one is the bigger one
+
+    if len(E_G) < len (E_H):
+        WLOG = E_H
+        Larger = E_G
+    else:
+        WLOG = E_G
+        Larger = E_H
+    #organize by # of links
+    print(EdgeSortbyLinks(WLOG))
+    print(EdgeSortbyLinks(Larger))
+    smallLinks = EdgeSortbyLinks(WLOG)
+    largeLinks = EdgeSortbyLinks(Larger)
+
+    #rule: we cannot inject a node with X links to a node with <X links
+    #now to make a list of pics for each node in WLOG:
+    LinkPool = {}
+    for x in smallLinks:
+        for y in smallLinks[x]:
+            #compare with largeLinks and check the index
+            print("where am I?",x,smallLinks[x],y)
+            for a in largeLinks:
+                print("stats I can use?", a, largeLinks[a])
+                #print(x, "<=", a, x <= a)
+                if x <= a:
+                    if y in LinkPool:
+                        LinkPool[y] = LinkPool[y] + largeLinks[a]
+                    else:
+                        LinkPool[y] = largeLinks[a]
+                print("Linkpool and sets", LinkPool)
+    print("testing Linkpool", LinkPool)
+    '''
+    there is a "problem" with same size sets
+    #1:
+    {1: ['A', 'B', 'C'], 3: ['H']}
+    {1: ['Z', 'X'], 2: ['Y', 'V']}
+    can't inject H into other graph but other graph might be able to inject into H's graph
+    #2: new theorem:
+    two graphs, A,B of the same edge size:
+    graph A has a node with linksize of X that exceeds all the linksizes of graph B
+    then A not SI B
+    '''
+    
+    return
+
 def pairfinder(string,charpair):
     #delete pairs:
     thefuckinganswer = []

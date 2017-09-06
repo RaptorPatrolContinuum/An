@@ -113,4 +113,6 @@ while True:
         print("G,H", AddressFunc(Compose(Minv_(Basis_G),phi),E_H))
         print("H,G", AddressFunc(Compose(Minv_(Basis_H),phi),E_G))
         
-        
+        E_A = [["A","B"],["B","C"],["C","H"],["H","B"],["H","A"],["H","C"]]
+        E_B = [["Z","Y"],["Y","X"],["X","V"],["V","Y"],["V","Z"],["Y","Z"]]
+        print("Realitytesting",ShittySI(E_A,E_B))        
