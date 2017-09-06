@@ -474,6 +474,7 @@ def ShittySI(E_G,E_H):
     print("newchoice",TheChoice)
     print("newpool",LinkPool)
     #once number of choices >1 then we start picking/alternating
+    # UH F U C K REMEMBER TO EXCLUDE THE CHOICES FROM THE SINGLE PICKS
     return
 
 
