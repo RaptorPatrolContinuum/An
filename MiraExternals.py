@@ -360,6 +360,27 @@ def EdgeSortbyLinks(E_G):
             Filter[len(Start[x])] = [x]
     return Filter
 
+def LinkPoolGen(smallLinks,largeLinks):
+    '''
+    note: the Links are from EdgeSortbyLinks
+    '''
+    LinkPool = {}
+    for x in smallLinks:
+        for y in smallLinks[x]:
+            #compare with largeLinks and check the index
+            #print("where am I?",x,smallLinks[x],y)
+            for a in largeLinks:
+                #print("stats I can use?", a, largeLinks[a])
+                #print(x, "<=", a, x <= a)
+                if x <= a:
+                    if y in LinkPool:
+                        LinkPool[y] = LinkPool[y] + largeLinks[a]
+                    else:
+                        LinkPool[y] = largeLinks[a]
+                #print("Linkpool and sets", LinkPool)
+    #print("testing Linkpool", LinkPool)
+    return LinkPool
+
 def ShittySI(E_G,E_H):
     '''
     organize by # of links
@@ -380,28 +401,16 @@ def ShittySI(E_G,E_H):
         WLOG = E_G
         Larger = E_H
     #organize by # of links
-    print(EdgeSortbyLinks(WLOG))
-    print(EdgeSortbyLinks(Larger))
+    #print(EdgeSortbyLinks(WLOG))
+    #print(EdgeSortbyLinks(Larger))
     smallLinks = EdgeSortbyLinks(WLOG)
     largeLinks = EdgeSortbyLinks(Larger)
 
+    LinkPool = LinkPoolGen(smallLinks,largeLinks)
+
     #rule: we cannot inject a node with X links to a node with <X links
     #now to make a list of pics for each node in WLOG:
-    LinkPool = {}
-    for x in smallLinks:
-        for y in smallLinks[x]:
-            #compare with largeLinks and check the index
-            print("where am I?",x,smallLinks[x],y)
-            for a in largeLinks:
-                print("stats I can use?", a, largeLinks[a])
-                #print(x, "<=", a, x <= a)
-                if x <= a:
-                    if y in LinkPool:
-                        LinkPool[y] = LinkPool[y] + largeLinks[a]
-                    else:
-                        LinkPool[y] = largeLinks[a]
-                print("Linkpool and sets", LinkPool)
-    print("testing Linkpool", LinkPool)
+    
     '''
     there is a "problem" with same size sets
     #1:
@@ -412,9 +421,61 @@ def ShittySI(E_G,E_H):
     two graphs, A,B of the same edge size:
     graph A has a node with linksize of X that exceeds all the linksizes of graph B
     then A not SI B
+
+    for this check:
+    if not all nodes in smalllinks are in LinkPool, say NOT ISOMORPHIC
+    if graph sizes are the same, try this check 
     '''
+    #SI disqualification
+    for x in smallLinks:
+        for y in smallLinks[x]:
+            #print("is y what I'm looking for?",y)
+            if y not in LinkPool:
+                print(y,"not in LinkPool!", LinkPool)
+                print("so NOT ISOMORPHIC!")
+                return False
+    if len(E_G) == len(E_H):
+        smallLinks2 = EdgeSortbyLinks(Larger)
+        largeLinks2 = EdgeSortbyLinks(WLOG)
+        #print(smallLinks2)
+        #print(largeLinks2)
+
+        LinkPool2 = LinkPoolGen(smallLinks2,largeLinks2)
+
+        #SI disqualification
+        for x in smallLinks2:
+            for y in smallLinks2[x]:
+                #print("is y what I'm looking for?",y)
+                if y not in LinkPool2:
+                    print(y,"not in LinkPool!", LinkPool2)
+                    print("so NOT ISOMORPHIC!")
+                    return False
+    print("ok so what do I have?", LinkPool)
+
+    TheChoice = []
     
+    '''
+    rules:
+    choices are mutally exclusive: so if a node can only connect to Y we can't pick Y "earlier" or we mess up the picking
+    idea:
+    list by # of picks, the smaller first
+    and only start alternating when # picks >1
+
+    AddressFunc(index,obj):
+    '''
+    delList = []
+    #filter LinkPool by # choices -> also because each choice is mutually exclusive remove them from the other pools
+    for x in LinkPool:
+        if len(LinkPool[x]) == 1:
+            TheChoice.append([x,LinkPool[x][0]])
+            delList.append(x)
+    for x in delList:
+        del LinkPool[x]
+    print("newchoice",TheChoice)
+    print("newpool",LinkPool)
+    #once number of choices >1 then we start picking/alternating
     return
+
 
 def pairfinder(string,charpair):
     #delete pairs:

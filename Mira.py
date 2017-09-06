@@ -115,4 +115,5 @@ while True:
         
         E_A = [["A","B"],["B","C"],["C","H"],["H","B"],["H","A"],["H","C"]]
         E_B = [["Z","Y"],["Y","X"],["X","V"],["V","Y"],["V","Z"],["Y","Z"]]
-        print("Realitytesting",ShittySI(E_A,E_B))        
+        print("Realitytesting",ShittySI(E_B,E_A))
+        print("test E_G and E_H",ShittySI(E_G,E_H))
