@@ -507,13 +507,23 @@ def ShittySI(E_G,E_H):
     ...
 
     
-    
+    idea:
+    [the choice1, 2, ....]
+    then we need a function that "alternates the last X choices for TheChoice"
+    try alternating the last choice
+    then
+    the last two choices
+    etc
     '''
     Exclusion = []
     for x in LinkPool:
         ThePick = [y for y in LinkPool[x] if y not in Exclusion][0]
         Exclusion.append(ThePick)
         TheChoice = TheChoice + [[x,ThePick],[ThePick,x]]
+
+    if AddressFunc(Compose(Minv_(Beta_(E_H)),TheChoice),E_G) == AddressFunc(Compose(Minv_(Beta_(E_G)),TheChoice),E_H):
+        print("E_G isom to E_H!")
+        return True
         
     print("E_G",E_G)
     print("E_H",E_H)
