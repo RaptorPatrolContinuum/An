@@ -131,12 +131,12 @@ def toString(f):
     print("hoping lists retain some kind of order",f,ANS)
     return ANS
 
-def Beta_(obj):
+def Beta_(E_G):
     '''
-    fuck this is an almost useless function
+    given E_G for some graph G, we return Basis_G
     here we make the basis = \rchi_obj union obj
     '''
-    ANS = []
+    '''
     i = 0
     for x in obj:
         ANS.append(x)
@@ -145,6 +145,22 @@ def Beta_(obj):
     for y in range(i):
         #oh shit this is crazy because by the Duality theorem + kuratowski pair lemma that means these are actual numbers
         ANS.append([y,y])
+    '''
+    ANS = []
+    #check if obj is a function:
+    if fCheck(E_G) == False:
+        print("Beta says that obj isn't a function!", E_G)
+        return
+
+    #construct V_G
+    V_G = []
+    for x in E_G:
+        if x[0] not in V_G:
+            V_G.append(x[0])
+        if x[1] not in V_G:
+            V_G.append(x[1])
+
+    ANS = V_G + E_G + rchi(E_G)
     return ANS
 
 def rchi(obj):
@@ -451,8 +467,6 @@ def ShittySI(E_G,E_H):
                     print("so NOT ISOMORPHIC!")
                     return False
     print("ok so what do I have?", LinkPool)
-
-    TheChoice = []
     
     '''
     rules:
@@ -461,20 +475,54 @@ def ShittySI(E_G,E_H):
     list by # of picks, the smaller first
     and only start alternating when # picks >1
 
-    AddressFunc(index,obj):
+    
     '''
+    TheChoice = []
+    
     delList = []
     #filter LinkPool by # choices -> also because each choice is mutually exclusive remove them from the other pools
     for x in LinkPool:
         if len(LinkPool[x]) == 1:
-            TheChoice.append([x,LinkPool[x][0]])
+            TheChoice = TheChoice + [[x,LinkPool[x][0]],[LinkPool[x][0],x]]
             delList.append(x)
+    #filter out LinkPool[x][0] in the other choices
+    for x in LinkPool:
+        for z in delList:
+            LinkPool[x] = [y for y in LinkPool[x] if y != LinkPool[z][0]]
+        
     for x in delList:
         del LinkPool[x]
-    print("newchoice",TheChoice)
-    print("newpool",LinkPool)
+    
     #once number of choices >1 then we start picking/alternating
-    # UH F U C K REMEMBER TO EXCLUDE THE CHOICES FROM THE SINGLE PICKS
+
+    
+    '''
+    idea:
+    pick one then exhaust that choice on the other sets
+    pick one ....
+    then at the last, test out the SI condition
+    then exhaust all the picks at the last
+    then back up once, and then repeat
+    one the back up is exhausted, repeat again
+    ...
+
+    
+    
+    '''
+    Exclusion = []
+    for x in LinkPool:
+        ThePick = [y for y in LinkPool[x] if y not in Exclusion][0]
+        Exclusion.append(ThePick)
+        TheChoice = TheChoice + [[x,ThePick],[ThePick,x]]
+        
+    print("E_G",E_G)
+    print("E_H",E_H)
+    print("finalchoice",TheChoice)
+    print("newpool",LinkPool)
+    print("???",Minv_(Beta_(E_H)))
+    print("checking address for a sec",Compose(Minv_(Beta_(E_H)),TheChoice))
+    print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),TheChoice),E_G))
+    print("checking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),TheChoice),E_H))
     return
 
 
