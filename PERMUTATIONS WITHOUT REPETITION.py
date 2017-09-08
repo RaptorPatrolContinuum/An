@@ -8,6 +8,13 @@ def ran(func):
         ANS.append(x[1])
     return ANS
 
+def dom(func):
+    ANS = []
+    for x in func:
+        ANS.append(x[0])
+    return ANS
+
+
 LinkAlg = []
 
 TheChoice = []
@@ -27,6 +34,25 @@ for x in LinkPool:
         #since I know how to make the 8*4! "as a matrix (for real???)" then I can just relabel them as I please
         #also, if at any point I "run out" of node picks, then I should skip that choice
         
+        #for each tail end path, fix the start of choice and then cross product the tail end
+        #then for each new tail end, mess with the bases a little bit and reset
+        
+        PotentialPicks = []
+        for i in range(-1,-len(Exclusion)-1,-1):
+            #want: I want the size of picks per node
+            #print("exclusion",Exclusion)
+            #print("sayonara",dom(Exclusion),Exclusion[i][0])
+            #print("ame",[t for t in Exclusion if t[0] != Exclusion[i][0]])
+            #print("Im exhusted already",LinkPool[Exclusion[i][0]])
+            #print("WTF is this nesting level", [y for y in LinkPool[Exclusion[i][0]] if y not in ran([t for t in Exclusion if t[0] != Exclusion[i][0]])])
+            #print("nani?",i,Exclusion,Exclusion[i][0],len(LinkPool[Exclusion[i][0]]))
+            #PotentialPicks.append([Exclusion[i][0],len([y for y in LinkPool[Exclusion[i][0]] if y not in ran([t for t in Exclusion if t[0] != Exclusion[i][0]])])])
+            #print("so exhausted",PotentialPicks)
+
+            #abuse fact: we know that all these sets should be nested (how to use??????), so it guarantees the fact that picking "earlier" means the size of each set "after" is -1 by each earlier pick
+            print(dom(Exclusion).index(Exclusion[i][0])+1,LinkPool[Exclusion[i][0]],len(LinkPool[Exclusion[i][0]])-dom(Exclusion).index(Exclusion[i][0]))
+
+
 
 '''
 NEW IDEA:
