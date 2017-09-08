@@ -397,6 +397,7 @@ def LinkPoolGen(smallLinks,largeLinks):
     #print("testing Linkpool", LinkPool)
     return LinkPool
 
+
 def ShittySI(E_G,E_H):
     '''
     organize by # of links
@@ -516,14 +517,32 @@ def ShittySI(E_G,E_H):
     etc
     '''
     Exclusion = []
+    Vertices = []
+    print("what the ", LinkPool)
+    print("I need to make all possible choices!==", TheChoice)
     for x in LinkPool:
+        Vertices.append(x)
         ThePick = [y for y in LinkPool[x] if y not in Exclusion][0]
         Exclusion.append(ThePick)
         TheChoice = TheChoice + [[x,ThePick],[ThePick,x]]
 
+    
+    path = len(Vertices) - 1
+
+    print("I need to make all possible choices!BBBBBB", TheChoice)
     if AddressFunc(Compose(Minv_(Beta_(E_H)),TheChoice),E_G) == AddressFunc(Compose(Minv_(Beta_(E_G)),TheChoice),E_H):
         print("E_G isom to E_H!")
         return True
+    else:
+        #go "down" the "current path" or "go back"
+        #go back
+        if len([y for y in LinkPool[Vertices[path]] if y not in Exclusion]) == 1:
+            path = path -1
+            #reset exclusion
+            Exclusion = []
+        #down current path
+            
+        #if we have exhausted the space, say False and NOT ISOMORPHIC
         
     print("E_G",E_G)
     print("E_H",E_H)
