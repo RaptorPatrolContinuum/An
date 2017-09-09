@@ -19,6 +19,7 @@ LinkAlg = []
 
 TheChoice = []
 Exclusion = []
+TheSize = []
 
 for x in LinkPool:
     LinkAlg.append(x)
@@ -51,6 +52,25 @@ for x in LinkPool:
 
             #abuse fact: we know that all these sets should be nested (how to use??????), so it guarantees the fact that picking "earlier" means the size of each set "after" is -1 by each earlier pick
             print(dom(Exclusion).index(Exclusion[i][0])+1,LinkPool[Exclusion[i][0]],len(LinkPool[Exclusion[i][0]])-dom(Exclusion).index(Exclusion[i][0]))
+            TheSize.append(len(LinkPool[Exclusion[i][0]])-dom(Exclusion).index(Exclusion[i][0]))
+        
+        Consistency = []
+        for G in TheSize:
+            if len(Consistency) > 0:
+                ConsistencyNew = []
+                for H in range(0,G):
+                    #ConsistencyNew = []
+                    print("for J in Consisency",Consistency)
+                    for J in Consistency:
+                        print("ConsistencyNew before append", ConsistencyNew)
+                        print("no exclusions yet or substitutions",G,H,J,J + [H])
+                        ConsistencyNew.append(J + [H])
+                print("what is ConsistencyNEw before reset?", ConsistencyNew)
+                Consistency = ConsistencyNew
+            else:
+                for H in range(0,G):
+                    Consistency.append([H])
+        print("stats",Consistency)
 
 
 
