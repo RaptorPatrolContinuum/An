@@ -536,6 +536,7 @@ def ShittySI(E_G,E_H):
                     print(y,"not in LinkPool!", LinkPool2)
                     print("so NOT ISOMORPHIC!")
                     return False
+    #ORGANIZE LINKPOOL FROM SMALLEST TO LARGEST
     print("ok so what do I have?", LinkPool)
     
     '''
