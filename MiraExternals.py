@@ -397,6 +397,60 @@ def LinkPoolGen(smallLinks,largeLinks):
     #print("testing Linkpool", LinkPool)
     return LinkPool
 
+def PhiConstruct(IndexRan,LinkPool):
+    '''
+    IndexRan is a function where node corresponds to a list of indices that correspond to a number in LinkPool
+    EX: [['A',0],['B',1],['C',0]]
+    LinkPool is a dictionary that has nodes and possible node links
+    EX: LinkPool = {'A': ['X', 'Z', 'Y'], 'B': ['X', 'Z', 'Y'], 'C': ['X', 'Z', 'Y', 'G', 'H', 'I']}
+
+    REMEMBER: Each pick is mutually exclusive, so if you pick node X then you can't pick node X again but if node X has index Y index Y can appear again but it will NOT be node X
+    RETURN: TheChoice: finite function phi that can be used to check SI
+    '''
+    TheChoice = []
+    Exclusion = []
+    for x in IndexRan:
+        ThePick = [y for y in LinkPool[x[0]] if y not in ran(Exclusion)][x[1]]
+        Exclusion.append([x[0],ThePick])
+        TheChoice = TheChoice + [[ThePick,x[0]],[x[0],ThePick]]
+    
+    return TheChoice
+
+def PermutePrep(LinkPool):
+    TheSize = []
+    TheList = []
+    i = 0
+    for x in LinkPool:
+        TheSize.append([x,len(LinkPool[x]) - i])
+        TheList.append(x)
+        i += 1
+    print("what is the size?",TheSize)
+    #NOTE: BECAUSE THERE ARE REPEATS IN THE NUMBERS, YOU NEED TO FILTER OUT THE SETS
+    #idea: once you are done with making a candidate, you construct phi by sequentially picking from the first set and excluding that pick from the rest, then construct phi and test SI
+		
+    Consistency = []
+    for G in TheSize:
+        if len(Consistency) > 0:
+            ConsistencyNew = []
+            for H in range(0,G[1]):
+                for J in Consistency:
+                    Appendage = J + [H]
+                    ConsistencyNew.append(Appendage)
+                    print("check if J + [H] length can be used to insert the SI condition", J + [H],len(J + [H]))
+                    if len(Appendage) == len(LinkPool):
+                        #construct phi
+                        #RULE: construct phi sequentially by picking from first set and excluding that pick from the rest
+                        Indexer = []
+                        for i in range(0,len(TheList)):
+                            Indexer.append([TheList[i],Appendage[i]])
+                        PhiConstruct(Indexer,LinkPool)
+
+            Consistency = ConsistencyNew
+        else:
+            for H in range(0,G[1]):
+                Consistency.append([H])
+    print("stats",Consistency)
+    return 
 
 def ShittySI(E_G,E_H):
     '''
