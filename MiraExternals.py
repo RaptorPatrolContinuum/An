@@ -76,6 +76,18 @@ def SynSplit(string):
     '''
     return
 
+def ran(func):
+    ANS = []
+    for x in func:
+        ANS.append(x[1])
+    return ANS
+
+def dom(func):
+    ANS = []
+    for x in func:
+        ANS.append(x[0])
+    return ANS
+
 def M_(thestr):
     ANS = []
     i = 0
@@ -413,10 +425,9 @@ def PhiConstruct(IndexRan,LinkPool):
         ThePick = [y for y in LinkPool[x[0]] if y not in ran(Exclusion)][x[1]]
         Exclusion.append([x[0],ThePick])
         TheChoice = TheChoice + [[ThePick,x[0]],[x[0],ThePick]]
-    
     return TheChoice
 
-def PermutePrep(LinkPool):
+def PermutePrep(LinkPool,E_G,E_H):
     TheSize = []
     TheList = []
     i = 0
@@ -424,11 +435,11 @@ def PermutePrep(LinkPool):
         TheSize.append([x,len(LinkPool[x]) - i])
         TheList.append(x)
         i += 1
-    print("what is the size?",TheSize)
     #NOTE: BECAUSE THERE ARE REPEATS IN THE NUMBERS, YOU NEED TO FILTER OUT THE SETS
     #idea: once you are done with making a candidate, you construct phi by sequentially picking from the first set and excluding that pick from the rest, then construct phi and test SI
 		
     Consistency = []
+    ###print("LinkPool wtf?",LinkPool)
     for G in TheSize:
         if len(Consistency) > 0:
             ConsistencyNew = []
@@ -436,7 +447,7 @@ def PermutePrep(LinkPool):
                 for J in Consistency:
                     Appendage = J + [H]
                     ConsistencyNew.append(Appendage)
-                    print("check if J + [H] length can be used to insert the SI condition", J + [H],len(J + [H]))
+                    ###print("appendage?",Appendage,len(Appendage) == len(LinkPool))
                     if len(Appendage) == len(LinkPool):
                         #construct phi
                         #RULE: construct phi sequentially by picking from first set and excluding that pick from the rest
@@ -444,13 +455,17 @@ def PermutePrep(LinkPool):
                         for i in range(0,len(TheList)):
                             Indexer.append([TheList[i],Appendage[i]])
                         PhiConstruct(Indexer,LinkPool)
-
+                        print("do I get here?")
+                        print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G))
+                        print("checking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H))
+                        if AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G) == AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H):
+                            return True
+    
             Consistency = ConsistencyNew
         else:
             for H in range(0,G[1]):
                 Consistency.append([H])
-    print("stats",Consistency)
-    return 
+    return "should say false"
 
 def ShittySI(E_G,E_H):
     '''
@@ -529,9 +544,7 @@ def ShittySI(E_G,E_H):
     idea:
     list by # of picks, the smaller first
     and only start alternating when # picks >1
-
     
-    '''
     TheChoice = []
     
     delList = []
@@ -549,7 +562,10 @@ def ShittySI(E_G,E_H):
         del LinkPool[x]
     
     #once number of choices >1 then we start picking/alternating
-
+    '''
+    
+    
+    
     
     '''
     idea:
@@ -569,7 +585,9 @@ def ShittySI(E_G,E_H):
     then
     the last two choices
     etc
-    '''
+
+
+    
     Exclusion = []
     Vertices = []
     print("what the ", LinkPool)
@@ -598,15 +616,17 @@ def ShittySI(E_G,E_H):
             
         #if we have exhausted the space, say False and NOT ISOMORPHIC
         
-    print("E_G",E_G)
-    print("E_H",E_H)
-    print("finalchoice",TheChoice)
-    print("newpool",LinkPool)
-    print("???",Minv_(Beta_(E_H)))
-    print("checking address for a sec",Compose(Minv_(Beta_(E_H)),TheChoice))
-    print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),TheChoice),E_G))
-    print("checking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),TheChoice),E_H))
-    return
+    '''
+    
+    #print("E_G",E_G)
+    #print("E_H",E_H)
+    #print("finalchoice",TheChoice)
+    #print("newpool",LinkPool)
+    #print("???",Minv_(Beta_(E_H)))
+    #print("checking address for a sec",Compose(Minv_(Beta_(E_H)),TheChoice))
+    #print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),TheChoice),E_G))
+    #print("checking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),TheChoice),E_H))
+    return PermutePrep(LinkPool,E_G,E_H)
 
 
 def pairfinder(string,charpair):
