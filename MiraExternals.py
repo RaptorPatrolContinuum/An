@@ -448,17 +448,17 @@ def PermutePrep(LinkPool,E_G,E_H):
             LinkPoolList.append([x,LinkPool[x]])
         else:
             for y in LinkPoolList:
-                print("what is LinkPoolList?",LinkPoolList)
-                print("the stuff",LinkPool[x] , y[1])
-                print("the test",len(LinkPool[x]) >= len(y[1]))
+                #print("what is LinkPoolList?",LinkPoolList)
+                #print("the stuff",LinkPool[x] , y[1])
+                #print("the test",len(LinkPool[x]) >= len(y[1]))
                 if len(LinkPool[x]) <= len(y[1]):
                     LinkPoolList = InsertAt(LinkPoolList,[x,LinkPool[x]],LinkPoolList.index(y))
                     break
                 else:
                     LinkPoolList.append([x,LinkPool[x]])
                     break
-                print("LinkPoolList UPdate?",LinkPoolList)
-    print("testing LinkPoolList",LinkPoolList)
+                #print("LinkPoolList UPdate?",LinkPoolList)
+    #print("testing LinkPoolList",LinkPoolList)
     
     TheSize = []
     TheList = []
@@ -471,20 +471,19 @@ def PermutePrep(LinkPool,E_G,E_H):
     #idea: once you are done with making a candidate, you construct phi by sequentially picking from the first set and excluding that pick from the rest, then construct phi and test SI
 
     
-    print("Thesize",TheSize)
-    print("TheList",TheList)
+    #print("Thesize",TheSize)
+    #print("TheList",TheList)
     Consistency = []
-    print("RAN OF LIST TO TEST MAX TEST LENGTH",ran(TheSize))
     for G in TheSize:
         if len(Consistency) > 0:
             ConsistencyNew = []
-            print("test G and G[1]",G)
-            print(G[1])
+            #print("test G and G[1]",G)
+            #print(G[1])
             for H in range(0,G[1]):
                 for J in Consistency:
                     Appendage = J + [H]
                     ConsistencyNew.append(Appendage)
-                    print("appendage?",Appendage,len(Appendage) == len(LinkPool))
+                    #print("appendage?",Appendage,len(Appendage) == len(LinkPool))
                     if len(Appendage) == len(LinkPool):
                         #construct phi
                         #RULE: construct phi sequentially by picking from first set and excluding that pick from the rest
@@ -492,9 +491,9 @@ def PermutePrep(LinkPool,E_G,E_H):
                         for i in range(0,len(TheList)):
                             Indexer.append([TheList[i],Appendage[i]])
                         PhiConstruct(Indexer,LinkPool)
-                        print("what is phi?",Appendage,PhiConstruct(Indexer,LinkPool))
-                        print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G))
-                        print("checking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H))
+                        #print("what is phi?",Appendage,PhiConstruct(Indexer,LinkPool))
+                        #print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G))
+                        #print("checking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H))
                         if AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G) == AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H):
                             return True
     
@@ -502,7 +501,7 @@ def PermutePrep(LinkPool,E_G,E_H):
         else:
             for H in range(0,G[1]):
                 Consistency.append([H])
-    return "should say false"
+    return False
 
 def ShittySI(E_G,E_H):
     '''
