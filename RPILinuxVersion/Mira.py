@@ -1,7 +1,7 @@
 from MiraExternals import *
 
 while True:
-    inputtext = str(input("Exit or logout to leave \n"))
+    inputtext = str(raw_input("Exit or logout to leave \n"))
     if inputtext == "exit" or inputtext == "logout":
         break
     else:
