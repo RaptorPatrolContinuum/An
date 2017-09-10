@@ -116,9 +116,12 @@ while True:
         E_A = [["A","B"],["B","C"],["C","H"],["H","B"],["H","A"],["H","C"]]
         E_B = [["Z","Y"],["Y","X"],["X","V"],["V","Y"],["V","Z"],["Y","Z"]]
 
-        print("==========================================",print("test E_G and E_H",ShittySI(E_G,E_H)))
+        #print("==========================================", print("test E_G and E_H",ShittySI(E_G,E_H)))
         #REDOING E_G/E_H!!!!!
         E_G = [["A","B"],["B","C"],["C","H"],["H","B"],["H","A"]]
         E_H = [["X","V"],["V","Y"],["V","Z"],["Z","Y"],["Y","X"]]
         #print("Realitytesting",ShittySI(E_B,E_A))
         print("test E_G and E_H",ShittySI(E_G,E_H))
+        print("ok now to sequence through with autovision. because of the 'compression theorem' we just need to expand the basis and not worry about Lvals",AutoVision(30000000,1))
+        #strat: for x,y -> infinity, append to memory SI(vision(x),vision(y))
+        
