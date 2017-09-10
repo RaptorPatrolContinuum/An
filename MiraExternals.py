@@ -409,6 +409,17 @@ def LinkPoolGen(smallLinks,largeLinks):
     #print("testing Linkpool", LinkPool)
     return LinkPool
 
+#insert into a list at the right index
+def InsertAt(List,obj,Index):
+    '''
+    Inserts obj at List[Index] and appends the rest of list after it
+    '''
+    VALUE = List[:Index]
+    VALUE.append(obj)
+    for x in range(0,len(List[Index:])):
+        VALUE.append(List[Index + x])
+    return VALUE
+
 def PhiConstruct(IndexRan,LinkPool):
     '''
     IndexRan is a function where node corresponds to a list of indices that correspond to a number in LinkPool
@@ -428,26 +439,52 @@ def PhiConstruct(IndexRan,LinkPool):
     return TheChoice
 
 def PermutePrep(LinkPool,E_G,E_H):
+    #idea: just make a list with sizes instead of dicking around with LinkPool and rewrite the rest
+    #ADD THEM IN TERMS OF SIZE (since if we made the lists properly they should all include each other if one linkpool is bigger than the other)
+    LinkPoolList = []
+    
+    for x in LinkPool:
+        if len(LinkPoolList) == 0:
+            LinkPoolList.append([x,LinkPool[x]])
+        else:
+            for y in LinkPoolList:
+                print("what is LinkPoolList?",LinkPoolList)
+                print("the stuff",LinkPool[x] , y[1])
+                print("the test",len(LinkPool[x]) >= len(y[1]))
+                if len(LinkPool[x]) <= len(y[1]):
+                    LinkPoolList = InsertAt(LinkPoolList,[x,LinkPool[x]],LinkPoolList.index(y))
+                    break
+                else:
+                    LinkPoolList.append([x,LinkPool[x]])
+                    break
+                print("LinkPoolList UPdate?",LinkPoolList)
+    print("testing LinkPoolList",LinkPoolList)
+    
     TheSize = []
     TheList = []
     i = 0
-    for x in LinkPool:
-        TheSize.append([x,len(LinkPool[x]) - i])
-        TheList.append(x)
+    for x in LinkPoolList:
+        TheSize.append([x,len(x[1]) - i])
+        TheList.append(x[0])
         i += 1
     #NOTE: BECAUSE THERE ARE REPEATS IN THE NUMBERS, YOU NEED TO FILTER OUT THE SETS
     #idea: once you are done with making a candidate, you construct phi by sequentially picking from the first set and excluding that pick from the rest, then construct phi and test SI
-		
+
+    
+    print("Thesize",TheSize)
+    print("TheList",TheList)
     Consistency = []
-    ###print("LinkPool wtf?",LinkPool)
+    print("RAN OF LIST TO TEST MAX TEST LENGTH",ran(TheSize))
     for G in TheSize:
         if len(Consistency) > 0:
             ConsistencyNew = []
+            print("test G and G[1]",G)
+            print(G[1])
             for H in range(0,G[1]):
                 for J in Consistency:
                     Appendage = J + [H]
                     ConsistencyNew.append(Appendage)
-                    ###print("appendage?",Appendage,len(Appendage) == len(LinkPool))
+                    print("appendage?",Appendage,len(Appendage) == len(LinkPool))
                     if len(Appendage) == len(LinkPool):
                         #construct phi
                         #RULE: construct phi sequentially by picking from first set and excluding that pick from the rest
@@ -455,7 +492,7 @@ def PermutePrep(LinkPool,E_G,E_H):
                         for i in range(0,len(TheList)):
                             Indexer.append([TheList[i],Appendage[i]])
                         PhiConstruct(Indexer,LinkPool)
-                        print("do I get here?")
+                        print("what is phi?",Appendage,PhiConstruct(Indexer,LinkPool))
                         print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G))
                         print("checking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H))
                         if AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G) == AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H):
