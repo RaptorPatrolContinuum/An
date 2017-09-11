@@ -35,7 +35,12 @@ just run every hour x
 SIData = open("SIData.txt","r+")
 
 if len(SIData.read()) == 0:
-	print("check what vision shows",AutoVisionString(1,1))
-	print("check stats", ShittySI(AutoVisionString(1,1),AutoVisionString(1,1)))
-	SIData.write(str([[0,0],ShittySI(AutoVisionString(3000,1),AutoVisionString(3000,1))]))
-	
+    tester = AutoVisionString(0,1)
+    print("check what vision shows",tester)
+    print("check stats", ShittySI(tester,tester))
+    SIData.write(str([[tester,tester],ShittySI(tester,tester)]))
+else:
+    #get the last item from SIData
+    #figure out what the last x/y are
+    #continue on
+    Pass	

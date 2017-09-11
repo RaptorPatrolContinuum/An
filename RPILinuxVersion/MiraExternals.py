@@ -277,6 +277,8 @@ def AutoVisionString(number,Lval):
 	go down 1 Lval
 	'''	
         print("ABUSE THE COMPRESSION THEOREM!")
+    if ANS == [] and number == 0:
+        ANS = [['0','0']]
     if ANS == []:
         #print("stats", number,Lval)
         print("ANS IS []???!?!?!?!?!")
@@ -502,7 +504,7 @@ def PermutePrep(LinkPool,E_G,E_H):
                     LinkPoolList.append([x,LinkPool[x]])
                     break
                 #print("LinkPoolList UPdate?",LinkPoolList)
-    print("testing LinkPoolList",LinkPoolList)
+    #print("testing LinkPoolList",LinkPoolList)
     
     TheSize = []
     TheList = []
@@ -515,15 +517,15 @@ def PermutePrep(LinkPool,E_G,E_H):
     #idea: once you are done with making a candidate, you construct phi by sequentially picking from the first set and excluding that pick from the rest, then construct phi and test SI
 
     
-    print("Thesize",TheSize)
-    print("TheList",TheList)
+    #print("Thesize",TheSize)
+    #print("TheList",TheList)
     Consistency = []
     for G in TheSize:
-	print("check consistency",Consistency,len(Consistency) > 0)
+	#print("check consistency",Consistency,len(Consistency) > 0)
         if len(Consistency) > 0:
             ConsistencyNew = []
-            print("test G and G[1]",G)
-            print(G[1])
+            #print("test G and G[1]",G)
+            #print(G[1])
             for H in range(0,G[1]):
                 for J in Consistency:
                     Appendage = J + [H]
@@ -535,7 +537,6 @@ def PermutePrep(LinkPool,E_G,E_H):
                         Indexer = []
                         for i in range(0,len(TheList)):
                             Indexer.append([TheList[i],Appendage[i]])
-                        PhiConstruct(Indexer,LinkPool)
                         #print("what is phi?",Appendage,PhiConstruct(Indexer,LinkPool))
                         #print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G))
                         #print("checking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H))
@@ -544,10 +545,21 @@ def PermutePrep(LinkPool,E_G,E_H):
     
             Consistency = ConsistencyNew
         else:
-	    print("ok so apparently G[1] is super important",G[1])
+	    #print("ok so apparently G[1] is super important",G[1])
             for H in range(0,G[1]):
-		print("ok need to check what H is",[H])
+		#print("ok need to check what H is",[H])
                 Consistency.append([H])
+		#NOTE: When I wake up you need to add the SI ocndition here if there is only one choice for the phi function
+		if len(LinkPoolList) == 1:
+		    Indexer = []
+                    for i in range(0,len(TheList)):
+                        Indexer.append([TheList[i-1],Consistency[i-1][0]])
+		    #print("what is indexer?",Indexer)
+                    #print("what is phi?",PhiConstruct(Indexer,LinkPool))
+		    #print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G))
+                    #print("checking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H))
+                    if AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G) == AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H):
+                        return True
     return False
 
 def ShittySI(E_G,E_H):
@@ -620,7 +632,7 @@ def ShittySI(E_G,E_H):
                     print("so NOT ISOMORPHIC!")
                     return False
     #ORGANIZE LINKPOOL FROM SMALLEST TO LARGEST
-    print("ok so what do I have?", LinkPool)
+    #print("ok so what do I have?", LinkPool)
     
     '''
     rules:
