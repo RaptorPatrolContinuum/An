@@ -227,7 +227,11 @@ def AddressFunc(index,obj):
     Interim = []
     
     for x in obj:
-        Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+        print("stats",x,x[0],int(RelEval(index,x[0])[0]))
+	print("suspected wtf",index,x[1])
+	#RelEval(index,x[1])
+	#"supposed to have [0]",int(RelEval(index,x[1]))
+	Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
     
     ANS="1".zfill(int(max(Interim))+1)
     #print("need Interim Data", Interim)
