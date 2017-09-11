@@ -48,7 +48,6 @@ def ARB(function, replacelist):
          know what is a var and what isn't a var
 
     idea: use positionals (would be too complicated?)
-    
     '''
     NEWEVAL = []
     return NEWEVAL
@@ -116,6 +115,13 @@ def CantorInv(z):
     y = z - t
     x = w - y
     return [x,y]
+
+def CantorInvSTR(z):
+    w = floor((sqrt(8*z+1)-1)/2)
+    t = (w*w+w)/2
+    y = z - t
+    x = w - y
+    return [str(int(x)),str(int(y))]
 
 def fCheck(fcandidate):
     ANS = True
@@ -239,6 +245,44 @@ def AutoVisionHAX(AVlist,replacementlist):
     for x in AVlist:
         ANS.append([RelEval(replacementlist,[str(int(x[0]))])[0],RelEval(replacementlist,[str(int(x[1]))])[0]])
     return ANS
+
+def AutoVisionString(number,Lval):
+    '''
+    idea:
+    I need to feed in a list of strings into address in order to make address work
+    since autovision feeds in ints for some reason
+    '''
+    #print("==========statspls", number,Lval)
+    #print("plsonlyonce",Lval,Lval == 1)
+    '''
+    this is for 
+    '''
+    ANS = []
+    binary = "{0:b}".format(number)[::-1]
+    #print("number, binary", number, binary, Lval)
+    #print("thebin",binary)
+    #print("first index must match", str(binary).index('1'))
+    #so we're going the right direction
+    if Lval == 1:
+        #print("right choice!")
+        indexer = 0
+        for d in str(binary):
+            if d == '1':
+                #print("what is index?", indexer, CantorInv(indexer))
+                ANS.append((CantorInvSTR(indexer)))
+            indexer += 1
+    else:
+        '''
+        for each one, construct the part recursively:
+	go down 1 Lval
+	'''	
+        print("ABUSE THE COMPRESSION THEOREM!")
+    if ANS == []:
+        #print("stats", number,Lval)
+        print("ANS IS []???!?!?!?!?!")
+    return ANS
+
+
 
 def AutoVision(number,Lval):
     #print("==========statspls", number,Lval)
@@ -458,7 +502,7 @@ def PermutePrep(LinkPool,E_G,E_H):
                     LinkPoolList.append([x,LinkPool[x]])
                     break
                 #print("LinkPoolList UPdate?",LinkPoolList)
-    #print("testing LinkPoolList",LinkPoolList)
+    print("testing LinkPoolList",LinkPoolList)
     
     TheSize = []
     TheList = []
@@ -471,14 +515,15 @@ def PermutePrep(LinkPool,E_G,E_H):
     #idea: once you are done with making a candidate, you construct phi by sequentially picking from the first set and excluding that pick from the rest, then construct phi and test SI
 
     
-    #print("Thesize",TheSize)
-    #print("TheList",TheList)
+    print("Thesize",TheSize)
+    print("TheList",TheList)
     Consistency = []
     for G in TheSize:
+	print("check consistency",Consistency,len(Consistency) > 0)
         if len(Consistency) > 0:
             ConsistencyNew = []
-            #print("test G and G[1]",G)
-            #print(G[1])
+            print("test G and G[1]",G)
+            print(G[1])
             for H in range(0,G[1]):
                 for J in Consistency:
                     Appendage = J + [H]
@@ -499,7 +544,9 @@ def PermutePrep(LinkPool,E_G,E_H):
     
             Consistency = ConsistencyNew
         else:
+	    print("ok so apparently G[1] is super important",G[1])
             for H in range(0,G[1]):
+		print("ok need to check what H is",[H])
                 Consistency.append([H])
     return False
 
