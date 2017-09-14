@@ -227,8 +227,8 @@ def AddressFunc(index,obj):
     Interim = []
     
     for x in obj:
-        print("stats",x,x[0],int(RelEval(index,x[0])[0]))
-	print("suspected wtf",index,x[1])
+        #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
+	#print("suspected wtf",index,x[1])
 	#RelEval(index,x[1])
 	#"supposed to have [0]",int(RelEval(index,x[1]))
 	Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
@@ -474,6 +474,7 @@ def PhiConstruct(IndexRan,LinkPool):
     '''
     IndexRan is a function where node corresponds to a list of indices that correspond to a number in LinkPool
     EX: [['A',0],['B',1],['C',0]]
+    THIS MEANS YOU HAVE TO CONSTRUCT THE RANGE OF INDEXRAN SEPARATELY AND USE THAT TO FUCKING TEST SI
     LinkPool is a dictionary that has nodes and possible node links
     EX: LinkPool = {'A': ['X', 'Z', 'Y'], 'B': ['X', 'Z', 'Y'], 'C': ['X', 'Z', 'Y', 'G', 'H', 'I']}
 
@@ -520,7 +521,69 @@ def PermutePrep(LinkPool,E_G,E_H):
     #NOTE: BECAUSE THERE ARE REPEATS IN THE NUMBERS, YOU NEED TO FILTER OUT THE SETS
     #idea: once you are done with making a candidate, you construct phi by sequentially picking from the first set and excluding that pick from the rest, then construct phi and test SI
 
-    
+    #I don't want to fuck with the working code so I'm just going to make a new if statement:
+    print("REAL TESTING")
+    print("E_G",E_G)
+    print("E_H",E_H)
+    print("dom of E_G",dom(E_G))
+    print("ran of E_G",ran(E_G))
+    Zero = []
+    for what in ran(E_G):
+	if what not in dom(E_G):
+	    Zero.append(what)
+    print("do I have an accurate list of Zeronodes?", Zero)
+    Zero2 = []
+    for what in ran(E_H):
+	if what not in dom(E_H):
+	    Zero2.append(what)
+    #make ZeroLinks:
+    ZeroLinksList = []
+    #assume phi is from E_G to E_H
+    for x in Zero:
+        ZeroLinksList.append([x,Zero2])
+    print("test if ZeroLinks works",ZeroLinksList)
+    print("REALTESTING END") 
+
+    ZeroSize = []
+    ZeroList = []
+    i = 0
+    for x in ZeroLinksList:
+	ZeroSize.append([x,len(x[1]) - i])
+	ZeroList.append(x[0])
+        i += 1
+   
+    print("testing ZeroSize", ZeroSize)
+    print("testing ZeroList", ZeroList)
+
+    ZeroPhiIndex = []    
+    for x in ZeroSize:
+	if len(ZeroPhiIndex) > 0:
+            ZeroPhiNew = []
+            for H in range(0,x[1]):
+                for J in ZeroPhiIndex:
+                    Appendage = J + [H]
+                    ZeroPhiNew.append(Appendage)
+                    if len(Appendage) == len(ZeroPool):
+			print("this got fucking complicated again, index is:",ZeroPhiIndex)
+	else:
+	    #print("ok so apparently G[1] is super important",G[1])
+            for H in range(0,x[1]):
+		#print("ok need to check what H is",[H])
+                ZeroPhiIndex.append([H])
+		print("this got fucking complicated again, index is2:",ZeroPhiIndex)
+    #so TRY:
+    #if zeronodes is nonempty and ZeroLinks IS EMPTY, say NOT SI
+    # so asumme we either are doing smaller -> larger or same size -> larger
+
+    #PhiConstrcut(Indexer,LinkPool)
+
+    #if there are nodes that are just end points, then we need to map endpoints to endpoints:
+    #if number of endpoint nodes are diff between the two AND same edge size then just say NOT SI
+    #^^^ this sounds too convoluted wtf
+    #then use two PhiConstructs and append them then test into the large addressfunc
+
+
+
     #print("Thesize",TheSize)
     #print("TheList",TheList)
     Consistency = []
@@ -541,7 +604,20 @@ def PermutePrep(LinkPool,E_G,E_H):
                         Indexer = []
                         for i in range(0,len(TheList)):
                             Indexer.append([TheList[i],Appendage[i]])
+			#print("WTF IS AN INDEXER1!!!!",Indexer)
                         #print("what is phi?",Appendage,PhiConstruct(Indexer,LinkPool))
+			#OK FUCK THIS
+			#if Releval fails we just say NOT SI
+			try: 
+			    AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G) 
+			except IndexError:
+			    print("Address failed so assume NOT SI!")
+			    return False
+			try:
+			    AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H)
+			except IndexError:
+			    print("Address failed so assume NOT SI!")
+			    return False 
                         #print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G))
                         #print("checking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H))
                         if AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G) == AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H):
@@ -554,10 +630,29 @@ def PermutePrep(LinkPool,E_G,E_H):
 		#print("ok need to check what H is",[H])
                 Consistency.append([H])
 		#NOTE: When I wake up you need to add the SI ocndition here if there is only one choice for the phi function
+		#print("what are the graphs?",E_G)
+		#print(E_H)
+		#print("ok now check LinkPoolList",LinkPoolList)
+		#print("check if LinkPool is messed up too",LinkPool)
 		if len(LinkPoolList) == 1:
 		    Indexer = []
                     for i in range(0,len(TheList)):
                         Indexer.append([TheList[i-1],Consistency[i-1][0]])
+		    #print("WTF IS AN INDEXER2",Indexer)
+		    Indexer = []
+                    for i in range(0,len(TheList)):
+                        Indexer.append([TheList[i-1],Consistency[i-1][0]])
+		    print("WTF IS AN INDEXER2",Indexer)
+		    try: 
+		        AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G) 
+		    except IndexError:
+		        print("Address failed so assume NOT SI!")
+		        return False
+		    try:
+		        AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H)
+		    except IndexError:
+		        print("Address failed so assume NOT SI!")
+		        return False 
 		    #print("what is indexer?",Indexer)
                     #print("what is phi?",PhiConstruct(Indexer,LinkPool))
 		    #print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G))
@@ -565,6 +660,18 @@ def PermutePrep(LinkPool,E_G,E_H):
                     if AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G) == AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H):
                         return True
     return False
+
+def Vertex_(E_G):
+    '''
+    takes in an edgelist and returns the vertices of that graph
+    '''
+    ANS = []
+    for x in E_G:
+	if x[0] not in ANS:
+	    ANS.append(x[0])
+	if x[1] not in ANS:
+	    ANS.append(x[1])
+    return ANS
 
 def ShittySI(E_G,E_H):
     '''
@@ -637,7 +744,11 @@ def ShittySI(E_G,E_H):
                     return False
     #ORGANIZE LINKPOOL FROM SMALLEST TO LARGEST
     #print("ok so what do I have?", LinkPool)
-    
+
+    #similar edge count but diff vertex count = NOT SI
+    if len(E_G) == len(E_H) and len(Vertex_(E_G)) != len(Vertex_(E_H)):
+	print("NOT SI by edge and vertex count!",E_G,E_H)
+	return False
     '''
     rules:
     choices are mutally exclusive: so if a node can only connect to Y we can't pick Y "earlier" or we mess up the picking
@@ -726,7 +837,8 @@ def ShittySI(E_G,E_H):
     #print("checking address for a sec",Compose(Minv_(Beta_(E_H)),TheChoice))
     #print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),TheChoice),E_G))
     #print("checking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),TheChoice),E_H))
-    return PermutePrep(LinkPool,E_G,E_H)
+    #PermutePrep(LinkPool,E_G,E_H)
+    return PermutePrep(LinkPool,WLOG,Larger)
 
 
 def pairfinder(string,charpair):
@@ -903,12 +1015,3 @@ def Cheat(string):
 #f1 = [[3,1],['g','t'],['r','y'],['y',"art"],[7,7],[90,9],[0,9],['o','o']]
 #print(f1)
 #print(f2)
-#print(Compose(f1,f2))
-#print(M_Compose(M_(f1),M_(f2)))
-#print(PreImage(f1))
-#print("more tests!")
-#print(M_(f2))
-#print(Inspector_M(M_(f2)))
-#print(Elem_My(['r','g'],Inspector_M(M_(f2))))
-#print(Elem_My([''],Inspector_M(M_(f2))))
-

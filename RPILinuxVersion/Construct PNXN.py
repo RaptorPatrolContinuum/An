@@ -62,6 +62,7 @@ else:
     T = max(xAddress,yAddress) + 2 
     for x in range(xAddress,T):
         for y in range(yAddress,T):
+	    print("==========================================================")
 	    print("stats", "startx" ,xAddress, "starty", yAddress, "t", T)
 	    print("currentx",x,"currenty",y)
 	    NewXGraph = AutoVisionString(x,1)
@@ -74,3 +75,12 @@ else:
     SIData.write(str(last))
 #then remember to seek the cursor to the beginning
 #also close the file	
+'''
+facts:
+[0,0]
+[0,1]
+0 "can only" map to 1
+but the indexer composed with 0 then fails
+
+is it enough to say that the requirement for the indexer composed failing means SI fails totally/altogether?
+'''
