@@ -687,11 +687,14 @@ def PermutePrep(LinkPool,E_G,E_H):
 		print(E_H)
 		print("ok now check LinkPoolList",LinkPoolList)
 		print("check if LinkPool is messed up too",LinkPool)
-		if len(LinkPoolList) == 1:
+		print("use TheList = 1?",TheList)
+		if len(TheList) == 1:
 		    Indexer = []
+		    print("what is the real problem and is Consistency being empty it?",Consistency)
 		    print("what is TheList",TheList)
                     for i in range(0,len(TheList)):
-                        Indexer.append([TheList[i-1],Consistency[i-1][0]])
+			print("wtf is i?",i, TheList[i],"Consistency[i][0]")
+                        Indexer.append([TheList[i],Consistency[i][0]])
 		    print("WTF IS AN INDEXER2",Indexer)
 		    ZeroStart = 1
 		    print("bad indexer?",Indexer)
