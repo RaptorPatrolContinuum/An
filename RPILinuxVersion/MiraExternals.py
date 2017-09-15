@@ -485,10 +485,13 @@ def PhiConstruct(IndexRan,ZeroStart,LinkPool):
     Exclusion = []
     print("what is IndexRan?",IndexRan,ZeroStart)
     for x in IndexRan:
-	print("what's failing?",x,"x[0]",LinkPool)
+	print("what's failing?",x,x[0],LinkPool,LinkPool[x[0]])
+	print("failing 2 probably",[y for y in LinkPool[x[0]] if y not in ran(Exclusion)])
         ThePick = [y for y in LinkPool[x[0]] if y not in ran(Exclusion)][x[1]]
         Exclusion.append([x[0],ThePick])
+	print("check pick and exclusion/ran exclusion", ThePick, Exclusion, ran(Exclusion))
         TheChoice = TheChoice + [[ThePick,x[0]],[x[0],ThePick]]
+	print("choice?",TheChoice)
     return TheChoice
 
 def dictMerge(dicA,dicB):
@@ -547,6 +550,7 @@ def PermutePrep(LinkPool,E_G,E_H):
         TheSize.append([x,len(x[1]) - i])
         TheList.append(x[0])
         i += 1
+
     #NOTE: BECAUSE THERE ARE REPEATS IN THE NUMBERS, YOU NEED TO FILTER OUT THE SETS
     #idea: once you are done with making a candidate, you construct phi by sequentially picking from the first set and excluding that pick from the rest, then construct phi and test SI
 
@@ -626,8 +630,10 @@ def PermutePrep(LinkPool,E_G,E_H):
     TheList = TheList + ZeroList
     print("check if dictMerge is right",LinkPool)
     print("B",ZeroLinks)
-    print("LinkPoolList", LinkPoolList)
     LinkPool = dictMerge(LinkPool,ZeroLinks)
+    print("LinkPool", LinkPool)
+    print("theSize", TheSize)
+   
 
     for G in TheSize:
 	print("check consistency",Consistency,len(Consistency) > 0)
@@ -650,7 +656,7 @@ def PermutePrep(LinkPool,E_G,E_H):
                             Indexer.append([TheList[i],Appendage[i]])
 			print("BAD INDEXER?",Indexer)
 			print("WTF IS AN INDEXER1!!!!",Indexer)
-                        print("what is phi?",Appendage,PhiConstruct(Indexer,LinkPool))
+                        print("what is phi?",Appendage,PhiConstruct(Indexer,ZeroStart,LinkPool))
 			#OK FUCK THIS
 			#if Releval fails we just say NOT SI
 			try: 
@@ -676,12 +682,14 @@ def PermutePrep(LinkPool,E_G,E_H):
 		#print("ok need to check what H is",[H])
                 Consistency.append([H])
 		#NOTE: When I wake up you need to add the SI ocndition here if there is only one choice for the phi function
+		print("what is consistency/IndexRan?",Consistency)
 		print("what are the graphs?",E_G)
 		print(E_H)
 		print("ok now check LinkPoolList",LinkPoolList)
 		print("check if LinkPool is messed up too",LinkPool)
 		if len(LinkPoolList) == 1:
 		    Indexer = []
+		    print("what is TheList",TheList)
                     for i in range(0,len(TheList)):
                         Indexer.append([TheList[i-1],Consistency[i-1][0]])
 		    print("WTF IS AN INDEXER2",Indexer)
