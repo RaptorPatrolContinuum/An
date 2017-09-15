@@ -506,6 +506,18 @@ def dictMerge(dicA,dicB):
 	ANS[x] = dicB[x] 
     return ANS
 
+def LessThan_C(i,j):
+    '''
+    takes a number i j and asks if bin(i) is "less than" bin(j) componentwise
+    AKA bin(i) is an initial portion of bin(j)
+    '''
+    binary = "{0:b}".format(i)[::-1]
+    bin2 = "{0:b}".format(j)[::-1]
+    if str(binary) == str(bin2[:len(binary)]):
+        return True
+    else:
+        return False
+
 def PermutePrep(LinkPool,E_G,E_H):
     #idea: just make a list with sizes instead of dicking around with LinkPool and rewrite the rest
     #ADD THEM IN TERMS OF SIZE (since if we made the lists properly they should all include each other if one linkpool is bigger than the other)
@@ -539,16 +551,16 @@ def PermutePrep(LinkPool,E_G,E_H):
     #idea: once you are done with making a candidate, you construct phi by sequentially picking from the first set and excluding that pick from the rest, then construct phi and test SI
 
     #I don't want to fuck with the working code so I'm just going to make a new if statement:
-    print("REAL TESTING")
-    print("E_G",E_G)
-    print("E_H",E_H)
-    print("dom of E_G",dom(E_G))
-    print("ran of E_G",ran(E_G))
+    #print("REAL TESTING")
+    #print("E_G",E_G)
+    #print("E_H",E_H)
+    #print("dom of E_G",dom(E_G))
+    #print("ran of E_G",ran(E_G))
     Zero = []
     for what in ran(E_G):
 	if what not in dom(E_G):
 	    Zero.append(what)
-    print("do I have an accurate list of Zeronodes?", Zero)
+    #print("do I have an accurate list of Zeronodes?", Zero)
     Zero2 = []
     for what in ran(E_H):
 	if what not in dom(E_H):
@@ -562,8 +574,8 @@ def PermutePrep(LinkPool,E_G,E_H):
         #ZeroLinksList.append([x,Zero2])
 	ZeroLinksList.append([x,Vertex_(E_H)])
 	ZeroLinks[x] = Vertex_(E_H)
-    print("test if ZeroLinks works",ZeroLinksList)
-    print("REALTESTING END") 
+    #print("test if ZeroLinks works",ZeroLinksList)
+    #print("REALTESTING END") 
 
     ZeroSize = []
     ZeroList = []
@@ -573,8 +585,8 @@ def PermutePrep(LinkPool,E_G,E_H):
 	ZeroList.append(x[0])
         i += 1
    
-    print("testing ZeroSize", ZeroSize)
-    print("testing ZeroList", ZeroList)
+    #print("testing ZeroSize", ZeroSize)
+    #print("testing ZeroList", ZeroList)
 
     ZeroPhiIndex = []    
     for x in ZeroSize:
@@ -614,20 +626,21 @@ def PermutePrep(LinkPool,E_G,E_H):
     TheList = TheList + ZeroList
     print("check if dictMerge is right",LinkPool)
     print("B",ZeroLinks)
-    LinkPoolList = dictMerge(LinkPool,ZeroLinks)
+    print("LinkPoolList", LinkPoolList)
+    LinkPool = dictMerge(LinkPool,ZeroLinks)
 
     for G in TheSize:
-	#print("check consistency",Consistency,len(Consistency) > 0)
+	print("check consistency",Consistency,len(Consistency) > 0)
         if len(Consistency) > 0:
             ConsistencyNew = []
-            #print("test G and G[1]",G)
-            #print(G[1])
+            print("test G and G[1]",G)
+            print(G[1])
             for H in range(0,G[1]):
                 for J in Consistency:
                     Appendage = J + [H]
 		    
                     ConsistencyNew.append(Appendage)
-                    #print("appendage?",Appendage,len(Appendage) == len(LinkPool))
+                    print("appendage?",Appendage,len(Appendage) == len(LinkPool))
                     if len(Appendage) == len(LinkPool):
                         #construct phi
                         #RULE: construct phi sequentially by picking from first set and excluding that pick from the rest
@@ -636,8 +649,8 @@ def PermutePrep(LinkPool,E_G,E_H):
                         for i in range(0,len(TheList)):
                             Indexer.append([TheList[i],Appendage[i]])
 			print("BAD INDEXER?",Indexer)
-			#print("WTF IS AN INDEXER1!!!!",Indexer)
-                        #print("what is phi?",Appendage,PhiConstruct(Indexer,LinkPool))
+			print("WTF IS AN INDEXER1!!!!",Indexer)
+                        print("what is phi?",Appendage,PhiConstruct(Indexer,LinkPool))
 			#OK FUCK THIS
 			#if Releval fails we just say NOT SI
 			try: 
@@ -650,11 +663,12 @@ def PermutePrep(LinkPool,E_G,E_H):
 			except IndexError:
 			    print("Address failed so assume NOT SI!")
 			    return False 
-                        #print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G))
-                        #print("checking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H))
-                        if AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_G) == AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,ZeroStartLinkPool)),E_H):
+                        print("Achecking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_G))
+                        print("Achecking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_H))
+			AD1 = AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_G) 
+			AD2 = AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_H)
+                        if LessThan_C(AD1,AD2):
                             return True
-    
             Consistency = ConsistencyNew
         else:
 	    #print("ok so apparently G[1] is super important",G[1])
@@ -662,10 +676,10 @@ def PermutePrep(LinkPool,E_G,E_H):
 		#print("ok need to check what H is",[H])
                 Consistency.append([H])
 		#NOTE: When I wake up you need to add the SI ocndition here if there is only one choice for the phi function
-		#print("what are the graphs?",E_G)
-		#print(E_H)
-		#print("ok now check LinkPoolList",LinkPoolList)
-		#print("check if LinkPool is messed up too",LinkPool)
+		print("what are the graphs?",E_G)
+		print(E_H)
+		print("ok now check LinkPoolList",LinkPoolList)
+		print("check if LinkPool is messed up too",LinkPool)
 		if len(LinkPoolList) == 1:
 		    Indexer = []
                     for i in range(0,len(TheList)):
@@ -683,11 +697,13 @@ def PermutePrep(LinkPool,E_G,E_H):
 		    except IndexError:
 		        print("Address failed so assume NOT SI!")
 		        return False 
-		    #print("what is indexer?",Indexer)
-                    #print("what is phi?",PhiConstruct(Indexer,LinkPool))
-		    #print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,LinkPool)),E_G))
-                    #print("checking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,LinkPool)),E_H))
-                    if AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_G) == AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_H):
+		    print("what is indexer?",Indexer)
+                    print("what is phi?",PhiConstruct(Indexer,ZeroStart,LinkPool))
+		    print("Bchecking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_G))
+                    print("Bchecking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_H))
+		    AD1 = AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_G)
+		    AD2 = AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_H)
+                    if LessThan_C(AD1,AD2):
                         return True
     return False
 

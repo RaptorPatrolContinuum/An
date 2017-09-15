@@ -69,6 +69,7 @@ else:
             NewYGraph = AutoVisionString(y,1)
 	    print("NewXGraph",NewXGraph)
 	    print("NewYGraph",NewYGraph)
+	    print("check for y/n",ShittySI(NewXGraph,NewYGraph))
 	    last.append([[NewXGraph,NewYGraph],ShittySI(NewXGraph,NewYGraph)])
     #duh I forgot that you should just write to file last
     SIData.seek(0)
