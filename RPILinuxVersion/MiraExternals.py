@@ -559,6 +559,7 @@ def PhiConstruct(IndexRan,LinkPool):
     Exclusion = []
     #print("what is IndexRan?",IndexRan)
     for x in IndexRan:
+	#print("testing",x,LinkPool)
 	#print("what's failing?",x,x[0],LinkPool,LinkPool[x[0]])
 	#print("failing 2 probably",[y for y in LinkPool[x[0]] if y not in ran(Exclusion)])
         ThePick = [y for y in LinkPool[x[0]] if y not in ran(Exclusion)][x[1]]
@@ -611,6 +612,10 @@ def ShittySI(E_G,E_H):
     '''
     says if E_G SI to some E_J in E_H
     '''
+    #if they're exact same they're SI
+    if E_G == E_H:
+	return True
+    #else:
     if len(E_G) < len(E_H):
 	WLOG = E_G
 	Larger = E_H
@@ -618,7 +623,7 @@ def ShittySI(E_G,E_H):
 	WLOG = E_H
 	Larger = E_G
 
-    print("REMEMBER TO ADD ZEROLINKS TO EDGESORTbyLINKS")
+    #print("REMEMBER TO ADD ZEROLINKS TO EDGESORTbyLINKS")
     print(WLOG)
     print(Larger)
     print(EdgeSortbyLinks(WLOG))
@@ -677,7 +682,29 @@ def ShittySI(E_G,E_H):
 			    Indexer.append([LinkPoolList[i][0],Appendage[i]])
 			    i += 1
 			print("here we test SI iwth",Appendage)
-			print("Indexer is", Indexer)
+			#print("Indexer is", Indexer)
+			print("PhiConstruct",PhiConstruct(Indexer,LinkPool))
+			#If |V_H| > |V_G|, then construct H* to use instead:
+			if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
+			    #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
+			    HStar = []
+			    for L in Larger:
+				passA = True
+				passB = True
+				if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool)),L[0])) == 0:
+				    passA = False
+				if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool)),L[1])) == 0:
+				    passB = False
+				if passA == True and passB == True:
+				    HStar.append(L)
+			    print("ok check out H*!",HStar)
+			else:
+			    HStar = Larger
+			#time to check SI:
+			AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool)),WLOG)
+			AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool)),HStar)
+			if AD1 == AD2:
+			    return True
 	    NumberIndex = NumberNew
 	else:
 	    for H in range(0,G):
@@ -690,7 +717,8 @@ def ShittySI(E_G,E_H):
 		    for K in Appendage:
 			Indexer.append([LinkPoolList[i][0],Appendage[i]])
 			i += 1
-		    print("Indexer is ", Indexer)
+		    #print("Indexer is ", Indexer)
+		    print("Phiconstruct",PhiConstruct(Indexer,LinkPool))
     return "no idea"
 
 def pairfinder(string,charpair):

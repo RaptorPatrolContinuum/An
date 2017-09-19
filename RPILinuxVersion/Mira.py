@@ -118,7 +118,7 @@ while True:
 
         #print("==========================================", print("test E_G and E_H",ShittySI(E_G,E_H)))
         #REDOING E_G/E_H!!!!!
-        E_G = [["A","B"],["B","C"],["C","H"],["H","B"],["H","A"]]
+        E_G = [["A","B"],["B","C"],["C","H"],["H","B"],["H","A"],["G","G"]]
         E_H = [["X","V"],["V","Y"],["V","Z"],["Z","Y"],["Y","X"]]
         #print("Realitytesting",ShittySI(E_B,E_A))
         print("test E_G and E_H",ShittySI(E_G,E_H))
