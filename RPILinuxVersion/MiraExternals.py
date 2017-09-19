@@ -559,8 +559,8 @@ def PhiConstruct(IndexRan,LinkPool):
     Exclusion = []
     #print("what is IndexRan?",IndexRan)
     for x in IndexRan:
-	#print("testing",x,LinkPool)
-	#print("what's failing?",x,x[0],LinkPool,LinkPool[x[0]])
+	print("testing",x,LinkPool)
+	print("what's failing?",x,x[0],LinkPool,LinkPool[x[0]])
 	#print("failing 2 probably",[y for y in LinkPool[x[0]] if y not in ran(Exclusion)])
         ThePick = [y for y in LinkPool[x[0]] if y not in ran(Exclusion)][x[1]]
         Exclusion.append([x[0],ThePick])
@@ -645,7 +645,7 @@ def ShittySI(E_G,E_H):
     #make sure LinkPool lists contain each other when you go down the list
     LinkPoolList = []
     for x in LinkPool:
-	print("LPL start",LinkPoolList)
+	#print("LPL start",LinkPoolList)
 	if len(LinkPoolList) == 0:
 	    LinkPoolList.append([x,LinkPool[x]])
 	else:
@@ -653,13 +653,13 @@ def ShittySI(E_G,E_H):
 		Linked = False
 	        if len(LinkPool[x]) <= len(y[1]):
 		    LinkPoolList = InsertAt(LinkPoolList,[x,LinkPool[x]],LinkPoolList.index(y)) 
-		    print("LPL Insert",LinkPoolList)
+		    #print("LPL Insert",LinkPoolList)
 		    Linked = True
 		    break
 		#append at end if largest
 		if Linked == False:
 		    LinkPoolList = LinkPoolList + [[x,LinkPool[x]]]
-	print("LPL end",LinkPoolList)
+	#print("LPL end",LinkPoolList)
     print("check LinkPoolList",LinkPoolList)
 
     LinkSize = []
@@ -712,7 +712,7 @@ def ShittySI(E_G,E_H):
 			#time to check SI:
 			AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool)),WLOG)
 			AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool)),HStar)
-			if AD1 == AD2:
+			if LessThan_C(AD1,AD2):
 			    return True
 	    NumberIndex = NumberNew
 	else:
@@ -724,11 +724,177 @@ def ShittySI(E_G,E_H):
 		    #Phiconstruct needs Indsx ran: [node,elem]
 		    i = 0
 		    for K in range(0,len(LinkList)):
-			Indexer.append([LinkPoolList[i][0],Appendage[i]])
+			Indexer.append([LinkPoolList[i][0],H])
 			i += 1
 		    #print("Indexer is ", Indexer)
 		    print("Phiconstruct",PhiConstruct(Indexer,LinkPool))
+		    #If |V_H| > |V_G|, then construct H* to use instead:
+		    if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
+		        #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
+		        HStar = []
+		        for L in Larger:
+		    	    passA = True
+			    passB = True
+			    if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool)),L[0])) == 0:
+			        passA = False
+			    if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool)),L[1])) == 0:
+			        passB = False
+			    if passA == True and passB == True:
+			        HStar.append(L)
+			print("ok check out H*!",HStar)
+		    else:
+		        HStar = Larger
+		    #time to check SI:
+		    AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool)),WLOG)
+		    AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool)),HStar)
+		    if LessThan_C(AD1,AD2):
+		        return True
     return "no idea"
+
+def AutoShittySI(E_G,E_H):
+    '''
+    Auto prefix means this just works on numbers only
+    says if E_G SI to some E_J in E_H
+    '''
+    #if they're exact same they're SI
+    if E_G == E_H:
+	return True
+    #else:
+    if len(E_G) < len(E_H):
+	WLOG = E_G
+	Larger = E_H
+    else:
+	WLOG = E_H
+	Larger = E_G
+
+    #print("REMEMBER TO ADD ZEROLINKS TO EDGESORTbyLINKS")
+    print(WLOG)
+    print(Larger)
+    print(EdgeSortbyLinks(WLOG))
+    print(EdgeSortbyLinks(Larger))
+    print(LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger)))
+
+    LinkPool = LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger))
+    
+    #add Zerolinks to LinkPoolGen
+    #a zeronode is a node that doesn't actually link to anything (just recieves links in the graph)
+    #just check LinkPool VS Vertex_(WLOG)
+    print("ran keys",ranDict(LinkPool)) 
+    ZeroNodes = [x for x in Vertex_(WLOG) if x not in ranDict(LinkPool)]
+    print("Zeronodes?",ZeroNodes) 
+    for x in ZeroNodes:
+	LinkPool[x] = Vertex_(E_H)
+    print("LinkPool+Zeronodes?",LinkPool)
+
+    #make sure LinkPool lists contain each other when you go down the list
+    LinkPoolList = []
+    for x in LinkPool:
+	#print("LPL start",LinkPoolList)
+	if len(LinkPoolList) == 0:
+	    LinkPoolList.append([x,LinkPool[x]])
+	else:
+	    for y in LinkPoolList:
+		Linked = False
+	        if len(LinkPool[x]) <= len(y[1]):
+		    LinkPoolList = InsertAt(LinkPoolList,[x,LinkPool[x]],LinkPoolList.index(y)) 
+		    #print("LPL Insert",LinkPoolList)
+		    Linked = True
+		    break
+		#append at end if largest
+		if Linked == False:
+		    LinkPoolList = LinkPoolList + [[x,LinkPool[x]]]
+	#print("LPL end",LinkPoolList)
+    print("check LinkPoolList",LinkPoolList)
+
+    LinkSize = []
+    LinkList = []
+    #LinkSize is the size of each list in LinkPool
+    #need to subtract 1 each time we append to LinkSize because we are making a choice and excluding them from the rest
+    #LinkPool is the corresponding list at the right index
+    i = 0
+    for x in LinkPoolList:
+	LinkSize.append(len(x[1])-i)
+	i += 1
+	LinkList.append(x[1])
+    print("check linksize",LinkSize)
+    print("check linklist",LinkList)
+
+    NumberIndex = []
+    for G in LinkSize:
+	if len(NumberIndex) > 0:
+	    NumberNew = []
+	    for H in range(0,G):
+		for J in NumberIndex:
+		    Appendage = J + [H]
+		    NumberNew.append(Appendage)
+		    if len(Appendage) == len(LinkPool):
+			Indexer = []
+			#Phiconstruct needs Indsx ran: [node,elem]
+			i = 0
+			for K in Appendage:
+			    Indexer.append([LinkPoolList[i][0],Appendage[i]])
+			    i += 1
+			print("here we test SI iwth",Appendage)
+			#print("Indexer is", Indexer)
+			print("PhiConstruct",PhiConstruct(Indexer,LinkPool))
+			#If |V_H| > |V_G|, then construct H* to use instead:
+			if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
+			    #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
+			    HStar = []
+			    for L in Larger:
+				passA = True
+				passB = True
+				if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool)),L[0])) == 0:
+				    passA = False
+				if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool)),L[1])) == 0:
+				    passB = False
+				if passA == True and passB == True:
+				    HStar.append(L)
+			    print("ok check out H*!",HStar)
+			else:
+			    HStar = Larger
+			#time to check SI:
+			AD1 = AddressFunc(Compose(Minv_(rchi(Larger)),PhiConstruct(Indexer,LinkPool)),WLOG)
+			AD2 = AddressFunc(Compose(Minv_(rchi(Larger)),PhiConstruct(Indexer,LinkPool)),HStar)
+			if LessThan_C(AD1,AD2):
+			    return True
+	    NumberIndex = NumberNew
+	else:
+	    for H in range(0,G):
+		NumberIndex.append([H])
+		if len(LinkList) == 1:
+		    print("should test tiny SI with",NumberIndex)
+		    Indexer = []
+		    #Phiconstruct needs Indsx ran: [node,elem]
+		    i = 0
+		    for K in range(0,len(LinkList)):
+			Indexer.append([LinkPoolList[i][0],H])
+			i += 1
+		    #print("Indexer is ", Indexer)
+		    print("Phiconstruct",PhiConstruct(Indexer,LinkPool))
+		    #If |V_H| > |V_G|, then construct H* to use instead:
+		    if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
+		        #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
+		        HStar = []
+		        for L in Larger:
+		    	    passA = True
+			    passB = True
+			    if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool)),L[0])) == 0:
+			        passA = False
+			    if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool)),L[1])) == 0:
+			        passB = False
+			    if passA == True and passB == True:
+			        HStar.append(L)
+			print("ok check out H*!",HStar)
+		    else:
+		        HStar = Larger
+		    #time to check SI:
+		    AD1 = AddressFunc(Compose(Minv_(rchi(Larger)),PhiConstruct(Indexer,LinkPool)),WLOG)
+		    AD2 = AddressFunc(Compose(Minv_(rchi(Larger)),PhiConstruct(Indexer,LinkPool)),HStar)
+		    if LessThan_C(AD1,AD2):
+		        return True
+    return "no idea"
+
 
 def pairfinder(string,charpair):
     #delete pairs:

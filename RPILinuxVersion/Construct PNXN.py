@@ -44,8 +44,8 @@ if len(SIData.read()) == 0:
     GraphX = AutoVisionString(int(Start[0]),1)
     GraphY = AutoVisionString(int(Start[1]),1)
     print("check graphs!",GraphX,GraphY)
-    print("check shitty SI",ShittySI(GraphX,GraphY))
-    SIData.write(str([[[GraphX,GraphY],ShittySI(GraphX,GraphY)]]))
+    print("check shitty SI",AutoShittySI(GraphX,GraphY))
+    SIData.write(str([[[GraphX,GraphY],AutoShittySI(GraphX,GraphY)]]))
 else:
     #get the last item from SIData
     SIData.seek(0)
@@ -87,7 +87,7 @@ else:
     #print("uh checking if SI works on empty set",ShittySI(AddressX,AddressY))
     
     #STILL WORKING ON SHITTYSI
-    #last.append([[AddressX,AddressY],ShittySI(AddressX,AddressY)])
+    #last.append([[AddressX,AddressY],AutoShittySI(AddressX,AddressY)])
 
     '''
     T = max(xAddress,yAddress) + 3 
@@ -105,9 +105,9 @@ else:
     '''
     #duh I forgot that you should just write to file last
     #FOR SOME FUCKING REASON I MESSED UP A SIMPLE LENGTH CHECK
-    #print("CHECKING AUTO SI YET AGAIN",AutoShittySI([['0', '0'], ['1', '0']], [['0', '0'], ['1', '0'], ['0', '1']]))
-    #print("CHECKING AUTO SI YET AGAIN",AutoShittySI([['0', '0']], [['0', '0'], ['1', '0']]))
-    print("CHECKING AUTO SI but with replacements so no # spam",ShittySI([['A', 'A'], ['A','C']], [['A', 'A'], ['B', 'A'], ['A','C']]))
+    print("CHECKING AUTO SI YET AGAIN",AutoShittySI([['0', '0'], ['1', '0']], [['0', '0'], ['1', '0'], ['0', '1']]))
+    print("CHECKING AUTO SI YET AGAIN",AutoShittySI([['0', '0']], [['0', '0'], ['1', '0']]))
+    #print("CHECKING AUTO SI but with replacements so no # spam",ShittySI([['A', 'A'], ['A','C']], [['A', 'A'], ['B', 'A'], ['A','C']]))
 
     SIData.seek(0)
     SIData.write(str(last))
