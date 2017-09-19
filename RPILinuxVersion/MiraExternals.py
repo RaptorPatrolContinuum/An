@@ -636,6 +636,44 @@ def ShittySI(E_G,E_H):
     for x in ZeroNodes:
 	LinkPool[x] = Vertex_(E_H)
     print("LinkPool+Zeronodes?",LinkPool)
+
+    #make sure LinkPool lists contain each other when you go down the list
+    LinkPoolList = []
+    for x in LinkPool:
+	if len(LinkPoolList) == 0:
+	    LinkPoolList.append([x,LinkPool[x]])
+	for y in LinkPoolList:
+	    if len(LinkPool[x]) <= len(y[1]):
+		LinkPoolList = InsertAt(LinkPoolList,[x,LinkPool[x]],LinkPoolList.index(y)) 
+		break
+    print("check LinkPoolList",LinkPoolList)
+
+    LinkSize = []
+    LinkList = []
+    #LinkSize is the size of each list in LinkPool
+    #LinkPool is the corresponding list at the right index
+    for x in LinkPoolList:
+	LinkSize.append(len(x[1]))
+	LinkList.append(x[1])
+    print("check linksize",LinkSize)
+    print("check linklist",LinkList)
+
+    NumberIndex = []
+    for G in LinkSize:
+	if len(NumberIndex) > 0:
+	    NumberNew = []
+	    for H in range(0,G[1]):
+		for J in NumberIndex:
+		    Appendage = J + [H]
+		    NumberNew.append(Appendage)
+		    if len(Appendage) == len(LinkPool):
+			print("here we test SI iwth",Appendage)
+	    NumberIndex = NumberNew
+	else:
+	    for H in range(0,G[1]):
+		NumberIndex.append([H])
+		if len(LinkList) == 1:
+		    print("should test tiny SI with",NumberIndex)
     return "no idea"
 
 def pairfinder(string,charpair):
