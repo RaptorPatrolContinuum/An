@@ -544,7 +544,7 @@ def InsertAt(List,obj,Index):
         VALUE.append(List[Index + x])
     return VALUE
 
-def PhiConstruct(IndexRan,ZeroStart,LinkPool):
+def PhiConstruct(IndexRan,LinkPool):
     '''
     IndexRan is a function where node corresponds to a list of indices that correspond to a number in LinkPool
     EX: [['A',0],['B',1],['C',0]]
@@ -557,7 +557,7 @@ def PhiConstruct(IndexRan,ZeroStart,LinkPool):
     '''
     TheChoice = []
     Exclusion = []
-    #print("what is IndexRan?",IndexRan,ZeroStart)
+    #print("what is IndexRan?",IndexRan)
     for x in IndexRan:
 	#print("what's failing?",x,x[0],LinkPool,LinkPool[x[0]])
 	#print("failing 2 probably",[y for y in LinkPool[x[0]] if y not in ran(Exclusion)])
@@ -651,9 +651,12 @@ def ShittySI(E_G,E_H):
     LinkSize = []
     LinkList = []
     #LinkSize is the size of each list in LinkPool
+    #need to subtract 1 each time we append to LinkSize because we are making a choice and excluding them from the rest
     #LinkPool is the corresponding list at the right index
+    i = 0
     for x in LinkPoolList:
-	LinkSize.append(len(x[1]))
+	LinkSize.append(len(x[1])-i)
+	i += 1
 	LinkList.append(x[1])
     print("check linksize",LinkSize)
     print("check linklist",LinkList)
@@ -662,18 +665,32 @@ def ShittySI(E_G,E_H):
     for G in LinkSize:
 	if len(NumberIndex) > 0:
 	    NumberNew = []
-	    for H in range(0,G[1]):
+	    for H in range(0,G):
 		for J in NumberIndex:
 		    Appendage = J + [H]
 		    NumberNew.append(Appendage)
 		    if len(Appendage) == len(LinkPool):
+			Indexer = []
+			#Phiconstruct needs Indsx ran: [node,elem]
+			i = 0
+			for K in Appendage:
+			    Indexer.append([LinkPoolList[i][0],Appendage[i]])
+			    i += 1
 			print("here we test SI iwth",Appendage)
+			print("Indexer is", Indexer)
 	    NumberIndex = NumberNew
 	else:
-	    for H in range(0,G[1]):
+	    for H in range(0,G):
 		NumberIndex.append([H])
 		if len(LinkList) == 1:
 		    print("should test tiny SI with",NumberIndex)
+		    Indexer = []
+		    #Phiconstruct needs Indsx ran: [node,elem]
+		    i = 0
+		    for K in Appendage:
+			Indexer.append([LinkPoolList[i][0],Appendage[i]])
+			i += 1
+		    print("Indexer is ", Indexer)
     return "no idea"
 
 def pairfinder(string,charpair):
