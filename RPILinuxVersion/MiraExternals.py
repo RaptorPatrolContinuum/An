@@ -645,12 +645,21 @@ def ShittySI(E_G,E_H):
     #make sure LinkPool lists contain each other when you go down the list
     LinkPoolList = []
     for x in LinkPool:
+	print("LPL start",LinkPoolList)
 	if len(LinkPoolList) == 0:
 	    LinkPoolList.append([x,LinkPool[x]])
-	for y in LinkPoolList:
-	    if len(LinkPool[x]) <= len(y[1]):
-		LinkPoolList = InsertAt(LinkPoolList,[x,LinkPool[x]],LinkPoolList.index(y)) 
-		break
+	else:
+	    for y in LinkPoolList:
+		Linked = False
+	        if len(LinkPool[x]) <= len(y[1]):
+		    LinkPoolList = InsertAt(LinkPoolList,[x,LinkPool[x]],LinkPoolList.index(y)) 
+		    print("LPL Insert",LinkPoolList)
+		    Linked = True
+		    break
+		#append at end if largest
+		if Linked == False:
+		    LinkPoolList = LinkPoolList + [[x,LinkPool[x]]]
+	print("LPL end",LinkPoolList)
     print("check LinkPoolList",LinkPoolList)
 
     LinkSize = []
@@ -714,7 +723,7 @@ def ShittySI(E_G,E_H):
 		    Indexer = []
 		    #Phiconstruct needs Indsx ran: [node,elem]
 		    i = 0
-		    for K in Appendage:
+		    for K in range(0,len(LinkList)):
 			Indexer.append([LinkPoolList[i][0],Appendage[i]])
 			i += 1
 		    #print("Indexer is ", Indexer)

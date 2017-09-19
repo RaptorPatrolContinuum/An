@@ -85,7 +85,9 @@ else:
     #print("what will future say for WorkON?",CantorPair(AddressFunc(Minv_(Beta_(AddressX)),AddressX),AddressFunc(Minv_(Beta_(AddressY)),AddressY)))
     #print("what will future say for WorkON?",CantorPair(AutoAddressFunc(AddressX),AutoAddressFunc(AddressY)))
     #print("uh checking if SI works on empty set",ShittySI(AddressX,AddressY))
-    last.append([[AddressX,AddressY],ShittySI(AddressX,AddressY)])
+    
+    #STILL WORKING ON SHITTYSI
+    #last.append([[AddressX,AddressY],ShittySI(AddressX,AddressY)])
 
     '''
     T = max(xAddress,yAddress) + 3 
