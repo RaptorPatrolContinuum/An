@@ -105,7 +105,7 @@ else:
     #FOR SOME FUCKING REASON I MESSED UP A SIMPLE LENGTH CHECK
     #print("CHECKING AUTO SI YET AGAIN",AutoShittySI([['0', '0'], ['1', '0']], [['0', '0'], ['1', '0'], ['0', '1']]))
     #print("CHECKING AUTO SI YET AGAIN",AutoShittySI([['0', '0']], [['0', '0'], ['1', '0']]))
-    print("CHECKING AUTO SI but with replacements so no # spam",ShittySI([['A', 'A']], [['A', 'A'], ['B', 'A']]))
+    print("CHECKING AUTO SI but with replacements so no # spam",ShittySI([['A', 'A'], ['A','C']], [['A', 'A'], ['B', 'A'], ['A','C']]))
 
     SIData.seek(0)
     SIData.write(str(last))

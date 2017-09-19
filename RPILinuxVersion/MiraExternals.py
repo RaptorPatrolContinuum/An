@@ -82,6 +82,15 @@ def ran(func):
         ANS.append(x[1])
     return ANS
 
+def ranDict(obj):
+    '''
+    get all the keys 'in order' from a dictionary
+    '''
+    ANS = []
+    for x in obj:
+	ANS.append(x)
+    return ANS
+
 def dom(func):
     ANS = []
     for x in func:
@@ -237,13 +246,13 @@ def AddressFunc(index,obj):
         #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
 	#print("suspected wtf",index,x[1])
 
-	print("x obj", x)
-	print("index",index)
-	print("x[0]",x[0])
-	print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
-	print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
+	#print("x obj", x)
+	#print("index",index)
+	#print("x[0]",x[0])
+	#print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
+	#print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
 	#print("CANTOR PAIR IS FUCKED? C(0,1)",CantorPair(0,1))
-	print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+	#print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
 	Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
     
     #print("more stats",obj,Interim)
@@ -586,229 +595,6 @@ def LessThan_C(i,j):
     else:
         return False
 
-def PermutePrep(LinkPool,E_G,E_H):
-    #idea: just make a list with sizes instead of dicking around with LinkPool and rewrite the rest
-    #ADD THEM IN TERMS OF SIZE (since if we made the lists properly they should all include each other if one linkpool is bigger than the other)
-    LinkPoolList = []
-    
-    for x in LinkPool:
-        if len(LinkPoolList) == 0:
-            LinkPoolList.append([x,LinkPool[x]])
-        else:
-            for y in LinkPoolList:
-                #print("what is LinkPoolList?",LinkPoolList)
-                #print("the stuff",LinkPool[x] , y[1])
-                #print("the test",len(LinkPool[x]) >= len(y[1]))
-                if len(LinkPool[x]) <= len(y[1]):
-                    LinkPoolList = InsertAt(LinkPoolList,[x,LinkPool[x]],LinkPoolList.index(y))
-                    break
-                else:
-                    LinkPoolList.append([x,LinkPool[x]])
-                    break
-                #print("LinkPoolList UPdate?",LinkPoolList)
-    #print("testing LinkPoolList",LinkPoolList)
-    
-    TheSize = []
-    TheList = []
-    i = 0
-    for x in LinkPoolList:
-        TheSize.append([x,len(x[1]) - i])
-        TheList.append(x[0])
-        i += 1
-
-    #NOTE: BECAUSE THERE ARE REPEATS IN THE NUMBERS, YOU NEED TO FILTER OUT THE SETS
-    #idea: once you are done with making a candidate, you construct phi by sequentially picking from the first set and excluding that pick from the rest, then construct phi and test SI
-
-    #I don't want to fuck with the working code so I'm just going to make a new if statement:
-    #print("REAL TESTING")
-    #print("E_G",E_G)
-    #print("E_H",E_H)
-    #print("dom of E_G",dom(E_G))
-    #print("ran of E_G",ran(E_G))
-    Zero = []
-    for what in ran(E_G):
-	if what not in dom(E_G):
-	    Zero.append(what)
-    #print("do I have an accurate list of Zeronodes?", Zero)
-    Zero2 = []
-    for what in ran(E_H):
-	if what not in dom(E_H):
-	    Zero2.append(what)
-    #make ZeroLinks:
-    ZeroLinksList = []
-    ZeroLinks = {}
-    #assume phi is from E_G to E_H
-    #ACTUALLY I'M PRETTY SURE ZERO NODES CAN LINK TO ANYTHING IN V_G
-    for x in Zero:
-        #ZeroLinksList.append([x,Zero2])
-	ZeroLinksList.append([x,Vertex_(E_H)])
-	ZeroLinks[x] = Vertex_(E_H)
-    #print("test if ZeroLinks works",ZeroLinksList)
-    #print("REALTESTING END") 
-
-    ZeroSize = []
-    ZeroList = []
-    i = 0
-    for x in ZeroLinksList:
-	ZeroSize.append([x,len(x[1]) - i])
-	ZeroList.append(x[0])
-        i += 1
-   
-    #print("testing ZeroSize", ZeroSize)
-    #print("testing ZeroList", ZeroList)
-
-    ZeroPhiIndex = []    
-    for x in ZeroSize:
-	if len(ZeroPhiIndex) > 0:
-            ZeroPhiNew = []
-            for H in range(0,x[1]):
-                for J in ZeroPhiIndex:
-                    Appendage = J + [H]
-                    ZeroPhiNew.append(Appendage)
-                    #if len(Appendage) == len(ZeroPool):
-			#print("this got fucking complicated again, index is:",ZeroPhiIndex)
-			
-	else:
-	    #print("ok so apparently G[1] is super important",G[1])
-            for H in range(0,x[1]):
-		#print("ok need to check what H is",[H])
-                ZeroPhiIndex.append([H])
-		#print("this got fucking complicated again, index is2:",ZeroPhiIndex)
-    #print("WHAT IS ZEROPHIINDEX?",ZeroPhiIndex)
-    #so TRY:
-    #if zeronodes is nonempty and ZeroLinks IS EMPTY, say NOT SI
-    # so asumme we either are doing smaller -> larger or same size -> larger
-
-    #PhiConstrcut(Indexer,LinkPool)
-
-    #if there are nodes that are just end points, then we need to map endpoints to endpoints:
-    #if number of endpoint nodes are diff between the two AND same edge size then just say NOT SI
-    #^^^ this sounds too convoluted wtf
-    #then use two PhiConstructs and append them then test into the large addressfunc
-
-
-
-    #print("Thesize",TheSize)
-    #print("TheList",TheList)
-    Consistency = []
-    #modify for Zeronodes
-    TheSize = TheSize + ZeroSize
-    TheList = TheList + ZeroList
-    #print("check if dictMerge is right",LinkPool)
-    #print("B",ZeroLinks)
-    LinkPool = dictMerge(LinkPool,ZeroLinks)
-    #print("LinkPool", LinkPool)
-    #print("theSize", TheSize)
-   
-
-    for G in TheSize:
-	#print("check consistency",Consistency,len(Consistency) > 0)
-        if len(Consistency) > 0:
-            ConsistencyNew = []
-            #print("test G and G[1]",G)
-            #print(G[1])
-            for H in range(0,G[1]):
-                for J in Consistency:
-                    Appendage = J + [H]
-		    
-                    ConsistencyNew.append(Appendage)
-                    #print("appendage?",Appendage,len(Appendage) == len(LinkPool))
-                    if len(Appendage) == len(LinkPool):
-                        #construct phi
-                        #RULE: construct phi sequentially by picking from first set and excluding that pick from the rest
-                        ZeroStart = len(Appendage)
-			Indexer = []
-                        for i in range(0,len(TheList)):
-                            Indexer.append([TheList[i],Appendage[i]])
-			#print("BAD INDEXER?",Indexer)
-			#print("WTF IS AN INDEXER1!!!!",Indexer)
-                        #print("what is phi?",Appendage,PhiConstruct(Indexer,ZeroStart,LinkPool))
-			#OK FUCK THIS
-			#if Releval fails we just say NOT SI
-			try: 
-			    AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_G) 
-			except IndexError:
-			    print("N1Address failed so assume NOT SI!")
-			    return False
-			try:
-			    AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_H)
-			except IndexError:
-			    print("N2Address failed so assume NOT SI!")
-			    return False 
-                        #print("Achecking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_G))
-                        #print("Achecking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_H))
-			AD1 = AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_G) 
-			AD2 = AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_H)
-                        if LessThan_C(AD1,AD2):
-                            return True
-            Consistency = ConsistencyNew
-        else:
-	    #print("ok so apparently G[1] is super important",G[1])
-            for H in range(0,G[1]):
-		#print("ok need to check what H is",[H])
-                Consistency.append([H])
-		#NOTE: When I wake up you need to add the SI ocndition here if there is only one choice for the phi function
-		#print("what is consistency/IndexRan?",Consistency)
-		#print("what are the graphs?",E_G)
-		#print(E_H)
-		#print("ok now check LinkPoolList",LinkPoolList)
-		#print("check if LinkPool is messed up too",LinkPool)
-		#print("use TheList = 1?",TheList)
-		if len(TheList) == 1:
-		    Indexer = []
-		    #print("what is the real problem and is Consistency being empty it?",Consistency)
-		    #print("what is TheList",TheList)
-                    for i in range(0,len(TheList)):
-			#print("wtf is i?",i, TheList[i],"Consistency[i][0]")
-                        Indexer.append([TheList[i],Consistency[i][0]])
-		    #print("WTF IS AN INDEXER2",Indexer)
-		    ZeroStart = 1
-		    #print("bad indexer?",Indexer)
-		    #print("=======================")
-		    #print("index I feed is fucked,E_H", E_H)
-		    #print("E_G",E_G)
-		    #print("Beta_",Beta_(E_H))
-		    #print("Indexer for phiconst",Indexer)
-		    #print("Phiconstruct",PhiConstruct(Indexer,ZeroStart,LinkPool))
-		    #print("normies",Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,ZeroStart,LinkPool)))
-		    #print("=======================")
-		    #print("wtf is wrong",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_G))
-
-		    #CHECK IF Addressfuncs fail (it's not strong enough to say NOT SI: EX THIS SI SET:[[['A','A']],[['A','A'],['B','A']]])
-		    Bool1 = True
-		    Bool2 = True
-		    try: 
-		        AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_G) 
-		    except IndexError:
-		        print("N3Address failed so SKIP!")
-			Bool1 = False
-		        #return False
-		    #FUCK I deleted a huge swath of code and all I have is old shit from 3 days ago
-		    print("watch Star Driver",AddressFunc(Compose(BasisAttempt,PhiConstruct(Indexer,ZeroStart,LinkPool)),WLOG))
-		    try: 
-		        AddressFunc(Compose(Inspector_M(M_(rchi(Vertex_(Larger)))),PhiConstruct(Indexer,ZeroStart,LinkPool)),WLOG)
-		    except IndexError:
-		        print("3Address failed so assume NOT SI!")
-		        return False
-		    #print("check error ",AddressFunc(Compose(Inspector_M(M_(rchi(Vertex_(WLOG)))),PhiConstruct(Indexer,ZeroStart,LinkPool)),Larger))
-		    print("wtf?",Inspector_M(M_(rchi(Vertex_(WLOG)))))
-		    print("over what you to be",PhiConstruct(Indexer,ZeroStart,LinkPool))
-		    print("Larger",Larger)
-		    try:
-		        AddressFunc(Compose(Inspector_M(M_(rchi(Vertex_(WLOG)))),PhiConstruct(Indexer,ZeroStart,LinkPool)),Larger)
-		    except IndexError:
-		        print("4Address failed so assume NOT SI!")
-		        return False 
-		    #print("what is indexer?",Indexer)
-                    #print("what is phi?",PhiConstruct(Indexer,ZeroStart,LinkPool))
-		    #print("Bchecking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_G))
-                    #print("Bchecking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),PhiConstruct(Indexer,ZeroStart,LinkPool)),E_H))
-		    AD1 = AddressFunc(Compose(Inspector_M(M_(rchi(Vertex_(Larger)))),PhiConstruct(Indexer,ZeroStart,LinkPool)),WLOG)
-		    AD2 = AddressFunc(Compose(Inspector_M(M_(rchi(Vertex_(WLOG)))),PhiConstruct(Indexer,ZeroStart,LinkPool)),Larger)
-                    if LessThan_C(AD1,AD2):
-                        return True
-    return "can't tell"
-
 def Vertex_(E_G):
     '''
     takes in an edgelist and returns the vertices of that graph
@@ -823,164 +609,34 @@ def Vertex_(E_G):
 
 def ShittySI(E_G,E_H):
     '''
-    organize by # of links
-    then make picks
-    test with SI until picks are exhausted
-    if picks are exhausted then G not SI H
+    says if E_G SI to some E_J in E_H
     '''
-
-    if fCheck(E_G) == False or fCheck(E_H) == False:
-        print("shittysi funcchecking E_G is", fCheck(E_G), "E_H is ",fCheck(E_H))
-        return
-    #figure out which one is the bigger one
-
-    if len(E_G) < len (E_H):
-        WLOG = E_G
-        Larger = E_H
+    if len(E_G) < len(E_H):
+	WLOG = E_G
+	Larger = E_H
     else:
-        WLOG = E_H
-        Larger = E_G
-    #organize by # of links
-    #print(EdgeSortbyLinks(WLOG))
-    #print(EdgeSortbyLinks(Larger))
-    smallLinks = EdgeSortbyLinks(WLOG)
-    largeLinks = EdgeSortbyLinks(Larger)
+	WLOG = E_H
+	Larger = E_G
 
-    LinkPool = LinkPoolGen(smallLinks,largeLinks)
+    print("REMEMBER TO ADD ZEROLINKS TO EDGESORTbyLINKS")
+    print(WLOG)
+    print(Larger)
+    print(EdgeSortbyLinks(WLOG))
+    print(EdgeSortbyLinks(Larger))
+    print(LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger)))
 
-    #rule: we cannot inject a node with X links to a node with <X links
-    #now to make a list of pics for each node in WLOG:
+    LinkPool = LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger))
     
-    '''
-    there is a "problem" with same size sets
-    #1:
-    {1: ['A', 'B', 'C'], 3: ['H']}
-    {1: ['Z', 'X'], 2: ['Y', 'V']}
-    can't inject H into other graph but other graph might be able to inject into H's graph
-    #2: new theorem:
-    two graphs, A,B of the same edge size:
-    graph A has a node with linksize of X that exceeds all the linksizes of graph B
-    then A not SI B
-    for this check:
-    if not all nodes in smalllinks are in LinkPool, say NOT ISOMORPHIC
-    if graph sizes are the same, try this check 
-    '''
-    #SI disqualification
-    for x in smallLinks:
-        for y in smallLinks[x]:
-            #print("is y what I'm looking for?",y)
-            if y not in LinkPool:
-                print(y,"not in LinkPool!", LinkPool)
-                print("so NOT ISOMORPHIC!")
-                return False
-    if len(E_G) == len(E_H):
-        smallLinks2 = EdgeSortbyLinks(Larger)
-        largeLinks2 = EdgeSortbyLinks(WLOG)
-        #print(smallLinks2)
-        #print(largeLinks2)
-
-        LinkPool2 = LinkPoolGen(smallLinks2,largeLinks2)
-
-        #SI disqualification
-        for x in smallLinks2:
-            for y in smallLinks2[x]:
-                #print("is y what I'm looking for?",y)
-                if y not in LinkPool2:
-                    print(y,"not in LinkPool!", LinkPool2)
-                    print("so NOT ISOMORPHIC!")
-                    return False
-    #ORGANIZE LINKPOOL FROM SMALLEST TO LARGEST
-    #print("ok so what do I have?", LinkPool)
-
-    #similar edge count but diff vertex count = NOT SI
-    if len(E_G) == len(E_H) and len(Vertex_(E_G)) != len(Vertex_(E_H)):
-	print("NOT SI by edge and vertex count!",E_G,E_H)
-	return False
-    '''
-    rules:
-    choices are mutally exclusive: so if a node can only connect to Y we can't pick Y "earlier" or we mess up the picking
-    idea:
-    list by # of picks, the smaller first
-    and only start alternating when # picks >1
-    
-    TheChoice = []
-    
-    delList = []
-    #filter LinkPool by # choices -> also because each choice is mutually exclusive remove them from the other pools
-    for x in LinkPool:
-        if len(LinkPool[x]) == 1:
-            TheChoice = TheChoice + [[x,LinkPool[x][0]],[LinkPool[x][0],x]]
-            delList.append(x)
-    #filter out LinkPool[x][0] in the other choices
-    for x in LinkPool:
-        for z in delList:
-            LinkPool[x] = [y for y in LinkPool[x] if y != LinkPool[z][0]]
-        
-    for x in delList:
-        del LinkPool[x]
-    
-    #once number of choices >1 then we start picking/alternating
-    '''
-    
-    
-    
-    
-    '''
-    idea:
-    pick one then exhaust that choice on the other sets
-    pick one ....
-    then at the last, test out the SI condition
-    then exhaust all the picks at the last
-    then back up once, and then repeat
-    one the back up is exhausted, repeat again
-    ...
-    
-    idea:
-    [the choice1, 2, ....]
-    then we need a function that "alternates the last X choices for TheChoice"
-    try alternating the last choice
-    then
-    the last two choices
-    etc
-    
-    Exclusion = []
-    Vertices = []
-    print("what the ", LinkPool)
-    print("I need to make all possible choices!==", TheChoice)
-    for x in LinkPool:
-        Vertices.append(x)
-        ThePick = [y for y in LinkPool[x] if y not in Exclusion][0]
-        Exclusion.append(ThePick)
-        TheChoice = TheChoice + [[x,ThePick],[ThePick,x]]
-    
-    path = len(Vertices) - 1
-    print("I need to make all possible choices!BBBBBB", TheChoice)
-    if AddressFunc(Compose(Minv_(Beta_(E_H)),TheChoice),E_G) == AddressFunc(Compose(Minv_(Beta_(E_G)),TheChoice),E_H):
-        print("E_G isom to E_H!")
-        return True
-    else:
-        #go "down" the "current path" or "go back"
-        #go back
-        if len([y for y in LinkPool[Vertices[path]] if y not in Exclusion]) == 1:
-            path = path -1
-            #reset exclusion
-            Exclusion = []
-        #down current path
-            
-        #if we have exhausted the space, say False and NOT ISOMORPHIC
-        
-    '''
-    
-    #print("E_G",E_G)
-    #print("E_H",E_H)
-    #print("finalchoice",TheChoice)
-    #print("newpool",LinkPool)
-    #print("???",Minv_(Beta_(E_H)))
-    #print("checking address for a sec",Compose(Minv_(Beta_(E_H)),TheChoice))
-    #print("checking if address works with at least one choice func",AddressFunc(Compose(Minv_(Beta_(E_H)),TheChoice),E_G))
-    #print("checking if address works with other choice func",AddressFunc(Compose(Minv_(Beta_(E_G)),TheChoice),E_H))
-    #PermutePrep(LinkPool,E_G,E_H)
-    return PermutePrep(LinkPool,WLOG,Larger)
+    #add Zerolinks to LinkPoolGen
+    #a zeronode is a node that doesn't actually link to anything (just recieves links in the graph)
+    #just check LinkPool VS Vertex_(WLOG)
+    print("ran keys",ranDict(LinkPool)) 
+    ZeroNodes = [x for x in Vertex_(WLOG) if x not in ranDict(LinkPool)]
+    print("Zeronodes?",ZeroNodes) 
+    for x in ZeroNodes:
+	LinkPool[x] = Vertex_(E_H)
+    print("LinkPool+Zeronodes?",LinkPool)
+    return "no idea"
 
 def pairfinder(string,charpair):
     #delete pairs:
