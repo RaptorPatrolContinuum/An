@@ -246,13 +246,13 @@ def AddressFunc(index,obj):
         #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
 	#print("suspected wtf",index,x[1])
 
-	#print("x obj", x)
-	#print("index",index)
-	#print("x[0]",x[0])
-	#print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
-	#print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
-	#print("CANTOR PAIR IS FUCKED? C(0,1)",CantorPair(0,1))
-	#print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+	print("x obj", x)
+	print("index",index)
+	print("x[0]",x[0])
+	print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
+	print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
+	print("CANTOR PAIR IS FUCKED? C(0,1)",CantorPair(0,1))
+	print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
 	Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
     
     #print("more stats",obj,Interim)
@@ -720,8 +720,8 @@ def ShittySI(ListItems):
 			    tryit = False
 			if tryit == True:
 			    if ListItems[1] == "Auto":
-			        AD1 = AddressFunc(Compose(Minv_(rchi(Larger)),PhiConstruct(Indexer,LinkPool)),WLOG)
-			        AD2 = AddressFunc(Compose(Minv_(rchi(Larger)),PhiConstruct(Indexer,LinkPool)),HStar)
+			        AD1 = AddressFunc(Compose(Minv_(rchi(Vertex_(Larger))),PhiConstruct(Indexer,LinkPool)),WLOG)
+			        AD2 = AddressFunc(Compose(Minv_(rchi(Vertex_(Larger))),PhiConstruct(Indexer,LinkPool)),HStar)
 			    else:
 			        #time to check SI:
 		    	        AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool)),WLOG)
@@ -770,8 +770,15 @@ def ShittySI(ListItems):
 		        tryit = False
 		    if tryit == True:
 		        if ListItems[1] == "Auto":
-		            AD1 = AddressFunc(Compose(Minv_(rchi(Larger)),PhiConstruct(Indexer,LinkPool)),WLOG)
-		            AD2 = AddressFunc(Compose(Minv_(rchi(Larger)),PhiConstruct(Indexer,LinkPool)),HStar)
+			    #print("parts for AD1",WLOG)
+			    #print("Larger",Larger)
+			    #print("Indexer",Indexer)
+			    #print("LinkPool",LinkPool)
+			    #print("PhiConstruct",PhiConstruct(Indexer,LinkPool))
+			    #print("basis",Minv_(rchi(Vertex_(Larger))))
+			    #print("compose",Compose(Minv_(rchi(Vertex_(Larger))),PhiConstruct(Indexer,LinkPool)))
+		            AD1 = AddressFunc(Compose(Minv_(rchi(Vertex_(Larger))),PhiConstruct(Indexer,LinkPool)),WLOG)
+		            AD2 = AddressFunc(Compose(Minv_(rchi(Vertex_(Larger))),PhiConstruct(Indexer,LinkPool)),HStar)
 		        else:
 		            #time to check SI:
 		            AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool)),WLOG)
@@ -782,7 +789,7 @@ def ShittySI(ListItems):
 		        AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool)),HStar)		    
 		    if LessThan_C(AD1,AD2):
 		        return [True,PhiConstruct(Indexer,LinkPool)]
-    return ["no idea"]
+    return ["Assume False"]
 
 def DEDAutoShittySI(E_G,E_H):
     '''
