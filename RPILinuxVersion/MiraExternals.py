@@ -720,8 +720,24 @@ def ShittySI(ListItems):
 			    tryit = False
 			if tryit == True:
 			    if ListItems[1] == "Auto":
-			        AD1 = AddressFunc(Compose(Minv_(rchi(Vertex_(Larger))),PhiConstruct(Indexer,LinkPool)),WLOG)
-			        AD2 = AddressFunc(Compose(Minv_(rchi(Vertex_(Larger))),PhiConstruct(Indexer,LinkPool)),HStar)
+				if len(Vertex_(WLOG)) <= len(Vertex_(Larger)):
+				    Vertex_Max = Vertex_(Larger)
+				else:
+				    Vertex_Max = Vertex_(WLOG)
+				print("V_G",Vertex_(WLOG))
+				print("V_H",Vertex_(Larger))
+				print("TheMax",Vertex_Max)
+				print("parts for AD1",WLOG)
+			        print("Larger",Larger)
+			        print("Indexer",Indexer)
+			        print("LinkPool",LinkPool)
+			        print("PhiConstruct",PhiConstruct(Indexer,LinkPool))
+				print("need to pick right max",rchi(Vertex_Max))
+			        print("basis",Minv_(rchi(Vertex_Max)))
+			        print("compose",Compose(Minv_(rchi(Vertex_Max)),PhiConstruct(Indexer,LinkPool)))
+
+			        AD1 = AddressFunc(Compose(Minv_(rchi(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),WLOG)
+			        AD2 = AddressFunc(Compose(Minv_(rchi(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),HStar)
 			    else:
 			        #time to check SI:
 		    	        AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool)),WLOG)
@@ -770,6 +786,10 @@ def ShittySI(ListItems):
 		        tryit = False
 		    if tryit == True:
 		        if ListItems[1] == "Auto":
+			    if len(Vertex_(WLOG)) <= len(Vertex_(Larger)):
+			        Vertex_Max = Vertex_(Larger)
+			    else:
+			        Vertex_Max = Vertex_(WLOG)
 			    #print("parts for AD1",WLOG)
 			    #print("Larger",Larger)
 			    #print("Indexer",Indexer)
@@ -777,8 +797,8 @@ def ShittySI(ListItems):
 			    #print("PhiConstruct",PhiConstruct(Indexer,LinkPool))
 			    #print("basis",Minv_(rchi(Vertex_(Larger))))
 			    #print("compose",Compose(Minv_(rchi(Vertex_(Larger))),PhiConstruct(Indexer,LinkPool)))
-		            AD1 = AddressFunc(Compose(Minv_(rchi(Vertex_(Larger))),PhiConstruct(Indexer,LinkPool)),WLOG)
-		            AD2 = AddressFunc(Compose(Minv_(rchi(Vertex_(Larger))),PhiConstruct(Indexer,LinkPool)),HStar)
+		            AD1 = AddressFunc(Compose(Minv_(rchi(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),WLOG)
+		            AD2 = AddressFunc(Compose(Minv_(rchi(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),HStar)
 		        else:
 		            #time to check SI:
 		            AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool)),WLOG)
