@@ -4,9 +4,9 @@ from math import *
 from inspect import *
 import ast
 
-file = open('INP.txt', 'r')
-basis = open('Basis.txt', 'r+')
-memory = open('Memory.txt', 'r+')
+#file = open('INP.txt', 'r')
+#basis = open('Basis.txt', 'r+')
+#memory = open('Memory.txt', 'r+')
 
 def ARB(function, replacelist):
     '''
@@ -199,6 +199,15 @@ def rchi(obj):
         ANS.append(str(i))
         i += 1
     return ANS
+
+def rchiINT(NUM):
+    ANS = []
+    i = 0
+    for x in range(0,int(NUM)+1):
+        ANS.append(str(i))
+        i += 1
+    return ANS
+
 
 def Address(basis,obj):
     '''
@@ -787,19 +796,19 @@ def ShittySI(ListItems):
 		        tryit = False
 		    if tryit == True:
 		        if ListItems[1] == "Auto":
-			    if len(Vertex_(WLOG)) <= len(Vertex_(Larger)):
-			        Vertex_Max = Vertex_(Larger)
-			    else:
-			        Vertex_Max = Vertex_(WLOG)
-			    #print("parts for AD1",WLOG)
-			    #print("Larger",Larger)
-			    #print("Indexer",Indexer)
-			    #print("LinkPool",LinkPool)
-			    #print("PhiConstruct",PhiConstruct(Indexer,LinkPool))
-			    #print("basis",Minv_(rchi(Vertex_(Larger))))
-			    #print("compose",Compose(Minv_(rchi(Vertex_(Larger))),PhiConstruct(Indexer,LinkPool)))
-		            AD1 = AddressFunc(Compose(Minv_(rchi(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),WLOG)
-		            AD2 = AddressFunc(Compose(Minv_(rchi(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),HStar)
+			    Vertex_Max = '0'
+			    for NUM in Vertex_(WLOG) + Vertex_(Larger):
+				if int(NUM) > int(Vertex_Max):
+				    Vertex_Max = str(NUM)
+			    print("parts for AD1",WLOG)
+			    print("Larger",Larger)
+			    print("Indexer",Indexer)
+			    print("LinkPool",LinkPool)
+			    print("PhiConstruct",PhiConstruct(Indexer,LinkPool))
+			    print("basis",Minv_(rchiINT(Vertex_Max)))
+			    print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)))
+		            AD1 = AddressFunc(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),WLOG)
+		            AD2 = AddressFunc(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),HStar)
 		        else:
 		            #time to check SI:
 		            AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool)),WLOG)
