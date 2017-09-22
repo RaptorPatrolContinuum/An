@@ -129,5 +129,7 @@ while True:
         print("test E_G and E_H",ShittySI([[E_G,E_H]]))
         print("ok now to sequence through with autovision. because of the 'compression theorem' we just need to expand the basis and not worry about Lvals",AutoVision(30000000,1))
         #strat: for x,y -> infinity, append to memory SI(vision(x),vision(y))
-	print("CHECK SI AGAIN FUCKING BASIS", ShittySI([[[['0','0'],['2','0']],[['1','0']]],"Auto"]))
+	#print("CHECK SI AGAIN FUCKING BASIS", ShittySI([[[['0','0'],['2','0']],[['1','0']]],"Auto"]))
+	print("CHECK SI AGAIN FUCKING BASIS", ShittySI([[[['2','0']],[['1','0']]],"Auto"]))
+
         

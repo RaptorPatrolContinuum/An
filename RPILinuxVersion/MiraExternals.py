@@ -659,11 +659,11 @@ def ShittySI(ListItems):
 	Larger = E_G
 
     #print("REMEMBER TO ADD ZEROLINKS TO EDGESORTbyLINKS")
-    #print(WLOG)
-    #print(Larger)
-    #print(EdgeSortbyLinks(WLOG))
-    #print(EdgeSortbyLinks(Larger))
-    #print(LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger)))
+    print(WLOG)
+    print(Larger)
+    print(EdgeSortbyLinks(WLOG))
+    print(EdgeSortbyLinks(Larger))
+    print(LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger)))
 
     LinkPool = LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger))
     
@@ -672,10 +672,10 @@ def ShittySI(ListItems):
     #just check LinkPool VS Vertex_(WLOG)
     #print("ran keys",ranDict(LinkPool)) 
     ZeroNodes = [x for x in Vertex_(WLOG) if x not in ranDict(LinkPool)]
-    #print("Zeronodes?",ZeroNodes) 
+    print("Zeronodes?",ZeroNodes) 
     for x in ZeroNodes:
-	LinkPool[x] = Vertex_(E_H)
-    #print("LinkPool+Zeronodes?",LinkPool)
+	LinkPool[x] = Vertex_(Larger)
+    print("LinkPool+Zeronodes?",LinkPool)
 
     #make sure LinkPool lists contain each other when you go down the list
     LinkPoolList = []
@@ -707,8 +707,8 @@ def ShittySI(ListItems):
 	LinkSize.append(len(x[1])-i)
 	i += 1
 	LinkList.append(x[1])
-    #print("check linksize",LinkSize)
-    #print("check linklist",LinkList)
+    print("check linksize",LinkSize)
+    print("check linklist",LinkList)
 
     NumberIndex = []
     for G in LinkSize:
@@ -757,17 +757,17 @@ def ShittySI(ListItems):
 			        for NUM in Vertex_(WLOG) + Vertex_(Larger):
 				    if int(NUM) > int(Vertex_Max):
 				        Vertex_Max = str(NUM)
-				#print("V_G",Vertex_(WLOG))
-				#print("V_H",Vertex_(Larger))
-				#print("TheMax",Vertex_Max)
-				#print("parts for AD1",WLOG)
-			        #print("Larger",Larger)
-			        #print("Indexer",Indexer)
-			        #print("LinkPool",LinkPool)
-			        #print("PhiConstruct",PhiConstruct(Indexer,LinkPool))
-				#print("need to pick right max",rchiINT(Vertex_Max))
-			        #print("basis",Minv_(rchiINT(Vertex_Max)))
-			        #print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)))
+				print("V_G",Vertex_(WLOG))
+				print("V_H",Vertex_(Larger))
+				print("TheMax",Vertex_Max)
+				print("parts for AD1",WLOG)
+			        print("Larger",Larger)
+			        print("Indexer",Indexer)
+			        print("LinkPool",LinkPool)
+			        print("PhiConstruct",PhiConstruct(Indexer,LinkPool))
+				print("need to pick right max",rchiINT(Vertex_Max))
+			        print("basis",Minv_(rchiINT(Vertex_Max)))
+			        print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)))
 
 				if len(Vertex_(Larger)) >= len(Vertex_(WLOG)):
 			            #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
