@@ -256,13 +256,12 @@ def AddressFunc(index,obj):
         #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
 	#print("suspected wtf",index,x[1])
 
-	#print("x obj", x)
-	#print("index",index)
-	#print("x[0]",x[0])
-	#print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
-	#print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
-	#print("CANTOR PAIR IS FUCKED? C(0,1)",CantorPair(0,1))
-	#print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+	print("x obj", x)
+	print("index",index)
+	print("x[0]",x[0])
+	print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
+	print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
+	print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
 	Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
     
     #print("more stats",obj,Interim)
@@ -274,7 +273,7 @@ def AddressFunc(index,obj):
         ANS = ANS[:int(x)] + "1" + ANS[int(x)+1:]
     #print("ANS bin",ANS)
     ANS = int(ANS[::-1], 2)
-    #print("ANS INT",ANS)
+    print("ANS INT",ANS)
     return ANS
 
 def AutoAddressFunc(obj):
@@ -307,7 +306,6 @@ def AutoAddressFunc(obj):
 	#print("x obj", x)
 	#print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
 	#print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
-	#print("CANTOR PAIR IS FUCKED? C(0,1)",CantorPair(0,1))
 	#print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
 	Interim.append(CantorPair(int(x[0]),int(x[1])))
     
@@ -599,12 +597,36 @@ def LessThan_C(i,j):
     takes a number i j and asks if bin(i) is "less than" bin(j) componentwise
     AKA bin(i) is an initial portion of bin(j)
     '''
+    '''
+    print("i,j!",i,j)
     binary = "{0:b}".format(i)[::-1]
     bin2 = "{0:b}".format(j)[::-1]
+    print("bin1/2",binary,bin2)
+    print("the check",str(binary))
+    print("check2",str(bin2[:len(binary)]))
     if str(binary) == str(bin2[:len(binary)]):
         return True
     else:
         return False
+    '''
+    print("i,j!",i,j)
+    ANS = True
+    binary = "{0:b}".format(i)[::-1]
+    bin2 = "{0:b}".format(j)[::-1]
+    print("bin1/2",binary,bin2)
+    print("the check",str(binary))
+    i = 0
+    for x in str(binary):
+	print("i", i)
+        if x == '1':
+	    try:
+	        str(bin2)[i] != '1' 
+	    except IndexError:
+		return False
+	    if str(bin2)[i] != '1':
+	    	return False
+        i += 1
+    return ANS
 
 def Vertex_(E_G):
     '''
@@ -731,23 +753,41 @@ def ShittySI(ListItems):
 			if tryit == True:
 			    if ListItems[1] == "Auto":
 				Vertex_Max = '0'
+				print("vertexmax lolwut",Vertex_(WLOG) + Vertex_(Larger))
 			        for NUM in Vertex_(WLOG) + Vertex_(Larger):
 				    if int(NUM) > int(Vertex_Max):
 				        Vertex_Max = str(NUM)
-				#print("V_G",Vertex_(WLOG))
-				#print("V_H",Vertex_(Larger))
-				#print("TheMax",Vertex_Max)
-				#print("parts for AD1",WLOG)
-			        #print("Larger",Larger)
-			        #print("Indexer",Indexer)
-			        #print("LinkPool",LinkPool)
-			        #print("PhiConstruct",PhiConstruct(Indexer,LinkPool))
-				#print("need to pick right max",rchi(Vertex_Max))
-			        #print("basis",Minv_(rchi(Vertex_Max)))
-			        #print("compose",Compose(Minv_(rchi(Vertex_Max)),PhiConstruct(Indexer,LinkPool)))
+				print("V_G",Vertex_(WLOG))
+				print("V_H",Vertex_(Larger))
+				print("TheMax",Vertex_Max)
+				print("parts for AD1",WLOG)
+			        print("Larger",Larger)
+			        print("Indexer",Indexer)
+			        print("LinkPool",LinkPool)
+			        print("PhiConstruct",PhiConstruct(Indexer,LinkPool))
+				print("need to pick right max",rchiINT(Vertex_Max))
+			        print("basis",Minv_(rchiINT(Vertex_Max)))
+			        print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)))
+
+				if len(Vertex_(Larger)) >= len(Vertex_(WLOG)):
+			            #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
+			            HStar = []
+			            for L in Larger:
+				        passA = True
+				        passB = True
+				        if len(RelEval(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),L[0])) == 0:
+				            passA = False
+				        if len(RelEval(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),L[1])) == 0:
+				            passB = False
+				        if passA == True and passB == True:
+				            HStar.append(L)
+			            print("ok check out H*!",HStar)
+			        else:
+			            HStar = Larger
 
 			        AD1 = AddressFunc(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),WLOG)
-			        AD2 = AddressFunc(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),HStar)
+			        AD2 = AddressFunc(Minv_(rchiINT(Vertex_Max)),HStar)
+				print("AD checks",AD1,AD2)
 			    else:
 			        #time to check SI:
 		    	        AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool)),WLOG)
@@ -756,7 +796,7 @@ def ShittySI(ListItems):
 			    #time to check SI:
 		    	    AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool)),WLOG)
 			    AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool)),HStar)
-			
+			print("ADchecks",AD1,AD2)
 			if LessThan_C(AD1,AD2):
 			    return [True,PhiConstruct(Indexer,LinkPool)]
 	    NumberIndex = NumberNew
@@ -808,7 +848,7 @@ def ShittySI(ListItems):
 			    #print("basis",Minv_(rchiINT(Vertex_Max)))
 			    #print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)))
 		            AD1 = AddressFunc(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),WLOG)
-		            AD2 = AddressFunc(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),HStar)
+		            AD2 = AddressFunc(Minv_(rchiINT(Vertex_Max)),HStar)
 		        else:
 		            #time to check SI:
 		            AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool)),WLOG)
