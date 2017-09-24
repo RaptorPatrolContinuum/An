@@ -2,10 +2,6 @@ from math import *
 from inspect import *
 import ast
 
-file = open('INP.txt', 'r')
-basis = open('Basis.txt', 'r+')
-memory = open('Memory.txt', 'r+')
-
 def ARB(function, replacelist):
     '''
     ANSWER:
@@ -268,7 +264,7 @@ def AutoVision(number,Lval):
         print("ABUSE THE COMPRESSION THEOREM!")
     if ANS == []:
         #print("stats", number,Lval)
-        print("ANS IS []???!?!?!?!?!")
+        print("AutoVision returned empty []???!?!?!?!?!")
     return ANS
 
 def Compose(f1,f2):
