@@ -1,5 +1,9 @@
 from MiraExternals import *
 
+file = open('INP.txt', 'r')
+basis = open('Basis.txt', 'r+')
+memory = open('Memory.txt', 'r+')
+
 while True:
     inputtext = str(input("Exit or logout to leave \n"))
     if inputtext == "exit" or inputtext == "logout":
@@ -122,3 +126,22 @@ while True:
         E_H = [["X","V"],["V","Y"],["V","Z"],["Z","Y"],["Y","X"]]
         #print("Realitytesting",ShittySI(E_B,E_A))
         print("test E_G and E_H",ShittySI(E_G,E_H))
+        print("fchecking on empty",fCheck([[],[]]))
+        print("shitty SI on []",ShittySI([[]],[[]]))
+        print("merge RPI first then this!",ShittySI(AutoVision(0,1),AutoVision(0,1)))
+        print("wtf?",AutoVision(1,1))
+        print("check Cantor INV of 0", CantorInv(0))
+        print("another shittySI check",ShittySI([["0","0"]],[["1","0"]]))
+        print("WTF IS CANTOR PAIR WRONG",CantorPair(0,0))
+        print("WTF IS CANTOR PAIR WRONG",CantorPair(1,0))
+        print("WTF IS CANTOR PAIR WRONG",CantorPair(0,1))
+
+        OG = [['1','0']]
+        OMG = AddressFunc(Minv_(Beta_(OG)),OG)
+        print("original graoh",OG)
+        print("AutoVision of 2",AutoVision(2,1))
+        #print("address of that guy",AddressFunc(Minv_(Beta_(AutoVisionString(2,1))),AutoVision(2,1)))
+        print("OMFG maybe duplicaes kill everything",OMG)
+        print("ask for the finite difference",AutoVision(OMG,1))
+        print("fucking rip",CantorPair(0,0))
+
