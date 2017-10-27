@@ -565,6 +565,7 @@ def PhiConstruct(IndexRan,LinkPool):
     '''
     TheChoice = []
     Exclusion = []
+    #print("PHICONSTRUCT")
     #print("what is IndexRan?",IndexRan)
     for x in IndexRan:
 	#print("testing",x,LinkPool)
@@ -573,8 +574,11 @@ def PhiConstruct(IndexRan,LinkPool):
         ThePick = [y for y in LinkPool[x[0]] if y not in ran(Exclusion)][x[1]]
         Exclusion.append([x[0],ThePick])
 	#print("check pick and exclusion/ran exclusion", ThePick, Exclusion, ran(Exclusion))
-        TheChoice = TheChoice + [[ThePick,x[0]],[x[0],ThePick]]
+        #TheChoice = TheChoice + [[ThePick,x[0]],[x[0],ThePick]]
+	#I think ^^ is not good because you can get duplicates and dumb shit like [1,0],[1,2] if you map 0->1 and 1->2
+	TheChoice = TheChoice + [[x[0],ThePick]]
 	#print("choice?",TheChoice)
+    #print("PHICONSTRUCT END")
     return TheChoice
 
 def dictMerge(dicA,dicB):
@@ -784,10 +788,12 @@ def ShittySI(ListItems):
 			            #print("ok check out H*!",HStar)
 			        else:
 			            HStar = Larger
-
 			        AD1 = AddressFunc(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),WLOG)
 			        AD2 = AddressFunc(Minv_(rchiINT(Vertex_Max)),HStar)
-				#print("AD checks",AD1,AD2)
+				#print("stats")
+				#print(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool)),WLOG)
+				#print(Minv_(rchiINT(Vertex_Max)),HStar)
+				#print("AD checks prior",AD1,AD2)
 			    else:
 			        #time to check SI:
 		    	        AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool)),WLOG)
@@ -797,6 +803,9 @@ def ShittySI(ListItems):
 		    	    AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool)),WLOG)
 			    AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool)),HStar)
 			#print("ADchecks",AD1,AD2)
+			#print("tobin AD1","{0:b}".format(AD1)[::-1])
+			#print("tobin AD2","{0:b}".format(AD2)[::-1])
+			#print("LessthanC",LessThan_C(AD1,AD2))	
 			if LessThan_C(AD1,AD2):
 			    return [True,PhiConstruct(Indexer,LinkPool)]
 	    NumberIndex = NumberNew
