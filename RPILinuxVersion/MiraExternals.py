@@ -574,9 +574,9 @@ def PhiConstruct(IndexRan,LinkPool):
         ThePick = [y for y in LinkPool[x[0]] if y not in ran(Exclusion)][x[1]]
         Exclusion.append([x[0],ThePick])
 	#print("check pick and exclusion/ran exclusion", ThePick, Exclusion, ran(Exclusion))
-        #TheChoice = TheChoice + [[ThePick,x[0]],[x[0],ThePick]]
-	#I think ^^ is not good because you can get duplicates and dumb shit like [1,0],[1,2] if you map 0->1 and 1->2
-	TheChoice = TheChoice + [[x[0],ThePick]]
+        TheChoice = TheChoice + [[ThePick,x[0]],[x[0],ThePick]]
+	#I think ^^ is not good (maybe only for auto) because you can get duplicates and dumb shit like [1,0],[1,2] if you map 0->1 and 1->2
+	#TheChoice = TheChoice + [[x[0],ThePick]]
 	#print("choice?",TheChoice)
     #print("PHICONSTRUCT END")
     return TheChoice
