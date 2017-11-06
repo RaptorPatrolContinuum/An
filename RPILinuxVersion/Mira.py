@@ -1,12 +1,17 @@
-#!/usr/bin/env python
+#!/usr/bin/python3.6.3
 from MiraExternals import *
+
+import sys
+
+if sys.version_info[0] < 3:
+    raise Exception("Python 3 or a more recent version is required.")
 
 file = open('INP.txt', 'r')
 basis = open('Basis.txt','r+')
 memory = open('Memory.txt','r+')
 
 while True:
-    inputtext = str(raw_input("exit or logout to leave \n"))
+    inputtext = str(input("exit or logout to leave \n"))
     if inputtext == "exit" or inputtext == "logout":
         break
     else:
@@ -44,7 +49,7 @@ while True:
             memory.seek(0)
             memorylist = ast.literal_eval(memory.read())
 
-	#fix basis
+        #fix basis
         for char in inputtext:
             #if stuff is not in the basis:
             if char in basislist:
@@ -68,39 +73,39 @@ while True:
         print("what is input", inputtext)
         print("end of alg")
         #\omega(I_basis_U,U) & vision
-	print(basislist)
-	print(M_(inputtext))
+        print(basislist)
+        print(M_(inputtext))
         print("Address of obj", Address(basislist,M_(inputtext)))
         print("wtf why is there an L?",AutoVision(Address(basislist,M_(inputtext)),1))
         print(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)))
 
-	#questions to ask:/ALWAYS REMEMBER TO APPEND AFTER
-	#REMEMBER, AT EACH STEP YOU NEED TO APPEND THAT ANSWER TO MIRA
+        #questions to ask:/ALWAYS REMEMBER TO APPEND AFTER
+        #REMEMBER, AT EACH STEP YOU NEED TO APPEND THAT ANSWER TO MIRA
 
-	
-	##have I seen this before?
+        
+        ##have I seen this before?
         #print("input in memory?",inputtext,Elem_My(inputtext,memorylist))
-	#should know if she knows it
-	Elem_My(inputtext,memorylist)
-	memorylist.append(inputtext)
+        #should know if she knows it
+        Elem_My(inputtext,memorylist)
+        memorylist.append(inputtext)
 
-	
-	##try to eval it
-	try:
-	    eval(inputtext)
-	    memorylist.append([inputtext,eval(inputtext)])
-	except NameError:
-	    pass
-	
+        
+        ##try to eval it
+        try:
+            eval(inputtext)
+            memorylist.append([inputtext,eval(inputtext)])
+        except:
+            pass
+        
         #get nearest topo: M_U compose MIRA and M_U in MIRA?
         for x in memorylist:
             #just do fast compose to express "close" possibilities
-   	    fast = Compose(x,M_(inputtext)) 
+            fast = Compose(x,M_(inputtext)) 
             if fast != None:
-		memorylist.append(fast)
+                memorylist.append(fast)
 
-		
-	        
+                
+                
 
         #memorylist = list of addresses/functions
 
@@ -112,11 +117,11 @@ while True:
         #"use delta < some # " and look in some topo space
         #append basis again
 
-	#check what the stuff is
-	#print("blist",basislist)
-	#print("mlist",memorylist)
-	#write everything down
-	basis.seek(0)
-	basis.write(str(basislist))
-	memory.seek(0)
-	memory.write(str(memorylist))
+        #check what the stuff is
+        #print("blist",basislist)
+        #print("mlist",memorylist)
+        #write everything down
+        basis.seek(0)
+        basis.write(str(basislist))
+        memory.seek(0)
+        memory.write(str(memorylist))

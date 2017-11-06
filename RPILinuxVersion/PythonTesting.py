@@ -1,5 +1,10 @@
 from MiraExternals import *
 
+import sys
+
+if sys.version_info[0] < 3:
+    raise Exception("Python 3 or a more recent version is required.")
+
 def IsAuto(E_G):
     '''
     checks if a graph is just on integers or not (so we can figure out to use auto functions or not)
