@@ -473,10 +473,10 @@ def Inspector_M(y):
     (here we assume that y is already M_y!!!!!)
     '''
     #check if y is a function:
-    if fCheck(y) == False:
-        print("y is function? INSPECTOR", fCheck(y))
-        return
-    return Compose(y,PreImage(y))
+    #if fCheck(y) == False:
+    #    print("y is function? INSPECTOR", fCheck(y))
+    #    return
+    return Compose(M_(y),PreImage(M_(y)))
 
 def Elem_My(x,y):
     '''

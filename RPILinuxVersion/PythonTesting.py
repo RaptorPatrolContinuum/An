@@ -12,7 +12,16 @@ def IsAuto(E_G):
 	    return False
 	    break
     return True
-print("is vertex fucked?", Vertex_([['0','0'],['1','0']]))
-print(IsAuto([['0','0'],['1','0']]))
-print(IsAuto([['0','0'],['1','R']]))
+#print("is vertex fucked?", Vertex_([['0','0'],['1','0']]))
+#print(IsAuto([['0','0'],['1','0']]))
+#print(IsAuto([['0','0'],['1','R']]))
 #print(int('R'))
+
+print("element relation work? False",Elem_My('1',[['1','1']]))
+print("element relation work? True",Elem_My(['1','1'],[['1','1']]))
+test = [['1','1']]
+print(Inspector_M(test))
+print(M_(test))
+print(PreImage(test))
+print(Compose(M_(test),PreImage(test)))
+print("element relation work? True",Elem_My('1',['1','5']))

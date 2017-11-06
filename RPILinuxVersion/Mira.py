@@ -77,10 +77,16 @@ while True:
             print(memorylist)
             print(Compose(x,M_(inputtext)))
 
-        Elem_My(M_(inputtext),Inspector_M(M_(memorylist)))
+        #Elem_My(M_(inputtext),Inspector_M(M_(memorylist)))
+	#should be just
+	print("inputtext?",inputtext)
+	print("memory is",memorylist)
+	print("input in memory?",inputtext,Elem_My(inputtext,memorylist))
+	memorylist.append(inputtext)
 
 
-        
+	        
+
         #memorylist = list of functions
 
         
@@ -91,5 +97,11 @@ while True:
         #"use delta < some # " and look in some topo space
         #append basis again
 
-
-       
+	#check what the stuff is
+	print("blist",basislist)
+	print("mlist",memorylist)
+	#write everything down
+	basis.seek(0)
+	basis.write(str(basislist))
+	memory.seek(0)
+	memory.write(str(memorylist))
