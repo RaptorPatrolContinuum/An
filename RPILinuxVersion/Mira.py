@@ -44,6 +44,7 @@ while True:
             memory.seek(0)
             memorylist = ast.literal_eval(memory.read())
 
+	#fix basis
         for char in inputtext:
             #if stuff is not in the basis:
             if char in basislist:
@@ -65,29 +66,43 @@ while True:
                 
         #for U unknown, see M_U
         print("what is input", inputtext)
-        print(M_(inputtext))
         print("end of alg")
         #\omega(I_basis_U,U) & vision
-        ##print("fml", Address(basislist,M_(inputtext)))
-        ##print(AutoVision(Address(basislist,M_(inputtext)),1))
-        ##print(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)))
+	print(basislist)
+	print(M_(inputtext))
+        print("Address of obj", Address(basislist,M_(inputtext)))
+        print("wtf why is there an L?",AutoVision(Address(basislist,M_(inputtext)),1))
+        print(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)))
 
-        #eval info: M_U compose MIRA and M_U in MIRA?
-        for x in memorylist:
-            print(memorylist)
-            print(Compose(x,M_(inputtext)))
+	#questions to ask:/ALWAYS REMEMBER TO APPEND AFTER
+	#REMEMBER, AT EACH STEP YOU NEED TO APPEND THAT ANSWER TO MIRA
 
-        #Elem_My(M_(inputtext),Inspector_M(M_(memorylist)))
-	#should be just
-	print("inputtext?",inputtext)
-	print("memory is",memorylist)
-	print("input in memory?",inputtext,Elem_My(inputtext,memorylist))
+	
+	##have I seen this before?
+        #print("input in memory?",inputtext,Elem_My(inputtext,memorylist))
+	#should know if she knows it
+	Elem_My(inputtext,memorylist)
 	memorylist.append(inputtext)
 
+	
+	##try to eval it
+	try:
+	    eval(inputtext)
+	    memorylist.append([inputtext,eval(inputtext)])
+	except NameError:
+	    pass
+	
+        #get nearest topo: M_U compose MIRA and M_U in MIRA?
+        for x in memorylist:
+            #just do fast compose to express "close" possibilities
+   	    fast = Compose(x,M_(inputtext)) 
+            if fast != None:
+		memorylist.append(fast)
 
+		
 	        
 
-        #memorylist = list of functions
+        #memorylist = list of addresses/functions
 
         
         #append basis w/ M_U compose MIRA and M_U in MIRA
@@ -98,8 +113,8 @@ while True:
         #append basis again
 
 	#check what the stuff is
-	print("blist",basislist)
-	print("mlist",memorylist)
+	#print("blist",basislist)
+	#print("mlist",memorylist)
 	#write everything down
 	basis.seek(0)
 	basis.write(str(basislist))

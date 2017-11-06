@@ -227,6 +227,7 @@ def Address(basis,obj):
     for x in Interim:
         ANS = ANS[:int(x)] + "1" + ANS[int(x)+1:]
     ANS = int(ANS[::-1], 2)
+    print("where the fuck is L coming from", ANS)
     return ANS
 
 def AddressFunc(index,obj):
@@ -407,7 +408,7 @@ def Compose(f1,f2):
     '''
     #check if f1,f2 are functions:
     if fCheck(f1) == False or fCheck(f2) == False:
-        print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
+        #print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
         return
     ALG = []
     for x in f2:
