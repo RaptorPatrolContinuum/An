@@ -103,9 +103,10 @@ while True:
         ###memorylist.append(escape)
         ###memorylist.append(M_(inputtext))
 
-        
+        print("need to see error lol",Address(basislist,[["1","print"]["2","("]["3","test"]["4",")"]])) 
         ##try to eval it
         print("before the try -> eval!")
+        #print("morphemes through cheat!", Cheat(str(inputtext)))
         try:
             eval(inputtext)
             ###memorylist.append([inputtext,eval(inputtext)])
