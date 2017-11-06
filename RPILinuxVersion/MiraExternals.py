@@ -232,7 +232,6 @@ def Address(basis,obj):
     for x in Interim:
         ANS = ANS[:int(x)] + "1" + ANS[int(x)+1:]
     ANS = int(ANS[::-1], 2)
-    print("where the fuck is L coming from", ANS)
     return ANS
 
 def AddressFunc(index,obj):

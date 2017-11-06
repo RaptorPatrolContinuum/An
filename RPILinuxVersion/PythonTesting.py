@@ -10,12 +10,12 @@ def IsAuto(E_G):
     checks if a graph is just on integers or not (so we can figure out to use auto functions or not)
     '''
     for x in Vertex_(E_G):
-	print("what is x?",x)
-	try:
-	    int(x)
-	except ValueError:
-	    return False
-	    break
+        print("what is x?",x)
+        try:
+            int(x)
+        except ValueError:
+            return False
+            break
     return True
 #print("is vertex fucked?", Vertex_([['0','0'],['1','0']]))
 #print(IsAuto([['0','0'],['1','0']]))
@@ -41,8 +41,10 @@ ANS="1".zfill(int(max(Interim))+1)
 #print("need Interim Data", Interim)
 Interim = list(filter(lambda x: x != max(Interim), Interim))
 for x in Interim:
-	ANS = ANS[:int(x)] + "1" + ANS[int(x)+1:]
+        ANS = ANS[:int(x)] + "1" + ANS[int(x)+1:]
 print(ANS)
 ANS = int(ANS[::-1], 2)
 print(ANS)
-
+print("==========================")
+print("int(" + str(ANS) + "[::-1], 2)")
+print("int(" + str(ANS) + "monkeys")

@@ -10,6 +10,27 @@ file = open('INP.txt', 'r')
 basis = open('Basis.txt','r+')
 memory = open('Memory.txt','r+')
 
+def BasisFix(inp,basis):
+    '''
+    this fixes basis so I can call address whenever
+    '''
+    for char in inp:
+        #if stuff is not in the basis:
+        if char in basis:
+            pass
+        else:
+            #append to basis
+            basis.append(char)
+    if len(inp) in basis:
+        pass
+    else:
+        for k in range(len(inputtext)+1):
+            if str(k) in basis:
+                pass
+            else:
+                basis.append(str(k))
+    return
+
 while True:
     inputtext = str(input("exit or logout to leave \n"))
     if inputtext == "exit" or inputtext == "logout":
@@ -50,34 +71,20 @@ while True:
             memorylist = ast.literal_eval(memory.read())
 
         #fix basis
-        for char in inputtext:
-            #if stuff is not in the basis:
-            if char in basislist:
-                pass
-            else:
-                #append to basis
-                basislist.append(char)
-        
-        if len(inputtext) in basislist:
-            pass
-        else:
-            for k in range(len(inputtext)+1):
-                if str(k) in basislist:
-                    pass
-                else:
-                    basislist.append(str(k))
-                    
+        BasisFix(inputtext,basislist)                
 
-                
+                        
         #for U unknown, see M_U
         print("what is input", inputtext)
         print("end of alg")
+
         #\omega(I_basis_U,U) & vision
-        print(basislist)
-        print(M_(inputtext))
+        #print(basislist)
+        #print(M_(inputtext))
         print("Address of obj", Address(basislist,M_(inputtext)))
-        print("wtf why is there an L?",AutoVision(Address(basislist,M_(inputtext)),1))
         print(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)))
+        print("make a tostring func since we have the info but not the order",ran(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1))))
+
 
         #questions to ask:/ALWAYS REMEMBER TO APPEND AFTER
         #REMEMBER, AT EACH STEP YOU NEED TO APPEND THAT ANSWER TO MIRA
@@ -87,24 +94,42 @@ while True:
         #print("input in memory?",inputtext,Elem_My(inputtext,memorylist))
         #should know if she knows it
         Elem_My(inputtext,memorylist)
-        memorylist.append(inputtext)
+        ###print("ORIGINAL MEMORY?",memorylist)
+        #escape = "[Elem_My("+inputtext+","+str(memorylist)+")",str(Elem_My(inputtext,memorylist))+"]"
+        escape = str(bytes("[Elem_My("+inputtext+","+str(memorylist)+"),"+str(Elem_My(inputtext,memorylist))+"]", "utf-8").decode("unicode_escape"))
+        #escape = bytes(str(Elem_My(inputtext,memorylist)), "utf-8").decode("unicode_escape")
+        ###print("WTF ESCAPE CHARS",escape)
+        
+        ###memorylist.append(escape)
+        ###memorylist.append(M_(inputtext))
 
         
         ##try to eval it
+        print("before the try -> eval!")
         try:
             eval(inputtext)
-            memorylist.append([inputtext,eval(inputtext)])
+            ###memorylist.append([inputtext,eval(inputtext)])
+            print("ok evaling inputtext",eval(inputtext))
+            print("what she should see:",[str(inputtext),str(eval(inputtext))])
+            BasisFix(str(eval(inputtext)),basislist)
+            
         except:
+            print("code died")
             pass
         
+        #print("MEMORYLIST IS", memorylist)
         #get nearest topo: M_U compose MIRA and M_U in MIRA?
-        for x in memorylist:
+        '''
+        for x in memorylist[0:]:
             #just do fast compose to express "close" possibilities
-            fast = Compose(x,M_(inputtext)) 
+            
+            print("stats",x,memorylist)
+            print("composing",M_(x),M_(inputtext),Compose(M_(x),M_(inputtext)))
+            fast = Compose(M_(x),M_(inputtext))
+            print("what she sees",["Compose(M_("+str(x)+"),"+str(M_(inputtext))+")",fast]) 
             if fast != None:
-                memorylist.append(fast)
-
-                
+                memorylist.append(["Compose(M_("+str(x)+"),"+str(M_(inputtext))+")",fast])
+        '''     
                 
 
         #memorylist = list of addresses/functions
