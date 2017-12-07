@@ -668,6 +668,7 @@ def Vertex_(E_G):
 
 def ShittySI(ListItems):
     '''
+    NOTE: THIS IS BIDIRECTIONAL ACTUALLY!! SO SAYS YES IF E_G SI E_H OR E_H SI E_G!
     input is a list of the form: [[E_G,E_H], "Auto"]
     says if E_G SI to some E_J in E_H
     '''
