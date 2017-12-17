@@ -83,6 +83,9 @@ while True:
         #print(M_(inputtext))
         print("Address of obj", Address(basislist,M_(inputtext)))
         print(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)))
+        print("want the X address of this",AutoAddressFunc([['0', '1'], ['1', '2']]))
+        print("want the Y address of this",AutoAddressFunc([['0', '0'], ['1', '1'], ['2', '1']]))
+        print("what number am I on then?",CantorPair(260,145))
         print("make a tostring func since we have the info but not the order",ran(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1))))
 
 
