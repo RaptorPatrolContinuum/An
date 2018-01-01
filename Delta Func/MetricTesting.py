@@ -1,17 +1,31 @@
 
 
 test1 = "oktestingthis"
-test2 = "thisisokothertesting"
+test2 = "??thisisokothertesting"
 
 
 def ladder(LHS,RHS):
     #compare max lengths of firstlongestcontig from A->B and B->A
-    print(firstlongestcontig(test1,test2,0,0))
-    print(firstlongestcontig(test2,test1,0,0))
-    return "no return yet"
+    #TRICK: LHS AND RHS HAVE TO BE IN THE SAME ORDER, BUT I SWITCH IN firstlongestcontig
+    Candidates = []
+    print("A->B",firstlongestcontig(test1,test2,0,0,0))
+    Candidates.append(firstlongestcontig(test1,test2,0,0,0))
+    print("B->A",firstlongestcontig(test2,test1,0,0,1))
+    Candidates.append(firstlongestcontig(test2,test1,0,0,1))
+    CurrentPick = []
+    #if all are 0, fail
+    ####NEW IDEA: do maxlongestcontig repeatedly on split parts
+    for x in Candidates:
+        if len(CurrentPick) == 0 and len(x) != 0:
+            CurrentPick = x
+        elif CurrentPick[2] < x[2]:
+            CurrentPick = x
+    print("ok this is CurrentPick",CurrentPick)
+            
+    return "no return for ladder"
 
 
-def firstlongestcontig(LHS,RHS,LHSinit,RHSinit):
+def firstlongestcontig(LHS,RHS,LHSinit,RHSinit,antitoggle):
     #print("LHS")
     #print(LHS)
     #print("RHS")
@@ -55,18 +69,23 @@ def firstlongestcontig(LHS,RHS,LHSinit,RHSinit):
         else:
             if i[2] > ANS[2]:
                 ANS = i
-    print("===================START")
-    print("check ans")
-    print("matching left (singletons will fuck up)",LHS,ANS[0],ANS[0]+ANS[2])
-    print(LHS[ANS[0]:ANS[0]+ANS[2]])
-    print("matching right (singletons will fuck up)",RHS,ANS[1],ANS[1]+ANS[2])
-    print(RHS[ANS[1]:ANS[1]+ANS[2]])
-    print("===================END")
+
+    if len(Candidatelist) > 0:
+        #print("===================START")
+        #print("check ans",ANS)
+        #print("matching left (singletons will fuck up)",LHS,ANS[0],ANS[0]+ANS[2])
+        #print(LHS[ANS[0]:ANS[0]+ANS[2]])
+        #print("matching right (singletons will fuck up)",RHS,ANS[1],ANS[1]+ANS[2])
+        #print(RHS[ANS[1]:ANS[1]+ANS[2]])
+        #print("===================END")
+        if antitoggle == 1:
+            ANS = [ANS[1],ANS[0],ANS[2]]
+    print("BEWARE OF ANTITOGGLE!",ANS)
     return ANS
 
 #print(firstlongestcontig(test2,test1,0,0))
 #print(firstlongestcontig(test1,test2,0,0))
-print(ladder(test1,test2))
+#print(ladder(test1,test2))
 
 
 
@@ -74,6 +93,7 @@ print(ladder(test1,test2))
 
 
 def maxlongestcontig(LHS,RHS,LHSinit,RHSinit):
+    #hint: this is commutative
     print("LHS")
     print(LHS)
     print("RHS")
@@ -84,7 +104,7 @@ def maxlongestcontig(LHS,RHS,LHSinit,RHSinit):
     for y in RHS[RHSinit:]:
         LHSCounter = LHSinit
         for x in LHS[LHSinit:]:
-            print("stats", x, LHSCounter, y, RHSCounter)
+            #print("stats", x, LHSCounter, y, RHSCounter)
             #::AM I SUPPOSED TO SCALE THIS
             if x == y:
                 #get x pos for LHS start 
@@ -107,15 +127,25 @@ def maxlongestcontig(LHS,RHS,LHSinit,RHSinit):
     print(LHS)
     print(RHS)
     for i in Candidatelist:
-        print("Candidate",i)
-        print("NOTE: [:] format doesn't do singletons")
-        print("matching left (singletons will fuck up)",LHS,i[0],i[0]+i[2])
-        print(LHS[i[0]:i[0]+i[2]+1])
-        print("matching right (singletons will fuck up)",RHS,i[1],i[1]+i[2])
-        print(RHS[i[1]:i[1]+i[2]+1])
+        #print("Candidate",i)
+        #print("NOTE: [:] format doesn't do singletons")
+        #print("matching left (singletons will fuck up)",LHS,i[0],i[0]+i[2])
+        #print(LHS[i[0]:i[0]+i[2]+1])
+        #print("matching right (singletons will fuck up)",RHS,i[1],i[1]+i[2])
+        #print(RHS[i[1]:i[1]+i[2]+1])
         if ANS == []:
             ANS = i
         else:
             if i[2] > ANS[2]:
                 ANS = i
     return ANS
+
+def seqsplit(LHS,RHS):
+    ANS = []
+    #need ending strat
+    #generic: apply maxlongestcontig on splits until it fails
+    
+    return ANS
+
+print(maxlongestcontig(test2,test1,0,0))
+print(maxlongestcontig(test1,test2,0,0))
