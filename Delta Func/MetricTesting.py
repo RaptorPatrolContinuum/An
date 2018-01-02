@@ -21,6 +21,8 @@ def ladder(LHS,RHS):
         elif CurrentPick[2] < x[2]:
             CurrentPick = x
     print("ok this is CurrentPick",CurrentPick)
+    print("split LHS and RHS")
+    
             
     return "no return for ladder"
 
@@ -147,5 +149,5 @@ def seqsplit(LHS,RHS):
     
     return ANS
 
-print(maxlongestcontig(test2,test1,0,0))
+#print(maxlongestcontig(test2,test1,0,0))
 print(maxlongestcontig(test1,test2,0,0))
