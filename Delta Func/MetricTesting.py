@@ -187,7 +187,14 @@ def seqsplit(LHS,RHS):
             print("new connections")
             print(Connections)
             i += 1
-    return Connections
+    #construct statement:
+    ANS = []
+    for x in Connections:
+        if x[0] == x[1]:
+            ANS.append(x)
+        elif len(x[0][0])!= 0 and len(x[1][0])!= 0:
+            ANS.append("Symbol")
+    return ANS
 
 
 #print(maxlongestcontig(test2,test1,0,0))
