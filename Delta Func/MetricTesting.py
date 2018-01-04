@@ -1,8 +1,8 @@
-
+from autocomposer import *
 
 test1 = "oktestingthis"
 test2 = "??thisisokothertesting"
-
+#test2 = "LAYon-theLINE"
 
 def ladder(LHS,RHS):
     #compare max lengths of firstlongestcontig from A->B and B->A
@@ -146,8 +146,40 @@ def seqsplit(LHS,RHS):
     ANS = []
     #need ending strat
     #generic: apply maxlongestcontig on splits until it fails
-    
+    ##what to do with nil answer??
+    LCont = maxlongestcontig(LHS,RHS,0,0)
+    if len(LCont) == 3:
+        print("LHS is",LHS)
+        print("LHS",LHS[:LCont[0]], "+",LHS[LCont[0]:LCont[0]+LCont[2]+1], "+",LHS[LCont[0]+LCont[2]+1:])
+        print("RHS is",RHS)
+        print("RHS",RHS[:LCont[1]], "+",RHS[LCont[1]:LCont[1]+LCont[2]+1], "+",RHS[LCont[1]+LCont[2]+1:])
+    #match like segments together (try: from left to right)
+    Connections = []
+    Connections.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
+    Connections.append([[LHS[LCont[0]:LCont[0]+LCont[2]+1]],[RHS[LCont[1]:LCont[1]+LCont[2]+1]]])
+    Connections.append([[LHS[LCont[0]+LCont[2]+1:]],[RHS[LCont[1]+LCont[2]+1:]]])
+
+    #for each part in Connections, if NOT same parts OR either part is empty, reapply maxlongestcontig
+    #then at the end stitch similar parts together
+    print("checking Connections")
+    print(Connections)
+    i = 0
+    for x in Connections:
+        i += 1
+        #need stopping point
+        LContmin = maxlongestcontig(x[0],x[1],0,0)
+        #DELETE CURRENT X
+        #INSERT NEW X PARTS (NOTE: WE ALSO INSERT ENOUGHT EMPTY LISTS SO MAKING STATEMENT+REPLACE IS EASIER)
+        #replace the current x with this:
+        InsertAt(Connections, "?????", i)
+        Connections.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
+        Connections.append([[LHS[LCont[0]:LCont[0]+LCont[2]+1]],[RHS[LCont[1]:LCont[1]+LCont[2]+1]]])
+        Connections.append([[LHS[LCont[0]+LCont[2]+1:]],[RHS[LCont[1]+LCont[2]+1:]]])
     return ANS
 
+
 #print(maxlongestcontig(test2,test1,0,0))
-print(maxlongestcontig(test1,test2,0,0))
+#print(maxlongestcontig(test1,test2,0,0))
+print(seqsplit(test1,test2))
+print("===========================================")
+print(seqsplit("ok","??thisisokother"))
