@@ -143,7 +143,6 @@ def maxlongestcontig(LHS,RHS,LHSinit,RHSinit):
     return ANS
 
 def seqsplit(LHS,RHS):
-    ANS = []
     #need ending strat
     #generic: apply maxlongestcontig on splits until it fails
     ##what to do with nil answer??
@@ -161,25 +160,41 @@ def seqsplit(LHS,RHS):
 
     #for each part in Connections, if NOT same parts OR either part is empty, reapply maxlongestcontig
     #then at the end stitch similar parts together
-    print("checking Connections")
+    print("================checking Connections")
     print(Connections)
     i = 0
     for x in Connections:
-        i += 1
-        #need stopping point
-        LContmin = maxlongestcontig(x[0],x[1],0,0)
-        #DELETE CURRENT X
-        #INSERT NEW X PARTS (NOTE: WE ALSO INSERT ENOUGHT EMPTY LISTS SO MAKING STATEMENT+REPLACE IS EASIER)
-        #replace the current x with this:
-        InsertAt(Connections, "?????", i)
-        Connections.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
-        Connections.append([[LHS[LCont[0]:LCont[0]+LCont[2]+1]],[RHS[LCont[1]:LCont[1]+LCont[2]+1]]])
-        Connections.append([[LHS[LCont[0]+LCont[2]+1:]],[RHS[LCont[1]+LCont[2]+1:]]])
-    return ANS
+        LContmin = maxlongestcontig(x[0][0],x[1][0],0,0)
+        if x[0][0] == x[1][0] or len(x[0][0]) == 0 or len(x[1][0]) == 0: #or len(LContmin) == 0
+            pass
+        else:
+            print("WTF BUCK",x,LContmin)
+            print("DELETE CURRENT X",x)
+            print(Connections[i])
+            print("old Con", Connections)
+            del Connections[i]
+            print("new Con", Connections)
+            
+            #INSERT NEW X PARTS (NOTE: WE ALSO INSERT ENOUGHT EMPTY LISTS SO MAKING STATEMENT+REPLACE IS EASIER)
+            #replace the current x with this:
+            ##################LHS/RHS are diff, LCont is now LContmin##################
+            print("part 1",[[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]])
+            print("part 2",[[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]+1]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]+1]]])
+            print("part 3",[[x[0][0][LContmin[0]+LContmin[2]+1:]],[x[1][0][LContmin[1]+LContmin[2]+1:]]])
+            Connections = InsertAt(Connections, [[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]], i)
+            Connections = InsertAt(Connections, [[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]+1]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]+1]]], i+1)
+            Connections = InsertAt(Connections, [[x[0][0][LContmin[0]+LContmin[2]+1:]],[x[1][0][LContmin[1]+LContmin[2]+1:]]], i+2)
+            print("new connections")
+            print(Connections)
+            i += 1
+    return Connections
 
 
 #print(maxlongestcontig(test2,test1,0,0))
 #print(maxlongestcontig(test1,test2,0,0))
 print(seqsplit(test1,test2))
-print("===========================================")
-print(seqsplit("ok","??thisisokother"))
+####something is wrong with maxlongestcontig ???
+####print(maxlongestcontig("ok","??thisisokother",0,0))
+
+#print("===========================================")
+#print(seqsplit("ok","??thisisokother"))
