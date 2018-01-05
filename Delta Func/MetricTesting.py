@@ -106,7 +106,6 @@ def maxlongestcontig(LHS,RHS,LHSinit,RHSinit):
     for y in RHS[RHSinit:]:
         LHSCounter = LHSinit
         for x in LHS[LHSinit:]:
-            #print("stats", x, LHSCounter, y, RHSCounter)
             #::AM I SUPPOSED TO SCALE THIS
             if x == y:
                 #get x pos for LHS start 
@@ -114,9 +113,12 @@ def maxlongestcontig(LHS,RHS,LHSinit,RHSinit):
                 #get y pos for RHS start 
                 rhscheckpos = RHSCounter
                 length = 0
+                #print("stats", x, LHSCounter, y, RHSCounter)
+                #print("=======WTF STATS",LHS[lhscheckpos+length] == RHS[rhscheckpos+length])
                 while LHS[lhscheckpos+length] == RHS[rhscheckpos+length]:
-                    if len(LHS)-1 > lhscheckpos+length and len(RHS)-1 > rhscheckpos+length:
-                        length += 1
+                    length += 1
+                    if len(LHS) > lhscheckpos+length and len(RHS) > rhscheckpos+length:
+                        pass
                     else:
                         break
                 #add candidate to Candidatelist
@@ -125,7 +127,7 @@ def maxlongestcontig(LHS,RHS,LHSinit,RHSinit):
             LHSCounter += 1
         RHSCounter += 1
     #double check info
-    print("CandidateList", Candidatelist)
+    #print("CandidateList", Candidatelist)
     print(LHS)
     print(RHS)
     for i in Candidatelist:
@@ -140,6 +142,14 @@ def maxlongestcontig(LHS,RHS,LHSinit,RHSinit):
         else:
             if i[2] > ANS[2]:
                 ANS = i
+    if len(Candidatelist) > 0:
+        print("===================START")
+        print("check ans",ANS)
+        print("matching left (singletons will fuck up)",LHS,ANS[0],ANS[0]+ANS[2])
+        print(LHS[ANS[0]:ANS[0]+ANS[2]])
+        print("matching right (singletons will fuck up)",RHS,ANS[1],ANS[1]+ANS[2])
+        print(RHS[ANS[1]:ANS[1]+ANS[2]])
+        print("===================END")
     return ANS
 
 def seqsplit(LHS,RHS):
@@ -147,17 +157,19 @@ def seqsplit(LHS,RHS):
     #generic: apply maxlongestcontig on splits until it fails
     ##what to do with nil answer??
     LCont = maxlongestcontig(LHS,RHS,0,0)
+    print("match LCont",LCont)
     if len(LCont) == 3:
         print("LHS is",LHS)
-        print("LHS",LHS[:LCont[0]], "+",LHS[LCont[0]:LCont[0]+LCont[2]+1], "+",LHS[LCont[0]+LCont[2]+1:])
+        print("LHS",LHS[:LCont[0]], "+",LHS[LCont[0]:LCont[0]+LCont[2]], "+",LHS[LCont[0]+LCont[2]:])
         print("RHS is",RHS)
-        print("RHS",RHS[:LCont[1]], "+",RHS[LCont[1]:LCont[1]+LCont[2]+1], "+",RHS[LCont[1]+LCont[2]+1:])
+        print("RHS",RHS[:LCont[1]], "+",RHS[LCont[1]:LCont[1]+LCont[2]], "+",RHS[LCont[1]+LCont[2]:])
     #match like segments together (try: from left to right)
     Connections = []
-    Connections.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
-    Connections.append([[LHS[LCont[0]:LCont[0]+LCont[2]+1]],[RHS[LCont[1]:LCont[1]+LCont[2]+1]]])
-    Connections.append([[LHS[LCont[0]+LCont[2]+1:]],[RHS[LCont[1]+LCont[2]+1:]]])
-
+    #Connections.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
+    #Connections.append([[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]])
+    #Connections.append([[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]])
+    Connections = seqsplitmin(LHS,RHS,LCont,Connections)
+    
     #for each part in Connections, if NOT same parts OR either part is empty, reapply maxlongestcontig
     #then at the end stitch similar parts together
     print("================checking Connections")
@@ -167,6 +179,7 @@ def seqsplit(LHS,RHS):
         LContmin = maxlongestcontig(x[0][0],x[1][0],0,0)
         if x[0][0] == x[1][0] or len(x[0][0]) == 0 or len(x[1][0]) == 0: #or len(LContmin) == 0
             pass
+            i += 1
         else:
             print("WTF BUCK",x,LContmin)
             print("DELETE CURRENT X",x)
@@ -178,12 +191,13 @@ def seqsplit(LHS,RHS):
             #INSERT NEW X PARTS (NOTE: WE ALSO INSERT ENOUGHT EMPTY LISTS SO MAKING STATEMENT+REPLACE IS EASIER)
             #replace the current x with this:
             ##################LHS/RHS are diff, LCont is now LContmin##################
-            print("part 1",[[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]])
-            print("part 2",[[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]+1]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]+1]]])
-            print("part 3",[[x[0][0][LContmin[0]+LContmin[2]+1:]],[x[1][0][LContmin[1]+LContmin[2]+1:]]])
-            Connections = InsertAt(Connections, [[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]], i)
-            Connections = InsertAt(Connections, [[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]+1]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]+1]]], i+1)
-            Connections = InsertAt(Connections, [[x[0][0][LContmin[0]+LContmin[2]+1:]],[x[1][0][LContmin[1]+LContmin[2]+1:]]], i+2)
+            #print("part 1",[[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]])
+            #print("part 2",[[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]+1]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]+1]]])
+            #print("part 3",[[x[0][0][LContmin[0]+LContmin[2]+1:]],[x[1][0][LContmin[1]+LContmin[2]+1:]]])
+            #Connections = InsertAt(Connections, [[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]], i)
+            #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]]]], i+1)
+            #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]+LContmin[2]:]],[x[1][0][LContmin[1]+LContmin[2]:]]], i+2)
+            Connections = seqsplitmin(x[0][0],x[1][0],LContmin,Connections)
             print("new connections")
             print(Connections)
             i += 1
@@ -196,12 +210,35 @@ def seqsplit(LHS,RHS):
             ANS.append("Symbol")
     return ANS
 
+def seqsplitmin(LHS,RHS,LCont,Connections):
+    ###this is because I might as well make a generic now as well as try to optimize instead of wait for later
+    #what this does is take LHS,RHS, and LCont and appends the right connections
+    #if there is an empty connection, refuse to append
+    ANS = Connections
+    #if it's an empty connection, refuse
+    if len(LHS[:LCont[0]]) == 0 and len(RHS[:LCont[1]]) == 0:
+        pass
+    #else: append
+    else:
+        ANS.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
+    if len(LHS[LCont[0]:LCont[0]+LCont[2]]) == 0 and len(RHS[LCont[1]:LCont[1]+LCont[2]]) == 0:
+        pass
+    else:
+        ANS.append([[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]])
+    if len(LHS[LCont[0]+LCont[2]:]) == 0 and len(RHS[LCont[1]+LCont[2]:]) == 0:
+        pass
+    else:
+        ANS.append([[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]])
+    return ANS
+    
+
 
 #print(maxlongestcontig(test2,test1,0,0))
 #print(maxlongestcontig(test1,test2,0,0))
-print(seqsplit(test1,test2))
+####print(seqsplit(test1,test2))
 ####something is wrong with maxlongestcontig ???
 ####print(maxlongestcontig("ok","??thisisokother",0,0))
-
+print(seqsplit("print('alpha')","print('beta')"))
+#print(maxlongestcontig("print(\"alpha\")","print(\"beta\")",0,0))
 #print("===========================================")
 #print(seqsplit("ok","??thisisokother"))
