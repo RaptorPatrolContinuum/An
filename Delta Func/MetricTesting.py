@@ -168,7 +168,7 @@ def seqsplit(LHS,RHS):
     #Connections.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
     #Connections.append([[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]])
     #Connections.append([[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]])
-    Connections = seqsplitmin(LHS,RHS,LCont,Connections)
+    Connections = seqsplitmin(LHS,RHS,LCont,Connections, [-1, -1, -1])
     
     #for each part in Connections, if NOT same parts OR either part is empty, reapply maxlongestcontig
     #then at the end stitch similar parts together
@@ -197,7 +197,7 @@ def seqsplit(LHS,RHS):
             #Connections = InsertAt(Connections, [[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]], i)
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]]]], i+1)
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]+LContmin[2]:]],[x[1][0][LContmin[1]+LContmin[2]:]]], i+2)
-            Connections = seqsplitmin(x[0][0],x[1][0],LContmin,Connections)
+            Connections = seqsplitmin(x[0][0],x[1][0],LContmin,Connections,[i, i+1, i+2])
             print("new connections")
             print(Connections)
             i += 1
@@ -210,35 +210,49 @@ def seqsplit(LHS,RHS):
             ANS.append("Symbol")
     return ANS
 
-def seqsplitmin(LHS,RHS,LCont,Connections):
+def seqsplitmin(LHS,RHS,LCont,Connections,index):
     ###this is because I might as well make a generic now as well as try to optimize instead of wait for later
     #what this does is take LHS,RHS, and LCont and appends the right connections
     #if there is an empty connection, refuse to append
+    #index is a list of indicies to add objects
     ANS = Connections
+    #print("CHECKANS1",ANS)
     #if it's an empty connection, refuse
     if len(LHS[:LCont[0]]) == 0 and len(RHS[:LCont[1]]) == 0:
         pass
     #else: append
     else:
-        ANS.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
+        #ANS.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
+        ANS = InsertAt(ANS,[[LHS[:LCont[0]]],[RHS[:LCont[1]]]],index[0])
+
+    #print("CHECKANS2",ANS)
     if len(LHS[LCont[0]:LCont[0]+LCont[2]]) == 0 and len(RHS[LCont[1]:LCont[1]+LCont[2]]) == 0:
         pass
     else:
-        ANS.append([[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]])
+        #ANS.append([[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]])
+        ANS = InsertAt(ANS,[[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]],index[1])
+
+    #print("CHECKANS3",ANS)
     if len(LHS[LCont[0]+LCont[2]:]) == 0 and len(RHS[LCont[1]+LCont[2]:]) == 0:
         pass
     else:
-        ANS.append([[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]])
+        #ANS.append([[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]])
+        #print("wtf is LCont?", LCont,LCont[0],LCont[1],LCont[2])
+        #print("cancer",   [[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]])
+        #print("index2",index[2])
+        ANS = InsertAt(ANS,[[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]],index[2])
+
+    print("CHECKANS4",ANS)
     return ANS
     
 
 
 #print(maxlongestcontig(test2,test1,0,0))
 #print(maxlongestcontig(test1,test2,0,0))
-####print(seqsplit(test1,test2))
+print(seqsplit(test1,test2))
 ####something is wrong with maxlongestcontig ???
 ####print(maxlongestcontig("ok","??thisisokother",0,0))
-print(seqsplit("print('alpha')","print('beta')"))
+##print(seqsplit("print('alpha')","print('beta')"))
 #print(maxlongestcontig("print(\"alpha\")","print(\"beta\")",0,0))
 #print("===========================================")
 #print(seqsplit("ok","??thisisokother"))

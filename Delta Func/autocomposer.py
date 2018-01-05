@@ -502,11 +502,17 @@ BUT I have
 def InsertAt (List,obj,Index):
     '''
     Inserts obj at List[Index] and appends the rest of list after it
+    -1 means add to end/append
     '''
-    VALUE = List[:Index]
-    VALUE.append(obj)
-    for x in range(0,len(List[Index:])):
-        VALUE.append(List[Index + x])
+    if Index == -1:
+        VALUE = List
+        print("WTF IS GOING ON", List, obj, )
+        VALUE.append(obj)
+    else:
+        VALUE = List[:Index]
+        VALUE.append(obj)
+        for x in range(0,len(List[Index:])):
+            VALUE.append(List[Index + x])
     return VALUE
 
 def Addresspls(info):
