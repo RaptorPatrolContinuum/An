@@ -1,4 +1,11 @@
 from autocomposer import *
+# some_file.py
+
+import sys
+sys.path.insert(0, 'C:\An\RPILinuxVersion')
+
+from MiraExternals import *
+
 
 test1 = "oktestingthis"
 test2 = "??thisisokothertesting"
@@ -96,10 +103,10 @@ def firstlongestcontig(LHS,RHS,LHSinit,RHSinit,antitoggle):
 
 def maxlongestcontig(LHS,RHS,LHSinit,RHSinit):
     #hint: this is commutative
-    print("LHS")
-    print(LHS)
-    print("RHS")
-    print(RHS)
+    #print("LHS")
+    #print(LHS)
+    #print("RHS")
+    #print(RHS)
     Candidatelist = []
     ANS = []
     RHSCounter = RHSinit
@@ -128,8 +135,8 @@ def maxlongestcontig(LHS,RHS,LHSinit,RHSinit):
         RHSCounter += 1
     #double check info
     #print("CandidateList", Candidatelist)
-    print(LHS)
-    print(RHS)
+    #print(LHS)
+    #print(RHS)
     for i in Candidatelist:
         #print("Candidate",i)
         #print("NOTE: [:] format doesn't do singletons")
@@ -142,14 +149,14 @@ def maxlongestcontig(LHS,RHS,LHSinit,RHSinit):
         else:
             if i[2] > ANS[2]:
                 ANS = i
-    if len(Candidatelist) > 0:
-        print("===================START")
-        print("check ans",ANS)
-        print("matching left (singletons will fuck up)",LHS,ANS[0],ANS[0]+ANS[2])
-        print(LHS[ANS[0]:ANS[0]+ANS[2]])
-        print("matching right (singletons will fuck up)",RHS,ANS[1],ANS[1]+ANS[2])
-        print(RHS[ANS[1]:ANS[1]+ANS[2]])
-        print("===================END")
+    #if len(Candidatelist) > 0:
+        #print("===================START")
+        #print("check ans",ANS)
+        #print("matching left (singletons will fuck up)",LHS,ANS[0],ANS[0]+ANS[2])
+        #print(LHS[ANS[0]:ANS[0]+ANS[2]])
+        #print("matching right (singletons will fuck up)",RHS,ANS[1],ANS[1]+ANS[2])
+        #print(RHS[ANS[1]:ANS[1]+ANS[2]])
+        #print("===================END")
     return ANS
 
 def seqsplit(LHS,RHS):
@@ -157,12 +164,12 @@ def seqsplit(LHS,RHS):
     #generic: apply maxlongestcontig on splits until it fails
     ##what to do with nil answer??
     LCont = maxlongestcontig(LHS,RHS,0,0)
-    print("match LCont",LCont)
-    if len(LCont) == 3:
-        print("LHS is",LHS)
-        print("LHS",LHS[:LCont[0]], "+",LHS[LCont[0]:LCont[0]+LCont[2]], "+",LHS[LCont[0]+LCont[2]:])
-        print("RHS is",RHS)
-        print("RHS",RHS[:LCont[1]], "+",RHS[LCont[1]:LCont[1]+LCont[2]], "+",RHS[LCont[1]+LCont[2]:])
+    #print("match LCont",LCont)
+    #if len(LCont) == 3:
+        #print("LHS is",LHS)
+        #print("LHS",LHS[:LCont[0]], "+",LHS[LCont[0]:LCont[0]+LCont[2]], "+",LHS[LCont[0]+LCont[2]:])
+        #print("RHS is",RHS)
+        #print("RHS",RHS[:LCont[1]], "+",RHS[LCont[1]:LCont[1]+LCont[2]], "+",RHS[LCont[1]+LCont[2]:])
     #match like segments together (try: from left to right)
     Connections = []
     #Connections.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
@@ -172,8 +179,8 @@ def seqsplit(LHS,RHS):
     
     #for each part in Connections, if NOT same parts OR either part is empty, reapply maxlongestcontig
     #then at the end stitch similar parts together
-    print("================checking Connections")
-    print(Connections)
+    #print("================checking Connections")
+    #print(Connections)
     i = 0
     for x in Connections:
         LContmin = maxlongestcontig(x[0][0],x[1][0],0,0)
@@ -181,12 +188,12 @@ def seqsplit(LHS,RHS):
             pass
             i += 1
         else:
-            print("WTF BUCK",x,LContmin)
-            print("DELETE CURRENT X",x)
-            print(Connections[i])
-            print("old Con", Connections)
+            #print("WTF BUCK",x,LContmin)
+            #print("DELETE CURRENT X",x)
+            #print(Connections[i])
+            #print("old Con", Connections)
             del Connections[i]
-            print("new Con", Connections)
+            #print("new Con", Connections)
             
             #INSERT NEW X PARTS (NOTE: WE ALSO INSERT ENOUGHT EMPTY LISTS SO MAKING STATEMENT+REPLACE IS EASIER)
             #replace the current x with this:
@@ -198,16 +205,21 @@ def seqsplit(LHS,RHS):
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]]]], i+1)
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]+LContmin[2]:]],[x[1][0][LContmin[1]+LContmin[2]:]]], i+2)
             Connections = seqsplitmin(x[0][0],x[1][0],LContmin,Connections,[i, i+1, i+2])
-            print("new connections")
-            print(Connections)
+            #print("new connections")
+            #print(Connections)
             i += 1
     #construct statement:
     ANS = []
+    symboli = 0
+    #print("what are connections?",Connections)
+    #print("ANS",ANS)
     for x in Connections:
         if x[0] == x[1]:
             ANS.append(x)
         elif len(x[0][0])!= 0 and len(x[1][0])!= 0:
-            ANS.append("Symbol")
+            ANS.append([["Symbol" + str(symboli)], [symboli]])
+            symboli += 1
+        #print("ANS at each step", ANS)
     return ANS
 
 def seqsplitmin(LHS,RHS,LCont,Connections,index):
@@ -242,17 +254,19 @@ def seqsplitmin(LHS,RHS,LCont,Connections,index):
         #print("index2",index[2])
         ANS = InsertAt(ANS,[[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]],index[2])
 
-    print("CHECKANS4",ANS)
+    #print("CHECKANS4",ANS)
     return ANS
     
 
 
 #print(maxlongestcontig(test2,test1,0,0))
 #print(maxlongestcontig(test1,test2,0,0))
-print(seqsplit(test1,test2))
+#print(seqsplit(test1,test2))
 ####something is wrong with maxlongestcontig ???
 ####print(maxlongestcontig("ok","??thisisokother",0,0))
-##print(seqsplit("print('alpha')","print('beta')"))
+print(seqsplit("print('alpha')","print('beta')"))
+print(dom(seqsplit("print('alpha')","print('beta')")))
 #print(maxlongestcontig("print(\"alpha\")","print(\"beta\")",0,0))
 #print("===========================================")
-#print(seqsplit("ok","??thisisokother"))
+#print(seqsplit("ok","??thisisokother")) 
+#print(AutoAddressFunc([[4,1]]))

@@ -547,14 +547,19 @@ def LinkPoolGen(smallLinks,largeLinks):
     return LinkPool
 
 #insert into a list at the right index
-def InsertAt(List,obj,Index):
+def InsertAt (List,obj,Index):
     '''
     Inserts obj at List[Index] and appends the rest of list after it
+    -1 means add to end/append
     '''
-    VALUE = List[:Index]
-    VALUE.append(obj)
-    for x in range(0,len(List[Index:])):
-        VALUE.append(List[Index + x])
+    if Index == -1:
+        VALUE = List
+        VALUE.append(obj)
+    else:
+        VALUE = List[:Index]
+        VALUE.append(obj)
+        for x in range(0,len(List[Index:])):
+            VALUE.append(List[Index + x])
     return VALUE
 
 def PhiConstruct(IndexRan,LinkPool,AutoToggle):

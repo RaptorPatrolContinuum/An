@@ -506,7 +506,6 @@ def InsertAt (List,obj,Index):
     '''
     if Index == -1:
         VALUE = List
-        print("WTF IS GOING ON", List, obj, )
         VALUE.append(obj)
     else:
         VALUE = List[:Index]
