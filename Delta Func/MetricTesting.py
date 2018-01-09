@@ -164,6 +164,10 @@ def seqsplit(LHS,RHS):
     #generic: apply maxlongestcontig on splits until it fails
     ##what to do with nil answer??
     LCont = maxlongestcontig(LHS,RHS,0,0)
+    #nullansweralready:
+    if LCont == []:
+        return [[['Symbol0'], [0]]]
+    
     #print("match LCont",LCont)
     #if len(LCont) == 3:
         #print("LHS is",LHS)
@@ -184,7 +188,7 @@ def seqsplit(LHS,RHS):
     i = 0
     for x in Connections:
         LContmin = maxlongestcontig(x[0][0],x[1][0],0,0)
-        if x[0][0] == x[1][0] or len(x[0][0]) == 0 or len(x[1][0]) == 0: #or len(LContmin) == 0
+        if x[0][0] == x[1][0] or len(x[0][0]) == 0 or len(x[1][0]) == 0 or len(LContmin) == 0:
             pass
             i += 1
         else:
@@ -204,6 +208,7 @@ def seqsplit(LHS,RHS):
             #Connections = InsertAt(Connections, [[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]], i)
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]]]], i+1)
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]+LContmin[2]:]],[x[1][0][LContmin[1]+LContmin[2]:]]], i+2)
+            #print("oh baby, oh oh baby \n", x[0][0], "\n", x[1][0], "\n", LContmin, "\n", Connections, "\n", [i, i+1, i+2])
             Connections = seqsplitmin(x[0][0],x[1][0],LContmin,Connections,[i, i+1, i+2])
             #print("new connections")
             #print(Connections)
@@ -230,6 +235,8 @@ def seqsplitmin(LHS,RHS,LCont,Connections,index):
     ANS = Connections
     #print("CHECKANS1",ANS)
     #if it's an empty connection, refuse
+    #print("trendytrendytrendy \n", LHS, "\n",RHS, "\n",LCont, "\n",Connections, "\n",index)
+    
     if len(LHS[:LCont[0]]) == 0 and len(RHS[:LCont[1]]) == 0:
         pass
     #else: append
@@ -264,8 +271,16 @@ def seqsplitmin(LHS,RHS,LCont,Connections,index):
 #print(seqsplit(test1,test2))
 ####something is wrong with maxlongestcontig ???
 ####print(maxlongestcontig("ok","??thisisokother",0,0))
-print(seqsplit("print('alpha')","print('beta')"))
-print(dom(seqsplit("print('alpha')","print('beta')")))
+#print(seqsplit("ok","??thisisokother"))
+attached = "print('alpha')"
+#attached2 = "print('beta')"
+#attached2 = "v"
+attached2 = "ya(z"
+
+print(seqsplit(attached,attached2))
+print(dom(seqsplit(attached,attached2)))
+#print("maxlongestcontig bugged?", maxlongestcontig(attached,attached2,0,0))
+
 #print(maxlongestcontig("print(\"alpha\")","print(\"beta\")",0,0))
 #print("===========================================")
 #print(seqsplit("ok","??thisisokother")) 

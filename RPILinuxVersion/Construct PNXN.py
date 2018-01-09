@@ -35,7 +35,7 @@ just run every hour x
 
 
 while True:
-    SIData = open("SIData2.txt","r+")
+    SIData = open("SIData3.txt","r+")
     if len(SIData.read()) == 0:
         #tester = AutoVisionString(0,1)
         #print("check what vision shows",tester)
