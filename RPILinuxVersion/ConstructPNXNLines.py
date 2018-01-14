@@ -114,8 +114,8 @@ while True:
         #print("what will future say for WorkON?",CantorPair(AutoAddressFunc(AddressX),AutoAddressFunc(AddressY)))
         print("Address X",AddressX)
         print("Address Y",AddressY)
-        print("uh checking if SI works on empty set",ShittySI([[AddressX,AddressY], "Auto"]))
-        print("newtest",ShittySI([[[['1', '0'], ['0', '1'], ['2', '0'], ['3', '0'], ['4', '0']],[['0', '1'], ['2', '0'], ['3', '0']]],"Auto"]))
+        #print("uh checking if SI works on empty set",ShittySI([[AddressX,AddressY], "Auto"]))
+        #print("newtest",ShittySI([[[['1', '0'], ['0', '1'], ['2', '0'], ['3', '0'], ['4', '0']],[['0', '1'], ['2', '0'], ['3', '0']]],"Auto"]))
         
         #STILL WORKING ON SHITTYSI
         last.append([[AddressX,AddressY],ShittySI([[AddressX,AddressY],"Auto"])])

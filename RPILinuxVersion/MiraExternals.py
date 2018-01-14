@@ -256,23 +256,23 @@ def AddressFunc(index,obj):
     
     #print("obj for reference!",obj)
     for x in obj:
-        print("LINE 274")
-        print("index stats",index)
-        print("other stats",obj,Interim)
-        print("stats",x,x[0],int(RelEval(index,x[0])[0]))
-        print("suspected wtf",index,x[1])
+        #print("LINE 274")
+        #print("index stats",index)
+        #print("other stats",obj,Interim)
+        #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
+        #print("suspected wtf",index,x[1])
 
-        print("x obj", x)
-        print("index",index)
-        print("x[0]",x[0])
-        print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
-        print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
-        print("index ",index)
-        print("x[1]",x[1])
-        print("int(empty set) just dies",RelEval(index,x[1]))
-        print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
-        print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
-        print("LINE 274 END")
+        #print("x obj", x)
+        #print("index",index)
+        #print("x[0]",x[0])
+        #print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
+        #print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
+        #print("index ",index)
+        #print("x[1]",x[1])
+        #print("int(empty set) just dies",RelEval(index,x[1]))
+        #print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
+        #print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+        #print("LINE 274 END")
         Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
     
     #print("more stats",obj,Interim)
@@ -719,33 +719,33 @@ def ShittySI(ListItems):
 
     #make sure LinkPool lists contain each other when you go down the list
     LinkPoolList = []
-    print("OK LINKPOOL BETTER NOT BE FUCKED",LinkPool)
+    #print("OK LINKPOOL BETTER NOT BE FUCKED",LinkPool)
     for x in LinkPool:
-        print("LPL START======",LinkPoolList)
-        print("what is X START",x)
+        #print("LPL START======",LinkPoolList)
+        #print("what is X START",x)
         if len(LinkPoolList) == 0:
             LinkPoolList.append([x,LinkPool[x]])
-            print("WHEN DOES LPL CHANGE",LinkPoolList)
+            #print("WHEN DOES LPL CHANGE",LinkPoolList)
         else:
             for y in LinkPoolList:
                 Linked = False
-                print("stats", LinkPoolList)
-                print("y",y)
-                #"new object length is smaller, you add it to keep connection lengths similar"
-                print("I don't understand <=", len(LinkPool[x]),len(y[1]))
+                #print("stats", LinkPoolList)
+                #print("y",y)
+                ##"new object length is smaller, you add it to keep connection lengths similar"
+                #print("I don't understand <=", len(LinkPool[x]),len(y[1]))
                 if len(LinkPool[x]) <= len(y[1]):
-                    print("GOT ADDED ALREADY WTF",LinkPoolList)
+                    #print("GOT ADDED ALREADY WTF",LinkPoolList)
                     LinkPoolList = InsertAt(LinkPoolList,[x,LinkPool[x]],LinkPoolList.index(y)) 
-                    print("LPL Insert",LinkPoolList)
+                    #print("LPL Insert",LinkPoolList)
                     Linked = True
                     break
                 #append at end if largest
                 if Linked == False:
                     LinkPoolList = LinkPoolList + [[x,LinkPool[x]]]
-                    print("WHEN DOES LPL CHANGE2",LinkPoolList)
+                    #print("WHEN DOES LPL CHANGE2",LinkPoolList)
                     break
-        print("LPL END=======",LinkPoolList)
-    print("check LinkPoolList",LinkPoolList)
+        #print("LPL END=======",LinkPoolList)
+    #print("check LinkPoolList",LinkPoolList)
 
     LinkSize = []
     LinkList = []
@@ -767,7 +767,7 @@ def ShittySI(ListItems):
     #print("DOUBLE CHECK LINKPOOL END")
 
     AutoCheck = IsAuto(WLOG) and IsAuto(Larger)
-    print("what is LinkPoolList?",LinkPoolList)
+    #print("what is LinkPoolList?",LinkPoolList)
     
     NumberIndex = []
     for G in LinkSize:
@@ -843,18 +843,18 @@ def ShittySI(ListItems):
                                     #print("ok check out H*!",HStar)
                                 else:
                                     HStar = Larger
-                                print("DATA =======")
-                                print("smaller", WLOG)
-                                print("Larger", Larger)
-                                print("Vertex_Max",Vertex_Max)
-                                print("rchiINT",rchiINT(Vertex_Max))
-                                print("Minv_",Minv_(rchiINT(Vertex_Max)))
-                                print("Indexer IS THE PROBLEM",Indexer)
-                                print("LinkPool",LinkPool)
-                                print("AutoCheck",AutoCheck)
-                                print("phi",PhiConstruct(Indexer,LinkPool,AutoCheck))
-                                print("Compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
-                                print("DATA END =-=========")
+                                #print("DATA =======")
+                                #print("smaller", WLOG)
+                                #print("Larger", Larger)
+                                #print("Vertex_Max",Vertex_Max)
+                                #print("rchiINT",rchiINT(Vertex_Max))
+                                #print("Minv_",Minv_(rchiINT(Vertex_Max)))
+                                #print("Indexer IS THE PROBLEM",Indexer)
+                                #print("LinkPool",LinkPool)
+                                #print("AutoCheck",AutoCheck)
+                                #print("phi",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                #print("Compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                #print("DATA END =-=========")
                                 #print("=======died at 100MB", Minv_(rchiINT(Vertex_Max)))
                                 #print("more stats", PhiConstruct(Indexer,LinkPool,AutoCheck))
                                 #print("ok?",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
