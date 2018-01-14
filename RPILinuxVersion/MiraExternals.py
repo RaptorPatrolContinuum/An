@@ -533,23 +533,23 @@ def LinkPoolGen(smallLinks,largeLinks):
     '''
     note: the Links are from EdgeSortbyLinks
     '''
-    print("================LINKSSTART",smallLinks,largeLinks)
+    #print("================LINKSSTART",smallLinks,largeLinks)
     LinkPool = {}
     for x in smallLinks:
         for y in smallLinks[x]:
             #compare with largeLinks and check the index
-            print("where am I?",x,smallLinks[x],y)
+            #print("where am I?",x,smallLinks[x],y)
             for a in largeLinks:
-                print("stats I can use?", a, largeLinks[a])
-                print(x, "<=", a, x <= a)
+                #print("stats I can use?", a, largeLinks[a])
+                #print(x, "<=", a, x <= a)
                 if x <= a:
                     if y in LinkPool:
                         LinkPool[y] = LinkPool[y] + largeLinks[a]
                     else:
                         LinkPool[y] = largeLinks[a]
-                print("Linkpool and sets", LinkPool)
-    print("testing Linkpool", LinkPool)
-    print("================LINKEND")
+                #print("Linkpool and sets", LinkPool)
+    #print("testing Linkpool", LinkPool)
+    #print("================LINKEND")
     return LinkPool
 
 #insert into a list at the right index
@@ -581,7 +581,7 @@ def PhiConstruct(IndexRan,LinkPool,AutoToggle):
     '''
     TheChoice = []
     Exclusion = []
-    #print("PHICONSTRUCT")
+    #print("PHICONSTRUCT START")
     #print("what is IndexRan?",IndexRan)
     for x in IndexRan:
         #print("testing",x,LinkPool)
@@ -697,11 +697,13 @@ def ShittySI(ListItems):
         Larger = E_G
 
     #print("REMEMBER TO ADD ZEROLINKS TO EDGESORTbyLINKS")
+    #print("sort by links START")
     #print(WLOG)
     #print(Larger)
     #print(EdgeSortbyLinks(WLOG))
     #print(EdgeSortbyLinks(Larger))
     #print(LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger)))
+    #print("sort by links END")
 
     LinkPool = LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger))
     
@@ -717,23 +719,33 @@ def ShittySI(ListItems):
 
     #make sure LinkPool lists contain each other when you go down the list
     LinkPoolList = []
+    print("OK LINKPOOL BETTER NOT BE FUCKED",LinkPool)
     for x in LinkPool:
-        #print("LPL start",LinkPoolList)
+        print("LPL START======",LinkPoolList)
+        print("what is X START",x)
         if len(LinkPoolList) == 0:
             LinkPoolList.append([x,LinkPool[x]])
+            print("WHEN DOES LPL CHANGE",LinkPoolList)
         else:
             for y in LinkPoolList:
                 Linked = False
+                print("stats", LinkPoolList)
+                print("y",y)
+                #"new object length is smaller, you add it to keep connection lengths similar"
+                print("I don't understand <=", len(LinkPool[x]),len(y[1]))
                 if len(LinkPool[x]) <= len(y[1]):
+                    print("GOT ADDED ALREADY WTF",LinkPoolList)
                     LinkPoolList = InsertAt(LinkPoolList,[x,LinkPool[x]],LinkPoolList.index(y)) 
-                    #print("LPL Insert",LinkPoolList)
+                    print("LPL Insert",LinkPoolList)
                     Linked = True
                     break
                 #append at end if largest
                 if Linked == False:
                     LinkPoolList = LinkPoolList + [[x,LinkPool[x]]]
-        #print("LPL end",LinkPoolList)
-    #print("check LinkPoolList",LinkPoolList)
+                    print("WHEN DOES LPL CHANGE2",LinkPoolList)
+                    break
+        print("LPL END=======",LinkPoolList)
+    print("check LinkPoolList",LinkPoolList)
 
     LinkSize = []
     LinkList = []
@@ -748,8 +760,15 @@ def ShittySI(ListItems):
     #print("check linksize",LinkSize)
     #print("check linklist",LinkList)
 
-    AutoCheck = IsAuto(WLOG) and IsAuto(Larger)
+    #print("DOUBLE CHECK LINKPOOL START")
+    #print("smaller", WLOG)
+    #print("larger", Larger)
+    #print(LinkPool)
+    #print("DOUBLE CHECK LINKPOOL END")
 
+    AutoCheck = IsAuto(WLOG) and IsAuto(Larger)
+    print("what is LinkPoolList?",LinkPoolList)
+    
     NumberIndex = []
     for G in LinkSize:
         if len(NumberIndex) > 0:
@@ -797,17 +816,17 @@ def ShittySI(ListItems):
                                 for NUM in Vertex_(WLOG) + Vertex_(Larger):
                                     if int(NUM) > int(Vertex_Max):
                                         Vertex_Max = str(NUM)
-                                print("V_G",Vertex_(WLOG))
-                                print("V_H",Vertex_(Larger))
-                                print("TheMax",Vertex_Max)
-                                print("parts for AD1",WLOG)
-                                print("Larger",Larger)
-                                print("Indexer",Indexer)
-                                print("LinkPool",LinkPool)
-                                print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
-                                print("need to pick right max",rchiINT(Vertex_Max))
-                                print("basis",Minv_(rchiINT(Vertex_Max)))
-                                print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                #print("V_G",Vertex_(WLOG))
+                                #print("V_H",Vertex_(Larger))
+                                #print("TheMax",Vertex_Max)
+                                #print("parts for AD1",WLOG)
+                                #print("Larger",Larger)
+                                #print("Indexer",Indexer)
+                                #print("LinkPool",LinkPool)
+                                #print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                #print("need to pick right max",rchiINT(Vertex_Max))
+                                #print("basis",Minv_(rchiINT(Vertex_Max)))
+                                #print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
 
                                 if len(Vertex_(Larger)) >= len(Vertex_(WLOG)):
                                     #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
@@ -830,7 +849,7 @@ def ShittySI(ListItems):
                                 print("Vertex_Max",Vertex_Max)
                                 print("rchiINT",rchiINT(Vertex_Max))
                                 print("Minv_",Minv_(rchiINT(Vertex_Max)))
-                                print("Indexer",Indexer)
+                                print("Indexer IS THE PROBLEM",Indexer)
                                 print("LinkPool",LinkPool)
                                 print("AutoCheck",AutoCheck)
                                 print("phi",PhiConstruct(Indexer,LinkPool,AutoCheck))
