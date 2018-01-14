@@ -256,17 +256,23 @@ def AddressFunc(index,obj):
     
     #print("obj for reference!",obj)
     for x in obj:
-        #print("index stats",index)
-        #print("other stats",obj,Interim)
-        #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
-        #print("suspected wtf",index,x[1])
+        print("LINE 274")
+        print("index stats",index)
+        print("other stats",obj,Interim)
+        print("stats",x,x[0],int(RelEval(index,x[0])[0]))
+        print("suspected wtf",index,x[1])
 
-        #print("x obj", x)
-        #print("index",index)
-        #print("x[0]",x[0])
-        #print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
-        #print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
-        #print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+        print("x obj", x)
+        print("index",index)
+        print("x[0]",x[0])
+        print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
+        print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
+        print("index ",index)
+        print("x[1]",x[1])
+        print("int(empty set) just dies",RelEval(index,x[1]))
+        print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
+        print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+        print("LINE 274 END")
         Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
     
     #print("more stats",obj,Interim)
@@ -527,23 +533,23 @@ def LinkPoolGen(smallLinks,largeLinks):
     '''
     note: the Links are from EdgeSortbyLinks
     '''
-    #print("================",smallLinks,largeLinks)
+    print("================LINKSSTART",smallLinks,largeLinks)
     LinkPool = {}
     for x in smallLinks:
         for y in smallLinks[x]:
             #compare with largeLinks and check the index
-            #print("where am I?",x,smallLinks[x],y)
+            print("where am I?",x,smallLinks[x],y)
             for a in largeLinks:
-                #print("stats I can use?", a, largeLinks[a])
-                #print(x, "<=", a, x <= a)
+                print("stats I can use?", a, largeLinks[a])
+                print(x, "<=", a, x <= a)
                 if x <= a:
                     if y in LinkPool:
                         LinkPool[y] = LinkPool[y] + largeLinks[a]
                     else:
                         LinkPool[y] = largeLinks[a]
-                #print("Linkpool and sets", LinkPool)
-    #print("testing Linkpool", LinkPool)
-    #print("================")
+                print("Linkpool and sets", LinkPool)
+    print("testing Linkpool", LinkPool)
+    print("================LINKEND")
     return LinkPool
 
 #insert into a list at the right index
@@ -791,17 +797,17 @@ def ShittySI(ListItems):
                                 for NUM in Vertex_(WLOG) + Vertex_(Larger):
                                     if int(NUM) > int(Vertex_Max):
                                         Vertex_Max = str(NUM)
-                                #print("V_G",Vertex_(WLOG))
-                                #print("V_H",Vertex_(Larger))
-                                #print("TheMax",Vertex_Max)
-                                #print("parts for AD1",WLOG)
-                                #print("Larger",Larger)
-                                #print("Indexer",Indexer)
-                                #print("LinkPool",LinkPool)
-                                #print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
-                                #print("need to pick right max",rchiINT(Vertex_Max))
-                                #print("basis",Minv_(rchiINT(Vertex_Max)))
-                                #print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                print("V_G",Vertex_(WLOG))
+                                print("V_H",Vertex_(Larger))
+                                print("TheMax",Vertex_Max)
+                                print("parts for AD1",WLOG)
+                                print("Larger",Larger)
+                                print("Indexer",Indexer)
+                                print("LinkPool",LinkPool)
+                                print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                print("need to pick right max",rchiINT(Vertex_Max))
+                                print("basis",Minv_(rchiINT(Vertex_Max)))
+                                print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
 
                                 if len(Vertex_(Larger)) >= len(Vertex_(WLOG)):
                                     #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
@@ -818,12 +824,29 @@ def ShittySI(ListItems):
                                     #print("ok check out H*!",HStar)
                                 else:
                                     HStar = Larger
+                                print("DATA =======")
+                                print("smaller", WLOG)
+                                print("Larger", Larger)
+                                print("Vertex_Max",Vertex_Max)
+                                print("rchiINT",rchiINT(Vertex_Max))
+                                print("Minv_",Minv_(rchiINT(Vertex_Max)))
+                                print("Indexer",Indexer)
+                                print("LinkPool",LinkPool)
+                                print("AutoCheck",AutoCheck)
+                                print("phi",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                print("Compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                print("DATA END =-=========")
+                                #print("=======died at 100MB", Minv_(rchiINT(Vertex_Max)))
+                                #print("more stats", PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                #print("ok?",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+
                                 AD1 = AddressFunc(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
                                 AD2 = AddressFunc(Minv_(rchiINT(Vertex_Max)),HStar)
                                 #print("stats")
                                 #print(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
                                 #print(Minv_(rchiINT(Vertex_Max)),HStar)
                                 #print("AD checks prior",AD1,AD2)
+                                #print("======= DIED END")
                             else:
                                 #time to check SI:
                                 AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)

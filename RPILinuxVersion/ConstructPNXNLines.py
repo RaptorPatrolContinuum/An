@@ -85,9 +85,9 @@ while True:
         #print("What is last?",last)
         #figure out what the last x/y as graphs are
         xGraph = last[-1][0][0]
-        print("what is xGraph?",xGraph)
+        #print("what is xGraph?",xGraph)
         yGraph = last[-1][0][1]
-        print("what is yGraph?",yGraph)
+        #print("what is yGraph?",yGraph)
     
         #PROBLEM: using beta might be bad because if you mess with the basis then you get a diff address (AKA we might write/read things the wrong way and skip something)
         #I just looked at Beta_ and saw for x in E_G so if we write E_G properly we get Basis_ properly (hoping >.<)
@@ -112,10 +112,11 @@ while True:
         #print("do their addresses match",AddressFunc(Minv_(Beta_(AddressY)),AddressY))
         #print("what will future say for WorkON?",CantorPair(AddressFunc(Minv_(Beta_(AddressX)),AddressX),AddressFunc(Minv_(Beta_(AddressY)),AddressY)))
         #print("what will future say for WorkON?",CantorPair(AutoAddressFunc(AddressX),AutoAddressFunc(AddressY)))
-        #print("Address X",AddressX)
-        #print("Address Y",AddressY)
-        #print("uh checking if SI works on empty set",ShittySI([[AddressX,AddressY], "Auto"]))
-    
+        print("Address X",AddressX)
+        print("Address Y",AddressY)
+        print("uh checking if SI works on empty set",ShittySI([[AddressX,AddressY], "Auto"]))
+        print("newtest",ShittySI([[[['1', '0'], ['0', '1'], ['2', '0'], ['3', '0'], ['4', '0']],[['0', '1'], ['2', '0'], ['3', '0']]],"Auto"]))
+        
         #STILL WORKING ON SHITTYSI
         last.append([[AddressX,AddressY],ShittySI([[AddressX,AddressY],"Auto"])])
 
