@@ -1,0 +1,32 @@
+Testtext = open("IOTest.txt","r+")
+'''
+what do I need:
+get last line
+write new lines
+
+'''
+
+
+def tail(f, n, offset=0):
+    """Reads a n lines from f with an offset of offset lines."""
+    avg_line_length = 74
+    to_read = n + offset
+    while 1:
+        try:
+            f.seek(-(avg_line_length * to_read), 2)
+        except IOError:
+            # woops.  apparently file is smaller than what we want
+            # to step back, go to the beginning instead
+            f.seek(0)
+        pos = f.tell()
+        lines = f.read().splitlines()
+        if len(lines) >= to_read or pos == 0:
+            return lines[-to_read:offset and -offset or None]
+        avg_line_length *= 1.3
+#print("TESTLAST",tail(Testtext,1,0))
+
+#EXECUTE FILE
+#GET OUTPUT
+
+
+
