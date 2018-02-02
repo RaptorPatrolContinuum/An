@@ -220,12 +220,13 @@ def Address(basis,obj):
     basis is a list
     obj is a list of pairs
     '''
+    
     Interim = []
     for x in obj:
         #print("wat is x?", x, type(x), basis)
         #print("Cantor Data", basis.index(x[0]),basis.index(x[1]))
         Interim.append(CantorPair(basis.index(x[0]),basis.index(x[1])))
-    
+
     ANS="1".zfill(int(max(Interim))+1)
     #print("need Interim Data", Interim)
     Interim = list(filter(lambda x: x != max(Interim), Interim))

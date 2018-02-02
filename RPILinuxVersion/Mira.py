@@ -75,17 +75,17 @@ while True:
 
                         
         #for U unknown, see M_U
-        print("what is input", inputtext)
-        print("end of alg")
+        #print("what is input", inputtext)
+        #print("end of alg")
 
         #\omega(I_basis_U,U) & vision
         #print(basislist)
         #print(M_(inputtext))
-        print("Address of obj", Address(basislist,M_(inputtext)))
-        print(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)))
-        print("want the X address of this",AutoAddressFunc([['0', '1'], ['1', '2']]))
-        print("want the Y address of this",AutoAddressFunc([['0', '0'], ['1', '1'], ['2', '1']]))
-        print("what number am I on then?",CantorPair(260,145))
+        #print("Address of obj", Address(basislist,M_(inputtext)))
+        #print(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)))
+        #print("want the X address of this",AutoAddressFunc([['1', '0'], ['0', '1'], ['2', '0'], ['0', '2'], ['3', '0'], ['2', '1']]))
+        #print("want the Y address of this",AutoAddressFunc([['0', '1'], ['0', '2'], ['3', '1']]))
+        #print("what number am I on then?",CantorPair(238,2084))
         print("make a tostring func since we have the info but not the order",ran(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1))))
 
 
@@ -106,7 +106,7 @@ while True:
         ###memorylist.append(escape)
         ###memorylist.append(M_(inputtext))
 
-        print("need to see error lol",Address(basislist,[["1","print"]["2","("]["3","test"]["4",")"]])) 
+        #print("THIS WAS MISSING COMMAS",Address(basislist,[["1","print"],["2","("],["3","test"],["4",")"]])) 
         ##try to eval it
         print("before the try -> eval!")
         #print("morphemes through cheat!", Cheat(str(inputtext)))
