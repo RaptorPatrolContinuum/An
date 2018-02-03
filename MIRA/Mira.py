@@ -86,8 +86,13 @@ while True:
         #print("want the X address of this",AutoAddressFunc([['1', '0'], ['0', '1'], ['2', '0'], ['0', '2'], ['3', '0'], ['2', '1']]))
         #print("want the Y address of this",AutoAddressFunc([['0', '1'], ['0', '2'], ['3', '1']]))
         #print("what number am I on then?",CantorPair(238,2084))
-        print("make a tostring func since we have the info but not the order ||||",toString(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)),"INTEGERS"))
-
+        #print("make a tostring func since we have the info but not the order ||||",toString(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)),"INTEGERS"))
+        function1 = [['a','b']]
+        functionList = [['a',['b']]]
+        function2 = [['TOTAL_ARGUMENT == "b"', 'd']]
+        functionList2 = [['argument_1 == "b"', 'd']]
+        print("ok testing ComposeMETA",ComposeMETA(function1,function2))
+        print("ok testing ComposeMETA LIST",ComposeMETA(functionList,functionList2))
 
         #questions to ask:/ALWAYS REMEMBER TO APPEND AFTER
         #REMEMBER, AT EACH STEP YOU NEED TO APPEND THAT ANSWER TO MIRA

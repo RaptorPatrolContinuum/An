@@ -480,20 +480,73 @@ def ComposeMETA(f1,f2):
             parts
             maybe write a replacer function
             '''
-            if eval(ComposeReplace(x,y)):
-                ALG.append([x[0],y[1]])
+            ALG.append(ComposeReplace(x,y))
+            #if eval(ComposeReplace(x,y)):
+            #    ALG.append([x[0],y[1]])
     return ALG
 
 def ComposeReplace(str1,str2):
     '''
-    str1 is x[0]
-    str2 is y[0]
+    PICTURE:
+    FUNCTION1 COMPOSED FUNCTION2:
+     ^ where y is from
+                         ^ where x is from
+
+    HINT: DO FUNCTION2 BEFORE FUNCTION1 LIKE IN MATH
+    
+    str1 is x which is a pair
+    str2 is y which is a pair
+
+    PICTURE:
+        (Extra data from Compose:)
+         STR2             STR1
+    [y[0],y[1]] COMPOSE [x[0],x[1]]
     GOAL:
     eval y[0] using x[0] as argument list
     this function just replaces argument_X in y[0] with elements of x[0] OR TOTAL_ARGUMENT of x[0] (AKA the whole thing of x[0])
+
+
+    TODO:
+    check if string or list
+        total: have to add quotes to before and after
+        per item: ???
+    adding quotes or not
+        total: ???
+        per item: might have to add quotes?
+        what to do:
+        for each item in y[1], we replace ARGUMENT_i (where is is incrementing number) in x[0]
+        PROBLEMS:
+            let's look at ARGUMENT_1== b
+            then all it's looking at is if argument_1 == b but other objects with different tails can be included
+            actually, this isn't a proble, that just means that my check needs to be better
+            
+    evaluating properly
+
     '''
-    
-    return None
+    print("test str1",str1)
+    print("test str2",str2)
+    if isinstance(str2[1], str):
+        total = "'" + str2[1] + "'"
+        print("test TOTAL",total)
+        print("TRY REPLACEMENT NOW")
+        print(str1[0].replace("TOTAL_ARGUMENT", total))
+        print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+        if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
+            print("got here???")
+            return [str2[0],str1[1]]
+    if isinstance(str2[1], list):
+        print("REAPERREAPERTHAT'SWHAT PEOPLEdetected list!!", str2[1])
+        i = 1
+        for z in str2[1]:
+            
+            print("stats","argument_" + str(i),"'"+z+"'")
+            print("what is replace?",str1[0].replace("argument_" + str(i), "'"+z+"'"))
+            i+=1
+            if eval(str1[0].replace("argument_" + "i", "'"+z+"'")):
+                print("got here???")
+                return [str2[0],str1[1]]
+            
+    return "ComposeMETA FAILED"
 
 
 def RelEval(f1,arglist):
