@@ -151,18 +151,49 @@ def fCheck(fcandidate):
             ANS = False
     return ANS
 
-def toString(f):
+def toString(f,basistype):
     '''
     assume f is a finite function of the form for all x in f, x = [a,b]
     return a string that is the range of f "in order"
+    basistype is a list where we assume order OR take a basis
+
     '''
     ANS = ""
     if fCheck(f) == False:
         print("f1 is function? toString", fCheck(f1))
         return
-    for x in f:
-        ANS = ANS + x[1]
-    print("hoping lists retain some kind of order",f,ANS)
+    if basistype == "INTEGERS":
+        #then the x coord is just a number, so we order the answer by the numbers in the x coordinates
+        #what happens if there are multiple of the same integer??
+        ##then that's just wrong input format so we append in the same order as we get it
+        ANSPREP = []
+        #if x coord isn't a number, just append at the end
+        for x in f:
+            #print("WHAT IS X",x)
+            if ANSPREP == []:
+                ANSPREP = [x]
+                #print("init ansprep",ANSPREP)
+            else:
+                i = 0
+                for y in ANSPREP:
+                    #print("what is y", y)
+                    #print("stats, ", x,y,int(x[0]) < int(y[0]))
+                    #print("i index",i)
+                    if int(x[0]) < int(y[0]):
+                        #print("insert issue?", ANSPREP)
+                        ANSPREP = InsertAt(ANSPREP,x,i)
+                        #print("insert issue SHOULD BE INSERTED", ANSPREP)
+                        break
+                    if i == len(ANSPREP)-1:
+                        ANSPREP = InsertAt(ANSPREP,x,-1)
+                        break
+                    i += 1
+                #print("CHECKING INSERT",ANSPREP)
+    for x in ran(ANSPREP):
+        ANS = ANS + str(x)
+    #for x in f:
+    #    ANS = ANS + x[1]
+    #print("hoping lists retain some kind of order",f,ANS)
     return ANS
 
 def Beta_(E_G):
@@ -427,6 +458,43 @@ def Compose(f1,f2):
             if x[1] == y[0]:
                 ALG.append([x[0],y[1]])
     return ALG
+
+def ComposeMETA(f1,f2):
+    '''
+    do f2 THEN f1 like the way it's written!
+    '''
+    #check if f1,f2 are functions:
+    if fCheck(f1) == False or fCheck(f2) == False:
+        #print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
+        return
+    ALG = []
+    for x in f2:
+        for y in f1:
+            #which one is the first half of the function?
+            '''
+            for x in thingy:
+            replace y[0] with x
+            AND SOMETHING ABOUT ARGUMENT_# WHERE # INCREMENTS
+            info I need:
+            the whole thing
+            parts
+            maybe write a replacer function
+            '''
+            if eval(ComposeReplace(x,y)):
+                ALG.append([x[0],y[1]])
+    return ALG
+
+def ComposeReplace(str1,str2):
+    '''
+    str1 is x[0]
+    str2 is y[0]
+    GOAL:
+    eval y[0] using x[0] as argument list
+    this function just replaces argument_X in y[0] with elements of x[0] OR TOTAL_ARGUMENT of x[0] (AKA the whole thing of x[0])
+    '''
+    
+    return None
+
 
 def RelEval(f1,arglist):
     '''

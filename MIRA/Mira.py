@@ -86,7 +86,7 @@ while True:
         #print("want the X address of this",AutoAddressFunc([['1', '0'], ['0', '1'], ['2', '0'], ['0', '2'], ['3', '0'], ['2', '1']]))
         #print("want the Y address of this",AutoAddressFunc([['0', '1'], ['0', '2'], ['3', '1']]))
         #print("what number am I on then?",CantorPair(238,2084))
-        print("make a tostring func since we have the info but not the order",ran(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1))))
+        print("make a tostring func since we have the info but not the order ||||",toString(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)),"INTEGERS"))
 
 
         #questions to ask:/ALWAYS REMEMBER TO APPEND AFTER
