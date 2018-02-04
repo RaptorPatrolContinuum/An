@@ -480,8 +480,9 @@ def ComposeMETA(f1,f2):
             parts
             maybe write a replacer function
             '''
-            if ComposeReplace(x,y) != None:
-                ALG.append(ComposeReplace(x,y))
+            ComposeTest = ComposeReplace(y,x)
+            if ComposeTest != None:
+                ALG.append(ComposeTest)
             #if eval(ComposeReplace(x,y)):
             #    ALG.append([x[0],y[1]])
     return ALG
@@ -535,9 +536,15 @@ def ComposeReplace(str1,str2):
         if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
             print("got here???")
             return [str2[0],str1[1]]
-    if isinstance(str2[1], list):
-        print("REAPERREAPERTHAT'SWHAT PEOPLEdetected list!!", str2[1])
+    elif isinstance(str2[1], list):
+        print("REAPERREAPERTHAT'SWHAT PEOPLEdetected list!!", str(str2[1]))
         i = 1
+        total = str(str2[1])
+        print("x,y stats",str1,str2)
+        print("what is being replaced",str1[0])
+        teststring = str1[0].replace("TOTAL_ARGUMENT", total)
+        print("what is totalDARLINGINTHEFRANXX",total)
+        print("why didn't TESTSTRING UPDATE",teststring)
         for z in str2[1]:
             
             print("stats","argument_" + str(i),"'"+z+"'")
@@ -545,6 +552,7 @@ def ComposeReplace(str1,str2):
             teststring =             str1[0].replace("argument_" + str(i), "'"+z+"'")
             print("what is teststring",teststring)
             try:
+                print("eval teststring",eval(teststring))
                 if eval(teststring):
                     print("got here???")
                     return [str2[0],str1[1]]

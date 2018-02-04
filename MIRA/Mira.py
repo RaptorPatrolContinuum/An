@@ -87,11 +87,11 @@ while True:
         #print("want the Y address of this",AutoAddressFunc([['0', '1'], ['0', '2'], ['3', '1']]))
         #print("what number am I on then?",CantorPair(238,2084))
         #print("make a tostring func since we have the info but not the order ||||",toString(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)),"INTEGERS"))
-        function1 = [['a','b']]
-        functionList = [['a',['b']],['Z',['f','AF']]]
-        function2 = [['TOTAL_ARGUMENT == "b"', 'd']]
-        functionList2 = [['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y']]
-        print("ok testing ComposeMETA",ComposeMETA(function1,function2))
+        function2 = [['a','b']]
+        functionList2 = [['a',['b']],['Z',['f','AF']]]
+        function1 = [['TOTAL_ARGUMENT == "b"', 'd']]
+        functionList = [['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str("TOTAL_ARGUMENT" == "['f','AF']"),'TOTALCHECK']]
+        print("ok testing ComposeMETA===================",ComposeMETA(function1,function2))
         print("ok testing ComposeMETA LIST",ComposeMETA(functionList,functionList2))
 
         #questions to ask:/ALWAYS REMEMBER TO APPEND AFTER
