@@ -468,8 +468,8 @@ def ComposeMETA(f1,f2):
         #print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
         return
     ALG = []
-    for x in f2:
-        for y in f1:
+    for y in f2:
+        for x in f1:
             #which one is the first half of the function?
             '''
             for x in thingy:
@@ -480,9 +480,9 @@ def ComposeMETA(f1,f2):
             parts
             maybe write a replacer function
             '''
-            ComposeTest = ComposeReplace(y,x)
+            ComposeTest = ComposeReplace(x,y)
             if ComposeTest != None:
-                ALG.append(ComposeTest)
+                ALG = ALG + ComposeTest
             #if eval(ComposeReplace(x,y)):
             #    ALG.append([x[0],y[1]])
     return ALG
@@ -527,6 +527,7 @@ def ComposeReplace(str1,str2):
     '''
     print("test str1",str1)
     print("test str2",str2)
+    ANS = None
     if isinstance(str2[1], str):
         total = "'" + str2[1] + "'"
         print("test TOTAL",total)
@@ -535,7 +536,11 @@ def ComposeReplace(str1,str2):
         print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
         if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
             print("got here???")
-            return [str2[0],str1[1]]
+            #return [str2[0],str1[1]]
+            if ANS == None:
+                ANS = [[str2[0],str1[1]]]
+            else:
+                ANS = ANS + [str2[0],str1[1]]
     elif isinstance(str2[1], list):
         print("REAPERREAPERTHAT'SWHAT PEOPLEdetected list!!", str(str2[1]))
         i = 1
@@ -545,22 +550,32 @@ def ComposeReplace(str1,str2):
         teststring = str1[0].replace("TOTAL_ARGUMENT", total)
         print("what is totalDARLINGINTHEFRANXX",total)
         print("why didn't TESTSTRING UPDATE",teststring)
+
+        #do total
+            
+
+        #do elements
         for z in str2[1]:
-            
+            print("maybe z is checked twice because of input",z)
             print("stats","argument_" + str(i),"'"+z+"'")
-            print("what is replace?",str1[0].replace("argument_" + str(i), "'"+z+"'"))
-            teststring =             str1[0].replace("argument_" + str(i), "'"+z+"'")
+            print("what is replace?",teststring.replace("argument_" + str(i), "'"+z+"'"))
+            teststring =             teststring.replace("argument_" + str(i), "'"+z+"'")
             print("what is teststring",teststring)
-            try:
-                print("eval teststring",eval(teststring))
-                if eval(teststring):
-                    print("got here???")
-                    return [str2[0],str1[1]]
-            except:
-                pass
             i+=1
-            
-    return None
+        try:
+            print("eval teststring",eval(teststring))
+            if eval(teststring):
+                print("ANSBEFORE",ANS)
+                print("WHAT IS ADDED?",[str2[0],str1[1]])
+                #return [str2[0],str1[1]]
+                if ANS == None:
+                    ANS = [[str2[0],str1[1]]]
+                else:
+                    ANS = ANS + [[str2[0],str1[1]]]
+                print("ANSAFTER",ANS)
+        except:
+            pass
+    return ANS
 
 
 def RelEval(f1,arglist):

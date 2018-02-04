@@ -90,7 +90,9 @@ while True:
         function2 = [['a','b']]
         functionList2 = [['a',['b']],['Z',['f','AF']]]
         function1 = [['TOTAL_ARGUMENT == "b"', 'd']]
-        functionList = [['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str("TOTAL_ARGUMENT" == "['f','AF']"),'TOTALCHECK']]
+        #"'TOTAL_ARGUMENT' == '['f','AF']'"
+        
+        functionList = [['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]
         print("ok testing ComposeMETA===================",ComposeMETA(function1,function2))
         print("ok testing ComposeMETA LIST",ComposeMETA(functionList,functionList2))
 
