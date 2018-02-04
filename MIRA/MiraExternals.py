@@ -480,7 +480,8 @@ def ComposeMETA(f1,f2):
             parts
             maybe write a replacer function
             '''
-            ALG.append(ComposeReplace(x,y))
+            if ComposeReplace(x,y) != None:
+                ALG.append(ComposeReplace(x,y))
             #if eval(ComposeReplace(x,y)):
             #    ALG.append([x[0],y[1]])
     return ALG
@@ -541,12 +542,17 @@ def ComposeReplace(str1,str2):
             
             print("stats","argument_" + str(i),"'"+z+"'")
             print("what is replace?",str1[0].replace("argument_" + str(i), "'"+z+"'"))
+            teststring =             str1[0].replace("argument_" + str(i), "'"+z+"'")
+            print("what is teststring",teststring)
+            try:
+                if eval(teststring):
+                    print("got here???")
+                    return [str2[0],str1[1]]
+            except:
+                pass
             i+=1
-            if eval(str1[0].replace("argument_" + "i", "'"+z+"'")):
-                print("got here???")
-                return [str2[0],str1[1]]
             
-    return "ComposeMETA FAILED"
+    return None
 
 
 def RelEval(f1,arglist):
