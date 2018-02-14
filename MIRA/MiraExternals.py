@@ -13,7 +13,7 @@ if sys.version_info[0] < 3:
 #basis = open('Basis.txt', 'r+')
 #memory = open('Memory.txt', 'r+')
 
-def ARB(function, replacelist):
+def ARB(function, replacelist): 
     '''
     ANSWER:
     need to map everything to concept space
@@ -642,6 +642,9 @@ def Inspector_M(y):
 
 def Elem_My(x,y):
     '''
+    this is the element relation
+    [this function says if x in y or not]
+    
     #1: why is this important?
     >>>ALL THE FUNCTIONS ARE IN THE CONCEPT SPACE
 
@@ -1405,6 +1408,14 @@ def Cheat(string):
         i += 1
     #Morphemes
     return Morphemes
+
+def lexico(argList):
+    '''
+    need function that does lexicographic ordering on memory using basislist
+    arg1 = memory file
+    arg2 = basislist 
+    '''
+    return None
 
 ##############################################################
 #TESTING STAGE

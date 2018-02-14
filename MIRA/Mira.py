@@ -68,12 +68,13 @@ while True:
         else:
             #get basistext as list:
             memory.seek(0)
-            memorylist = ast.literal_eval(memory.read())
+            #memorylist = ast.literal_eval(memory.read())
+            memorylist = memory.readlines()
 
         #fix basis
         BasisFix(inputtext,basislist)                
 
-                        
+        #=================================================
         #for U unknown, see M_U
         #print("what is input", inputtext)
         #print("end of alg")
@@ -94,12 +95,55 @@ while True:
         ##functionList = [['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]
         ##print("ok testing ComposeMETA===================",ComposeMETA(function1,function2))
         ##print("ok testing ComposeMETA LIST",ComposeMETA(functionList,functionList2))
+        ##ANSWERS:
+        ##ok testing ComposeMETA=================== [['a', 'd']]
+        ##ok testing ComposeMETA LIST [['a', 'd'], ['Z', 'Y'], ['Z', 'TOTALCHECK']]
+        #=================================================
 
-        #questions to ask:/ALWAYS REMEMBER TO APPEND AFTER
-        #REMEMBER, AT EACH STEP YOU NEED TO APPEND THAT ANSWER TO MIRA
 
         
+
         ##have I seen this before?
+        '''
+        WTF THIS IS ALREADY A META QUESTION
+        have I seen this before means:
+        MIRAMEMORY composeMETA input == REALWORLD compose input
+        question: what is REALWORLD?
+        in this case, let's take python evaluation as the real world since it provides fast feedback
+        later it should be a later step in some timestream (AKA time1 is MIRA composeMETA input and REALWORLD whatever happens after that, whatever that is)
+
+        IT COULD ALSO MEAN
+        SI(object,miramemories)
+        FUCK
+        
+
+        question: what is file format for memorylist? (hint: it shouldn't be a fucking list anymore)
+        just be a list of written functions in [[a,b]] format
+        
+        '''
+        for x in memorylist:
+            try:
+                second = eval(x)
+                first = [['a',['a']]]
+                print("2nd",second)
+                print("1st",first)
+                #print(ComposeMETA(second,first))
+                '''
+                if ComposeMETA(second,first) == :
+                    #add compositions as answers if you haven't seen it already
+                    #COMPARE WITH PYTHON INPUT
+                '''
+            except:
+                pass
+
+
+
+
+
+
+
+
+        
         #print("input in memory?",inputtext,Elem_My(inputtext,memorylist))
         #should know if she knows it
         Elem_My(inputtext,memorylist)
