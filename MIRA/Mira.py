@@ -124,12 +124,23 @@ while True:
         for x in memorylist:
             try:
                 second = eval(x)
+                
+                #FUUUCK COMPOSEMETA OR COMPOSE ONLY
+                print("ELEMENT OF AND MEMORYLIST",Elem_My("[['b','b']]",memorylist))
+                '''
+                WORKS FOR THIS MEMORYTEXT
+                [[print(,'b']]
+                [['argument_1 == "a"', 1+1]]
+                [['b','b']]
+                '''
+                
                 first = [['a',['a']]]
                 print("2nd",second)
                 print("1st",first)
-                #print(ComposeMETA(second,first))
+                print(ComposeMETA(second,first))
                 '''
-                if ComposeMETA(second,first) == :
+                if ComposeMETA(second,first) HAS NOT BEEN SEEN BEFORE
+                if ComposeMETA(second,first) == FALSE:
                     #add compositions as answers if you haven't seen it already
                     #COMPARE WITH PYTHON INPUT
                 '''
@@ -203,5 +214,5 @@ while True:
         #write everything down
         basis.seek(0)
         basis.write(str(basislist))
-        memory.seek(0)
-        memory.write(str(memorylist))
+        #memory.seek(0)
+        #memory.write(str(memorylist))

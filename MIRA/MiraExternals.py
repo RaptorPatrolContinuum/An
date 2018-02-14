@@ -1408,15 +1408,15 @@ def Cheat(string):
         i += 1
     #Morphemes
     return Morphemes
-
+'''
 def lexico(argList):
-    '''
+    
     need function that does lexicographic ordering on memory using basislist
     arg1 = memory file
     arg2 = basislist 
-    '''
-    return None
 
+    return None
+    '''
 ##############################################################
 #TESTING STAGE
 
