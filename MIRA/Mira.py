@@ -34,6 +34,9 @@ def BasisFix(inp,basis):
 while True:
     inputtext = str(input("exit or logout to leave \n"))
     if inputtext == "exit" or inputtext == "logout":
+        #close files
+        basis.close()
+        memory.close()
         break
     else:
         '''
@@ -70,6 +73,7 @@ while True:
             memory.seek(0)
             #memorylist = ast.literal_eval(memory.read())
             memorylist = memory.readlines()
+            memorylistNEW = memory.readlines()
 
         #fix basis
         BasisFix(inputtext,basislist)                
@@ -121,12 +125,17 @@ while True:
         just be a list of written functions in [[a,b]] format
         
         '''
+        
+        print("what is memorylist \n",memorylist)
         for x in memorylist:
             try:
+                #print("qhat is x?",x)
                 second = eval(x)
-                
+                print("what is second?", second)
+
+                #print("memorylist check again",Inspector_M(memorylist))
                 #FUUUCK COMPOSEMETA OR COMPOSE ONLY
-                print("ELEMENT OF AND MEMORYLIST",Elem_My("[['b','b']]",memorylist))
+                print("ELEMENT OF AND MEMORYLIST",Elem_My("[['b','b']]\n",memorylist))
                 '''
                 WORKS FOR THIS MEMORYTEXT
                 [[print(,'b']]
@@ -137,13 +146,20 @@ while True:
                 first = [['a',['a']]]
                 print("2nd",second)
                 print("1st",first)
-                print(ComposeMETA(second,first))
-                '''
-                if ComposeMETA(second,first) HAS NOT BEEN SEEN BEFORE
-                if ComposeMETA(second,first) == FALSE:
+                print(str(ComposeMETA(second,first)))
+                print(Q_(str(ComposeMETA(second,first)) + "\n"))
+                #print("memorylist check again",Inspector_M(memorylist))
+                print("ELEMENT OF AND MEMORYLIST VER2",Elem_My(str(ComposeMETA(second,first)) + "\n",memorylist))
+                #print("how to add to memorylist", memorylist.append(str(ComposeMETA(second,first)) + "\n"))
+                
+                #if ComposeMETA(second,first) HAS NOT BEEN SEEN BEFORE
+                if Elem_My(str(ComposeMETA(second,first)) + "\n",memorylist) == False:
+                    print("attempt to add!")
                     #add compositions as answers if you haven't seen it already
+                    memorylistNEW.append(str(ComposeMETA(second,first)) + "\n")
+                    print("newlist is", memorylistNEW)
                     #COMPARE WITH PYTHON INPUT
-                '''
+                    
             except:
                 pass
 
@@ -214,5 +230,8 @@ while True:
         #write everything down
         basis.seek(0)
         basis.write(str(basislist))
-        #memory.seek(0)
-        #memory.write(str(memorylist))
+
+
+        print("what is memorystlist new?", memorylistNEW)
+        memory.seek(0)
+        memory.write(str(memorylistNEW))
