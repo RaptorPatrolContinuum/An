@@ -6,37 +6,27 @@ import sys
 if sys.version_info[0] < 3:
     raise Exception("Python 3 or a more recent version is required.")
 
-file = open('INP.txt', 'r')
-basis = open('Basis.txt','r+')
-memory = open('Memory.txt','r+')
+#file = open('INP.txt', 'r')
+#basis = open('Basis.txt','r+')
+#memory = open('Memory.txt','r+')
 
-def BasisFix(inp,basis):
-    '''
-    this fixes basis so I can call address whenever
-    '''
-    for char in inp:
-        #if stuff is not in the basis:
-        if char in basis:
-            pass
-        else:
-            #append to basis
-            basis.append(char)
-    if len(inp) in basis:
-        pass
-    else:
-        for k in range(len(inputtext)+1):
-            if str(k) in basis:
-                pass
-            else:
-                basis.append(str(k))
-    return
+fileObj = open('INP.txt', 'r')
+fileCopy = fileObj.read()
+basisObj = open('Basis.txt','r+')
+basisCopy = basisObj.read()
+memoryObj = open('Memory.txt','r+')
+memoryCopy = memoryObj.read()
+
+#close files
+fileObj.close()
+basisObj.close()
+memoryObj.close()
+
+
 
 while True:
     inputtext = str(input("exit or logout to leave \n"))
     if inputtext == "exit" or inputtext == "logout":
-        #close files
-        basis.close()
-        memory.close()
         break
     else:
         '''
@@ -55,14 +45,12 @@ while True:
         
         '''
         #init basis
-        basis.seek(0)
-        if len(basis.read()) == 0:
-            basislist = ["True","False"]
+        if len(basisCopy) == 0:
+            basisCopy = ["True","False"]
             
         else:
             #get basistext as list:
-            basis.seek(0)
-            basislist = ast.literal_eval(basis.read())
+            basisCopy = ast.literal_eval(basis.read())
 
         #init memory:
         memory.seek(0)
