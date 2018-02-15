@@ -266,6 +266,29 @@ def Address(basis,obj):
     ANS = int(ANS[::-1], 2)
     return ANS
 
+def AddressFILE(basisfile,obj):
+    '''
+    assume:
+    basis is in the form of = open('filename', r+)
+    obj is a list of pairs
+    
+    '''
+    
+    Interim = []
+    for x in obj:
+        #print("wat is x?", x, type(x), basis)
+        #print("Cantor Data", basis.index(x[0]),basis.index(x[1]))
+        Interim.append(CantorPair(fileindex([basisfile,x[0]]),fileindex([basisfile,x[1]])))
+
+    ANS="1".zfill(int(max(Interim))+1)
+    #print("need Interim Data", Interim)
+    Interim = list(filter(lambda x: x != max(Interim), Interim))
+    for x in Interim:
+        ANS = ANS[:int(x)] + "1" + ANS[int(x)+1:]
+    ANS = int(ANS[::-1], 2)
+    return ANS
+
+
 def AddressFunc(index,obj):
     '''
     index is a finitefunction going from objects -> rchi objects
@@ -666,6 +689,18 @@ def VisionBasis(basis,vision):
         return
     for x in vision:
         ANS.append([basis[int(x[0])],basis[int(x[1])]])
+    return ANS
+
+def VisionBasisFILE(basisfile,vision):
+    '''
+    basis is in the form of = open('filename', r+)
+    '''
+    ANS = []
+    if fCheck(vision) == False:
+        print("vision is function?", fCheck(vision))
+        return
+    for x in vision:
+        ANS.append([fileindexINV([basisfile,int(x[0])]),fileindexINV([basisfile,int(x[1])])])
     return ANS
 
 def EdgeSortbyLinks(E_G):
@@ -1461,6 +1496,7 @@ def fileindex(argList):
     arg2 = string to check index of
     this gets first index of string with respect to filestream
     RETURNS: None if fail or integer if there is index
+    HINT: FILEINDEX DOES NOT CLOSE THE FILE
     '''
     arg1 = argList[0]
     arg2 = argList[1]
@@ -1486,6 +1522,17 @@ def fileindex(argList):
     arg1.seek(0, 2)
     arg1.write(arg2 + "\n")
     return i + 1
+
+def fileindexINV(argList):
+    '''
+    arg1 = filestream
+    arg2 = INDEX NUMBER
+    this gets first index of string with respect to filestream
+    RETURNS: None if fail or integer if there is index
+    HINT: FILEINDEXINV DOES NOT CLOSE THE FILE
+    also this is just to make shit look good I should just be using the tail function but whatever
+    '''
+    return tail(arg1, arg2, 0)
 
 '''
 def lexico(argList):

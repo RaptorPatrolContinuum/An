@@ -6,27 +6,16 @@ import sys
 if sys.version_info[0] < 3:
     raise Exception("Python 3 or a more recent version is required.")
 
-#file = open('INP.txt', 'r')
-#basis = open('Basis.txt','r+')
-#memory = open('Memory.txt','r+')
-
-fileObj = open('INP.txt', 'r')
-fileCopy = fileObj.read()
-basisObj = open('Basis.txt','r+')
-basisCopy = basisObj.read()
-memoryObj = open('Memory.txt','r+')
-memoryCopy = memoryObj.read()
-
-#close files
-fileObj.close()
-basisObj.close()
-memoryObj.close()
-
-
+file = open('INP.txt', 'r')
+basis = open('Basis.txt','r+')
+memory = open('Memory.txt','r+')
 
 while True:
     inputtext = str(input("exit or logout to leave \n"))
     if inputtext == "exit" or inputtext == "logout":
+        file.close()
+        basis.close()
+        memory.close()
         break
     else:
         '''
@@ -42,16 +31,21 @@ while True:
         \cong
         "use delta < some # " and look in some topo space
         append basis again
-        
-        '''
+
+
+        more old code
+        ================================================================
         #init basis
         if len(basisCopy) == 0:
             basisCopy = ["True","False"]
             
         else:
             #get basistext as list:
-            basisCopy = ast.literal_eval(basis.read())
+            basis = ast.literal_eval(basis.read())
 
+        #fix basis
+        BasisFix(inputtext,basislist)         
+        '''
         #init memory:
         memory.seek(0)
         if len(memory.read()) == 0:
@@ -61,40 +55,8 @@ while True:
             memory.seek(0)
             #memorylist = ast.literal_eval(memory.read())
             memorylist = memory.readlines()
-            memorylistNEW = memory.readlines()
-
-        #fix basis
-        BasisFix(inputtext,basislist)                
-
-        #=================================================
-        #for U unknown, see M_U
-        #print("what is input", inputtext)
-        #print("end of alg")
-
-        #\omega(I_basis_U,U) & vision
-        #print(basislist)
-        #print(M_(inputtext))
-        #print("Address of obj", Address(basislist,M_(inputtext)))
-        #print(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)))
-        #print("want the X address of this",AutoAddressFunc([['1', '0'], ['0', '1'], ['2', '0'], ['0', '2'], ['3', '0'], ['2', '1']]))
-        #print("want the Y address of this",AutoAddressFunc([['0', '1'], ['0', '2'], ['3', '1']]))
-        #print("what number am I on then?",CantorPair(238,2084))
-        #print("make a tostring func since we have the info but not the order ||||",toString(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)),"INTEGERS"))
-
-        ##function2 = [['a','b']]
-        ##functionList2 = [['a',['b']],['Z',['f','AF']]]
-        ##function1 = [['TOTAL_ARGUMENT == "b"', 'd']]
-        ##functionList = [['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]
-        ##print("ok testing ComposeMETA===================",ComposeMETA(function1,function2))
-        ##print("ok testing ComposeMETA LIST",ComposeMETA(functionList,functionList2))
-        ##ANSWERS:
-        ##ok testing ComposeMETA=================== [['a', 'd']]
-        ##ok testing ComposeMETA LIST [['a', 'd'], ['Z', 'Y'], ['Z', 'TOTALCHECK']]
-        #=================================================
-
-
+            memorylistNEW = memory.readlines()       
         
-
         ##have I seen this before?
         '''
         WTF THIS IS ALREADY A META QUESTION
@@ -216,10 +178,59 @@ while True:
         #print("blist",basislist)
         #print("mlist",memorylist)
         #write everything down
-        basis.seek(0)
-        basis.write(str(basislist))
+        #basis.seek(0)
+        #basis.write(str(basislist))
 
 
         print("what is memorystlist new?", memorylistNEW)
         memory.seek(0)
         memory.write(str(memorylistNEW))
+
+
+
+        '''
+        ==================================================================================================
+        PUT ALL THE TESTING CODE PAST HERE
+        ==================================================================================================
+
+        cool technique, but not required right now
+        
+        fileObj = open('INP.txt', 'r')
+        fileCopy = fileObj.read()
+
+        basisObj = open('Basis.txt','r+')
+        basisCopy = basisObj.read()
+
+        memoryObj = open('Memory.txt','r+')
+        memoryCopy = memoryObj.read()
+
+        #close files
+        fileObj.close()
+        basisObj.close()
+        memoryObj.close()
+        '''
+        #=================================================
+        #for U unknown, see M_U
+        #print("what is input", inputtext)
+        #print("end of alg")
+
+        #\omega(I_basis_U,U) & vision
+        #print(basislist)
+        #print(M_(inputtext))
+        #print("Address of obj", Address(basislist,M_(inputtext)))
+        #print(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)))
+        #print("want the X address of this",AutoAddressFunc([['1', '0'], ['0', '1'], ['2', '0'], ['0', '2'], ['3', '0'], ['2', '1']]))
+        #print("want the Y address of this",AutoAddressFunc([['0', '1'], ['0', '2'], ['3', '1']]))
+        #print("what number am I on then?",CantorPair(238,2084))
+        #print("make a tostring func since we have the info but not the order ||||",toString(VisionBasis(basislist,AutoVision(Address(basislist,M_(inputtext)),1)),"INTEGERS"))
+
+        ##function2 = [['a','b']]
+        ##functionList2 = [['a',['b']],['Z',['f','AF']]]
+        ##function1 = [['TOTAL_ARGUMENT == "b"', 'd']]
+        ##functionList = [['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]
+        ##print("ok testing ComposeMETA===================",ComposeMETA(function1,function2))
+        ##print("ok testing ComposeMETA LIST",ComposeMETA(functionList,functionList2))
+        ##ANSWERS:
+        ##ok testing ComposeMETA=================== [['a', 'd']]
+        ##ok testing ComposeMETA LIST [['a', 'd'], ['Z', 'Y'], ['Z', 'TOTALCHECK']]
+        #=================================================
