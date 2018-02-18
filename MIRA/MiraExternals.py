@@ -269,15 +269,20 @@ def Address(basis,obj):
 def AddressFILE(basisfile,obj):
     '''
     assume:
-    basis is in the form of = open('filename', r+)
+    basisfile is in the form of = open('filename', r+)
     obj is a list of pairs
-    
+
+
+
+    if fCheck(f1) == False or fCheck(f2) == False:
+        print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
+        return
     '''
     
     Interim = []
     for x in obj:
-        #print("wat is x?", x, type(x), basis)
-        #print("Cantor Data", basis.index(x[0]),basis.index(x[1]))
+        #print("wat is x?", x, type(x), basisfile)
+        #print("Cantor Data", fileindex([basisfile,x[0]]),fileindex([basisfile,x[1]]))
         Interim.append(CantorPair(fileindex([basisfile,x[0]]),fileindex([basisfile,x[1]])))
 
     ANS="1".zfill(int(max(Interim))+1)
@@ -473,7 +478,7 @@ def Compose(f1,f2):
     '''
     #check if f1,f2 are functions:
     if fCheck(f1) == False or fCheck(f2) == False:
-        #print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
+        print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
         return
     ALG = []
     for x in f2:
@@ -488,7 +493,7 @@ def ComposeMETA(f1,f2):
     '''
     #check if f1,f2 are functions:
     if fCheck(f1) == False or fCheck(f2) == False:
-        #print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
+        print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
         return
     ALG = []
     for y in f2:
@@ -1534,15 +1539,30 @@ def fileindexINV(argList):
     '''
     return tail(arg1, arg2, 0)
 
-'''
-def lexico(argList):
-    
-    need function that does lexicographic ordering on memory using basislist
-    arg1 = memory file
-    arg2 = basislist 
 
-    return None
+def lexicoSort(argList):
     '''
+    need function that does lexicographic ordering on memory using basislist
+    arg1 = memory file in open(filename,???) format
+    arg2 = basis file in open(filename,???) format
+    HINT: this function DOES NOT CLOSE THE FILE EITHER
+    '''
+    argList[0].seek(0)
+    argList[1].seek(0)
+    arg1 = argList[0]
+    arg2 = argList[1]
+    #print("lexico got here",arg1.read())
+    print("fuck I deleted a lot of shit with #####")
+    #print(arg1)
+    #print(arg2)
+    for x in arg1.read():
+        #get address then insert in increasing order
+        print("what is x?",x)
+        argList[1].seek(0)
+        print("what is address of x?",AddressFILE(arg2,x + "\n"))
+    
+    return None
+        
 ##############################################################
 #TESTING STAGE
 

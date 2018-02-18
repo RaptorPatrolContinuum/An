@@ -56,6 +56,13 @@ while True:
             #memorylist = ast.literal_eval(memory.read())
             memorylist = memory.readlines()
             memorylistNEW = memory.readlines()       
+
+        print("TEST LEXICO ORDERING")
+        basis.seek(0)
+        print(fileindex([basis,"[" + "\n"]))
+        #####print(AddressFILE(basis,"[" + "\n"))
+        lexicoSort([memory,basis])
+
         
         ##have I seen this before?
         '''
@@ -76,16 +83,16 @@ while True:
         
         '''
         
-        print("what is memorylist \n",memorylist)
+        #####print("what is memorylist \n",memorylist)
         for x in memorylist:
             try:
                 #print("qhat is x?",x)
                 second = eval(x)
-                print("what is second?", second)
+                #####print("what is second?", second)
 
                 #print("memorylist check again",Inspector_M(memorylist))
                 #FUUUCK COMPOSEMETA OR COMPOSE ONLY
-                print("ELEMENT OF AND MEMORYLIST",Elem_My("[['b','b']]\n",memorylist))
+                #####print("ELEMENT OF AND MEMORYLIST",Elem_My("[['b','b']]\n",memorylist))
                 '''
                 WORKS FOR THIS MEMORYTEXT
                 [[print(,'b']]
@@ -94,20 +101,20 @@ while True:
                 '''
                 
                 first = [['a',['a']]]
-                print("2nd",second)
-                print("1st",first)
-                print(str(ComposeMETA(second,first)))
-                print(Q_(str(ComposeMETA(second,first)) + "\n"))
+                #####print("2nd",second)
+                #####print("1st",first)
+                #####print(str(ComposeMETA(second,first)))
+                #####print(Q_(str(ComposeMETA(second,first)) + "\n"))
                 #print("memorylist check again",Inspector_M(memorylist))
-                print("ELEMENT OF AND MEMORYLIST VER2",Elem_My(str(ComposeMETA(second,first)) + "\n",memorylist))
+                #####print("ELEMENT OF AND MEMORYLIST VER2",Elem_My(str(ComposeMETA(second,first)) + "\n",memorylist))
                 #print("how to add to memorylist", memorylist.append(str(ComposeMETA(second,first)) + "\n"))
                 
                 #if ComposeMETA(second,first) HAS NOT BEEN SEEN BEFORE
                 if Elem_My(str(ComposeMETA(second,first)) + "\n",memorylist) == False:
-                    print("attempt to add!")
+                    #####print("attempt to add!")
                     #add compositions as answers if you haven't seen it already
                     memorylistNEW.append(str(ComposeMETA(second,first)) + "\n")
-                    print("newlist is", memorylistNEW)
+                    #####print("newlist is", memorylistNEW)
                     #COMPARE WITH PYTHON INPUT
                     
             except:
@@ -127,7 +134,7 @@ while True:
         ###print("ORIGINAL MEMORY?",memorylist)
         #escape = "[Elem_My("+inputtext+","+str(memorylist)+")",str(Elem_My(inputtext,memorylist))+"]"
         escape = str(bytes("[Elem_My("+inputtext+","+str(memorylist)+"),"+str(Elem_My(inputtext,memorylist))+"]", "utf-8").decode("unicode_escape"))
-        print("wtf is escape",escape)
+        #####print("wtf is escape",escape)
         #escape = bytes(str(Elem_My(inputtext,memorylist)), "utf-8").decode("unicode_escape")
         ###print("WTF ESCAPE CHARS",escape)
         
@@ -136,13 +143,13 @@ while True:
 
         #print("THIS WAS MISSING COMMAS",Address(basislist,[["1","print"],["2","("],["3","test"],["4",")"]])) 
         ##try to eval it
-        print("before the try -> eval!")
+        #####print("before the try -> eval!")
         #print("morphemes through cheat!", Cheat(str(inputtext)))
         try:
             eval(inputtext)
             ###memorylist.append([inputtext,eval(inputtext)])
-            print("ok evaling inputtext",eval(inputtext))
-            print("what she should see:",[str(inputtext),str(eval(inputtext))])
+            #####print("ok evaling inputtext",eval(inputtext))
+            #####print("what she should see:",[str(inputtext),str(eval(inputtext))])
             BasisFix(str(eval(inputtext)),basislist)
             
         except:
