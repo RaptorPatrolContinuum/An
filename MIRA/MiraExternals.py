@@ -273,13 +273,14 @@ def Address(basis,obj):
     ANS = int(ANS[::-1], 2)
     return ANS
 
-def AddressFILE(basisfile,obj):
+def AddressFILE(argList):
     '''
     assume:
     basisfile is in the form of = open('filename', r+)
     obj is a list of pairs
     '''
-
+    basisfile = argList[0]
+    obj = argList[1]
     
     if fCheck(obj) == False:
         print("obj to address is function? ADDRESSFILE", fCheck(obj))
@@ -1569,13 +1570,14 @@ def lexicoSort(argList):
     
     return None
 
-
-def mapcount(filename):
+def mapcountLINES(argList):
     '''
-    this function counts lines in a file using mmap   
+    this function counts lines in a file using mmap
+    arg1 is opened filestream
+    HINT: this function DOES NOT CLOSE THE FILE EITHER
     '''
-    f = open(filename, "r+")
-    buf = mmap.mmap(f.fileno(), 0)
+    arg1 = argList[0]
+    buf = mmap.mmap(arg1.fileno(), 0)
     lines = 0
     readline = buf.readline
     while readline():
@@ -1585,9 +1587,38 @@ def mapcount(filename):
 def bisectionInsert(argList):
     '''
     need this because lexicosort on a bajillion number comparisons is just dumb
-    arg1 = 
+    arg1 = filestream to insert to
+    arg2 = obj to insert
+    HINT: YOU NEED TO APPLY THIS SET TO AN ALREADY LINEAR LIST (or else address(x)< address(y) < address(z) won't work)
     '''
+    arg1 = argList[0]
+    arg2 = argList[1]
+    #get max number of lines
+    total = mapcountLINES([arg1])
+    print("check if count still works",total)
+    #get to floor(half)
+    half = floor(total/2)
+    print("what is half?",half)
+    #check for this condition:
+    #address(half-1)< address(y) < address(half)
+
+    #check this address(half-1)< address(y)
+    tail(filestream, half, 0)
+    if AddressFILE(basisfile,obj) < AddressFILE(basisfile,obj):
+    #if works, wait for next one
+    #else
+    #    go left
+
+    #check this address(y) < address(half)
+    #if this works
+    #    append properly
+    #else
+    #    go right
+    
     return None
+
+basisfile = open('basis.txt','r+')
+bisectionInsert([basisfile,"?"])
         
 ##############################################################
 #TESTING STAGE
