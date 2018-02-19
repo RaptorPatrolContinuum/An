@@ -59,9 +59,9 @@ while True:
 
         print("TEST LEXICO ORDERING")
         basis.seek(0)
-        print(fileindex([basis,"[" + "\n"]))
+        ##########print(fileindex([basis,"[" + "\n"]))
         #####print(AddressFILE(basis,"[" + "\n"))
-        lexicoSort([memory,basis])
+        lexicoSort([basis,memory])
 
         
         ##have I seen this before?

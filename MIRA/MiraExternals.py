@@ -1,10 +1,17 @@
 #!/usr/bin/python3.6.3
 from __future__ import division
+from __future__ import with_statement
 from math import *
 from inspect import *
 import ast
 
 import sys
+
+
+import time
+import mmap
+import random
+from collections import defaultdict
 
 if sys.version_info[0] < 3:
     raise Exception("Python 3 or a more recent version is required.")
@@ -271,13 +278,12 @@ def AddressFILE(basisfile,obj):
     assume:
     basisfile is in the form of = open('filename', r+)
     obj is a list of pairs
-
-
-
-    if fCheck(f1) == False or fCheck(f2) == False:
-        print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
-        return
     '''
+
+    
+    if fCheck(obj) == False:
+        print("obj to address is function? ADDRESSFILE", fCheck(obj))
+        return
     
     Interim = []
     for x in obj:
@@ -1543,8 +1549,8 @@ def fileindexINV(argList):
 def lexicoSort(argList):
     '''
     need function that does lexicographic ordering on memory using basislist
-    arg1 = memory file in open(filename,???) format
-    arg2 = basis file in open(filename,???) format
+    arg1 = basis file in open(filename,???) format
+    arg2 = memory file in open(filename,???) format
     HINT: this function DOES NOT CLOSE THE FILE EITHER
     '''
     argList[0].seek(0)
@@ -1555,12 +1561,32 @@ def lexicoSort(argList):
     print("fuck I deleted a lot of shit with #####")
     #print(arg1)
     #print(arg2)
-    for x in arg1.read():
+    for x in arg2.read():
         #get address then insert in increasing order
         print("what is x?",x)
         argList[1].seek(0)
-        print("what is address of x?",AddressFILE(arg2,x + "\n"))
+        print("what is address of x?",AddressFILE(arg1,M_(x + "\n")))
     
+    return None
+
+
+def mapcount(filename):
+    '''
+    this function counts lines in a file using mmap   
+    '''
+    f = open(filename, "r+")
+    buf = mmap.mmap(f.fileno(), 0)
+    lines = 0
+    readline = buf.readline
+    while readline():
+        lines += 1
+    return lines
+
+def bisectionInsert(argList):
+    '''
+    need this because lexicosort on a bajillion number comparisons is just dumb
+    arg1 = 
+    '''
     return None
         
 ##############################################################
