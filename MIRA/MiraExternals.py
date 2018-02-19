@@ -1587,41 +1587,104 @@ def mapcountLINES(argList):
 def bisectionInsert(argList):
     '''
     need this because lexicosort on a bajillion number comparisons is just dumb
-    arg1 = filestream to insert to
+    arg1 = filestream to insert to (form= open('filename', 'r+'))
     arg2 = obj to insert
+    arg3 = basisstream for addressfunc (form= open('filename', 'r+'))
     HINT: YOU NEED TO APPLY THIS SET TO AN ALREADY LINEAR LIST (or else address(x)< address(y) < address(z) won't work)
+    HINT: this function DOES NOT CLOSE THE FILE EITHER
     '''
     arg1 = argList[0]
     arg2 = argList[1]
-    #get max number of lines
-    total = mapcountLINES([arg1])
+    arg3 = argList[2]
+    #get right hand side index (LHS index is 0)
+    total = mapcountLINES([arg1])-1
     print("check if count still works",total)
-    #get to floor(half)
-    half = floor(total/2)
-    print("what is half?",half)
-    #check for this condition:
-    #address(half-1)< address(y) < address(half)
 
-    #check this address(half-1)< address(y)
-    tail(filestream, half, 0)
-    if AddressFILE(basisfile,obj) < AddressFILE(basisfile,obj):
-    #if works, wait for next one
-    #else
-    #    go left
 
-    #check this address(y) < address(half)
-    #if this works
-    #    append properly
-    #else
-    #    go right
-    
     return None
 
-basisfile = open('basis.txt','r+')
-bisectionInsert([basisfile,"?"])
+def bisectionInsertmin(argList):
+    '''
+    need this because lexicosort on a bajillion number comparisons is just dumb
+    
+    #needs:
+    LHSINDEX
+    RHSINDEX
+    filestream to insert to (form= open('filename', 'r+'))
+    basisstream for addressfunc (form= open('filename', 'r+'))
+    OBJTOINSERT (is a string)
+
+    what this does:
+    either: writes to file
+    OR
+    calls itself with new LHS/RHS
+    (it's guaranteed to terminate b/c if I write it properly it should 'run out of space' on a linearly ordered listing)
+
+    HINT: YOU NEED TO APPLY THIS SET TO AN ALREADY LINEAR LIST (or else address(x)< address(y) < address(z) won't work)
+    HINT: file format is where each line is an obj 
+    HINT: this function DOES NOT CLOSE THE FILE EITHER
+    '''
+    #LHSINDEX
+    arg1 = argList[0]
+    #RHSINDEX
+    arg2 = argList[1]
+    #filestream to insert to (form= open('filename', 'r+'))
+    arg3 = argList[2]
+    #basisstream for addressfunc (form= open('filename', 'r+'))
+    arg4 = argList[3]
+    #the string OBJ to insert
+    arg5 = argList[4]
+    
+
+    #get to floor(half of Left and Right)
+    half = floor(arg2-arg1/2)
+    print("what is half?",half)
+    '''
+    picture:
+    ----
+     ^ is half
+    -----
+      ^ is half
+    so half is on the lower side so do half and half + 1
+
+
+    HINT:
+    check for this condition:
+    address(half)< address(y) < address(half+1)
+    #AddressFILE([basisfile,obj])
+    '''
+
+    #check this address(half)< address(y)
+    #if works, wait for next check
+    if AddressFILE([arg4,tail(arg3, half, 0)]) < AddressFILE([arg4,arg5]):
+        pass
+    else:
+        #go left
+        #going left is basically choosing new LHS/RHS
+        #know: LHS,RHS,HALF
+        #going left means:
+        #new LHS/RHS is: LHS,HALF
+        bisectionInsertmin([arg1,half,arg3,arg4,arg5])        
+
+    #check this address(y) < address(half+1)
+    if AddressFILE([arg4,arg5]) < AddressFILE([arg4,tail(arg3, half+1, 0)]):
+        #if this works
+        #append properly
+        return 
+    else:
+        #go right
+        bisectionInsertmin([half,arg2,arg3,arg4,arg5])
+    
+
+
         
 ##############################################################
 #TESTING STAGE
+
+
+basisfile = open('basis.txt','r+')
+bisectionInsert([basisfile,"?"])
+    
 
 
 #print("basislist", basislist)
