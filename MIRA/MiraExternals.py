@@ -11,6 +11,7 @@ import sys
 import time
 import mmap
 import random
+import fileinput
 from collections import defaultdict
 
 if sys.version_info[0] < 3:
@@ -1593,13 +1594,16 @@ def bisectionInsert(argList):
     HINT: YOU NEED TO APPLY THIS SET TO AN ALREADY LINEAR LIST (or else address(x)< address(y) < address(z) won't work)
     HINT: this function DOES NOT CLOSE THE FILE EITHER
     '''
+    #arg1 = filestream to insert to (form= open('filename', 'r+'))
     arg1 = argList[0]
+    #arg2 = obj to insert
     arg2 = argList[1]
+    #arg3 = basisstream for addressfunc (form= open('filename', 'r+'))
     arg3 = argList[2]
     #get right hand side index (LHS index is 0)
     total = mapcountLINES([arg1])-1
-    print("check if count still works",total)
-
+    
+    bisectionInsertmin([0,total,arg1,arg3,arg2])
 
     return None
 
@@ -1634,11 +1638,12 @@ def bisectionInsertmin(argList):
     arg4 = argList[3]
     #the string OBJ to insert
     arg5 = argList[4]
-    
+
+    print("qhat are indices",arg1,arg2)
 
     #get to floor(half of Left and Right)
-    half = floor(arg2-arg1/2)
-    print("what is half?",half)
+    half = floor((arg2-arg1)/2)
+    print("what is half?",arg2,arg1,half)
     '''
     picture:
     ----
@@ -1656,7 +1661,12 @@ def bisectionInsertmin(argList):
 
     #check this address(half)< address(y)
     #if works, wait for next check
-    if AddressFILE([arg4,tail(arg3, half, 0)]) < AddressFILE([arg4,arg5]):
+    print("FUCK",arg3.name)
+    print("testing checks",tail(arg3, half, 0))
+    print("M_",M_(tail(arg3, half, 0)))
+    print("arg5",arg5)
+    print("M_",M_(arg5))
+    if AddressFILE([arg4,M_(tail(arg3, half, 0))]) < AddressFILE([arg4,M_(arg5)]):
         pass
     else:
         #go left
@@ -1667,23 +1677,47 @@ def bisectionInsertmin(argList):
         bisectionInsertmin([arg1,half,arg3,arg4,arg5])        
 
     #check this address(y) < address(half+1)
-    if AddressFILE([arg4,arg5]) < AddressFILE([arg4,tail(arg3, half+1, 0)]):
+    if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(tail(arg3, half+1, 0))]):
         #if this works
         #append properly
+        FILEinsertAt([arg3,arg5,half+1])
         return 
     else:
         #go right
         bisectionInsertmin([half,arg2,arg3,arg4,arg5])
     
+def FILEinsertAt(ArgList):
+    '''
+    function to insert text at a specific line in file
+    arg1 = filestream
+    arg2 = string to insert
+    arg3 = index to insert at (index starts at 0)
+
+    HINT: this closes the file to fileinput works
+    needs 'import fileinput'
+    '''
+    arg1 = ArgList[0].name
+    #have to close this for fileinput to work
+    ArgList[0].close()
+    arg2 = ArgList[1]
+    arg3 = ArgList[2]
+    i = 0
+    for line in fileinput.input(arg1, inplace=1):
+        if i == arg3:
+            print(arg2)
+        i += 1
+        print(line, end='')
+
 
 
         
 ##############################################################
 #TESTING STAGE
 
-
+testfile = open('1.txt','r+')
 basisfile = open('basis.txt','r+')
-bisectionInsert([basisfile,"?"])
+#bisectionInsert([testfile,"testobjinsertto1",basisfile])
+
     
 
 
