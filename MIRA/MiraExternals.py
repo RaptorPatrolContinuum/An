@@ -1487,7 +1487,8 @@ def tail(f, n, offset=0):
     """
     Reads a n lines from f with an offset of offset lines.
     HINT: this is used in ConstructPNXNLines
-    """
+    file is in the form of open(filename,...)
+
     avg_line_length = 74
     to_read = n + offset
     while 1:
@@ -1502,7 +1503,13 @@ def tail(f, n, offset=0):
         if len(lines) >= to_read or pos == 0:
             return lines[-to_read:offset and -offset or None]
         avg_line_length *= 1.3
-
+    """
+    f.seek(0)
+    for i, line in enumerate(f):
+        #print("newtail stats", i, n, line, )
+        if i == n:
+            return line
+    
 def fileindex(argList):
     '''
     arg1 = filestream
@@ -1639,11 +1646,11 @@ def bisectionInsertmin(argList):
     #the string OBJ to insert
     arg5 = argList[4]
 
-    print("qhat are indices",arg1,arg2)
+   
 
     #get to floor(half of Left and Right)
     half = floor((arg2-arg1)/2)
-    print("what is half?",arg2,arg1,half)
+    #print("what is half?",arg2,arg1,half)
     '''
     picture:
     ----
@@ -1661,11 +1668,21 @@ def bisectionInsertmin(argList):
 
     #check this address(half)< address(y)
     #if works, wait for next check
-    print("FUCK",arg3.name)
-    print("testing checks",tail(arg3, half, 0))
-    print("M_",M_(tail(arg3, half, 0)))
-    print("arg5",arg5)
-    print("M_",M_(arg5))
+
+    #print("check stats",arg4)
+    #print("????",M_(tail(arg3, half, 0)))
+    #print("address is failing?",AddressFILE([arg4,M_(tail(arg3, half, 0))]))
+    #print("address is failing2",AddressFILE([arg4,M_(arg5)]))
+    #print("is this a nonetype?",tail(arg3, half, 0))
+    #check1 = AddressFILE([arg4,M_(tail(arg3, half, 0))])
+    #check2 = AddressFILE([arg4,M_(arg5)])
+    #print("CHECK LESS THAN",check1 < check2)
+
+    print("qhat are indices",arg1,arg2)
+    print("qhat is half", half)
+    print("check solns", AddressFILE([arg4,M_(tail(arg3, half, 0))]) < AddressFILE([arg4,M_(arg5)]))
+    print("check solns2",AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(tail(arg3, half+1, 0))]))
+
     if AddressFILE([arg4,M_(tail(arg3, half, 0))]) < AddressFILE([arg4,M_(arg5)]):
         pass
     else:
@@ -1716,7 +1733,7 @@ def FILEinsertAt(ArgList):
 
 testfile = open('1.txt','r+')
 basisfile = open('basis.txt','r+')
-#bisectionInsert([testfile,"testobjinsertto1",basisfile])
+bisectionInsert([testfile,"testobjinsertto1",basisfile])
 
     
 
