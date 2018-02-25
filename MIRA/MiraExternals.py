@@ -1488,7 +1488,7 @@ def tail(f, n, offset=0):
     Reads a n lines from f with an offset of offset lines.
     HINT: this is used in ConstructPNXNLines
     file is in the form of open(filename,...)
-
+    """
     avg_line_length = 74
     to_read = n + offset
     while 1:
@@ -1503,7 +1503,15 @@ def tail(f, n, offset=0):
         if len(lines) >= to_read or pos == 0:
             return lines[-to_read:offset and -offset or None]
         avg_line_length *= 1.3
-    """
+
+def FILEindexread(argList):
+    '''
+    Arglist is:
+    arg1 = file in form of open('','f+')
+    arg2 = line index to read (starts from 0)
+    '''
+    f = argList[0]
+    n = argList[1]
     f.seek(0)
     for i, line in enumerate(f):
         #print("newtail stats", i, n, line, )
@@ -1635,6 +1643,7 @@ def bisectionInsertmin(argList):
     HINT: file format is where each line is an obj 
     HINT: this function DOES NOT CLOSE THE FILE EITHER
     '''
+    print("what is arglist?", argList)
     #LHSINDEX
     arg1 = argList[0]
     #RHSINDEX
@@ -1680,10 +1689,35 @@ def bisectionInsertmin(argList):
 
     print("qhat are indices",arg1,arg2)
     print("qhat is half", half)
-    print("check solns", AddressFILE([arg4,M_(tail(arg3, half, 0))]) < AddressFILE([arg4,M_(arg5)]))
-    print("check solns2",AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(tail(arg3, half+1, 0))]))
+    
+    '''
+    do i use quine or not? (just be consistent. question: is M_ OR Q_ shorter on "average"??)
+        USE M_
+    
+    how does [[1,1]] return an address when [1,[[1,1]]] AND [[1,1]] IS NOT IN BASIS
+        is this a per char thing????
+            ya it's a per char thing
+            print("chars only?",M_(tail(arg3, half, 0))) -> [['0', '['], ['1', '['], ['2', '1'], ['3', ','], ['4', '1'], ['5', ']'], ['6', ']'], ['7', '\n']]
 
-    if AddressFILE([arg4,M_(tail(arg3, half, 0))]) < AddressFILE([arg4,M_(arg5)]):
+    EDGE CASE LIST:
+    length of filestream is 0,1 lines
+    should insert at beginning or end of file
+    ???
+    '''
+
+    #if length is 0, just init
+    if arg2 == 0:
+        FILEinsertAt([arg3,arg5,arg2])
+        return
+    #if length is 1, check if we append before ( obj < line from file) or after (line from file < obj)
+   #if arg2 == 1:
+        #append before
+        #if ( obj < line from file):
+        #or append after
+    #print("check solns", AddressFILE([arg4,M_(tail(arg3, half, 0))]) < AddressFILE([arg4,M_(arg5)]))
+    #print("check solns2",AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(tail(arg3, half+1, 0))]))
+
+    if AddressFILE([arg4,M_(FILEindexread([arg3, half]))]) < AddressFILE([arg4,M_(arg5)]):
         pass
     else:
         #go left
@@ -1694,7 +1728,7 @@ def bisectionInsertmin(argList):
         bisectionInsertmin([arg1,half,arg3,arg4,arg5])        
 
     #check this address(y) < address(half+1)
-    if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(tail(arg3, half+1, 0))]):
+    if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
         #if this works
         #append properly
         FILEinsertAt([arg3,arg5,half+1])
@@ -1734,7 +1768,7 @@ def FILEinsertAt(ArgList):
 testfile = open('1.txt','r+')
 basisfile = open('basis.txt','r+')
 bisectionInsert([testfile,"testobjinsertto1",basisfile])
-
+#bisectionInsert([testfile,"testobjinsertto1",basisfile])
     
 
 
