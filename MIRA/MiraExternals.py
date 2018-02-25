@@ -1616,10 +1616,18 @@ def bisectionInsert(argList):
     #arg3 = basisstream for addressfunc (form= open('filename', 'r+'))
     arg3 = argList[2]
     #get right hand side index (LHS index is 0)
-    total = mapcountLINES([arg1])-1
-    
+    #total = mapcountLINES([arg1])-1
+    #can't map an empty file for some reason\
+    try:
+        total = mapcountLINES([arg1])-1
+    except ValueError:
+        #assume file is size 0
+        #init the file instead
+        arg1.write(arg2)
+        arg1.close()
+        print("should insert arg2",arg2,arg1.name)
+        return
     bisectionInsertmin([0,total,arg1,arg3,arg2])
-
     return None
 
 def bisectionInsertmin(argList):
@@ -1655,7 +1663,9 @@ def bisectionInsertmin(argList):
     #the string OBJ to insert
     arg5 = argList[4]
 
-   
+    #data I need to know
+    #need to know filename so I can reopen file
+    data1 = arg3.name
 
     #get to floor(half of Left and Right)
     half = floor((arg2-arg1)/2)
@@ -1705,19 +1715,34 @@ def bisectionInsertmin(argList):
     ???
     '''
 
-    #if length is 0, just init
+    #took care of size 0 in original function
+    #if length is 1 (AKA index of 0), check boundaries
     if arg2 == 0:
-        FILEinsertAt([arg3,arg5,arg2])
+        print("SHOULD END")
+        #insert left? (obj < line)
+        if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]):
+            FILEinsertAt([arg3,arg5,0])
+            print("inserted left")
+        #insert right
+        else:
+            #FILEinsertAt([arg3,arg5,1])
+            print("roght file?", arg3)
+            #go to end
+            arg3.seek(0, 2)
+            #add obj to end
+            arg3.write("\n"+arg5)
+            #arg3.write("PLS INSERT")
+            print("inserted right")
         return
     #if length is 1, check if we append before ( obj < line from file) or after (line from file < obj)
-   #if arg2 == 1:
+    #if arg2 == 1:
         #append before
         #if ( obj < line from file):
         #or append after
     #print("check solns", AddressFILE([arg4,M_(tail(arg3, half, 0))]) < AddressFILE([arg4,M_(arg5)]))
     #print("check solns2",AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(tail(arg3, half+1, 0))]))
 
-    if AddressFILE([arg4,M_(FILEindexread([arg3, half]))]) < AddressFILE([arg4,M_(arg5)]):
+    if AddressFILE([arg4,M_(FILEindexread([arg3, half]))]) <= AddressFILE([arg4,M_(arg5)]):
         pass
     else:
         #go left
@@ -1728,7 +1753,7 @@ def bisectionInsertmin(argList):
         bisectionInsertmin([arg1,half,arg3,arg4,arg5])        
 
     #check this address(y) < address(half+1)
-    if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
+    if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
         #if this works
         #append properly
         FILEinsertAt([arg3,arg5,half+1])
@@ -1752,6 +1777,7 @@ def FILEinsertAt(ArgList):
     ArgList[0].close()
     arg2 = ArgList[1]
     arg3 = ArgList[2]
+    #print('stats',ArgList)
     i = 0
     for line in fileinput.input(arg1, inplace=1):
         if i == arg3:
@@ -1765,10 +1791,15 @@ def FILEinsertAt(ArgList):
 ##############################################################
 #TESTING STAGE
 
+#NOT CLOSING ===== NOT COMMITTING WRITES
 testfile = open('1.txt','r+')
 basisfile = open('basis.txt','r+')
-bisectionInsert([testfile,"testobjinsertto1",basisfile])
 #bisectionInsert([testfile,"testobjinsertto1",basisfile])
+bisectionInsert([testfile,"SIZE2",basisfile])
+#can't test twice: you have to close and open the file to update in order to insert again
+#bisectionInsert([testfile,"testobjinsertto1",basisfile])
+testfile.close()
+basisfile.close()
     
 
 

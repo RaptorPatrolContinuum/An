@@ -18,6 +18,14 @@ while True:
         memory.close()
         break
     else:
+        #TESTING STAGE
+
+        testfile = open('1.txt','r+')
+        basisfile = open('basis.txt','r+')
+        bisectionInsert([testfile,"testobjinsertto1",basisfile])
+        #bisectionInsert([testfile,"testobjinsertto1",basisfile])
+        testfile.close()
+        basisfile.close()
         '''
         What's the plan?
 
@@ -61,7 +69,7 @@ while True:
         basis.seek(0)
         ##########print(fileindex([basis,"[" + "\n"]))
         #####print(AddressFILE([basis,"[" + "\n"]))
-        lexicoSort([basis,memory])
+        #####lexicoSort([basis,memory])
 
         
         ##have I seen this before?
