@@ -128,7 +128,7 @@ for line in fileinput.input('1.txt', inplace=1):
 
 import fileinput
 
-def FILEinsertAt(ArgList):
+def FILEinsertAtPERMERROR(ArgList):
     '''
     function to insert text at a specific line in file
     arg1 = filestream
@@ -145,7 +145,8 @@ def FILEinsertAt(ArgList):
             print(arg2)
         i += 1
         print(line, end='')
-#FILEinsertAt([open('1.txt','r+'),"ok inserted here?"])
+FILEinsertAtPERMERROR([open('1.txt','r+'),"ok inserted at 3 (fixed)?"])
+
 
 
 def newtail(f, n, offset=0):
@@ -175,5 +176,5 @@ def newtail(f, n, offset=0):
             return line
 
 
-print("fuck I have to write my own tail now too",tail(open("1.txt","r+"), 0, 0))
+#print("fuck I have to write my own tail now too",tail(open("1.txt","r+"), 0, 0))
 #print("fuck I have to write my own tail now too",newtail(open("1.txt","r+"), 0, 0))

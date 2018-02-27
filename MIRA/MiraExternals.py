@@ -1509,6 +1509,8 @@ def FILEindexread(argList):
     Arglist is:
     arg1 = file in form of open('','f+')
     arg2 = line index to read (starts from 0)
+
+    HINT: THIS REMOVES TRAILING NEWLINE
     '''
     f = argList[0]
     n = argList[1]
@@ -1516,7 +1518,7 @@ def FILEindexread(argList):
     for i, line in enumerate(f):
         #print("newtail stats", i, n, line, )
         if i == n:
-            return line
+            return line.strip()
     
 def fileindex(argList):
     '''
@@ -1593,6 +1595,8 @@ def mapcountLINES(argList):
     HINT: this function DOES NOT CLOSE THE FILE EITHER
     '''
     arg1 = argList[0]
+    #just make sure
+    arg1.seek(0)
     buf = mmap.mmap(arg1.fileno(), 0)
     lines = 0
     readline = buf.readline
@@ -1651,7 +1655,6 @@ def bisectionInsertmin(argList):
     HINT: file format is where each line is an obj 
     HINT: this function DOES NOT CLOSE THE FILE EITHER
     '''
-    print("what is arglist?", argList)
     #LHSINDEX
     arg1 = argList[0]
     #RHSINDEX
@@ -1699,6 +1702,9 @@ def bisectionInsertmin(argList):
 
     print("qhat are indices",arg1,arg2)
     print("qhat is half", half)
+    print("this means I check half","\"" + FILEindexread([arg3, half]) + "\"")
+    print("and half+1","\"" + FILEindexread([arg3, half+1]) + "\"")
+    print("OBJ IS", "\"" + arg5 + "\"")
     
     '''
     do i use quine or not? (just be consistent. question: is M_ OR Q_ shorter on "average"??)
@@ -1734,33 +1740,114 @@ def bisectionInsertmin(argList):
             #arg3.write("PLS INSERT")
             print("inserted right")
         return
-    #if length is 1, check if we append before ( obj < line from file) or after (line from file < obj)
-    #if arg2 == 1:
-        #append before
-        #if ( obj < line from file):
-        #or append after
+
+    #IF LENGTH >1, check edge cases first to save a lot of time
+    #NOTE: I STILL ASSUME THAT INSERTION FILE IS LINEARLY ORDERED BY ADDRESS < IN THE FIRST PLACE
+
+    #check if obj < first line
+    if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]):
+        print("insert at front:")
+        FILEinsertAt([arg3,arg5,0])
+        return
+
+    #check if last line < obj
+    if AddressFILE([arg4,M_(tail(arg3,1,0))]) < AddressFILE([arg4,M_(arg5)]):
+        print("then insert right before last obj")
+        FILEinsertAt([arg3,arg5,mapcountLINES([arg3])-2])
+        return
+    
+
+    #now for meat:
+    #how to tell odd from even? index is 0 so normally odds are even now and normally evens are odd:
+    '''
+    mapcountLINES([filestream])
+    ^NOT THIS ANYMORE
+    it's per segment that I check, so maxlength is
+    RHS-LHS is 'even' or not
+
+    num % 2 == 0
+        ODD
+    else
+        EVEN
+
+    
+    PLAN
+    check on EVEN:
+    HALF <= OBJ <= HALF+1
+     -> LEFT      -> RIGHT
+
+    check on ODD:
+    HALF <= OBJ <= HALF+1
+     -> LEFT
+     
+    HALF+1 <= OBJ <= HALF+2
+                -> RIGHT
+    ===============
+    check fails:
+    HALF < OBJ > HALF+1
+     -> LEFT
+     
+    HALF+1 > OBJ > HALF+2
+                -> RIGHT
+    ===============
+    check on ODD:
+        CONFIRM THIS INEQ       NOT THIS
+    HALF <= OBJ                 <= HALF+1
+     -> LEFT
+
+                    THEN ALL THAT MATTERS IS CONFIRMING THIS EQUALITY  SINCE WE KNOW OBJ > HALF+1
+    HALF+1 <= OBJ <= HALF+2
+                -> RIGHT
+    '''
+
+
     #print("check solns", AddressFILE([arg4,M_(tail(arg3, half, 0))]) < AddressFILE([arg4,M_(arg5)]))
     #print("check solns2",AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(tail(arg3, half+1, 0))]))
 
     if AddressFILE([arg4,M_(FILEindexread([arg3, half]))]) <= AddressFILE([arg4,M_(arg5)]):
         pass
     else:
-        #go left
+        print("go left", FILEindexread([arg3, half]) + " !<= " + arg5)
         #going left is basically choosing new LHS/RHS
         #know: LHS,RHS,HALF
         #going left means:
         #new LHS/RHS is: LHS,HALF
-        bisectionInsertmin([arg1,half,arg3,arg4,arg5])        
+        bisectionInsertmin([arg1,half,arg3,arg4,arg5])
+        return
+
+    #TODO: check algorithms
+    #check why the fuck I can't use FileInsertAt
 
     #check this address(y) < address(half+1)
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
+        #if this works AND IT'S EVEN MAX LENGTH
+        if (arg2 - arg1) % 2 == 1:
+            print("append properly on 1st check============",arg3.name)
+            wtfnamepls = arg3.name
+            
+            #arg3.write("WTF")
+            arg3.close()
+            #FILEinsertAt([arg3,arg5,half+1])
+            FILEinsertAt([open(arg3.name,'r+'),arg5,half+1])
+            return 
+        else:
+            print("else go right", arg5 + " !<= " + FILEindexread([arg3, half+1]))
+            bisectionInsertmin([half,arg2,arg3,arg4,arg5])
+            return
+
+    #if length is odd number you have to check half+1 and half+2
+
+    #don't need to check HALF+1 <= OBJ since OBJ <= HALF+1 failed already
+    #check this address(y) < address(half+1)
+    if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]):
         #if this works
-        #append properly
-        FILEinsertAt([arg3,arg5,half+1])
+        print("append properly")
+        FILEinsertAt([arg3,arg5,half+2])
         return 
     else:
-        #go right
+        print("else go right")
         bisectionInsertmin([half,arg2,arg3,arg4,arg5])
+        return
     
 def FILEinsertAt(ArgList):
     '''
@@ -1775,32 +1862,65 @@ def FILEinsertAt(ArgList):
     arg1 = ArgList[0].name
     #have to close this for fileinput to work
     ArgList[0].close()
+    print("I tried closing it",arg1)
     arg2 = ArgList[1]
     arg3 = ArgList[2]
     #print('stats',ArgList)
     i = 0
+
+    #fileinput.close()
     for line in fileinput.input(arg1, inplace=1):
         if i == arg3:
             print(arg2)
         i += 1
         print(line, end='')
+    '''
+    ===================
+    with arg1 as infile:
+        for line in infile:
+            print("line",line)
+    ===================
 
+
+
+    for line in fileinput.input(arg1, inplace=1):
+        if i == arg3:
+            print(arg2)
+        i += 1
+        print(line, end='')
+    '''
 
 
         
 ##############################################################
 #TESTING STAGE
 
+
 #NOT CLOSING ===== NOT COMMITTING WRITES
 testfile = open('1.txt','r+')
 basisfile = open('basis.txt','r+')
 #bisectionInsert([testfile,"testobjinsertto1",basisfile])
-bisectionInsert([testfile,"SIZE2",basisfile])
+bisectionInsert([testfile,"SIZE+",basisfile])
 #can't test twice: you have to close and open the file to update in order to insert again
 #bisectionInsert([testfile,"testobjinsertto1",basisfile])
 testfile.close()
 basisfile.close()
-    
+
+
+'''
+SIZE4
+SIZE+
+SIZEp
+SIZEZ
+SIZEZZ
+
+
+
+
+
+AddressFILE([open('basis.txt','r+'),M_('SIZEp')]) < AddressFILE([open('basis.txt','r+'),M_('SIZEZ')])
+'''
+ 
 
 
 #print("basislist", basislist)
