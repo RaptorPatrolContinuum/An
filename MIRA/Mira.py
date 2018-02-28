@@ -6,26 +6,22 @@ import sys
 if sys.version_info[0] < 3:
     raise Exception("Python 3 or a more recent version is required.")
 
+#fucking rip I have to close to commit
 file = open('INP.txt', 'r')
 basis = open('Basis.txt','r+')
 memory = open('Memory.txt','r+')
 
+#filedata = 'INP.txt'
+#basis = 'Basis.txt'
+#memory = 'Memory.txt'
+
+
 while True:
     inputtext = str(input("exit or logout to leave \n"))
     if inputtext == "exit" or inputtext == "logout":
-        file.close()
-        basis.close()
-        memory.close()
         break
     else:
-        #TESTING STAGE
 
-        testfile = open('1.txt','r+')
-        basisfile = open('basis.txt','r+')
-        bisectionInsert([testfile,"testobjinsertto1",basisfile])
-        #bisectionInsert([testfile,"testobjinsertto1",basisfile])
-        testfile.close()
-        basisfile.close()
         '''
         What's the plan?
 
@@ -65,7 +61,7 @@ while True:
             memorylist = memory.readlines()
             memorylistNEW = memory.readlines()       
 
-        print("TEST LEXICO ORDERING")
+        #####print("TEST LEXICO ORDERING")
         basis.seek(0)
         ##########print(fileindex([basis,"[" + "\n"]))
         #####print(AddressFILE([basis,"[" + "\n"]))
@@ -196,11 +192,13 @@ while True:
         #basis.seek(0)
         #basis.write(str(basislist))
 
-
+        '''
+        NEED TO REENABLE THIS
+        
         print("what is memorystlist new?", memorylistNEW)
         memory.seek(0)
         memory.write(str(memorylistNEW))
-
+        '''
 
 
         '''

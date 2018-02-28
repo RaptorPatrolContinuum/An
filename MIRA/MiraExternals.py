@@ -277,11 +277,11 @@ def Address(basis,obj):
 def AddressFILE(argList):
     '''
     assume:
-    basisfile is in the form of = open('filename', r+)
+    basisNAME
     obj is a list of pairs
     '''
     basisfile = argList[0]
-    basisfile.seek(0)
+    #basisfile.seek(0)
     obj = argList[1]
     
     if fCheck(obj) == False:
@@ -1515,12 +1515,12 @@ def tail(f, n, offset=0):
 def FILEindexread(argList):
     '''
     Arglist is:
-    arg1 = file in form of open('','f+')
+    arg1 = fileNAME
     arg2 = line index to read (starts from 0)
 
     HINT: THIS REMOVES TRAILING NEWLINE
     '''
-    f = argList[0]
+    f = open(argList[0],'r+')
     n = argList[1]
     f.seek(0)
     for i, line in enumerate(f):
@@ -1530,13 +1530,13 @@ def FILEindexread(argList):
     
 def fileindex(argList):
     '''
-    arg1 = filestream
+    arg1 = fileNAME
     arg2 = string to check index of
     this gets first index of string with respect to filestream
     RETURNS: None if fail or integer if there is index
     HINT: FILEINDEX DOES NOT CLOSE THE FILE
     '''
-    arg1 = argList[0]
+    arg1 = open(argList[0],'r+')
     arg2 = argList[1]
     
     #check if arg2 is a string
@@ -1565,14 +1565,14 @@ def fileindex(argList):
 
 def fileindexINV(argList):
     '''
-    arg1 = filestream
+    arg1 = filestream (don't want to fuck with this right now)
     arg2 = INDEX NUMBER
     this gets first index of string with respect to filestream
     RETURNS: None if fail or integer if there is index
     HINT: FILEINDEXINV DOES NOT CLOSE THE FILE
     also this is just to make shit look good I should just be using the tail function but whatever
     '''
-    return tail(arg1, arg2, 0)
+    return tail(open(arg1,'r+'), arg2, 0)
 
 
 def lexicoSort(argList):
@@ -1601,10 +1601,10 @@ def lexicoSort(argList):
 def mapcountLINES(argList):
     '''
     this function counts lines in a file using mmap
-    arg1 is opened filestream
+    arg1 is file name
     HINT: this function DOES NOT CLOSE THE FILE EITHER
     '''
-    arg1 = argList[0]
+    arg1 = open(argList[0], 'r+')
     #just make sure
     arg1.seek(0)
     buf = mmap.mmap(arg1.fileno(), 0)
@@ -1612,22 +1612,23 @@ def mapcountLINES(argList):
     readline = buf.readline
     while readline():
         lines += 1
+    arg1.close()
     return lines
 
 def bisectionInsert(argList):
     '''
     need this because lexicosort on a bajillion number comparisons is just dumb
-    arg1 = filestream to insert to (form= open('filename', 'r+'))
+    arg1 = fileNAME to insert to 
     arg2 = obj to insert
-    arg3 = basisstream for addressfunc (form= open('filename', 'r+'))
+    arg3 = basisNAME for addressfunc 
     HINT: YOU NEED TO APPLY THIS SET TO AN ALREADY LINEAR LIST (or else address(x)< address(y) < address(z) won't work)
     HINT: this function DOES NOT CLOSE THE FILE EITHER
     '''
-    #arg1 = filestream to insert to (form= open('filename', 'r+'))
+    #arg1 = fileNAME
     arg1 = argList[0]
     #arg2 = obj to insert
     arg2 = argList[1]
-    #arg3 = basisstream for addressfunc (form= open('filename', 'r+'))
+    #arg3 = basisNAME
     arg3 = argList[2]
     #get right hand side index (LHS index is 0)
     #total = mapcountLINES([arg1])-1
@@ -1677,7 +1678,7 @@ def bisectionInsertmin(argList):
     arg5 = argList[4]
 
     #need to know filename so I can reopen file
-    data1 = arg3.name
+    data1 = arg1
 
     #get to floor(half of Left and Right)
     half = floor((arg2-arg1)/2)
@@ -1746,15 +1747,18 @@ def bisectionInsertmin(argList):
         return
 
     #check if last line < obj
-    print("omg so tail is slightly fucked?",tail(arg3,1,0)[0])
-    print("check type",type(tail(arg3,1,0)[0]) is str)
-    print("WTF???",M_(tail(arg3,1,0)[0]))
-    print("FML",M_(arg5))
-    if AddressFILE([arg4,M_(tail(arg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]):
+    #print("omg so tail is slightly fucked?",tail(open(arg3,'r+'),1,0)[0])
+    #print("check type",type(tail(arg3,1,0)[0]) is str)
+    #print("WTF???",M_(tail(arg3,1,0)[0]))
+    #print("FML",M_(arg5))
+    openarg3 = open(arg3,'r+')
+    if AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]):
+        openarg3.close()
         print("then insert right before last obj")
         FILEinsertAt([arg3,arg5,mapcountLINES([arg3])-2])
         return
-
+    
+    
     #now for meat:
     #how to tell odd from even? index is 0 so normally odds are even now and normally evens are odd:
     '''
@@ -1855,9 +1859,9 @@ def FILEinsertAt(ArgList):
     HINT: this closes the file to fileinput works
     needs 'import fileinput'
     '''
-    arg1 = ArgList[0].name
+    arg1 = ArgList[0]
     #have to close this for fileinput to work
-    ArgList[0].close()
+    #ArgList[0].close()
     print("I tried closing it",arg1)
     arg2 = ArgList[1]
     arg3 = ArgList[2]
@@ -1891,24 +1895,20 @@ def FILEinsertAt(ArgList):
 ##############################################################
 #TESTING STAGE
 
-
-
-
-'''
-
 #NOT CLOSING ===== NOT COMMITTING WRITES
-testfile = open('1.txt','r+')
-basisfile = open('basis.txt','r+')
+#testfile = open('1.txt','r+')
+#basisfile = open('basis.txt','r+')
+testfile = '1.txt'
+basisfile = 'basis.txt'
 #bisectionInsert([testfile,"testobjinsertto1",basisfile])
 bisectionInsert([testfile,"SIZEZ",basisfile])
 #can't test twice: you have to close and open the file to update in order to insert again
 #bisectionInsert([testfile,"testobjinsertto1",basisfile])
-testfile.close()
-basisfile.close()
+#testfile.close()
+#basisfile.close()
 
 
-
-
+'''
 
 
 
