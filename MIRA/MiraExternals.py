@@ -281,6 +281,7 @@ def AddressFILE(argList):
     obj is a list of pairs
     '''
     basisfile = argList[0]
+    basisfile.seek(0)
     obj = argList[1]
     
     if fCheck(obj) == False:
@@ -1485,9 +1486,16 @@ def BasisFix(inp,basis):
 
 def tail(f, n, offset=0):
     """
+    HINT!!!!!
+    THIS RETURNS A LIST SO YOU HAVE TO INDEX[0] TO GET ACTUAL OBJECT!!!!
+
+
     Reads a n lines from f with an offset of offset lines.
     HINT: this is used in ConstructPNXNLines
     file is in the form of open(filename,...)
+
+
+    this works for constructlines
     """
     avg_line_length = 74
     to_read = n + offset
@@ -1550,7 +1558,9 @@ def fileindex(argList):
         i += 1
     #if we get here then we need to append to basis then return answer
     arg1.seek(0, 2)
-    arg1.write(arg2 + "\n")
+    arg1.write("\n" + arg2)
+    
+    arg1.close()
     return i + 1
 
 def fileindexINV(argList):
@@ -1666,13 +1676,11 @@ def bisectionInsertmin(argList):
     #the string OBJ to insert
     arg5 = argList[4]
 
-    #data I need to know
     #need to know filename so I can reopen file
     data1 = arg3.name
 
     #get to floor(half of Left and Right)
     half = floor((arg2-arg1)/2)
-    #print("what is half?",arg2,arg1,half)
     '''
     picture:
     ----
@@ -1681,29 +1689,16 @@ def bisectionInsertmin(argList):
       ^ is half
     so half is on the lower side so do half and half + 1
 
-
     HINT:
     check for this condition:
     address(half)< address(y) < address(half+1)
     #AddressFILE([basisfile,obj])
     '''
 
-    #check this address(half)< address(y)
-    #if works, wait for next check
-
-    #print("check stats",arg4)
-    #print("????",M_(tail(arg3, half, 0)))
-    #print("address is failing?",AddressFILE([arg4,M_(tail(arg3, half, 0))]))
-    #print("address is failing2",AddressFILE([arg4,M_(arg5)]))
-    #print("is this a nonetype?",tail(arg3, half, 0))
-    #check1 = AddressFILE([arg4,M_(tail(arg3, half, 0))])
-    #check2 = AddressFILE([arg4,M_(arg5)])
-    #print("CHECK LESS THAN",check1 < check2)
-
     print("qhat are indices",arg1,arg2)
     print("qhat is half", half)
-    print("this means I check half","\"" + FILEindexread([arg3, half]) + "\"")
-    print("and half+1","\"" + FILEindexread([arg3, half+1]) + "\"")
+    #print("this means I check half","\"" + FILEindexread([arg3, half]) + "\"")
+    #print("and half+1","\"" + FILEindexread([arg3, half+1]) + "\"")
     print("OBJ IS", "\"" + arg5 + "\"")
     
     '''
@@ -1724,7 +1719,7 @@ def bisectionInsertmin(argList):
     #took care of size 0 in original function
     #if length is 1 (AKA index of 0), check boundaries
     if arg2 == 0:
-        print("SHOULD END")
+        #print("SHOULD END")
         #insert left? (obj < line)
         if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]):
             FILEinsertAt([arg3,arg5,0])
@@ -1751,11 +1746,14 @@ def bisectionInsertmin(argList):
         return
 
     #check if last line < obj
-    if AddressFILE([arg4,M_(tail(arg3,1,0))]) < AddressFILE([arg4,M_(arg5)]):
+    print("omg so tail is slightly fucked?",tail(arg3,1,0)[0])
+    print("check type",type(tail(arg3,1,0)[0]) is str)
+    print("WTF???",M_(tail(arg3,1,0)[0]))
+    print("FML",M_(arg5))
+    if AddressFILE([arg4,M_(tail(arg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]):
         print("then insert right before last obj")
         FILEinsertAt([arg3,arg5,mapcountLINES([arg3])-2])
         return
-    
 
     #now for meat:
     #how to tell odd from even? index is 0 so normally odds are even now and normally evens are odd:
@@ -1800,7 +1798,6 @@ def bisectionInsertmin(argList):
                 -> RIGHT
     '''
 
-
     #print("check solns", AddressFILE([arg4,M_(tail(arg3, half, 0))]) < AddressFILE([arg4,M_(arg5)]))
     #print("check solns2",AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(tail(arg3, half+1, 0))]))
 
@@ -1816,7 +1813,6 @@ def bisectionInsertmin(argList):
         return
 
     #TODO: check algorithms
-    #check why the fuck I can't use FileInsertAt
 
     #check this address(y) < address(half+1)
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
@@ -1896,18 +1892,25 @@ def FILEinsertAt(ArgList):
 #TESTING STAGE
 
 
+
+'''
+
 #NOT CLOSING ===== NOT COMMITTING WRITES
 testfile = open('1.txt','r+')
 basisfile = open('basis.txt','r+')
 #bisectionInsert([testfile,"testobjinsertto1",basisfile])
-bisectionInsert([testfile,"SIZE+",basisfile])
+bisectionInsert([testfile,"SIZEZ",basisfile])
 #can't test twice: you have to close and open the file to update in order to insert again
 #bisectionInsert([testfile,"testobjinsertto1",basisfile])
 testfile.close()
 basisfile.close()
 
 
-'''
+
+
+
+
+
 SIZE4
 SIZE+
 SIZEp
