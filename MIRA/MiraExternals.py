@@ -1639,9 +1639,10 @@ def bisectionInsert(argList):
     except ValueError:
         #assume file is size 0
         #init the file instead
-        arg1.write(arg2)
-        arg1.close()
-        print("should insert arg2",arg2,arg1.name)
+        arg1file = open(arg1,'r+')
+        arg1file.write(arg2)
+        arg1file.close()
+        print("should insert arg2",arg2,arg1)
         return
     bisectionInsertmin([0,total,arg1,arg3,arg2])
     return None
@@ -1827,7 +1828,6 @@ def bisectionInsertmin(argList):
         #if this works AND IT'S EVEN MAX LENGTH
         if (arg2 - arg1) % 2 == 1:
             print("append properly on 1st check============",arg3)
-            wtfnamepls = arg3.name
             
             #arg3.write("WTF")
             arg3.close()
@@ -1947,7 +1947,7 @@ basisfile = 'basis.txt'
 
 #emptyfile
 #test 0
-#bisectionInsert([testfile,"SIZE+",basisfile])
+bisectionInsert([testfile,"SIZE+",basisfile])
 
 #size+
 #test LEFT for size 1 file
