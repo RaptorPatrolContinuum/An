@@ -1557,7 +1557,7 @@ def fileindex(argList):
             return i
         i += 1
     #if we get here then we need to append to basis then return answer
-    print("when do I get here?",argList)
+    print("why is basis appending twice? I should be closing the file and rereading wtf",argList)
     arg1.seek(0, 2)
     arg1.write("\n" + arg2)
     
@@ -1947,7 +1947,7 @@ basisfile = 'basis.txt'
 
 #emptyfile
 #test 0
-bisectionInsert([testfile,"SIZE+",basisfile])
+#bisectionInsert([testfile,"SIZE+",basisfile])
 
 #size+
 #test LEFT for size 1 file
