@@ -17,4 +17,8 @@ def FILEinsertAtPERMERROR(ArgList):
             print(arg2)
         i += 1
         print(line, end='')
-FILEinsertAtPERMERROR([open('1.txt','r+'),"ok inserted at 3 (fixed)?"])
+#FILEinsertAtPERMERROR([open('1.txt','r+'),"ok inserted at 3 (fixed)?"])
+
+
+for x in range(21):
+    print(x)

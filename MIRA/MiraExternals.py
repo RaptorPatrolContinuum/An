@@ -1557,6 +1557,7 @@ def fileindex(argList):
             return i
         i += 1
     #if we get here then we need to append to basis then return answer
+    print("when do I get here?",argList)
     arg1.seek(0, 2)
     arg1.write("\n" + arg2)
     
@@ -1602,7 +1603,7 @@ def mapcountLINES(argList):
     '''
     this function counts lines in a file using mmap
     arg1 is file name
-    HINT: this function DOES NOT CLOSE THE FILE EITHER
+    HINT: INDEX STARTS AT 1!!!!!!!
     '''
     arg1 = open(argList[0], 'r+')
     #just make sure
@@ -1670,9 +1671,9 @@ def bisectionInsertmin(argList):
     arg1 = argList[0]
     #RHSINDEX
     arg2 = argList[1]
-    #filestream to insert to (form= open('filename', 'r+'))
+    #fileNAME
     arg3 = argList[2]
-    #basisstream for addressfunc (form= open('filename', 'r+'))
+    #basisNAME
     arg4 = argList[3]
     #the string OBJ to insert
     arg5 = argList[4]
@@ -1740,22 +1741,25 @@ def bisectionInsertmin(argList):
     #IF LENGTH >1, check edge cases first to save a lot of time
     #NOTE: I STILL ASSUME THAT INSERTION FILE IS LINEARLY ORDERED BY ADDRESS < IN THE FIRST PLACE
 
-    #check if obj < first line
+    print("check if obj < first line",M_(arg5),'<',M_(FILEindexread([arg3,0])))
+    print(AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]))
     if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]):
         print("insert at front:")
         FILEinsertAt([arg3,arg5,0])
         return
 
     #check if last line < obj
-    #print("omg so tail is slightly fucked?",tail(open(arg3,'r+'),1,0)[0])
-    #print("check type",type(tail(arg3,1,0)[0]) is str)
-    #print("WTF???",M_(tail(arg3,1,0)[0]))
-    #print("FML",M_(arg5))
+    print("omg so tail is slightly fucked?",tail(open(arg3,'r+'),1,0)[0])
+    #print("check type",type(tail(open(arg3,'r+'),1,0)[0]) is str)
+    print("WTF???",M_(tail(open(arg3,'r+'),1,0)[0]))
+    print("FML",M_(arg5))
+    
     openarg3 = open(arg3,'r+')
+    print("check ineq",AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]))
     if AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]):
         openarg3.close()
-        print("then insert right before last obj")
-        FILEinsertAt([arg3,arg5,mapcountLINES([arg3])-2])
+        print("then insert after last obj",[arg3,arg5,mapcountLINES([arg3])])
+        FILEinsertAt([arg3,arg5,mapcountLINES([arg3])])
         return
     
     
@@ -1822,7 +1826,7 @@ def bisectionInsertmin(argList):
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
         #if this works AND IT'S EVEN MAX LENGTH
         if (arg2 - arg1) % 2 == 1:
-            print("append properly on 1st check============",arg3.name)
+            print("append properly on 1st check============",arg3)
             wtfnamepls = arg3.name
             
             #arg3.write("WTF")
@@ -1852,7 +1856,7 @@ def bisectionInsertmin(argList):
 def FILEinsertAt(ArgList):
     '''
     function to insert text at a specific line in file
-    arg1 = filestream
+    arg1 = fileNAME
     arg2 = string to insert
     arg3 = index to insert at (index starts at 0)
 
@@ -1868,12 +1872,13 @@ def FILEinsertAt(ArgList):
     #print('stats',ArgList)
     i = 0
 
-    #fileinput.close()
     for line in fileinput.input(arg1, inplace=1):
         if i == arg3:
             print(arg2)
         i += 1
         print(line, end='')
+    #CLOSE THE FILE SO I CAN CHECK MAXLINES LATER
+    fileinput.close()
     '''
     ===================
     with arg1 as infile:
@@ -1888,8 +1893,45 @@ def FILEinsertAt(ArgList):
             print(arg2)
         i += 1
         print(line, end='')
-    '''
 
+    THIS IS NOT END OF FUNCTION!!!!!
+
+
+
+    
+    #what if I need to append to end???
+    #check if it is at end OR LATER???
+    #problem: fileinput.input(arg1, inplace=1) has a max length
+    #want to exceed max length (if it's 0 then do nothing)
+
+    #check difference of indices (arg3-maxlength) >= 0
+    picture:
+    insert at: index 7
+    object has: 3 items OR index 2
+    then 7-3 = 4
+    ---|----|-
+    so insert 4 newline
+    #HINT: Damn this remainder is a lucky count for number of newlines
+    then append the object
+    
+    #append appropriate amount of newlines
+    #append object (arg2)
+
+    
+    '''
+    #print("insertstats", arg3,mapcountLINES([arg1]))
+    diff = arg3 - mapcountLINES([arg1])
+    #print("#check difference of indices (arg3-maxlength) >= 0",diff)
+    if diff >= 0:
+        #how many new lines to insert?
+        appending = open(arg1,'a+')
+        for x in range(diff):
+            #print('inserting empty line',x)
+            appending.write("\n")
+        #then append the object
+        appending.write("\n"+arg2)
+        #close the file
+        appending.close()
 
         
 ##############################################################
@@ -1901,14 +1943,42 @@ def FILEinsertAt(ArgList):
 testfile = '1.txt'
 basisfile = 'basis.txt'
 #bisectionInsert([testfile,"testobjinsertto1",basisfile])
-bisectionInsert([testfile,"SIZEZ",basisfile])
+#bisectionInsert([testfile,"SIZEZ",basisfile])
+
+#emptyfile
+#test 0
+#bisectionInsert([testfile,"SIZE+",basisfile])
+
+#size+
+#test LEFT for size 1 file
+#bisectionInsert([testfile,"SIZE4",basisfile])
+#test RIGHT for size 1 file
+#bisectionInsert([testfile,"SIZEp",basisfile])
+
+#SIZE+,SIZEZ
+#test MIDDLE for "size 2 file"
+#bisectionInsert([testfile,"SIZEp",basisfile])
+#test BEGINNING for "size 2 file"
+#bisectionInsert([testfile,"SIZE4",basisfile])
+#test END for "size 2 file"
+#bisectionInsert([testfile,"SIZEZZZ",basisfile])
+
+#SIZE+,SIZEZZ
+#test MIDDLE for "size X file"
+#bisectionInsert([testfile,"SIZEp",basisfile])
+#bisectionInsert([testfile,"SIZEZ",basisfile])
+#test BEGINNING for "size X file"
+#bisectionInsert([testfile,"SIZE4",basisfile])
+#test END for "size X file"
+#bisectionInsert([testfile,"SIZEZZZ",basisfile])
+
+
 #can't test twice: you have to close and open the file to update in order to insert again
 #bisectionInsert([testfile,"testobjinsertto1",basisfile])
-#testfile.close()
-#basisfile.close()
 
 
 '''
+
 
 
 
@@ -1917,12 +1987,13 @@ SIZE+
 SIZEp
 SIZEZ
 SIZEZZ
+SIZEZZZ
 
 
 
 
 
-AddressFILE([open('basis.txt','r+'),M_('SIZEp')]) < AddressFILE([open('basis.txt','r+'),M_('SIZEZ')])
+AddressFILE(['basis.txt',M_('SIZEZZ')]) < AddressFILE(['basis.txt',M_('SIZEZZZ')])
 '''
  
 
