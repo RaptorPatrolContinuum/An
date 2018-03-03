@@ -1557,9 +1557,9 @@ def fileindex(argList):
             return i
         i += 1
     #if we get here then we need to append to basis then return answer
-    print("why is basis appending twice? I should be closing the file and rereading wtf",argList)
+    #print("why is basis appending twice? I should be closing the file and rereading wtf",argList)
     arg1.seek(0, 2)
-    arg1.write("\n" + arg2)
+    arg1.write(arg2 + "\n")
     
     arg1.close()
     return i + 1
@@ -1611,6 +1611,7 @@ def mapcountLINES(argList):
     buf = mmap.mmap(arg1.fileno(), 0)
     lines = 0
     readline = buf.readline
+    #print("what does readline see?",readline())
     while readline():
         lines += 1
     arg1.close()
@@ -1640,9 +1641,9 @@ def bisectionInsert(argList):
         #assume file is size 0
         #init the file instead
         arg1file = open(arg1,'r+')
-        arg1file.write(arg2)
+        arg1file.write(arg2 + "\n")
         arg1file.close()
-        print("should insert arg2",arg2,arg1)
+        #print("should insert arg2",arg2,arg1)
         return
     bisectionInsertmin([0,total,arg1,arg3,arg2])
     return None
@@ -1723,7 +1724,7 @@ def bisectionInsertmin(argList):
     #if length is 1 (AKA index of 0), check boundaries
     if arg2 == 0:
         #print("SHOULD END")
-        #insert left? (obj < line)
+        print("#insert left? for size 0? (obj < line)",M_(arg5),M_(FILEindexread([arg3,0])),AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]))
         if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]):
             FILEinsertAt([arg3,arg5,0])
             print("inserted left")
@@ -1731,12 +1732,15 @@ def bisectionInsertmin(argList):
         else:
             #FILEinsertAt([arg3,arg5,1])
             print("roght file?", arg3)
+            arg3opened = open(arg2,'r+')
             #go to end
-            arg3.seek(0, 2)
+            arg3opened.seek(0, 2)
             #add obj to end
-            arg3.write("\n"+arg5)
+            arg3opened.write(arg5+"\n")
             #arg3.write("PLS INSERT")
             print("inserted right")
+            #CLOSE TO COMMIT
+            arg3opened.close()
         return
 
     #IF LENGTH >1, check edge cases first to save a lot of time
@@ -1810,6 +1814,7 @@ def bisectionInsertmin(argList):
     #print("check solns", AddressFILE([arg4,M_(tail(arg3, half, 0))]) < AddressFILE([arg4,M_(arg5)]))
     #print("check solns2",AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(tail(arg3, half+1, 0))]))
 
+    print("check args half<= obj",M_(FILEindexread([arg3, half])),M_(arg5))
     if AddressFILE([arg4,M_(FILEindexread([arg3, half]))]) <= AddressFILE([arg4,M_(arg5)]):
         pass
     else:
@@ -1823,14 +1828,11 @@ def bisectionInsertmin(argList):
 
     #TODO: check algorithms
 
-    #check this address(y) < address(half+1)
+    print("check this address(y) < address(half+1)",M_(arg5),M_(FILEindexread([arg3, half+1])))
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
         #if this works AND IT'S EVEN MAX LENGTH
         if (arg2 - arg1) % 2 == 1:
             print("append properly on 1st check============",arg3)
-            
-            #arg3.write("WTF")
-            arg3.close()
             #FILEinsertAt([arg3,arg5,half+1])
             FILEinsertAt([open(arg3.name,'r+'),arg5,half+1])
             return 
@@ -1842,7 +1844,7 @@ def bisectionInsertmin(argList):
     #if length is odd number you have to check half+1 and half+2
 
     #don't need to check HALF+1 <= OBJ since OBJ <= HALF+1 failed already
-    #check this address(y) < address(half+1)
+    print("check this address(y) < address(half+1)",M_(arg5),M_(FILEindexread([arg3, half+2])))
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]):
         #if this works
         print("append properly")
@@ -1919,17 +1921,19 @@ def FILEinsertAt(ArgList):
 
     
     '''
-    #print("insertstats", arg3,mapcountLINES([arg1]))
+    print("insertstats", arg3,mapcountLINES([arg1]))
     diff = arg3 - mapcountLINES([arg1])
-    #print("#check difference of indices (arg3-maxlength) >= 0",diff)
+    print("#check difference of indices (arg3-maxlength) >= 0",diff)
     if diff >= 0:
         #how many new lines to insert?
-        appending = open(arg1,'a+')
-        for x in range(diff):
-            #print('inserting empty line',x)
+        appending = open(arg1,'r+')
+        appending.seek(0,2)
+        #print("does arg2 have newline char?",arg2)
+        for x in range(diff-1):
+            print('inserting empty line',x)
             appending.write("\n")
         #then append the object
-        appending.write("\n"+arg2)
+        appending.write(arg2+"\n")
         #close the file
         appending.close()
 
@@ -1944,6 +1948,8 @@ testfile = '1.txt'
 basisfile = 'basis.txt'
 #bisectionInsert([testfile,"testobjinsertto1",basisfile])
 #bisectionInsert([testfile,"SIZEZ",basisfile])
+
+#print(FILEinsertAt([testfile,"insert at index 27 pls",27]))
 
 #emptyfile
 #test 0
