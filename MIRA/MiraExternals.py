@@ -1526,6 +1526,7 @@ def FILEindexread(argList):
     for i, line in enumerate(f):
         #print("newtail stats", i, n, line, )
         if i == n:
+            f.close()
             return line.strip()
     
 def fileindex(argList):
@@ -1573,7 +1574,10 @@ def fileindexINV(argList):
     HINT: FILEINDEXINV DOES NOT CLOSE THE FILE
     also this is just to make shit look good I should just be using the tail function but whatever
     '''
-    return tail(open(arg1,'r+'), arg2, 0)
+    openedwhy = open(arg1,'r+')
+    ANS = tail(openedwhy, arg2, 0)
+    openedwhy.close()
+    return ANS
 
 
 def lexicoSort(argList):
@@ -1754,10 +1758,12 @@ def bisectionInsertmin(argList):
         return
 
     #check if last line < obj
-    print("omg so tail is slightly fucked?",tail(open(arg3,'r+'),1,0)[0])
+    #FML TAIL IS OPENING FILE SO I NEVER CLOSE IT
+
+    #print("omg so tail is slightly fucked?",tail(open(arg3,'r+'),1,0)[0])
     #print("check type",type(tail(open(arg3,'r+'),1,0)[0]) is str)
-    print("WTF???",M_(tail(open(arg3,'r+'),1,0)[0]))
-    print("FML",M_(arg5))
+    #print("WTF???",M_(tail(open(arg3,'r+'),1,0)[0]))
+    #print("FML",M_(arg5))
     
     openarg3 = open(arg3,'r+')
     print("check ineq",AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]))
@@ -1833,8 +1839,7 @@ def bisectionInsertmin(argList):
         #if this works AND IT'S EVEN MAX LENGTH
         if (arg2 - arg1) % 2 == 1:
             print("append properly on 1st check============",arg3)
-            #FILEinsertAt([arg3,arg5,half+1])
-            FILEinsertAt([open(arg3.name,'r+'),arg5,half+1])
+            FILEinsertAt([arg3,arg5,half+1])
             return 
         else:
             print("else go right", arg5 + " !<= " + FILEindexread([arg3, half+1]))
@@ -1867,13 +1872,54 @@ def FILEinsertAt(ArgList):
     '''
     arg1 = ArgList[0]
     #have to close this for fileinput to work
-    #ArgList[0].close()
     print("I tried closing it",arg1)
     arg2 = ArgList[1]
     arg3 = ArgList[2]
     #print('stats',ArgList)
     i = 0
 
+    #open new file
+    #open old file
+    
+    #write old file into new file line by line
+    #when you get to the right index, insert
+    #write until end
+
+    #close file
+    
+
+'''
+    with open("basis.txt", 'r+') as fileobj:
+        
+        just readline() until your counter matches
+        if i == arg3:
+            print(arg2)
+        i += 1
+        print(line, end='')
+
+
+
+Output to a new file, line by line, changing what you need. Then replace the old file with the new one.
+
+input = open('input.txt','r')
+output = open('temp.txt','w')
+for line in input.readlines():
+    if line == 'xxx':
+        output.write('#' + line)
+        output.write('yyy')
+    else:
+        output.write(line)
+
+
+
+        
+        
+        print("WHAT DOES READLINE SEE \n",fileobj.readline())
+'''
+    
+    
+    '''
+    #doesn't work for some reason when I nest functions:
     for line in fileinput.input(arg1, inplace=1):
         if i == arg3:
             print(arg2)
@@ -1881,7 +1927,8 @@ def FILEinsertAt(ArgList):
         print(line, end='')
     #CLOSE THE FILE SO I CAN CHECK MAXLINES LATER
     fileinput.close()
-    '''
+    ^^^^
+    THIS WORKED BUT NOT WHEN I NEST FUNCTIONS
     ===================
     with arg1 as infile:
         for line in infile:
@@ -1963,7 +2010,7 @@ basisfile = 'basis.txt'
 
 #SIZE+,SIZEZ
 #test MIDDLE for "size 2 file"
-#bisectionInsert([testfile,"SIZEp",basisfile])
+bisectionInsert([testfile,"SIZEp",basisfile])
 #test BEGINNING for "size 2 file"
 #bisectionInsert([testfile,"SIZE4",basisfile])
 #test END for "size 2 file"
