@@ -1586,6 +1586,20 @@ def lexicoSort(argList):
     arg1 = basis file in open(filename,???) format
     arg2 = memory file in open(filename,???) format
     HINT: this function DOES NOT CLOSE THE FILE EITHER
+
+
+
+    stats:
+    >linearly ordered memory
+    >linearly UNordered memory
+    >basislist
+
+    strategy:
+    attempt to append from unordered to ordered
+    keep the pairs: [obj,index]
+    figure out the offset
+
+    then in one go, just rewrite and append properly
     '''
     argList[0].seek(0)
     argList[1].seek(0)
@@ -1703,11 +1717,11 @@ def bisectionInsertmin(argList):
     #AddressFILE([basisfile,obj])
     '''
 
-    print("qhat are indices",arg1,arg2)
-    print("qhat is half", half)
+    #print("qhat are indices",arg1,arg2)
+    #print("qhat is half", half)
     #print("this means I check half","\"" + FILEindexread([arg3, half]) + "\"")
     #print("and half+1","\"" + FILEindexread([arg3, half+1]) + "\"")
-    print("OBJ IS", "\"" + arg5 + "\"")
+    #print("OBJ IS", "\"" + arg5 + "\"")
     
     '''
     do i use quine or not? (just be consistent. question: is M_ OR Q_ shorter on "average"??)
@@ -1728,10 +1742,10 @@ def bisectionInsertmin(argList):
     #if length is 1 (AKA index of 0), check boundaries
     if arg2 == 0:
         #print("SHOULD END")
-        print("#insert left? for size 0? (obj < line)",M_(arg5),M_(FILEindexread([arg3,0])),AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]))
+        #print("#insert left? for size 0? (obj < line)",M_(arg5),M_(FILEindexread([arg3,0])),AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]))
         if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]):
             FILEinsertAt([arg3,arg5,0])
-            print("inserted left")
+            #print("inserted left")
         #insert right
         else:
             FILEinsertAt([arg3,arg5,1])
@@ -1752,10 +1766,10 @@ def bisectionInsertmin(argList):
     #IF LENGTH >1, check edge cases first to save a lot of time
     #NOTE: I STILL ASSUME THAT INSERTION FILE IS LINEARLY ORDERED BY ADDRESS < IN THE FIRST PLACE
 
-    print("check if obj < first line",M_(arg5),'<',M_(FILEindexread([arg3,0])))
-    print(AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]))
+    #print("check if obj < first line",M_(arg5),'<',M_(FILEindexread([arg3,0])))
+    #print(AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]))
     if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]):
-        print("insert at front:")
+        #print("insert at front:")
         FILEinsertAt([arg3,arg5,0])
         return
 
@@ -1768,9 +1782,9 @@ def bisectionInsertmin(argList):
     #print("FML",M_(arg5))
     
     openarg3 = open(arg3,'r+')
-    print("check ineq",AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]))
+    #print("check ineq",AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]))
     if AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]):
-        print("then insert after last obj",[arg3,arg5,mapcountLINES([arg3])])
+        #print("then insert after last obj",[arg3,arg5,mapcountLINES([arg3])])
         FILEinsertAt([arg3,arg5,mapcountLINES([arg3])])
         return
     openarg3.close()
@@ -1821,11 +1835,11 @@ def bisectionInsertmin(argList):
     #print("check solns", AddressFILE([arg4,M_(tail(arg3, half, 0))]) < AddressFILE([arg4,M_(arg5)]))
     #print("check solns2",AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(tail(arg3, half+1, 0))]))
 
-    print("check args half<= obj",M_(FILEindexread([arg3, half])),M_(arg5))
+    #print("check args half<= obj",M_(FILEindexread([arg3, half])),M_(arg5))
     if AddressFILE([arg4,M_(FILEindexread([arg3, half]))]) <= AddressFILE([arg4,M_(arg5)]):
         pass
     else:
-        print("go left", FILEindexread([arg3, half]) + " !<= " + arg5)
+        #print("go left", FILEindexread([arg3, half]) + " !<= " + arg5)
         #going left is basically choosing new LHS/RHS
         #know: LHS,RHS,HALF
         #going left means:
@@ -1835,11 +1849,11 @@ def bisectionInsertmin(argList):
 
     #TODO: check algorithms
 
-    print("check this address(y) < address(half+1)",M_(arg5),M_(FILEindexread([arg3, half+1])))
+    #print("check this address(y) < address(half+1)",M_(arg5),M_(FILEindexread([arg3, half+1])))
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
         #if this works AND IT'S EVEN MAX LENGTH
         if (arg2 - arg1) % 2 == 1:
-            print("append properly on 1st check============",[arg3,arg5,half+1])
+            #print("append properly on 1st check============",[arg3,arg5,half+1])
             FILEinsertAt([arg3,arg5,half+1])
             return 
         else:
@@ -1850,14 +1864,14 @@ def bisectionInsertmin(argList):
     #if length is odd number you have to check half+1 and half+2
 
     #don't need to check HALF+1 <= OBJ since OBJ <= HALF+1 failed already
-    print("check this address(y) < address(half+1)",M_(arg5),M_(FILEindexread([arg3, half+2])))
+    #print("check this address(y) < address(half+1)",M_(arg5),M_(FILEindexread([arg3, half+2])))
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]):
         #if this works
-        print("append properly")
+        #print("append properly")
         FILEinsertAt([arg3,arg5,half+2])
         return 
     else:
-        print("else go right")
+        #print("else go right")
         bisectionInsertmin([half,arg2,arg3,arg4,arg5])
         return
     
@@ -1873,14 +1887,14 @@ def FILEinsertAt(ArgList):
     '''
     arg1 = ArgList[0]
     #have to close this for fileinput to work
-    print("I tried closing it",arg1)
+    #print("I tried closing it",arg1)
     arg2 = ArgList[1]
     arg3 = ArgList[2]
     #print('stats',ArgList)
     i = 0
 
     #open new file
-    print("shit arg1 might have .txt",arg1)
+    #print("shit arg1 might have .txt",arg1)
     #FILTER OUT FILEEXTENSION with [:-4] (assume length of extension is 3)
     arg1New = open(arg1[:-4] + "1.txt",'a+')
 
@@ -1918,9 +1932,9 @@ def FILEinsertAt(ArgList):
         os.rename(arg1[:-4] + "1.txt",arg1)
     else:
         #if your index is past the maxlength:
-        print("insertstats", arg3,mapcountLINES([arg1]))
+        #print("insertstats", arg3,mapcountLINES([arg1]))
         diff = arg3 - mapcountLINES([arg1])
-        print("#check difference of indices (arg3-maxlength) >= 0",diff)
+        #print("#check difference of indices (arg3-maxlength) >= 0",diff)
         if diff >= 0:
             #how many new lines to insert?
             appending = open(arg1,'r+')
@@ -2037,6 +2051,26 @@ TEST INSERTING SAME OBJECT
 #bisectionInsert([testfile,"testobjinsertto1",basisfile])
 
 
+#emptyfile
+#test 0
+#bisectionInsert([testfile,"ONETURN",basisfile])
+
+#ONETURN
+#test LEFT for size 1 file
+#bisectionInsert([testfile,"ABLE",basisfile])
+#test RIGHT for size 1 file
+#bisectionInsert([testfile,"OBSESSION",basisfile])
+
+#ONETURN,TREEKILL
+#test MIDDLE for "size 2 file"
+#bisectionInsert([testfile,"OBSESSION",basisfile])
+#test BEGINNING for "size 2 file"
+#bisectionInsert([testfile,"ABLE",basisfile])
+#test END for "size 2 file"
+#bisectionInsert([testfile,"ZvezdaPlot",basisfile])
+
+
+
 '''
 
 
@@ -2049,7 +2083,12 @@ SIZEZ
 SIZEZZ
 SIZEZZZ
 
-
+=====
+ABLE
+ONETURN
+OBSESSION
+TREEKILL
+ZvezdaPlot
 
 
 
