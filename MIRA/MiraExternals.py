@@ -11,7 +11,7 @@ import sys
 import time
 import mmap
 import random
-import fileinput
+import os
 from collections import defaultdict
 
 if sys.version_info[0] < 3:
@@ -1734,7 +1734,8 @@ def bisectionInsertmin(argList):
             print("inserted left")
         #insert right
         else:
-            #FILEinsertAt([arg3,arg5,1])
+            FILEinsertAt([arg3,arg5,1])
+            '''
             print("roght file?", arg3)
             arg3opened = open(arg2,'r+')
             #go to end
@@ -1745,6 +1746,7 @@ def bisectionInsertmin(argList):
             print("inserted right")
             #CLOSE TO COMMIT
             arg3opened.close()
+            '''
         return
 
     #IF LENGTH >1, check edge cases first to save a lot of time
@@ -1768,11 +1770,10 @@ def bisectionInsertmin(argList):
     openarg3 = open(arg3,'r+')
     print("check ineq",AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]))
     if AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]):
-        openarg3.close()
         print("then insert after last obj",[arg3,arg5,mapcountLINES([arg3])])
         FILEinsertAt([arg3,arg5,mapcountLINES([arg3])])
         return
-    
+    openarg3.close()
     
     #now for meat:
     #how to tell odd from even? index is 0 so normally odds are even now and normally evens are odd:
@@ -1838,7 +1839,7 @@ def bisectionInsertmin(argList):
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
         #if this works AND IT'S EVEN MAX LENGTH
         if (arg2 - arg1) % 2 == 1:
-            print("append properly on 1st check============",arg3)
+            print("append properly on 1st check============",[arg3,arg5,half+1])
             FILEinsertAt([arg3,arg5,half+1])
             return 
         else:
@@ -1879,45 +1880,60 @@ def FILEinsertAt(ArgList):
     i = 0
 
     #open new file
-    #open old file
-    
-    #write old file into new file line by line
-    #when you get to the right index, insert
-    #write until end
+    print("shit arg1 might have .txt",arg1)
+    #FILTER OUT FILEEXTENSION with [:-4] (assume length of extension is 3)
+    arg1New = open(arg1[:-4] + "1.txt",'a+')
 
-    #close file
-    
+    #get max lines for old file (index starts at 1 so just -1 to get index 0)
+    maxlines = mapcountLINES([arg1])
 
-'''
-    with open("basis.txt", 'r+') as fileobj:
-        
-        just readline() until your counter matches
-        if i == arg3:
-            print(arg2)
-        i += 1
-        print(line, end='')
-
-
-
-Output to a new file, line by line, changing what you need. Then replace the old file with the new one.
-
-input = open('input.txt','r')
-output = open('temp.txt','w')
-for line in input.readlines():
-    if line == 'xxx':
-        output.write('#' + line)
-        output.write('yyy')
+    #if index is within filemaxlength:
+    if arg3 < maxlines:
+        print("write old file into new file line by line")
+        with open(arg1,'r+') as arg1Old:
+            print("go until you hit max lines",maxlines)
+            for x in range(0,maxlines):
+                #print("when you get to the right index, insert")
+                if x == arg3:
+                    print("where do I go?",i)
+                    oldline = arg1Old.readline()
+                    insertedline = arg2 + "\n"
+                    print("check oldnew stats", oldline)
+                    print("=")
+                    print(insertedline)
+                    print("=")
+                    arg1New.write(insertedline)
+                    arg1New.write(oldline)
+                else:
+                    #print("where do I go?2",i,arg3)
+                    oldline = arg1Old.readline()
+                    #print("checkoldline",oldline)
+                    arg1New.write(oldline)
+        #delete old file
+        os.remove(arg1)
+        #close file(s)
+        #hint: arg1Old closed by with
+        arg1New.close()
+        #rename new file
+        os.rename(arg1[:-4] + "1.txt",arg1)
     else:
-        output.write(line)
-
-
-
-        
-        
-        print("WHAT DOES READLINE SEE \n",fileobj.readline())
-'''
-    
-    
+        #if your index is past the maxlength:
+        print("insertstats", arg3,mapcountLINES([arg1]))
+        diff = arg3 - mapcountLINES([arg1])
+        print("#check difference of indices (arg3-maxlength) >= 0",diff)
+        if diff >= 0:
+            #how many new lines to insert?
+            appending = open(arg1,'r+')
+            appending.seek(0,2)
+            #print("does arg2 have newline char?",arg2)
+            for x in range(diff-1):
+                print('inserting empty line',x)
+                appending.write("\n")
+            #then append the object
+            appending.write(arg2+"\n")
+            #close the file
+            appending.close()
+   
     '''
     #doesn't work for some reason when I nest functions:
     for line in fileinput.input(arg1, inplace=1):
@@ -1968,21 +1984,7 @@ for line in input.readlines():
 
     
     '''
-    print("insertstats", arg3,mapcountLINES([arg1]))
-    diff = arg3 - mapcountLINES([arg1])
-    print("#check difference of indices (arg3-maxlength) >= 0",diff)
-    if diff >= 0:
-        #how many new lines to insert?
-        appending = open(arg1,'r+')
-        appending.seek(0,2)
-        #print("does arg2 have newline char?",arg2)
-        for x in range(diff-1):
-            print('inserting empty line',x)
-            appending.write("\n")
-        #then append the object
-        appending.write(arg2+"\n")
-        #close the file
-        appending.close()
+    
 
         
 ##############################################################
@@ -1996,13 +1998,18 @@ basisfile = 'basis.txt'
 #bisectionInsert([testfile,"testobjinsertto1",basisfile])
 #bisectionInsert([testfile,"SIZEZ",basisfile])
 
+'''
+TEST INSERTING SAME OBJECT
+'''
+
+
 #print(FILEinsertAt([testfile,"insert at index 27 pls",27]))
 
 #emptyfile
 #test 0
 #bisectionInsert([testfile,"SIZE+",basisfile])
 
-#size+
+#SIZE+
 #test LEFT for size 1 file
 #bisectionInsert([testfile,"SIZE4",basisfile])
 #test RIGHT for size 1 file
@@ -2010,7 +2017,7 @@ basisfile = 'basis.txt'
 
 #SIZE+,SIZEZ
 #test MIDDLE for "size 2 file"
-bisectionInsert([testfile,"SIZEp",basisfile])
+#bisectionInsert([testfile,"SIZEp",basisfile])
 #test BEGINNING for "size 2 file"
 #bisectionInsert([testfile,"SIZE4",basisfile])
 #test END for "size 2 file"
