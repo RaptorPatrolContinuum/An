@@ -1584,10 +1584,10 @@ def lexicoSort(argList):
     '''
     need function that does lexicographic ordering on memory using basislist
     arg1 = basis file in open(filename,???) format
-    arg2 = memory file in open(filename,???) format
-    HINT: this function DOES NOT CLOSE THE FILE EITHER
-
-
+    arg2 = linearly ordered memory file in open(filename,???) format
+        HINT: arg2 can be an empty file
+    arg3 = unordered memory file
+    
 
     stats:
     >linearly ordered memory
@@ -1600,6 +1600,22 @@ def lexicoSort(argList):
     figure out the offset
 
     then in one go, just rewrite and append properly
+
+    plan:
+    >on bisectioninsert/min, add a flag
+    then on bisectioninsertmin if flag is true, then instead of writing, just return the pair: [obj,index]
+        >look at .write()
+        and fileinsertat
+
+        if len(arg) > 0:
+            return [obj,index]
+        else:
+            #write shit
+
+    then on lexico sort, change the argument to include the unordered memory
+    attempt to append from unordered to ordered
+    figure out the offset
+    write stuff down
     '''
     argList[0].seek(0)
     argList[1].seek(0)
@@ -1643,6 +1659,7 @@ def bisectionInsert(argList):
     arg3 = basisNAME for addressfunc 
     HINT: YOU NEED TO APPLY THIS SET TO AN ALREADY LINEAR LIST (or else address(x)< address(y) < address(z) won't work)
     HINT: this function DOES NOT CLOSE THE FILE EITHER
+    arg4 = existence flag. basically if this exists we have bisectioninsert/min print insertion data [obj,index] instead of attempting to print
     '''
     #arg1 = fileNAME
     arg1 = argList[0]
@@ -1650,20 +1667,31 @@ def bisectionInsert(argList):
     arg2 = argList[1]
     #arg3 = basisNAME
     arg3 = argList[2]
+    #arg4 = existence flag. basically if this exists we have bisectioninsert/min print insertion data [obj,index] instead of attempting to print
+    try:
+        arg4 = argList[3]
+    except:
+        #[] is basically null answer
+        #hint:  len([]) == 0
+        arg4 = []
     #get right hand side index (LHS index is 0)
     #total = mapcountLINES([arg1])-1
     #can't map an empty file for some reason\
     try:
         total = mapcountLINES([arg1])-1
     except ValueError:
-        #assume file is size 0
-        #init the file instead
-        arg1file = open(arg1,'r+')
-        arg1file.write(arg2 + "\n")
-        arg1file.close()
-        #print("should insert arg2",arg2,arg1)
+        if len(arg4) > 0:
+            return [arg2,0]
+        else:
+            #write shit
+            #assume file is size 0
+            #init the file instead
+            arg1file = open(arg1,'r+')
+            arg1file.write(arg2 + "\n")
+            arg1file.close()
+            #print("should insert arg2",arg2,arg1)
         return
-    bisectionInsertmin([0,total,arg1,arg3,arg2])
+    bisectionInsertmin([0,total,arg1,arg3,arg2,arg4])
     return None
 
 def bisectionInsertmin(argList):
@@ -1697,6 +1725,13 @@ def bisectionInsertmin(argList):
     arg4 = argList[3]
     #the string OBJ to insert
     arg5 = argList[4]
+    #arg6 = existence flag. basically if this exists we have bisectioninsert/min print insertion data [obj,index] instead of attempting to print
+    try:
+        arg6 = argList[5]
+    except:
+        #[] is basically null answer
+        #hint:  len([]) == 0
+        arg6 = []
 
     #need to know filename so I can reopen file
     data1 = arg1
@@ -1739,28 +1774,36 @@ def bisectionInsertmin(argList):
     '''
 
     #took care of size 0 in original function
-    #if length is 1 (AKA index of 0), check boundaries
+    #print("if length is 1 (AKA index of 0), check boundaries")
     if arg2 == 0:
         #print("SHOULD END")
         #print("#insert left? for size 0? (obj < line)",M_(arg5),M_(FILEindexread([arg3,0])),AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]))
         if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]):
-            FILEinsertAt([arg3,arg5,0])
+            if len(arg6) > 0:
+                return [arg5,0]
+            else:
+                #write shit
+                FILEinsertAt([arg3,arg5,0])
             #print("inserted left")
-        #insert right
         else:
-            FILEinsertAt([arg3,arg5,1])
-            '''
-            print("roght file?", arg3)
-            arg3opened = open(arg2,'r+')
-            #go to end
-            arg3opened.seek(0, 2)
-            #add obj to end
-            arg3opened.write(arg5+"\n")
-            #arg3.write("PLS INSERT")
-            print("inserted right")
-            #CLOSE TO COMMIT
-            arg3opened.close()
-            '''
+            #print("insert right",len(arg6) > 0,arg6)
+            if len(arg6) > 0:
+                return [arg5,1]
+            else:
+                #write shit
+                FILEinsertAt([arg3,arg5,1])
+                '''
+                print("roght file?", arg3)
+                arg3opened = open(arg2,'r+')
+                #go to end
+                arg3opened.seek(0, 2)
+                #add obj to end
+                arg3opened.write(arg5+"\n")
+                #arg3.write("PLS INSERT")
+                print("inserted right")
+                #CLOSE TO COMMIT
+                arg3opened.close()
+                '''
         return
 
     #IF LENGTH >1, check edge cases first to save a lot of time
@@ -1770,7 +1813,11 @@ def bisectionInsertmin(argList):
     #print(AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]))
     if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]):
         #print("insert at front:")
-        FILEinsertAt([arg3,arg5,0])
+        if len(arg6) > 0:
+            return [arg5,0]
+        else:
+            #write shit
+            FILEinsertAt([arg3,arg5,0])
         return
 
     #check if last line < obj
@@ -1784,8 +1831,12 @@ def bisectionInsertmin(argList):
     openarg3 = open(arg3,'r+')
     #print("check ineq",AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]))
     if AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]):
-        #print("then insert after last obj",[arg3,arg5,mapcountLINES([arg3])])
-        FILEinsertAt([arg3,arg5,mapcountLINES([arg3])])
+        if len(arg6) > 0:
+            return [arg5,mapcountLINES([arg3])]
+        else:
+            #write shit
+            #print("then insert after last obj",[arg3,arg5,mapcountLINES([arg3])])
+            FILEinsertAt([arg3,arg5,mapcountLINES([arg3])])
         return
     openarg3.close()
     
@@ -1853,8 +1904,12 @@ def bisectionInsertmin(argList):
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
         #if this works AND IT'S EVEN MAX LENGTH
         if (arg2 - arg1) % 2 == 1:
-            #print("append properly on 1st check============",[arg3,arg5,half+1])
-            FILEinsertAt([arg3,arg5,half+1])
+            if len(arg6) > 0:
+                return [arg5,half+1]
+            else:
+                #write shit
+                #print("append properly on 1st check============",[arg3,arg5,half+1])
+                FILEinsertAt([arg3,arg5,half+1])
             return 
         else:
             print("else go right", arg5 + " !<= " + FILEindexread([arg3, half+1]))
@@ -1866,9 +1921,13 @@ def bisectionInsertmin(argList):
     #don't need to check HALF+1 <= OBJ since OBJ <= HALF+1 failed already
     #print("check this address(y) < address(half+1)",M_(arg5),M_(FILEindexread([arg3, half+2])))
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]):
-        #if this works
-        #print("append properly")
-        FILEinsertAt([arg3,arg5,half+2])
+        if len(arg6) > 0:
+            return [arg5,half+2]
+        else:
+            #write shit
+            #if this works
+            #print("append properly")
+            FILEinsertAt([arg3,arg5,half+2])
         return 
     else:
         #print("else go right")
@@ -1903,19 +1962,19 @@ def FILEinsertAt(ArgList):
 
     #if index is within filemaxlength:
     if arg3 < maxlines:
-        print("write old file into new file line by line")
+        #print("write old file into new file line by line")
         with open(arg1,'r+') as arg1Old:
-            print("go until you hit max lines",maxlines)
+            #print("go until you hit max lines",maxlines)
             for x in range(0,maxlines):
                 #print("when you get to the right index, insert")
                 if x == arg3:
-                    print("where do I go?",i)
+                    #print("where do I go?",i)
                     oldline = arg1Old.readline()
                     insertedline = arg2 + "\n"
-                    print("check oldnew stats", oldline)
-                    print("=")
-                    print(insertedline)
-                    print("=")
+                    #print("check oldnew stats", oldline)
+                    #print("=")
+                    #print(insertedline)
+                    #print("=")
                     arg1New.write(insertedline)
                     arg1New.write(oldline)
                 else:
