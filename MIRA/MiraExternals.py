@@ -1672,13 +1672,39 @@ def lexicoSort(argList):
     arg3 = argList[2]
     #hard sort the unordered memory file
     lexicoSortHARD([arg1,arg3])
-    #attempt to append from recentlyordered to ordered
-    #figure out the offset
-    #write stuff down in one go
-    #hint:
-    bisectionInsert([arg2,OBJ,arg1,1])
+    #get maxlines of recently ordered file
+    arg3maxlines = mapcountLINES([arg3])
+    #get maxlines for ordered memory file
+    arg2maxlines = mapcountLINES([arg2])
+    #hint, range(start,max) is to -1 of max, and since maxlines index starts at 1 you have your +1 already
+    #hint: 'with' keyword automatically closes opened files
+    #append from recentlyordered to ordered
     
-    return None
+    with open(arg3,'r+') as recentlyordered:
+        #USE A NEW FILE TO STORE INSERTION DATA FROM RECENTLY ORDERED TO MEMFILE
+        InsertKey = open("InsertKey.txt",'a+')
+        #hint: I STILL HAVEN'T ATTEMPTED TO INSERT FROM RECENTLYORDERED TO MEMFILE
+        for x in range(0,arg3maxlines):
+            OBJ = recentlyordered.readline().strip()
+            InsertKey.write(bisectionInsert([arg2,OBJ,arg1,[1]])+"\n")
+
+        #rename memfile
+            #REMEMBER TO DELETE RENAMED MEMFILE
+        
+        #rewrite MEMFILE
+        #open renamed memfile
+        with open() as MEMFILEOLD:
+            for x in range(0,arg2maxlines):
+                #hint: we know that Insertkey is ordered as insertion from recentlyordered to memfile, so we can just match the index + offset with Insertkey
+                #hint: offset is just +1 for each line you have already inserted
+                if x == +offset:
+                    .write(newinsert)....
+                    .write(oldline)....
+                else:
+                    .write(oldline)....
+    #hint: remember to delete InsertKey
+    InsertKey.close()
+    os.remove(InsertKey.name)
 
 def mapcountLINES(argList):
     '''
