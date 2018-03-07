@@ -1689,6 +1689,8 @@ def lexicoSort(argList):
             InsertKey.write(bisectionInsert([arg2,OBJ,arg1,[1]])+"\n")
 
         #rename memfile
+        #HINT: arg2MovedName = arg2[:-4]+ "old" + arg2[-4:]
+        os.rename(,)
             #REMEMBER TO DELETE RENAMED MEMFILE
         
         #rewrite MEMFILE
