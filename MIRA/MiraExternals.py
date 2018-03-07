@@ -1535,7 +1535,6 @@ def fileindex(argList):
     arg2 = string to check index of
     this gets first index of string with respect to filestream
     RETURNS: None if fail or integer if there is index
-    HINT: FILEINDEX DOES NOT CLOSE THE FILE
     '''
     arg1 = open(argList[0],'r+')
     arg2 = argList[1]
@@ -1571,7 +1570,6 @@ def fileindexINV(argList):
     arg2 = INDEX NUMBER
     this gets first index of string with respect to filestream
     RETURNS: None if fail or integer if there is index
-    HINT: FILEINDEXINV DOES NOT CLOSE THE FILE
     also this is just to make shit look good I should just be using the tail function but whatever
     '''
     openedwhy = open(arg1,'r+')
@@ -1579,11 +1577,47 @@ def fileindexINV(argList):
     openedwhy.close()
     return ANS
 
-
+def lexicoSortHARD(argList):
+    '''
+    HINT: this function linearly orders a file that is a list of lines with respect to some basis
+    
+    since I am forced to order the unordered list the hard way I might as well write this func
+    arg1 = basis file name (WITH EXTENSION)
+    arg2 = UNORDERED memory file name (WITH EXTENSION)
+    PLAN:
+    rename arg2 then have an empty file
+    for each line in the renamed arg2 file, use bisectioninsert into clean arg2 file
+    '''
+    #arg1 = basis file name
+    arg1 = argList[0]
+    #arg2 = UNORDERED memory file name
+    arg2 = argList[1]
+    #get max linecount for arg2
+    arg2MaxLines = mapcountLINES([arg2])
+    #HINT: INDEX STARTS AT 1!!!!!!!, so for x in range (0,maxlines) is ok!!
+    arg2MovedName = arg2[:-4]+ "old" + arg2[-4:]
+    #rename arg2 file
+    os.rename(arg2, arg2MovedName)
+    #open renamed file
+    arg2MovedOpen = open(arg2MovedName,'r+')
+    #have clean arg2 file
+    arg2Clean = open(arg2,'a+')
+    #close so I can insert
+    arg2Clean.close()
+    #for each line in the renamed arg2 file, use bisectioninsert into clean arg2 file
+    for x in range (0, arg2MaxLines):
+        insertstring = arg2MovedOpen.readline().strip()
+        print("what is obj?",insertstring)
+        bisectionInsert([arg2,insertstring,arg1])
+    #close renamed file
+    arg2MovedOpen.close()
+    #remove renamed file
+    os.remove(arg2MovedName)
+    
 def lexicoSort(argList):
     '''
     need function that does lexicographic ordering on memory using basislist
-    arg1 = basis file in open(filename,???) format
+    arg1 = basis file name
     arg2 = linearly ordered memory file in open(filename,???) format
         HINT: arg2 can be an empty file
     arg3 = unordered memory file
@@ -1616,6 +1650,14 @@ def lexicoSort(argList):
     attempt to append from unordered to ordered
     figure out the offset
     write stuff down
+
+
+    PROBLEM:
+    INSERTING UNORDERED LIST INTO ORDERED LIST THAT IS EMPTY
+    THEN YOU INSERT IN ORDER OF INSERTION WHICH IS NOT ACCORDING TO ORDER
+    HINT:
+    ORDER UNORDERED LIST FIRST,THEN INSERT INTO ORDERED LIST
+    hint: order unordered list in the 'hardcore' mode, aka just rewriting file and renaming so you guarantee insertion is ok
     '''
     argList[0].seek(0)
     argList[1].seek(0)
@@ -1658,7 +1700,7 @@ def bisectionInsert(argList):
     arg2 = obj to insert
     arg3 = basisNAME for addressfunc 
     HINT: YOU NEED TO APPLY THIS SET TO AN ALREADY LINEAR LIST (or else address(x)< address(y) < address(z) won't work)
-    HINT: this function DOES NOT CLOSE THE FILE EITHER
+    
     arg4 = existence flag. basically if this exists we have bisectioninsert/min print insertion data [obj,index] instead of attempting to print
     '''
     #arg1 = fileNAME
@@ -1713,7 +1755,7 @@ def bisectionInsertmin(argList):
 
     HINT: YOU NEED TO APPLY THIS SET TO AN ALREADY LINEAR LIST (or else address(x)< address(y) < address(z) won't work)
     HINT: file format is where each line is an obj 
-    HINT: this function DOES NOT CLOSE THE FILE EITHER
+    
     '''
     #LHSINDEX
     arg1 = argList[0]
@@ -2064,12 +2106,12 @@ def FILEinsertAt(ArgList):
 #TESTING STAGE
 
 #NOT CLOSING ===== NOT COMMITTING WRITES
-#testfile = open('1.txt','r+')
-#basisfile = open('basis.txt','r+')
 testfile = '1.txt'
 basisfile = 'basis.txt'
-#bisectionInsert([testfile,"testobjinsertto1",basisfile])
-#bisectionInsert([testfile,"SIZEZ",basisfile])
+
+lexicoSortHARD([basisfile,testfile])
+
+
 
 '''
 TEST INSERTING SAME OBJECT
@@ -2131,10 +2173,6 @@ TEST INSERTING SAME OBJECT
 
 
 '''
-
-
-
-
 SIZE4
 SIZE+
 SIZEp
