@@ -1616,7 +1616,7 @@ def lexicoSortHARD(argList):
     
 def lexicoSort(argList):
     '''
-    need function that does lexicographic ordering on memory using basislist
+    need function that does lexicographic ordering on ORDERED AND UNORDERED memory files using basislist
     arg1 = basis file name
     arg2 = linearly ordered memory file NAME in open(filename,???) format
         HINT: arg2 can be an empty file
