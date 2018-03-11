@@ -1595,7 +1595,11 @@ def lexicoSortHARD(argList):
     #get max linecount for arg2
     arg2MaxLines = mapcountLINES([arg2])
     #HINT: INDEX STARTS AT 1!!!!!!!, so for x in range (0,maxlines) is ok!!
-    arg2MovedName = arg2[:-4]+ "old" + arg2[-4:]
+    #arg2MovedName = arg2[:-4]+ "old" + arg2[-4:]
+    #similarly assume extension is after last period:
+    namelist = arg2.split(".")[:-1]
+    thename = "".join(namelist)
+    arg2MovedName = thename + "old" + arg2.split(".")[-1]
     #rename arg2 file
     os.rename(arg2, arg2MovedName)
     #open renamed file
@@ -1679,7 +1683,7 @@ def lexicoSort(argList):
     #hint, range(start,max) is to -1 of max, and since maxlines index starts at 1 you have your +1 already
     #hint: 'with' keyword automatically closes opened files
     #append from recentlyordered to ordered
-    
+    '''
     with open(arg3,'r+') as recentlyordered:
         #USE A NEW FILE TO STORE INSERTION DATA FROM RECENTLY ORDERED TO MEMFILE
         InsertKey = open("InsertKey.txt",'a+')
@@ -1704,6 +1708,7 @@ def lexicoSort(argList):
                     .write(oldline)....
                 else:
                     .write(oldline)....
+    '''
     #hint: remember to delete InsertKey
     InsertKey.close()
     os.remove(InsertKey.name)
@@ -1969,7 +1974,7 @@ def bisectionInsertmin(argList):
                 FILEinsertAt([arg3,arg5,half+1])
             return 
         else:
-            print("else go right", arg5 + " !<= " + FILEindexread([arg3, half+1]))
+            #print("else go right", arg5 + " !<= " + FILEindexread([arg3, half+1]))
             bisectionInsertmin([half,arg2,arg3,arg4,arg5])
             return
 
@@ -2012,7 +2017,11 @@ def FILEinsertAt(ArgList):
     #open new file
     #print("shit arg1 might have .txt",arg1)
     #FILTER OUT FILEEXTENSION with [:-4] (assume length of extension is 3)
-    arg1New = open(arg1[:-4] + "1.txt",'a+')
+    #arg1New = open(arg1[:-4] + "1.txt",'a+')
+    #new strat: just get everything before the last period (assume extension is after last period)
+    namelist = arg1.split(".")[:-1]
+    thename = "".join(namelist)
+    arg1New = open(thename + "1.txt",'a+')
 
     #get max lines for old file (index starts at 1 so just -1 to get index 0)
     maxlines = mapcountLINES([arg1])
