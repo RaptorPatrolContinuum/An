@@ -82,7 +82,7 @@ def fileindex(argList):
     return i + 1
 print(fileindex([filename, "ZZ"]))
 print(fileindex([filename, "False"]))
-print(fileindex([filename, "You're"]))
+print(fileindex([filename, "Your"]))
 
 
 def fileindexINV(argList):
