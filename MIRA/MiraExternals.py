@@ -1635,6 +1635,8 @@ def lexicoSortHARD(argList):
     arg2MovedOpen.close()
     #remove renamed file
     os.remove(arg2MovedName)
+    #close again to be clean
+    arg2Clean.close()
     
 def lexicoSort(argList):
     '''
@@ -1700,14 +1702,17 @@ def lexicoSort(argList):
     #hint, range(start,max) is to -1 of max, and since maxlines index starts at 1 you have your +1 already
     #hint: 'with' keyword automatically closes opened files
     #append from recentlyordered to ordered
-    '''
+    
     with open(arg3,'r+') as recentlyordered:
         #USE A NEW FILE TO STORE INSERTION DATA FROM RECENTLY ORDERED TO MEMFILE
         InsertKey = open("InsertKey.txt",'a+')
         #hint: I STILL HAVEN'T ATTEMPTED TO INSERT FROM RECENTLYORDERED TO MEMFILE
         for x in range(0,arg3maxlines):
             OBJ = recentlyordered.readline().strip()
-            InsertKey.write(bisectionInsert([arg2,OBJ,arg1,[1]])+"\n")
+            insertlinewrite = str(bisectionInsert([arg2,OBJ,arg1,[1]]))+"\n"
+            print("what is being written?")
+            print(insertlinewrite)
+            InsertKey.write(insertlinewrite)
 
         #rename memfile
         namelist = arg2.split(".")[:-1]
@@ -1721,10 +1726,12 @@ def lexicoSort(argList):
             offset = 0
             #hint: we know that Insertkey is ordered as insertion from recentlyordered to memfile, so we can just match the index + offset with Insertkey
             #hint: offset is just +1 for each line you have already inserted
+            recentlyordered.seek(0)
             insertline = recentlyordered.readline()
+            print("insertline is", insertline)
             try:
-                insertionkey = insertline[1]
-                insertionline = insertline[0]
+                insertionkey = ast.literal_eval(insertline)[1]
+                insertionline = ast.literal_eval(insertline)[0]
                 print("what is insertionline?", insertionline)
             except:
                 pass
@@ -1748,7 +1755,6 @@ def lexicoSort(argList):
     os.remove(InsertKey.name)
     #REMEMBER TO DELETE RENAMED MEMFILE
     os.remove(arg2rename)
-    '''
 
 def mapcountLINES(argList):
     '''
@@ -1889,8 +1895,7 @@ def bisectionInsertmin(argList):
     if arg2 == 0:
         #print("#insert left? for size 0? (obj < line)",M_(arg5),M_(FILEindexread([arg3,0])),AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]))
         if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]):
-            ##########
-            print("insert1",len(arg6) > 0,[[arg5,0]])
+            ##########print("insert1",len(arg6) > 0,[[arg5,0]])
             if len(arg6) > 0:
                 return [[arg5,0]]
             else:
@@ -1898,8 +1903,7 @@ def bisectionInsertmin(argList):
                 FILEinsertAt([arg3,arg5,0])
             #print("inserted left")
         else:
-            ##########
-            print("insert2")
+            ##########print("insert2")
             #print("insert right",len(arg6) > 0,arg6)
             if len(arg6) > 0:
                 return [[arg5,1]]
@@ -1914,8 +1918,7 @@ def bisectionInsertmin(argList):
     #print("check if obj < first line",M_(arg5),'<',M_(FILEindexread([arg3,0])))
     #print(AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]))
     if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]):
-        ##########
-        print("insert3")
+        ##########print("insert3")
         #print("insert at front:")
         if len(arg6) > 0:
             return [[arg5,0]]
@@ -1936,8 +1939,7 @@ def bisectionInsertmin(argList):
     openarg3 = open(arg3,'r+')
     #print("check ineq",AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]))
     if AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]):
-        ##########
-        print("insert4")
+        ##########print("insert4")
         if len(arg6) > 0:
             return [[arg5,mapcountLINES([arg3])]]
         else:
@@ -1992,8 +1994,8 @@ def bisectionInsertmin(argList):
     #print("check solns", AddressFILE([arg4,M_(tail(arg3, half, 0))]) < AddressFILE([arg4,M_(arg5)]))
     #print("check solns2",AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(tail(arg3, half+1, 0))]))
 
-    print("check args half<= obj",FILEindexread([arg3, half]),arg5)
-    print(AddressFILE([arg4,M_(FILEindexread([arg3, half]))]) <= AddressFILE([arg4,M_(arg5)]))
+    ##########print("check args half<= obj",FILEindexread([arg3, half]),arg5)
+    ##########print(AddressFILE([arg4,M_(FILEindexread([arg3, half]))]) <= AddressFILE([arg4,M_(arg5)]))
     if AddressFILE([arg4,M_(FILEindexread([arg3, half]))]) <= AddressFILE([arg4,M_(arg5)]):
         pass
     else:
@@ -2005,14 +2007,13 @@ def bisectionInsertmin(argList):
         bisectionInsertmin([arg1,half,arg3,arg4,arg5])
         return
 
-    print("check this address(y) < address(half+1)",arg5 +"| VS |"+ FILEindexread([arg3, half+1]))
-    print(AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]))
+    ##########print("check this address(y) < address(half+1)",arg5 +"| VS |"+ FILEindexread([arg3, half+1]))
+    ##########print(AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]))
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
         #if this works AND IT'S EVEN MAX LENGTH
         #if (arg2 - arg1) % 2 == 1:
         if AddressFILE([arg4,M_(FILEindexread([arg3, half]))]) <= AddressFILE([arg4,M_(arg5)]) and AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
-            ##########
-            print("insert5")
+            ##########print("insert5")
             if len(arg6) > 0:
                 return [[arg5,half+1]]
             else:
@@ -2028,11 +2029,10 @@ def bisectionInsertmin(argList):
     #if length is odd number you have to check half+1 and half+2
 
     #don't need to check HALF+1 <= OBJ since OBJ <= HALF+1 failed already
-    print("check this address(y) < address(half+2)",arg5 +"| VS |"+ FILEindexread([arg3, half+2]))
-    print(AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]))
+    ##########print("check this address(y) < address(half+2)",arg5 +"| VS |"+ FILEindexread([arg3, half+2]))
+    ##########print(AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]))
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]):
-        ##########
-        print("insert6")
+        ##########print("insert6")
         if len(arg6) > 0:
             return [[arg5,half+2]]
         else:
@@ -2041,10 +2041,9 @@ def bisectionInsertmin(argList):
             FILEinsertAt([arg3,arg5,half+2])
         return 
     else:
-        ##########
-        print("it's gold mine1",arg5, FILEindexread([arg3, half+2]))
-        print("check argList",argList)
-        print("else go right",[arg1+half,arg2,arg3,arg4,arg5])
+        ##########print("it's gold mine1",arg5, FILEindexread([arg3, half+2]))
+        ##########print("check argList",argList)
+        ##########print("else go right",[arg1+half,arg2,arg3,arg4,arg5])
         bisectionInsertmin([half,arg2,arg3,arg4,arg5])
         return
     
