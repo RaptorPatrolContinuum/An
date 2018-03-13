@@ -1897,6 +1897,8 @@ def bisectionSearch(argList):
             break
         
     #return the index/indicies OR NO ANSWER [] (which is empty list)
+    #sort answer for niceness
+    ANS = sorted(ANS, key=int)
     return ANS
 
 def bisectionInsert(argList):
