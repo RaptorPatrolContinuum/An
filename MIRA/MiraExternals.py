@@ -1630,7 +1630,7 @@ def lexicoSortHARD(argList):
     for x in range (0, arg2MaxLines):
         #insertstring = arg2MovedOpen.readline().strip()
         insertstring = rchop(arg2MovedOpen.readline(), '\n')
-        print("what is obj?",insertstring)
+        ########print("what is obj?",insertstring)
         bisectionInsert([arg2,insertstring,arg1])
     #close renamed file
     arg2MovedOpen.close()
@@ -1694,6 +1694,7 @@ def lexicoSort(argList):
     arg3 = argList[2]
     #hard sort the unordered memory file
     lexicoSortHARD([arg1,arg3])
+    print("lexicosorthard done")
     #get maxlines of recently ordered file
     arg3maxlines = mapcountLINES([arg3])
     #get maxlines for ordered memory file
@@ -1713,76 +1714,80 @@ def lexicoSort(argList):
             OBJ = rchop(recentlyordered.readline(), "\n")
             #print("obj after strip!",OBJ)
             insertlineprep = str(bisectionInsert([arg2,OBJ,arg1,[1]]))
-            print("bisection args",[arg2,OBJ,arg1,[1]])
+            ########print("bisection args",[arg2,OBJ,arg1,[1]])
             #print("wtf is going on",str(bisectionInsert([arg2,OBJ,arg1,[1]])))
             #print("what is being written as None?", insertlineprep)
             insertlinewrite = insertlineprep+"\n"
-            print(insertlinewrite)
+            ########print(insertlinewrite)
             if insertlineprep == "5WRONG":
                 print("force stop")
                 return
             InsertKey.write(insertlinewrite)
-
+        ########
         print("THIS IS INSERTKEYSTART===============================================")
         InsertKey.seek(0)
+        ########
         print(InsertKey.read())
         #InsertKey.seek(0)
         #print("check first line strat!",InsertKey.readline())
+        timetostop = mapcountLINES(["InsertKey.txt"])
+        ########
         print("THIS IS INSERTKEYEND===============================================")
-
         #rename memfile
         namelist = arg2.split(".")[:-1]
         arg2rename = "".join(namelist) + "NEW" + arg2.split(".")[-1]
         os.rename(arg2,arg2rename)
         #rewrite MEMFILE
         #open renamed memfile
-        print("=============================================")
+        ########print("=============================================")
         #hint: we know that Insertkey is ordered as insertion from recentlyordered to memfile, so we can just match the index with Insertkey
         #hint: offset is just +1 for each line you have already inserted #NEWHINT: don't need offset anymore
         InsertKey.seek(0)
         insertline = InsertKey.readline()
-        print("insertline is", insertline)
+        ########print("insertline is", insertline)
         try:
             insertionkey = ast.literal_eval(insertline)[0][1]
             insertionline = ast.literal_eval(insertline)[0][0]
-            print("what is insertionline?1", insertionline)
+            ########print("what is insertionline?1", insertionline)
         except:
             pass
-
+        stopwhen = 1
+        
         with open(arg2rename,'r+') as MEMFILEOLD:
             #open clean memfile
             MEMFILECLEAN = open(arg2,'a+')
-            
-
             for x in range(0,arg2maxlines+1):
                 #strategy:
                 #open renamed file and when we hit insertion index of InsertKey, we insert until we run out of renamed file
-                print("qhat about max lines?",arg2maxlines,arg3maxlines)
-                print("readline from memfileold")
+                ########print("qhat about max lines?",arg2maxlines,arg3maxlines)
+                ########print("readline from memfileold")
                 OGline = MEMFILEOLD.readline()
-                
-                print("go to ???")
-                print(x,insertionkey)
-                print("if x == insertionkey:", x , insertionkey)
+                ########print("go to ???")
+                ########print(x,insertionkey)
+                ########print("if x == insertionkey:", x , insertionkey)
                 if x == insertionkey:
+                    print("sanity check1",x,insertionkey,stopwhen, timetostop)
                     MEMFILECLEAN.write(insertionline + "\n")
-                    print("readline is RESET to next line after I write")
+                    ########print("readline is RESET to next line after I write")
                     insertline = InsertKey.readline()
+                    stopwhen += 1
                     print(insertline)
                     try:
                         insertionkey = ast.literal_eval(insertline)[0][1]
                         insertionline = ast.literal_eval(insertline)[0][0]
-                        print("what is insertionline?2", insertionline)
-                        print("2:",x,insertionkey)
+                        ########print("what is insertionline?2", insertionline)
+                        ########print("2:",x,insertionkey)
                     except:
                         pass
-                    print("check if next line is the same index",insertionkey)
-                    while x == insertionkey:
+                    ########print("check if next line is the same index",insertionkey)
+                    while x == insertionkey and stopwhen <= timetostop:
+                        print("sanity check2",x,insertionkey,stopwhen, timetostop)
                         #yes = insert
                         MEMFILECLEAN.write(insertionline + "\n")
-                        print("attempt to read another line")
+                        ########print("attempt to read another line")
                         insertline = InsertKey.readline()
-                        
+                        stopwhen += 1
+                        print(insertline)
                         '''
                         lastinsert = str(tail(InsertKey,1,0)[0])
                         print(" AND is not last line", insertline + "|VS|")
@@ -1795,7 +1800,9 @@ def lexicoSort(argList):
                         try:
                             insertionkey = ast.literal_eval(insertline)[0][1]
                             insertionline = ast.literal_eval(insertline)[0][0]
+                            ########
                             print("what is insertionline?3", insertionline)
+                            ########
                             print("3:",x,insertionkey)
                         except:
                             pass
@@ -1803,6 +1810,7 @@ def lexicoSort(argList):
                     MEMFILECLEAN.write(OGline)
                     #read new line
                 else:
+                    print("sanity check3",x,insertionkey)
                     MEMFILECLEAN.write(OGline)
     #hint: remember to delete InsertKey
     InsertKey.close()
@@ -1827,6 +1835,68 @@ def mapcountLINES(argList):
         lines += 1
     arg1.close()
     return lines
+
+def bisectionSearch(argList):
+    '''
+    why not
+    arg1 = fileNAME to insert to 
+    arg2 = obj to insert
+    arg3 = basisNAME for addressfunc 
+    HINT: YOU NEED TO APPLY THIS SET TO AN ALREADY LINEAR LIST (or else address(x)< address(y) < address(z) won't work)
+   
+    '''
+    #arg1 = fileNAME
+    arg1 = argList[0]
+    #arg2 = obj to insert
+    arg2 = argList[1]
+    #arg3 = basisNAME
+    arg3 = argList[2]
+    #assume arg4 since we want search
+    arg4 = [1]
+
+    #get right hand side index (LHS index is 0)
+    #total = mapcountLINES([arg1])-1
+    #can't map an empty file for some reason\
+    try:
+        total = mapcountLINES([arg1])-1
+    except ValueError:
+        if len(arg4) > 0:
+            #return empty answer
+            return []
+        return "WRONGWHY"
+    #figure out where it SHOULD be:
+    shouldbe = bisectionInsertmin([0,total,arg1,arg3,arg2,arg4])[0][1]
+
+    #assume no answer:
+    ANS = []
+    #check AT
+    if arg2 == FILEindexread([arg1,shouldbe]):
+        ANS.append(shouldbe)
+    filler = 1
+    #check LEFT AS FAR AS YOU CAN
+    while True:
+        try:
+            if arg5 == FILEindexread([arg3,shouldbe-filler]):
+                ANS.append(shouldbe-filler)
+                filler += 1
+            else:
+                break
+        except:
+            break
+    filler = 1
+    #check RIGHT AS FAR AS YOU CAN
+    while True:
+        try:
+            if arg5 == FILEindexread([arg3,shouldbe+filler]):
+                ANS.append(shouldbe+filler)
+                filler += 1
+            else:
+                break
+        except:
+            break
+        
+    #return the index/indicies OR NO ANSWER [] (which is empty list)
+    return ANS
 
 def bisectionInsert(argList):
     '''
@@ -2248,7 +2318,7 @@ def FILEinsertAt(ArgList):
 
     
     '''
-    
+
 
         
 ##############################################################
@@ -2264,6 +2334,16 @@ basisfile = 'basis.txt'
 lexicoSort([basisfile,'Memory.txt', 'MemoryUNORDERED.txt'])
 ##########
 ##########print("why none?",bisectionInsert(['Memory.txt', 'stats:', 'basis.txt', [1]]))
+
+#CHECK BISECTION SEARCH
+#print("check empty answer",bisectionSearch(['Memory.txt',"?",basisfile]))
+#print("check single answer",bisectionSearch(['Memory.txt',"?",basisfile]))
+
+#check multiple answer to left
+#check multiple answer to right
+#check multiple answer to left & right
+
+
 
 #ADDRESS FAILS ON EMPTY
 #print(AddressFILE([basisfile,M_("")]))
