@@ -1635,8 +1635,6 @@ def lexicoSortHARD(argList):
     arg2MovedOpen.close()
     #remove renamed file
     os.remove(arg2MovedName)
-    #close again to be clean
-    arg2Clean.close()
     
 def lexicoSort(argList):
     '''
@@ -1709,10 +1707,23 @@ def lexicoSort(argList):
         #hint: I STILL HAVEN'T ATTEMPTED TO INSERT FROM RECENTLYORDERED TO MEMFILE
         for x in range(0,arg3maxlines):
             OBJ = recentlyordered.readline().strip()
-            insertlinewrite = str(bisectionInsert([arg2,OBJ,arg1,[1]]))+"\n"
-            print("what is being written?")
+            insertlineprep = str(bisectionInsert([arg2,OBJ,arg1,[1]]))
+            print("bisection args",[arg2,OBJ,arg1,[1]])
+            #print("wtf is going on",str(bisectionInsert([arg2,OBJ,arg1,[1]])))
+            #print("what is being written as None?", insertlineprep)
+            insertlinewrite = insertlineprep+"\n"
             print(insertlinewrite)
+            if insertlineprep == "5WRONG":
+                print("force stop")
+                return
             InsertKey.write(insertlinewrite)
+
+        print("THIS IS INSERTKEYSTART===============================================")
+        InsertKey.seek(0)
+        print(InsertKey.read())
+        #InsertKey.seek(0)
+        #print("check first line strat!",InsertKey.readline())
+        print("THIS IS INSERTKEYEND===============================================")
 
         #rename memfile
         namelist = arg2.split(".")[:-1]
@@ -1720,34 +1731,76 @@ def lexicoSort(argList):
         os.rename(arg2,arg2rename)
         #rewrite MEMFILE
         #open renamed memfile
+        print("=============================================")
+        #hint: we know that Insertkey is ordered as insertion from recentlyordered to memfile, so we can just match the index + offset with Insertkey
+        #hint: offset is just +1 for each line you have already inserted
+        InsertKey.seek(0)
+        insertline = InsertKey.readline()
+        print("insertline is", insertline)
+        try:
+            insertionkey = ast.literal_eval(insertline)[0][1]
+            insertionline = ast.literal_eval(insertline)[0][0]
+            print("what is insertionline?1", insertionline)
+        except:
+            pass
+
         with open(arg2rename,'r+') as MEMFILEOLD:
             #open clean memfile
             MEMFILECLEAN = open(arg2,'a+')
             offset = 0
-            #hint: we know that Insertkey is ordered as insertion from recentlyordered to memfile, so we can just match the index + offset with Insertkey
-            #hint: offset is just +1 for each line you have already inserted
-            recentlyordered.seek(0)
-            insertline = recentlyordered.readline()
-            print("insertline is", insertline)
-            try:
-                insertionkey = ast.literal_eval(insertline)[1]
-                insertionline = ast.literal_eval(insertline)[0]
-                print("what is insertionline?", insertionline)
-            except:
-                pass
 
             for x in range(0,arg2maxlines):
                 #strategy:
                 #open renamed file and when we hit insertion index of InsertKey + offset, we insert until we run out of renamed file
-
-                #readline from memfileold
+                print("qhat about max lines?",arg2maxlines,arg3maxlines,arg2maxlines)
+                print("readline from memfileold")
                 OGline = MEMFILEOLD.readline()
                 
                 #go to ???
-                if x == insertionkey + offset:
-                    MEMFILECLEAN.write(insertionline)
-                    MEMFILECLEAN.write(OGline)
+                print(x,insertionkey,offset,insertionkey + offset)
+                print("if x + offset == insertionkey + offset:",x == insertionkey + offset)
+                if x + offset == insertionkey + offset:
+                    MEMFILECLEAN.write(insertionline + "\n")
                     offset += 1
+                    print("readline is RESET to next line after I write")
+                    insertionkeyOld = insertionkey
+                    insertline = InsertKey.readline()
+                    print(insertline)
+                    try:
+                        insertionkey = ast.literal_eval(insertline)[0][1]
+                        insertionline = ast.literal_eval(insertline)[0][0]
+                        print("what is insertionline?2", insertionline)
+                        print("2",x,insertionkey,offset,insertionkey + offset)
+                    except:
+                        pass
+                    print("check if next line is the same index",insertionkey, insertionkeyOld)
+                    while insertionkey == insertionkeyOld:
+                        #yes = insert
+                        MEMFILECLEAN.write(insertionline + "\n")
+                        offset += 1
+                        #set old key
+                        insertionkeyOld = insertionkey
+                        print("attempt to read another line")
+                        insertline = InsertKey.readline()
+                        print(insertline)
+                        try:
+                            insertionkey = ast.literal_eval(insertline)[0][1]
+                            insertionline = ast.literal_eval(insertline)[0][0]
+                            print("what is insertionline?3", insertionline)
+                            print("3",x,insertionkey,offset,insertionkey + offset)
+                        except:
+                            pass
+                        #no = keep variable for later
+                    MEMFILECLEAN.write(OGline)
+                    #read new line
+                    insertline = InsertKey.readline()
+                    print("insertline is", insertline)
+                    try:
+                        insertionkey = ast.literal_eval(insertline)[0][1]
+                        insertionline = ast.literal_eval(insertline)[0][0]
+                        print("what is insertionline?", insertionline)
+                    except:
+                        pass
                 else:
                     MEMFILECLEAN.write(OGline)
     #hint: remember to delete InsertKey
@@ -1888,13 +1941,16 @@ def bisectionInsertmin(argList):
     should insert at beginning or end of file
     ???
     '''
-    print("stats",argList)
+    #
+    ##########print("stats",argList)
 
     #took care of size 0 in original function
     #print("if length is 1 (AKA index of 0), check boundaries")
     if arg2 == 0:
-        #print("#insert left? for size 0? (obj < line)",M_(arg5),M_(FILEindexread([arg3,0])),AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]))
+        #
+        ##########print("#insert left? for size 0? (obj < line)",M_(arg5),M_(FILEindexread([arg3,0])),AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]))
         if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]):
+            ##########
             ##########print("insert1",len(arg6) > 0,[[arg5,0]])
             if len(arg6) > 0:
                 return [[arg5,0]]
@@ -1903,6 +1959,7 @@ def bisectionInsertmin(argList):
                 FILEinsertAt([arg3,arg5,0])
             #print("inserted left")
         else:
+            ##########
             ##########print("insert2")
             #print("insert right",len(arg6) > 0,arg6)
             if len(arg6) > 0:
@@ -1910,14 +1967,17 @@ def bisectionInsertmin(argList):
             else:
                 #write shit
                 FILEinsertAt([arg3,arg5,1])
-        return
+        return "1WRONG" + str(argList)
 
     #IF LENGTH >1, check edge cases first to save a lot of time
     #NOTE: I STILL ASSUME THAT INSERTION FILE IS LINEARLY ORDERED BY ADDRESS < IN THE FIRST PLACE
 
-    #print("check if obj < first line",M_(arg5),'<',M_(FILEindexread([arg3,0])))
-    #print(AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]))
+    #
+    ##########print("check if obj < first line",M_(arg5),'<',M_(FILEindexread([arg3,0])))
+    #
+    ##########print(AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]))
     if AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(FILEindexread([arg3,0]))]):
+        ##########
         ##########print("insert3")
         #print("insert at front:")
         if len(arg6) > 0:
@@ -1925,7 +1985,7 @@ def bisectionInsertmin(argList):
         else:
             #write shit
             FILEinsertAt([arg3,arg5,0])
-        return
+        return "2WRONG" + str(argList)
 
     ##########
     #print("check if last line < obj",arg5)
@@ -1937,8 +1997,10 @@ def bisectionInsertmin(argList):
     #print("FML",M_(arg5))
     
     openarg3 = open(arg3,'r+')
-    #print("check ineq",AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]))
+    #
+    ##########print("check ineq",AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]))
     if AddressFILE([arg4,M_(tail(openarg3,1,0)[0])]) < AddressFILE([arg4,M_(arg5)]):
+        ##########
         ##########print("insert4")
         if len(arg6) > 0:
             return [[arg5,mapcountLINES([arg3])]]
@@ -1946,7 +2008,7 @@ def bisectionInsertmin(argList):
             #write shit
             #print("then insert after last obj",[arg3,arg5,mapcountLINES([arg3])])
             FILEinsertAt([arg3,arg5,mapcountLINES([arg3])])
-        return
+        return "3WRONG" + str(argList)
     openarg3.close()
     
     #now for meat:
@@ -1991,10 +2053,12 @@ def bisectionInsertmin(argList):
                 -> RIGHT
     '''
 
-    #print("check solns", AddressFILE([arg4,M_(tail(arg3, half, 0))]) < AddressFILE([arg4,M_(arg5)]))
-    #print("check solns2",AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(tail(arg3, half+1, 0))]))
+    #TAIL PROBLEMS print("check solns", AddressFILE([arg4,M_(tail(arg3, half, 0)[0])]) < AddressFILE([arg4,M_(arg5)]))
+    #TAIL PROBLEMS print("check solns2",AddressFILE([arg4,M_(arg5)]) < AddressFILE([arg4,M_(tail(arg3, half+1, 0))]))
 
+    ##########
     ##########print("check args half<= obj",FILEindexread([arg3, half]),arg5)
+    ##########
     ##########print(AddressFILE([arg4,M_(FILEindexread([arg3, half]))]) <= AddressFILE([arg4,M_(arg5)]))
     if AddressFILE([arg4,M_(FILEindexread([arg3, half]))]) <= AddressFILE([arg4,M_(arg5)]):
         pass
@@ -2004,34 +2068,41 @@ def bisectionInsertmin(argList):
         #know: LHS,RHS,HALF
         #going left means:
         #new LHS/RHS is: LHS,HALF
-        bisectionInsertmin([arg1,half,arg3,arg4,arg5])
-        return
+        return bisectionInsertmin([arg1,half,arg3,arg4,arg5,arg6])
 
+    ##########
     ##########print("check this address(y) < address(half+1)",arg5 +"| VS |"+ FILEindexread([arg3, half+1]))
+    ##########
     ##########print(AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]))
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
         #if this works AND IT'S EVEN MAX LENGTH
         #if (arg2 - arg1) % 2 == 1:
         if AddressFILE([arg4,M_(FILEindexread([arg3, half]))]) <= AddressFILE([arg4,M_(arg5)]) and AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
+            ##########
             ##########print("insert5")
             if len(arg6) > 0:
                 return [[arg5,half+1]]
             else:
                 #write shit
-                #print("append properly on 1st check============",[arg3,arg5,half+1])
+                #
+                ##########print("append properly on 1st check============",[arg3,arg5,half+1])
                 FILEinsertAt([arg3,arg5,half+1])
-            return 
+                #+ str(argList)
+            return "5WRONG" + str(argList)
         else:
-            #print("else go right", arg5 + " !<= " + FILEindexread([arg3, half+1]))
-            bisectionInsertmin([half,arg2,arg3,arg4,arg5])
-            return
+            #
+            ##########print("else go right", arg5 + " !<= " + FILEindexread([arg3, half+1]))
+            return bisectionInsertmin([half,arg2,arg3,arg4,arg5,arg6])
 
     #if length is odd number you have to check half+1 and half+2
 
     #don't need to check HALF+1 <= OBJ since OBJ <= HALF+1 failed already
+    ##########
     ##########print("check this address(y) < address(half+2)",arg5 +"| VS |"+ FILEindexread([arg3, half+2]))
+    ##########
     ##########print(AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]))
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]):
+        ##########
         ##########print("insert6")
         if len(arg6) > 0:
             return [[arg5,half+2]]
@@ -2039,13 +2110,15 @@ def bisectionInsertmin(argList):
             #write shit
             #print("append properly")
             FILEinsertAt([arg3,arg5,half+2])
-        return 
+        return "7WRONG" + str(argList)
     else:
+        ##########
         ##########print("it's gold mine1",arg5, FILEindexread([arg3, half+2]))
+        ##########
         ##########print("check argList",argList)
+        ##########
         ##########print("else go right",[arg1+half,arg2,arg3,arg4,arg5])
-        bisectionInsertmin([half,arg2,arg3,arg4,arg5])
-        return
+        return bisectionInsertmin([half,arg2,arg3,arg4,arg5,arg6])
     
 def FILEinsertAt(ArgList):
     '''
@@ -2123,7 +2196,8 @@ def FILEinsertAt(ArgList):
             appending.write(arg2+"\n")
             #close the file
             appending.close()
-   
+    #hint: arg1Old closed by with
+    arg1New.close()
     '''
     #doesn't work for some reason when I nest functions:
     for line in fileinput.input(arg1, inplace=1):
@@ -2185,7 +2259,11 @@ testfile = '1.txt'
 basisfile = 'basis.txt'
 
 #lexicoSortHARD([basisfile,'Memory.txt'])
+##########
+##########
 lexicoSort([basisfile,'Memory.txt', 'MemoryUNORDERED.txt'])
+##########
+##########print("why none?",bisectionInsert(['Memory.txt', 'stats:', 'basis.txt', [1]]))
 
 #ADDRESS FAILS ON EMPTY
 #print(AddressFILE([basisfile,M_("")]))
