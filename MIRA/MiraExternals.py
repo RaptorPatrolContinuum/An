@@ -1723,16 +1723,13 @@ def lexicoSort(argList):
                 print("force stop")
                 return
             InsertKey.write(insertlinewrite)
-        ########
-        print("THIS IS INSERTKEYSTART===============================================")
+        ########print("THIS IS INSERTKEYSTART===============================================")
         InsertKey.seek(0)
-        ########
-        print(InsertKey.read())
+        ########print(InsertKey.read())
         #InsertKey.seek(0)
         #print("check first line strat!",InsertKey.readline())
         timetostop = mapcountLINES(["InsertKey.txt"])
-        ########
-        print("THIS IS INSERTKEYEND===============================================")
+        ########print("THIS IS INSERTKEYEND===============================================")
         #rename memfile
         namelist = arg2.split(".")[:-1]
         arg2rename = "".join(namelist) + "NEW" + arg2.split(".")[-1]
@@ -1766,7 +1763,7 @@ def lexicoSort(argList):
                 ########print(x,insertionkey)
                 ########print("if x == insertionkey:", x , insertionkey)
                 if x == insertionkey:
-                    print("sanity check1",x,insertionkey,stopwhen, timetostop)
+                    ########print("sanity check1",x,insertionkey,stopwhen, timetostop)
                     MEMFILECLEAN.write(insertionline + "\n")
                     ########print("readline is RESET to next line after I write")
                     insertline = InsertKey.readline()
@@ -1781,13 +1778,13 @@ def lexicoSort(argList):
                         pass
                     ########print("check if next line is the same index",insertionkey)
                     while x == insertionkey and stopwhen <= timetostop:
-                        print("sanity check2",x,insertionkey,stopwhen, timetostop)
+                        ########print("sanity check2",x,insertionkey,stopwhen, timetostop)
                         #yes = insert
                         MEMFILECLEAN.write(insertionline + "\n")
                         ########print("attempt to read another line")
                         insertline = InsertKey.readline()
                         stopwhen += 1
-                        print(insertline)
+                        ########print(insertline)
                         '''
                         lastinsert = str(tail(InsertKey,1,0)[0])
                         print(" AND is not last line", insertline + "|VS|")
@@ -1800,17 +1797,15 @@ def lexicoSort(argList):
                         try:
                             insertionkey = ast.literal_eval(insertline)[0][1]
                             insertionline = ast.literal_eval(insertline)[0][0]
-                            ########
-                            print("what is insertionline?3", insertionline)
-                            ########
-                            print("3:",x,insertionkey)
+                            ########print("what is insertionline?3", insertionline)
+                            ########print("3:",x,insertionkey)
                         except:
                             pass
                         #no = keep variable for later
                     MEMFILECLEAN.write(OGline)
                     #read new line
                 else:
-                    print("sanity check3",x,insertionkey)
+                    ########print("sanity check3",x,insertionkey)
                     MEMFILECLEAN.write(OGline)
     #hint: remember to delete InsertKey
     InsertKey.close()
@@ -1838,6 +1833,7 @@ def mapcountLINES(argList):
 
 def bisectionSearch(argList):
     '''
+    HINT: BASE 0
     why not
     arg1 = fileNAME to insert to 
     arg2 = obj to insert
@@ -1866,17 +1862,22 @@ def bisectionSearch(argList):
         return "WRONGWHY"
     #figure out where it SHOULD be:
     shouldbe = bisectionInsertmin([0,total,arg1,arg3,arg2,arg4])[0][1]
+    print("OG is", arg2)
+    print("shouldbe",shouldbe)
 
     #assume no answer:
     ANS = []
-    #check AT
+    print("check AT",FILEindexread([arg1,shouldbe]))
     if arg2 == FILEindexread([arg1,shouldbe]):
         ANS.append(shouldbe)
     filler = 1
-    #check LEFT AS FAR AS YOU CAN
+    print("check LEFT AS FAR AS YOU CAN")
     while True:
         try:
-            if arg5 == FILEindexread([arg3,shouldbe-filler]):
+            print("leftstrats",filler, shouldbe-filler,FILEindexread([arg1,shouldbe-filler]))
+            print(arg2)
+            print(arg2 == FILEindexread([arg1,shouldbe-filler]))
+            if arg2 == FILEindexread([arg1,shouldbe-filler]):
                 ANS.append(shouldbe-filler)
                 filler += 1
             else:
@@ -1887,7 +1888,7 @@ def bisectionSearch(argList):
     #check RIGHT AS FAR AS YOU CAN
     while True:
         try:
-            if arg5 == FILEindexread([arg3,shouldbe+filler]):
+            if arg2 == FILEindexread([arg1,shouldbe+filler]):
                 ANS.append(shouldbe+filler)
                 filler += 1
             else:
@@ -2141,8 +2142,11 @@ def bisectionInsertmin(argList):
         return bisectionInsertmin([arg1,half,arg3,arg4,arg5,arg6])
 
     ##########
-    ##########print("check this address(y) < address(half+1)",arg5 +"| VS |"+ FILEindexread([arg3, half+1]))
-    ##########
+    ##########print("arglist",argList)
+    ##########print("check this address(y) < address(half+1) \n",arg5 +"| VS |"+ FILEindexread([arg3, half+1]))
+    ##########print("half is",half,FILEindexread([arg3, half]))
+    ##########print("half+1 is",half+1,FILEindexread([arg3, half+1]))
+    ##########print("half+2 is",half+2,FILEindexread([arg3, half+2]))
     ##########print(AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]))
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+1]))]):
         #if this works AND IT'S EVEN MAX LENGTH
@@ -2168,9 +2172,10 @@ def bisectionInsertmin(argList):
 
     #don't need to check HALF+1 <= OBJ since OBJ <= HALF+1 failed already
     ##########
-    ##########print("check this address(y) < address(half+2)",arg5 +"| VS |"+ FILEindexread([arg3, half+2]))
+    ##########print("check this address(y) < address(half+2) \n",arg5 +"| VS |"+ FILEindexread([arg3, half+2]))
     ##########
-    ##########print(AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]))
+    ##########
+    print(AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]))
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]):
         ##########
         ##########print("insert6")
@@ -2330,18 +2335,27 @@ basisfile = 'basis.txt'
 
 #lexicoSortHARD([basisfile,'Memory.txt'])
 ##########
-##########
-lexicoSort([basisfile,'Memory.txt', 'MemoryUNORDERED.txt'])
+##########lexicoSort([basisfile,'Memory.txt', 'MemoryUNORDERED.txt'])
 ##########
 ##########print("why none?",bisectionInsert(['Memory.txt', 'stats:', 'basis.txt', [1]]))
 
 #CHECK BISECTION SEARCH
 #print("check empty answer",bisectionSearch(['Memory.txt',"?",basisfile]))
-#print("check single answer",bisectionSearch(['Memory.txt',"?",basisfile]))
-
-#check multiple answer to left
+##print("check single answer",bisectionSearch(['Memory.txt',"    stats:",basisfile]))
+#
+print("check multiple answer to left",bisectionSearch(['Memory.txt',"    figure out the offset",basisfile]))
 #check multiple answer to right
 #check multiple answer to left & right
+
+##########PROBLEM WITH RECOGNIZING TAB (\t) and spaces which fucked bisection insert 
+##########print("check bisection insert sanity",bisectionInsert(['Memory.txt', "    stats:", 'basis.txt',[1]]))
+
+#print("hint is spacing",FILEindexread(['Memory.txt',12]))
+#print("hint is spacing",FILEindexread(['Memory.txt',13]))
+#print("hint is spacing",FILEindexread(['Memory.txt',14]))
+#print("hint is spacing",FILEindexread(['Memory.txt',15]))
+#idk = open('Memory.txt','rb')
+#print("open in bytes mode", idk.read())
 
 
 
