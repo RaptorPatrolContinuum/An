@@ -1,4 +1,50 @@
+
+
+
+
+
+
+
+    
+    
+        and fileinsertat
+    write stuff down in one go
 [['a', 2]]
+    figure out the offset
+    figure out the offset
+    =
+    plan:
+    stats:
+        else:
+    strategy:
+    '''
 [['b','b']]
 [[print(,'b']]
 [['argument_1 == "a"', 1+1]]
+    attempt to append from unordered to ordered
+    attempt to append from recentlyordered to ordered
+    HINT:
+    >basislist
+    >linearly ordered memory
+    >linearly UNordered memory
+        HINT: arg2 can be an empty file
+    PROBLEM:
+	'''
+        if len(arg) > 0:
+    arg1 = basis FILENAME
+    then in one go, just rewrite and append properly
+            #write shit
+            return [obj,index]
+    keep the pairs: [obj,index]
+        >look at .write()
+    >on bisectioninsert/min, add a flag
+    ORDER UNORDERED LIST FIRST,THEN INSERT INTO ORDERED LIST
+    arg3 = unordered memory FILENAME
+    INSERTING UNORDERED LIST INTO ORDERED LIST THAT IS EMPTY
+    arg2 = linearly ordered memory FILENAME in open(filename,???) format
+    do a 'hard' sort on the unordered memory so insertion order doesn't matter
+    then on lexico sort, change the argument to include the unordered memory
+    need function that does lexicographic ordering on ORDERED AND UNORDERED memory files using basislist
+    hint: order unordered list in the 'hardcore' mode, aka just rewriting file and renaming so you guarantee insertion is ok
+    THEN YOU INSERT IN ORDER OF INSERTION WHICH IS NOT ACCORDING TO ORDER
+    then on bisectioninsertmin if flag is true, then instead of writing, just return the pair: [obj,index]

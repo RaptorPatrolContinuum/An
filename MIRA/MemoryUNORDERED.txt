@@ -1,46 +1,46 @@
-	'''
-    need function that does lexicographic ordering on ORDERED AND UNORDERED memory files using basislist
-    arg1 = basis FILENAME
-    arg2 = linearly ordered memory FILENAME in open(filename,???) format
-        HINT: arg2 can be an empty file
-    arg3 = unordered memory FILENAME
 
+
+
+
+
+
+
+    
+    
+        and fileinsertat
+    write stuff down in one go
+    figure out the offset
+    figure out the offset
+    =
+    plan:
     stats:
+        else:
+    strategy:
+    '''
+    attempt to append from unordered to ordered
+    attempt to append from recentlyordered to ordered
+    HINT:
+    >basislist
     >linearly ordered memory
     >linearly UNordered memory
-    >basislist
-
-    strategy:
-    attempt to append from unordered to ordered
-    keep the pairs: [obj,index]
-    figure out the offset
-
-    then in one go, just rewrite and append properly
-
-    plan:
-    >on bisectioninsert/min, add a flag
-    then on bisectioninsertmin if flag is true, then instead of writing, just return the pair: [obj,index]
-        >look at .write()
-        and fileinsertat
-
-        if len(arg) > 0:
-            return [obj,index]
-        else:
-            #write shit
-    
-    then on lexico sort, change the argument to include the unordered memory
-    
-    do a 'hard' sort on the unordered memory so insertion order doesn't matter
-    =
-    attempt to append from recentlyordered to ordered
-    figure out the offset
-    write stuff down in one go
-
-
+        HINT: arg2 can be an empty file
     PROBLEM:
-    INSERTING UNORDERED LIST INTO ORDERED LIST THAT IS EMPTY
-    THEN YOU INSERT IN ORDER OF INSERTION WHICH IS NOT ACCORDING TO ORDER
-    HINT:
+	'''
+        if len(arg) > 0:
+    arg1 = basis FILENAME
+    then in one go, just rewrite and append properly
+            #write shit
+            return [obj,index]
+    keep the pairs: [obj,index]
+        >look at .write()
+    >on bisectioninsert/min, add a flag
     ORDER UNORDERED LIST FIRST,THEN INSERT INTO ORDERED LIST
+    arg3 = unordered memory FILENAME
+    INSERTING UNORDERED LIST INTO ORDERED LIST THAT IS EMPTY
+    arg2 = linearly ordered memory FILENAME in open(filename,???) format
+    do a 'hard' sort on the unordered memory so insertion order doesn't matter
+    then on lexico sort, change the argument to include the unordered memory
+    need function that does lexicographic ordering on ORDERED AND UNORDERED memory files using basislist
     hint: order unordered list in the 'hardcore' mode, aka just rewriting file and renaming so you guarantee insertion is ok
-    '''
+    THEN YOU INSERT IN ORDER OF INSERTION WHICH IS NOT ACCORDING TO ORDER
+    then on bisectioninsertmin if flag is true, then instead of writing, just return the pair: [obj,index]

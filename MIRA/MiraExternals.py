@@ -1539,7 +1539,8 @@ def FILEindexread(argList):
         #print("newtail stats", i, n, line, )
         if i == n:
             f.close()
-            return line.strip()
+            #return line.strip()
+            return rchop(line, "\n")
     
 def fileindex(argList):
     '''
@@ -1706,7 +1707,11 @@ def lexicoSort(argList):
         InsertKey = open("InsertKey.txt",'a+')
         #hint: I STILL HAVEN'T ATTEMPTED TO INSERT FROM RECENTLYORDERED TO MEMFILE
         for x in range(0,arg3maxlines):
-            OBJ = recentlyordered.readline().strip()
+            #strippin = recentlyordered.readline()
+            #print("obj before strip!",strippin)
+            #OBJ = strippin.strip()
+            OBJ = rchop(recentlyordered.readline(), "\n")
+            #print("obj after strip!",OBJ)
             insertlineprep = str(bisectionInsert([arg2,OBJ,arg1,[1]]))
             print("bisection args",[arg2,OBJ,arg1,[1]])
             #print("wtf is going on",str(bisectionInsert([arg2,OBJ,arg1,[1]])))
@@ -1732,8 +1737,8 @@ def lexicoSort(argList):
         #rewrite MEMFILE
         #open renamed memfile
         print("=============================================")
-        #hint: we know that Insertkey is ordered as insertion from recentlyordered to memfile, so we can just match the index + offset with Insertkey
-        #hint: offset is just +1 for each line you have already inserted
+        #hint: we know that Insertkey is ordered as insertion from recentlyordered to memfile, so we can just match the index with Insertkey
+        #hint: offset is just +1 for each line you have already inserted #NEWHINT: don't need offset anymore
         InsertKey.seek(0)
         insertline = InsertKey.readline()
         print("insertline is", insertline)
@@ -1747,60 +1752,56 @@ def lexicoSort(argList):
         with open(arg2rename,'r+') as MEMFILEOLD:
             #open clean memfile
             MEMFILECLEAN = open(arg2,'a+')
-            offset = 0
+            
 
-            for x in range(0,arg2maxlines):
+            for x in range(0,arg2maxlines+1):
                 #strategy:
-                #open renamed file and when we hit insertion index of InsertKey + offset, we insert until we run out of renamed file
-                print("qhat about max lines?",arg2maxlines,arg3maxlines,arg2maxlines)
+                #open renamed file and when we hit insertion index of InsertKey, we insert until we run out of renamed file
+                print("qhat about max lines?",arg2maxlines,arg3maxlines)
                 print("readline from memfileold")
                 OGline = MEMFILEOLD.readline()
                 
-                #go to ???
-                print(x,insertionkey,offset,insertionkey + offset)
-                print("if x + offset == insertionkey + offset:",x == insertionkey + offset)
-                if x + offset == insertionkey + offset:
+                print("go to ???")
+                print(x,insertionkey)
+                print("if x == insertionkey:", x , insertionkey)
+                if x == insertionkey:
                     MEMFILECLEAN.write(insertionline + "\n")
-                    offset += 1
                     print("readline is RESET to next line after I write")
-                    insertionkeyOld = insertionkey
                     insertline = InsertKey.readline()
                     print(insertline)
                     try:
                         insertionkey = ast.literal_eval(insertline)[0][1]
                         insertionline = ast.literal_eval(insertline)[0][0]
                         print("what is insertionline?2", insertionline)
-                        print("2",x,insertionkey,offset,insertionkey + offset)
+                        print("2:",x,insertionkey)
                     except:
                         pass
-                    print("check if next line is the same index",insertionkey, insertionkeyOld)
-                    while insertionkey == insertionkeyOld:
+                    print("check if next line is the same index",insertionkey)
+                    while x == insertionkey:
                         #yes = insert
                         MEMFILECLEAN.write(insertionline + "\n")
-                        offset += 1
-                        #set old key
-                        insertionkeyOld = insertionkey
                         print("attempt to read another line")
                         insertline = InsertKey.readline()
+                        
+                        '''
+                        lastinsert = str(tail(InsertKey,1,0)[0])
+                        print(" AND is not last line", insertline + "|VS|")
+                        print(lastinsert)
+                        print("OR last line is empty NOT DONE YET")
                         print(insertline)
+                        if insertline == lastinsert:
+                            break
+                        '''
                         try:
                             insertionkey = ast.literal_eval(insertline)[0][1]
                             insertionline = ast.literal_eval(insertline)[0][0]
                             print("what is insertionline?3", insertionline)
-                            print("3",x,insertionkey,offset,insertionkey + offset)
+                            print("3:",x,insertionkey)
                         except:
                             pass
                         #no = keep variable for later
                     MEMFILECLEAN.write(OGline)
                     #read new line
-                    insertline = InsertKey.readline()
-                    print("insertline is", insertline)
-                    try:
-                        insertionkey = ast.literal_eval(insertline)[0][1]
-                        insertionline = ast.literal_eval(insertline)[0][0]
-                        print("what is insertionline?", insertionline)
-                    except:
-                        pass
                 else:
                     MEMFILECLEAN.write(OGline)
     #hint: remember to delete InsertKey
@@ -1941,7 +1942,6 @@ def bisectionInsertmin(argList):
     should insert at beginning or end of file
     ???
     '''
-    #
     ##########print("stats",argList)
 
     #took care of size 0 in original function
