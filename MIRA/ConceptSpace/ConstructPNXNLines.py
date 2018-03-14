@@ -56,17 +56,17 @@ while True:
         GraphY = AutoVisionString(int(Start[1]),1)
         #print("check graphs!",GraphX,GraphY)
         #print("check shitty SI",ShittySI([[GraphX,GraphY],"Auto"]))
-        SIData.write(str([[GraphX,GraphY],ShittySI([[GraphX,GraphY],"Auto"])]+"\n"))
+        SIData.write(str([[GraphX,GraphY],ShittySI([[GraphX,GraphY],"Auto"])])+"\n")
     else:
         #get the last item from SIData
         SIData.seek(0)
         ###print("Check Out SI Data!", SIData.read()) HINT: seek again if I enable this
         ###SIData.seek(0)
         #last = ast.literal_eval(SIData.read())
-        print("WTF MALFORMED1?????", tail(SIData,1,0))
-        print("WTF MALFORMED?????",ast.literal_eval(tail(SIData,1,0)[0]))
+        #print("WTF MALFORMED1?????", tail(SIData,1,0))
+        #print("WTF MALFORMED?????",ast.literal_eval(tail(SIData,1,0)[0]))
         last = [ast.literal_eval(tail(SIData,1,0)[0])]
-        print("what is last?",last)
+        #print("what is last?",last)
         SIData.seek(0)
         ######print("what about this", ast.literal_eval(tail(SIData,1,0))[-1][0][0])
         #print("what to literal eval", [ast.literal_eval(tail(SIData,1,0)[0])][-1][0][0])
@@ -98,7 +98,7 @@ while True:
         SImaxname = "SIDatamax.txt"
         SIData.close()
         #if small file is >50MB:
-        if os.path.getsize(theFilename) > 50000000:
+        if os.path.getsize(theFilename) > 10000000:
             #print("WORKS")
             #break
             #append to OG file
