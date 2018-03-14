@@ -35,6 +35,8 @@ this function takes a long time
 
 idea:
 just run every hour x
+
+
 '''
 
 
@@ -58,8 +60,8 @@ while True:
     else:
         #get the last item from SIData
         SIData.seek(0)
-        #print("Check Out SI Data!", SIData.read())
-        SIData.seek(0)
+        ###print("Check Out SI Data!", SIData.read()) HINT: seek again if I enable this
+        ###SIData.seek(0)
         #last = ast.literal_eval(SIData.read())
         last = [ast.literal_eval(tail(SIData,1,0)[0])]
         #print("what is last?",last)
@@ -67,8 +69,128 @@ while True:
         ######print("what about this", ast.literal_eval(tail(SIData,1,0))[-1][0][0])
         #print("what to literal eval", [ast.literal_eval(tail(SIData,1,0)[0])][-1][0][0])
         ##print("trendy trendy trendy", ast.literal_eval(tail(SIData,1,0))[-1][0][0])
+
+
+        '''
+        26 make constructPNXN faster by making a "ram" file and append to original file 50MB at a time
+
+        hints:
+        SIDATA
+        SIDATAsmol
+
+        #if small file is >50MB:
+        os.path.getsize('Memory.txt') > 50000000:
+        SIminname = "SIDatamin.txt"
+        ################IAMHERE
+            #append to OG file
+            #get max lines of ramfile
+            ramfilemaxlines = mapcountLINES([SIminname])
+            with open(SIminname,'r+') as SIDatamin:
+                #close SIData
+                SIData.close()
+                #reopen in append mode
+                with open(theFilename,'a+') as SIDataAppend:
+                    for x in range(0,ramfilemaxlines+1):
+                        #readline from ramfile
+                        newread = SIDatamin.readline()
+                        #append that line to OG file
+                        SIDataAppend.write(newread)
+                    
+        #open SIData??
+        SIData = open(theFilename,"r+")
         
-        
+        #delete ram file
+        os.remove(SIminname)
+        #make new ramfile
+        newmin = open(SIminname,'a+')
+        #get last entry on OG file
+        last = [ast.literal_eval(tail(SIData,1,0)[0])]
+        #continue from there
+
+
+        PROBLEM: SIDATA IS WHAT I WRITE TO
+        HINT:
+        SIDATA IS "small" file and write to LARGER FILE!
+        ====
+        WORKS
+        SIminname = "SIDatamin.txt"
+        #if small file is >50MB:
+        if os.path.getsize(SIminname) > 50000000:
+            #print("WORKS")
+            #break
+            #append to OG file
+            #get max lines of ramfile
+            ramfilemaxlines = mapcountLINES([SIminname])
+            with open(SIminname,'r+') as SIDatamin:
+                #close SIData
+                SIData.close()
+                #reopen in append mode
+                with open(theFilename,'a+') as SIDataAppend:
+                    SIDatamin.seek(0)
+                    for x in range(0,ramfilemaxlines+1):
+                        #readline from ramfile
+                        newread = SIDatamin.readline()
+                        #append that line to OG file
+                        SIDataAppend.write(newread)
+                    
+        #open SIData??
+        SIData = open(theFilename,"r+")
+        #seek to beginning
+        SIData.seek(0)
+        print("stop here!")
+        break
+
+        #PROBLEM: SIDATA IS WHAT THIS FILE WRITES TO
+        #HINT:
+        #SIDATA IS "small" file and write to LARGER FILE!
+        #HINT: this naming scheme is fucked/reversed
+        HINT:
+        WRITING FROM SIDATA TO --> SIDatamax
+
+        PROBLEMS:
+        double lines from old SI
+        some files don't end with newline
+        HINTS:
+        since I pick up where I last left off I shouldn't have duplicate lines
+        if I end lines with \n there shouldn't be a problem
+        '''
+
+        SImaxname = "SIDatamax.txt"
+        SIData.close()
+        #if small file is >50MB:
+        if os.path.getsize(theFilename) > 50000000:
+            #print("WORKS")
+            #break
+            #append to OG file
+            #get max lines of SIData
+            ramfilemaxlines = mapcountLINES([theFilename])
+            with open(theFilename,'r+') as SIDatamin:
+                #open SImaxname in append mode
+                with open(SImaxname,'a+') as SIDataAppend:
+                    SIDatamin.seek(0)
+                    for x in range(0,ramfilemaxlines+1):
+                        #readline from ramfile
+                        newread = SIDatamin.readline()
+                        #append that line to OG file
+                        SIDataAppend.write(newread)
+            #delete min file
+            os.remove(theFilename)
+            #make new minfile/open SIData
+            SIData = open(theFilename,"a+")
+            #go to beginning
+            SIData.seek(0)
+            #fucking tail function is fucked
+            SImaxnameopen = open(SImaxname,'r+')
+            #get last entry on max file
+            last = [ast.literal_eval(tail(SImaxnameopen,1,0)[0])]
+            SImaxnameopen.close()
+            #continue from there
+            #print("stop here!")
+            #break
+
+        #seek to beginning
+        SIData.seek(0)
+    
         #print("check address of []",AddressFunc(Minv_(Beta_([])),[]))
         #print("Address on [] fails so what about vision on 0?", AutoVision(0,1))
         #print("What is last?",last)
@@ -133,8 +255,7 @@ while True:
         #SIData.write(str(last))
         SIData.close()
         SIData = open(theFilename,"a")
-        SIData.write("\n")
-        SIData.write(str([[AddressX,AddressY],ShittySI([[AddressX,AddressY],"Auto"])]))
+        SIData.write(str([[AddressX,AddressY],ShittySI([[AddressX,AddressY],"Auto"])])+"\n")
         
 #then remember to seek the cursor to the beginning
 #also close the file	

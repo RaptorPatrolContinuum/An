@@ -1156,7 +1156,7 @@ def ShittySI(ListItems):
                     #print("ADchecks",AD1,AD2)
                     #print("tobin AD1","{0:b}".format(AD1)[::-1])
                     #print("tobin AD2","{0:b}".format(AD2)[::-1])
-                    #print("LessthanC",LessThan_C(AD1,AD2))     
+                    #print("LessthanC",LessThan_C(AD1,AD2))
 
                     if LessThan_C(AD1,AD2):
                         return [True,PhiConstruct(Indexer,LinkPool,AutoCheck)]
@@ -2344,8 +2344,7 @@ basisfile = 'basis.txt'
 #CHECK BISECTION SEARCH
 #print("check empty answer",bisectionSearch(['Memory.txt',"?",basisfile]))
 ##print("check single answer",bisectionSearch(['Memory.txt',"    stats:",basisfile]))
-#
-print("check multiple answer to left",bisectionSearch(['Memory.txt',"    figure out the offset",basisfile]))
+#print("check multiple answer to left",bisectionSearch(['Memory.txt',"    figure out the offset",basisfile]))
 #check multiple answer to right
 #check multiple answer to left & right
 
