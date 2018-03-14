@@ -56,15 +56,17 @@ while True:
         GraphY = AutoVisionString(int(Start[1]),1)
         #print("check graphs!",GraphX,GraphY)
         #print("check shitty SI",ShittySI([[GraphX,GraphY],"Auto"]))
-        SIData.write(str([[GraphX,GraphY],ShittySI([[GraphX,GraphY],"Auto"])]))
+        SIData.write(str([[GraphX,GraphY],ShittySI([[GraphX,GraphY],"Auto"])]+"\n"))
     else:
         #get the last item from SIData
         SIData.seek(0)
         ###print("Check Out SI Data!", SIData.read()) HINT: seek again if I enable this
         ###SIData.seek(0)
         #last = ast.literal_eval(SIData.read())
+        print("WTF MALFORMED1?????", tail(SIData,1,0))
+        print("WTF MALFORMED?????",ast.literal_eval(tail(SIData,1,0)[0]))
         last = [ast.literal_eval(tail(SIData,1,0)[0])]
-        #print("what is last?",last)
+        print("what is last?",last)
         SIData.seek(0)
         ######print("what about this", ast.literal_eval(tail(SIData,1,0))[-1][0][0])
         #print("what to literal eval", [ast.literal_eval(tail(SIData,1,0)[0])][-1][0][0])
@@ -114,7 +116,7 @@ while True:
             #delete min file
             os.remove(theFilename)
             #make new minfile/open SIData
-            SIData = open(theFilename,"a+")
+            SIData = open(theFilename,"r+")
             #go to beginning
             SIData.seek(0)
             #fucking tail function is fucked
@@ -125,7 +127,8 @@ while True:
             #continue from there
             #print("stop here!")
             #break
-
+        #reset SIData in case if statement doesn't trigger
+        SIData = open(theFilename,"r+")
         #seek to beginning
         SIData.seek(0)
     
@@ -165,11 +168,11 @@ while True:
         print("Address Y",AddressY)
         #print("uh checking if SI works on empty set",ShittySI([[AddressX,AddressY], "Auto"]))
         #print("newtest",ShittySI([[[['1', '0'], ['0', '1'], ['2', '0'], ['3', '0'], ['4', '0']],[['0', '1'], ['2', '0'], ['3', '0']]],"Auto"]))
-        
+        '''        
         #STILL WORKING ON SHITTYSI
         last.append([[AddressX,AddressY],ShittySI([[AddressX,AddressY],"Auto"])])
 
-        '''
+
         T = max(xAddress,yAddress) + 3 
         for x in range(xAddress,T):
             for y in range(yAddress,T):
