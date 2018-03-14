@@ -116,7 +116,7 @@ while True:
             #delete min file
             os.remove(theFilename)
             #make new minfile/open SIData
-            SIData = open(theFilename,"r+")
+            SIData = open(theFilename,"a+")
             #go to beginning
             SIData.seek(0)
             #fucking tail function is fucked
