@@ -1768,7 +1768,7 @@ def lexicoSort(argList):
                     ########print("readline is RESET to next line after I write")
                     insertline = InsertKey.readline()
                     stopwhen += 1
-                    print(insertline)
+                    ########print(insertline)
                     try:
                         insertionkey = ast.literal_eval(insertline)[0][1]
                         insertionline = ast.literal_eval(insertline)[0][0]
@@ -2176,8 +2176,7 @@ def bisectionInsertmin(argList):
     ##########
     ##########print("check this address(y) < address(half+2) \n",arg5 +"| VS |"+ FILEindexread([arg3, half+2]))
     ##########
-    ##########
-    print(AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]))
+    ##########print(AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]))
     if AddressFILE([arg4,M_(arg5)]) <= AddressFILE([arg4,M_(FILEindexread([arg3, half+2]))]):
         ##########
         ##########print("insert6")
@@ -2337,7 +2336,8 @@ basisfile = 'basis.txt'
 
 #lexicoSortHARD([basisfile,'Memory.txt'])
 ##########
-##########lexicoSort([basisfile,'Memory.txt', 'MemoryUNORDERED.txt'])
+##########
+lexicoSort([basisfile,'Memory.txt', 'MemoryUNORDERED.txt'])
 ##########
 ##########print("why none?",bisectionInsert(['Memory.txt', 'stats:', 'basis.txt', [1]]))
 

@@ -12,7 +12,6 @@
 [['a', 2]]
     figure out the offset
     figure out the offset
-    figure out the offset
     =
     plan:
     stats:
