@@ -77,69 +77,7 @@ while True:
         hints:
         SIDATA
         SIDATAsmol
-
-        #if small file is >50MB:
-        os.path.getsize('Memory.txt') > 50000000:
-        SIminname = "SIDatamin.txt"
-        ################IAMHERE
-            #append to OG file
-            #get max lines of ramfile
-            ramfilemaxlines = mapcountLINES([SIminname])
-            with open(SIminname,'r+') as SIDatamin:
-                #close SIData
-                SIData.close()
-                #reopen in append mode
-                with open(theFilename,'a+') as SIDataAppend:
-                    for x in range(0,ramfilemaxlines+1):
-                        #readline from ramfile
-                        newread = SIDatamin.readline()
-                        #append that line to OG file
-                        SIDataAppend.write(newread)
-                    
-        #open SIData??
-        SIData = open(theFilename,"r+")
-        
-        #delete ram file
-        os.remove(SIminname)
-        #make new ramfile
-        newmin = open(SIminname,'a+')
-        #get last entry on OG file
-        last = [ast.literal_eval(tail(SIData,1,0)[0])]
-        #continue from there
-
-
-        PROBLEM: SIDATA IS WHAT I WRITE TO
-        HINT:
-        SIDATA IS "small" file and write to LARGER FILE!
-        ====
-        WORKS
-        SIminname = "SIDatamin.txt"
-        #if small file is >50MB:
-        if os.path.getsize(SIminname) > 50000000:
-            #print("WORKS")
-            #break
-            #append to OG file
-            #get max lines of ramfile
-            ramfilemaxlines = mapcountLINES([SIminname])
-            with open(SIminname,'r+') as SIDatamin:
-                #close SIData
-                SIData.close()
-                #reopen in append mode
-                with open(theFilename,'a+') as SIDataAppend:
-                    SIDatamin.seek(0)
-                    for x in range(0,ramfilemaxlines+1):
-                        #readline from ramfile
-                        newread = SIDatamin.readline()
-                        #append that line to OG file
-                        SIDataAppend.write(newread)
-                    
-        #open SIData??
-        SIData = open(theFilename,"r+")
-        #seek to beginning
-        SIData.seek(0)
-        print("stop here!")
-        break
-
+ 
         #PROBLEM: SIDATA IS WHAT THIS FILE WRITES TO
         #HINT:
         #SIDATA IS "small" file and write to LARGER FILE!
