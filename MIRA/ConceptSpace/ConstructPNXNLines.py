@@ -97,7 +97,7 @@ while True:
 
         SImaxname = "SIDatamax.txt"
         SIData.close()
-        #if small file is >50MB:
+        #if small file is >10MB:
         if os.path.getsize(theFilename) > 10000000:
             #print("WORKS")
             #break
@@ -113,10 +113,13 @@ while True:
                         newread = SIDatamin.readline()
                         #append that line to OG file
                         SIDataAppend.write(newread)
+            #what about SIDATAMIN not closing?
+            #one of the old python idle windows was accessing the file for some reason
+            #SIDatamin,close()
             #delete min file
             os.remove(theFilename)
             #make new minfile/open SIData
-            SIData = open(theFilename,"r+")
+            SIData = open(theFilename,"a+")
             #go to beginning
             SIData.seek(0)
             #fucking tail function is fucked

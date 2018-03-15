@@ -2336,8 +2336,7 @@ basisfile = 'basis.txt'
 
 #lexicoSortHARD([basisfile,'Memory.txt'])
 ##########
-##########
-lexicoSort([basisfile,'Memory.txt', 'MemoryUNORDERED.txt'])
+##########lexicoSort([basisfile,'Memory.txt', 'MemoryUNORDERED.txt'])
 ##########
 ##########print("why none?",bisectionInsert(['Memory.txt', 'stats:', 'basis.txt', [1]]))
 
