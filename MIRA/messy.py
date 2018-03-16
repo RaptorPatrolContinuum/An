@@ -129,6 +129,33 @@ def seqstring(argList):
     T
     + .......
 
+
+
+
+
+
+
+
+
+
+
+    HINT:
+    use like 3 counters to simulate the edge indices
+    then just go through it using a modified maximum that goes it once
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     '''
     #arg1 should be a string
     arg1 = argList[0]
@@ -158,5 +185,7 @@ def seqstring(argList):
         #y += 1
     return ANS
     '''
-print(seqstring(["damnwhatwasthat"]))
+#print(seqstring(["damnwhatwasthat"]))
+for x in range(0,15*15):
+    print(x)
 
