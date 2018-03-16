@@ -65,7 +65,9 @@ while True:
         #last = ast.literal_eval(SIData.read())
         #print("WTF MALFORMED1?????", tail(SIData,1,0))
         #print("WTF MALFORMED?????",ast.literal_eval(tail(SIData,1,0)[0]))
-        last = [ast.literal_eval(tail(SIData,1,0)[0])]
+        #new tail func, next line is tailOld
+        #last = [ast.literal_eval(tail(SIData,1,0)[0])]
+        last = [ast.literal_eval(tailOpened([SIData,1])[0])]
         #print("what is last?",last)
         SIData.seek(0)
         ######print("what about this", ast.literal_eval(tail(SIData,1,0))[-1][0][0])
@@ -125,7 +127,9 @@ while True:
             #fucking tail function is fucked
             SImaxnameopen = open(SImaxname,'r+')
             #get last entry on max file
-            last = [ast.literal_eval(tail(SImaxnameopen,1,0)[0])]
+            #this is old tail func
+            #last = [ast.literal_eval(tail(SImaxnameopen,1,0)[0])]
+            last = [ast.literal_eval(tail([SImaxnameopen,1])[0])]
             SImaxnameopen.close()
             #continue from there
             #print("stop here!")

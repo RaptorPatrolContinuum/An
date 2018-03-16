@@ -1496,7 +1496,7 @@ def BasisFix(inp,basis):
                 basis.append(str(k))
     return
 
-def tail(f, n, offset=0):
+def tailOLD(f, n, offset=0):
     """
     HINT!!!!!
     THIS RETURNS A LIST SO YOU HAVE TO INDEX[0] TO GET ACTUAL OBJECT!!!!
@@ -1523,6 +1523,92 @@ def tail(f, n, offset=0):
         if len(lines) >= to_read or pos == 0:
             return lines[-to_read:offset and -offset or None]
         avg_line_length *= 1.3
+
+def tail(argList):
+    #[fname, lines, _buffer=4098]
+    f = open(argList[0],'r+')
+    lines = argList[1]
+    #_buffer = 4098
+    #try smaller buffer
+    _buffer = 128
+    
+    """Tail a file and get X lines from the end"""
+    # place holder for the lines found
+    lines_found = []
+
+    # block counter will be multiplied by buffer
+    # to get the block size from the end
+    block_counter = -1
+
+    # loop until we find X lines
+    while len(lines_found) < lines:
+        try:
+            f.seek(block_counter * _buffer, os.SEEK_END)
+        except IOError:  # either file is too small, or too many lines requested
+            f.seek(0)
+            lines_found = f.readlines()
+            break
+
+        lines_found = rchop(f.readlines(), '\n')
+
+        # we found enough lines, get out
+        # Removed this line because it was redundant the while will catch
+        # it, I left it for history
+        # if len(lines_found) > lines:
+        #    break
+
+        # decrement the block counter to get the
+        # next X bytes
+        block_counter -= 1
+
+    #close file
+    f.close()
+    return lines_found[-lines:]
+
+def tailOpened(argList):
+    '''
+    this version is for Construct PNXN lines because I read that catching a failure with exception is expensive
+    '''
+    #[fname, lines, _buffer=4098]
+    #f = open(argList[0],'r+')
+    f = argList[0]
+    lines = argList[1]
+    #_buffer = 4098
+    #try smaller buffer
+    _buffer = 128
+    
+    """Tail a file and get X lines from the end"""
+    # place holder for the lines found
+    lines_found = []
+
+    # block counter will be multiplied by buffer
+    # to get the block size from the end
+    block_counter = -1
+
+    # loop until we find X lines
+    while len(lines_found) < lines:
+        try:
+            f.seek(block_counter * _buffer, os.SEEK_END)
+        except IOError:  # either file is too small, or too many lines requested
+            f.seek(0)
+            lines_found = f.readlines()
+            break
+
+        lines_found = rchop(f.readlines(), '\n')
+
+        # we found enough lines, get out
+        # Removed this line because it was redundant the while will catch
+        # it, I left it for history
+        # if len(lines_found) > lines:
+        #    break
+
+        # decrement the block counter to get the
+        # next X bytes
+        block_counter -= 1
+
+    #close file
+    #f.close()
+    return lines_found[-lines:]
 
 def FILEindexread(argList):
     '''
