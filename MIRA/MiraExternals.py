@@ -2411,7 +2411,40 @@ def FILEinsertAt(ArgList):
     
     '''
 
+def seqstring(argList):
+    '''
+    arg1 = string
+    EX:
+    STRING
+    STRIN
+    STRI
+    STR
+    ST
+    S
+    +
+    TRING
+    TRIN
+    TRI
+    TR
+    T
+    + .......
 
+    '''
+    #arg1 should be a string
+    arg1 = argList[0]
+    ANS = []
+    maxlength = len(arg1)
+    print("wtfstats", arg1, maxlength)
+    for y in range(0,maxlength):
+        for x in range(0,maxlength+y):
+            if x == 0:
+                thingy = arg1[y:]
+            else:
+                thingy = arg1[y:-x]
+            if len(thingy) > 0:
+                #print(thingy, y, x)
+                ANS.append(thingy)
+    return ANS
         
 ##############################################################
 #TESTING STAGE
