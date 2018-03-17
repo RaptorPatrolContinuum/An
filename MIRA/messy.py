@@ -185,7 +185,7 @@ def seqstring(argList):
         #y += 1
     return ANS
     '''
-#print(seqstring(["damnwhatwasthat"]))
-for x in range(0,15*15):
-    print(x)
+print(seqstring(["damnwhatwasthat"]))
+#for x in range(0,15*15):
+#    print(x)
 
