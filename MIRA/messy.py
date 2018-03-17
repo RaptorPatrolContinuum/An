@@ -1,5 +1,7 @@
+from __future__ import division
 import mmap
 import os
+
 
 
 def tail(f, n, offset=0):
@@ -114,6 +116,7 @@ def tailTEST(argList):
 def seqstring(argList):
     '''
     arg1 = string
+    RETURNS THIS SEQUENCE AS A LIST
     EX:
     STRING
     STRIN
@@ -128,64 +131,44 @@ def seqstring(argList):
     TR
     T
     + .......
-
-
-
-
-
-
-
-
-
-
-
+    
     HINT:
     use like 3 counters to simulate the edge indices
     then just go through it using a modified maximum that goes it once
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     '''
     #arg1 should be a string
     arg1 = argList[0]
     ANS = []
     maxlength = len(arg1)
-    print("wtfstats", arg1, maxlength)
-    
-    for y in range(0,maxlength):
-        for x in range(0,maxlength+y):
-            if x == 0:
-                thingy = arg1[y:]
-            else:
-                thingy = arg1[y:-x]
-            if len(thingy) > 0:
-                print(thingy, y, x)
-                ANS.append(thingy)
-    '''
+    #print("wtfstats", arg1, maxlength)
+    x = 0
     y = 0
-    for x in range(0,maxlength+y):
+    stopAt = maxlength-1
+    total = (maxlength*(maxlength+1))/2
+    #print("check if total is int or float",total)
+    ''''''
+    for alpha in range(0,int(total)):
+        #print("more stats", x,y,stopAt)
+        #print("check if x == 0",x==0)
         if x == 0:
-            thingy = arg1[y:]
+            #print("1",arg1[y:])
+            ANS.append(arg1[y:])
         else:
-            thingy = arg1[y:-x]
-        if len(thingy) > 0:
-            print(thingy, y, x)
-            ANS.append(thingy)
-        #y += 1
+            #print("2",arg1[y:-x])
+            ANS.append(arg1[y:-x])
+        #print arg1[y:-x]
+        if x == stopAt:
+            stopAt += -1
+            y += 1
+            x = 0
+        else:
+            x += 1
     return ANS
-    '''
-print(seqstring(["damnwhatwasthat"]))
+    
+#print(seqstring(["damnwhatwasthat"]))
 #for x in range(0,15*15):
 #    print(x)
 
+'''
+deltav1
+'''
