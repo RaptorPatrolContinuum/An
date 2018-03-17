@@ -411,7 +411,7 @@ def delta(LHS,RHS):
 
 
 #need example where right goes to left:
-print(delta("ZCDEFGHAB","ABCDEFGH"))
+#######print(delta("ZCDEFGHAB","ABCDEFGH"))
 #print(delta("ABCDEFGH","ZCDEFGHAB"))
 ##print(delta("baade", "cdeaf"))#<------------ F U C K E D
 #OK! print(delta("baade","zaacdeaf"))

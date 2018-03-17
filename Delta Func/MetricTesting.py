@@ -7,9 +7,7 @@ sys.path.insert(0, 'C:\An\RPILinuxVersion')
 from MiraExternals import *
 
 
-test1 = "oktestingthis"
-test2 = "??thisisokothertesting"
-#test2 = "LAYon-theLINE"
+
 
 def ladder(LHS,RHS):
     #compare max lengths of firstlongestcontig from A->B and B->A
@@ -264,11 +262,16 @@ def seqsplitmin(LHS,RHS,LCont,Connections,index):
     #print("CHECKANS4",ANS)
     return ANS
     
+#test1 = "oktestingthis"
+#test2 = "??thisisokothertesting"
+#test2 = "LAYon-theLINE"
 
+test1 = "ZCDEFGHAB"
+test2 = "ABCDEFGH"
 
 #print(maxlongestcontig(test2,test1,0,0))
 #print(maxlongestcontig(test1,test2,0,0))
-#print(seqsplit(test1,test2))
+print(seqsplit(test1,test2))
 ####something is wrong with maxlongestcontig ???
 ####print(maxlongestcontig("ok","??thisisokother",0,0))
 #print(seqsplit("ok","??thisisokother"))
@@ -277,8 +280,8 @@ attached = "print('alpha')"
 #attached2 = "v"
 attached2 = "ya(z"
 
-print(seqsplit(attached,attached2))
-print(dom(seqsplit(attached,attached2)))
+#print(seqsplit(attached,attached2))
+#print(dom(seqsplit(attached,attached2)))
 #print("maxlongestcontig bugged?", maxlongestcontig(attached,attached2,0,0))
 
 #print(maxlongestcontig("print(\"alpha\")","print(\"beta\")",0,0))
