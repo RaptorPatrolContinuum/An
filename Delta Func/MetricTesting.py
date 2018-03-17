@@ -266,8 +266,10 @@ def seqsplitmin(LHS,RHS,LCont,Connections,index):
 #test2 = "??thisisokothertesting"
 #test2 = "LAYon-theLINE"
 
-test1 = "ZCDEFGHAB"
-test2 = "ABCDEFGH"
+#test1 = "ZCDEFGHAB"
+#test2 = "ABCDEFGH"
+test1 = "print('alpha')"
+test2 = "print('beta')"
 
 #print(maxlongestcontig(test2,test1,0,0))
 #print(maxlongestcontig(test1,test2,0,0))
