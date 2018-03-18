@@ -167,14 +167,26 @@ def fCheck(fcandidate):
             ANS = False
     return ANS
 
-def toString(f,basistype):
+def toString(argList):
     '''
     assume f is a finite function of the form for all x in f, x = [a,b]
     return a string that is the range of f "in order"
     basistype is a list where we assume order OR take a basis
 
     '''
+    f = argList[0]
+    basistype = argList[1]
+    try:
+        arg3 = argList[2]
+    except:
+        arg3 = []
     ANS = ""
+    if len(arg3) > 0:
+        #print("what is f",f)
+        for x in f:
+            #print("what is x",x,x[0])
+            ANS = ANS + str(x[0])
+        return ANS
     if fCheck(f) == False:
         print("f1 is function? toString", fCheck(f1))
         return
@@ -2694,11 +2706,15 @@ def delta3(argList):
 #TESTING STAGE
 
 test1 = "print('alpha')"
-test2 = "print('beta')"
+#test2 = "print('beta')"
+test2 = "print('α0')"
 
 #print(maxlongestcontig(test2,test1,0,0))
 #print(maxlongestcontig(test1,test2,0,0))
 print(delta2([test1,test2]))
+#== test2
+#print("what about range?",ran(delta2([test1,test2])))
+print(toString([dom(delta2([test1,test2])),"",[1]]))
 
 #print(delta1(["print('check this out')"]))
 #print('check this out')
