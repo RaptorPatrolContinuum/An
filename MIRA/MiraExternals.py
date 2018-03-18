@@ -2579,7 +2579,7 @@ def maxlongestcontig(argList):
                 ANS = i
     return ANS
 
-def seqsplit(argList):
+def delta2(argList):
     LHS = argList[0]
     RHS = argList[1]
     #need ending strat
@@ -2588,7 +2588,8 @@ def seqsplit(argList):
     LCont = maxlongestcontig([LHS,RHS,0,0])
     #nullansweralready:
     if LCont == []:
-        return [[['Symbol0'], [0]]]
+        #return [[['Symbol0'], [0]]]
+        return [[['α0'], [0]]]
     
     #match like segments together (try: from left to right)
     Connections = []
@@ -2635,7 +2636,8 @@ def seqsplit(argList):
         if x[0] == x[1]:
             ANS.append(x)
         elif len(x[0][0])!= 0 and len(x[1][0])!= 0:
-            ANS.append([["Symbol" + str(symboli)], [symboli]])
+            #ANS.append([["Symbol" + str(symboli)], [symboli]])
+            ANS.append([["α" + str(symboli)], [symboli]])
             symboli += 1
         #print("ANS at each step", ANS)
     return ANS
@@ -2676,8 +2678,18 @@ def seqsplitmin(argList):
         ANS = InsertAt(ANS,[[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]],index[2])
 
     #print("CHECKANS4",ANS)
-    return ANS        
-        
+    return ANS
+
+def delta3(argList):
+    '''
+    input: (obj1,obj2)
+    
+    NEED THEOREM: deltav2(obj1,obj2)
+        :if one obj is the abstraction of the other then the answer of deltav2 is the abstraction
+    output: replacement function
+    '''
+    
+
 ##############################################################
 #TESTING STAGE
 
@@ -2686,7 +2698,7 @@ test2 = "print('beta')"
 
 #print(maxlongestcontig(test2,test1,0,0))
 #print(maxlongestcontig(test1,test2,0,0))
-print(seqsplit([test1,test2]))
+print(delta2([test1,test2]))
 
 #print(delta1(["print('check this out')"]))
 #print('check this out')
