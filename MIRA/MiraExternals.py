@@ -13,6 +13,7 @@ import mmap
 import random
 import os
 from collections import defaultdict
+from subprocess import *
 
 if sys.version_info[0] < 3:
     raise Exception("Python 3 or a more recent version is required.")
@@ -2461,9 +2462,96 @@ def seqstring(argList):
         else:
             x += 1
     return ANS
+
+def delta1(argList):
+    '''
+    input: arbitary string (or maybe file name?) that we assume is code
+    output: [code,(eval(code),err(code))]
+
+(this is from 'wtf is subprocess.py')
+
+from subprocess import Popen, PIPE
+#p = Popen(['python', 'TestError.py'], stdout=PIPE, stderr=PIPE)
+p = Popen(['python', 'TestProgram.py'], stdout=PIPE, stderr=PIPE) 
+stdout, stderr = p.communicate()
+print(p.communicate()[0])
+print(p.communicate()[1])
+
+
+    RESEARCH: POPEN
+    STEPS:
+        1. write code into .py file
+        2. run it with popen and see eval/err code
+        
+    
+    TODO:
+    look at popen
+    '''
+    #input: arbitary string (or maybe file name?) that we assume is code
+    arg1 = argList[0]
+    print("what is arg1?",arg1)
+    #GOAL:
+    #run this line: p = Popen(['python', 'TestProgram.py'], stdout=PIPE, stderr=PIPE)
+    #need to check if I can make a py file:
+    ####print("need this to fail",os.path.isfile("testfile.py"))
+    ####print("need this to pass",os.path.isfile("INP.txt"))
+    nametest = nametestFUNC(["TestPYFILE.py"])[1]
+    #check if file by nametest already exists:
+    #yes = append an integer to nametest and retest this check
+    #HINT: need filename check function
+    #no = proceed
+
+    #now that we have a valid filename, run the goal and read the stdout and sterr line by line until exit:
+    #PROBLEM: what about functions that have no end, or very long functions?
+    #^^^ SI problem, you're kinda fucked and you just have to see if manually
+    ANS = []
+    #print("test nametest func RETURN",nametestFUNC([nametest]))
+    
+    nameCreateFile = open(nametest,'a+')
+    nameCreateFile.write(arg1)
+    nameCreateFile.close()
+    pytest = Popen(['python', nametest], stdout=PIPE, stderr=PIPE)
+    print("this is output",pytest.communicate()[0].decode())
+    print("this is error",pytest.communicate()[1].decode())
+    os.remove(nametest)
+    return ANS
+
+def nametestFUNC(argList):
+    '''
+    arg1 = filename with extension
+    #check if a file exists by the name of arg1
+        yes = check new filename with +1 UNTIL it works
+        no = then it's ok
+    RETURN:
+    TRUE: [False,filename that does work]
+    FALSE: [True, (can write a new file with arg1 name)]
+    '''
+    arg1 = argList[0]
+    ExistenceCheck = os.path.isfile(arg1)
+    print("testfunc2", arg1, ExistenceCheck)
+    if ExistenceCheck:
+        x = 0
+        while ExistenceCheck == True:
+            #make new name
+            newnameprep = arg1.split(".")[:-1]
+            newnameprep2 = "".join(newnameprep)
+            newname = newnameprep2 + str(x) + "." + arg1.split(".")[-1]
+            print("qhat is new name?",newname)
+            #test new name
+            ExistenceCheck = os.path.isfile(newname)
+            x += 1
+        #if new name works, then return [False,filename that does work]
+        return [False, newname]
+    else:
+        return [True, arg1]
+        
         
 ##############################################################
 #TESTING STAGE
+
+delta1(["print('check this out')"])
+#print('check this out')
+
 
 #NOT CLOSING ===== NOT COMMITTING WRITES
 testfile = '1.txt'

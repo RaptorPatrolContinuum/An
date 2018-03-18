@@ -38,7 +38,8 @@ print (output)
 '''
 
 from subprocess import Popen, PIPE
-p = Popen(['python', 'TestError.py'], stdout=PIPE, stderr=PIPE) 
+#p = Popen(['python', 'TestError.py'], stdout=PIPE, stderr=PIPE)
+p = Popen(['python', 'TestProgram.py'], stdout=PIPE, stderr=PIPE) 
 stdout, stderr = p.communicate()
 print(p.communicate()[0])
 print(p.communicate()[1])
