@@ -176,12 +176,8 @@ def toString(argList):
     '''
     f = argList[0]
     basistype = argList[1]
-    try:
-        arg3 = argList[2]
-    except:
-        arg3 = []
     ANS = ""
-    if len(arg3) > 0:
+    if basistype == "naive":
         #print("what is f",f)
         for x in f:
             #print("what is x",x,x[0])
@@ -2714,7 +2710,7 @@ test2 = "print('α0')"
 print(delta2([test1,test2]))
 #== test2
 #print("what about range?",ran(delta2([test1,test2])))
-print(toString([dom(delta2([test1,test2])),"",[1]]))
+print(toString([dom(delta2([test1,test2])),"naive"]))
 
 #print(delta1(["print('check this out')"]))
 #print('check this out')
