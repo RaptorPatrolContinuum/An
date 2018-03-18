@@ -2468,39 +2468,15 @@ def delta1(argList):
     input: arbitary string (or maybe file name?) that we assume is code
     output: [code,(eval(code),err(code))]
 
-(this is from 'wtf is subprocess.py')
-
-from subprocess import Popen, PIPE
-#p = Popen(['python', 'TestError.py'], stdout=PIPE, stderr=PIPE)
-p = Popen(['python', 'TestProgram.py'], stdout=PIPE, stderr=PIPE) 
-stdout, stderr = p.communicate()
-print(p.communicate()[0])
-print(p.communicate()[1])
-
-
-    RESEARCH: POPEN
     STEPS:
         1. write code into .py file
         2. run it with popen and see eval/err code
-        
-    
-    TODO:
-    look at popen
-    '''
+      '''
     #input: arbitary string (or maybe file name?) that we assume is code
     arg1 = argList[0]
-    print("what is arg1?",arg1)
-    #GOAL:
-    #run this line: p = Popen(['python', 'TestProgram.py'], stdout=PIPE, stderr=PIPE)
-    #need to check if I can make a py file:
-    ####print("need this to fail",os.path.isfile("testfile.py"))
-    ####print("need this to pass",os.path.isfile("INP.txt"))
+    
     nametest = nametestFUNC(["TestPYFILE.py"])[1]
-    #check if file by nametest already exists:
-    #yes = append an integer to nametest and retest this check
-    #HINT: need filename check function
-    #no = proceed
-
+    
     #now that we have a valid filename, run the goal and read the stdout and sterr line by line until exit:
     #PROBLEM: what about functions that have no end, or very long functions?
     #^^^ SI problem, you're kinda fucked and you just have to see if manually
@@ -2511,8 +2487,11 @@ print(p.communicate()[1])
     nameCreateFile.write(arg1)
     nameCreateFile.close()
     pytest = Popen(['python', nametest], stdout=PIPE, stderr=PIPE)
-    print("this is output",pytest.communicate()[0].decode())
-    print("this is error",pytest.communicate()[1].decode())
+    #print("this is output",pytest.communicate()[0].decode())
+    output = pytest.communicate()[0].decode()
+    #print("this is error",pytest.communicate()[1].decode())
+    err = pytest.communicate()[1].decode()
+    ANS.append([arg1,(output,err)])
     os.remove(nametest)
     return ANS
 
@@ -2528,7 +2507,7 @@ def nametestFUNC(argList):
     '''
     arg1 = argList[0]
     ExistenceCheck = os.path.isfile(arg1)
-    print("testfunc2", arg1, ExistenceCheck)
+    #print("testfunc2", arg1, ExistenceCheck)
     if ExistenceCheck:
         x = 0
         while ExistenceCheck == True:
@@ -2536,7 +2515,7 @@ def nametestFUNC(argList):
             newnameprep = arg1.split(".")[:-1]
             newnameprep2 = "".join(newnameprep)
             newname = newnameprep2 + str(x) + "." + arg1.split(".")[-1]
-            print("qhat is new name?",newname)
+            #print("qhat is new name?",newname)
             #test new name
             ExistenceCheck = os.path.isfile(newname)
             x += 1
@@ -2544,12 +2523,172 @@ def nametestFUNC(argList):
         return [False, newname]
     else:
         return [True, arg1]
-        
+
+def maxlongestcontig(argList):
+    LHS = argList[0]
+    RHS = argList[1]
+    LHSinit = argList[2]
+    RHSinit = argList[3]
+    
+    #hint: this is commutative
+    #print("LHS")
+    #print(LHS)
+    #print("RHS")
+    #print(RHS)
+    Candidatelist = []
+    ANS = []
+    RHSCounter = RHSinit
+    for y in RHS[RHSinit:]:
+        LHSCounter = LHSinit
+        for x in LHS[LHSinit:]:
+            #::AM I SUPPOSED TO SCALE THIS
+            if x == y:
+                #get x pos for LHS start 
+                lhscheckpos = LHSCounter
+                #get y pos for RHS start 
+                rhscheckpos = RHSCounter
+                length = 0
+                #print("stats", x, LHSCounter, y, RHSCounter)
+                #print("=======WTF STATS",LHS[lhscheckpos+length] == RHS[rhscheckpos+length])
+                while LHS[lhscheckpos+length] == RHS[rhscheckpos+length]:
+                    length += 1
+                    if len(LHS) > lhscheckpos+length and len(RHS) > rhscheckpos+length:
+                        pass
+                    else:
+                        break
+                #add candidate to Candidatelist
+                #datareq: LHSstart RHSstart Length
+                Candidatelist.append([lhscheckpos,rhscheckpos,length])
+            LHSCounter += 1
+        RHSCounter += 1
+    #double check info
+    #print("CandidateList", Candidatelist)
+    #print(LHS)
+    #print(RHS)
+    for i in Candidatelist:
+        #print("Candidate",i)
+        #print("NOTE: [:] format doesn't do singletons")
+        #print("matching left (singletons will fuck up)",LHS,i[0],i[0]+i[2])
+        #print(LHS[i[0]:i[0]+i[2]+1])
+        #print("matching right (singletons will fuck up)",RHS,i[1],i[1]+i[2])
+        #print(RHS[i[1]:i[1]+i[2]+1])
+        if ANS == []:
+            ANS = i
+        else:
+            if i[2] > ANS[2]:
+                ANS = i
+    return ANS
+
+def seqsplit(argList):
+    LHS = argList[0]
+    RHS = argList[1]
+    #need ending strat
+    #generic: apply maxlongestcontig on splits until it fails
+    ##what to do with nil answer??
+    LCont = maxlongestcontig([LHS,RHS,0,0])
+    #nullansweralready:
+    if LCont == []:
+        return [[['Symbol0'], [0]]]
+    
+    #match like segments together (try: from left to right)
+    Connections = []
+    Connections = seqsplitmin([LHS,RHS,LCont,Connections, [-1, -1, -1]])
+    
+    #for each part in Connections, if NOT same parts OR either part is empty, reapply maxlongestcontig
+    #then at the end stitch similar parts together
+    #print("================checking Connections")
+    #print(Connections)
+    i = 0
+    for x in Connections:
+        LContmin = maxlongestcontig([x[0][0],x[1][0],0,0])
+        if x[0][0] == x[1][0] or len(x[0][0]) == 0 or len(x[1][0]) == 0 or len(LContmin) == 0:
+            pass
+            i += 1
+        else:
+            #print("WTF BUCK",x,LContmin)
+            #print("DELETE CURRENT X",x)
+            #print(Connections[i])
+            #print("old Con", Connections)
+            del Connections[i]
+            #print("new Con", Connections)
+            
+            #INSERT NEW X PARTS (NOTE: WE ALSO INSERT ENOUGHT EMPTY LISTS SO MAKING STATEMENT+REPLACE IS EASIER)
+            #replace the current x with this:
+            ##################LHS/RHS are diff, LCont is now LContmin##################
+            #print("part 1",[[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]])
+            #print("part 2",[[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]+1]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]+1]]])
+            #print("part 3",[[x[0][0][LContmin[0]+LContmin[2]+1:]],[x[1][0][LContmin[1]+LContmin[2]+1:]]])
+            #Connections = InsertAt(Connections, [[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]], i)
+            #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]]]], i+1)
+            #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]+LContmin[2]:]],[x[1][0][LContmin[1]+LContmin[2]:]]], i+2)
+            #print("oh baby, oh oh baby \n", x[0][0], "\n", x[1][0], "\n", LContmin, "\n", Connections, "\n", [i, i+1, i+2])
+            Connections = seqsplitmin([x[0][0],x[1][0],LContmin,Connections,[i, i+1, i+2]])
+            #print("new connections")
+            #print(Connections)
+            i += 1
+    #construct statement:
+    ANS = []
+    symboli = 0
+    #print("what are connections?",Connections)
+    #print("ANS",ANS)
+    for x in Connections:
+        if x[0] == x[1]:
+            ANS.append(x)
+        elif len(x[0][0])!= 0 and len(x[1][0])!= 0:
+            ANS.append([["Symbol" + str(symboli)], [symboli]])
+            symboli += 1
+        #print("ANS at each step", ANS)
+    return ANS
+
+def seqsplitmin(argList):
+    LHS = argList[0]
+    RHS = argList[1]
+    LCont = argList[2]
+    Connections = argList[3]
+    index = argList[4]
+    ###this is because I might as well make a generic now as well as try to optimize instead of wait for later
+    #what this does is take LHS,RHS, and LCont and appends the right connections
+    #if there is an empty connection, refuse to append
+    #index is a list of indicies to add objects
+    ANS = Connections
+    #print("CHECKANS1",ANS)
+    #if it's an empty connection, refuse
+    #print("trendytrendytrendy \n", LHS, "\n",RHS, "\n",LCont, "\n",Connections, "\n",index)
+    
+    if len(LHS[:LCont[0]]) == 0 and len(RHS[:LCont[1]]) == 0:
+        pass
+    #else: append
+    else:
+        #ANS.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
+        ANS = InsertAt(ANS,[[LHS[:LCont[0]]],[RHS[:LCont[1]]]],index[0])
+
+    #print("CHECKANS2",ANS)
+    if len(LHS[LCont[0]:LCont[0]+LCont[2]]) == 0 and len(RHS[LCont[1]:LCont[1]+LCont[2]]) == 0:
+        pass
+    else:
+        #ANS.append([[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]])
+        ANS = InsertAt(ANS,[[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]],index[1])
+
+    #print("CHECKANS3",ANS)
+    if len(LHS[LCont[0]+LCont[2]:]) == 0 and len(RHS[LCont[1]+LCont[2]:]) == 0:
+        pass
+    else:
+        ANS = InsertAt(ANS,[[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]],index[2])
+
+    #print("CHECKANS4",ANS)
+    return ANS        
         
 ##############################################################
 #TESTING STAGE
 
-delta1(["print('check this out')"])
+test1 = "print('alpha')"
+test2 = "print('beta')"
+
+#print(maxlongestcontig(test2,test1,0,0))
+#print(maxlongestcontig(test1,test2,0,0))
+print(seqsplit([test1,test2]))
+
+#print(delta1(["print('check this out')"]))
 #print('check this out')
 
 
