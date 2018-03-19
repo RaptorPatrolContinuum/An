@@ -2592,12 +2592,13 @@ def delta2(argList):
     RHS = argList[1]
     #need ending strat
     #generic: apply maxlongestcontig on splits until it fails
-    ##what to do with nil answer??
     LCont = maxlongestcontig([LHS,RHS,0,0])
-    #nullansweralready:
+    ##what to do with nil answer??
+    ##nullansweralready:
     if LCont == []:
         #return [[['Symbol0'], [0]]]
-        return [[['α0'], [0]]]
+        #return [[['α0'], [0]]]
+        return [[['α0'], ['α0']]]
     
     #match like segments together (try: from left to right)
     Connections = []
@@ -2645,7 +2646,7 @@ def delta2(argList):
             ANS.append(x)
         elif len(x[0][0])!= 0 and len(x[1][0])!= 0:
             #ANS.append([["Symbol" + str(symboli)], [symboli]])
-            ANS.append([["α" + str(symboli)], [symboli]])
+            ANS.append([["α" + str(symboli)], ["α" + str(symboli)]])
             symboli += 1
         #print("ANS at each step", ANS)
     return ANS
@@ -2688,15 +2689,120 @@ def seqsplitmin(argList):
     #print("CHECKANS4",ANS)
     return ANS
 
+def firstlongestcontig(argList):
+    LHS = argList[0]
+    RHS = argList[1]
+    LHSinit = argList[2]
+    RHSinit = argList[3]
+    try:
+        antitoggle = argList[4]
+    except:
+        antitoggle = 0
+    print("argList for firstlongestcontig",argList)
+    #print("LHS")
+    #print(LHS)
+    #print("RHS")
+    #print(RHS)
+    Candidatelist = []
+    ANS = []
+    RHSCounter = RHSinit
+    for y in RHS[RHSinit:]:
+        #print("stats", LHS[LHSinit], LHSinit, y, RHSCounter)
+        #::AM I SUPPOSED TO SCALE THIS
+        if LHS[LHSinit] == y:
+            #get x pos for LHS start 
+            lhscheckpos = LHSinit
+            #get y pos for RHS start 
+            rhscheckpos = RHSCounter
+            length = 0
+            while LHS[lhscheckpos+length] == RHS[rhscheckpos+length]:
+                #print("WTF IS GOING ON", len(LHS), lhscheckpos+length, len(RHS), rhscheckpos+length,LHS[lhscheckpos+length],RHS[rhscheckpos+length],LHS[lhscheckpos+length] == RHS[rhscheckpos+length], "length is", length )
+                length += 1
+                #print("check breakpoint",lhscheckpos+length , len(LHS) , rhscheckpos+length , len(RHS))
+                if lhscheckpos+length == len(LHS) or rhscheckpos+length == len(RHS):
+                    break
+            #print("the info",[lhscheckpos,rhscheckpos,length])
+            #add candidate to Candidatelist
+            #datareq: LHSstart RHSstart Length
+            Candidatelist.append([lhscheckpos,rhscheckpos,length])
+        RHSCounter += 1
+    #double check info
+    #print("CandidateList", Candidatelist)
+    #print(LHS)
+    #print(RHS)
+    for i in Candidatelist:
+        #print("Candidate",i)
+        #print("NOTE: [:] format doesn't do singletons")
+        #print("matching left (singletons will fuck up)",LHS,i[0],i[0]+i[2])
+        #print(LHS[i[0]:i[0]+i[2]+1])
+        #print("matching right (singletons will fuck up)",RHS,i[1],i[1]+i[2])
+        #print(RHS[i[1]:i[1]+i[2]+1])
+        if ANS == []:
+            ANS = i
+        else:
+            if i[2] > ANS[2]:
+                ANS = i
+
+    if len(Candidatelist) > 0:
+        #print("===================START")
+        #print("check ans",ANS)
+        #print("matching left (singletons will fuck up)",LHS,ANS[0],ANS[0]+ANS[2])
+        #print(LHS[ANS[0]:ANS[0]+ANS[2]])
+        #print("matching right (singletons will fuck up)",RHS,ANS[1],ANS[1]+ANS[2])
+        #print(RHS[ANS[1]:ANS[1]+ANS[2]])
+        #print("===================END")
+        if antitoggle == 1:
+            ANS = [ANS[1],ANS[0],ANS[2]]
+    #print("BEWARE OF ANTITOGGLE!",ANS)
+    return ANS
+
 def delta3(argList):
     '''
     input: (obj1,obj2)
-    
+    output: replacement function
     NEED THEOREM: deltav2(obj1,obj2)
         :if one obj is the abstraction of the other then the answer of deltav2 is the abstraction
-    output: replacement function
-    '''
     
+    '''
+    arg1 = argList[0]
+    arg2 = argList[1]
+    #plan
+    #find abstraction in one of the arguments:
+    abstractionfunc = delta2([arg1,arg2])
+    #print("abstr func is", abstractionfunc)
+    abstractionstr = toString([dom(abstractionfunc),"naive"])
+    #print("abstr",abstractionstr)
+    if abstractionstr == arg1:
+        TheObj = arg2
+    elif abstractionstr == arg2:
+        TheObj = arg1
+    else:
+        return "Can't find abstraction"
+
+    #now we know TheObj and abstraction
+    #next we need to find replacement string:
+    #try to match abstraction to obj then the rest of the string for obj we attach to symbols in abstraction
+    '''
+    REQUIREMENTS FOR MATCHING ABSTRACTION TO OBJECT PROPERLY
+    >'exhaust' abstraction
+    >recognize symbols
+    '''
+    #keep track of where we are in the obj
+    TheObjIndex = 0
+    for x in abstractionfunc:
+        print("if symbol, 'skip'",x,x[0][0][0],"α",x[0][0][0] == "α")
+        if x[0][0][0] == "α":
+            pass
+        #else: we attempt to match to first (why first? #1: we can't tell difference between two matches #2: if first doesn't work then our obj has too much noise)
+        else:
+            #print("feed into firstlongest",x[0][0])
+            stringmatching = firstlongestcontig([x[0][0],TheObj[TheObjIndex:],0,0])
+            print("try firstlongestcontig",stringmatching)
+            print("targetvalue",TheObj[stringmatching[1]:stringmatching[1]+stringmatching[2]])
+            TheObjIndex = TheObjIndex + stringmatching[2]
+            print("updating TheObjIndex", TheObjIndex)
+    
+        
 
 ##############################################################
 #TESTING STAGE
@@ -2707,10 +2813,13 @@ test2 = "print('α0')"
 
 #print(maxlongestcontig(test2,test1,0,0))
 #print(maxlongestcontig(test1,test2,0,0))
-print(delta2([test1,test2]))
+#print(delta2([test1,test2]))
 #== test2
 #print("what about range?",ran(delta2([test1,test2])))
-print(toString([dom(delta2([test1,test2])),"naive"]))
+#print(toString([dom(delta2([test1,test2])),"naive"]))
+
+print(delta3([test1,test2]))
+
 
 #print(delta1(["print('check this out')"]))
 #print('check this out')
