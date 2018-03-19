@@ -2532,11 +2532,19 @@ def nametestFUNC(argList):
     else:
         return [True, arg1]
 
+def dequals(x,y):
+    #just need == in the form of a function:
+    return x == y
+
 def maxlongestcontig(argList):
     LHS = argList[0]
     RHS = argList[1]
     LHSinit = argList[2]
     RHSinit = argList[3]
+    try:
+        commfunc = argList[4]
+    except:
+        commfunc = dequals
     
     #hint: this is commutative
     #print("LHS")
@@ -2550,7 +2558,9 @@ def maxlongestcontig(argList):
         LHSCounter = LHSinit
         for x in LHS[LHSinit:]:
             #::AM I SUPPOSED TO SCALE THIS
-            if x == y:
+            #print("checking how to pass a func as arg",commfunc(x,y))
+            #if x == y:
+            if commfunc(x,y):
                 #get x pos for LHS start 
                 lhscheckpos = LHSCounter
                 #get y pos for RHS start 
@@ -2590,6 +2600,10 @@ def maxlongestcontig(argList):
 def delta2(argList):
     LHS = argList[0]
     RHS = argList[1]
+    try:
+        commrel = argList[2]
+    except:
+        commrel = dequals
     #need ending strat
     #generic: apply maxlongestcontig on splits until it fails
     LCont = maxlongestcontig([LHS,RHS,0,0])
@@ -2610,7 +2624,7 @@ def delta2(argList):
     #print(Connections)
     i = 0
     for x in Connections:
-        LContmin = maxlongestcontig([x[0][0],x[1][0],0,0])
+        LContmin = maxlongestcontig([x[0][0],x[1][0],0,0,commrel])
         if x[0][0] == x[1][0] or len(x[0][0]) == 0 or len(x[1][0]) == 0 or len(LContmin) == 0:
             pass
             i += 1
