@@ -2698,7 +2698,7 @@ def firstlongestcontig(argList):
         antitoggle = argList[4]
     except:
         antitoggle = 0
-    print("argList for firstlongestcontig",argList)
+    #print("argList for firstlongestcontig",argList)
     #print("LHS")
     #print(LHS)
     #print("RHS")
@@ -2789,22 +2789,43 @@ def delta3(argList):
     '''
     #keep track of where we are in the obj
     TheObjIndex = 0
+    alphatrigger = False
+    ANS = []
     for x in abstractionfunc:
-        print("if symbol, 'skip'",x,x[0][0][0],"α",x[0][0][0] == "α")
+        #print("=====if symbol, 'skip'",x,x[0][0][0],"α",x[0][0][0] == "α")
         if x[0][0][0] == "α":
-            pass
+            symbolis = x[0][0]
+            #if we're at the end of abstractionfunc assume rest of theobj is symbol:
+            if x == abstractionfunc[-1]:
+                ANS.append([symbolis,TheObj[TheObjIndex:]])
+            alphatrigger = True
         #else: we attempt to match to first (why first? #1: we can't tell difference between two matches #2: if first doesn't work then our obj has too much noise)
         else:
             #print("feed into firstlongest",x[0][0])
             stringmatching = firstlongestcontig([x[0][0],TheObj[TheObjIndex:],0,0])
-            print("try firstlongestcontig",stringmatching)
-            print("targetvalue",TheObj[stringmatching[1]:stringmatching[1]+stringmatching[2]])
+            #print("try firstlongestcontig",stringmatching)
+            target = TheObj[TheObjIndex+stringmatching[1]:TheObjIndex+stringmatching[1]+stringmatching[2]]
+            #print("targetvalue",target)
+            
+            oldIndex = TheObjIndex
             TheObjIndex = TheObjIndex + stringmatching[2]
-            print("updating TheObjIndex", TheObjIndex)
-    
+            #print("updating TheObjIndex", TheObjIndex)
+            if alphatrigger == True:
+                #print(oldIndex,TheObjIndex)
+                symbolguess = TheObj[oldIndex:oldIndex+stringmatching[1]]
+                #print("now we try to construct alphastring replacement|", [symbolis,symbolguess])
+                ANS.append([symbolis,symbolguess])
+            #add here so we preserve order
+            ANS.append([target,target])
+            alphatrigger = False
+    return ANS
         
 
 ##############################################################
+
+def printpls(argList):
+    return str(argList)
+            
 #TESTING STAGE
 
 test1 = "print('alpha')"
@@ -2818,7 +2839,21 @@ test2 = "print('α0')"
 #print("what about range?",ran(delta2([test1,test2])))
 #print(toString([dom(delta2([test1,test2])),"naive"]))
 
-print(delta3([test1,test2]))
+print("say yay!",delta3([test1,test2]))
+
+#testing out basic edge cases:
+
+print("#delta2 symbol at beginning",delta2(["alphaprint('')","betrprint('')"]))
+print("#delta3 symbol at beginning",delta3(["α0print('')","betrprint('')"]))
+print("#delta2 symbol at end",delta2(["print('')alpha","print('')betr"]))
+print("#delta3 symbol at end",delta3(["print('')alpha","print('')α0"]))
+
+
+print("let me figure out how deltav2 works for making delta1 on code:", delta2(["printpls('alpha')",eval("printpls('alpha')")]))
+#print("check eval",eval("printpls('alpha')"))
+
+
+
 
 
 #print(delta1(["print('check this out')"]))
