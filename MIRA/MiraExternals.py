@@ -4,14 +4,13 @@ from __future__ import with_statement
 from math import *
 from inspect import *
 import ast
-
 import sys
-
-
 import time
 import mmap
 import random
 import os
+import itertools
+
 from collections import defaultdict
 from subprocess import *
 
@@ -169,6 +168,11 @@ def fCheck(fcandidate):
 
 def toString(argList):
     '''
+    HINT: might have to take dom or range for this func
+    obj to make into string (assume it's a written 'function' to be safe)
+    f = arg1
+    arg2 is basistype which can be a file or naive or INTEGERS
+    
     assume f is a finite function of the form for all x in f, x = [a,b]
     return a string that is the range of f "in order"
     basistype is a list where we assume order OR take a basis
@@ -177,6 +181,7 @@ def toString(argList):
     f = argList[0]
     basistype = argList[1]
     ANS = ""
+    #print("IS TO STRING FUCKED=======================",argList)
     if basistype == "naive":
         #print("what is f",f)
         for x in f:
@@ -2607,6 +2612,7 @@ def delta2(argList):
     #need ending strat
     #generic: apply maxlongestcontig on splits until it fails
     LCont = maxlongestcontig([LHS,RHS,0,0])
+    #print("is LCont empty?",LCont)
     ##what to do with nil answer??
     ##nullansweralready:
     if LCont == []:
@@ -2780,9 +2786,13 @@ def delta3(argList):
     '''
     arg1 = argList[0]
     arg2 = argList[1]
+    try:
+        commrel = argList[2]
+    except:
+        commrel = dequals
     #plan
     #find abstraction in one of the arguments:
-    abstractionfunc = delta2([arg1,arg2])
+    abstractionfunc = delta2([arg1,arg2,commrel])
     #print("abstr func is", abstractionfunc)
     abstractionstr = toString([dom(abstractionfunc),"naive"])
     #print("abstr",abstractionstr)
@@ -2853,20 +2863,48 @@ test2 = "print('α0')"
 #print("what about range?",ran(delta2([test1,test2])))
 #print(toString([dom(delta2([test1,test2])),"naive"]))
 
-print("say yay!",delta3([test1,test2]))
+#print("say yay!",delta3([test1,test2]))
 
 #testing out basic edge cases:
 
-print("#delta2 symbol at beginning",delta2(["alphaprint('')","betrprint('')"]))
-print("#delta3 symbol at beginning",delta3(["α0print('')","betrprint('')"]))
-print("#delta2 symbol at end",delta2(["print('')alpha","print('')betr"]))
-print("#delta3 symbol at end",delta3(["print('')alpha","print('')α0"]))
+#print("#delta2 symbol at beginning",delta2(["alphaprint('')","betrprint('')"]))
+#print("#delta3 symbol at beginning",delta3(["α0print('')","betrprint('')"]))
+#print("#delta2 symbol at end",delta2(["print('')alpha","print('')betr"]))
+#print("#delta3 symbol at end",delta3(["print('')alpha","print('')α0"]))
+#ANS KEY
+#delta2 symbol at beginning [[['α0'], ['α0']], [["print('')"], ["print('')"]]]
+#delta3 symbol at beginning [['α0', 'betr'], ["print('')", "print('')"]]
+#delta2 symbol at end [[["print('')"], ["print('')"]], [['α0'], ['α0']]]
+#delta3 symbol at end [["print('')", "print('')"], ['α0', 'alpha']]
 
+#print("let me figure out how deltav2 works for making delta1 on code:")
+#print(delta2(["printpls('alpha')",eval("printpls('alpha')")]))
+#NOT AN L IT'S INTEGER 1
 
-print("let me figure out how deltav2 works for making delta1 on code:", delta2(["printpls('alpha')",eval("printpls('alpha')")]))
+'''
+HINT: I can pass abstracted argument into function then track it along the way then construct proper symbol
+
+'''
+
+delta1answer = ["printpls('input')",eval("printpls('input')")]
+delta1answer2 = ["printpls('test')",eval("printpls('test')")]
+print("delta1 looks like this", delta1answer)
+print("delta1 2 looks like this", delta1answer2)
+print("just tell me, tell me", delta2([str(delta1answer),str(delta1answer2)]))
+statementattempt = delta2([str(delta1answer),str(delta1answer2)])
+print("STATEMENTATTMPT",statementattempt)
+stringattempt = toString([dom(statementattempt),"naive"])
+print("stringattemtp is",stringattempt)
+print("just tell me, tell me V3 ATTEMPT", delta3([str(delta1answer),stringattempt]))
+print("just tell me, tell me2", delta2([str(delta1answer[0]),str(delta1answer[1])]))
+print("LHS|",delta1answer[0])
+print("RHS|",delta1answer[1])
+print("deltav2 determines abstraction",delta2([delta1answer[0],delta1answer[1]]))
+print("try deltav3 instead of v2",delta3([delta1answer[0],delta1answer[1]]))
+
 #print("check eval",eval("printpls('alpha')"))
 
-
+print("nchoose2 is already done",list(itertools.combinations('abcd',2)))
 
 
 
