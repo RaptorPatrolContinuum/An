@@ -1,5 +1,39 @@
 from MiraExternals import *
+import psutil
+#from pprint import pprint as pp
+#pp([(p.pid, p.info) for p in psutil.process_iter(attrs=['name', 'status']) if p.info['status'] == psutil.STATUS_RUNNING])
+for proc in psutil.process_iter():
+    print("what is proc?", proc)
+    try:
+        print("what is proc files?", proc.open_files())
+    except:
+        pass
+        print("this proc failed", proc)
 
+'''
+    for item in proc.open_files():
+        pass
+        #print("what is item path?", item.path)
+        #if fpath == item.path:
+        #    return True
+
+
+
+
+for proc in psutil.process_iter():
+    try:
+        #flist = proc.get_open_files()
+        flist = proc.open_files()
+        if flist:
+            print(proc.pid,proc.name)
+            for nt in flist:
+                print("\t",nt.path)
+
+    # This catches a race condition where a process ends
+    # before we can examine its files    
+    except psutil.NoSuchProcess as err:
+        print("****",err) 
+'''
 
 '''
 THIS DOESN'T WORK PROPERLY (something trailing at the end) but fuck it working with IRL rules right now
@@ -80,9 +114,9 @@ def fileindex(argList):
     arg1.write(arg2 + "\n")
     
     return i + 1
-print(fileindex([filename, "ZZ"]))
-print(fileindex([filename, "False"]))
-print(fileindex([filename, "Your"]))
+#print(fileindex([filename, "ZZ"]))
+#print(fileindex([filename, "False"]))
+#print(fileindex([filename, "Your"]))
 
 
 def fileindexINV(argList):
@@ -100,7 +134,7 @@ def fileindexINV(argList):
 
 filename.close()
 
-print("can I open a file then copy+close to work on it still?")
+#print("can I open a file then copy+close to work on it still?")
 filename = open("Basis.txt",'r+')
 keep = filename.read()
 filename.close()
@@ -108,7 +142,8 @@ filename.close()
 
 elements = ('foo', 'bar', 'baz')
 for count, elem in enumerate(elements):
-    print (count, elem)
+    #print (count, elem)
+    pass
 
 #===============
 

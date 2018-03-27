@@ -2884,8 +2884,6 @@ test2 = "print('α0')"
 '''
 HINT: I can pass abstracted argument into function then track it along the way then construct proper symbol
 
-'''
-
 delta1answer = ["printpls('input')",eval("printpls('input')")]
 delta1answer2 = ["printpls('test')",eval("printpls('test')")]
 print("delta1 looks like this", delta1answer)
@@ -2905,6 +2903,16 @@ print("try deltav3 instead of v2",delta3([delta1answer[0],delta1answer[1]]))
 #print("check eval",eval("printpls('alpha')"))
 
 print("nchoose2 is already done",list(itertools.combinations('abcd',2)))
+
+====checking for file validity for clone func
+cwd = os.getcwd()
+print("check current working directory",cwd)
+
+for x in os.listdir(cwd):
+    print("check for files in dir",x)
+
+'''
+
 
 
 
