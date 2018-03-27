@@ -2,13 +2,19 @@ from MiraExternals import *
 import psutil
 #from pprint import pprint as pp
 #pp([(p.pid, p.info) for p in psutil.process_iter(attrs=['name', 'status']) if p.info['status'] == psutil.STATUS_RUNNING])
+
+
 for proc in psutil.process_iter():
-    print("what is proc?", proc)
+    #print("what is proc?", proc)
     try:
         print("what is proc files?", proc.open_files())
+        for x in proc.open_files():
+            print("LIST of named tuples",x.path)
     except:
         pass
         print("this proc failed", proc)
+    
+    
 
 '''
     for item in proc.open_files():
