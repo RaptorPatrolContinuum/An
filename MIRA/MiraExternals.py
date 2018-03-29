@@ -2917,18 +2917,54 @@ CLONING STRATS:
 >idea is to make a program to clone mira:
 spawning independent process python
 
-need to know:
-#files in directory
-##os.listdir(cwd)
-#if you're in smaller or larger directory
-##cwd = os.getcwd().split("\\")[-1]
-if files you are about to copy are usable
-#just check fileopen
-#have everything under with condition and if we cannot access, throw an error
+
+#TEST:
+RUN testprogram.py that just waits for input
+close this program
+then check if testprogram closes as well
+
+
+print( output.stdout.read())
 
 
 
+output = Popen(['python', 'TESTPROGRAM.py'])
+#process ID
+print("this is process id",os.getpid())
+# look ma, no pipes!
+print(output.pid)
 '''
+
+#need to know:
+print("files in directory")
+cwdLIST = os.getcwd()
+print(os.listdir(cwdLIST))
+#if you're in smaller or larger directory
+cwd = os.getcwd().split("\\")[-1]
+if cwd == "MIRA":
+    print("IN MIRA")
+else:
+    print("NOT IN MIRA")
+#if files you are about to copy are usable
+#just check fileopen
+     #and os.path.isdir(os.getcwd() + y) == False
+print("LEARNING LIST COMPREHENSION")
+#and print(os.getcwd() + y) 
+listTEST = [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]
+print(listTEST)
+
+for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
+    print("WHAT IS X",x)
+    try:
+        #print("pls catch dir",os.getcwd()+ "\\" + x)
+        #print("pls catch dir",os.path.isdir(os.getcwd()+ "\\" + x))
+        botburger = open(x,'r+')
+        botburger.close()
+        print(x, "is available")
+    except Exception as e:
+        print(x, "NOT AVAILABLE")
+        print(e)
+#have everything under with condition and if we cannot access, throw an error
 
 
 

@@ -129,7 +129,11 @@ while True:
             #get last entry on max file
             #this is old tail func
             #last = [ast.literal_eval(tail(SImaxnameopen,1,0)[0])]
-            last = [ast.literal_eval(tailOpened([SImaxnameopen,1])[0])]
+            try:
+                last = [ast.literal_eval(tailOpened([SImaxnameopen,1])[0])]
+            except:
+                print("WTF IS GOING ON")
+                break
             SImaxnameopen.close()
             #continue from there
             #print("stop here!")
