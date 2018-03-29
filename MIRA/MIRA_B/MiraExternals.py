@@ -2934,8 +2934,6 @@ output = Popen(['python', 'TESTPROGRAM.py'])
 print("this is process id",os.getpid())
 # look ma, no pipes!
 print(output.pid)
-
-HINT: I DONT NEED SEPARATE PROCESS BECAUSE PYTHON COMPILES A SEPARATE THINGY
 '''
 
 #need to know:
@@ -2988,21 +2986,21 @@ for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir
 #if we're here we can clone into 'opposite' directory
 
 for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
-    #print("this is filename",x)
+    print("this is filename",x)
     CURRENT = os.getcwd() + "\\" + x
-    #print("total name CURRENT", CURRENT)
+    print("total name CURRENT", CURRENT)
     
     if PLACE == "MIRA":
-        #print("make new file in new directory",cwdLIST + "\\MIRA_B" + "\\")
+        print("make new file in new directory",cwdLIST + "\\MIRA_B" + "\\")
         NEW = cwdLIST + "\\MIRA_B" + "\\" + x
-        #print("total name NEXT", NEW)
+        print("total name NEXT", NEW)
 
     elif PLACE == "MIRA_B":
-        #print("make new file in new directory","\\".join(basics[:len(basics)-1]) +"\\MIRA" + "\\")
-        NEW = "\\".join(basics[:len(basics)-1]) +"\\MIRA" + "\\" + x
+        print("make new file in new directory","\\".join(basics[:len(basics)-1]) +"\\MIRA" + "\\")
     #then copy and close
-    #print(CURRENT,NEW)
-    copy2(CURRENT, NEW)
+    NEW = "\\".join(basics[:len(basics)-1]) +"\\MIRA" + "\\" + x
+    print(CURRENT,NEW)
+    #copy2(CURRENT, NEW)
 
 
 

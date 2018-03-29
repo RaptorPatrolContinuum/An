@@ -1,0 +1,34 @@
+SIZE+
+SIZEZ
+
+
+ANSWER KEY
+SIZE4
+SIZE+
+SIZEp
+SIZEZ
+SIZEZZ
+
+
+HINT: WE ARE INSERTING SIZE+
+checking SIZEp < SIZE+ WHICH IS FALSE
+
+what does that mean?
+currently we have:
+OBJ TO INSERT: SIZE+
+
+
+SIZE4
+SIZEp
+< OBJ <
+SIZEZ
+SIZEZZ
+
+true, I do go left:
+
+CHECK THIS
+SIZE4
+< OBJ <
+SIZEp
+SIZEZ
+SIZEZZ
