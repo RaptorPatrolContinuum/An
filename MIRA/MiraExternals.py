@@ -1486,6 +1486,21 @@ def Cheat(string):
     return Morphemes
 
 '''
+Gödel's incompleteness theorems are two theorems of mathematical logic that demonstrate the inherent limitations of every formal axiomatic system containing basic arithmetic. These results, published by Kurt Gödel in 1931, are important both in mathematical logic and in the philosophy of mathematics. The theorems are widely, but not universally, interpreted as showing that Hilbert's program to find a complete and consistent set of axioms for all mathematics is impossible.
+
+The first incompleteness theorem states that no consistent system of axioms whose theorems can be listed by an effective procedure (i.e., an algorithm) is capable of proving all truths about the arithmetic of the natural numbers. For any such formal system, there will always be statements about the natural numbers that are true, but that are unprovable within the system. The second incompleteness theorem, an extension of the first, shows that the system cannot demonstrate its own consistency.
+
+Employing a diagonal argument, Gödel's incompleteness theorems were the first of several closely related theorems on the limitations of formal systems. They were followed by Tarski's undefinability theorem on the formal undefinability of truth, Church's proof that Hilbert's Entscheidungsproblem is unsolvable, and Turing's theorem that there is no algorithm to solve the halting problem.
+'''
+print("CHECKING CHEAT FUNC")
+print(Cheat("Gödel's incompleteness theorems are two theorems of mathematical logic that demonstrate the inherent limitations of every formal axiomatic system containing basic arithmetic. These results, published by Kurt Gödel in 1931, are important both in mathematical logic and in the philosophy of mathematics. The theorems are widely, but not universally, interpreted as showing that Hilbert's program to find a complete and consistent set of axioms for all mathematics is impossible."))
+
+
+
+
+
+
+'''
 this function is already deprecated since we aren't using gigantic lists anymore
 '''
 
@@ -2844,7 +2859,74 @@ def delta3(argList):
             ANS.append([target,target])
             alphatrigger = False
     return ANS
+
+def Cloneinit():
+    '''
+    just clone the whole MIRA directory OR MIRA_B directory
+    FILE STRUCTURE: MIRA\MIRA_B
+    '''
+    #need to know:
+    cwdLIST = os.getcwd()
+    print("files in directory",os.listdir(cwdLIST))
+    #if you're in smaller or larger directory
+    cwd = os.getcwd().split("\\")[-1]
+    basics= os.getcwd().split("\\")[:len(os.getcwd().split("\\"))-1]
+
+    PLACE = []
+    if cwd == "MIRA":
+        print("IN MIRA")
+        #check if opposite dir exists
+        if os.path.exists(cwdLIST + "\\MIRA_B"):
+            PLACE = "MIRA"
+        else:
+            #if not, make it
+            os.makedirs(cwdLIST + "\\MIRA_B")
+    elif cwd == "MIRA_B":
+        print("NOT IN MIRA")
+        #check if opposite dir exists
+        #print("#GO UP ONE DIRECTORY", "\\".join(basics))
+        #print("didnt need to combo", basics[-1])
+        #print("MAKE THIS DIRECTORY","\\".join(basics[:len(basics)-1]) +"\\MIRA" )
+        if basics[-1] == "MIRA":
+            PLACE = "MIRA_B"
+        else:
+            #if not, make it
+            os.makedirs("\\".join(basics[:len(basics)-1]) +"\\MIRA")
+    else:
+        print("WHERE THE FUCK AM I")
+        sys.exit()
+    #if files you are about to copy are usable
+    #just check fileopen
+    for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
+        try:
+            botburger = open(x,'r+')
+            botburger.close()
+            print(x, "is available")
+        except Exception as e:
+            print(x, "NOT AVAILABLE, STOPPING NOW")
+            print(e)
+            exit()
+    #have everything under with condition and if we cannot access, throw an error <--- DIDN'T REALLY DO THIS
+    #if we're here we can clone into 'opposite' directory
+
+    for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
+        #print("this is filename",x)
+        CURRENT = os.getcwd() + "\\" + x
+        #print("total name CURRENT", CURRENT)
         
+        if PLACE == "MIRA":
+            #print("make new file in new directory",cwdLIST + "\\MIRA_B" + "\\")
+            NEW = cwdLIST + "\\MIRA_B" + "\\" + x
+            #print("total name NEXT", NEW)
+
+        elif PLACE == "MIRA_B":
+            #print("make new file in new directory","\\".join(basics[:len(basics)-1]) +"\\MIRA" + "\\")
+            NEW = "\\".join(basics[:len(basics)-1]) +"\\MIRA" + "\\" + x
+        #then copy and close
+        #print(CURRENT,NEW)
+        copy2(CURRENT, NEW)
+
+            
 
 ##############################################################
 
@@ -2928,81 +3010,8 @@ then check if testprogram closes as well
 print( output.stdout.read())
 
 
-
-output = Popen(['python', 'TESTPROGRAM.py'])
-#process ID
-print("this is process id",os.getpid())
-# look ma, no pipes!
-print(output.pid)
-
 HINT: I DONT NEED SEPARATE PROCESS BECAUSE PYTHON COMPILES A SEPARATE THINGY
 '''
-
-#need to know:
-print("files in directory")
-cwdLIST = os.getcwd()
-print(os.listdir(cwdLIST))
-#if you're in smaller or larger directory
-cwd = os.getcwd().split("\\")[-1]
-
-basics= os.getcwd().split("\\")[:len(os.getcwd().split("\\"))-1]
-
-PLACE = []
-if cwd == "MIRA":
-    print("IN MIRA")
-    #check if opposite dir exists
-    if os.path.exists(cwdLIST + "\\MIRA_B"):
-        PLACE = "MIRA"
-    else:
-        #if not, make it
-        os.makedirs(cwdLIST + "\\MIRA_B")
-elif cwd == "MIRA_B":
-    print("NOT IN MIRA")
-
-    
-    #check if opposite dir exists
-    #print("#GO UP ONE DIRECTORY", "\\".join(basics))
-    #print("didnt need to combo", basics[-1])
-    #print("MAKE THIS DIRECTORY","\\".join(basics[:len(basics)-1]) +"\\MIRA" )
-    if basics[-1] == "MIRA":
-        PLACE = "MIRA_B"
-    else:
-        #if not, make it
-        os.makedirs("\\".join(basics[:len(basics)-1]) +"\\MIRA")
-else:
-    print("WHERE THE FUCK AM I")
-    sys.exit()
-#if files you are about to copy are usable
-#just check fileopen
-
-for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
-    try:
-        botburger = open(x,'r+')
-        botburger.close()
-        print(x, "is available")
-    except Exception as e:
-        print(x, "NOT AVAILABLE, STOPPING NOW")
-        print(e)
-        sys.exit()
-#have everything under with condition and if we cannot access, throw an error
-#if we're here we can clone into 'opposite' directory
-
-for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
-    #print("this is filename",x)
-    CURRENT = os.getcwd() + "\\" + x
-    #print("total name CURRENT", CURRENT)
-    
-    if PLACE == "MIRA":
-        #print("make new file in new directory",cwdLIST + "\\MIRA_B" + "\\")
-        NEW = cwdLIST + "\\MIRA_B" + "\\" + x
-        #print("total name NEXT", NEW)
-
-    elif PLACE == "MIRA_B":
-        #print("make new file in new directory","\\".join(basics[:len(basics)-1]) +"\\MIRA" + "\\")
-        NEW = "\\".join(basics[:len(basics)-1]) +"\\MIRA" + "\\" + x
-    #then copy and close
-    #print(CURRENT,NEW)
-    copy2(CURRENT, NEW)
 
 
 
