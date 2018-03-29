@@ -2912,8 +2912,25 @@ for x in os.listdir(cwd):
     print("check for files in dir",x)
 
 
+>have to log changes using github?
+CLONING STRATS:
+>idea is to make a program to clone mira:
+spawning independent process python
+
+need to know:
+#files in directory
+##os.listdir(cwd)
+#if you're in smaller or larger directory
+##cwd = os.getcwd().split("\\")[-1]
+if files you are about to copy are usable
+#just check fileopen
+#have everything under with condition and if we cannot access, throw an error
+
+
 
 '''
+
+
 
 
 
