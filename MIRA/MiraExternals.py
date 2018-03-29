@@ -2941,31 +2941,43 @@ cwdLIST = os.getcwd()
 print(os.listdir(cwdLIST))
 #if you're in smaller or larger directory
 cwd = os.getcwd().split("\\")[-1]
+
+#print("basics",os.getcwd().split("\\"))
+basics= os.getcwd().split("\\")[:len(os.getcwd().split("\\"))-1]
+print("#GO UP ONE DIRECTORY", "\\".join(basics))
+
 if cwd == "MIRA":
     print("IN MIRA")
+    #check if opposite dir exists
+    if os.path.exists(cwdLIST + "\\MIRA_B"):
+        pass
+    else:
+        #if not, make it
+        os.makedirs(cwdLIST + "\\MIRA_B")
 else:
     print("NOT IN MIRA")
+    #check if opposite dir exists
+    #if not, make it
+
+    
 #if files you are about to copy are usable
 #just check fileopen
-     #and os.path.isdir(os.getcwd() + y) == False
-print("LEARNING LIST COMPREHENSION")
-#and print(os.getcwd() + y) 
-listTEST = [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]
-print(listTEST)
 
 for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
-    print("WHAT IS X",x)
     try:
-        #print("pls catch dir",os.getcwd()+ "\\" + x)
-        #print("pls catch dir",os.path.isdir(os.getcwd()+ "\\" + x))
         botburger = open(x,'r+')
         botburger.close()
         print(x, "is available")
     except Exception as e:
-        print(x, "NOT AVAILABLE")
+        print(x, "NOT AVAILABLE, STOPPING NOW")
         print(e)
+        sys.exit()
 #have everything under with condition and if we cannot access, throw an error
+#if we're here we can clone into 'opposite' directory
 
+#for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
+    
+    #then copy and close
 
 
 
