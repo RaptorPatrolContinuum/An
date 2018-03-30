@@ -19,6 +19,7 @@ memory = open('Memory.txt','r+')
 while True:
     inputtext = str(input("exit or logout to leave \n"))
     if inputtext == "exit" or inputtext == "logout":
+        raise SystemExit
         break
     else:
 
