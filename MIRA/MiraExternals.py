@@ -1619,6 +1619,7 @@ def tailOpened(argList):
     # loop until we find X lines
     while len(lines_found) < lines:
         try:
+            print("io.UnsupportedOperation: can't do nonzero end-relative seeks",block_counter, _buffer,block_counter * _buffer, os.SEEK_END)
             f.seek(block_counter * _buffer, os.SEEK_END)
         except IOError:  # either file is too small, or too many lines requested
             f.seek(0)
