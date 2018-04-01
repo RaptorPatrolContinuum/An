@@ -1604,9 +1604,9 @@ def tailOpened(argList):
     #f = open(argList[0],'r+')
     f = argList[0]
     lines = argList[1]
-    #_buffer = 4098
+    _buffer = 4098
     #try smaller buffer
-    _buffer = 128
+    #_buffer = 128
     
     """Tail a file and get X lines from the end"""
     # place holder for the lines found
@@ -1629,10 +1629,6 @@ def tailOpened(argList):
         lines_found = rchop(f.readlines(), '\n')
 
         # we found enough lines, get out
-        # Removed this line because it was redundant the while will catch
-        # it, I left it for history
-        # if len(lines_found) > lines:
-        #    break
 
         # decrement the block counter to get the
         # next X bytes
