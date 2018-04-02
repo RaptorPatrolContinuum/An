@@ -14,7 +14,7 @@ from shutil import *
 
 from collections import defaultdict
 from subprocess import *
-from linecache import *
+#from linecache import *
 
 if sys.version_info[0] < 3:
     raise Exception("Python 3 or a more recent version is required.")
@@ -1660,8 +1660,23 @@ def FILEindexread(argList):
 
     HINT: THIS REMOVES TRAILING NEWLINE
 
+    #FILENAME
+    arg1 = argList[0]
+    #INDEX TO READ
+    arg2 = int(float(argList[1]))    
+    #print("what is getline and args", argList, isinstance(arg2, int), getline(arg1,arg2))
+    #print("IM FUCKING PRINTING EVERYTHING")
+    #wtf = open(arg1,"r+")
+    #print(wtf.read())
+    #wtf.close()
+    #print("IM FUCKING PRINTING EVERYTHING/")
+    ANS = rchop(getline(arg1,arg2), '\n')
+    #print("IS ANSWER BUSTED?", ANS)
+    return ANS
+
+    #PROBLEMS: LINECACHE PUTS FILE IN CACHE SO IT DOESNT SEE CHANGES AND IT HITS MEMORY MAX TOO FAST
     HINT: I FOUND A FUCKING MODULE THAT DOES THIS: linecache
-    
+    '''
     f = open(argList[0],'r+')
     n = argList[1]
     f.seek(0)
@@ -1671,12 +1686,6 @@ def FILEindexread(argList):
             f.close()
             #return line.strip()
             return rchop(line, "\n")
-    '''
-    #FILENAME
-    arg1 = argList[0]
-    #INDEX TO READ
-    arg2 = int(float(argList[1]))
-    return rchop(getline(arg1,arg2), '\n')
     
 def fileindex(argList):
     '''

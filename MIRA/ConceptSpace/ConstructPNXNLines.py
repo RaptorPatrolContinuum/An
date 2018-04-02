@@ -72,9 +72,12 @@ while True:
         #close sidata
         SIData.close()
         #get max lines
-        maxlinenumber = mapcountLINES([testfile])
+        maxlinenumber = mapcountLINES([theFilename])
         #read last line
-        last = FILEindexread([theFilename,maxlinenumber])
+        # PRETTY SURE I DONT NEED THIS clearcache()
+        #print("3s stats",theFilename,maxlinenumber,FILEindexread([theFilename,maxlinenumber]))
+        last = ast.literal_eval(FILEindexread([theFilename,maxlinenumber-1]))
+        #print("what is last wtf", last)
         #open sidata
         SIData = open(theFilename,"r+")
         
@@ -135,11 +138,17 @@ while True:
             #go to beginning
             SIData.seek(0)
             #fucking tail function is fucked
-            SImaxnameopen = open(SImaxname,'r+')
+            #SImaxnameopen = open(SImaxname,'r+')
             #get last entry on max file
             #this is old tail func
             #last = [ast.literal_eval(tail(SImaxnameopen,1,0)[0])]
-            last = [ast.literal_eval(tailOpened([SImaxnameopen,1])[0])]
+            #last = [ast.literal_eval(tailOpened([SImaxnameopen,1])[0])]
+
+            #get max lines
+            maxlinenumber = mapcountLINES([theFilename])
+            #read last line
+            last = ast.literal_eval(FILEindexread([theFilename,maxlinenumber-1]))
+            #print("what is last1?",last)
             #try:
             #    last = [ast.literal_eval(tailOpened([SImaxnameopen,1])[0])]
             #except Exception as e:
@@ -154,14 +163,18 @@ while True:
         SIData = open(theFilename,"r+")
         #seek to beginning
         SIData.seek(0)
+
+        #print("what is last2?",last)
     
         #print("check address of []",AddressFunc(Minv_(Beta_([])),[]))
         #print("Address on [] fails so what about vision on 0?", AutoVision(0,1))
         #print("What is last?",last)
         #figure out what the last x/y as graphs are
-        xGraph = last[-1][0][0]
+        #xGraph = last[-1][0][0]
+        xGraph = last[0][0]
         #print("what is xGraph?",xGraph)
-        yGraph = last[-1][0][1]
+        #yGraph = last[-1][0][1]
+        yGraph = last[0][1]
         #print("what is yGraph?",yGraph)
     
         #PROBLEM: using beta might be bad because if you mess with the basis then you get a diff address (AKA we might write/read things the wrong way and skip something)
