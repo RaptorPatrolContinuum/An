@@ -14,6 +14,7 @@ from shutil import *
 
 from collections import defaultdict
 from subprocess import *
+from linecache import *
 
 if sys.version_info[0] < 3:
     raise Exception("Python 3 or a more recent version is required.")
@@ -1556,6 +1557,14 @@ def tailOLD(f, n, offset=0):
         avg_line_length *= 1.3
 
 def tail(argList):
+    '''
+    HINT:
+    I only look at last line anyways, so I can just use linecache module + maxlines to get last line
+    
+    I need to avoid this function because it uses readlines()
+    ALSO: THIS USES FUCKING .readlines() for some fucking reason, so this is automatically fucking bad.
+    '''
+    
     #[fname, lines, _buffer=4098]
     f = open(argList[0],'r+')
     lines = argList[1]
@@ -1595,9 +1604,13 @@ def tail(argList):
     #close file
     f.close()
     return lines_found[-lines:]
-
+    
+    
 def tailOpened(argList):
     '''
+    THIS IS DEPRECATED USE tail instead
+
+    
     this version is for Construct PNXN lines because I read that catching a failure with exception is expensive
     '''
     #[fname, lines, _buffer=4098]
@@ -1646,7 +1659,9 @@ def FILEindexread(argList):
     arg2 = line index to read (starts from 0)
 
     HINT: THIS REMOVES TRAILING NEWLINE
-    '''
+
+    HINT: I FOUND A FUCKING MODULE THAT DOES THIS: linecache
+    
     f = open(argList[0],'r+')
     n = argList[1]
     f.seek(0)
@@ -1656,6 +1671,12 @@ def FILEindexread(argList):
             f.close()
             #return line.strip()
             return rchop(line, "\n")
+    '''
+    #FILENAME
+    arg1 = argList[0]
+    #INDEX TO READ
+    arg2 = int(float(argList[1]))
+    return rchop(getline(arg1,arg2), '\n')
     
 def fileindex(argList):
     '''

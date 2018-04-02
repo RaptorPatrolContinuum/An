@@ -1757,6 +1757,24 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
+    <node id="n91">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-50.87293664212075" y="666.6395228540636"/>
+          <y:Fill color="#FF0000" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="370.87890625" x="-383.13389790433257" y="13.999814406956716">remember to alternate dependencies on things like construct pnxn.py<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.5" labelRatioY="0.3555712818421056" nodeRatioX="-0.5" nodeRatioY="0.5" offsetX="-12.25499165433257" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
     <edge id="e0" source="n22" target="n22">
       <data key="d10">
         <y:ArcEdge>
@@ -2494,6 +2512,17 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </edge>
     <edge id="e71" source="n72" target="n67">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e72" source="n91" target="n15">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>

@@ -62,12 +62,22 @@ while True:
         SIData.seek(0)
         ###print("Check Out SI Data!", SIData.read()) HINT: seek again if I enable this
         ###SIData.seek(0)
-        #last = ast.literal_eval(SIData.read())
+        
         #print("WTF MALFORMED1?????", tail(SIData,1,0))
         #print("WTF MALFORMED?????",ast.literal_eval(tail(SIData,1,0)[0]))
         #new tail func, next line is tailOld
         #last = [ast.literal_eval(tail(SIData,1,0)[0])]
-        last = [ast.literal_eval(tailOpened([SIData,1])[0])]
+        #last = [ast.literal_eval(tailOpened([SIData,1])[0])]
+        
+        #close sidata
+        SIData.close()
+        #get max lines
+        maxlinenumber = mapcountLINES([testfile])
+        #read last line
+        last = FILEindexread([theFilename,maxlinenumber])
+        #open sidata
+        SIData = open(theFilename,"r+")
+        
         #print("what is last?",last)
         SIData.seek(0)
         ######print("what about this", ast.literal_eval(tail(SIData,1,0))[-1][0][0])
