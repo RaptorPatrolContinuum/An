@@ -1624,6 +1624,7 @@ def tailOpened(argList):
         except IOError:  # either file is too small, or too many lines requested
             f.seek(0)
             lines_found = f.readlines()
+            print("fucking readlines I'm stupid", len(lines_found))
             break
 
         lines_found = rchop(f.readlines(), '\n')
