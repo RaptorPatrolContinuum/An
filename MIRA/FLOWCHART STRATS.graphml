@@ -1383,49 +1383,6 @@
     <node id="n75">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="700.5313919322709" y="1322.3491430557756"/>
-          <y:Fill color="#FF0000" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="195.033203125" x="-214.15277838321242" y="-9.3505859375">&gt;CONSTRUCTPNXN IS BROKEN?
-<y:LabelModel>
-              <y:SmartNodeLabelModel distance="4.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.5" labelRatioY="0.0" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="-19.11957525821242" offsetY="0.0" upX="0.0" upY="-1.0"/>
-            </y:ModelParameter>
-          </y:NodeLabel>
-          <y:Shape type="rectangle"/>
-        </y:ShapeNode>
-      </data>
-    </node>
-    <node id="n76">
-      <data key="d5"/>
-      <data key="d6">
-        <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="360.448630355221" y="1322.3491430557756"/>
-          <y:Fill color="#000080" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="251.32421875" x="-262.16726330395574" y="7.298828125">WRITE MY OWN FUCKING TAIL FUNCTION <y:LabelModel>
-              <y:SmartNodeLabelModel distance="4.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.5" labelRatioY="0.5" nodeRatioX="-0.5" nodeRatioY="0.5" offsetX="-10.843044553955735" offsetY="-4.0" upX="0.0" upY="-1.0"/>
-            </y:ModelParameter>
-          </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="186.09765625" x="-202.16807391438863" y="34.0">get x number of lines from the end<y:LabelModel>
-              <y:SmartNodeLabelModel distance="4.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="0.5" offsetX="-16.07041766438863" offsetY="4.0" upX="0.0" upY="-1.0"/>
-            </y:ModelParameter>
-          </y:NodeLabel>
-          <y:Shape type="rectangle"/>
-        </y:ShapeNode>
-      </data>
-    </node>
-    <node id="n77">
-      <data key="d6">
-        <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-156.03995723403023" y="1382.3491430557756"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
@@ -1440,7 +1397,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n78">
+    <node id="n76">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -1500,7 +1457,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n79">
+    <node id="n77">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -1526,7 +1483,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n80">
+    <node id="n78">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -1552,7 +1509,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n81">
+    <node id="n79">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -1570,7 +1527,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n82">
+    <node id="n80">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -1588,7 +1545,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n83">
+    <node id="n81">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -1606,7 +1563,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n84">
+    <node id="n82">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -1624,7 +1581,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n85">
+    <node id="n83">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -1642,7 +1599,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n86">
+    <node id="n84">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -1660,7 +1617,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n87">
+    <node id="n85">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -1690,7 +1647,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n88">
+    <node id="n86">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-609.3419782452536" y="2366.2302387487953"/>
@@ -1714,7 +1671,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n89">
+    <node id="n87">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -1728,22 +1685,29 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="0.0" nodeRatioY="-0.5" offsetX="0.0" offsetY="-4.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="822.73046875" x="-123.09886022644855" y="49.84973368934425">HINT: use omega function on MIRA AND have MIRA ACCEPT OMEGA FUNCTIONS SO SHE CAN LOOK/USE/CONSTRUCT "HIGHER" Concept Space<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="-0.5" nodeRatioX="9.10887913828505" nodeRatioY="0.5" offsetX="0.0" offsetY="19.849733689344248" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
           <y:Shape type="rectangle"/>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n90">
+    <node id="n88">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-556.3371079919632" y="2442.412481677166"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="280.169921875" x="61.58818003989484" y="-4.394555521997518">idea: use assigning name strategy to induce the self<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="280.169921875" x="61.58818003989484" y="-9.3505859375">idea: use assigning name strategy to induce the self<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.26501175694384027" nodeRatioX="0.5" nodeRatioY="-0.5" offsetX="31.588180039894837" offsetY="0.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="-0.5" offsetX="31.588180039894837" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="162.103515625" x="61.58818003989484" y="10.638514015139208">idea2: look at identity function<y:LabelModel>
@@ -1757,7 +1721,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n91">
+    <node id="n89">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -2333,7 +2297,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e55" source="n76" target="n75">
+    <edge id="e55" source="n75" target="n41">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2344,7 +2308,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e56" source="n77" target="n41">
+    <edge id="e56" source="n9" target="n8">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2355,7 +2319,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e57" source="n9" target="n8">
+    <edge id="e57" source="n7" target="n6">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2366,7 +2330,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e58" source="n7" target="n6">
+    <edge id="e58" source="n5" target="n4">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2377,7 +2341,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e59" source="n5" target="n4">
+    <edge id="e59" source="n78" target="n16">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2388,18 +2352,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e60" source="n80" target="n16">
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e61" source="n82" target="n83">
+    <edge id="e60" source="n80" target="n81">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2410,7 +2363,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e62" source="n0" target="n84">
+    <edge id="e61" source="n0" target="n82">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2421,7 +2374,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e63" source="n1" target="n84">
+    <edge id="e62" source="n1" target="n82">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2432,7 +2385,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e64" source="n80" target="n2">
+    <edge id="e63" source="n78" target="n2">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2443,7 +2396,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e65" source="n85" target="n1">
+    <edge id="e64" source="n83" target="n1">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2454,7 +2407,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e66" source="n86" target="n3">
+    <edge id="e65" source="n84" target="n3">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2465,7 +2418,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e67" source="n81" target="n85">
+    <edge id="e66" source="n79" target="n83">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2476,7 +2429,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e68" source="n81" target="n86">
+    <edge id="e67" source="n79" target="n84">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2487,7 +2440,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e69" source="n88" target="n23">
+    <edge id="e68" source="n86" target="n23">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2500,7 +2453,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e70" source="n67" target="n72">
+    <edge id="e69" source="n67" target="n72">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2511,7 +2464,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e71" source="n72" target="n67">
+    <edge id="e70" source="n72" target="n67">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -2522,7 +2475,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e72" source="n91" target="n15">
+    <edge id="e71" source="n89" target="n15">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
