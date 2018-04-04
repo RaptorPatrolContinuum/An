@@ -145,7 +145,7 @@ while True:
             #last = [ast.literal_eval(tailOpened([SImaxnameopen,1])[0])]
 
             #get max lines
-            maxlinenumber = mapcountLINES([theFilename])
+            maxlinenumber = mapcountLINES([SImaxname])
             #read last line
             last = ast.literal_eval(FILEindexread([theFilename,maxlinenumber-1]))
             #print("what is last1?",last)
