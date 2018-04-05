@@ -155,7 +155,7 @@ while True:
             #    print("WTF IS GOING ON")
             #    print(e)
             #    break
-            SImaxnameopen.close()
+            #SImaxnameopen.close()
             #continue from there
             #print("stop here!")
             #break
