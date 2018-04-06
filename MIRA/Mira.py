@@ -81,6 +81,8 @@ while True:
             #####print("ok evaling inputtext",eval(inputtext))
             #####print("what she should see:",[str(inputtext),str(eval(inputtext))])
             BasisFix(str(eval(inputtext)),basislist)
+            #write input/output to memory RAM file:
+            
         except:
             print("code died")
             pass
