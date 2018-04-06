@@ -1493,9 +1493,9 @@ The first incompleteness theorem states that no consistent system of axioms whos
 
 Employing a diagonal argument, Gödel's incompleteness theorems were the first of several closely related theorems on the limitations of formal systems. They were followed by Tarski's undefinability theorem on the formal undefinability of truth, Church's proof that Hilbert's Entscheidungsproblem is unsolvable, and Turing's theorem that there is no algorithm to solve the halting problem.
 '''
-print("CHECKING CHEAT FUNC")
-print(Cheat("Gödel's incompleteness theorems are two theorems of mathematical logic that demonstrate the inherent limitations of every formal axiomatic system containing basic arithmetic. These results, published by Kurt Gödel in 1931, are important both in mathematical logic and in the philosophy of mathematics. The theorems are widely, but not universally, interpreted as showing that Hilbert's program to find a complete and consistent set of axioms for all mathematics is impossible."))
-print(Cheat("printpls('testthis')"))
+#print("CHECKING CHEAT FUNC")
+#print(Cheat("Gödel's incompleteness theorems are two theorems of mathematical logic that demonstrate the inherent limitations of every formal axiomatic system containing basic arithmetic. These results, published by Kurt Gödel in 1931, are important both in mathematical logic and in the philosophy of mathematics. The theorems are widely, but not universally, interpreted as showing that Hilbert's program to find a complete and consistent set of axioms for all mathematics is impossible."))
+#print(Cheat("printpls('testthis')"))
 '''
 ^^^ MORPHEME PICKING IS CURRENTLY A FUCKING PROBLEM ESP WITH printpls('testthis')
 '''

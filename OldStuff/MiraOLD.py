@@ -14,11 +14,6 @@ basisname = 'Basis.txt'
 #memory = open('Memory.txt','r+')
 memoryname = 'Memory.txt'
 
-'''
-NEED TO WORK ON MEMORY RAM + MEMORY FILE 
-'''
-
-
 #filedata = 'INP.txt'
 #basis = 'Basis.txt'
 #memory = 'Memory.txt'
@@ -35,6 +30,8 @@ while True:
         What's the plan?
 
         for U unknown, see M_U
+        fix basis to accomodate info
+        \omega(I_basis_U,U) & vision
         eval info: M_U compose MIRA and M_U in MIRA?
         append basus w/ M_U compose MIRA and M_U in MIRA
         pattern recognition:
@@ -42,16 +39,46 @@ while True:
         \cong
         "use delta < some # " and look in some topo space
         append basis again
+
+
+        more old code
+        ================================================================
+        #init basis
+        if len(basisCopy) == 0:
+            basisCopy = ["True","False"]
+            
+        else:
+            #get basistext as list:
+            basis = ast.literal_eval(basis.read())
+
+        #fix basis
+        BasisFix(inputtext,basislist)         
+        '''
         
-        
+        #init memory:
+        memory.seek(0)
+        if len(memory.read()) == 0:
+            memorylist = []
+        else:
+            #get basistext as list:
+            memory.seek(0)
+            #memorylist = ast.literal_eval(memory.read())
+            memorylist = memory.readlines()
+            memorylistNEW = memory.readlines()       
+
+        #####print("TEST LEXICO ORDERING")
+        basis.seek(0)
+        ##########print(fileindex([basis,"[" + "\n"]))
+        #####print(AddressFILE([basis,"[" + "\n"]))
+        #####lexicoSort([basis,memory])
 
         
-        have *I* seen this before?
-        ^^^^WTF THIS IS ALREADY A META QUESTION
-        
+        ##have I seen this before?
+        '''
+        WTF THIS IS ALREADY A META QUESTION
         have I seen this before means:
         MIRAMEMORY composeMETA input == REALWORLD compose input
-        question: what is REALWORLD? <-- tbhis is just arbitrary input
+        question: what is REALWORLD?
         in this case, let's take python evaluation as the real world since it provides fast feedback
         later it should be a later step in some timestream (AKA time1 is MIRA composeMETA input and REALWORLD whatever happens after that, whatever that is)
 
@@ -62,16 +89,68 @@ while True:
 
         question: what is file format for memorylist? (hint: it shouldn't be a fucking list anymore)
         just be a list of written functions in [[a,b]] format
-
-        #should know if she knows it
-        Elem_My(inputtext,memorylist)
-        #escape = "[Elem_My("+inputtext+","+str(memorylist)+")",str(Elem_My(inputtext,memorylist))+"]"
-        escape = str(bytes("[Elem_My("+inputtext+","+str(memorylist)+"),"+str(Elem_My(inputtext,memorylist))+"]", "utf-8").decode("unicode_escape"))
-        #escape = bytes(str(Elem_My(inputtext,memorylist)), "utf-8").decode("unicode_escape")
         
         '''
         
+        #####print("what is memorylist \n",memorylist)
+        for x in memorylist:
+            try:
+                #print("qhat is x?",x)
+                second = eval(x)
+                #####print("what is second?", second)
 
+                #print("memorylist check again",Inspector_M(memorylist))
+                #FUUUCK COMPOSEMETA OR COMPOSE ONLY
+                #####print("ELEMENT OF AND MEMORYLIST",Elem_My("[['b','b']]\n",memorylist))
+                '''
+                WORKS FOR THIS MEMORYTEXT
+                [[print(,'b']]
+                [['argument_1 == "a"', 1+1]]
+                [['b','b']]
+                '''
+                
+                first = [['a',['a']]]
+                #####print("2nd",second)
+                #####print("1st",first)
+                #####print(str(ComposeMETA(second,first)))
+                #####print(Q_(str(ComposeMETA(second,first)) + "\n"))
+                #print("memorylist check again",Inspector_M(memorylist))
+                #####print("ELEMENT OF AND MEMORYLIST VER2",Elem_My(str(ComposeMETA(second,first)) + "\n",memorylist))
+                #print("how to add to memorylist", memorylist.append(str(ComposeMETA(second,first)) + "\n"))
+                
+                #if ComposeMETA(second,first) HAS NOT BEEN SEEN BEFORE
+                if Elem_My(str(ComposeMETA(second,first)) + "\n",memorylist) == False:
+                    #####print("attempt to add!")
+                    #add compositions as answers if you haven't seen it already
+                    memorylistNEW.append(str(ComposeMETA(second,first)) + "\n")
+                    #####print("newlist is", memorylistNEW)
+                    #COMPARE WITH PYTHON INPUT
+                    
+            except:
+                pass
+
+
+
+
+
+
+
+
+        
+        #print("input in memory?",inputtext,Elem_My(inputtext,memorylist))
+        #should know if she knows it
+        Elem_My(inputtext,memorylist)
+        ###print("ORIGINAL MEMORY?",memorylist)
+        #escape = "[Elem_My("+inputtext+","+str(memorylist)+")",str(Elem_My(inputtext,memorylist))+"]"
+        escape = str(bytes("[Elem_My("+inputtext+","+str(memorylist)+"),"+str(Elem_My(inputtext,memorylist))+"]", "utf-8").decode("unicode_escape"))
+        #####print("wtf is escape",escape)
+        #escape = bytes(str(Elem_My(inputtext,memorylist)), "utf-8").decode("unicode_escape")
+        ###print("WTF ESCAPE CHARS",escape)
+        
+        ###memorylist.append(escape)
+        ###memorylist.append(M_(inputtext))
+
+        #print("THIS WAS MISSING COMMAS",Address(basislist,[["1","print"],["2","("],["3","test"],["4",")"]])) 
         ##try to eval it
         #####print("before the try -> eval!")
         #print("morphemes through cheat!", Cheat(str(inputtext)))
@@ -81,11 +160,12 @@ while True:
             #####print("ok evaling inputtext",eval(inputtext))
             #####print("what she should see:",[str(inputtext),str(eval(inputtext))])
             BasisFix(str(eval(inputtext)),basislist)
+            
         except:
             print("code died")
             pass
         
-        
+        #print("MEMORYLIST IS", memorylist)
         #get nearest topo: M_U compose MIRA and M_U in MIRA?
         '''
         for x in memorylist[0:]:
@@ -110,8 +190,20 @@ while True:
         #"use delta < some # " and look in some topo space
         #append basis again
 
+        #check what the stuff is
+        #print("blist",basislist)
+        #print("mlist",memorylist)
+        #write everything down
+        #basis.seek(0)
+        #basis.write(str(basislist))
 
+        '''
+        NEED TO REENABLE THIS
         
+        print("what is memorystlist new?", memorylistNEW)
+        memory.seek(0)
+        memory.write(str(memorylistNEW))
+        '''
 
 
         '''
@@ -136,14 +228,6 @@ while True:
         memoryObj.close()
         '''
         #=================================================
-        '''
-        WHAT MEMORY SHOULD BE:
-[['a', 2]]
-[['b','b']]
-[[print(,'b']]
-[['argument_1 == "a"', 1+1]]
-
-        '''
         #for U unknown, see M_U
         #print("what is input", inputtext)
         #print("end of alg")

@@ -15,6 +15,23 @@
   <graph edgedefault="directed" id="G">
     <data key="d0"/>
     <node id="n0">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="383.7475099601594" width="549.9016434262946" x="1725.6727968127489" y="387.29624501992015"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="224.728515625" x="162.58656390064766" y="-41.15674131598598">MIRA PREPLANNING #2: SLEEP MODE<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="2.220446049250313E-16" nodeRatioY="-0.5" offsetX="0.0" offsetY="-22.455569440985983" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n1">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -27,23 +44,6 @@
             </y:LabelModel>
             <y:ModelParameter>
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-            </y:ModelParameter>
-          </y:NodeLabel>
-          <y:Shape type="rectangle"/>
-        </y:ShapeNode>
-      </data>
-    </node>
-    <node id="n1">
-      <data key="d6">
-        <y:ShapeNode>
-          <y:Geometry height="383.7475099601594" width="549.9016434262946" x="1725.6727968127489" y="387.29624501992015"/>
-          <y:Fill hasColor="false" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="224.728515625" x="162.58656390064766" y="-41.15674131598598">MIRA PREPLANNING #2: SLEEP MODE<y:LabelModel>
-              <y:SmartNodeLabelModel distance="4.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="2.220446049250313E-16" nodeRatioY="-0.5" offsetX="0.0" offsetY="-22.455569440985983" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:Shape type="rectangle"/>
@@ -260,7 +260,7 @@
         <y:ShapeNode>
           <y:Geometry height="99.71933067729088" width="262.4000000000001" x="217.50000000000023" y="10.26562749003969"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="220.375" x="21.012500000000045" y="4.0">LEGEND: GREEN = WHAT MIRA SEES<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -412,7 +412,7 @@
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="314.9000000000003" y="540.2"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle color="#FFFFFF" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="37.0" x="-3.5" y="5.0">&lt;html&gt;&lt;strike&gt;READ&lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -512,7 +512,7 @@
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="207.98000000000025" y="861.7299999999996"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="688.0" x="50.07270916334687" y="6.0">&lt;html&gt;&lt;strike&gt;WHAT DOES MIRA NEED TO SEE: INPUT/OUTPUT/ABSTRACTIONS/METATHEOREMS (INCLUDE "SELF" METATHEOREMS) &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -631,7 +631,7 @@
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-199.3499999999999" y="394.5"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="213.0" x="-76.5" y="34.0">&lt;html&gt;&lt;strike&gt;HOW TO AVOID INFINITE DESCENT? &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -697,14 +697,21 @@
     <node id="n36">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="667.5000000000002" y="157.5499999999999"/>
+          <y:Geometry height="30.0" width="30.0" x="336.7708512378903" y="1471.710606995496"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="284.0" x="-127.0" y="-17.197409921671408">&lt;html&gt;&lt;strike&gt;ABSTRACTED LANGUAGE IN CONCEPT SPACE ? &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.35987049608357013" nodeRatioX="0.0" nodeRatioY="-0.5" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="446.0" x="-207.99999999999994" y="20.0">&lt;html&gt;&lt;strike&gt;language is just composition + functions that match the object you want to match &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="1.887379141862766E-15" nodeRatioY="0.5" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:Shape type="rectangle"/>
@@ -716,7 +723,7 @@
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="472.0" y="266.6099999999998"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="266.0" x="-118.0" y="-24.0">&lt;html&gt;&lt;strike&gt;STRATEGY: HANDLE A CLONE "FROM ABOVE" &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -741,7 +748,7 @@
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="0.08916015624999996" nodeRatioY="-0.5" offsetX="0.0" offsetY="-26.149414062499886" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="328.0" x="-146.3251953125" y="-24.0">&lt;html&gt;&lt;strike&gt;HINT: HAVE AN ARGUMENT TO STOP INFINITE DESCENT &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="328.0" x="-146.3251953125" y="-24.0">&lt;html&gt;&lt;strike&gt;HINT: HAVE AN ARGUMENT TO STOP INFINITE DESCENT  &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1028,7 +1035,7 @@
     <node id="n55">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="700.5313919322709" y="1835.9307539840643"/>
+          <y:Geometry height="30.0" width="30.0" x="700.5313919322709" y="1848.4894591633463"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="165.197265625" x="-67.5986328125" y="5.6494140625">"FORCING CONVERGENCE"<y:LabelModel>
@@ -1290,7 +1297,7 @@
     <node id="n70">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="2181.9678068247017" y="727.8602530756957"/>
+          <y:Geometry height="30.0" width="30.0" x="1939.5442534860586" y="727.8602530756957"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="55.85546875" x="-12.927734375" y="5.6494140625">"memory"<y:LabelModel>
@@ -1298,6 +1305,13 @@
             </y:LabelModel>
             <y:ModelParameter>
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="299.423828125" x="-134.7119140625" y="47.04517679131652">HINT: My memory function modifies basis automatically<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="-0.5" nodeRatioX="0.0" nodeRatioY="0.5" offsetX="0.0" offsetY="17.04517679131652" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:Shape type="rectangle"/>
@@ -1620,10 +1634,10 @@
     <node id="n86">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="-983.1023161728035" y="2035.9265973734114"/>
+          <y:Geometry height="30.0" width="30.0" x="-1077.8593521254406" y="2065.0084587703236"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="195.115234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="524.875" x="-129.9916442411195" y="-13.765196096559976">picture:
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="195.115234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="524.875" x="-509.02838448615944" y="-161.46299059895318">picture:
 abstraction:
 input -&gt; [graph sequence]
 
@@ -1639,7 +1653,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="3.91486185862935" nodeRatioY="2.2930807030313343" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.46980878206460475" labelRatioY="0.0" nodeRatioX="-0.5" nodeRatioY="-2.6301791137151063" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:Shape type="rectangle"/>
@@ -1649,7 +1663,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
     <node id="n87">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="-609.3419782452536" y="2366.2302387487953"/>
+          <y:Geometry height="30.0" width="30.0" x="-453.72925058109865" y="2065.0084587703236"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="370.029296875" x="-142.67527343749998" y="-22.701171875">QUESTION: HOW TO REFERENCE SELF WRT CONCEPT SPACE<y:LabelModel>
@@ -1673,7 +1687,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
     <node id="n88">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="-1355.2919096855408" y="2414.8467984909444"/>
+          <y:Geometry height="30.0" width="30.0" x="-686.9908203421608" y="2243.950677931203"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="135.361328125" x="-52.6806640625" y="-22.701171875">PROBLEM AND TOOLS<y:LabelModel>
@@ -1697,7 +1711,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
     <node id="n89">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="-1355.2919096855408" y="2516.217375369308"/>
+          <y:Geometry height="30.0" width="30.0" x="-686.9908203421608" y="2345.321254809566"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="280.169921875" x="61.58818003989484" y="-9.3505859375">idea: use assigning name strategy to induce the self<y:LabelModel>
@@ -1756,14 +1770,14 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="-609.3419782452536" y="2441.6563369931855"/>
+          <y:Geometry height="30.0" width="30.0" x="-581.5539911623688" y="2065.0084587703236"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="290.025390625" x="46.94120643131066" y="5.6494140625">WANT: SELF REFERENCE WRT CONCEPT SPACE<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="290.025390625" x="-9.252789200913867" y="65.6145060977642">WANT: SELF REFERENCE WRT CONCEPT SPACE<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.0" offsetX="16.94120643131066" offsetY="0.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="-0.5" nodeRatioX="4.0253302037195375" nodeRatioY="0.5" offsetX="0.0" offsetY="35.614506097764206" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:Shape type="rectangle"/>
@@ -1774,7 +1788,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="-811.7576408961578" y="2597.2690646573396"/>
+          <y:Geometry height="30.0" width="30.0" x="-788.4157317465346" y="2065.0084587703236"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="78.68359375" x="-24.341796875" y="-22.701171875">omega(MIRA)<y:LabelModel>
@@ -1792,14 +1806,14 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="-811.7576408961578" y="2696.8612103624"/>
+          <y:Geometry height="30.0" width="30.0" x="-867.4527317494302" y="2065.0084587703236"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="310.158203125" x="41.32087811457211" y="5.6494140625">assign name to inputs that mira sees on the smaller clone<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="310.158203125" x="-210.818072947813" y="42.34206691584768">assign name to inputs that mira sees on the smaller clone<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.0" offsetX="11.32087811457211" offsetY="0.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="-0.5" nodeRatioX="-2.3579657128437663" nodeRatioY="0.5" offsetX="0.0" offsetY="12.342066915847681" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:Shape type="rectangle"/>
@@ -1810,14 +1824,14 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="-655.2556976453508" y="2529.688680071763"/>
+          <y:Geometry height="30.0" width="30.0" x="-709.3787317436389" y="2065.0084587703236"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="430.251953125" x="49.22143749932718" y="4.0">MIRA accepts omega functions as inputs so she can make a good enough basis<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="430.251953125" x="-41.574408018190525" y="50.053233331348565">MIRA accepts omega functions as inputs so she can make a good enough basis<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="0.5" nodeRatioY="-0.5" offsetX="19.22143749932718" offsetY="4.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="-0.5" nodeRatioX="5.285052284810316" nodeRatioY="0.5" offsetX="0.0" offsetY="20.053233331348565" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:Shape type="rectangle"/>
@@ -2323,7 +2337,7 @@ EX: that parentheses come in pairs for code<y:LabelModel>
           <y:Geometry height="30.0" width="30.0" x="748.8005803873252" y="3463.246655890625"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="121.609375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="901.884765625" x="57.29438790870563" y="12.550085374058654">how to test hypothesis:
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="121.609375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="901.884765625" x="49.21976330590451" y="12.550085374058654">how to test hypothesis:
 hint: truth telling func is 'if relation is satisfied or not'
 hint: "observe properly"
 hint: see theorem by evaling it and see if metahteorem by looking at what the 'smaller MIRA' sees
@@ -2335,7 +2349,7 @@ hint: autopicked universe is whatever the object 'touches' AKA if 2 objects are 
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.3565084753873511" nodeRatioX="0.5" nodeRatioY="0.5" offsetX="27.29438790870563" offsetY="0.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.3565084753873511" nodeRatioX="0.5" nodeRatioY="0.5" offsetX="19.219763305904507" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:Shape type="rectangle"/>
@@ -2349,7 +2363,7 @@ hint: autopicked universe is whatever the object 'touches' AKA if 2 objects are 
           <y:Geometry height="30.0" width="30.0" x="748.8005803873255" y="3693.8869486785698"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="136.310546875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="324.84765625" x="105.6080246543329" y="25.256868512984056">solving problems + looking for change
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="136.310546875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="324.84765625" x="56.52388871460971" y="4.0">solving problems + looking for change
 know: 
 satisfaction 
 want:
@@ -2362,7 +2376,61 @@ how to check for proper change/ see when object is satisfied
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.4652034886826072" nodeRatioX="0.5" nodeRatioY="0.5" offsetX="75.6080246543329" offsetY="0.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.3092590735195082" nodeRatioX="0.5" nodeRatioY="0.5" offsetX="26.52388871460971" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n125">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1043.5911075128247" y="2308.0458028615626"/>
+          <y:Fill color="#333333" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="181.36328125" x="39.87082314723784" y="5.6494140625">BOILS DOWN TO EXPERIENCE<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.0" offsetX="9.870823147237843" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n126">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="804.0419141952173" y="1848.4894591633463"/>
+          <y:Fill color="#FF0000" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="342.0390625" x="63.50556670479" y="5.6494140625"> WHAT DOES IT MEAN TO MAKE A CHOICE (mathematically)<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.0" offsetX="33.50556670479" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n127">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="27.328187250996393" y="985.4437765106484"/>
+          <y:Fill color="#FF0000" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="318.71875" x="73.10941191065649" y="5.6494140625">THERE IS MORE TO EVAL THAN JUST EVALING CODE <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.0" offsetX="43.10941191065649" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:Shape type="rectangle"/>
@@ -2631,7 +2699,7 @@ how to check for proper change/ see when object is satisfied
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e26" source="n16" target="n1">
+    <edge id="e26" source="n16" target="n0">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3061,7 +3129,7 @@ how to check for proper change/ see when object is satisfied
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="157.06252171740175" y="2051.8935322692005"/>
+            <y:Point x="170.40075551718655" y="2080.0084587703236"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -3388,7 +3456,7 @@ how to check for proper change/ see when object is satisfied
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e99" source="n0" target="n105">
+    <edge id="e99" source="n1" target="n105">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -3401,7 +3469,7 @@ how to check for proper change/ see when object is satisfied
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e100" source="n111" target="n0">
+    <edge id="e100" source="n111" target="n1">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -3434,7 +3502,7 @@ how to check for proper change/ see when object is satisfied
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e103" source="n115" target="n0">
+    <edge id="e103" source="n115" target="n1">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -3530,6 +3598,61 @@ how to check for proper change/ see when object is satisfied
       </data>
     </edge>
     <edge id="e112" source="n124" target="n123">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e113" source="n1" target="n125">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e114" source="n21" target="n127">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e115" source="n88" target="n87">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e116" source="n89" target="n88">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e117" source="n70" target="n71">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
