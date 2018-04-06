@@ -161,6 +161,7 @@ def fCheck(fcandidate):
     one element of the fcandidate is not a pair
     check if each element of fcandidate is of size 2
     '''
+    print("monkaS", fcandidate)
     if len(fcandidate) == 0:
         return False
     for obj in fcandidate:
@@ -724,7 +725,9 @@ def Elem_My(x,y):
     else:
         return False
 
-def VisionBasis(basis,vision):
+def VisionBasis(argList):
+    basis = argList[0]
+    vision = argList[1]
     ANS = []
     if fCheck(vision) == False:
         print("vision is function?", fCheck(vision))
@@ -733,10 +736,12 @@ def VisionBasis(basis,vision):
         ANS.append([basis[int(x[0])],basis[int(x[1])]])
     return ANS
 
-def VisionBasisFILE(basisfile,vision):
+def VisionBasisFILE(argList):
     '''
-    basis is in the form of = open('filename', r+)
+    basisfile takes the whole filename (incl extension) of the basis
     '''
+    basisfile = argList[0]
+    vision = argList[1]
     ANS = []
     if fCheck(vision) == False:
         print("vision is function?", fCheck(vision))
@@ -1730,9 +1735,12 @@ def fileindexINV(argList):
     RETURNS: None if fail or integer if there is index
     also this is just to make shit look good I should just be using the tail function but whatever
     '''
-    openedwhy = open(arg1,'r+')
-    ANS = tail(openedwhy, arg2, 0)
-    openedwhy.close()
+    arg1 = argList[0]
+    arg2 = argList[1]
+    #openedwhy = open(arg1,'r+')
+    #ANS = tail(openedwhy, arg2, 0)
+    #openedwhy.close()
+    ANS = FILEindexread([arg1,arg2])
     return ANS
 
 def rchop(thestring, ending):
