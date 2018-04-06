@@ -161,7 +161,6 @@ def fCheck(fcandidate):
     one element of the fcandidate is not a pair
     check if each element of fcandidate is of size 2
     '''
-    print("monkaS", fcandidate)
     if len(fcandidate) == 0:
         return False
     for obj in fcandidate:
@@ -192,7 +191,7 @@ def toString(argList):
             ANS = ANS + str(x[0])
         return ANS
     if fCheck(f) == False:
-        print("f1 is function? toString", fCheck(f1))
+        print("f1 is function? toString", fCheck(f))
         return
     if basistype == "INTEGERS":
         #then the x coord is just a number, so we order the answer by the numbers in the x coordinates
@@ -739,6 +738,7 @@ def VisionBasis(argList):
 def VisionBasisFILE(argList):
     '''
     basisfile takes the whole filename (incl extension) of the basis
+    HINT: need AutoVision to go from address to vision
     '''
     basisfile = argList[0]
     vision = argList[1]
