@@ -80,10 +80,12 @@ while True:
             ###memorylist.append([inputtext,eval(inputtext)])
             #####print("ok evaling inputtext",eval(inputtext))
             #####print("what she should see:",[str(inputtext),str(eval(inputtext))])
-            BasisFix(str(eval(inputtext)),basislist)
+            #basislist is outdated
+            #BasisFix(str(eval(inputtext)),basislist)
             #write input/output to memory RAM file:
-            
-        except:
+            print("mira shoudl see this", [inputtext,eval(inputtext)])
+        except Exception as e:
+            print("error is ", e)
             print("code died")
             pass
         

@@ -2968,8 +2968,8 @@ def Cloneinit():
 
 ##############################################################
 
-def printpls(argList):
-    return str(argList)
+def printpls(obj):
+    return str(obj)
             
 #TESTING STAGE
 
