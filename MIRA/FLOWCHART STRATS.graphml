@@ -2649,6 +2649,32 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
+    <node id="n139">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-9.451208407040212" y="979.1403122790362"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="121.609375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="1348.263671875" x="-799.4611707060684" y="52.842666644241035">PROBLEM WITH DEADLOCKING
+Per the subprocess documentaion Here, and the other answer, proc.communicate()[0] should be used instead of stdout.read() to avoid deadlocking 
+( https://stackoverflow.com/questions/4537259/python-how-to-pipe-the-output-using-popen )
+
+it will hang until MemoryError happens. If the output is unlimited (as in the test.py case) then .communicate() shouldn't be used. Read incrementally using proc.stdout directly instead, see Python: read streaming input from subprocess.communicate() – jfs 
+( https://stackoverflow.com/questions/4537259/python-how-to-pipe-the-output-using-popen )
+ANSWER:
+LOOK FOR "REPEATS" OR USE A TIMER
+<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="-0.5" nodeRatioX="-4.677644492285613" nodeRatioY="0.5" offsetX="0.0" offsetY="22.842666644241035" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
     <edge id="e0" source="n23" target="n23">
       <data key="d10">
         <y:ArcEdge>
@@ -4041,6 +4067,17 @@ how to check for proper change/ see when object is satisfied
       </data>
     </edge>
     <edge id="e133" source="n4" target="n76">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e134" source="n139" target="n40">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>

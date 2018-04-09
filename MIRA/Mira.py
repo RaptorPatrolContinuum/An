@@ -84,6 +84,13 @@ while True:
             #BasisFix(str(eval(inputtext)),basislist)
             #write input/output to memory RAM file:
             print("mira shoudl see this", [inputtext,eval(inputtext)])
+            #othermira = Popen(['python', 'test.py'], stdout=PIPE)
+            with Popen(['python', 'test.py'], stdout=PIPE, bufsize=1, universal_newlines=True) as p:
+                for line in p.stdout:
+                    print(line, end='')
+            print("END OF TEST")
+
+            
         except Exception as e:
             print("error is ", e)
             print("code died")
