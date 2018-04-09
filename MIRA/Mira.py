@@ -85,15 +85,20 @@ while True:
             #write input/output to memory RAM file:
             print("mira shoudl see this", [inputtext,eval(inputtext)])
             #othermira = Popen(['python', 'test.py'], stdout=PIPE)
-            with Popen(['python', 'test.py'], stdout=PIPE, bufsize=1, universal_newlines=True) as p:
+            memoryfile = open(memoryname, 'a+')
+            with Popen(['python', 'test.py'], stdout=PIPE, stderr=PIPE, bufsize=1, universal_newlines=True) as p:
                 for line in p.stdout:
                     print(line, end='')
+                    memoryfile.write(str([inputtext, [line]]) + "\n")
             print("END OF TEST")
-
+            memoryfile.close()
             
         except Exception as e:
             print("error is ", e)
             print("code died")
+            memoryfile = open(memoryname, 'a+')
+            memoryfile.write(str([inputtext, ["",e]]) + "\n")
+            memoryfile.close()
             pass
         
         

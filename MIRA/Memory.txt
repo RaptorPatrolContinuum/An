@@ -48,3 +48,4 @@
     hint: order unordered list in the 'hardcore' mode, aka just rewriting file and renaming so you guarantee insertion is ok
     THEN YOU INSERT IN ORDER OF INSERTION WHICH IS NOT ACCORDING TO ORDER
     then on bisectioninsertmin if flag is true, then instead of writing, just return the pair: [obj,index]
+['test', ['', NameError("name 'test' is not defined",)]]
