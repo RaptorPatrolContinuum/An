@@ -106,6 +106,7 @@ while True:
                 for line in p.stdout:
                     print(line, end='')
                     sees = str([inputtext, [line]]) + "\n"
+                    print("WTF IS SEES",sees)
                     memoryfile.write(sees)
                 print("wtf fileinpiut")
                 for line in fileinput.input():
