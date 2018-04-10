@@ -1,7 +1,7 @@
 #!/usr/bin/python3.6.3
 from MiraExternals import *
 
-import sys
+#import sys
 
 if sys.version_info[0] < 3:
     raise Exception("Python 3 or a more recent version is required.")
@@ -75,6 +75,19 @@ while True:
         ##try to eval it
         #####print("before the try -> eval!")
         #print("morphemes through cheat!", Cheat(str(inputtext)))
+
+        #memoryfile = open(memoryname, 'a+')
+        #with Popen(['python', 'Mira.py',inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
+        #    for line in p.stdout:
+        #        print(line, end='')
+        #        sees = str([inputtext, [line]]) + "\n"
+        #        print("THIS IS WHAT MIRA SEES",sees)
+        #        memoryfile.write(sees)
+        #print("END OF TEST")
+        #memoryfile.close()
+        
+
+
         try:
             eval(inputtext)
             ###memorylist.append([inputtext,eval(inputtext)])
@@ -86,10 +99,18 @@ while True:
             print("mira shoudl see this", [inputtext,eval(inputtext)])
             #othermira = Popen(['python', 'test.py'], stdout=PIPE)
             memoryfile = open(memoryname, 'a+')
-            with Popen(['python', 'test.py'], stdout=PIPE, stderr=PIPE, bufsize=1, universal_newlines=True) as p:
+            #stderr=subprocess.STDOUT
+            #with Popen(['python', 'test.py'], stdout=PIPE, stderr=PIPE, bufsize=1, universal_newlines=True) as p:
+            with Popen(['python', 'Mira.py',str(inputtext)], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
+                print("ARGINPUT IS", argv)
                 for line in p.stdout:
                     print(line, end='')
-                    memoryfile.write(str([inputtext, [line]]) + "\n")
+                    sees = str([inputtext, [line]]) + "\n"
+                    memoryfile.write(sees)
+                print("wtf fileinpiut")
+                for line in fileinput.input():
+                    print("WTF DOES THIS DO",line)
+                    #process(line)
             print("END OF TEST")
             memoryfile.close()
             
@@ -100,7 +121,7 @@ while True:
             memoryfile.write(str([inputtext, ["",e]]) + "\n")
             memoryfile.close()
             pass
-        
+
         
         #get nearest topo: M_U compose MIRA and M_U in MIRA?
         '''

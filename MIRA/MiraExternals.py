@@ -4,7 +4,8 @@ from __future__ import with_statement
 from math import *
 from inspect import *
 import ast
-import sys
+#import sys
+from sys import *
 import time
 import mmap
 import random
@@ -15,6 +16,7 @@ from shutil import *
 from collections import defaultdict
 from subprocess import *
 #from linecache import *
+import fileinput
 
 if sys.version_info[0] < 3:
     raise Exception("Python 3 or a more recent version is required.")
