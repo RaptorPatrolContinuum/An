@@ -1,8 +1,0 @@
-['3+5', '8']
-["Popen(['python',C:\\An\\MIRA\\Mira.py, inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", []]
-["CantorPair(AutoAddressFunc( [['1', '0'], ['2', '0'], ['2', '1'], ['1', '2'], ['4', '0']]),AutoAddressFunc([['2', '0'], ['1', '1'], ['0', '2'], ['3', '0'], ['1', '2'], ['0', '3'], ['4', '0'], ['3', '1']]))", '14468091.0']
-["Popen(['python',C:\\An\\MIRA\\Mira.py, inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", []]
-["CantorPair(AutoAddressFunc([['1', '0'], ['2', '0'], ['2', '1'], ['1', '2'], ['4', '0']]),AutoAddressFunc([['2', '0'], ['1', '1'], ['0', '2'], ['3', '0'], ['1', '2'], ['0', '3'], ['4', '0'], ['3', '1']]))", '14468091.0']
-["Popen(['python',C:\\An\\MIRA\\Mira.py, inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", []]
-["CantorPair(AutoAddressFunc([['0', '0'], ['2', '0'], ['2', '1'], ['1', '2'], ['4', '0']]),AutoAddressFunc([['0', '0'], ['2', '0'], ['1', '1'], ['0', '2'], ['3', '0'], ['1', '2'], ['0', '3'], ['4', '0'], ['3', '1']]))", '14468092.0']
-["Popen(['python',C:\\An\\MIRA\\Mira.py, inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", []]
