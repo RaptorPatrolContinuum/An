@@ -95,14 +95,14 @@ while Descent:
             miralist = ['python', OtherClone() + '\\Mira.py', inputtext]
             #print("this should be miralist", miralist)
             if Descent == True:
-                print("NEED TO MAKE CLONE!",argv)
+                #print("NEED TO MAKE CLONE!",argv)
                 seesANS = []
                 with Popen(miralist, stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
                     #print("ARGINPUT IS", argv)
                     for line in p.stdout:
                         print(line, end='')
                         sees = str([line]) + "\n"
-                        print("WTF IS SEES",sees)
+                        #print("WTF IS SEES",sees)
                         seesANS.append(sees)
                     '''
                     for line in fileinput.input():
