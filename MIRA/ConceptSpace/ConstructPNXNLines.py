@@ -76,7 +76,12 @@ while True:
         #read last line
         # PRETTY SURE I DONT NEED THIS clearcache()
         #print("3s stats",theFilename,maxlinenumber,FILEindexread([theFilename,maxlinenumber]))
-        last = ast.literal_eval(FILEindexread([theFilename,maxlinenumber-1]))
+        
+        #HINT: FOR PNXN LINES, WE REMEMBER THE LAST PAIR WE WROTE DOWN INSTEAD OF mmaping a file and looking at last line every time
+        try:
+            last = lastpair
+        except:
+            last = ast.literal_eval(FILEindexread([theFilename,maxlinenumber-1]))
         #print("what is last wtf", last)
         #open sidata
         SIData = open(theFilename,"r+")
@@ -146,8 +151,12 @@ while True:
 
             #get max lines
             maxlinenumber = mapcountLINES([SImaxname])
-            #read last line
-            last = ast.literal_eval(FILEindexread([SImaxname,maxlinenumber-1]))
+            #HINT: FOR PNXN LINES, WE REMEMBER THE LAST PAIR WE WROTE DOWN INSTEAD OF mmaping a file and looking at last line every time
+            try:
+                last = lastpair
+            except:
+                #read last line
+                last = ast.literal_eval(FILEindexread([SImaxname,maxlinenumber-1]))
             #print("what is last1?",last)
             #try:
             #    last = [ast.literal_eval(tailOpened([SImaxnameopen,1])[0])]
@@ -233,6 +242,7 @@ while True:
         SIData.close()
         SIData = open(theFilename,"a")
         SIData.write(str([[AddressX,AddressY],ShittySI([[AddressX,AddressY],"Auto"])])+"\n")
+        lastpair = [[AddressX,AddressY]]
         
 #then remember to seek the cursor to the beginning
 #also close the file	
