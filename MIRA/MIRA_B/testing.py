@@ -124,18 +124,18 @@ def fileindex(argList):
 #print(fileindex([filename, "False"]))
 #print(fileindex([filename, "Your"]))
 
-
+'''
 def fileindexINV(argList):
-    '''
+
     arg1 = filestream
     arg2 = INDEX NUMBER
     this gets first index of string with respect to filestream
     RETURNS: None if fail or integer if there is index
     HINT: FILEINDEXINV DOES NOT CLOSE THE FILE
     also this is just to make shit look good I should just be using the tail function but whatever
-    '''
+    
     return tail(arg1, arg2, 0)
-
+'''
 
 
 filename.close()

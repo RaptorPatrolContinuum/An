@@ -2900,21 +2900,21 @@ def delta3(argList):
             alphatrigger = False
     return ANS
 
-def Cloneinit():
+def CurrentClone():
     '''
-    just clone the whole MIRA directory OR MIRA_B directory
-    FILE STRUCTURE: MIRA\MIRA_B
+    idea is that you edit the other clone and keep current clone as backup
+    this function takes no inputs and just tells you which clone you are in: (MIRA OR MIRA_B)
+    HINT:
+        MIRA IS UPPER DIRECTORY (C:\An\MIRA) == return is "MIRA"
+        MIRA_B IS LOWER DIRECTORY (C:\An\MIRA\MIRA_B) == return is "MIRA_B"
     '''
-    #need to know:
     cwdLIST = os.getcwd()
-    print("files in directory",os.listdir(cwdLIST))
-    #if you're in smaller or larger directory
     cwd = os.getcwd().split("\\")[-1]
     basics= os.getcwd().split("\\")[:len(os.getcwd().split("\\"))-1]
 
     PLACE = []
     if cwd == "MIRA":
-        print("IN MIRA")
+        #print("IN MIRA")
         #check if opposite dir exists
         if os.path.exists(cwdLIST + "\\MIRA_B"):
             PLACE = "MIRA"
@@ -2922,7 +2922,60 @@ def Cloneinit():
             #if not, make it
             os.makedirs(cwdLIST + "\\MIRA_B")
     elif cwd == "MIRA_B":
-        print("NOT IN MIRA")
+        #print("NOT IN MIRA")
+        #check if opposite dir exists
+        #print("#GO UP ONE DIRECTORY", "\\".join(basics))
+        #print("didnt need to combo", basics[-1])
+        #print("MAKE THIS DIRECTORY","\\".join(basics[:len(basics)-1]) +"\\MIRA" )
+        if basics[-1] == "MIRA":
+            PLACE = "MIRA_B"
+        else:
+            #if not, make it
+            os.makedirs("\\".join(basics[:len(basics)-1]) +"\\MIRA")
+    else:
+        print("WHERE THE FUCK AM I")
+        exit()
+    return PLACE
+
+def OtherClone():
+    '''
+    tells me the location of the other clone
+    '''
+    PLACE = CurrentClone()
+    cwdLIST = os.getcwd()
+    if PLACE == "MIRA":
+        #print("make new file in new directory",cwdLIST + "\\MIRA_B" + "\\")
+        NEW = cwdLIST + "\\MIRA_B"
+        #print("total name NEXT", NEW)
+
+    elif PLACE == "MIRA_B":
+        #print("make new file in new directory","\\".join(basics[:len(basics)-1]) +"\\MIRA" + "\\")
+        NEW = "\\".join(basics[:len(basics)-1]) +"\\MIRA"
+    return NEW
+
+def Cloneinit():
+    '''
+    just clone the whole MIRA directory OR MIRA_B directory
+    FILE STRUCTURE: MIRA\MIRA_B
+    '''
+    #need to know:
+    cwdLIST = os.getcwd()
+    #print("files in directory",os.listdir(cwdLIST))
+    #if you're in smaller or larger directory
+    cwd = os.getcwd().split("\\")[-1]
+    basics= os.getcwd().split("\\")[:len(os.getcwd().split("\\"))-1]
+
+    PLACE = []
+    if cwd == "MIRA":
+        #print("IN MIRA")
+        #check if opposite dir exists
+        if os.path.exists(cwdLIST + "\\MIRA_B"):
+            PLACE = "MIRA"
+        else:
+            #if not, make it
+            os.makedirs(cwdLIST + "\\MIRA_B")
+    elif cwd == "MIRA_B":
+        #print("NOT IN MIRA")
         #check if opposite dir exists
         #print("#GO UP ONE DIRECTORY", "\\".join(basics))
         #print("didnt need to combo", basics[-1])
@@ -2941,7 +2994,7 @@ def Cloneinit():
         try:
             botburger = open(x,'r+')
             botburger.close()
-            print(x, "is available")
+            #print(x, "is available")
         except Exception as e:
             print(x, "NOT AVAILABLE, STOPPING NOW")
             print(e)

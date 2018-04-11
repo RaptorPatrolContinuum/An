@@ -1,2 +1,0 @@
-['errors', ['', NameError("name 'errors' is not defined",)]]
-['MIRA(errors)', ['["this should be miralist [\'python\', \'C:\\\\\\\\An\\\\\\\\MIRA\\\\\\\\Mira.py\', \'errors\']\\n"]\n', '["error is  name \'errors\' is not defined\\n"]\n', "['code died\\n']\n"]]

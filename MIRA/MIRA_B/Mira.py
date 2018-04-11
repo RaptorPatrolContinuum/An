@@ -12,34 +12,35 @@ fileinput = 'INP.txt'
 #basis = open('Basis.txt','r+')
 basisname = 'Basis.txt'
 #memory = open('Memory.txt','r+')
-memoryname = 'Memory.txt'
+MemoryUNORDERED = 'MemoryUNORDERED.txt'
+memoryLong = 'Memory.txt'
 
 '''
 NEED TO WORK ON MEMORY RAM + MEMORY FILE 
 '''
 
+#use Descent as a way to trigger infinitely spawning/looping current MIRA or not
+Descent = True
 
-#filedata = 'INP.txt'
-#basis = 'Basis.txt'
-#memory = 'Memory.txt'
-
-
-while True:
-    print("THIS IS MIRA_B")
+while Descent:
     try:
-        inputtext = str(input("exit or logout to leave \n"))
+        if len(argv[1:]) > 0:
+            inputtext = argv[1:][0]
+            Descent = False
+        else:
+            inputtext = str(input("exit or logout to leave \n"))
     except EOFError as e:
         inputtext = str(input("exit or logout to leave \n"))
     except Exception as e:
-        #FILEinsertAt([memoryname,input,mapcountLINES([memoryname])])
+        FILEinsertAt([MemoryUNORDERED,input,mapcountLINES([MemoryUNORDERED])])
         print("this is the error",e)
         #inputtext = "exit"
         inputtext = str(input("exit or logout to leave \n"))
+
     if inputtext == "exit" or inputtext == "logout":
         raise SystemExit
         break
     else:
-
         '''
         What's the plan?
 
@@ -79,23 +80,49 @@ while True:
         #escape = bytes(str(Elem_My(inputtext,memorylist)), "utf-8").decode("unicode_escape")
         
         '''
-        
-
-        ##try to eval it
-        #####print("before the try -> eval!")
         #print("morphemes through cheat!", Cheat(str(inputtext)))
 
-        #memoryfile = open(memoryname, 'a+')
-        #with Popen(['python', 'Mira.py',inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
-        #    for line in p.stdout:
-        #        print(line, end='')
-        #        sees = str([inputtext, [line]]) + "\n"
-        #        print("THIS IS WHAT MIRA SEES",sees)
-        #        memoryfile.write(sees)
-        #print("END OF TEST")
-        #memoryfile.close()
-        
-
+        #print("what is inputtext", inputtext)
+        #print("ARGINPUT IS monkaS", argv)
+        try:
+            #write input/output to memory RAM file:
+            memoryfile = open(MemoryUNORDERED, 'a+')
+            #stderr=subprocess.STDOUT
+            #with Popen(['python', 'test.py'], stdout=PIPE, stderr=PIPE, bufsize=1, universal_newlines=True) as p:
+            #with Popen(['python', 'Mira.py', inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
+            #INIT OTHER CLONE AS IM MAKING A LOT OF CHANGES
+            Cloneinit()
+            miralist = ['python', OtherClone() + '\\Mira.py', inputtext]
+            #print("this should be miralist", miralist)
+            if Descent == True:
+                print("NEED TO MAKE CLONE!",argv)
+                seesANS = []
+                with Popen(miralist, stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
+                    #print("ARGINPUT IS", argv)
+                    for line in p.stdout:
+                        print(line, end='')
+                        sees = str([line]) + "\n"
+                        print("WTF IS SEES",sees)
+                        seesANS.append(sees)
+                    '''
+                    for line in fileinput.input():
+                        print("WTF DOES THIS DO",line)
+                        #process(line)
+                    '''
+                memoryfile.write(str(["MIRA(" + inputtext + ")",seesANS]) + "\n")
+            else:
+                #just write the OG test once
+                memoryfile.write(str([str(inputtext),str(eval(inputtext))]) + "\n")
+            print("END OF TEST")
+            memoryfile.close()
+            
+        except Exception as e:
+            print("error is ", e)
+            print("code died")
+            memoryfile = open(MemoryUNORDERED, 'a+')
+            memoryfile.write(str([inputtext, ["",e]]) + "\n")
+            memoryfile.close()
+            pass
 
         
         #get nearest topo: M_U compose MIRA and M_U in MIRA?

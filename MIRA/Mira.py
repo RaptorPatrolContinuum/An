@@ -90,8 +90,10 @@ while Descent:
             #stderr=subprocess.STDOUT
             #with Popen(['python', 'test.py'], stdout=PIPE, stderr=PIPE, bufsize=1, universal_newlines=True) as p:
             #with Popen(['python', 'Mira.py', inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
-            miralist = ['python', 'C:\An\MIRA\Mira.py', inputtext]
-            print("this should be miralist", miralist)
+            #INIT OTHER CLONE AS IM MAKING A LOT OF CHANGES
+            Cloneinit()
+            miralist = ['python', OtherClone() + '\\Mira.py', inputtext]
+            #print("this should be miralist", miralist)
             if Descent == True:
                 print("NEED TO MAKE CLONE!",argv)
                 seesANS = []
