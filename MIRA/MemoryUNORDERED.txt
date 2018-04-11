@@ -1,0 +1,2 @@
+['3+5', '8']
+["Popen(['python',C:\\An\\MIRA\\Mira.py, inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", []]

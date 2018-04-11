@@ -1,8 +1,0 @@
-['OtherClone()', ['', NameError("name 'PLACE' is not defined",)]]
-['MIRA(OtherClone())', ['["error is  name \'PLACE\' is not defined\\n"]\n', "['code died\\n']\n"]]
-['OtherClone()', ['', NameError("name 'cwdLIST' is not defined",)]]
-['MIRA(OtherClone())', ['["error is  name \'cwdLIST\' is not defined\\n"]\n', "['code died\\n']\n"]]
-['OtherClone()', 'C:\\An\\MIRA\\MIRA_B']
-['MIRA(OtherClone())', ["['END OF TEST\\n']\n"]]
-['print("fantasy")', 'None']
-['MIRA(print("fantasy"))', ['["files in directory [\'1 notes.txt\', \'1.txt\', \'Basis.txt\', \'ConceptSpace\', \'FLOWCHART STRATS.graphml\', \'INP.txt\', \'Memory - Copy.txt\', \'Memory.txt\', \'MemoryUNORDERED - Copy.txt\', \'MemoryUNORDERED.txt\', \'messy.py\', \'Mira.py\', \'MiraExternals.py\', \'MIRA_B\', \'testing.py\', \'TESTPROGRAM.py\', \'TESTPROGRAM2.py\', \'__pycache__\']\\n"]\n', "['IN MIRA\\n']\n", "['1 notes.txt is available\\n']\n", "['1.txt is available\\n']\n", "['Basis.txt is available\\n']\n", "['FLOWCHART STRATS.graphml is available\\n']\n", "['INP.txt is available\\n']\n", "['Memory - Copy.txt is available\\n']\n", "['Memory.txt is available\\n']\n", "['MemoryUNORDERED - Copy.txt is available\\n']\n", "['MemoryUNORDERED.txt is available\\n']\n", "['messy.py is available\\n']\n", "['Mira.py is available\\n']\n", "['MiraExternals.py is available\\n']\n", "['testing.py is available\\n']\n", "['TESTPROGRAM.py is available\\n']\n", "['TESTPROGRAM2.py is available\\n']\n", "['fantasy\\n']\n", "['END OF TEST\\n']\n"]]

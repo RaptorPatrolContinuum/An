@@ -109,11 +109,10 @@ while Descent:
                         print("WTF DOES THIS DO",line)
                         #process(line)
                     '''
-                memoryfile.write(str(["MIRA(" + inputtext + ")",seesANS]) + "\n")
+                memoryfile.write(str(["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]) + "\n")
             else:
                 #just write the OG test once
                 memoryfile.write(str([str(inputtext),str(eval(inputtext))]) + "\n")
-            print("END OF TEST")
             memoryfile.close()
             
         except Exception as e:
