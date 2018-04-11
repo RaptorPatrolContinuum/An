@@ -34,6 +34,7 @@ while True:
         print("this is the error",e)
         #inputtext = "exit"
         inputtext = str(input("exit or logout to leave \n"))
+
     if inputtext == "exit" or inputtext == "logout":
         raise SystemExit
         break
