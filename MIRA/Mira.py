@@ -12,16 +12,12 @@ fileinput = 'INP.txt'
 #basis = open('Basis.txt','r+')
 basisname = 'Basis.txt'
 #memory = open('Memory.txt','r+')
-memoryname = 'Memory.txt'
+MemoryUNORDERED = 'MemoryUNORDERED.txt'
+memoryLong = 'Memory.txt'
 
 '''
 NEED TO WORK ON MEMORY RAM + MEMORY FILE 
 '''
-
-
-#filedata = 'INP.txt'
-#basis = 'Basis.txt'
-#memory = 'Memory.txt'
 
 #use Descent as a way to trigger infinitely spawning/looping current MIRA or not
 Descent = True
@@ -36,7 +32,7 @@ while Descent:
     except EOFError as e:
         inputtext = str(input("exit or logout to leave \n"))
     except Exception as e:
-        #FILEinsertAt([memoryname,input,mapcountLINES([memoryname])])
+        FILEinsertAt([MemoryUNORDERED,input,mapcountLINES([MemoryUNORDERED])])
         print("this is the error",e)
         #inputtext = "exit"
         inputtext = str(input("exit or logout to leave \n"))
@@ -45,7 +41,6 @@ while Descent:
         raise SystemExit
         break
     else:
-
         '''
         What's the plan?
 
@@ -85,25 +80,13 @@ while Descent:
         #escape = bytes(str(Elem_My(inputtext,memorylist)), "utf-8").decode("unicode_escape")
         
         '''
-        
-
-        ##try to eval it
-        #####print("before the try -> eval!")
         #print("morphemes through cheat!", Cheat(str(inputtext)))
 
-        print("what is inputtext", inputtext)
-        print("ARGINPUT IS monkaS", argv)
+        #print("what is inputtext", inputtext)
+        #print("ARGINPUT IS monkaS", argv)
         try:
-            eval(inputtext)
-            ###memorylist.append([inputtext,eval(inputtext)])
-            #####print("ok evaling inputtext",eval(inputtext))
-            #####print("what she should see:",[str(inputtext),str(eval(inputtext))])
-            #basislist is outdated
-            #BasisFix(str(eval(inputtext)),basislist)
             #write input/output to memory RAM file:
-            print("mira shoudl see this", [inputtext,eval(inputtext)])
-            #othermira = Popen(['python', 'test.py'], stdout=PIPE)
-            memoryfile = open(memoryname, 'a+')
+            memoryfile = open(MemoryUNORDERED, 'a+')
             #stderr=subprocess.STDOUT
             #with Popen(['python', 'test.py'], stdout=PIPE, stderr=PIPE, bufsize=1, universal_newlines=True) as p:
             #with Popen(['python', 'Mira.py', inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
@@ -125,13 +108,16 @@ while Descent:
                         #process(line)
                     '''
                 memoryfile.write(str(["MIRA(" + inputtext + ")",seesANS]) + "\n")
+            else:
+                #just write the OG test once
+                memoryfile.write(str([str(inputtext),str(eval(inputtext))]) + "\n")
             print("END OF TEST")
             memoryfile.close()
             
         except Exception as e:
             print("error is ", e)
             print("code died")
-            memoryfile = open(memoryname, 'a+')
+            memoryfile = open(MemoryUNORDERED, 'a+')
             memoryfile.write(str([inputtext, ["",e]]) + "\n")
             memoryfile.close()
             pass
