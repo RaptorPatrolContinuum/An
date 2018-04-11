@@ -23,10 +23,16 @@ NEED TO WORK ON MEMORY RAM + MEMORY FILE
 #basis = 'Basis.txt'
 #memory = 'Memory.txt'
 
+#use Descent as a way to trigger infinitely spawning/looping current MIRA or not
+Descent = True
 
-while True:
+while Descent:
     try:
-        inputtext = str(input("exit or logout to leave \n"))
+        if len(argv[1:]) > 0:
+            inputtext = argv[1:][0]
+            Descent = False
+        else:
+            inputtext = str(input("exit or logout to leave \n"))
     except EOFError as e:
         inputtext = str(input("exit or logout to leave \n"))
     except Exception as e:
@@ -113,18 +119,22 @@ while True:
             #with Popen(['python', 'Mira.py', inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
             miralist = ['python', 'C:\An\MIRA\Mira.py', inputtext]
             print("this should be miralist", miralist)
-            with Popen(miralist, stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
-                #print("ARGINPUT IS", argv)
-                for line in p.stdout:
-                    print(line, end='')
-                    sees = str([inputtext, [line]]) + "\n"
-                    print("WTF IS SEES",sees)
-                    memoryfile.write(sees)
-                '''
-                for line in fileinput.input():
-                    print("WTF DOES THIS DO",line)
-                    #process(line)
-                '''
+            if Descent == True:
+                print("NEED TO MAKE CLONE!",argv)
+                seesANS = []
+                with Popen(miralist, stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
+                    #print("ARGINPUT IS", argv)
+                    for line in p.stdout:
+                        print(line, end='')
+                        sees = str([inputtext, [line]]) + "\n"
+                        print("WTF IS SEES",sees)
+                        seesANS.append(sees)
+                    '''
+                    for line in fileinput.input():
+                        print("WTF DOES THIS DO",line)
+                        #process(line)
+                    '''
+                memoryfile.write(seesANS)
             print("END OF TEST")
             memoryfile.close()
             
