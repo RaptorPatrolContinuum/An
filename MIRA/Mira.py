@@ -25,7 +25,13 @@ NEED TO WORK ON MEMORY RAM + MEMORY FILE
 
 
 while True:
-    inputtext = str(input("exit or logout to leave \n"))
+    try:
+        inputtext = str(input("exit or logout to leave \n"))
+    except Exception as e:
+        #FILEinsertAt([memoryname,input,mapcountLINES([memoryname])])
+        print("this is the error")
+        #inputtext = "exit"
+        inputtext = str(input("exit or logout to leave \n"))
     if inputtext == "exit" or inputtext == "logout":
         raise SystemExit
         break
@@ -86,8 +92,8 @@ while True:
         #print("END OF TEST")
         #memoryfile.close()
         
-
-
+        print("what is inputtext", inputtext)
+        print("ARGINPUT IS monkaS", argv)
         try:
             eval(inputtext)
             ###memorylist.append([inputtext,eval(inputtext)])
@@ -109,9 +115,11 @@ while True:
                     print("WTF IS SEES",sees)
                     memoryfile.write(sees)
                 print("wtf fileinpiut")
+                '''
                 for line in fileinput.input():
                     print("WTF DOES THIS DO",line)
                     #process(line)
+                '''
             print("END OF TEST")
             memoryfile.close()
             
