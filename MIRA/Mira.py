@@ -27,9 +27,11 @@ NEED TO WORK ON MEMORY RAM + MEMORY FILE
 while True:
     try:
         inputtext = str(input("exit or logout to leave \n"))
+    except EOFError as e:
+        inputtext = str(input("exit or logout to leave \n"))
     except Exception as e:
         #FILEinsertAt([memoryname,input,mapcountLINES([memoryname])])
-        print("this is the error")
+        print("this is the error",e)
         #inputtext = "exit"
         inputtext = str(input("exit or logout to leave \n"))
     if inputtext == "exit" or inputtext == "logout":
@@ -107,14 +109,13 @@ while True:
             memoryfile = open(memoryname, 'a+')
             #stderr=subprocess.STDOUT
             #with Popen(['python', 'test.py'], stdout=PIPE, stderr=PIPE, bufsize=1, universal_newlines=True) as p:
-            with Popen(['python', 'Mira.py',str(inputtext)], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
+            with Popen(['python', 'Mira.py'], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
                 print("ARGINPUT IS", argv)
                 for line in p.stdout:
                     print(line, end='')
                     sees = str([inputtext, [line]]) + "\n"
                     print("WTF IS SEES",sees)
                     memoryfile.write(sees)
-                print("wtf fileinpiut")
                 '''
                 for line in fileinput.input():
                     print("WTF DOES THIS DO",line)
