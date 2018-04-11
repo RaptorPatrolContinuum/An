@@ -4,7 +4,8 @@ from __future__ import with_statement
 from math import *
 from inspect import *
 import ast
-import sys
+#import sys
+from sys import *
 import time
 import mmap
 import random
@@ -14,6 +15,8 @@ from shutil import *
 
 from collections import defaultdict
 from subprocess import *
+#from linecache import *
+import fileinput
 
 if sys.version_info[0] < 3:
     raise Exception("Python 3 or a more recent version is required.")
@@ -190,7 +193,7 @@ def toString(argList):
             ANS = ANS + str(x[0])
         return ANS
     if fCheck(f) == False:
-        print("f1 is function? toString", fCheck(f1))
+        print("f1 is function? toString", fCheck(f))
         return
     if basistype == "INTEGERS":
         #then the x coord is just a number, so we order the answer by the numbers in the x coordinates
@@ -723,7 +726,9 @@ def Elem_My(x,y):
     else:
         return False
 
-def VisionBasis(basis,vision):
+def VisionBasis(argList):
+    basis = argList[0]
+    vision = argList[1]
     ANS = []
     if fCheck(vision) == False:
         print("vision is function?", fCheck(vision))
@@ -732,10 +737,13 @@ def VisionBasis(basis,vision):
         ANS.append([basis[int(x[0])],basis[int(x[1])]])
     return ANS
 
-def VisionBasisFILE(basisfile,vision):
+def VisionBasisFILE(argList):
     '''
-    basis is in the form of = open('filename', r+)
+    basisfile takes the whole filename (incl extension) of the basis
+    HINT: need AutoVision to go from address to vision
     '''
+    basisfile = argList[0]
+    vision = argList[1]
     ANS = []
     if fCheck(vision) == False:
         print("vision is function?", fCheck(vision))
@@ -1486,6 +1494,23 @@ def Cheat(string):
     return Morphemes
 
 '''
+Gödel's incompleteness theorems are two theorems of mathematical logic that demonstrate the inherent limitations of every formal axiomatic system containing basic arithmetic. These results, published by Kurt Gödel in 1931, are important both in mathematical logic and in the philosophy of mathematics. The theorems are widely, but not universally, interpreted as showing that Hilbert's program to find a complete and consistent set of axioms for all mathematics is impossible.
+
+The first incompleteness theorem states that no consistent system of axioms whose theorems can be listed by an effective procedure (i.e., an algorithm) is capable of proving all truths about the arithmetic of the natural numbers. For any such formal system, there will always be statements about the natural numbers that are true, but that are unprovable within the system. The second incompleteness theorem, an extension of the first, shows that the system cannot demonstrate its own consistency.
+
+Employing a diagonal argument, Gödel's incompleteness theorems were the first of several closely related theorems on the limitations of formal systems. They were followed by Tarski's undefinability theorem on the formal undefinability of truth, Church's proof that Hilbert's Entscheidungsproblem is unsolvable, and Turing's theorem that there is no algorithm to solve the halting problem.
+'''
+#print("CHECKING CHEAT FUNC")
+#print(Cheat("Gödel's incompleteness theorems are two theorems of mathematical logic that demonstrate the inherent limitations of every formal axiomatic system containing basic arithmetic. These results, published by Kurt Gödel in 1931, are important both in mathematical logic and in the philosophy of mathematics. The theorems are widely, but not universally, interpreted as showing that Hilbert's program to find a complete and consistent set of axioms for all mathematics is impossible."))
+#print(Cheat("printpls('testthis')"))
+'''
+^^^ MORPHEME PICKING IS CURRENTLY A FUCKING PROBLEM ESP WITH printpls('testthis')
+'''
+
+
+
+
+'''
 this function is already deprecated since we aren't using gigantic lists anymore
 '''
 
@@ -1539,6 +1564,14 @@ def tailOLD(f, n, offset=0):
         avg_line_length *= 1.3
 
 def tail(argList):
+    '''
+    HINT:
+    I only look at last line anyways, so I can just use linecache module + maxlines to get last line
+    
+    I need to avoid this function because it uses readlines()
+    ALSO: THIS USES FUCKING .readlines() for some fucking reason, so this is automatically fucking bad.
+    '''
+    
     #[fname, lines, _buffer=4098]
     f = open(argList[0],'r+')
     lines = argList[1]
@@ -1578,18 +1611,22 @@ def tail(argList):
     #close file
     f.close()
     return lines_found[-lines:]
-
+    
+    
 def tailOpened(argList):
     '''
+    THIS IS DEPRECATED USE tail instead
+
+    
     this version is for Construct PNXN lines because I read that catching a failure with exception is expensive
     '''
     #[fname, lines, _buffer=4098]
     #f = open(argList[0],'r+')
     f = argList[0]
     lines = argList[1]
-    #_buffer = 4098
+    _buffer = 4098
     #try smaller buffer
-    _buffer = 128
+    #_buffer = 128
     
     """Tail a file and get X lines from the end"""
     # place holder for the lines found
@@ -1602,19 +1639,17 @@ def tailOpened(argList):
     # loop until we find X lines
     while len(lines_found) < lines:
         try:
+            print("io.UnsupportedOperation: can't do nonzero end-relative seeks",block_counter, _buffer,block_counter * _buffer, os.SEEK_END)
             f.seek(block_counter * _buffer, os.SEEK_END)
         except IOError:  # either file is too small, or too many lines requested
             f.seek(0)
             lines_found = f.readlines()
+            print("fucking readlines I'm stupid", len(lines_found))
             break
 
         lines_found = rchop(f.readlines(), '\n')
 
         # we found enough lines, get out
-        # Removed this line because it was redundant the while will catch
-        # it, I left it for history
-        # if len(lines_found) > lines:
-        #    break
 
         # decrement the block counter to get the
         # next X bytes
@@ -1631,6 +1666,23 @@ def FILEindexread(argList):
     arg2 = line index to read (starts from 0)
 
     HINT: THIS REMOVES TRAILING NEWLINE
+
+    #FILENAME
+    arg1 = argList[0]
+    #INDEX TO READ
+    arg2 = int(float(argList[1]))    
+    #print("what is getline and args", argList, isinstance(arg2, int), getline(arg1,arg2))
+    #print("IM FUCKING PRINTING EVERYTHING")
+    #wtf = open(arg1,"r+")
+    #print(wtf.read())
+    #wtf.close()
+    #print("IM FUCKING PRINTING EVERYTHING/")
+    ANS = rchop(getline(arg1,arg2), '\n')
+    #print("IS ANSWER BUSTED?", ANS)
+    return ANS
+
+    #PROBLEMS: LINECACHE PUTS FILE IN CACHE SO IT DOESNT SEE CHANGES AND IT HITS MEMORY MAX TOO FAST
+    HINT: I FOUND A FUCKING MODULE THAT DOES THIS: linecache
     '''
     f = open(argList[0],'r+')
     n = argList[1]
@@ -1685,9 +1737,12 @@ def fileindexINV(argList):
     RETURNS: None if fail or integer if there is index
     also this is just to make shit look good I should just be using the tail function but whatever
     '''
-    openedwhy = open(arg1,'r+')
-    ANS = tail(openedwhy, arg2, 0)
-    openedwhy.close()
+    arg1 = argList[0]
+    arg2 = argList[1]
+    #openedwhy = open(arg1,'r+')
+    #ANS = tail(openedwhy, arg2, 0)
+    #openedwhy.close()
+    ANS = FILEindexread([arg1,arg2])
     return ANS
 
 def rchop(thestring, ending):
@@ -2844,12 +2899,79 @@ def delta3(argList):
             ANS.append([target,target])
             alphatrigger = False
     return ANS
+
+def Cloneinit():
+    '''
+    just clone the whole MIRA directory OR MIRA_B directory
+    FILE STRUCTURE: MIRA\MIRA_B
+    '''
+    #need to know:
+    cwdLIST = os.getcwd()
+    print("files in directory",os.listdir(cwdLIST))
+    #if you're in smaller or larger directory
+    cwd = os.getcwd().split("\\")[-1]
+    basics= os.getcwd().split("\\")[:len(os.getcwd().split("\\"))-1]
+
+    PLACE = []
+    if cwd == "MIRA":
+        print("IN MIRA")
+        #check if opposite dir exists
+        if os.path.exists(cwdLIST + "\\MIRA_B"):
+            PLACE = "MIRA"
+        else:
+            #if not, make it
+            os.makedirs(cwdLIST + "\\MIRA_B")
+    elif cwd == "MIRA_B":
+        print("NOT IN MIRA")
+        #check if opposite dir exists
+        #print("#GO UP ONE DIRECTORY", "\\".join(basics))
+        #print("didnt need to combo", basics[-1])
+        #print("MAKE THIS DIRECTORY","\\".join(basics[:len(basics)-1]) +"\\MIRA" )
+        if basics[-1] == "MIRA":
+            PLACE = "MIRA_B"
+        else:
+            #if not, make it
+            os.makedirs("\\".join(basics[:len(basics)-1]) +"\\MIRA")
+    else:
+        print("WHERE THE FUCK AM I")
+        exit()
+    #if files you are about to copy are usable
+    #just check fileopen
+    for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
+        try:
+            botburger = open(x,'r+')
+            botburger.close()
+            print(x, "is available")
+        except Exception as e:
+            print(x, "NOT AVAILABLE, STOPPING NOW")
+            print(e)
+            exit()
+    #have everything under with condition and if we cannot access, throw an error <--- DIDN'T REALLY DO THIS
+    #if we're here we can clone into 'opposite' directory
+
+    for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
+        #print("this is filename",x)
+        CURRENT = os.getcwd() + "\\" + x
+        #print("total name CURRENT", CURRENT)
         
+        if PLACE == "MIRA":
+            #print("make new file in new directory",cwdLIST + "\\MIRA_B" + "\\")
+            NEW = cwdLIST + "\\MIRA_B" + "\\" + x
+            #print("total name NEXT", NEW)
+
+        elif PLACE == "MIRA_B":
+            #print("make new file in new directory","\\".join(basics[:len(basics)-1]) +"\\MIRA" + "\\")
+            NEW = "\\".join(basics[:len(basics)-1]) +"\\MIRA" + "\\" + x
+        #then copy and close
+        #print(CURRENT,NEW)
+        copy2(CURRENT, NEW)
+
+            
 
 ##############################################################
 
-def printpls(argList):
-    return str(argList)
+def printpls(obj):
+    return str(obj)
             
 #TESTING STAGE
 
@@ -2928,79 +3050,8 @@ then check if testprogram closes as well
 print( output.stdout.read())
 
 
-
-output = Popen(['python', 'TESTPROGRAM.py'])
-#process ID
-print("this is process id",os.getpid())
-# look ma, no pipes!
-print(output.pid)
+HINT: I DONT NEED SEPARATE PROCESS BECAUSE PYTHON COMPILES A SEPARATE THINGY
 '''
-
-#need to know:
-print("files in directory")
-cwdLIST = os.getcwd()
-print(os.listdir(cwdLIST))
-#if you're in smaller or larger directory
-cwd = os.getcwd().split("\\")[-1]
-
-basics= os.getcwd().split("\\")[:len(os.getcwd().split("\\"))-1]
-
-PLACE = []
-if cwd == "MIRA":
-    print("IN MIRA")
-    #check if opposite dir exists
-    if os.path.exists(cwdLIST + "\\MIRA_B"):
-        PLACE = "MIRA"
-    else:
-        #if not, make it
-        os.makedirs(cwdLIST + "\\MIRA_B")
-elif cwd == "MIRA_B":
-    print("NOT IN MIRA")
-
-    
-    #check if opposite dir exists
-    #print("#GO UP ONE DIRECTORY", "\\".join(basics))
-    #print("didnt need to combo", basics[-1])
-    #print("MAKE THIS DIRECTORY","\\".join(basics[:len(basics)-1]) +"\\MIRA" )
-    if basics[-1] == "MIRA":
-        PLACE = "MIRA_B"
-    else:
-        #if not, make it
-        os.makedirs("\\".join(basics[:len(basics)-1]) +"\\MIRA")
-else:
-    print("WHERE THE FUCK AM I")
-    sys.exit()
-#if files you are about to copy are usable
-#just check fileopen
-
-for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
-    try:
-        botburger = open(x,'r+')
-        botburger.close()
-        print(x, "is available")
-    except Exception as e:
-        print(x, "NOT AVAILABLE, STOPPING NOW")
-        print(e)
-        sys.exit()
-#have everything under with condition and if we cannot access, throw an error
-#if we're here we can clone into 'opposite' directory
-
-for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
-    print("this is filename",x)
-    CURRENT = os.getcwd() + "\\" + x
-    print("total name CURRENT", CURRENT)
-    
-    if PLACE == "MIRA":
-        print("make new file in new directory",cwdLIST + "\\MIRA_B" + "\\")
-        NEW = cwdLIST + "\\MIRA_B" + "\\" + x
-        print("total name NEXT", NEW)
-
-    elif PLACE == "MIRA_B":
-        print("make new file in new directory","\\".join(basics[:len(basics)-1]) +"\\MIRA" + "\\")
-    #then copy and close
-    NEW = "\\".join(basics[:len(basics)-1]) +"\\MIRA" + "\\" + x
-    print(CURRENT,NEW)
-    #copy2(CURRENT, NEW)
 
 
 
