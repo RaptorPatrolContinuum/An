@@ -91,16 +91,6 @@ while Descent:
         #####print("before the try -> eval!")
         #print("morphemes through cheat!", Cheat(str(inputtext)))
 
-        #memoryfile = open(memoryname, 'a+')
-        #with Popen(['python', 'Mira.py',inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
-        #    for line in p.stdout:
-        #        print(line, end='')
-        #        sees = str([inputtext, [line]]) + "\n"
-        #        print("THIS IS WHAT MIRA SEES",sees)
-        #        memoryfile.write(sees)
-        #print("END OF TEST")
-        #memoryfile.close()
-        
         print("what is inputtext", inputtext)
         print("ARGINPUT IS monkaS", argv)
         try:
@@ -126,7 +116,7 @@ while Descent:
                     #print("ARGINPUT IS", argv)
                     for line in p.stdout:
                         print(line, end='')
-                        sees = str([inputtext, [line]]) + "\n"
+                        sees = str([line]) + "\n"
                         print("WTF IS SEES",sees)
                         seesANS.append(sees)
                     '''
@@ -134,7 +124,7 @@ while Descent:
                         print("WTF DOES THIS DO",line)
                         #process(line)
                     '''
-                memoryfile.write(seesANS)
+                memoryfile.write(str(["MIRA(" + inputtext + ")",seesANS]) + "\n")
             print("END OF TEST")
             memoryfile.close()
             
