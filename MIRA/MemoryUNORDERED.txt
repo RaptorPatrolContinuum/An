@@ -1,0 +1,4 @@
+['I am so fucking lost', ['', SyntaxError('invalid syntax', ('<string>', 1, 4, 'I am so fucking lost'))]]
+["Popen(['python',C:\\An\\MIRA\\Mira.py, I am so fucking lost], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['error is  invalid syntax (<string>, line 1)\\n']\n", "['code died\\n']\n"]]
+['type stuff in', ['', SyntaxError('invalid syntax', ('<string>', 1, 10, 'type stuff in'))]]
+["Popen(['python',C:\\An\\MIRA\\Mira.py, type stuff in], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['error is  invalid syntax (<string>, line 1)\\n']\n", "['code died\\n']\n"]]
