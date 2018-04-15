@@ -114,16 +114,27 @@ while Descent:
                 #just write the OG test once
                 #[['TOTAL_ARGUMENT == "b"', 'd']]
                 #str([str(inputtext),str(eval(inputtext))]) + "\n"
-                memoryfile.write(str([['TOTAL_ARGUMENT == '+ str(inputtext),str(eval(inputtext))]]) + "\n")
+                memoryfile.write(str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",str(eval(inputtext))]]) + "\n")
             memoryfile.close()
             
         except Exception as e:
-            print("error is ", e)
-            print("code died")
+            #print("error is ", e)
+            #print("code died")
             memoryfile = open(MemoryUNORDERED, 'a+')
-            memoryfile.write(str([inputtext, ["",e]]) + "\n")
+            memoryfile.write(str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'", ["",e]]]) + "\n")
             memoryfile.close()
             pass
+
+        #look for AutoPicked Universe
+        with open(MemoryUNORDERED, "r+") as UNORDERED:
+            UNORDERED.seek(0)
+            line = UNORDERED.readline()
+            print("THIS IS UNORDERED LINE", line)
+        with open(memoryLong, "r+") as Long:
+            Long.seek(0)
+            line = Long.readline()
+            print("THIS IS Long LINE", line)
+        #eval the return
 
         
         #get nearest topo: M_U compose MIRA and M_U in MIRA?

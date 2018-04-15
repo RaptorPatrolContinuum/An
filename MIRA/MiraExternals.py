@@ -166,6 +166,8 @@ def fCheck(fcandidate):
     if len(fcandidate) == 0:
         return False
     for obj in fcandidate:
+        #print("what is obj?",obj)
+        #print("len(obj)",len(obj))
         if len(obj) != 2:
             ANS = False
     return ANS
@@ -532,7 +534,9 @@ def ComposeMETA(f1,f2):
     '''
     #check if f1,f2 are functions:
     if fCheck(f1) == False or fCheck(f2) == False:
-        print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
+        print("WTF ARE THESE f1", f1)
+        print("WTF ARE THESE f2", f2)
+        print("f1 is function? COMPOSEMETA", fCheck(f1), "f2 is function?", fCheck(f2))
         return
     ALG = []
     for y in f2:
@@ -3019,8 +3023,27 @@ def Cloneinit():
         #print(CURRENT,NEW)
         copy2(CURRENT, NEW)
 
+def AutoPicked(ArgList):
+    '''
+    arg1 = filename
+    arg2 = line to find autopicked universe
+    RETURN = ??
+    WHAT THIS IS SUPPOSED TO DO IS MAKE THE AUTOPICKED UNIVERSE, BUT I AM SUPPOSED TO CHECK THROUGH Long and UNORDERED FILES
+    '''
+    arg1 = ArgList[0]
+    arg2 = ArgList[1]
+    with open(arg1, "r+") as fileref:
+        fileref.seek(0)
+        line = rchop(fileref.readline(), '\n')
+        while line:
+            print("THIS IS UNORDERED LINE", line)
+            print("THIS IS ARG2",arg2)
+            print("WHAT IS COMPOSEMETA",ComposeMETA(ast.literal_eval(line),ast.literal_eval(arg2)))
+            line = rchop(fileref.readline(), '\n')
             
 
+AutoPicked(['MemoryUNORDERED.txt',"[['a',['b']],['Z',['f','AF']]]"])
+ 
 ##############################################################
 
 def printpls(obj):

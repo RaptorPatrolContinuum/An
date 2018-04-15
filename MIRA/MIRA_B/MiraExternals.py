@@ -3019,8 +3019,18 @@ def Cloneinit():
         #print(CURRENT,NEW)
         copy2(CURRENT, NEW)
 
-            
-
+def AutoPicked(ArgList):
+    '''
+    arg1 = filename
+    RETURN = ??
+    WHAT THIS IS SUPPOSED TO DO IS MAKE THE AUTOPICKED UNIVERSE, BUT I AM SUPPOSED TO CHECK THROUGH Long and UNORDERED FILES
+    '''
+    arg1 = ArgList[0]
+    with open(arg1, "r+") as fileref:
+        fileref.seek(0)
+        line = fileref.readline()
+        print("THIS IS UNORDERED LINE", line)
+ 
 ##############################################################
 
 def printpls(obj):
