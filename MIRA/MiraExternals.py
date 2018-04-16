@@ -534,8 +534,8 @@ def ComposeMETA(f1,f2):
     '''
     #check if f1,f2 are functions:
     if fCheck(f1) == False or fCheck(f2) == False:
-        print("WTF ARE THESE f1", f1)
-        print("WTF ARE THESE f2", f2)
+        print("WTF ARE THESE f1", f1 ,type(f1))
+        print("WTF ARE THESE f2", f2, type(f2))
         print("f1 is function? COMPOSEMETA", fCheck(f1), "f2 is function?", fCheck(f2))
         return
     ALG = []
@@ -3035,12 +3035,8 @@ def AutoPicked(ArgList):
     with open(arg1, "r+") as fileref:
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
-        print("THIS WORKS",ast.literal_eval(str([['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']])))
-        print("CHECK DIFF",str([['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]) == line)
-        print(str([['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]))
-        print(line)
         while line:
-            print("THIS IS UNORDERED LINE", line)
+            print("THIS IS the LINE", line)
             #print("what about eval", eval(line))
             #print(ast.literal_eval(line))
             print("THIS IS ARG2",arg2)
@@ -3048,7 +3044,7 @@ def AutoPicked(ArgList):
             #print(ast.literal_eval(arg2))
             try:
                 #print("WHAT IS COMPOSEMETA",ComposeMETA(ast.literal_eval(str(line)),ast.literal_eval(str(arg2))))
-                print("WHAT IS COMPOSEMETA",ComposeMETA(eval(str(line)),eval(str(arg2))))
+                print("WHAT IS COMPOSEMETA",ComposeMETA(eval(line),eval(arg2)))
             except Exception as e:
                 print("ERROR IS ",e)
             line = rchop(fileref.readline(), '\n')
