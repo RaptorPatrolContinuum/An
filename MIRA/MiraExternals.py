@@ -3036,12 +3036,17 @@ def AutoPicked(ArgList):
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
         while line:
-            print("THIS IS UNORDERED LINE", line)
-            print("THIS IS ARG2",arg2)
-            print("WHAT IS COMPOSEMETA",ComposeMETA(ast.literal_eval(line),ast.literal_eval(arg2)))
+            print("THIS IS UNORDERED LINE", line, type(line))
+            print(ast.literal_eval(str(line)))
+            print("THIS IS ARG2",arg2, type(arg2))
+            print(ast.literal_eval(str(arg2)))
+            try:
+                print("WHAT IS COMPOSEMETA",ComposeMETA(ast.literal_eval(line),ast.literal_eval(arg2)))
+            except Exception as e:
+                print("ERROR IS ",e)
             line = rchop(fileref.readline(), '\n')
-            
-
+#print("SHOULD BE WHAT AIM LOOKING FOR")
+#print("LF2",ComposeMETA(ast.literal_eval(str([['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']])),ast.literal_eval("[['a',['b']],['Z',['f','AF']]]")))
 AutoPicked(['MemoryUNORDERED.txt',"[['a',['b']],['Z',['f','AF']]]"])
  
 ##############################################################

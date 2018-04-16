@@ -1,5 +1,6 @@
+[['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]
+[[print(,'b']]
 [['a', 2]]
 [['b','b']]
-[[print(,'b']]
 [['argument_1 == "a"', 1+1]]
 [['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]
