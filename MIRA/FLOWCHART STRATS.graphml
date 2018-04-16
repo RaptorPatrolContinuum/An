@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
-  <!--Created by yEd 3.17.2-->
+  <!--Created by yEd 3.18.0.2-->
   <key attr.name="Description" attr.type="string" for="graph" id="d0"/>
   <key for="port" id="d1" yfiles.type="portgraphics"/>
   <key for="port" id="d2" yfiles.type="portgeometry"/>
@@ -15,7 +15,6 @@
   <graph edgedefault="directed" id="G">
     <data key="d0"/>
     <node id="n0">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="810.8424370290631" width="1062.6016" x="-1166.089654793377" y="1065.533842881106"/>
@@ -76,7 +75,6 @@
       </data>
     </node>
     <node id="n3">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="133.65349063509143" width="181.16664973089325" x="2368.823321290779" y="2807.4510106099788"/>
@@ -117,7 +115,7 @@
           <y:Geometry height="500.60554402583375" width="465.72412486544647" x="1137.1182865702735" y="1704.098971066638"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="230.86206243272323" y="248.30277201291688">
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="230.86206243272318" y="248.30277201291688">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -125,7 +123,7 @@
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="80.6875" x="15.405166399149834" y="12.32838779349595">BEST GUESS<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="80.6875" x="15.40516639914972" y="12.32838779349595">BEST GUESS<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -142,7 +140,7 @@
           <y:Geometry height="298.95664708891263" width="431.30027475909594" x="1153.925258312792" y="1851.6307971919339"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="213.65013737954797" y="147.47832354445632">
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="213.6501373795479" y="147.47832354445632">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -150,7 +148,7 @@
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="53.330078125" x="15.171730912666646" y="23.69739817694358">OUTPUT<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="53.330078125" x="15.17173091266659" y="23.69739817694358">OUTPUT<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -167,7 +165,7 @@
           <y:Geometry height="186.5318365554358" width="362.6066635091496" x="1183.1570620277546" y="1907.8432024586723"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="179.3033317545748" y="91.2659182777179">
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="179.30333175457486" y="91.2659182777179">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -726,7 +724,7 @@
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.35987049608357013" nodeRatioX="0.0" nodeRatioY="-0.5" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="446.0" x="-207.99999999999994" y="20.0">&lt;html&gt;&lt;strike&gt;language is just composition + functions that match the object you want to match &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="446.0" x="-208.0" y="20.0">&lt;html&gt;&lt;strike&gt;language is just composition + functions that match the object you want to match &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -835,7 +833,7 @@
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="1583.7543839061523"/>
           <y:Fill color="#808080" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="718.71484375" x="50.12464983814721" y="4.0">HOW TO ASSIGN FUNCTION NAME TO INPUT/OUTPUT PAIRS WRT CONCEPT SPACE AND WRT COMPOSITION/EVAL RULES<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="718.71484375" x="50.12464983814698" y="4.0">HOW TO ASSIGN FUNCTION NAME TO INPUT/OUTPUT PAIRS WRT CONCEPT SPACE AND WRT COMPOSITION/EVAL RULES<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1081,7 +1079,7 @@
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="2229.894700013723"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="130.0234375" x="-50.01171875" y="5.649414062500227">ALPHABET THEOREM<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="130.0234375" x="-50.01171875" y="5.6494140625">ALPHABET THEOREM<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1098,7 +1096,7 @@
           <y:Geometry height="30.0" width="30.0" x="2715.1098594422856" y="2229.894700013723"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="180.361328125" x="-75.1806640625" y="5.649414062500227">STATEMENT + REPLACEMENT<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="180.361328125" x="-75.1806640625" y="5.6494140625">STATEMENT + REPLACEMENT<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1200,7 +1198,7 @@
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="1920.9949589778673"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="119.365234375" x="-145.23378021140093" y="4.0">PROBLEM SOLVING<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="119.365234375" x="-145.2337802114007" y="4.0">PROBLEM SOLVING<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1234,7 +1232,7 @@
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="1977.335994834441"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="250.814453125" x="-263.6474732517397" y="11.86143195227396">motivating question: how to check for change?<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="250.814453125" x="-263.64747325173994" y="11.86143195227396">motivating question: how to check for change?<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1268,7 +1266,7 @@
           <y:Geometry height="30.0" width="30.0" x="2309.5422652115767" y="1977.335994834441"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="305.37109375" x="50.49372401345158" y="4.0">OBSERVATION/GENERATE RANDOM ABSTRACTION<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="305.37109375" x="50.493724013451356" y="4.0">OBSERVATION/GENERATE RANDOM ABSTRACTION<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1302,7 +1300,7 @@
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="1854.1098026033649"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="214.09375" x="-230.29980331473666" y="5.6494140625">given a set, construct common property<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="214.09375" x="-230.2998033147369" y="5.6494140625">given a set, construct common property<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1394,7 +1392,7 @@
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="1720.7475715276676"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="318.490234375" x="-334.18631592056374" y="7.298828125">morpheme picker (cheat function) &lt;-- after delta application<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="318.490234375" x="-334.18631592056363" y="7.298828125">morpheme picker (cheat function) &lt;-- after delta application<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1512,7 +1510,7 @@
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="144.009765625" x="-46.85756087493303" y="-22.701171875">NAME FOR THIS GRAPH<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="144.009765625" x="-46.85756087493314" y="-22.701171875">NAME FOR THIS GRAPH<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1692,7 +1690,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="0.9113125000000006" nodeRatioY="-0.5" offsetX="0.0" offsetY="-4.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="780.47265625" x="-36.1718535234063" y="-47.051980359810614">HINT: ALWAYS REFERENCE A CONSISTENT SMALLER CLONE INSTEAD OF YOURSELF EXACTLY (yourself exactly is why SI isn't solvable)<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="780.47265625" x="-36.1718535234063" y="-47.051980359810386">HINT: ALWAYS REFERENCE A CONSISTENT SMALLER CLONE INSTEAD OF YOURSELF EXACTLY (yourself exactly is why SI isn't solvable)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1786,13 +1784,12 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n93">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="923.9463598539909" y="2266.4136996207003"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="290.025390625" x="-9.252789200913867" y="65.6145060977642">WANT: SELF REFERENCE WRT CONCEPT SPACE<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="290.025390625" x="-9.252789200913753" y="65.6145060977642">WANT: SELF REFERENCE WRT CONCEPT SPACE<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1804,7 +1801,6 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n94">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="717.0846192698251" y="2266.4136996207003"/>
@@ -1822,7 +1818,6 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n95">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="638.0476192669295" y="2266.4136996207003"/>
@@ -1840,7 +1835,6 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n96">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="796.1216192727207" y="2266.4136996207003"/>
@@ -1858,13 +1852,12 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n97">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1340.2378375179755" y="2881.805542364553"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="420.80078125" x="51.80154246434347" y="5.6494140625"> my print example sucks because it needs the 'whole thing' in order to not suck<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="420.80078125" x="51.801542464343584" y="5.6494140625"> my print example sucks because it needs the 'whole thing' in order to not suck<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1876,7 +1869,6 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n98">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-24.39544739777307" y="514.0175670470032"/>
@@ -1894,7 +1886,6 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n99">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-240.81523779605243" y="651.1973071546477"/>
@@ -1912,7 +1903,6 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n100">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-240.81523779605243" y="740.6746255615362"/>
@@ -1930,7 +1920,6 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n101">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="133.65349063509143" width="181.16664973089325" x="2185.11606650879" y="1768.3792952094627"/>
@@ -1949,7 +1938,6 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n102">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="133.65349063509143" width="181.16664973089325" x="2185.11606650879" y="1903.6825041993493"/>
@@ -1990,7 +1978,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
           <y:Geometry height="30.0" width="30.0" x="2389.7389977306193" y="2893.181518003881"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="214.09375" x="-230.29980331473666" y="5.6494140625">given a set, construct common property<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="214.09375" x="-230.2998033147369" y="5.6494140625">given a set, construct common property<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -2036,7 +2024,6 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n107">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2539.1575996842466" y="2999.2004765074516"/>
@@ -2054,7 +2041,6 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n108">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2485.8046644851074" y="3087.296451769833"/>
@@ -2072,7 +2058,6 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n109">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2755.236987240759" y="2936.9553854417886"/>
@@ -2090,7 +2075,6 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n110">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="2305.834622815309"/>
@@ -2108,7 +2092,6 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n111">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2549.091458529184" y="3176.6390931714564"/>
@@ -2126,13 +2109,12 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n112">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2549.091458529184" y="3254.0977985617437"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="218.458984375" x="56.56235327431182" y="5.6494140625">naive answer: objects in set EX: ={a,b,c}<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="218.458984375" x="56.562353274312045" y="5.6494140625">naive answer: objects in set EX: ={a,b,c}<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -2144,13 +2126,12 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
       </data>
     </node>
     <node id="n113">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2549.091458529184" y="3331.556503952031"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="180.4140625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="762.291015625" x="67.13868077738084" y="4.0">finding sets with common property =&gt; finding examples or picking out examples from a set
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="180.4140625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="762.291015625" x="67.13868077738061" y="4.0">finding sets with common property =&gt; finding examples or picking out examples from a set
 Construct common property =&gt;
 One hint: apply deltav2 on n choose 2 objects /union MIRAMEMORY &lt;= would work bu takes a "lot of time"
 problem: what about metatheorems?
@@ -2229,7 +2210,7 @@ EX: that parentheses come in pairs for code<y:LabelModel>
           <y:Geometry height="30.0" width="30.0" x="1879.3877977115426" y="3405.2099945871228"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="305.37109375" x="50.49372401345158" y="4.0">OBSERVATION/GENERATE RANDOM ABSTRACTION<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="305.37109375" x="50.493724013451356" y="4.0">OBSERVATION/GENERATE RANDOM ABSTRACTION<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -2241,7 +2222,6 @@ EX: that parentheses come in pairs for code<y:LabelModel>
       </data>
     </node>
     <node id="n118">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="133.65349063509143" width="181.16664973089325" x="1754.961599008756" y="3331.556503952031"/>
@@ -2260,7 +2240,6 @@ EX: that parentheses come in pairs for code<y:LabelModel>
       </data>
     </node>
     <node id="n119">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1860.8186924370543" y="3583.210016352461"/>
@@ -2286,7 +2265,6 @@ hint: autopicked universe is whatever the object 'touches' AKA if 2 objects are 
       </data>
     </node>
     <node id="n120">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1860.8186924370548" y="3813.850309140406"/>
@@ -2313,7 +2291,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n121">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2549.0914585291844" y="2509.4510437119393"/>
@@ -2331,7 +2308,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n122">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2309.5422652115767" y="2049.894700013723"/>
@@ -2349,7 +2325,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n123">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-869.7900177911715" y="1257.5299261485425"/>
@@ -2367,7 +2342,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n124">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="184.51032661011868" y="-67.16100599096706"/>
@@ -2385,7 +2359,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n125">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="333.7000000000003" y="-67.16100599096694"/>
@@ -2410,7 +2383,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n126">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="482.88967338988186" y="-67.16100599096694"/>
@@ -2428,7 +2400,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n127">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="479.7000000000003" y="1076.5095715278876"/>
@@ -2446,13 +2417,12 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n128">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1171.9799445712235" y="3228.744296982422"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="324.712890625" x="47.995335387623186" y="4.0">HINT: WHAT DO I TAKE AS A BASIC OBJECT FOR BASIS<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="324.712890625" x="47.9953353876233" y="4.0">HINT: WHAT DO I TAKE AS A BASIC OBJECT FOR BASIS<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -2464,7 +2434,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n129">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1234.8878425987075" y="3157.884929921065"/>
@@ -2482,20 +2451,19 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n130">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1294.8878425987075" y="3013.6504711625353"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="599.611328125" x="45.98253417216108" y="-16.58097560380702">hint: I can pick character blocks to be morphemes I just have to use an iterable (AKA list) to pick out morphemes<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="599.611328125" x="45.98253417216097" y="-16.58097560380702">hint: I can pick character blocks to be morphemes I just have to use an iterable (AKA list) to pick out morphemes<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
               <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.3866276249764171" nodeRatioX="0.5" nodeRatioY="-0.5" offsetX="15.982534172161081" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="777.619140625" x="45.98253417216108" y="7.298828125">EXAMPLE: toString([VisionBasisFILE(['basis.txt',AutoVision(AddressFILE(['basis.txt', M_(['morpheme1','morpheme2'])]),1),"INTEGERS"]),"naive"])<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="777.619140625" x="45.98253417216097" y="7.298828125">EXAMPLE: toString([VisionBasisFILE(['basis.txt',AutoVision(AddressFILE(['basis.txt', M_(['morpheme1','morpheme2'])]),1),"INTEGERS"]),"naive"])<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -2507,13 +2475,12 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n131">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1183.1570620277546" y="2771.33922379978"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="1085.16015625" x="-527.5800781249999" y="-47.147761394981444">CONCLUSTION: I can do it with address func but I think I need more materials to answer this problem properly, my theory only asks for items to be arbitrarily given and I have no idea how to choose them\<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="1085.16015625" x="-527.580078125" y="-47.147761394981444">CONCLUSTION: I can do it with address func but I think I need more materials to answer this problem properly, my theory only asks for items to be arbitrarily given and I have no idea how to choose them\<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -2525,13 +2492,12 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n132">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1098.0705981718702" y="2890.2544811787648"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="1085.16015625" x="-527.5800781249999" y="-47.147761394981444">CONCLUSTION: I can do it with address func but I think I need more materials to answer this problem properly, my theory only asks for items to be arbitrarily given and I have no idea how to choose them\<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="1085.16015625" x="-527.580078125" y="-47.147761394981444">CONCLUSTION: I can do it with address func but I think I need more materials to answer this problem properly, my theory only asks for items to be arbitrarily given and I have no idea how to choose them\<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -2543,7 +2509,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n133">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1253.6572373218523" y="408.4502706049474"/>
@@ -2561,7 +2526,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n134">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2157.989488947255" y="867.7301211108678"/>
@@ -2579,7 +2543,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n135">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2157.9894889472544" y="915.7476693227088"/>
@@ -2597,7 +2560,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n136">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-806.1555273713661" y="1110.8871490822926"/>
@@ -2615,13 +2577,12 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n137">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-921.4620073196975" y="1110.8871490822926"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="304.140625" x="-216.12857548213037" y="-33.900334067144854">following the functions in memory to do stuff (everything)<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="304.140625" x="-216.12857548213037" y="-33.90033406714474">following the functions in memory to do stuff (everything)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -2633,7 +2594,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n138">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="797.0554294469057" y="-241.0513325619032"/>
@@ -2651,7 +2611,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n139">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="797.0554294469057" y="-191.03295581271053"/>
@@ -2669,7 +2628,6 @@ how to check for proper change/ see when object is satisfied
       </data>
     </node>
     <node id="n140">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="107.03603344441292" y="990.7001149055161"/>
@@ -2693,7 +2651,6 @@ it will hang until MemoryError happens. If the output is unlimited (as in the te
       </data>
     </node>
     <node id="n141">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2.295059428138984" y="1085.6701311253205"/>
@@ -2713,13 +2670,12 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n142">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-331.35522201291656" y="1284.018671035934"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="216.126953125" x="-70.51571639490237" y="-36.032566561827196">could try to output questions/responses <y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="216.126953125" x="-70.51571639490237" y="-36.03256656182725">could try to output questions/responses <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -2731,7 +2687,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n143">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-289.3558708872995" y="1327.0900510144056"/>
@@ -2749,7 +2704,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n144">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="167.03603344441285" y="1033.579437451434"/>
@@ -2767,7 +2721,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n145">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1103.427743921472" y="1375.3004288875638"/>
@@ -2785,7 +2738,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n146">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1103.427743921472" y="1448.9385946572086"/>
@@ -2803,7 +2755,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n147">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1103.427743921472" y="1522.5767604268533"/>
@@ -2821,7 +2772,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n148">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1730.873184290737" y="1786.8538782272265"/>
@@ -2839,7 +2789,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n149">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1981.2854684596864" y="1949.9797952255549"/>
@@ -3587,7 +3536,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e72" source="n92" target="n75">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -3600,7 +3548,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e73" source="n93" target="n88">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3611,7 +3558,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e74" source="n95" target="n94">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3622,7 +3568,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e75" source="n94" target="n96">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3633,7 +3578,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e76" source="n96" target="n93">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3644,7 +3588,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e77" source="n87" target="n95">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3655,7 +3598,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e78" source="n97" target="n92">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3666,7 +3608,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e79" source="n98" target="n39">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3677,7 +3618,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e80" source="n98" target="n34">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3688,7 +3628,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e81" source="n96" target="n98">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3699,7 +3638,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e82" source="n99" target="n98">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3710,7 +3648,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e83" source="n99" target="n100">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3821,7 +3758,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e94" source="n3" target="n101">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -3834,7 +3770,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e95" source="n107" target="n3">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3845,7 +3780,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e96" source="n108" target="n103">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3856,7 +3790,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e97" source="n109" target="n106">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3867,7 +3800,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e98" source="n111" target="n3">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3878,7 +3810,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e99" source="n112" target="n111">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3889,7 +3820,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e100" source="n113" target="n112">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3940,7 +3870,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e105" source="n118" target="n102">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3951,7 +3880,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e106" source="n119" target="n118">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3962,7 +3890,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e107" source="n120" target="n119">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3973,7 +3900,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e108" source="n3" target="n121">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3984,7 +3910,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e109" source="n22" target="n123">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3995,7 +3920,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e110" source="n89" target="n88">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4006,7 +3930,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e111" source="n90" target="n89">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4017,7 +3940,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e112" source="n71" target="n72">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4028,7 +3950,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e113" source="n124" target="n125">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4039,7 +3960,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e114" source="n125" target="n126">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4050,7 +3970,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e115" source="n20" target="n71">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4061,7 +3980,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e116" source="n20" target="n75">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4072,7 +3990,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e117" source="n127" target="n75">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4083,7 +4000,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e118" source="n20" target="n127">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4094,7 +4010,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e119" source="n128" target="n129">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4105,7 +4020,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e120" source="n92" target="n129">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4116,7 +4030,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e121" source="n130" target="n92">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4127,7 +4040,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e122" source="n129" target="n130">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4138,7 +4050,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e123" source="n92" target="n131">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4149,7 +4060,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e124" source="n92" target="n132">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4160,7 +4070,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e125" source="n22" target="n133">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4171,7 +4080,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e126" source="n133" target="n48">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4182,7 +4090,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e127" source="n134" target="n71">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4193,7 +4100,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e128" source="n135" target="n71">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4204,7 +4110,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e129" source="n123" target="n137">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4215,7 +4120,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e130" source="n123" target="n136">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4226,7 +4130,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e131" source="n137" target="n136">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4237,7 +4140,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e132" source="n136" target="n137">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4248,7 +4150,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e133" source="n5" target="n77">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4259,7 +4160,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e134" source="n140" target="n41">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4270,7 +4170,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e135" source="n141" target="n140">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4281,7 +4180,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e136" source="n35" target="n142">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4292,7 +4190,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e137" source="n35" target="n143">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4303,7 +4200,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e138" source="n144" target="n140">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4314,7 +4210,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e139" source="n141" target="n144">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4325,7 +4220,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e140" source="n123" target="n35">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4336,7 +4230,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e141" source="n148" target="n145">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4347,7 +4240,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </edge>
     <edge id="e142" source="n149" target="n148">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>

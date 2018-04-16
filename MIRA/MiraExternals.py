@@ -3035,13 +3035,20 @@ def AutoPicked(ArgList):
     with open(arg1, "r+") as fileref:
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
+        print("THIS WORKS",ast.literal_eval(str([['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']])))
+        print("CHECK DIFF",str([['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]) == line)
+        print(str([['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]))
+        print(line)
         while line:
-            print("THIS IS UNORDERED LINE", line, type(line))
-            print(ast.literal_eval(str(line)))
-            print("THIS IS ARG2",arg2, type(arg2))
-            print(ast.literal_eval(str(arg2)))
+            print("THIS IS UNORDERED LINE", line)
+            #print("what about eval", eval(line))
+            #print(ast.literal_eval(line))
+            print("THIS IS ARG2",arg2)
+            #print(eval(arg2))
+            #print(ast.literal_eval(arg2))
             try:
-                print("WHAT IS COMPOSEMETA",ComposeMETA(ast.literal_eval(line),ast.literal_eval(arg2)))
+                #print("WHAT IS COMPOSEMETA",ComposeMETA(ast.literal_eval(str(line)),ast.literal_eval(str(arg2))))
+                print("WHAT IS COMPOSEMETA",ComposeMETA(eval(str(line)),eval(str(arg2))))
             except Exception as e:
                 print("ERROR IS ",e)
             line = rchop(fileref.readline(), '\n')
