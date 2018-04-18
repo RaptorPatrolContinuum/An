@@ -1776,7 +1776,8 @@ def lexicoSortHARD(argList):
     #similarly assume extension is after last period:
     namelist = arg2.split(".")[:-1]
     thename = "".join(namelist)
-    arg2MovedName = thename + "old" + arg2.split(".")[-1]
+    arg2MovedName = thename + "old." + arg2.split(".")[-1]
+    print("namehere",arg2MovedName)
     #rename arg2 file
     os.rename(arg2, arg2MovedName)
     #open renamed file
@@ -1892,6 +1893,7 @@ def lexicoSort(argList):
         #rename memfile
         namelist = arg2.split(".")[:-1]
         arg2rename = "".join(namelist) + "NEW" + arg2.split(".")[-1]
+        print("arg2rename",arg2rename)
         os.rename(arg2,arg2rename)
         #rewrite MEMFILE
         #open renamed memfile
@@ -2414,6 +2416,7 @@ def FILEinsertAt(ArgList):
     #new strat: just get everything before the last period (assume extension is after last period)
     namelist = arg1.split(".")[:-1]
     thename = "".join(namelist)
+    print("thename",thename)
     arg1New = open(thename + "1.txt",'a+')
 
     #get max lines for old file (index starts at 1 so just -1 to get index 0)
@@ -2621,6 +2624,7 @@ def nametestFUNC(argList):
             #make new name
             newnameprep = arg1.split(".")[:-1]
             newnameprep2 = "".join(newnameprep)
+            print("newnameprep2",newnameprep2)
             newname = newnameprep2 + str(x) + "." + arg1.split(".")[-1]
             #print("qhat is new name?",newname)
             #test new name

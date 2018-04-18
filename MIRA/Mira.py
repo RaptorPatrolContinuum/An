@@ -85,14 +85,14 @@ while Descent:
 
         #print("what is inputtext", inputtext)
         #print("ARGINPUT IS monkaS", argv)
+        #INIT OTHER CLONE AS IM MAKING A LOT OF CHANGES
+        Cloneinit()
         try:
             #write input/output to memory RAM file:
             memoryfile = open(MemoryUNORDERED, 'a+')
             #stderr=subprocess.STDOUT
             #with Popen(['python', 'test.py'], stdout=PIPE, stderr=PIPE, bufsize=1, universal_newlines=True) as p:
             #with Popen(['python', 'Mira.py', inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
-            #INIT OTHER CLONE AS IM MAKING A LOT OF CHANGES
-            Cloneinit()
             miralist = ['python', OtherClone() + '\\Mira.py', inputtext]
             #print("this should be miralist", miralist)
             if Descent == True:
@@ -137,8 +137,8 @@ while Descent:
             pass
 
         #look for AutoPicked Universe
-        #print("ShortMem",AutoPicked([MemoryUNORDERED,inputtext]))
-        #print("LongMem",AutoPicked([memoryLong,inputtext]))
+        print("ShortMem",AutoPicked([MemoryUNORDERED,inputtext]))
+        print("LongMem",AutoPicked([memoryLong,inputtext]))
         #eval the return
 
         
