@@ -23,6 +23,7 @@ NEED TO WORK ON MEMORY RAM + MEMORY FILE
 Descent = True
 
 while Descent:
+    #print("how many attempts?",len(argv[1:]) > 0,argv[1:])
     try:
         if len(argv[1:]) > 0:
             inputtext = argv[1:][0]
@@ -109,31 +110,44 @@ while Descent:
                         print("WTF DOES THIS DO",line)
                         #process(line)
                     '''
-                memoryfile.write(str(["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, "+inputtext+"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]) + "\n")
+                internaltest = ["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, "+inputtext+"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]
+                print("bisection args",[memoryLong,str(internaltest),basisname])
+                #print("bisection search",bisectionSearch([memoryLong,str(internaltest),basisname]))
+                #orsequence = bisectionSearch([memoryLong,str(internaltest),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest)])
+                orsequence = ["???"]
+                
+                #print("shitty args",[MemoryUNORDERED,str(internaltest)])
+                #print("shitty search",shittySearch([MemoryUNORDERED,str(internaltest)]))
+                print("what is orsequence?", orsequence)
+                if len(orsequence) > 0:
+                    print("I already saw that!")
+                else:
+                    memoryfile.write(str(internaltest) + "\n")
             else:
                 #just write the OG test once
                 #[['TOTAL_ARGUMENT == "b"', 'd']]
                 #str([str(inputtext),str(eval(inputtext))]) + "\n"
-                memoryfile.write(str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",str(eval(inputtext))]]) + "\n")
+                internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",str(eval(inputtext))]]
+                print("WHAT ABOUT INTERNATLTEST2", [MemoryUNORDERED,str(internaltest2)], shittySearch([MemoryUNORDERED,str(internaltest2)]))
+                orsequence2 = bisectionSearch([memoryLong,str(internaltest2),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest2)])
+                print("===== orsequence2", orsequence2)
+                if len(orsequence2) > 0:
+                    print("already saw that 2")
+                else:
+                    memoryfile.write(str(internaltest2) + "\n")
             memoryfile.close()
             
         except Exception as e:
-            #print("error is ", e)
-            #print("code died")
+            print("error is ", e)
+            print("code died")
             memoryfile = open(MemoryUNORDERED, 'a+')
             memoryfile.write(str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'", ["",e]]]) + "\n")
             memoryfile.close()
             pass
 
         #look for AutoPicked Universe
-        with open(MemoryUNORDERED, "r+") as UNORDERED:
-            UNORDERED.seek(0)
-            line = UNORDERED.readline()
-            print("THIS IS UNORDERED LINE", line)
-        with open(memoryLong, "r+") as Long:
-            Long.seek(0)
-            line = Long.readline()
-            print("THIS IS Long LINE", line)
+        #print("ShortMem",AutoPicked([MemoryUNORDERED,inputtext]))
+        #print("LongMem",AutoPicked([memoryLong,inputtext]))
         #eval the return
 
         

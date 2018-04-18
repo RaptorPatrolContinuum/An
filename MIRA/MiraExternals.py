@@ -1990,12 +1990,46 @@ def mapcountLINES(argList):
     arg1.close()
     return lines
 
+def shittySearch(argList):
+    '''
+    HINT: BASE 0
+    why not
+    arg1 = fileNAME to search for
+    arg2 = obj to search
+   
+    '''
+    #arg1 = fileNAME
+    arg1 = argList[0]
+    #arg2 = obj to insert
+    arg2 = argList[1]
+    ANS = []
+    index = 0
+    with open(arg1,"r+") as hotPotato:
+        line = rchop(hotPotato.readline(), '\n')
+        while line:
+            #print("line vs arg2")
+            try:
+                a1 = str(eval(line))
+                a2 = arg2
+                print(a1, type(a1))
+                print(a2, type(a2))
+                print(a1 == a2)
+                if a1 == a2:
+                    ANS.append(index)
+            except:
+                pass
+            line = rchop(hotPotato.readline(), '\n')
+            index += 1
+    return ANS
+
+#print("bullyhunters omegalul",shittySearch(['MemoryUnordered.txt',str([['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']])]))
+
 def bisectionSearch(argList):
     '''
     HINT: BASE 0
     why not
-    arg1 = fileNAME to insert to 
-    arg2 = obj to insert
+    arg1 = fileNAME to search for
+    arg2 = obj to search
     arg3 = basisNAME for addressfunc 
     HINT: YOU NEED TO APPLY THIS SET TO AN ALREADY LINEAR LIST (or else address(x)< address(y) < address(z) won't work)
    
@@ -2021,21 +2055,21 @@ def bisectionSearch(argList):
         return "WRONGWHY"
     #figure out where it SHOULD be:
     shouldbe = bisectionInsertmin([0,total,arg1,arg3,arg2,arg4])[0][1]
-    print("OG is", arg2)
-    print("shouldbe",shouldbe)
+    ###########print("OG is", arg2)
+    ###########print("shouldbe",shouldbe)
 
     #assume no answer:
     ANS = []
-    print("check AT",FILEindexread([arg1,shouldbe]))
+    ###########print("check AT",FILEindexread([arg1,shouldbe]))
     if arg2 == FILEindexread([arg1,shouldbe]):
         ANS.append(shouldbe)
     filler = 1
-    print("check LEFT AS FAR AS YOU CAN")
+    ###########print("check LEFT AS FAR AS YOU CAN")
     while True:
         try:
-            print("leftstrats",filler, shouldbe-filler,FILEindexread([arg1,shouldbe-filler]))
-            print(arg2)
-            print(arg2 == FILEindexread([arg1,shouldbe-filler]))
+            ###########print("leftstrats",filler, shouldbe-filler,FILEindexread([arg1,shouldbe-filler]))
+            ###########print(arg2)
+            ###########print(arg2 == FILEindexread([arg1,shouldbe-filler]))
             if arg2 == FILEindexread([arg1,shouldbe-filler]):
                 ANS.append(shouldbe-filler)
                 filler += 1
@@ -3032,25 +3066,26 @@ def AutoPicked(ArgList):
     '''
     arg1 = ArgList[0]
     arg2 = ArgList[1]
+    ANS = []
     with open(arg1, "r+") as fileref:
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
         while line:
-            print("THIS IS the LINE", line)
-            #print("what about eval", eval(line))
-            #print(ast.literal_eval(line))
-            print("THIS IS ARG2",arg2)
-            #print(eval(arg2))
-            #print(ast.literal_eval(arg2))
+            #print("THIS IS the LINE", line)
+            #print("THIS IS ARG2",arg2)
             try:
-                #print("WHAT IS COMPOSEMETA",ComposeMETA(ast.literal_eval(str(line)),ast.literal_eval(str(arg2))))
-                print("WHAT IS COMPOSEMETA",ComposeMETA(eval(line),eval(arg2)))
+                exist = ComposeMETA(eval(line),eval(arg2))
+                #print("WHAT IS COMPOSEMETA",ComposeMETA(eval(line),eval(arg2)))
+                if exist != []:
+                    ANS.append(exist)
             except Exception as e:
-                print("ERROR IS ",e)
+                #print("ERROR IS ",e)
+                if e != []:
+                    ANS.append(e)
+                pass
             line = rchop(fileref.readline(), '\n')
-#print("SHOULD BE WHAT AIM LOOKING FOR")
-#print("LF2",ComposeMETA(ast.literal_eval(str([['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']])),ast.literal_eval("[['a',['b']],['Z',['f','AF']]]")))
-AutoPicked(['MemoryUNORDERED.txt',"[['a',['b']],['Z',['f','AF']]]"])
+    return ANS
+#print(AutoPicked(['MemoryUNORDERED.txt',"[['a',['b']],['Z',['f','AF']]]"]))
  
 ##############################################################
 
