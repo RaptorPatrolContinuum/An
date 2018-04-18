@@ -111,14 +111,7 @@ while Descent:
                         #process(line)
                     '''
                 internaltest = ["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, "+inputtext+"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]
-                print("bisection args",[memoryLong,str(internaltest),basisname])
-                #print("bisection search",bisectionSearch([memoryLong,str(internaltest),basisname]))
-                #orsequence = bisectionSearch([memoryLong,str(internaltest),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest)])
-                orsequence = ["???"]
-                
-                #print("shitty args",[MemoryUNORDERED,str(internaltest)])
-                #print("shitty search",shittySearch([MemoryUNORDERED,str(internaltest)]))
-                print("what is orsequence?", orsequence)
+                orsequence = bisectionSearch([memoryLong,str(internaltest),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest)])
                 if len(orsequence) > 0:
                     print("I already saw that!")
                 else:
@@ -128,9 +121,7 @@ while Descent:
                 #[['TOTAL_ARGUMENT == "b"', 'd']]
                 #str([str(inputtext),str(eval(inputtext))]) + "\n"
                 internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",str(eval(inputtext))]]
-                print("WHAT ABOUT INTERNATLTEST2", [MemoryUNORDERED,str(internaltest2)], shittySearch([MemoryUNORDERED,str(internaltest2)]))
                 orsequence2 = bisectionSearch([memoryLong,str(internaltest2),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest2)])
-                print("===== orsequence2", orsequence2)
                 if len(orsequence2) > 0:
                     print("already saw that 2")
                 else:
@@ -152,6 +143,10 @@ while Descent:
 
         
         #get nearest topo: M_U compose MIRA and M_U in MIRA?
+
+
+        #LEXICO IMMEDIATELY BECAUSE I AM STILL TESTING
+        lexicoSort([basisname,memoryLong,MemoryUNORDERED])
         '''
         for x in memorylist[0:]:
             #just do fast compose to express "close" possibilities

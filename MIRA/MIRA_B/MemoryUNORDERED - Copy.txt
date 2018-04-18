@@ -1,3 +1,9 @@
+[['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]
+[[print(,'b']]
+[['a', 2]]
+[['b','b']]
+[['argument_1 == "a"', 1+1]]
+
 	'''
     need function that does lexicographic ordering on ORDERED AND UNORDERED memory files using basislist
     arg1 = basis FILENAME

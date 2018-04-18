@@ -1540,7 +1540,7 @@ def BasisFix(inp,basis):
                 basis.append(str(k))
     return
 
-def tailOLD(f, n, offset=0):
+def tail(f, n, offset=0):
     """
     HINT!!!!!
     THIS RETURNS A LIST SO YOU HAVE TO INDEX[0] TO GET ACTUAL OBJECT!!!!
@@ -1567,7 +1567,7 @@ def tailOLD(f, n, offset=0):
             return lines[-to_read:offset and -offset or None]
         avg_line_length *= 1.3
 
-def tail(argList):
+def tailREADLINES(argList):
     '''
     HINT:
     I only look at last line anyways, so I can just use linecache module + maxlines to get last line
@@ -1776,7 +1776,7 @@ def lexicoSortHARD(argList):
     #similarly assume extension is after last period:
     namelist = arg2.split(".")[:-1]
     thename = "".join(namelist)
-    arg2MovedName = thename + "old" + arg2.split(".")[-1]
+    arg2MovedName = thename + "old." + arg2.split(".")[-1]
     #rename arg2 file
     os.rename(arg2, arg2MovedName)
     #open renamed file
@@ -2011,9 +2011,9 @@ def shittySearch(argList):
             try:
                 a1 = str(eval(line))
                 a2 = arg2
-                print(a1, type(a1))
-                print(a2, type(a2))
-                print(a1 == a2)
+                #print(a1, type(a1))
+                #print(a2, type(a2))
+                #print(a1 == a2)
                 if a1 == a2:
                     ANS.append(index)
             except:
