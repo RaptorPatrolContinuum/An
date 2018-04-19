@@ -1973,6 +1973,7 @@ def lexicoSort(argList):
     os.remove(InsertKey.name)
     #REMEMBER TO DELETE RENAMED MEMFILE
     os.remove(arg2rename)
+    #delete UNORDERED file so that you don't duplicate stuff
 
 def mapcountLINES(argList):
     '''
