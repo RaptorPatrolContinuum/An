@@ -177,7 +177,8 @@ while Descent:
 
         #DELTA ANALYSIS:
         #deltav2 on x in combined memory and new obj
-        #deltav2 on pairs in new obj -> guessing similar inputs/variables
+        #deltav2 on pairs in new obj -> guessing similar inputs/variables (find abstractions) ->#eval using (deltav3 COMPOSE deltav2) and get answers
+        
 
 
         '''
