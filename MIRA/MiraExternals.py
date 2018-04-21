@@ -528,7 +528,9 @@ def Compose(f1,f2):
                 ALG.append([x[0],y[1]])
     return ALG
 
-def ComposeMETA(f1,f2):
+def ComposeMETA(argList):
+    f1 = argList[0]
+    f2 = argList[1]
     '''
     do f2 THEN f1 like the way it's written!
     '''
@@ -560,7 +562,8 @@ def ComposeMETA(f1,f2):
 
 def ComposeReplace(str1,str2):
     '''
-    HINT: I WRITE str1,str2 BUT I EVAULATE IN TERMS OF str2,str1
+    HINT: I WRITE str1,str2 BUT I EVAULATE IN TERMS OF str2 FIRST, THEN str1
+    HINT: USE Q_() function to make things automatically functions
 
     PICTURE:
     FUNCTION1 COMPOSED FUNCTION2:
@@ -3086,11 +3089,14 @@ def AutoPicked(ArgList):
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
         while line:
-            print("THIS IS the LINE", line, type(line))
-            print("THIS IS ARG2",arg2, type(arg2))
+            print("THIS IS the LINE", line) #type(line)
+            print("THIS IS ARG2",arg2) #type(arg2)
             try:
-                #ComposeMETA(eval(str([['TOTAL_ARGUMENT == \'print("qhy")\'', 'None']])),Q_(str('print("qhy")')))
-                exist = ComposeMETA(eval(str(line)),Q_(str(arg2)))
+                #ComposeMETA([eval(str([['TOTAL_ARGUMENT == \'print("qhy")\'', 'None']])),Q_(str('print("qhy")'))])
+                exist = ComposeMETA([eval(str(line)),Q_(arg2)])
+                #HINT: my test data doesn't need quining BUT I do need it for random inputs
+                #QUESTION: IS IT POSSIBLE TO WORK ON QUINE OF FUNCTIONS OR NO?: PROBABLY YES, BUT YOU HAVE TO MODIFY ACTION FUNCTION (or f1 of f1 compose f2)
+                #exist = ComposeMETA([eval(str(line)),eval(arg2)])
                 print("WHAT IS COMPOSEMETA",exist)
                 if exist != []:
                     ANS.append(exist)
