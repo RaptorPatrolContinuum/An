@@ -3081,6 +3081,54 @@ def AutoPicked(ArgList):
     arg2 = line to find autopicked universe
     RETURN = ??
     WHAT THIS IS SUPPOSED TO DO IS MAKE THE AUTOPICKED UNIVERSE, BUT I AM SUPPOSED TO CHECK THROUGH Long and UNORDERED FILES
+
+
+REASONING FOR COMPOSEPREP
+PROBLEM:
+given (concept space, composemeta), a function X in concept space and a function Y that is observed, 
+and you want X compose Y (DO Y then X), and insertion to concept space is done through quine function,
+ is there a way to modify the input Y into Y~ such that you preserve X compose Y in concept space 
+ (AKA X conpose Y observed IRL == X compose Y~ in concept space)
+
+ANSWER
+
+KNOW: X is fixed = [[a in dom(X), b in ran(X)]]
+we have access to any concept space of arbitrary basis size/ elements (know: size -> elements through some basis bijection)
+Y is some finite function/ Y is also "fixed", [[a in dom(Y), b in ran(Y)]]
+what does Q_(Y) look like?
+[[[a in dom(y), b in ran(y)]],[[a in dom(y), b in ran(y)]]]
+
+X compose Y looks like:
+[[a in dom(y),b in ran(x)] | the arrows exist]
+
+PROBLEM:
+Q_(Y) looks horrendous
+dom(x) probably does not accept ran(Q_(Y))
+want:
+>dom Q_(Y) is sufficiently good to match X COMPOSE Y. TO BE CLEAR: a in ran(Q_(Y)) iff [[a in dom(y),b in ran(x)] | the arrows exist] (a's are same)
+>ran Q_(Y) to be sufficiently good to match X COMPOSE Y. TO BE CLEAR: b in ran(Q_(Y)) iff [[a in dom(y),b in ran(x)] | the arrows exist] (b's are same)
+hint: Y~ probably only exists for certain special kinds of finite functions (guaranteed for identity funcs, or already quined functions)
+			Y									X
+[[a in dom(Y), b in ran(Y)]]		[[a in dom(X), b in ran(X)]]
+
+			X compose Y looks like:
+[[a in dom(y),b in ran(x)] | the arrows exist]
+
+
+			Q_(Y)
+[[[a in dom(y), b in ran(y)]],[[a in dom(y), b in ran(y)]]]
+
+PROBLEM: X IS FIXED, Q_(function) repeats the element
+
+so if pair in Y has different coords, dom(X) would not be able to "attach" to ran(Q_(Y~))
+
+
+the domain of X that works would force ran(Q_(Y~)) and also force domQ_(Y~).
+So such method of making Y~ does not exist
+
+=> FUCK ME 
+
+C:\An>git commit -a -m "fuck if I observe a Y and want to compose with X I cannot make a Y~ such that X COMPOSE Q_(Y~) matches in some concept space which means I cannot always quine when making autopicked universe"
     '''
     arg1 = ArgList[0]
     arg2 = ArgList[1]
@@ -3090,10 +3138,17 @@ def AutoPicked(ArgList):
         line = rchop(fileref.readline(), '\n')
         while line:
             print("THIS IS the LINE", line) #type(line)
-            print("THIS IS ARG2",arg2) #type(arg2)
+            print("THIS IS ARG2 NOT EVALED",arg2) #type(arg2)
             try:
+                arg2 = eval(arg2)
+                #if function, DONT quine:
+                if fCheck(arg2) == True:
+                    composeprep = arg2
+                #else, quine
+                else:
+                    composeprep = Q_(arg2)
                 #ComposeMETA([eval(str([['TOTAL_ARGUMENT == \'print("qhy")\'', 'None']])),Q_(str('print("qhy")'))])
-                exist = ComposeMETA([eval(str(line)),Q_(arg2)])
+                exist = ComposeMETA([eval(str(line)),composeprep])
                 #HINT: my test data doesn't need quining BUT I do need it for random inputs
                 #QUESTION: IS IT POSSIBLE TO WORK ON QUINE OF FUNCTIONS OR NO?: PROBABLY YES, BUT YOU HAVE TO MODIFY ACTION FUNCTION (or f1 of f1 compose f2)
                 #exist = ComposeMETA([eval(str(line)),eval(arg2)])
@@ -3108,7 +3163,7 @@ def AutoPicked(ArgList):
                 pass
             line = rchop(fileref.readline(), '\n')
     return ANS
-print("FINAL ANSWER", AutoPicked(['MemoryUNORDERED.txt',"[['a',['b']],['Z',['f','AF']]]"]))
+#print("FINAL ANSWER", AutoPicked(['MemoryUNORDERED.txt',"[['a',['b']],['Z',['f','AF']]]"]))
 #print(AutoPicked(['MemoryUNORDERED.txt',"what the"]))
  
 ##############################################################
