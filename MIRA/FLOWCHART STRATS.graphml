@@ -1286,7 +1286,7 @@
     <node id="n68">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="3300.940346681703" y="2240.422528698983"/>
+          <y:Geometry height="30.0" width="30.0" x="3290.3136671567026" y="2229.894700013723"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="111.40234375" x="-40.701171875" y="5.6494140625">checking for change<y:LabelModel>
@@ -1303,7 +1303,7 @@
     <node id="n69">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="3314.1126175980376" y="2184.806273718903"/>
+          <y:Geometry height="30.0" width="30.0" x="3290.3136671567026" y="2156.545020069818"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="75.21484375" x="-22.607421875" y="5.6494140625">"consistency"<y:LabelModel>
@@ -1779,7 +1779,7 @@
           <y:Geometry height="30.0" width="30.0" x="-392.8760677795748" y="2476.8112958661254"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="195.115234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="524.875" x="-509.02838448615944" y="-161.46299059895318">picture:
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="195.115234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="524.875" x="-327.50698288436195" y="-204.92328315831674">picture:
 abstraction:
 input -&gt; [graph sequence]
 
@@ -1795,7 +1795,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.46980878206460475" labelRatioY="0.0" nodeRatioX="-0.5" nodeRatioY="-2.6301791137151063" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="-2.668982762812065" nodeRatioY="-0.5" offsetX="0.0" offsetY="-9.808048783316735" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:Shape type="rectangle"/>
@@ -1979,7 +1979,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
     <node id="n103">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="1340.2378375179755" y="2881.805542364553"/>
+          <y:Geometry height="30.0" width="30.0" x="1294.8878425987075" y="2890.2544811787648"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="420.80078125" x="51.801542464343584" y="5.6494140625"> my print example sucks because it needs the 'whole thing' in order to not suck<y:LabelModel>
@@ -2256,7 +2256,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
           <y:Geometry height="30.0" width="30.0" x="2549.091458529184" y="3331.556503952031"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="180.4140625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="762.291015625" x="67.13868077738061" y="4.0">finding sets with common property =&gt; finding examples or picking out examples from a set
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="180.4140625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="762.291015625" x="67.13868077738061" y="4.0">finding sets with common property =&gt; finding examples or picking out examples from a set
 Construct common property =&gt;
 One hint: apply deltav2 on n choose 2 objects /union MIRAMEMORY &lt;= would work bu takes a "lot of time"
 problem: what about metatheorems?
@@ -2367,10 +2367,10 @@ EX: that parentheses come in pairs for code<y:LabelModel>
     <node id="n125">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="1860.8186924370543" y="3583.210016352461"/>
+          <y:Geometry height="30.0" width="30.0" x="1830.5449238742026" y="3583.210016352461"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="121.609375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="901.884765625" x="49.21976330590451" y="12.550085374058654">how to test hypothesis:
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="121.609375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="901.884765625" x="49.21976330590451" y="12.550085374058654">how to test hypothesis:
 hint: truth telling func is 'if relation is satisfied or not'
 hint: "observe properly"
 hint: see theorem by evaling it and see if metahteorem by looking at what the 'smaller MIRA' sees
@@ -2392,10 +2392,10 @@ hint: autopicked universe is whatever the object 'touches' AKA if 2 objects are 
     <node id="n126">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="1860.8186924370548" y="3813.850309140406"/>
+          <y:Geometry height="30.0" width="30.0" x="1830.5449238742026" y="3813.850309140406"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="136.310546875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="324.84765625" x="56.52388871460971" y="4.0">solving problems + looking for change
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="136.310546875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="324.84765625" x="56.52388871460971" y="4.0">solving problems + looking for change
 know: 
 satisfaction 
 want:
@@ -2544,7 +2544,7 @@ how to check for proper change/ see when object is satisfied
     <node id="n134">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="1171.9799445712235" y="3228.744296982422"/>
+          <y:Geometry height="30.0" width="30.0" x="1183.1570620277546" y="3223.984506894155"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="324.712890625" x="47.9953353876233" y="4.0">HINT: WHAT DO I TAKE AS A BASIC OBJECT FOR BASIS<y:LabelModel>
@@ -2561,7 +2561,7 @@ how to check for proper change/ see when object is satisfied
     <node id="n135">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="1234.8878425987075" y="3157.884929921065"/>
+          <y:Geometry height="30.0" width="30.0" x="1183.1570620277546" y="3136.941853532691"/>
           <y:Fill color="#FF6600" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="341.51171875" x="62.37983922564581" y="5.6494140625">what it means to be a morpheme is to be a basic object in basis<y:LabelModel>
@@ -2636,7 +2636,7 @@ how to check for proper change/ see when object is satisfied
     <node id="n139">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="1280.617387013061" y="408.4502706049474"/>
+          <y:Geometry height="30.0" width="30.0" x="1280.617387013061" y="437.1799571713136"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="283.802734375" x="42.71650596642826" y="-22.701171875">QUESTION: when do I use statement+replacement?<y:LabelModel>
@@ -2758,7 +2758,7 @@ how to check for proper change/ see when object is satisfied
           <y:Geometry height="30.0" width="30.0" x="107.03603344441292" y="990.7001149055161"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="92.20703125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="1348.263671875" x="-1381.6553387804695" y="-31.103515625">PROBLEM WITH DEADLOCKING
+          <y:NodeLabel alignment="right" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="92.20703125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="1348.263671875" x="-1381.6553387804695" y="-31.103515625">PROBLEM WITH DEADLOCKING
 Per the subprocess documentaion Here, and the other answer, proc.communicate()[0] should be used instead of stdout.read() to avoid deadlocking 
 ( https://stackoverflow.com/questions/4537259/python-how-to-pipe-the-output-using-popen )
 
@@ -3426,6 +3426,24 @@ not function = use Quine <y:LabelModel>
             </y:LabelModel>
             <y:ModelParameter>
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="3.498082212746681" nodeRatioY="-0.5" offsetX="0.0" offsetY="-11.713237481915485" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n181">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1770.1606680899931" y="1151.4515354529408"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="504.103515625" x="-237.0517578125" y="5.6494140625">tbh if you use characters the morphemes might "magically spring out of the blue or something"<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:Shape type="rectangle"/>
@@ -5165,6 +5183,17 @@ not function = use Quine <y:LabelModel>
       </data>
     </edge>
     <edge id="e169" source="n180" target="n59">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e170" source="n180" target="n181">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>

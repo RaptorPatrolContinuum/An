@@ -149,6 +149,11 @@ while Descent:
         for x in autoPickedUniv:
             suppANS.append(Applyfunc([x,inputtext]))
         print("supposed answer",suppANS)
+        for x in suppANS:
+            try:
+                eval(x)
+            except:
+                pass
         
 
         #LEXICO IMMEDIATELY BECAUSE I AM STILL TESTING

@@ -149,18 +149,21 @@ while Descent:
         for x in autoPickedUniv:
             suppANS.append(Applyfunc([x,inputtext]))
         print("supposed answer",suppANS)
+        for x in suppANS:
+            try:
+                eval(x)
+            except:
+                pass
         
-        #get nearest topo: M_U compose MIRA and M_U in MIRA?
-
 
         #LEXICO IMMEDIATELY BECAUSE I AM STILL TESTING
         #lexicoSort([basisname,memoryLong,MemoryUNORDERED])
                 
         
-        #append basis w/ M_U compose MIRA and M_U in MIRA <--- also outdated only need to add things to basis when you want to take address into an SI problem to check for answers/similarities
+        
         #pattern recognition:
         #~
-        #\cong
+        #\cong (property preserved under some X)
         #"use delta < some # " and look in some topo space
         #append basis again
 
