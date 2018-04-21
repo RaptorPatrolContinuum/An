@@ -139,36 +139,25 @@ while Descent:
         #look for/through AutoPicked Universe
         shortAuto = AutoPicked([MemoryUNORDERED,inputtext])
         longAuto = AutoPicked([memoryLong,inputtext])
-        print("ShortMem",shortAuto)
-        print("LongMem",longAuto)
+        #print("ShortMem",shortAuto)
+        #print("LongMem",longAuto)
         autoPickedUniv = shortAuto + longAuto
         print("near field is", autoPickedUniv)
 
-        #eval the return <--- REMEMBER TO EVAL THE RETURN
-
+        #eval the return <--- REMEMBER TO EVAL THE RETURN (need:hint: if I have finite functions, hav ea function that takes a finite function and an input then returns what the finite function would say if given that input)
+        suppANS = []
+        for x in autoPickedUniv:
+            suppANS.append(Applyfunc([x,inputtext]))
+        print("supposed answer",suppANS)
         
         #get nearest topo: M_U compose MIRA and M_U in MIRA?
 
 
         #LEXICO IMMEDIATELY BECAUSE I AM STILL TESTING
         #lexicoSort([basisname,memoryLong,MemoryUNORDERED])
-        '''
-        for x in memorylist[0:]:
-            #just do fast compose to express "close" possibilities
-            
-            print("stats",x,memorylist)
-            print("composing",M_(x),M_(inputtext),Compose(M_(x),M_(inputtext)))
-            fast = Compose(M_(x),M_(inputtext))
-            print("what she sees",["Compose(M_("+str(x)+"),"+str(M_(inputtext))+")",fast]) 
-            if fast != None:
-                memorylist.append(["Compose(M_("+str(x)+"),"+str(M_(inputtext))+")",fast])
-        '''     
                 
-
-        #memorylist = list of addresses/functions
-
         
-        #append basis w/ M_U compose MIRA and M_U in MIRA
+        #append basis w/ M_U compose MIRA and M_U in MIRA <--- also outdated only need to add things to basis when you want to take address into an SI problem to check for answers/similarities
         #pattern recognition:
         #~
         #\cong

@@ -3180,6 +3180,28 @@ C:\An>git commit -a -m "fuck if I observe a Y and want to compose with X I canno
     return ANS
 #print("FINAL ANSWER", AutoPicked(['MemoryUNORDERED.txt',"[['a',['b']],['Z',['f','AF']]]"]))
 #print(AutoPicked(['MemoryUNORDERED.txt',"what the"]))
+
+def Applyfunc(argList):
+    '''
+    arg1 = finite function
+    arg2 = argument for arg1
+    what this does is eval the finite function given arg2 as input
+    '''
+    #arg1 = finite function
+    arg1 = argList[0]
+    #arg2 = argument for arg1
+    arg2 = argList[1]
+
+    ANS = []
+    #check if arg1 is actually a function
+    if fCheck(arg1) == False:
+        print("f1 is function? Applyfunc", fCheck(arg1))
+        return []
+    print("monkaS",arg1,Q_(arg2))
+    ANS = ran(ComposeMETA([arg1,Q_(arg2)]))
+    #ComposeMETA([[['TOTAL_ARGUMENT == "b"', 'd'],['TOTAL_ARGUMENT == "b"', 'e'],['TOTAL_ARGUMENT == "b"', 'f']],[['a','b']]])
+    #Applyfunc([[['TOTAL_ARGUMENT == "b"', 'd'],['TOTAL_ARGUMENT == "b"', 'e'],['TOTAL_ARGUMENT == "b"', 'f']],'b'])
+    return ANS
  
 ##############################################################
 
