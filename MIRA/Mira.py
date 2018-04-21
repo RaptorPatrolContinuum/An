@@ -132,6 +132,7 @@ while Descent:
             print("error is ", e)
             print("code died")
             memoryfile = open(MemoryUNORDERED, 'a+')
+            #HINT: ["",e] IS BECAUSE popen has error as 2nd element
             memoryfile.write(str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'", ["",e]]]) + "\n")
             memoryfile.close()
             pass
@@ -151,8 +152,14 @@ while Descent:
         print("supposed answer",suppANS)
         for x in suppANS:
             try:
-                eval(x)
-            except:
+                attempt = eval(x)
+                memoryfile = open(MemoryUNORDERED, 'a+')
+                memoryfile.write(str([["TOTAL_ARGUMENT == '"+ x +"'", attempt]]) + "\n")
+                memoryfile.close()
+            except Exception as e:
+                memoryfile = open(MemoryUNORDERED, 'a+')
+                memoryfile.write(str([["TOTAL_ARGUMENT == '"+ x +"'", ["",e]]]) + "\n")
+                memoryfile.close()
                 pass
         
 
@@ -168,7 +175,9 @@ while Descent:
         #append basis again
 
 
-        
+        #DELTA ANALYSIS:
+        #deltav2 on x in combined memory and new obj
+        #deltav2 on pairs in new obj -> guessing similar inputs/variables
 
 
         '''

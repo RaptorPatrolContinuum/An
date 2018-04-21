@@ -3149,6 +3149,14 @@ C:\An>git commit -a -m "fuck if I observe a Y and want to compose with X I canno
             arg2 = eval(arg2)
     except:
         pass
+
+    #if function, DONT quine:
+    if fCheck(arg2) == True:
+        composeprep = arg2
+    #else, quine
+    else:
+        composeprep = Q_(arg2)
+
     with open(arg1, "r+") as fileref:
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
@@ -3156,12 +3164,6 @@ C:\An>git commit -a -m "fuck if I observe a Y and want to compose with X I canno
             #print("THIS IS the LINE", line) #type(line)
             #print("THIS IS ARG2 AFTER EVAL CHECK",arg2) #type(arg2)
             try:
-                #if function, DONT quine:
-                if fCheck(arg2) == True:
-                    composeprep = arg2
-                #else, quine
-                else:
-                    composeprep = Q_(arg2)
                 #ComposeMETA([eval(str([['TOTAL_ARGUMENT == \'print("qhy")\'', 'None']])),Q_(str('print("qhy")'))])
                 exist = ComposeMETA([eval(str(line)),composeprep])
                 #HINT: my test data doesn't need quining BUT I do need it for random inputs
@@ -3202,7 +3204,44 @@ def Applyfunc(argList):
     #ComposeMETA([[['TOTAL_ARGUMENT == "b"', 'd'],['TOTAL_ARGUMENT == "b"', 'e'],['TOTAL_ARGUMENT == "b"', 'f']],[['a','b']]])
     #Applyfunc([[['TOTAL_ARGUMENT == "b"', 'd'],['TOTAL_ARGUMENT == "b"', 'e'],['TOTAL_ARGUMENT == "b"', 'f']],'b'])
     return ANS
- 
+
+def SeekForce(ArgList):
+    '''
+    arg1 = filename
+    arg2 = specifc arg
+    arg3 = function to use
+    RETURN = ??
+    THIS IS SUPPOSED TO take a filename with finite functions in it, a specific argument X, and a binary function
+    then it composes X with everything in the file and returns all the answers (make empty a nonrepeating answer!)
+    '''
+    arg1 = ArgList[0]
+    arg2 = ArgList[1]
+    arg3 = ArgList[2]
+    ANS = []
+
+    print("checking how to call func",arg3(["alphaprint('')","betrprint('')"]))
+    
+    with open(arg1, "r+") as fileref:
+        fileref.seek(0)
+        line = rchop(fileref.readline(), '\n')
+        while line:
+            try:
+                print("this is line",line,type(line))
+                print("this is arg2",arg2,type(arg2))
+                exist = arg3([line,arg2])
+                print("exist test",exist)
+                if exist != []:
+                    ANS.append(exist)
+            except Exception as e:
+                #print("ERROR IS ",e)
+                if e != []:
+                    #ANS.append(e)
+                    pass
+                pass
+            line = rchop(fileref.readline(), '\n')
+    return ANS
+
+#print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt','argument_1 == "b"',Applyfunc]))
 ##############################################################
 
 def printpls(obj):
