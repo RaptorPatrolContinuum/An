@@ -110,7 +110,7 @@ while Descent:
                         print("WTF DOES THIS DO",line)
                         #process(line)
                     '''
-                internaltest = ["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, "+inputtext+"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]
+                internaltest = [["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, "+inputtext+"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]]
                 orsequence = bisectionSearch([memoryLong,str(internaltest),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest)])
                 if len(orsequence) > 0:
                     print("I already saw that!")
@@ -137,8 +137,8 @@ while Descent:
             pass
 
         #look for AutoPicked Universe
-        print("ShortMem",AutoPicked([MemoryUNORDERED,inputtext]))
-        print("LongMem",AutoPicked([memoryLong,inputtext]))
+        #print("ShortMem",AutoPicked([MemoryUNORDERED,inputtext]))
+        #print("LongMem",AutoPicked([memoryLong,inputtext]))
         #eval the return
 
         

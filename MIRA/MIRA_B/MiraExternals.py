@@ -1973,6 +1973,7 @@ def lexicoSort(argList):
     os.remove(InsertKey.name)
     #REMEMBER TO DELETE RENAMED MEMFILE
     os.remove(arg2rename)
+    #delete UNORDERED file so that you don't duplicate stuff
 
 def mapcountLINES(argList):
     '''
@@ -3032,6 +3033,18 @@ def Cloneinit():
         exit()
     #if files you are about to copy are usable
     #just check fileopen
+    #for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
+    #    try:
+    #        botburger = open(x,'r+')
+    #        botburger.close()
+    #        #print(x, "is available")
+    #    except Exception as e:
+    #        print(x, "NOT AVAILABLE, STOPPING NOW")
+    #        print(e)
+    #        exit()
+    #have everything under with condition and if we cannot access, throw an error <--- DIDN'T REALLY DO THIS
+    #if we're here we can clone into 'opposite' directory
+
     for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
         try:
             botburger = open(x,'r+')
@@ -3041,10 +3054,6 @@ def Cloneinit():
             print(x, "NOT AVAILABLE, STOPPING NOW")
             print(e)
             exit()
-    #have everything under with condition and if we cannot access, throw an error <--- DIDN'T REALLY DO THIS
-    #if we're here we can clone into 'opposite' directory
-
-    for x in [y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]:
         #print("this is filename",x)
         CURRENT = os.getcwd() + "\\" + x
         #print("total name CURRENT", CURRENT)
@@ -3075,21 +3084,22 @@ def AutoPicked(ArgList):
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
         while line:
-            #print("THIS IS the LINE", line)
-            #print("THIS IS ARG2",arg2)
+            print("THIS IS the LINE", line, type(line))
+            print("THIS IS ARG2",arg2, type(arg2))
             try:
                 exist = ComposeMETA(eval(line),eval(arg2))
-                #print("WHAT IS COMPOSEMETA",ComposeMETA(eval(line),eval(arg2)))
+                print("WHAT IS COMPOSEMETA",exist)
                 if exist != []:
                     ANS.append(exist)
             except Exception as e:
-                #print("ERROR IS ",e)
+                print("ERROR IS ",e)
                 if e != []:
                     ANS.append(e)
                 pass
             line = rchop(fileref.readline(), '\n')
     return ANS
 #print(AutoPicked(['MemoryUNORDERED.txt',"[['a',['b']],['Z',['f','AF']]]"]))
+#print(AutoPicked(['MemoryUNORDERED.txt',"what the"]))
  
 ##############################################################
 

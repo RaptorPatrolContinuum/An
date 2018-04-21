@@ -560,6 +560,8 @@ def ComposeMETA(f1,f2):
 
 def ComposeReplace(str1,str2):
     '''
+    HINT: I WRITE str1,str2 BUT I EVAULATE IN TERMS OF str2,str1
+
     PICTURE:
     FUNCTION1 COMPOSED FUNCTION2:
      ^ where y is from
@@ -3084,21 +3086,24 @@ def AutoPicked(ArgList):
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
         while line:
-            #print("THIS IS the LINE", line)
-            #print("THIS IS ARG2",arg2)
+            print("THIS IS the LINE", line, type(line))
+            print("THIS IS ARG2",arg2, type(arg2))
             try:
-                exist = ComposeMETA(eval(line),eval(arg2))
-                #print("WHAT IS COMPOSEMETA",ComposeMETA(eval(line),eval(arg2)))
+                #ComposeMETA(eval(str([['TOTAL_ARGUMENT == \'print("qhy")\'', 'None']])),Q_(str('print("qhy")')))
+                exist = ComposeMETA(eval(str(line)),Q_(str(arg2)))
+                print("WHAT IS COMPOSEMETA",exist)
                 if exist != []:
                     ANS.append(exist)
             except Exception as e:
-                #print("ERROR IS ",e)
+                print("ERROR IS ",e)
                 if e != []:
-                    ANS.append(e)
+                    #ANS.append(e)
+                    pass
                 pass
             line = rchop(fileref.readline(), '\n')
     return ANS
-#print(AutoPicked(['MemoryUNORDERED.txt',"[['a',['b']],['Z',['f','AF']]]"]))
+print("FINAL ANSWER", AutoPicked(['MemoryUNORDERED.txt',"[['a',['b']],['Z',['f','AF']]]"]))
+#print(AutoPicked(['MemoryUNORDERED.txt',"what the"]))
  
 ##############################################################
 
