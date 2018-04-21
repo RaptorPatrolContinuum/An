@@ -136,10 +136,15 @@ while Descent:
             memoryfile.close()
             pass
 
-        #look for AutoPicked Universe
-        #print("ShortMem",AutoPicked([MemoryUNORDERED,inputtext]))
-        #print("LongMem",AutoPicked([memoryLong,inputtext]))
-        #eval the return
+        #look for/through AutoPicked Universe
+        shortAuto = AutoPicked([MemoryUNORDERED,inputtext])
+        longAuto = AutoPicked([memoryLong,inputtext])
+        print("ShortMem",shortAuto)
+        print("LongMem",longAuto)
+        autoPickedUniv = shortAuto + longAuto
+        print("near field is", autoPickedUniv)
+
+        #eval the return <--- REMEMBER TO EVAL THE RETURN
 
         
         #get nearest topo: M_U compose MIRA and M_U in MIRA?

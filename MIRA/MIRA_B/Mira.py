@@ -136,10 +136,15 @@ while Descent:
             memoryfile.close()
             pass
 
-        #look for AutoPicked Universe
-        #print("ShortMem",AutoPicked([MemoryUNORDERED,inputtext]))
-        #print("LongMem",AutoPicked([memoryLong,inputtext]))
-        #eval the return
+        #look for/through AutoPicked Universe
+        shortAuto = AutoPicked([MemoryUNORDERED,inputtext])
+        longAuto = AutoPicked([memoryLong,inputtext])
+        print("ShortMem",shortAuto)
+        print("LongMem",longAuto)
+        autoPickedUniv = shortAuto + longAuto
+        print("near field is", autoPickedUniv)
+
+        #eval the return <--- REMEMBER TO EVAL THE RETURN
 
         
         #get nearest topo: M_U compose MIRA and M_U in MIRA?
@@ -222,8 +227,8 @@ while Descent:
         ##functionList2 = [['a',['b']],['Z',['f','AF']]]
         ##function1 = [['TOTAL_ARGUMENT == "b"', 'd']]
         ##functionList = [['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]
-        ##print("ok testing ComposeMETA===================",ComposeMETA(function1,function2))
-        ##print("ok testing ComposeMETA LIST",ComposeMETA(functionList,functionList2))
+        ##print("ok testing ComposeMETA===================",ComposeMETA([function1,function2]))
+        ##print("ok testing ComposeMETA LIST",ComposeMETA([functionList,functionList2]))
         ##ANSWERS:
         ##ok testing ComposeMETA=================== [['a', 'd']]
         ##ok testing ComposeMETA LIST [['a', 'd'], ['Z', 'Y'], ['Z', 'TOTALCHECK']]

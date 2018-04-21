@@ -528,7 +528,9 @@ def Compose(f1,f2):
                 ALG.append([x[0],y[1]])
     return ALG
 
-def ComposeMETA(f1,f2):
+def ComposeMETA(argList):
+    f1 = argList[0]
+    f2 = argList[1]
     '''
     do f2 THEN f1 like the way it's written!
     '''
@@ -560,6 +562,9 @@ def ComposeMETA(f1,f2):
 
 def ComposeReplace(str1,str2):
     '''
+    HINT: I WRITE str1,str2 BUT I EVAULATE IN TERMS OF str2 FIRST, THEN str1
+    HINT: USE Q_() function to make things automatically functions
+
     PICTURE:
     FUNCTION1 COMPOSED FUNCTION2:
      ^ where y is from
@@ -3076,29 +3081,104 @@ def AutoPicked(ArgList):
     arg2 = line to find autopicked universe
     RETURN = ??
     WHAT THIS IS SUPPOSED TO DO IS MAKE THE AUTOPICKED UNIVERSE, BUT I AM SUPPOSED TO CHECK THROUGH Long and UNORDERED FILES
+
+OTHER PROBLEM
+problem:
+I wanted to use Quine function to guarantee that given an arbitrary input, I would have a function to feed into AutoPicked function
+shitty answer:
+if function, leave alone
+not function = use Quine 
+
+
+
+REASONING FOR COMPOSEPREP
+PROBLEM:
+given (concept space, composemeta), a function X in concept space and a function Y that is observed, 
+and you want X compose Y (DO Y then X), and insertion to concept space is done through quine function,
+ is there a way to modify the input Y into Y~ such that you preserve X compose Y in concept space 
+ (AKA X conpose Y observed IRL == X compose Y~ in concept space)
+
+ANSWER
+
+KNOW: X is fixed = [[a in dom(X), b in ran(X)]]
+we have access to any concept space of arbitrary basis size/ elements (know: size -> elements through some basis bijection)
+Y is some finite function/ Y is also "fixed", [[a in dom(Y), b in ran(Y)]]
+what does Q_(Y) look like?
+[[[a in dom(y), b in ran(y)]],[[a in dom(y), b in ran(y)]]]
+
+X compose Y looks like:
+[[a in dom(y),b in ran(x)] | the arrows exist]
+
+PROBLEM:
+Q_(Y) looks horrendous
+dom(x) probably does not accept ran(Q_(Y))
+want:
+>dom Q_(Y) is sufficiently good to match X COMPOSE Y. TO BE CLEAR: a in ran(Q_(Y)) iff [[a in dom(y),b in ran(x)] | the arrows exist] (a's are same)
+>ran Q_(Y) to be sufficiently good to match X COMPOSE Y. TO BE CLEAR: b in ran(Q_(Y)) iff [[a in dom(y),b in ran(x)] | the arrows exist] (b's are same)
+hint: Y~ probably only exists for certain special kinds of finite functions (guaranteed for identity funcs, or already quined functions)
+			Y									X
+[[a in dom(Y), b in ran(Y)]]		[[a in dom(X), b in ran(X)]]
+
+			X compose Y looks like:
+[[a in dom(y),b in ran(x)] | the arrows exist]
+
+
+			Q_(Y)
+[[[a in dom(y), b in ran(y)]],[[a in dom(y), b in ran(y)]]]
+
+PROBLEM: X IS FIXED, Q_(function) repeats the element
+
+so if pair in Y has different coords, dom(X) would not be able to "attach" to ran(Q_(Y~))
+
+
+the domain of X that works would force ran(Q_(Y~)) and also force domQ_(Y~).
+So such method of making Y~ does not exist
+
+=> FUCK ME 
+
+C:\An>git commit -a -m "fuck if I observe a Y and want to compose with X I cannot make a Y~ such that X COMPOSE Q_(Y~) matches in some concept space which means I cannot always quine when making autopicked universe"
     '''
     arg1 = ArgList[0]
     arg2 = ArgList[1]
     ANS = []
+    try:
+        #problem:
+        #if you eval print("whatever") and set arg2 = eval(arg2) blindly the input of print escapes out knowledge
+        #so just keep everything as a list through eval then just default to string (which should be our input anyways)
+        if type(eval(arg2)) == str or type(eval(arg2)) == list:
+            arg2 = eval(arg2)
+    except:
+        pass
     with open(arg1, "r+") as fileref:
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
         while line:
-            print("THIS IS the LINE", line, type(line))
-            print("THIS IS ARG2",arg2, type(arg2))
+            #print("THIS IS the LINE", line) #type(line)
+            #print("THIS IS ARG2 AFTER EVAL CHECK",arg2) #type(arg2)
             try:
-                exist = ComposeMETA(eval(line),eval(arg2))
-                print("WHAT IS COMPOSEMETA",exist)
+                #if function, DONT quine:
+                if fCheck(arg2) == True:
+                    composeprep = arg2
+                #else, quine
+                else:
+                    composeprep = Q_(arg2)
+                #ComposeMETA([eval(str([['TOTAL_ARGUMENT == \'print("qhy")\'', 'None']])),Q_(str('print("qhy")'))])
+                exist = ComposeMETA([eval(str(line)),composeprep])
+                #HINT: my test data doesn't need quining BUT I do need it for random inputs
+                #QUESTION: IS IT POSSIBLE TO WORK ON QUINE OF FUNCTIONS OR NO?: PROBABLY YES, BUT YOU HAVE TO MODIFY ACTION FUNCTION (or f1 of f1 compose f2)
+                #exist = ComposeMETA([eval(str(line)),eval(arg2)])
+                #print("WHAT IS COMPOSEMETA",exist)
                 if exist != []:
                     ANS.append(exist)
             except Exception as e:
-                print("ERROR IS ",e)
+                #print("ERROR IS ",e)
                 if e != []:
-                    ANS.append(e)
+                    #ANS.append(e)
+                    pass
                 pass
             line = rchop(fileref.readline(), '\n')
     return ANS
-#print(AutoPicked(['MemoryUNORDERED.txt',"[['a',['b']],['Z',['f','AF']]]"]))
+#print("FINAL ANSWER", AutoPicked(['MemoryUNORDERED.txt',"[['a',['b']],['Z',['f','AF']]]"]))
 #print(AutoPicked(['MemoryUNORDERED.txt',"what the"]))
  
 ##############################################################

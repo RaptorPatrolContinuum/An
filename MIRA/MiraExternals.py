@@ -3082,6 +3082,14 @@ def AutoPicked(ArgList):
     RETURN = ??
     WHAT THIS IS SUPPOSED TO DO IS MAKE THE AUTOPICKED UNIVERSE, BUT I AM SUPPOSED TO CHECK THROUGH Long and UNORDERED FILES
 
+OTHER PROBLEM
+problem:
+I wanted to use Quine function to guarantee that given an arbitrary input, I would have a function to feed into AutoPicked function
+shitty answer:
+if function, leave alone
+not function = use Quine 
+
+
 
 REASONING FOR COMPOSEPREP
 PROBLEM:
@@ -3133,14 +3141,21 @@ C:\An>git commit -a -m "fuck if I observe a Y and want to compose with X I canno
     arg1 = ArgList[0]
     arg2 = ArgList[1]
     ANS = []
+    try:
+        #problem:
+        #if you eval print("whatever") and set arg2 = eval(arg2) blindly the input of print escapes out knowledge
+        #so just keep everything as a list through eval then just default to string (which should be our input anyways)
+        if type(eval(arg2)) == str or type(eval(arg2)) == list:
+            arg2 = eval(arg2)
+    except:
+        pass
     with open(arg1, "r+") as fileref:
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
         while line:
-            print("THIS IS the LINE", line) #type(line)
-            print("THIS IS ARG2 NOT EVALED",arg2) #type(arg2)
+            #print("THIS IS the LINE", line) #type(line)
+            #print("THIS IS ARG2 AFTER EVAL CHECK",arg2) #type(arg2)
             try:
-                arg2 = eval(arg2)
                 #if function, DONT quine:
                 if fCheck(arg2) == True:
                     composeprep = arg2
@@ -3152,11 +3167,11 @@ C:\An>git commit -a -m "fuck if I observe a Y and want to compose with X I canno
                 #HINT: my test data doesn't need quining BUT I do need it for random inputs
                 #QUESTION: IS IT POSSIBLE TO WORK ON QUINE OF FUNCTIONS OR NO?: PROBABLY YES, BUT YOU HAVE TO MODIFY ACTION FUNCTION (or f1 of f1 compose f2)
                 #exist = ComposeMETA([eval(str(line)),eval(arg2)])
-                print("WHAT IS COMPOSEMETA",exist)
+                #print("WHAT IS COMPOSEMETA",exist)
                 if exist != []:
                     ANS.append(exist)
             except Exception as e:
-                print("ERROR IS ",e)
+                #print("ERROR IS ",e)
                 if e != []:
                     #ANS.append(e)
                     pass
