@@ -148,9 +148,9 @@ while Descent:
         #eval the return <--- REMEMBER TO EVAL THE RETURN (need:hint: if I have finite functions, hav ea function that takes a finite function and an input then returns what the finite function would say if given that input)
         suppANS = []
         for x in autoPickedUniv:
-            suppANSmin = Applyfunc([x,inputtext])
-            print("apply test", x, inputtext,suppANSmin)
-            suppANS.append(suppANSmin)
+            suppANSmin = Applyfunc([eval(x),inputtext])
+            print("apply test", eval(x), inputtext,suppANSmin)
+            suppANS.append(x)
         print("supposed answer",suppANS)
         for x in suppANS:
             try:
