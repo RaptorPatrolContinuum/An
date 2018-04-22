@@ -3163,9 +3163,13 @@ C:\An>git commit -a -m "fuck if I observe a Y and want to compose with X I canno
         while line:
             #print("THIS IS the LINE", line) #type(line)
             #print("THIS IS ARG2 AFTER EVAL CHECK",arg2) #type(arg2)
+            print("arglist is", ArgList)
+            print("line",line)
+            print("composeprep is arg2", composeprep)
             try:
                 #ComposeMETA([eval(str([['TOTAL_ARGUMENT == \'print("qhy")\'', 'None']])),Q_(str('print("qhy")'))])
                 exist = ComposeMETA([eval(str(line)),composeprep])
+                print("what should return be?", exist)
                 #HINT: my test data doesn't need quining BUT I do need it for random inputs
                 #QUESTION: IS IT POSSIBLE TO WORK ON QUINE OF FUNCTIONS OR NO?: PROBABLY YES, BUT YOU HAVE TO MODIFY ACTION FUNCTION (or f1 of f1 compose f2)
                 #exist = ComposeMETA([eval(str(line)),eval(arg2)])
@@ -3226,10 +3230,10 @@ def SeekForce(ArgList):
         line = rchop(fileref.readline(), '\n')
         while line:
             try:
-                print("this is line",line,type(line))
-                print("this is arg2",arg2,type(arg2))
+                #print("this is line",line,type(line))
+                #print("this is arg2",arg2,type(arg2))
                 exist = arg3([line,arg2])
-                print("exist test",exist)
+                #print("exist test",exist)
                 if exist != []:
                     ANS.append(exist)
             except Exception as e:
