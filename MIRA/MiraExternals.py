@@ -3222,8 +3222,8 @@ def SeekForcemin1(argList):
     so this function modifies functions into just function inputs
 
     arg1 = finite function THAT IS A STRING
-    RETURN: input for
-    PROBLEM: currently functions I have are single pairs, what about multiple pair functions?
+    RETURN: string input for function(arg3) in SeekForce
+    
     '''
     ANS = []
     arg1 = argList[0]
@@ -3232,13 +3232,14 @@ def SeekForcemin1(argList):
         arg1 = eval(arg1)
     except:
         pass
-    print("arg1",arg1)
-    print("wtf",fCheck(arg1))
+    #print("arg1",arg1)
+    #print("wtf",fCheck(arg1))
     if fCheck(arg1) == True:
         for x in arg1:
             ANS.append(x[0])
-    return ANS
+    return str(ANS)
 #print(SeekForcemin1([[['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("test")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("test")\'', 'None']]]]]))#TEST
+#print(SeekForcemin1([[['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]]))#TEST
 def SeekForce(ArgList):
     '''
     arg1 = filename
@@ -3265,33 +3266,46 @@ def SeekForce(ArgList):
     ANS = []
 
     #print("checking how to call func",arg3(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
+
+    #PROBLEM: currently functions I have are single pairs, what about multiple pair functions?
     
     with open(arg1, "r+") as fileref:
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
         while line:
             try:
-                print("this is line",line,type(line))
-                print("preping for arg3",arg4(line))
-                print("this is arg2",arg2,type(arg2))
-                print("preping for arg3",arg5(arg2))
+                line = eval(line)
             except:
                 pass
-            try:
-                exist = arg3([line,arg2])
-                #print("exist test",exist)
-                if exist != []:
-                    ANS.append(exist)
-            except Exception as e:
-                #print("ERROR IS ",e)
-                if e != []:
-                    #ANS.append(e)
-                    pass
-                pass
+            if fCheck(line) == True:
+                for x in line:
+                    print("what is X?",x)
+                    try:
+                        print("this is line",line,type(line))
+                        if arg4 != []:
+                            print("preping for arg3",arg4([line]))
+                        print("this is arg2",arg2,type(arg2))
+                        if arg5 != []:
+                            print("preping for arg3",arg5([arg2]))
+                    except Exception as e:
+                        print("wtf1 went wrong?", e)
+                        pass
+                    try:
+                        exist = arg3([line,arg2])
+                        #print("exist test",exist)
+                        if exist != []:
+                            ANS.append(exist)
+                    except Exception as e:
+                        #print("ERROR IS ",e)
+                        if e != []:
+                            #ANS.append(e)
+                            pass
+                        pass
             line = rchop(fileref.readline(), '\n')
     return ANS
 
-#print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt','argument_1 == "b"',Applyfunc]))
+#SeekForce(['MemoryUNORDERED.txt','argument_1 == "b"',delta2,[],SeekForcemin1])
+#print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt','argument_1 == "b"',delta2,[],SeekForcemin1]))
 ##############################################################
 
 def printpls(obj):
