@@ -3230,8 +3230,8 @@ def SeekForce(ArgList):
         line = rchop(fileref.readline(), '\n')
         while line:
             try:
-                #print("this is line",line,type(line))
-                #print("this is arg2",arg2,type(arg2))
+                print("this is line",line,type(line))
+                print("this is arg2",arg2,type(arg2))
                 exist = arg3([line,arg2])
                 #print("exist test",exist)
                 if exist != []:

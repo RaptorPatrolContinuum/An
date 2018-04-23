@@ -183,20 +183,26 @@ while Descent:
             #DELTA ANALYSIS:
             #deltav2 on x in combined memory and new obj
             #print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt','argument_1 == "b"',delta2]))
-            MEMcomposeinput = SeekForce([MemoryUNORDERED,inputtext,delta2]) + SeekForce([memoryLong,inputtext,delta2])
+            MEMcomposeinput = SeekForce([MemoryUNORDERED,inputtext,delta2,[],"get0"]) + SeekForce([memoryLong,inputtext,delta2,[],"get0"])
             #deltav2 on pairs in new obj -> guessing similar inputs/variables (find abstractions) ->#eval using (deltav3 COMPOSE deltav2) and get answers
             #for each object in seekforce, check if new obj or x in seekforce is an abstraction by checking deltav2(obj,x in seekforce) == obj OR deltav2(obj,x in seekforce) == x in seekforce
             #print("checking memcomposeinput",str(MEMcomposeinput).encode('utf-8'))
             print("qhat is argv?",argv)
-            print("checking memcomposeinput",MEMcomposeinput)
+            #print("checking memcomposeinput",MEMcomposeinput)
             #print("alpha and stout fucking up","α".encode('utf-8'))
+            guessAbst = []
             for x in MEMcomposeinput:
                 abstractcheck = delta2([inputtext,x])
-                #print("small steps you fuck",x) #can't encode α for some reason
-                #print("small steps you fuck2",inputtext)
+                
                 #print("3",abstractcheck)
+                #print("abstractcheck  == inputtext",abstractcheck  == inputtext)
+                #print("abstractcheck == x",abstractcheck == x)
                 if abstractcheck  == inputtext or abstractcheck == x:
-                    pass
+                    print("small steps you fuck",x) #can't encode α for some reason
+                    print("small steps you fuck2",inputtext)
+                    print("this is guess",abstractcheck)
+                    guessAbst.append(abstractcheck)
+            print("what am I guessing an abstraction to be?",guessAbst)
             #eval using (deltav3 COMPOSE deltav2) and get answers AND WRITE THOSE DOWN TO memory
         
 

@@ -3209,11 +3209,43 @@ def Applyfunc(argList):
     #Applyfunc([[['TOTAL_ARGUMENT == "b"', 'd'],['TOTAL_ARGUMENT == "b"', 'e'],['TOTAL_ARGUMENT == "b"', 'f']],'b'])
     return ANS
 
+def SeekForcemin1(argList):
+    '''
+    this is the first min I have for seekforce
+    PROBLEM I AM TRYING TO SOLVE:
+    right  now I have delta2(input, FUNCTION)
+    but I WANT:
+    delta2(input, function input)
+    delta2(function, function)
+    so I just need to keep the two objects similar
+
+    so this function modifies functions into just function inputs
+
+    arg1 = finite function THAT IS A STRING
+    RETURN: input for
+    PROBLEM: currently functions I have are single pairs, what about multiple pair functions?
+    '''
+    ANS = []
+    arg1 = argList[0]
+    #try evaling:
+    try:
+        arg1 = eval(arg1)
+    except:
+        pass
+    print("arg1",arg1)
+    print("wtf",fCheck(arg1))
+    if fCheck(arg1) == True:
+        for x in arg1:
+            ANS.append(x[0])
+    return ANS
+#print(SeekForcemin1([[['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("test")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("test")\'', 'None']]]]]))#TEST
 def SeekForce(ArgList):
     '''
     arg1 = filename
     arg2 = specifc arg
     arg3 = function to use
+    arg4 = how to modify 1st arg for arg3
+    arg5 = how to modify 2nd arg for arg3
     RETURN = ??
     THIS IS SUPPOSED TO take a filename with finite functions in it, a specific argument X, and a binary function
     then it composes X with everything in the file and returns all the answers (make empty a nonrepeating answer!)
@@ -3221,6 +3253,15 @@ def SeekForce(ArgList):
     arg1 = ArgList[0]
     arg2 = ArgList[1]
     arg3 = ArgList[2]
+    try:
+        arg4 = ArgList[3]
+    except:
+        arg4 = []
+    try:
+        arg5 = ArgList[4]
+    except:
+        arg5 = []
+        
     ANS = []
 
     #print("checking how to call func",arg3(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
@@ -3230,8 +3271,13 @@ def SeekForce(ArgList):
         line = rchop(fileref.readline(), '\n')
         while line:
             try:
-                #print("this is line",line,type(line))
-                #print("this is arg2",arg2,type(arg2))
+                print("this is line",line,type(line))
+                print("preping for arg3",arg4(line))
+                print("this is arg2",arg2,type(arg2))
+                print("preping for arg3",arg5(arg2))
+            except:
+                pass
+            try:
                 exist = arg3([line,arg2])
                 #print("exist test",exist)
                 if exist != []:
