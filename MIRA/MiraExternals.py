@@ -3222,7 +3222,9 @@ def SeekForcemin1(argList):
     so this function modifies functions into just function inputs
 
     arg1 = finite function THAT IS A STRING
-    RETURN: string input for function(arg3) in SeekForce
+    RETURN:
+    A Finite Function,if possible; ELSE
+    a string input for function(arg3) in SeekForce
     
     '''
     ANS = []
@@ -3237,7 +3239,12 @@ def SeekForcemin1(argList):
     if fCheck(arg1) == True:
         for x in arg1:
             ANS.append(x[0])
-    return str(ANS)
+    try:
+        if type(eval(ANS)) == list:
+            ANS = eval(ANS)
+    except:
+        ANS = str(ANS)
+    return ANS
 #print(SeekForcemin1([[['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("test")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("test")\'', 'None']]]]]))#TEST
 #print(SeekForcemin1([[['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]]))#TEST
 def SeekForce(ArgList):
@@ -3279,21 +3286,35 @@ def SeekForce(ArgList):
                 pass
             if fCheck(line) == True:
                 for x in line:
-                    print("what is X?",x)
+                    #print("monkaS argList", ArgList)
+                    #print("what is X?",x)
+                    #print("stats", line, arg2)
+                    linemod = line
+                    #print("this is line UNFILTERED",linemod,type(linemod))
+                    arg2mod = arg2
+                    #print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
                     try:
-                        print("this is line",line,type(line))
                         if arg4 != []:
-                            print("preping for arg3",arg4([line]))
-                        print("this is arg2",arg2,type(arg2))
-                        if arg5 != []:
-                            print("preping for arg3",arg5([arg2]))
+                            linemod = arg4([line])
+                            #print("preping for arg3, LINE",linemod)
                     except Exception as e:
-                        print("wtf1 went wrong?", e)
+                        #print("wtf1 went wrong?", e)
                         pass
                     try:
-                        exist = arg3([line,arg2])
-                        #print("exist test",exist)
-                        if exist != []:
+                        if arg5 != []:
+                            arg2mod = arg5([arg2])
+                            #print("preping for arg3, arg2",arg2mod)
+                    except Exception as e:
+                        #print("wtf2 went wrong?", e)
+                        pass    
+                    
+                    
+                    #print("stats for arg3", linemod, arg2mod)
+                    try:
+                        exist = arg3([linemod,arg2mod])
+                        #print("try this attempt",exist)
+                        #print("append ?",len([z for z in ANS if z == exist]) == 0)
+                        if len([z for z in ANS if z == exist]) == 0:
                             ANS.append(exist)
                     except Exception as e:
                         #print("ERROR IS ",e)
@@ -3304,8 +3325,65 @@ def SeekForce(ArgList):
             line = rchop(fileref.readline(), '\n')
     return ANS
 
-#SeekForce(['MemoryUNORDERED.txt','argument_1 == "b"',delta2,[],SeekForcemin1])
+#SeekForce(['MemoryUNORDERED.txt','print("why")',delta2,SeekForcemin1,[]])
+#SeekForce(['MemoryUNORDERED.txt','argument_1 == "C"',delta2,SeekForcemin1,[]])
 #print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt','argument_1 == "b"',delta2,[],SeekForcemin1]))
+
+def forFix(argList):
+    '''
+    arg1 = string
+    RETURNS THIS SEQUENCE AS A LIST
+    EX:
+    STRING
+    STRIN
+    STRI
+    STR
+    ST
+    S
+    +
+    TRING
+    TRIN
+    TRI
+    TR
+    T
+    + .......
+    
+    HINT:
+    use like 3 counters to simulate the edge indices
+    then just go through it using a modified maximum that goes it once
+
+    PROBLEM: nested for loops are fucking slow in python
+    hint: need a way to specify x and y when it's not "a square"
+    '''
+    #arg1 should be a string
+    arg1 = argList[0]
+    ANS = []
+    maxlength = len(arg1)
+    #print("wtfstats", arg1, maxlength)
+    x = 0
+    y = 0
+    stopAt = maxlength-1
+    total = (maxlength*(maxlength+1))/2
+    #print("check if total is int or float",total)
+    ''''''
+    for alpha in range(0,int(total)):
+        print("more stats", x,y,stopAt)
+        #print("check if x == 0",x==0)
+        if x == 0:
+            #print("1",arg1[y:])
+            ANS.append(arg1[y:])
+        else:
+            #print("2",arg1[y:-x])
+            ANS.append(arg1[y:-x])
+        #print arg1[y:-x]
+        if x == stopAt:
+            stopAt += -1
+            y += 1
+            x = 0
+        else:
+            x += 1
+    return ANS
+
 ##############################################################
 
 def printpls(obj):
