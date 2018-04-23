@@ -3223,7 +3223,7 @@ def SeekForce(ArgList):
     arg3 = ArgList[2]
     ANS = []
 
-    print("checking how to call func",arg3(["alphaprint('')","betrprint('')"]))
+    #print("checking how to call func",arg3(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
     
     with open(arg1, "r+") as fileref:
         fileref.seek(0)

@@ -2,6 +2,7 @@
 from MiraExternals import *
 
 #import sys
+import codecs
 
 if sys.version_info[0] < 3:
     raise Exception("Python 3 or a more recent version is required.")
@@ -176,25 +177,28 @@ while Descent:
         #"use delta < some # " and look in some topo space
         #append basis again
 
-        '''
+        
         #DELTA ANALYSIS:
         #deltav2 on x in combined memory and new obj
         #print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt','argument_1 == "b"',delta2]))
         MEMcomposeinput = SeekForce([MemoryUNORDERED,inputtext,delta2]) + SeekForce([memoryLong,inputtext,delta2])
         #deltav2 on pairs in new obj -> guessing similar inputs/variables (find abstractions) ->#eval using (deltav3 COMPOSE deltav2) and get answers
         #for each object in seekforce, check if new obj or x in seekforce is an abstraction by checking deltav2(obj,x in seekforce) == obj OR deltav2(obj,x in seekforce) == x in seekforce
+        #print("checking memcomposeinput",str(MEMcomposeinput).encode('utf-8'))
+        print("qhat is argv?",argv)
+        print("checking memcomposeinput",MEMcomposeinput)
+        #print("alpha and stout fucking up","α".encode('utf-8'))
         for x in MEMcomposeinput:
-            abstractcheck = deltav2(obj,x in seekforce)
-            print("small steps you fuck",x)
-            print("small steps you fuck2",obj)
-            print("3",abstractcheck)
-            print("4",abstractcheck)
-            if abstractcheck  == obj or abstractcheck == x:
+            abstractcheck = delta2([inputtext,x])
+            #print("small steps you fuck",x) #can't encode α for some reason
+            #print("small steps you fuck2",inputtext)
+            #print("3",abstractcheck)
+            if abstractcheck  == inputtext or abstractcheck == x:
                 pass
         #eval using (deltav3 COMPOSE deltav2) and get answers AND WRITE THOSE DOWN TO memory
         
 
-        '''
+        
         '''
         ==================================================================================================
         PUT ALL THE TESTING CODE PAST HERE
