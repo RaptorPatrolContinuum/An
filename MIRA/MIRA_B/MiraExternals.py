@@ -1804,6 +1804,14 @@ def lexicoSortHARD(argList):
     
 def lexicoSort(argList):
     '''
+    BIG FUCKING HINT:
+    THIS FUNCTION FAILS WHEN LINEARLY ORDERED FILE IS EMPTY
+    FUCKING RIP
+    (it has something to do with insertion line at 0 and bisection saying to insert at 1 so I never get starting inserting)
+
+
+
+
     need function that does lexicographic ordering on ORDERED AND UNORDERED memory files using basislist
     arg1 = basis FILENAME
     arg2 = linearly ordered memory FILENAME in open(filename,???) format
@@ -1863,7 +1871,12 @@ def lexicoSort(argList):
     #get maxlines of recently ordered file
     arg3maxlines = mapcountLINES([arg3])
     #get maxlines for ordered memory file
-    arg2maxlines = mapcountLINES([arg2])
+    try:
+        arg2maxlines = mapcountLINES([arg2])
+    except ValueError:
+        arg2maxlines = 0
+    except Exception as e:
+        print("ERROR IN lexicoSort",e)
     #hint, range(start,max) is to -1 of max, and since maxlines index starts at 1 you have your +1 already
     #hint: 'with' keyword automatically closes opened files
     #append from recentlyordered to ordered
@@ -1897,7 +1910,7 @@ def lexicoSort(argList):
         ########print("THIS IS INSERTKEYEND===============================================")
         #rename memfile
         namelist = arg2.split(".")[:-1]
-        arg2rename = "".join(namelist) + "NEW" + arg2.split(".")[-1]
+        arg2rename = "".join(namelist) + "NEW." + arg2.split(".")[-1]
         print("arg2rename",arg2rename)
         os.rename(arg2,arg2rename)
         #rewrite MEMFILE
@@ -1909,10 +1922,15 @@ def lexicoSort(argList):
         insertline = InsertKey.readline()
         ########print("insertline is", insertline)
         try:
-            insertionkey = ast.literal_eval(insertline)[0][1]
-            insertionline = ast.literal_eval(insertline)[0][0]
+            #insertionkey = ast.literal_eval(insertline)[0][1]
+            insertionkey = eval(insertline)[0][1]
+            #insertionline = ast.literal_eval(insertline)[0][0]
+            insertionline = eval(insertline)[0][0]
+            ########print("what is key?",insertionkey)
+            ########print("testingeval",eval(insertline)[0])
             ########print("what is insertionline?1", insertionline)
-        except:
+        except Exception as e:
+            print("lexicosort failed here somehow",e)
             pass
         stopwhen = 1
         
@@ -1936,8 +1954,10 @@ def lexicoSort(argList):
                     stopwhen += 1
                     ########print(insertline)
                     try:
-                        insertionkey = ast.literal_eval(insertline)[0][1]
-                        insertionline = ast.literal_eval(insertline)[0][0]
+                        #insertionkey = ast.literal_eval(insertline)[0][1]
+                        insertionkey = eval(insertline)[0][1]
+                        #insertionline = ast.literal_eval(insertline)[0][0]
+                        insertionline = eval(insertline)[0][0]
                         ########print("what is insertionline?2", insertionline)
                         ########print("2:",x,insertionkey)
                     except:
@@ -2426,7 +2446,12 @@ def FILEinsertAt(ArgList):
     arg1New = open(thename + "1.txt",'a+')
 
     #get max lines for old file (index starts at 1 so just -1 to get index 0)
-    maxlines = mapcountLINES([arg1])
+    try:
+        maxlines = mapcountLINES([arg1])
+    except ValueError:
+        maxlines = 0
+    except Exception as e:
+        print("ERROR IN FILEinsertAt",e)
 
     #if index is within filemaxlength:
     if arg3 < maxlines:
@@ -2460,7 +2485,12 @@ def FILEinsertAt(ArgList):
     else:
         #if your index is past the maxlength:
         #print("insertstats", arg3,mapcountLINES([arg1]))
-        diff = arg3 - mapcountLINES([arg1])
+        try:
+            diff = arg3 - mapcountLINES([arg1])
+        except ValueError:
+            diff = arg3
+        except Exception as e:
+            print("ERROR IN FILEinsertAt",e)
         #print("#check difference of indices (arg3-maxlength) >= 0",diff)
         if diff >= 0:
             #how many new lines to insert?
