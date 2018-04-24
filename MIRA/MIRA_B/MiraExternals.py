@@ -2770,6 +2770,7 @@ def delta2(argList):
             ANS.append(x)
         elif len(x[0][0])!= 0 and len(x[1][0])!= 0:
             #ANS.append([["Symbol" + str(symboli)], [symboli]])
+            #hint: alphas are in list because list forces composemeta to do argument replacement properly
             ANS.append([["α" + str(symboli)], ["α" + str(symboli)]])
             symboli += 1
         #print("ANS at each step", ANS)
@@ -2943,6 +2944,84 @@ def delta3(argList):
                 symbolguess = TheObj[oldIndex:oldIndex+stringmatching[1]]
                 #print("now we try to construct alphastring replacement|", [symbolis,symbolguess])
                 ANS.append([symbolis,symbolguess])
+            #add here so we preserve order
+            ANS.append([target,target])
+            alphatrigger = False
+    return ANS
+
+def delta3META(argList):
+    '''
+    input: (obj1,obj2)
+    output: replacement function
+    NEED THEOREM: deltav2(obj1,obj2)
+        :if one obj is the abstraction of the other then the answer of deltav2 is the abstraction
+
+    HINT:
+    I made this meta version because delta3 was created with compose in mind but now I need to shift to ComposeMETA so I need delta3META to return right function
+    HINT:
+    this fails (delta3 returns [['α0', 'print("test")']],):
+    ComposeMETA([[['α0', 'print("test")']], [[['α0'], ['α0']]]])
+    this works: (delta3META should return [['argument_1 == \'α0\'', 'print("test")']])
+    ComposeMETA([[['argument_1 == \'α0\'', 'print("test")']], [[['α0'], ['α0']]]])
+    '''
+    arg1 = argList[0]
+    arg2 = argList[1]
+    try:
+        commrel = argList[2]
+    except:
+        commrel = dequals
+    #plan
+    #find abstraction in one of the arguments:
+    abstractionfunc = delta2([arg1,arg2,commrel])
+    #print("abstr func is", abstractionfunc)
+    abstractionstr = toString([dom(abstractionfunc),"naive"])
+    #print("abstr",abstractionstr)
+    if abstractionstr == arg1:
+        TheObj = arg2
+    elif abstractionstr == arg2:
+        TheObj = arg1
+    else:
+        return "Can't find abstraction"
+
+    #now we know TheObj and abstraction
+    #next we need to find replacement string:
+    #try to match abstraction to obj then the rest of the string for obj we attach to symbols in abstraction
+    '''
+    REQUIREMENTS FOR MATCHING ABSTRACTION TO OBJECT PROPERLY
+    >'exhaust' abstraction
+    >recognize symbols
+    '''
+    #keep track of where we are in the obj
+    TheObjIndex = 0
+    alphatrigger = False
+    ANS = []
+    for x in abstractionfunc:
+        #print("=====if symbol, 'skip'",x,x[0][0][0],"α",x[0][0][0] == "α")
+        if x[0][0][0] == "α":
+            symbolis = x[0][0]
+            #if we're at the end of abstractionfunc assume rest of theobj is symbol:
+            if x == abstractionfunc[-1]:
+                #MODIFY THIS 
+                #ANS.append([symbolis,TheObj[TheObjIndex:]])
+                ANS.append(['argument_1 == \"' + symbolis + '"',TheObj[TheObjIndex:]])
+            alphatrigger = True
+        #else: we attempt to match to first (why first? #1: we can't tell difference between two matches #2: if first doesn't work then our obj has too much noise)
+        else:
+            #print("feed into firstlongest",x[0][0])
+            stringmatching = firstlongestcontig([x[0][0],TheObj[TheObjIndex:],0,0])
+            #print("try firstlongestcontig",stringmatching)
+            target = TheObj[TheObjIndex+stringmatching[1]:TheObjIndex+stringmatching[1]+stringmatching[2]]
+            #print("targetvalue",target)
+            
+            oldIndex = TheObjIndex
+            TheObjIndex = TheObjIndex + stringmatching[2]
+            #print("updating TheObjIndex", TheObjIndex)
+            if alphatrigger == True:
+                #print(oldIndex,TheObjIndex)
+                symbolguess = TheObj[oldIndex:oldIndex+stringmatching[1]]
+                #print("now we try to construct alphastring replacement|", [symbolis,symbolguess])
+                #ANS.append([symbolis,symbolguess])
+                ANS.append(['argument_1 == \"' + symbolis + '"',symbolguess])
             #add here so we preserve order
             ANS.append([target,target])
             alphatrigger = False

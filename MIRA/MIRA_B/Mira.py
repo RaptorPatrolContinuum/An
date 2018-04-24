@@ -196,6 +196,7 @@ while Descent:
             for x in MEMcomposeinput:
                 xmod = toString([ran(x),"naive"])
                 thedelta = delta2([inputtext,xmod])
+                #print("args fpr thedelta", [inputtext,xmod])
                 #print("what's thedelta?",thedelta)
                 abstractcheck = toString([ran(thedelta),"naive"])
                 #print("what is inputtext?",inputtext)
@@ -203,14 +204,26 @@ while Descent:
                 #print("I'm abusing x as a symbol",xmod)
                 #print("abstractcheck  == inputtext",abstractcheck  == inputtext)
                 #print("abstractcheck == xmod",abstractcheck == xmod)
-                if abstractcheck  == inputtext or abstractcheck == xmod:
+                test1 = abstractcheck == inputtext
+                test2 = abstractcheck == xmod
+                if test1 or test2:
                     #print("small steps you fuck",xmod) #can't encode α for some reason
                     #print("small steps you fuck2",inputtext)
                     #print("this is guess",abstractcheck)
-                    guessAbst.append(abstractcheck)
+                    #print("args for delta3",[abstractcheck,inputtext])
+                    replacementguess = delta3META([abstractcheck,inputtext])
+                    print("guess substitution", replacementguess)
+                    print("composemeta arguments", replacementguess,thedelta)
+                    #print("CHECKING EVAL THROUGH COMPOSE FUCK", Compose(replacementguess,thedelta))
+                    metaeval = ComposeMETA([replacementguess,thedelta])
+                    print("CHECKING EVAL THROUGH COMPOSEMETA", metaeval)
+                    print("checking list comprehension",thedelta)
+                    print("checking list comprehension2",[y for y in guessAbst if y == thedelta])
+                    if len([y for y in guessAbst if y == thedelta]) == 0:
+                        guessAbst.append(thedelta)
             print("what am I guessing an abstraction to be?",guessAbst)
             #eval using (deltav3 COMPOSE deltav2) and get answers AND WRITE THOSE DOWN TO memory
-        
+            #ComposeMETA([arg1,arg2])
 
         
         '''
