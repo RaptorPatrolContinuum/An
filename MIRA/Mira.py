@@ -210,7 +210,7 @@ while Descent:
                     #print("small steps you fuck",xmod) #can't encode α for some reason
                     #print("small steps you fuck2",inputtext)
                     #print("this is guess",abstractcheck)
-                    #print("args for delta3",[abstractcheck,inputtext])
+                    print("args for delta3",[abstractcheck,inputtext])
                     replacementguess = delta3META([abstractcheck,inputtext])
                     #print("guess substitution", replacementguess)
                     print("composemeta arguments", replacementguess,thedelta)

@@ -196,8 +196,8 @@ while Descent:
             for x in MEMcomposeinput:
                 xmod = toString([ran(x),"naive"])
                 thedelta = delta2([inputtext,xmod])
-                #print("args fpr thedelta", [inputtext,xmod])
-                #print("what's thedelta?",thedelta)
+                print("args fpr thedelta", [inputtext,xmod])
+                print("what's thedelta?",thedelta)
                 abstractcheck = toString([ran(thedelta),"naive"])
                 #print("what is inputtext?",inputtext)
                 #print("BECOME THE ONE YOU LOVE abstractcheck",abstractcheck)
@@ -210,9 +210,9 @@ while Descent:
                     #print("small steps you fuck",xmod) #can't encode α for some reason
                     #print("small steps you fuck2",inputtext)
                     #print("this is guess",abstractcheck)
-                    #print("args for delta3",[abstractcheck,inputtext])
+                    print("args for delta3",[abstractcheck,inputtext])
                     replacementguess = delta3META([abstractcheck,inputtext])
-                    print("guess substitution", replacementguess)
+                    #print("guess substitution", replacementguess)
                     print("composemeta arguments", replacementguess,thedelta)
                     #print("CHECKING EVAL THROUGH COMPOSE FUCK", Compose(replacementguess,thedelta))
                     metaeval = ComposeMETA([replacementguess,thedelta])

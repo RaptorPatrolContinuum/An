@@ -2883,6 +2883,10 @@ def firstlongestcontig(argList):
 
 def delta3(argList):
     '''
+    HUGE FUCKING PROBLEM:
+    delta3META is updated: THE PROBLEM IS I DON'T UPDATE TheObjIndex in alphatrigger if statement
+
+
     input: (obj1,obj2)
     output: replacement function
     NEED THEOREM: deltav2(obj1,obj2)
@@ -3003,7 +3007,7 @@ def delta3META(argList):
             if x == abstractionfunc[-1]:
                 #MODIFY THIS 
                 #ANS.append([symbolis,TheObj[TheObjIndex:]])
-                ANS.append(['argument_1 == \"' + symbolis + '"',TheObj[TheObjIndex:]])
+                ANS.append(['argument_1 A == \"' + symbolis + '"',TheObj[TheObjIndex:]])
             alphatrigger = True
         #else: we attempt to match to first (why first? #1: we can't tell difference between two matches #2: if first doesn't work then our obj has too much noise)
         else:
@@ -3021,7 +3025,9 @@ def delta3META(argList):
                 symbolguess = TheObj[oldIndex:oldIndex+stringmatching[1]]
                 #print("now we try to construct alphastring replacement|", [symbolis,symbolguess])
                 #ANS.append([symbolis,symbolguess])
-                ANS.append(['argument_1 == \"' + symbolis + '"',symbolguess])
+                ANS.append(['argument_1 B == \"' + symbolis + '"',symbolguess])
+                #UPDATE TheObjIndex
+                TheObjIndex += stringmatching[1]
             #add here so we preserve order
             ANS.append([target,target])
             alphatrigger = False
