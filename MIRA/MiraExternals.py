@@ -3029,7 +3029,8 @@ def delta3META(argList):
                 #UPDATE TheObjIndex
                 TheObjIndex += stringmatching[1]
             #add here so we preserve order
-            ANS.append([target,target])
+            #ANS.append([target,target])
+            ANS.append(['argument_1' + '==' + '"' + target + '"',target])
             alphatrigger = False
     return ANS
 
