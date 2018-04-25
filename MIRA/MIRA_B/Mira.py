@@ -121,7 +121,7 @@ while Descent:
                 #just write the OG test once
                 #[['TOTAL_ARGUMENT == "b"', 'd']]
                 #str([str(inputtext),str(eval(inputtext))]) + "\n"
-                internaltest2 = [["TOTAL_ARGUMENT A== '"+ str(inputtext) +"'",str(eval(inputtext))]]
+                internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",str(eval(inputtext))]]
                 orsequence2 = bisectionSearch([memoryLong,str(internaltest2),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest2)])
                 if len(orsequence2) > 0:
                     print("already saw that 2")
@@ -134,7 +134,7 @@ while Descent:
             print("code died")
             memoryfile = open(MemoryUNORDERED, 'a+')
             #HINT: ["",e] IS BECAUSE popen has error as 2nd element
-            memoryfile.write(str([["TOTAL_ARGUMENT B== '"+ str(inputtext) +"'", ["",e]]]) + "\n")
+            memoryfile.write(str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'", ["",e]]]) + "\n")
             memoryfile.close()
             pass
 
@@ -158,14 +158,12 @@ while Descent:
             for x in suppANS:
                 try:
                     attempt = eval(x)
-                    #PROBLEM WRITING DUPLICATE LINES TWICE TO MEMORY
-                    print("PREVENTING DUPLICATES!", bisectionSearch([memoryLong,str([["TOTAL_ARGUMENT C== '"+ x +"'", attempt]]) + "\n",basisname]))
                     memoryfile = open(MemoryUNORDERED, 'a+')
-                    memoryfile.write(str([["TOTAL_ARGUMENT C== '"+ x +"'", attempt]]) + "\n")
+                    memoryfile.write(str([["TOTAL_ARGUMENT == '"+ x +"'", attempt]]) + "\n")
                     memoryfile.close()
                 except Exception as e:
                     memoryfile = open(MemoryUNORDERED, 'a+')
-                    memoryfile.write(str([["TOTAL_ARGUMENT D== '"+ x +"'", ["",e]]]) + "\n")
+                    memoryfile.write(str([["TOTAL_ARGUMENT == '"+ x +"'", ["",e]]]) + "\n")
                     memoryfile.close()
                     pass
             
