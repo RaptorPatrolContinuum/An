@@ -15,6 +15,153 @@
   <graph edgedefault="directed" id="G">
     <data key="d0"/>
     <node id="n0">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="73.4092856049956" width="246.28486161085016" x="1579.7690645593152" y="4378.578563788683"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="121.14243080542519" y="34.7046428024978">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n1">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="421.1952478794401" width="1079.6527092150693" x="962.0739416963083" y="4291.081207556254"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="537.8263546075345" y="208.5976239397196">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n2">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="390.220913880044" width="782.4276171532393" x="700.2757670965177" y="3860.4226278621427"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="110.025390625" x="336.2011132641196" y="-41.64218442485799">NEXT STEP IDEAS<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="0.0" nodeRatioY="-0.5" offsetX="0.0" offsetY="-22.941012549857533" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n3">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="280.8711713147409" width="73.99727689243014" x="1197.1586370130613" y="4344.727079086367"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="138.0" x="-136.91909564751722" y="130.43558565737067">&lt;html&gt;&lt;strike&gt;RECOGNIZING INPUTS &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.49216735976461756" labelRatioY="0.0" nodeRatioX="-0.5" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n4">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="221.24836574656683" width="482.7988310968349" x="-1883.7771556312896" y="-783.8622177251398"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="110.025390625" x="186.38672023591744" y="-41.64218442485753">NEXT STEP IDEAS<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="0.0" nodeRatioY="-0.5" offsetX="0.0" offsetY="-22.941012549857533" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n5">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="234.09979898488655" width="273.7012525192681" x="1124.671973810317" y="3888.660877044117"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#0000FF" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="614.037109375" x="-170.16792842786595" y="-49.96816782262431">KNOW FACT, ABSTRACTION GUESS FROM EXPERIENCE, TRYING TO GUESS OUTPUT FROM JUST INPUT<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="0.0" nodeRatioY="-0.5" offsetX="0.0" offsetY="-31.26699594762431" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n6">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="66.5551878778906" width="215.06063863181885" x="1150.7675229692404" y="3912.8672555803496"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="105.53031931590931" y="31.2775939389453">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n7">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="66.5551878778906" width="215.06063863181885" x="1150.7675229692404" y="4152.33001427994"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="105.53031931590931" y="31.277593938944847">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n8">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="280.8711713147409" width="73.99727689243014" x="1197.1586370130613" y="934.5578191182798"/>
@@ -31,7 +178,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n1">
+    <node id="n9">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -50,7 +197,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n2">
+    <node id="n10">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -69,7 +216,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n3">
+    <node id="n11">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="145.6037071281843" width="262.4000000000001" x="217.50000000000023" y="10.26562749003969"/>
@@ -121,7 +268,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n4">
+    <node id="n12">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -139,7 +286,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n5">
+    <node id="n13">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -157,7 +304,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n6">
+    <node id="n14">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -175,7 +322,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n7">
+    <node id="n15">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -194,7 +341,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n8">
+    <node id="n16">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="810.8424370290631" width="1062.6016" x="-1166.089654793377" y="1065.533842881106"/>
@@ -212,7 +359,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n9">
+    <node id="n17">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="442.99999999999994" width="649.0" x="185.47875000000022" y="357.66999999999973"/>
@@ -237,7 +384,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n10">
+    <node id="n18">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="383.7475099601594" width="549.9016434262946" x="1725.6727968127489" y="387.29624501992015"/>
@@ -254,7 +401,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n11">
+    <node id="n19">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="133.65349063509143" width="181.16664973089325" x="2368.823321290779" y="2807.4510106099788"/>
@@ -272,7 +419,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n12">
+    <node id="n20">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="98.58837976318637" width="310.60360828394346" x="282.9927073132317" y="1907.3734190356367"/>
@@ -289,7 +436,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n13">
+    <node id="n21">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="500.60554402583375" width="465.72412486544647" x="1001.295213026553" y="1704.098971066638"/>
@@ -314,7 +461,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n14">
+    <node id="n22">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="298.95664708891263" width="431.30027475909594" x="1018.1021847690715" y="1851.6307971919339"/>
@@ -339,7 +486,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n15">
+    <node id="n23">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="186.5318365554358" width="362.6066635091496" x="1047.333988484034" y="1907.8432024586723"/>
@@ -357,7 +504,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n16">
+    <node id="n24">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1323.5666412289208" y="2011.5713822649145"/>
@@ -374,7 +521,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n17">
+    <node id="n25">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1098.0705981718702" y="2011.571382264915"/>
@@ -391,7 +538,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n18">
+    <node id="n26">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1323.5666412289208" y="1976.6194955910723"/>
@@ -408,7 +555,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n19">
+    <node id="n27">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1098.0705981718702" y="1976.6194955910723"/>
@@ -425,7 +572,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n20">
+    <node id="n28">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1323.5666412289208" y="1941.6676089172297"/>
@@ -442,7 +589,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n21">
+    <node id="n29">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1098.0705981718702" y="1941.66760891723"/>
@@ -459,7 +606,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n22">
+    <node id="n30">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="45.22129083665345" width="184.4451150398363" x="1208.9564549911508" y="1143.840890034614"/>
@@ -477,7 +624,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n23">
+    <node id="n31">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="56.34999999999991" width="57.15637450199188" x="0.17181274900451626" y="326.025"/>
@@ -495,7 +642,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n24">
+    <node id="n32">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="56.34999999999991" width="57.15637450199188" x="973.9218127490045" y="326.025"/>
@@ -513,7 +660,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n25">
+    <node id="n33">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="73.99999999999994" width="586.8000000000002" x="207.98000000000025" y="381.54999999999984"/>
@@ -531,7 +678,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n26">
+    <node id="n34">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="73.99999999999994" width="262.4000000000002" x="363.50000000000017" y="681.9499999999998"/>
@@ -549,7 +696,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n27">
+    <node id="n35">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="314.9000000000003" y="540.2"/>
@@ -566,7 +713,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n28">
+    <node id="n36">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="479.7000000000003" y="540.2"/>
@@ -583,7 +730,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n29">
+    <node id="n37">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="638.5000000000003" y="540.2"/>
@@ -608,7 +755,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n30">
+    <node id="n38">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="788.5000000000003" y="540.2"/>
@@ -625,7 +772,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n31">
+    <node id="n39">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="1673.1158478458724"/>
@@ -649,7 +796,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n32">
+    <node id="n40">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-230.7842863293859" y="185.92615414424097"/>
@@ -666,7 +813,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n33">
+    <node id="n41">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1216.4373870130612" y="960.0578191182799"/>
@@ -683,7 +830,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n34">
+    <node id="n42">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1355.337387013061" y="960.0578191182799"/>
@@ -700,7 +847,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n35">
+    <node id="n43">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1216.4373870130612" y="1151.4515354529412"/>
@@ -717,7 +864,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n36">
+    <node id="n44">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1355.337387013061" y="1151.4515354529408"/>
@@ -734,7 +881,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n37">
+    <node id="n45">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="559.3000000000003" y="709.55"/>
@@ -751,7 +898,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n38">
+    <node id="n46">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="400.10000000000014" y="709.55"/>
@@ -768,7 +915,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n39">
+    <node id="n47">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-199.3499999999999" y="394.5"/>
@@ -785,7 +932,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n40">
+    <node id="n48">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="314.9000000000003" y="413.80000000000007"/>
@@ -802,7 +949,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n41">
+    <node id="n49">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="638.5000000000003" y="413.80000000000007"/>
@@ -819,7 +966,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n42">
+    <node id="n50">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1280.617387013061" y="904.5578191182797"/>
@@ -836,7 +983,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n43">
+    <node id="n51">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1842.27120225425" y="1673.1158478458726"/>
@@ -860,7 +1007,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n44">
+    <node id="n52">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="472.0" y="266.6099999999998"/>
@@ -877,7 +1024,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n45">
+    <node id="n53">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="13.750000000000455" y="339.19999999999993"/>
@@ -901,7 +1048,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n46">
+    <node id="n54">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="987.5000000000005" y="339.19999999999993"/>
@@ -918,7 +1065,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n47">
+    <node id="n55">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="638.5000000000003" y="621.9499999999998"/>
@@ -935,7 +1082,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n48">
+    <node id="n56">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="7.236080981700752" width="3.8214931289559217" x="572.3892534355223" y="551.5819595091497"/>
@@ -952,7 +1099,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n49">
+    <node id="n57">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="1583.7543839061523"/>
@@ -969,7 +1116,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n50">
+    <node id="n58">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1280.617387013061" y="697.6368525896412"/>
@@ -986,7 +1133,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n51">
+    <node id="n59">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1280.617387013061" y="609.593027888446"/>
@@ -1003,7 +1150,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n52">
+    <node id="n60">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1280.617387013061" y="534.8728705179271"/>
@@ -1020,7 +1167,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n53">
+    <node id="n61">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1810.885926792832" y="437.1799571713136"/>
@@ -1037,7 +1184,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n54">
+    <node id="n62">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1939.5442534860586" y="437.1799571713137"/>
@@ -1054,12 +1201,12 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n55">
+    <node id="n63">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1404.8462281485185" y="995.3578191182796"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="122.078125" x="20.837569656702954" y="-14.515288128734937">delta V2(input, output)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -1071,12 +1218,12 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n56">
+    <node id="n64">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1551.7899930887625" y="995.3578191182796"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="290.751953125" x="-13.874558235806944" y="-22.701171875">GUESSING SIMILAR INPUTS =&gt; SAME VARIABLES<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -1088,12 +1235,12 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n57">
+    <node id="n65">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1628.7675867142605" y="995.3578191182796"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="282.173828125" x="41.81197358690224" y="4.0">abuse n choose 2 generator for extreme/huge cases<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -1105,7 +1252,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n58">
+    <node id="n66">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="53.417370517928475" width="188.0672509960159" x="1207.145387013061" y="948.349133859316"/>
@@ -1123,12 +1270,12 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n59">
+    <node id="n67">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1355.337387013061" y="1244.3770106853453"/>
           <y:Fill color="#FF0000" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="546.578125" x="41.45328012948221" y="5.6494140625">HINT: IF ABSTRACTION α WORKS ON AN INPUT, GUESS THE OUTPUT USING ABSTRACTION α<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -1140,12 +1287,12 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n60">
+    <node id="n68">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1150.7675229692406" y="1151.4515354529412"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="696.7421875" x="-708.414918451195" y="5.6494140625">WHEN DELTAV2(INPUT, ABSTRACTIONINPUT) == ABSTRACTIONINPUT YOU THEN HAVE IDENTIFIED SOMETHING LEGIT<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -1157,7 +1304,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n61">
+    <node id="n69">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="2109.894700013723"/>
@@ -1174,7 +1321,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n62">
+    <node id="n70">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="2049.894700013723"/>
@@ -1198,7 +1345,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n63">
+    <node id="n71">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="2229.894700013723"/>
@@ -1215,7 +1362,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n64">
+    <node id="n72">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2715.1098594422856" y="2229.894700013723"/>
@@ -1232,7 +1379,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n65">
+    <node id="n73">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="3103.356282936683" y="2229.894700013723"/>
@@ -1249,7 +1396,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n66">
+    <node id="n74">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="3103.356282936683" y="2292.379819535636"/>
@@ -1266,7 +1413,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n67">
+    <node id="n75">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2051.0511857569745" y="437.1799571713137"/>
@@ -1283,7 +1430,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n68">
+    <node id="n76">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="3290.3136671567026" y="2229.894700013723"/>
@@ -1300,7 +1447,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n69">
+    <node id="n77">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="3290.3136671567026" y="2156.545020069818"/>
@@ -1317,7 +1464,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n70">
+    <node id="n78">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="1920.9949589778673"/>
@@ -1334,7 +1481,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n71">
+    <node id="n79">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="2169.894700013723"/>
@@ -1351,7 +1498,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n72">
+    <node id="n80">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="1977.335994834441"/>
@@ -1368,7 +1515,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n73">
+    <node id="n81">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2309.5422652115767" y="1920.9949589778673"/>
@@ -1385,7 +1532,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n74">
+    <node id="n82">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2309.5422652115767" y="1977.335994834441"/>
@@ -1402,7 +1549,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n75">
+    <node id="n83">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="1780.7475715276676"/>
@@ -1419,7 +1566,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n76">
+    <node id="n84">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="1854.1098026033649"/>
@@ -1436,7 +1583,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n77">
+    <node id="n85">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1939.5442534860586" y="727.8602530756957"/>
@@ -1460,7 +1607,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n78">
+    <node id="n86">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2115.6490817251006" y="727.8602530756958"/>
@@ -1477,7 +1624,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n79">
+    <node id="n87">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2310.9418011637727" y="1780.7475715276676"/>
@@ -1494,7 +1641,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n80">
+    <node id="n88">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2310.9418011637727" y="1854.1098026033649"/>
@@ -1511,7 +1658,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n81">
+    <node id="n89">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="1720.7475715276676"/>
@@ -1528,7 +1675,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n82">
+    <node id="n90">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2310.9418011637727" y="1720.7475715276678"/>
@@ -1545,7 +1692,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n83">
+    <node id="n91">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1219.1572754592762" y="1583.7543839061523"/>
@@ -1562,7 +1709,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n84">
+    <node id="n92">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="180.6329612160821" y="1691.2752759105563"/>
@@ -1621,7 +1768,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n85">
+    <node id="n93">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1213.637320238609" y="1770.1665933701904"/>
@@ -1646,7 +1793,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n86">
+    <node id="n94">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="89.1927113024758" width="190.66593067814847" x="1138.824310120202" y="1724.5976013357447"/>
@@ -1671,7 +1818,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n87">
+    <node id="n95">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="416.5504522950489" y="2106.6468185113054"/>
@@ -1688,7 +1835,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n88">
+    <node id="n96">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="480.24639728512807" y="1967.398719333213"/>
@@ -1705,7 +1852,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n89">
+    <node id="n97">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="343.87692645627976" y="1967.398719333213"/>
@@ -1722,7 +1869,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n90">
+    <node id="n98">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="731.9422203895415" y="1941.66760891723"/>
@@ -1739,7 +1886,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n91">
+    <node id="n99">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="342.9615461161293" y="2027.3987193332127"/>
@@ -1756,7 +1903,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n92">
+    <node id="n100">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="478.2349854444392" y="2027.3987193332127"/>
@@ -1773,7 +1920,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n93">
+    <node id="n101">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-392.8760677795748" y="2476.8112958661254"/>
@@ -1802,7 +1949,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n94">
+    <node id="n102">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="231.2540337647671" y="2476.8112958661254"/>
@@ -1826,7 +1973,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n95">
+    <node id="n103">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-2.007535996294905" y="2655.7535150270046"/>
@@ -1850,7 +1997,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n96">
+    <node id="n104">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-2.007535996294905" y="2757.124091905368"/>
@@ -1874,7 +2021,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n97">
+    <node id="n105">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-24.39544739777307" y="564.1699999999997"/>
@@ -1891,7 +2038,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n98">
+    <node id="n106">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1183.1570620277546" y="2890.2544811787648"/>
@@ -1908,7 +2055,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n99">
+    <node id="n107">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="103.42929318349707" y="2476.8112958661254"/>
@@ -1925,7 +2072,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n100">
+    <node id="n108">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-103.4324474006687" y="2476.8112958661254"/>
@@ -1942,7 +2089,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n101">
+    <node id="n109">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-182.46944740356435" y="2476.8112958661254"/>
@@ -1959,7 +2106,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n102">
+    <node id="n110">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-24.39544739777307" y="2476.8112958661254"/>
@@ -1976,7 +2123,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n103">
+    <node id="n111">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1294.8878425987075" y="2890.2544811787648"/>
@@ -1993,7 +2140,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n104">
+    <node id="n112">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-24.39544739777307" y="514.0175670470032"/>
@@ -2010,7 +2157,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n105">
+    <node id="n113">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-240.81523779605243" y="651.1973071546477"/>
@@ -2027,7 +2174,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n106">
+    <node id="n114">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-240.81523779605243" y="740.6746255615362"/>
@@ -2044,7 +2191,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n107">
+    <node id="n115">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="133.65349063509143" width="181.16664973089325" x="2185.11606650879" y="1768.3792952094627"/>
@@ -2062,7 +2209,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n108">
+    <node id="n116">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="133.65349063509143" width="181.16664973089325" x="2185.11606650879" y="1903.6825041993493"/>
@@ -2080,7 +2227,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n109">
+    <node id="n117">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2389.7389977306193" y="2819.819286928184"/>
@@ -2097,7 +2244,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n110">
+    <node id="n118">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2389.7389977306193" y="2893.181518003881"/>
@@ -2114,7 +2261,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n111">
+    <node id="n119">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2494.6490559457616" y="2819.819286928184"/>
@@ -2131,7 +2278,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n112">
+    <node id="n120">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2494.6490559457616" y="2893.181518003881"/>
@@ -2148,7 +2295,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n113">
+    <node id="n121">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2539.1575996842466" y="2999.2004765074516"/>
@@ -2165,7 +2312,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n114">
+    <node id="n122">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2485.8046644851074" y="3087.296451769833"/>
@@ -2182,7 +2329,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n115">
+    <node id="n123">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2755.236987240759" y="2936.9553854417886"/>
@@ -2199,7 +2346,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n116">
+    <node id="n124">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="2305.834622815309"/>
@@ -2216,7 +2363,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n117">
+    <node id="n125">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2549.091458529184" y="3176.6390931714564"/>
@@ -2233,7 +2380,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n118">
+    <node id="n126">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2549.091458529184" y="3254.0977985617437"/>
@@ -2250,7 +2397,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n119">
+    <node id="n127">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2549.091458529184" y="3331.556503952031"/>
@@ -2278,7 +2425,7 @@ EX: that parentheses come in pairs for code<y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n120">
+    <node id="n128">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1775.8772754485963" y="3348.8689587305494"/>
@@ -2295,7 +2442,7 @@ EX: that parentheses come in pairs for code<y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n121">
+    <node id="n129">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1775.8772754485963" y="3405.2099945871228"/>
@@ -2312,7 +2459,7 @@ EX: that parentheses come in pairs for code<y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n122">
+    <node id="n130">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1879.3877977115426" y="3348.8689587305494"/>
@@ -2329,7 +2476,7 @@ EX: that parentheses come in pairs for code<y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n123">
+    <node id="n131">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1879.3877977115426" y="3405.2099945871228"/>
@@ -2346,7 +2493,7 @@ EX: that parentheses come in pairs for code<y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n124">
+    <node id="n132">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="133.65349063509143" width="181.16664973089325" x="1754.961599008756" y="3331.556503952031"/>
@@ -2364,7 +2511,7 @@ EX: that parentheses come in pairs for code<y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n125">
+    <node id="n133">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1830.5449238742026" y="3583.210016352461"/>
@@ -2389,7 +2536,7 @@ hint: autopicked universe is whatever the object 'touches' AKA if 2 objects are 
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n126">
+    <node id="n134">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1830.5449238742026" y="3813.850309140406"/>
@@ -2415,7 +2562,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n127">
+    <node id="n135">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2549.0914585291844" y="2509.4510437119393"/>
@@ -2432,7 +2579,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n128">
+    <node id="n136">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2309.5422652115767" y="2049.894700013723"/>
@@ -2449,7 +2596,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n129">
+    <node id="n137">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-869.7900177911715" y="1257.5299261485425"/>
@@ -2466,7 +2613,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n130">
+    <node id="n138">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="184.51032661011868" y="-67.16100599096706"/>
@@ -2483,7 +2630,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n131">
+    <node id="n139">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="333.7000000000003" y="-67.16100599096694"/>
@@ -2507,7 +2654,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n132">
+    <node id="n140">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="482.88967338988186" y="-67.16100599096694"/>
@@ -2524,7 +2671,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n133">
+    <node id="n141">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="479.7000000000003" y="1076.5095715278876"/>
@@ -2541,7 +2688,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n134">
+    <node id="n142">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1183.1570620277546" y="3223.984506894155"/>
@@ -2558,7 +2705,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n135">
+    <node id="n143">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1183.1570620277546" y="3136.941853532691"/>
@@ -2575,7 +2722,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n136">
+    <node id="n144">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1294.8878425987075" y="3013.6504711625353"/>
@@ -2599,7 +2746,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n137">
+    <node id="n145">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1183.1570620277546" y="2771.33922379978"/>
@@ -2616,7 +2763,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n138">
+    <node id="n146">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1098.0705981718702" y="2890.2544811787648"/>
@@ -2633,7 +2780,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n139">
+    <node id="n147">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1280.617387013061" y="437.1799571713136"/>
@@ -2650,7 +2797,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n140">
+    <node id="n148">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2157.989488947255" y="867.7301211108678"/>
@@ -2667,7 +2814,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n141">
+    <node id="n149">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2157.9894889472544" y="915.7476693227088"/>
@@ -2684,7 +2831,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n142">
+    <node id="n150">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-806.1555273713661" y="1110.8871490822926"/>
@@ -2701,7 +2848,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n143">
+    <node id="n151">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-921.4620073196975" y="1110.8871490822926"/>
@@ -2718,7 +2865,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n144">
+    <node id="n152">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="797.0554294469057" y="-241.0513325619032"/>
@@ -2735,7 +2882,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n145">
+    <node id="n153">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="797.0554294469057" y="-191.03295581271053"/>
@@ -2752,7 +2899,7 @@ how to check for proper change/ see when object is satisfied
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n146">
+    <node id="n154">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="107.03603344441292" y="990.7001149055161"/>
@@ -2775,7 +2922,7 @@ it will hang until MemoryError happens. If the output is unlimited (as in the te
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n147">
+    <node id="n155">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2.295059428138984" y="1085.6701311253205"/>
@@ -2794,7 +2941,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n148">
+    <node id="n156">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-331.35522201291656" y="1284.018671035934"/>
@@ -2811,7 +2958,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n149">
+    <node id="n157">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-289.3558708872995" y="1327.0900510144056"/>
@@ -2828,7 +2975,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n150">
+    <node id="n158">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="167.03603344441285" y="1033.579437451434"/>
@@ -2845,7 +2992,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n151">
+    <node id="n159">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1103.427743921472" y="1375.3004288875638"/>
@@ -2862,7 +3009,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n152">
+    <node id="n160">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1720.4611434726532" y="1455.9550613956376"/>
@@ -2879,7 +3026,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n153">
+    <node id="n161">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1103.427743921472" y="1455.9550613956376"/>
@@ -2896,7 +3043,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n154">
+    <node id="n162">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1720.4611434726532" y="1375.3004288875638"/>
@@ -2913,7 +3060,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n155">
+    <node id="n163">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1982.77290286227" y="1375.3004288875638"/>
@@ -2930,7 +3077,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n156">
+    <node id="n164">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -2948,7 +3095,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n157">
+    <node id="n165">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -2966,7 +3113,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n158">
+    <node id="n166">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -2984,7 +3131,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n159">
+    <node id="n167">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3002,7 +3149,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n160">
+    <node id="n168">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3020,7 +3167,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n161">
+    <node id="n169">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3038,7 +3185,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n162">
+    <node id="n170">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3056,13 +3203,13 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n163">
+    <node id="n171">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1517.236442284174" y="-913.4130024774405"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="86.04296875" x="-28.021484375" y="-32.42890664363563">eval with deltas<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -3074,7 +3221,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n164">
+    <node id="n172">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3092,7 +3239,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n165">
+    <node id="n173">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3110,7 +3257,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n166">
+    <node id="n174">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3128,7 +3275,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n167">
+    <node id="n175">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3146,7 +3293,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n168">
+    <node id="n176">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3164,7 +3311,7 @@ LOOK FOR "REPEATS" OR USE A TIMER
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n169">
+    <node id="n177">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3192,7 +3339,7 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n170">
+    <node id="n178">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3210,7 +3357,7 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n171">
+    <node id="n179">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3228,7 +3375,7 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n172">
+    <node id="n180">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3246,7 +3393,7 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n173">
+    <node id="n181">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3264,7 +3411,7 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n174">
+    <node id="n182">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3282,7 +3429,7 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n175">
+    <node id="n183">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3300,7 +3447,7 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n176">
+    <node id="n184">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3318,7 +3465,7 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n177">
+    <node id="n185">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3336,7 +3483,7 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n178">
+    <node id="n186">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3392,7 +3539,7 @@ C:\An&gt;git commit -a -m "fuck if I observe a Y and want to compose with X I ca
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n179">
+    <node id="n187">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3414,13 +3561,13 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n180">
+    <node id="n188">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1628.7675867142607" y="1151.4515354529408"/>
           <y:Fill color="#FF0000" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="502.087890625" x="-131.10147893009957" y="-30.414409356915485">LURKING MONSTER IS ALWAYS THAT DELTA V2 DEPENDS ON PROPER MORPHEMES<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -3432,13 +3579,13 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n181">
+    <node id="n189">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1770.1606680899931" y="1151.4515354529408"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="504.103515625" x="-237.0517578125" y="44.60476961488757">tbh if you use characters the morphemes might "magically spring out of the blue or something"<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -3450,43 +3597,7 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n182">
-      <data key="d6">
-        <y:ShapeNode>
-          <y:Geometry height="280.8711713147409" width="73.99727689243014" x="1197.1586370130613" y="4344.727079086367"/>
-          <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="138.0" x="-136.91909564751722" y="130.43558565737067">&lt;html&gt;&lt;strike&gt;RECOGNIZING INPUTS &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
-              <y:SmartNodeLabelModel distance="4.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.49216735976461756" labelRatioY="0.0" nodeRatioX="-0.5" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-            </y:ModelParameter>
-          </y:NodeLabel>
-          <y:Shape type="rectangle"/>
-        </y:ShapeNode>
-      </data>
-    </node>
-    <node id="n183">
-      <data key="d5"/>
-      <data key="d6">
-        <y:ShapeNode>
-          <y:Geometry height="421.1952478794401" width="1079.6527092150693" x="962.0739416963083" y="4291.081207556254"/>
-          <y:Fill hasColor="false" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="537.8263546075345" y="208.5976239397196">
-            <y:LabelModel>
-              <y:SmartNodeLabelModel distance="4.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-            </y:ModelParameter>
-          </y:NodeLabel>
-          <y:Shape type="rectangle"/>
-        </y:ShapeNode>
-      </data>
-    </node>
-    <node id="n184">
+    <node id="n190">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="45.22129083665345" width="184.4451150398363" x="1208.956454991151" y="4554.010150002701"/>
@@ -3504,7 +3615,7 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n185">
+    <node id="n191">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1216.4373870130612" y="4370.227079086367"/>
@@ -3521,7 +3632,7 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n186">
+    <node id="n192">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1355.3373870130608" y="4370.227079086367"/>
@@ -3538,7 +3649,7 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n187">
+    <node id="n193">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1216.4373870130612" y="4561.620795421028"/>
@@ -3555,7 +3666,7 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n188">
+    <node id="n194">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1355.3373870130608" y="4561.620795421028"/>
@@ -3572,12 +3683,12 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n189">
+    <node id="n195">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1280.617387013061" y="4314.727079086366"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="329.0" x="-149.5" y="5.0">&lt;html&gt;&lt;strike&gt;DELTA PROBLEM/ANALYSIS PROBLEM THAT I'M HAVING ..&lt;/strike&gt;<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -3589,12 +3700,12 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n190">
+    <node id="n196">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1404.8462281485185" y="4405.527079086367"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="122.078125" x="20.837569656702726" y="-14.515288128734937">delta V2(input, output)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -3606,12 +3717,12 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n191">
+    <node id="n197">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="1551.7899930887625" y="4405.527079086367"/>
+          <y:Geometry height="30.0" width="30.0" x="1617.2847047033158" y="4405.527079086367"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="290.751953125" x="-13.874558235806944" y="-22.701171875">GUESSING SIMILAR INPUTS =&gt; SAME VARIABLES<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -3623,12 +3734,12 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n192">
+    <node id="n198">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="1628.7675867142607" y="4405.527079086367"/>
+          <y:Geometry height="30.0" width="30.0" x="1694.262298328814" y="4405.527079086367"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="282.173828125" x="41.81197358690224" y="4.0">abuse n choose 2 generator for extreme/huge cases<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -3640,7 +3751,7 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n193">
+    <node id="n199">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="53.417370517928475" width="188.0672509960159" x="1207.1453870130608" y="4358.518393827402"/>
@@ -3658,12 +3769,12 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n194">
+    <node id="n200">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="1355.3373870130608" y="4654.546270653433"/>
-          <y:Fill color="#FF0000" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:Geometry height="30.0" width="30.0" x="1486.9002963038429" y="4308.271541732011"/>
+          <y:Fill color="#FF00FF" transparent="false"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="546.578125" x="41.45328012948221" y="5.6494140625">HINT: IF ABSTRACTION α WORKS ON AN INPUT, GUESS THE OUTPUT USING ABSTRACTION α<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -3675,12 +3786,12 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n195">
+    <node id="n201">
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1150.7675229692404" y="4561.620795421028"/>
           <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="696.7421875" x="-708.4149184511953" y="5.6494140625">WHEN DELTAV2(INPUT, ABSTRACTIONINPUT) == ABSTRACTIONINPUT YOU THEN HAVE IDENTIFIED SOMETHING LEGIT<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -3692,7 +3803,7 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n196">
+    <node id="n202">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
@@ -3710,12 +3821,12 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n197">
+    <node id="n203">
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1770.1606680899931" y="4561.620795421028"/>
-          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="504.103515625" x="-237.0517578125" y="44.60476961488757">tbh if you use characters the morphemes might "magically spring out of the blue or something"<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -3728,7 +3839,577 @@ not function = use Quine <y:LabelModel>
         </y:ShapeNode>
       </data>
     </node>
-    <edge id="e0" source="n30" target="n30">
+    <node id="n204">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1175.877509416101" y="4171.402372958506"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="40.0" x="-5.0" y="5.6494140625">INPUT<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n205">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1314.777509416101" y="4171.402372958506"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="197.37109375" x="-83.685546875" y="5.6494140625">???? TRYING TO GUESS OUTPUT<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n206">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="66.5551878778906" width="215.06063863181885" x="1150.7675229692404" y="4033.393399669765"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="105.53031931590931" y="31.2775939389453">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n207">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1175.877509416101" y="4052.4657583483304"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="40.0" x="-5.0" y="5.6494140625">INPUT<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n208">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1314.777509416101" y="4052.4657583483304"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="53.330078125" x="-11.6650390625" y="5.6494140625">OUTPUT<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n209">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1175.877509416101" y="3931.939614258915"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="40.0" x="-5.0" y="5.6494140625">INPUT<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n210">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1314.777509416101" y="3931.939614258915"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="53.330078125" x="-11.6650390625" y="5.6494140625">OUTPUT<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n211">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1030.2377384591005" y="4065.3210514664197"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="439.22265625" x="-312.33183357264033" y="45.21899630941516">KNOW THAT INPUT "MATCHES" ON SOME LEVEL THROUGH ABSTRACTION<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="-0.5" nodeRatioX="-3.5906835149213445" nodeRatioY="0.5" offsetX="0.0" offsetY="15.21899630941516" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n212">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1423.2060081464201" y="3990.7107765365604"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="798.71875" x="51.06622227466096" y="5.6494140625">GUESS: FILTER OUTPUT WE KNOW THROUGH ABSTRACTION THEN USE THAT AS GUESS, THEN KEEP TRACK OF ITF IT WORKS OR NOT<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.0" offsetX="21.06622227466096" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n213">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1077.4548561347092" y="3931.9396142589153"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="35.330078125" x="-49.706813686919986" y="5.6494140625">FACT<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.5" labelRatioY="0.0" nodeRatioX="-0.5" nodeRatioY="0.0" offsetX="-14.376735561919986" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n214">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1077.4548561347087" y="4051.6709936087104"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="134.6875" x="-145.55947908862026" y="-9.3505859375">ABSTRACTION GUESS<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.5" labelRatioY="0.0" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="-10.871979088620265" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n215">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1077.4548561347087" y="4171.402372958506"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="296.025390625" x="-318.56835211349926" y="5.6494140625">INPUT MATCHES FACT AND ABSTRACTIONGUESS<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.5" labelRatioY="0.0" nodeRatioX="-0.5" nodeRatioY="0.0" offsetX="-22.54296148849926" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n216">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-1458.5228162846088" y="-695.8763576229642"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="225.349609375" x="-236.21664675725606" y="4.0">compare abstraction guesses with 'reality'<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="-10.867037382256058" offsetY="4.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n217">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-1774.525280244652" y="-758.7055867880883"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="127.884765625" x="-48.9423828125" y="5.6494140625">"PROBLEM SOLVING"<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n218">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-1686.1835762064175" y="-758.7055867880883"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="281.892578125" x="-125.9462890625" y="-22.701171875">ADDING "SENSES" (AUDIO/VISUAL/THINKING(?))<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="0.0" nodeRatioY="-0.5" offsetX="0.0" offsetY="-4.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n219">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-1597.8418721681828" y="-758.7055867880888"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="116.67578125" x="58.712008867443615" y="5.6494140625">TEACHING FOR IRL<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.0" offsetX="28.712008867443615" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n220">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-1171.7454634665253" y="-913.4130024774405"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="113.248046875" x="-41.6240234375" y="-40.99652880251597">"interaction function"<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="0.0" nodeRatioY="-0.5" offsetX="0.0" offsetY="-22.295356927515968" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n221">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="2103.484617778331" y="4400.283206591181"/>
+          <y:Fill color="#FF00FF" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="330.68359375" x="-43.722498897820515" y="-31.286557022453962">THIS FEELS TOO FUCKING SPECIFIC AT THE MOMEMNT<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="3.5539765992393164" nodeRatioY="-0.5" offsetX="0.0" offsetY="-12.585385147453962" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="1278.958984375" x="-43.722498897820515" y="39.34872788742905">ALSO, WAY I USE TO GUESS OUTPUTS MEANS THAT THIS ISN'T RIGHT,THAT THE TWO ALPHAS FOR print(X),X ARE "THE SAME". INSTEAD IT SHOULD JUST FOLLOW THE ABSTRACTION AND CARE ABOUT  NOTHING ELSE<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="-0.5" nodeRatioX="19.358566442989318" nodeRatioY="0.5" offsetX="0.0" offsetY="9.34872788742905" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n222">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1630.9326578151918" y="4161.6511305159165"/>
+          <y:Fill color="#FF0000" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="357.35546875" x="-55.095022986410186" y="-40.46105241758596">THEN YOU NEED TO COMPARE THIS OUTPUT WITH REALITY<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="3.619423712952994" nodeRatioY="-0.5" offsetX="0.0" offsetY="-21.75988054258596" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n223">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="107.8435209562108" width="254.28267937613168" x="723.6966641345109" y="3895.384426381025"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="739.38671875" x="-3.5595076735082785" y="-30.797132041328496">HINT FOR THIS(I DONT NEED TO WRITE A FUNCTION I JUST NEED TO DELTA2 THEN DELTA3 THEN COMPARE AGAIN(DELTA2))<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="0.9398694106880603" nodeRatioY="-0.5" offsetX="0.0" offsetY="-12.095960166328496" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n224">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="790.5322203555581" y="3931.9396142589153"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="147.361328125" x="-58.6806640625" y="-28.62107457302136">DELTA3(REPLACEMENT)<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="0.0" nodeRatioY="-0.5" offsetX="0.0" offsetY="-9.91990269802136" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n225">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="885.5757601346099" y="3931.9396142589158"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="142.685546875" x="-56.3427734375" y="41.82381873332906">DELTA2(ABSTRACTION)<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="-0.5" nodeRatioX="0.0" nodeRatioY="0.5" offsetX="0.0" offsetY="11.823818733329063" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n226">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1630.932657815192" y="4052.4657583483304"/>
+          <y:Fill color="#00CCFF" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="211.369140625" x="45.65332790100001" y="5.6494140625">SOME SORT OF EXTERMAL SENSE:<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.0" offsetX="15.653327901000011" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n227">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1486.9002963038429" y="1344.5979704001468"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="671.376953125" x="42.549335678180796" y="5.6494140625">FOLLOW THIS FUCKING ARROW FOR MORE DISCUSSION ABOUT THE STATEMENT AND REPLACEMENT THEOREM<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.0" offsetX="12.549335678180796" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n228">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-418.73855036613173" y="2627.9749658791598"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="290.18359375" x="-130.09179687499994" y="-22.701171875">hint #1: you can always appeal to the higher powerset<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.5" nodeRatioX="1.887379141862766E-15" nodeRatioY="-0.5" offsetX="0.0" offsetY="-4.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n229">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-418.7385503661318" y="2674.3829192397625"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="528.296875" x="-539.495632884284" y="4.0">hint #2: omega function is address function (so I can already do it and eval with current 4-27 setup)<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.5" offsetX="-11.198757884283964" offsetY="4.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n230">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-418.7385503661318" y="2720.790872600365"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="522.302734375" x="-538.8784576159175" y="7.298828125">self reference might not be needed since we can just modify the clone instead and work off of that<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.5" labelRatioY="0.5" nodeRatioX="-0.5" nodeRatioY="0.5" offsetX="-16.575723240917455" offsetY="-4.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n231">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="1900.0526885092163" y="1793.9407476625818"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="378.208984375" x="-382.208984375" y="-9.0517578125">hint: morphemes might be related to "senses" and might be related to 
+mentally picking stuff out caused by looking for proper response when 
+dealing with making functions out of an arbitrary timestream like life<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.5" labelRatioY="0.0" nodeRatioX="-0.5" nodeRatioY="0.0" offsetX="-4.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n232">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="2381.774545616895"/>
+          <y:Fill color="#FF0000" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="407.39453125" x="43.26920597390654" y="5.6494140625">FINDING IF X IS IN COMPOSITION OF AXIOM SET (AKA this might be SI)<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.0" offsetX="13.269205973906537" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n233">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-1774.525280244652" y="-688.2380348518564"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="220.6796875" x="-95.33984375" y="5.6494140625">CONSTRUCTING SET DESCRIPTIONS<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n234">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-1413.3922492228216" y="-874.3684859329747"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="542.30078125" x="49.666122546151655" y="13.298828125">arbtrary timestream analysis is bad
+instead look at the audio/visual codecs or whatever for python and figure out how I can win from them
+<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.5" offsetX="19.666122546151655" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <edge id="e0" source="n38" target="n38">
       <data key="d10">
         <y:ArcEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -3740,7 +4421,7 @@ not function = use Quine <y:LabelModel>
         </y:ArcEdge>
       </data>
     </edge>
-    <edge id="e1" source="n27" target="n28">
+    <edge id="e1" source="n35" target="n36">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3750,7 +4431,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e2" source="n28" target="n48">
+    <edge id="e2" source="n36" target="n56">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3760,7 +4441,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e3" source="n29" target="n30">
+    <edge id="e3" source="n37" target="n38">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3770,7 +4451,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e4" source="n33" target="n34">
+    <edge id="e4" source="n41" target="n42">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3780,7 +4461,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e5" source="n33" target="n35">
+    <edge id="e5" source="n41" target="n43">
       <data key="d10">
         <y:GenericEdge configuration="com.yworks.edge.framed">
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3789,7 +4470,7 @@ not function = use Quine <y:LabelModel>
         </y:GenericEdge>
       </data>
     </edge>
-    <edge id="e6" source="n35" target="n36">
+    <edge id="e6" source="n43" target="n44">
       <data key="d10">
         <y:GenericEdge configuration="com.yworks.edge.framed">
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3798,7 +4479,7 @@ not function = use Quine <y:LabelModel>
         </y:GenericEdge>
       </data>
     </edge>
-    <edge id="e7" source="n33" target="n34">
+    <edge id="e7" source="n41" target="n42">
       <data key="d10">
         <y:GenericEdge configuration="com.yworks.edge.framed">
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -3810,7 +4491,7 @@ not function = use Quine <y:LabelModel>
         </y:GenericEdge>
       </data>
     </edge>
-    <edge id="e8" source="n38" target="n37">
+    <edge id="e8" source="n46" target="n45">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3820,7 +4501,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e9" source="n40" target="n27">
+    <edge id="e9" source="n48" target="n35">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3830,7 +4511,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e10" source="n29" target="n41">
+    <edge id="e10" source="n37" target="n49">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3840,7 +4521,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e11" source="n28" target="n26">
+    <edge id="e11" source="n36" target="n34">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3850,7 +4531,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e12" source="n37" target="n26">
+    <edge id="e12" source="n45" target="n34">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3860,7 +4541,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e13" source="n43" target="n31">
+    <edge id="e13" source="n51" target="n39">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3870,7 +4551,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e14" source="n45" target="n9">
+    <edge id="e14" source="n53" target="n17">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="-239.97874999999976" ty="-159.9699999999998"/>
@@ -3880,7 +4561,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e15" source="n39" target="n45">
+    <edge id="e15" source="n47" target="n53">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3890,7 +4571,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e16" source="n44" target="n45">
+    <edge id="e16" source="n52" target="n53">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3900,7 +4581,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e17" source="n44" target="n46">
+    <edge id="e17" source="n52" target="n54">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3910,7 +4591,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e18" source="n48" target="n29">
+    <edge id="e18" source="n56" target="n37">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3920,7 +4601,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e19" source="n48" target="n47">
+    <edge id="e19" source="n56" target="n55">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3930,7 +4611,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e20" source="n47" target="n29">
+    <edge id="e20" source="n55" target="n37">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3940,7 +4621,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e21" source="n41" target="n46">
+    <edge id="e21" source="n49" target="n54">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3950,7 +4631,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e22" source="n40" target="n46">
+    <edge id="e22" source="n48" target="n54">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3960,7 +4641,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e23" source="n31" target="n46">
+    <edge id="e23" source="n39" target="n54">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3970,7 +4651,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e24" source="n50" target="n42">
+    <edge id="e24" source="n58" target="n50">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3980,7 +4661,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e25" source="n50" target="n51">
+    <edge id="e25" source="n58" target="n59">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -3990,7 +4671,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e26" source="n9" target="n10">
+    <edge id="e26" source="n17" target="n18">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4000,7 +4681,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e27" source="n55" target="n56">
+    <edge id="e27" source="n63" target="n64">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4010,7 +4691,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e28" source="n56" target="n57">
+    <edge id="e28" source="n64" target="n65">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4020,7 +4701,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e29" source="n58" target="n22">
+    <edge id="e29" source="n66" target="n30">
       <data key="d10">
         <y:GenericEdge configuration="com.yworks.edge.framed">
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4029,7 +4710,7 @@ not function = use Quine <y:LabelModel>
         </y:GenericEdge>
       </data>
     </edge>
-    <edge id="e30" source="n22" target="n58">
+    <edge id="e30" source="n30" target="n66">
       <data key="d10">
         <y:GenericEdge configuration="com.yworks.edge.framed">
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4046,7 +4727,7 @@ not function = use Quine <y:LabelModel>
         </y:GenericEdge>
       </data>
     </edge>
-    <edge id="e31" source="n54" target="n42">
+    <edge id="e31" source="n62" target="n50">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4056,7 +4737,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e32" source="n59" target="n36">
+    <edge id="e32" source="n67" target="n44">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4066,7 +4747,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e33" source="n60" target="n0">
+    <edge id="e33" source="n68" target="n8">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4076,7 +4757,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e34" source="n63" target="n64">
+    <edge id="e34" source="n71" target="n72">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4086,7 +4767,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e35" source="n64" target="n65">
+    <edge id="e35" source="n72" target="n73">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4096,7 +4777,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e36" source="n66" target="n65">
+    <edge id="e36" source="n74" target="n73">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4106,7 +4787,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e37" source="n69" target="n65">
+    <edge id="e37" source="n77" target="n73">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4116,7 +4797,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e38" source="n68" target="n65">
+    <edge id="e38" source="n76" target="n73">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4126,7 +4807,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e39" source="n67" target="n65">
+    <edge id="e39" source="n75" target="n73">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4136,7 +4817,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e40" source="n70" target="n72">
+    <edge id="e40" source="n78" target="n80">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4146,7 +4827,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e41" source="n72" target="n73">
+    <edge id="e41" source="n80" target="n81">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4156,7 +4837,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e42" source="n73" target="n70">
+    <edge id="e42" source="n81" target="n78">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4166,7 +4847,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e43" source="n74" target="n73">
+    <edge id="e43" source="n82" target="n81">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4176,7 +4857,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e44" source="n76" target="n75">
+    <edge id="e44" source="n84" target="n83">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4186,7 +4867,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e45" source="n54" target="n78">
+    <edge id="e45" source="n62" target="n86">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4196,7 +4877,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e46" source="n54" target="n77">
+    <edge id="e46" source="n62" target="n85">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4206,7 +4887,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e47" source="n80" target="n79">
+    <edge id="e47" source="n88" target="n87">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4216,7 +4897,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e48" source="n79" target="n80">
+    <edge id="e48" source="n87" target="n88">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4226,7 +4907,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e49" source="n76" target="n79">
+    <edge id="e49" source="n84" target="n87">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4236,7 +4917,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e50" source="n75" target="n79">
+    <edge id="e50" source="n83" target="n87">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4246,7 +4927,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e51" source="n79" target="n75">
+    <edge id="e51" source="n87" target="n83">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4256,7 +4937,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e52" source="n79" target="n76">
+    <edge id="e52" source="n87" target="n84">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4266,7 +4947,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e53" source="n75" target="n76">
+    <edge id="e53" source="n83" target="n84">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4276,7 +4957,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e54" source="n82" target="n81">
+    <edge id="e54" source="n90" target="n89">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4286,7 +4967,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e55" source="n83" target="n49">
+    <edge id="e55" source="n91" target="n57">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4296,7 +4977,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e56" source="n21" target="n20">
+    <edge id="e56" source="n29" target="n28">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4306,7 +4987,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e57" source="n19" target="n18">
+    <edge id="e57" source="n27" target="n26">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4316,7 +4997,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e58" source="n17" target="n16">
+    <edge id="e58" source="n25" target="n24">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4326,7 +5007,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e59" source="n86" target="n0">
+    <edge id="e59" source="n94" target="n8">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4336,7 +5017,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e60" source="n88" target="n89">
+    <edge id="e60" source="n96" target="n97">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4346,7 +5027,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e61" source="n12" target="n90">
+    <edge id="e61" source="n20" target="n98">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4356,7 +5037,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e62" source="n13" target="n90">
+    <edge id="e62" source="n21" target="n98">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4366,7 +5047,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e63" source="n86" target="n14">
+    <edge id="e63" source="n94" target="n22">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4376,7 +5057,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e64" source="n91" target="n13">
+    <edge id="e64" source="n99" target="n21">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4386,7 +5067,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e65" source="n92" target="n15">
+    <edge id="e65" source="n100" target="n23">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4396,7 +5077,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e66" source="n87" target="n91">
+    <edge id="e66" source="n95" target="n99">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4406,7 +5087,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e67" source="n87" target="n92">
+    <edge id="e67" source="n95" target="n100">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4416,7 +5097,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e68" source="n94" target="n31">
+    <edge id="e68" source="n102" target="n39">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -4428,7 +5109,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e69" source="n75" target="n80">
+    <edge id="e69" source="n83" target="n88">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4438,7 +5119,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e70" source="n80" target="n75">
+    <edge id="e70" source="n88" target="n83">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4448,7 +5129,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e71" source="n97" target="n9">
+    <edge id="e71" source="n105" target="n17">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4458,7 +5139,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e72" source="n98" target="n81">
+    <edge id="e72" source="n106" target="n89">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -4470,7 +5151,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e73" source="n99" target="n94">
+    <edge id="e73" source="n107" target="n102">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4480,7 +5161,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e74" source="n101" target="n100">
+    <edge id="e74" source="n109" target="n108">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4490,7 +5171,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e75" source="n100" target="n102">
+    <edge id="e75" source="n108" target="n110">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4500,7 +5181,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e76" source="n102" target="n99">
+    <edge id="e76" source="n110" target="n107">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4510,7 +5191,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e77" source="n93" target="n101">
+    <edge id="e77" source="n101" target="n109">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4520,7 +5201,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e78" source="n103" target="n98">
+    <edge id="e78" source="n111" target="n106">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4530,7 +5211,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e79" source="n104" target="n45">
+    <edge id="e79" source="n112" target="n53">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4540,7 +5221,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e80" source="n104" target="n40">
+    <edge id="e80" source="n112" target="n48">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4550,7 +5231,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e81" source="n102" target="n104">
+    <edge id="e81" source="n110" target="n112">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4560,7 +5241,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e82" source="n105" target="n104">
+    <edge id="e82" source="n113" target="n112">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4570,7 +5251,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e83" source="n105" target="n106">
+    <edge id="e83" source="n113" target="n114">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4580,7 +5261,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e84" source="n110" target="n109">
+    <edge id="e84" source="n118" target="n117">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4590,7 +5271,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e85" source="n112" target="n111">
+    <edge id="e85" source="n120" target="n119">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4600,7 +5281,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e86" source="n111" target="n112">
+    <edge id="e86" source="n119" target="n120">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4610,7 +5291,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e87" source="n110" target="n111">
+    <edge id="e87" source="n118" target="n119">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4620,7 +5301,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e88" source="n109" target="n111">
+    <edge id="e88" source="n117" target="n119">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4630,7 +5311,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e89" source="n111" target="n109">
+    <edge id="e89" source="n119" target="n117">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4640,7 +5321,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e90" source="n111" target="n110">
+    <edge id="e90" source="n119" target="n118">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4650,7 +5331,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e91" source="n109" target="n110">
+    <edge id="e91" source="n117" target="n118">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4660,7 +5341,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e92" source="n109" target="n112">
+    <edge id="e92" source="n117" target="n120">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4670,7 +5351,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e93" source="n112" target="n109">
+    <edge id="e93" source="n120" target="n117">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4680,11 +5361,11 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e94" source="n11" target="n107">
+    <edge id="e94" source="n19" target="n115">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="2435.732145733763" y="1869.1098026033649"/>
+            <y:Point x="2422.6427229910287" y="1901.2383856991667"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -4692,7 +5373,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e95" source="n113" target="n11">
+    <edge id="e95" source="n121" target="n19">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4702,7 +5383,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e96" source="n114" target="n109">
+    <edge id="e96" source="n122" target="n117">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4712,7 +5393,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e97" source="n115" target="n112">
+    <edge id="e97" source="n123" target="n120">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4722,7 +5403,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e98" source="n117" target="n11">
+    <edge id="e98" source="n125" target="n19">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4732,7 +5413,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e99" source="n118" target="n117">
+    <edge id="e99" source="n126" target="n125">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4742,7 +5423,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e100" source="n119" target="n118">
+    <edge id="e100" source="n127" target="n126">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4752,7 +5433,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e101" source="n120" target="n121">
+    <edge id="e101" source="n128" target="n129">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4762,7 +5443,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e102" source="n121" target="n122">
+    <edge id="e102" source="n129" target="n130">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4772,7 +5453,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e103" source="n122" target="n120">
+    <edge id="e103" source="n130" target="n128">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4782,7 +5463,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e104" source="n123" target="n122">
+    <edge id="e104" source="n131" target="n130">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4792,7 +5473,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e105" source="n124" target="n108">
+    <edge id="e105" source="n132" target="n116">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4802,7 +5483,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e106" source="n125" target="n124">
+    <edge id="e106" source="n133" target="n132">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4812,7 +5493,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e107" source="n126" target="n125">
+    <edge id="e107" source="n134" target="n133">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4822,7 +5503,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e108" source="n11" target="n127">
+    <edge id="e108" source="n19" target="n135">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4832,7 +5513,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e109" source="n28" target="n129">
+    <edge id="e109" source="n36" target="n137">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4842,7 +5523,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e110" source="n95" target="n94">
+    <edge id="e110" source="n103" target="n102">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4852,7 +5533,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e111" source="n96" target="n95">
+    <edge id="e111" source="n104" target="n103">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4862,7 +5543,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e112" source="n77" target="n78">
+    <edge id="e112" source="n85" target="n86">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4872,7 +5553,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e113" source="n130" target="n131">
+    <edge id="e113" source="n138" target="n139">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4882,7 +5563,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e114" source="n131" target="n132">
+    <edge id="e114" source="n139" target="n140">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4892,7 +5573,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e115" source="n26" target="n77">
+    <edge id="e115" source="n34" target="n85">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4902,7 +5583,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e116" source="n26" target="n81">
+    <edge id="e116" source="n34" target="n89">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4912,7 +5593,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e117" source="n133" target="n81">
+    <edge id="e117" source="n141" target="n89">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4922,7 +5603,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e118" source="n26" target="n133">
+    <edge id="e118" source="n34" target="n141">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4932,7 +5613,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e119" source="n134" target="n135">
+    <edge id="e119" source="n142" target="n143">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4942,7 +5623,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e120" source="n98" target="n135">
+    <edge id="e120" source="n106" target="n143">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4952,7 +5633,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e121" source="n136" target="n98">
+    <edge id="e121" source="n144" target="n106">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4962,7 +5643,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e122" source="n135" target="n136">
+    <edge id="e122" source="n143" target="n144">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4972,7 +5653,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e123" source="n98" target="n137">
+    <edge id="e123" source="n106" target="n145">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4982,7 +5663,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e124" source="n98" target="n138">
+    <edge id="e124" source="n106" target="n146">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -4992,7 +5673,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e125" source="n28" target="n139">
+    <edge id="e125" source="n36" target="n147">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5002,7 +5683,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e126" source="n139" target="n54">
+    <edge id="e126" source="n147" target="n62">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5012,7 +5693,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e127" source="n140" target="n77">
+    <edge id="e127" source="n148" target="n85">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5022,7 +5703,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e128" source="n141" target="n77">
+    <edge id="e128" source="n149" target="n85">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5032,7 +5713,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e129" source="n129" target="n143">
+    <edge id="e129" source="n137" target="n151">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5042,7 +5723,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e130" source="n129" target="n142">
+    <edge id="e130" source="n137" target="n150">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5052,7 +5733,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e131" source="n143" target="n142">
+    <edge id="e131" source="n151" target="n150">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5062,7 +5743,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e132" source="n142" target="n143">
+    <edge id="e132" source="n150" target="n151">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5072,7 +5753,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e133" source="n13" target="n83">
+    <edge id="e133" source="n21" target="n91">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5082,7 +5763,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e134" source="n146" target="n47">
+    <edge id="e134" source="n154" target="n55">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5092,7 +5773,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e135" source="n147" target="n146">
+    <edge id="e135" source="n155" target="n154">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5102,7 +5783,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e136" source="n41" target="n148">
+    <edge id="e136" source="n49" target="n156">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5112,7 +5793,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e137" source="n41" target="n149">
+    <edge id="e137" source="n49" target="n157">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5122,7 +5803,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e138" source="n150" target="n146">
+    <edge id="e138" source="n158" target="n154">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5132,7 +5813,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e139" source="n147" target="n150">
+    <edge id="e139" source="n155" target="n158">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5142,7 +5823,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e140" source="n129" target="n41">
+    <edge id="e140" source="n137" target="n49">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5152,7 +5833,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e141" source="n154" target="n151">
+    <edge id="e141" source="n162" target="n159">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5162,7 +5843,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e142" source="n155" target="n154">
+    <edge id="e142" source="n163" target="n162">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5172,7 +5853,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e143" source="n157" target="n6">
+    <edge id="e143" source="n165" target="n14">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5183,7 +5864,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e144" source="n156" target="n157">
+    <edge id="e144" source="n164" target="n165">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5194,7 +5875,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e145" source="n158" target="n159">
+    <edge id="e145" source="n166" target="n167">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5205,7 +5886,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e146" source="n159" target="n158">
+    <edge id="e146" source="n167" target="n166">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5216,7 +5897,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e147" source="n152" target="n153">
+    <edge id="e147" source="n160" target="n161">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5227,7 +5908,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e148" source="n6" target="n151">
+    <edge id="e148" source="n14" target="n159">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5238,7 +5919,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e149" source="n6" target="n153">
+    <edge id="e149" source="n14" target="n161">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5249,7 +5930,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e150" source="n7" target="n160">
+    <edge id="e150" source="n15" target="n168">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5260,7 +5941,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e151" source="n162" target="n163">
+    <edge id="e151" source="n170" target="n171">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5271,7 +5952,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e152" source="n160" target="n164">
+    <edge id="e152" source="n168" target="n172">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5282,7 +5963,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e153" source="n161" target="n164">
+    <edge id="e153" source="n169" target="n172">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5293,7 +5974,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e154" source="n165" target="n159">
+    <edge id="e154" source="n173" target="n167">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5306,7 +5987,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e155" source="n166" target="n167">
+    <edge id="e155" source="n174" target="n175">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5317,7 +5998,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e156" source="n167" target="n168">
+    <edge id="e156" source="n175" target="n176">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5328,7 +6009,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e157" source="n172" target="n171">
+    <edge id="e157" source="n180" target="n179">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5339,7 +6020,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e158" source="n173" target="n174">
+    <edge id="e158" source="n181" target="n182">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5350,7 +6031,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e159" source="n174" target="n171">
+    <edge id="e159" source="n182" target="n179">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5361,7 +6042,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e160" source="n170" target="n175">
+    <edge id="e160" source="n178" target="n183">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5372,7 +6053,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e161" source="n173" target="n176">
+    <edge id="e161" source="n181" target="n184">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5383,7 +6064,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e162" source="n176" target="n174">
+    <edge id="e162" source="n184" target="n182">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5394,7 +6075,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e163" source="n178" target="n179">
+    <edge id="e163" source="n186" target="n187">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5405,7 +6086,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e164" source="n5" target="n167">
+    <edge id="e164" source="n13" target="n175">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5416,7 +6097,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e165" source="n164" target="n54">
+    <edge id="e165" source="n172" target="n62">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5427,7 +6108,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e166" source="n2" target="n1">
+    <edge id="e166" source="n10" target="n9">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5438,7 +6119,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e167" source="n1" target="n2">
+    <edge id="e167" source="n9" target="n10">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5449,7 +6130,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e168" source="n180" target="n55">
+    <edge id="e168" source="n188" target="n63">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5460,7 +6141,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e169" source="n180" target="n59">
+    <edge id="e169" source="n188" target="n67">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5471,7 +6152,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e170" source="n180" target="n181">
+    <edge id="e170" source="n188" target="n189">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5482,7 +6163,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e171" source="n185" target="n186">
+    <edge id="e171" source="n191" target="n192">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5492,7 +6173,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e172" source="n185" target="n187">
+    <edge id="e172" source="n191" target="n193">
       <data key="d10">
         <y:GenericEdge configuration="com.yworks.edge.framed">
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5501,7 +6182,7 @@ not function = use Quine <y:LabelModel>
         </y:GenericEdge>
       </data>
     </edge>
-    <edge id="e173" source="n187" target="n188">
+    <edge id="e173" source="n193" target="n194">
       <data key="d10">
         <y:GenericEdge configuration="com.yworks.edge.framed">
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5510,7 +6191,7 @@ not function = use Quine <y:LabelModel>
         </y:GenericEdge>
       </data>
     </edge>
-    <edge id="e174" source="n185" target="n186">
+    <edge id="e174" source="n191" target="n192">
       <data key="d10">
         <y:GenericEdge configuration="com.yworks.edge.framed">
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -5522,7 +6203,7 @@ not function = use Quine <y:LabelModel>
         </y:GenericEdge>
       </data>
     </edge>
-    <edge id="e175" source="n190" target="n191">
+    <edge id="e175" source="n196" target="n197">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5532,7 +6213,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e176" source="n191" target="n192">
+    <edge id="e176" source="n197" target="n198">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5542,16 +6223,25 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e177" source="n193" target="n184">
+    <edge id="e177" source="n199" target="n190">
       <data key="d10">
         <y:GenericEdge configuration="com.yworks.edge.framed">
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="3.0"/>
           <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-31.999942567055996" y="69.03741029901539">
+            <y:LabelModel>
+              <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="right" ratio="0.5" segment="0"/>
+            </y:ModelParameter>
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
         </y:GenericEdge>
       </data>
     </edge>
-    <edge id="e178" source="n184" target="n193">
+    <edge id="e178" source="n190" target="n199">
       <data key="d10">
         <y:GenericEdge configuration="com.yworks.edge.framed">
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5568,7 +6258,7 @@ not function = use Quine <y:LabelModel>
         </y:GenericEdge>
       </data>
     </edge>
-    <edge id="e179" source="n194" target="n188">
+    <edge id="e179" source="n200" target="n194">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5578,7 +6268,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e180" source="n195" target="n182">
+    <edge id="e180" source="n201" target="n3">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5588,7 +6278,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e181" source="n196" target="n190">
+    <edge id="e181" source="n202" target="n196">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5599,7 +6289,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e182" source="n196" target="n194">
+    <edge id="e182" source="n202" target="n200">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5610,7 +6300,7 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e183" source="n196" target="n197">
+    <edge id="e183" source="n202" target="n203">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -5621,7 +6311,381 @@ not function = use Quine <y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e184" source="n183" target="n1">
+    <edge id="e184" source="n1" target="n227">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="2.2737367544323206E-13"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e185" source="n204" target="n205">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e186" source="n207" target="n208">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e187" source="n209" target="n210">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e188" source="n6" target="n206">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e189" source="n206" target="n7">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e190" source="n209" target="n211">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="3.0462656564909594" ty="0.7615664141230809"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e191" source="n211" target="n204">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="3.0462656564909594" sy="1.523132828245707" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e192" source="n209" target="n207">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e193" source="n207" target="n204">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e194" source="n210" target="n212">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e195" source="n212" target="n208">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e196" source="n208" target="n205">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e197" source="n213" target="n6">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e198" source="n214" target="n206">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e199" source="n215" target="n7">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e200" source="n2" target="n200">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e201" source="n0" target="n221">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e202" source="n2" target="n222">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e203" source="n200" target="n222">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e204" source="n225" target="n224">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e205" source="n223" target="n5">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e206" source="n226" target="n222">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e207" source="n220" target="n172">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e208" source="n227" target="n9">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="2.2737367544323206E-13" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e209" source="n228" target="n108">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e210" source="n229" target="n228">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e211" source="n230" target="n229">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e212" source="n231" target="n89">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e213" source="n218" target="n220">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e214" source="n233" target="n14">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e215" source="n233" target="n217">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e216" source="n220" target="n216">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e217" source="n218" target="n234">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e218" source="n234" target="n220">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>

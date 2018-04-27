@@ -601,17 +601,24 @@ def ComposeReplace(str1,str2):
     evaluating properly
 
     '''
-    #print("test str1",str1)
-    #print("test str2",str2)
+    #
+    print("test str1",str1)
+    #
+    print("test str2",str2)
     ANS = None
     if isinstance(str2[1], str):
         total = "'" + str2[1] + "'"
-        #print("test TOTAL",total)
-        #print("TRY REPLACEMENT NOW")
-        #print(str1[0].replace("TOTAL_ARGUMENT", total))
-        #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+        #
+        print("test TOTAL",total)
+        #
+        print("TRY REPLACEMENT NOW")
+        #
+        print(str1[0].replace("TOTAL_ARGUMENT", total))
+        #
+        print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
         if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
-            #print("got here???")
+            #
+            print("got here???")
             #return [str2[0],str1[1]]
             if ANS == None:
                 ANS = [[str2[0],str1[1]]]
@@ -649,7 +656,8 @@ def ComposeReplace(str1,str2):
                 else:
                     ANS = ANS + [[str2[0],str1[1]]]
                 #print("ANSAFTER",ANS)
-        except:
+        except Exception as e:
+            print("what is error?",e)
             pass
     return ANS
 
@@ -3319,7 +3327,7 @@ def Applyfunc(argList):
     if fCheck(arg1) == False:
         print("f1 is function? Applyfunc", fCheck(arg1))
         return []
-    print("monkaS",arg1,Q_(arg2))
+    #print("monkaS",arg1,Q_(arg2))
     ANS = ran(ComposeMETA([arg1,Q_(arg2)]))
     #ComposeMETA([[['TOTAL_ARGUMENT == "b"', 'd'],['TOTAL_ARGUMENT == "b"', 'e'],['TOTAL_ARGUMENT == "b"', 'f']],[['a','b']]])
     #Applyfunc([[['TOTAL_ARGUMENT == "b"', 'd'],['TOTAL_ARGUMENT == "b"', 'e'],['TOTAL_ARGUMENT == "b"', 'f']],'b'])

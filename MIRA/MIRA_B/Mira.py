@@ -43,6 +43,9 @@ while Descent:
         raise SystemExit
         break
     else:
+        #YOU HAVE TO MODIFY INPUTTEXT TO ESCAPE ALL THE FUCKING " FOR COMPOSEMETA TO WORK PROPERLY ON print("X")
+        inputtext = inputtext.replace("\"", '\\'+"\"")
+        print("inputtext check",inputtext)
         '''
         What's the plan?
 
@@ -187,7 +190,7 @@ while Descent:
             #deltav2 on pairs in new obj -> guessing similar inputs/variables (find abstractions) ->#eval using (deltav3 COMPOSE deltav2) and get answers
             #for each object in seekforce, check if new obj or x in seekforce is an abstraction by checking deltav2(obj,x in seekforce) == obj OR deltav2(obj,x in seekforce) == x in seekforce
             #print("checking memcomposeinput",str(MEMcomposeinput).encode('utf-8'))
-            print("checking memcomposeinput",MEMcomposeinput)
+            print("checking memcomposeinput HINT: before is evaling with what we know, now we guess abstraction",MEMcomposeinput)
             print("is list?", type(MEMcomposeinput))
             print("qhat is argv?",argv)
             #print("checking memcomposeinput",MEMcomposeinput)
@@ -224,6 +227,20 @@ while Descent:
             print("what am I guessing an abstraction to be?",guessAbst)
             #eval using (deltav3 COMPOSE deltav2) and get answers AND WRITE THOSE DOWN TO memory
             #ComposeMETA([arg1,arg2])
+            '''
+            guess abstractions properly:
+            delta2(a,b) == a OR b means the similar one is the abstraction
+            use delta3 on the NON abstraction to get a replacement guess
+            attempt abstraction with composeMETA([delta3, delta2])
+
+            THEN CHECK ABSTRACTION WITH REALITY <---
+
+            IF ALIGNS, WRITE IT DOWN
+
+            THEN NEXT STEP IS PROBLEM SOLVING ON AN ABSTRACT TIMELINE WHERE YOU DONT GET INSTANT CALL-RESPONSE
+
+            ANOTHER THING TO DO IS TO DO INSTANT CALL-RESPONSE
+            '''
 
         
         '''
