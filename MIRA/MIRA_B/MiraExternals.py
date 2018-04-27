@@ -601,21 +601,15 @@ def ComposeReplace(str1,str2):
     evaluating properly
 
     '''
-    #
-    print("test str1",str1)
-    #
-    print("test str2",str2)
+    #print("test str1",str1)
+    #print("test str2",str2)
     ANS = None
     if isinstance(str2[1], str):
         total = "'" + str2[1] + "'"
-        #
-        print("test TOTAL",total)
-        #
-        print("TRY REPLACEMENT NOW")
-        #
-        print(str1[0].replace("TOTAL_ARGUMENT", total))
-        #
-        print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+        #print("test TOTAL",total)
+        #print("TRY REPLACEMENT NOW")
+        #print(str1[0].replace("TOTAL_ARGUMENT", total))
+        #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
         if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
             #
             print("got here???")
@@ -3045,7 +3039,9 @@ def delta3META(argList):
             if x == abstractionfunc[-1]:
                 #MODIFY THIS 
                 #ANS.append([symbolis,TheObj[TheObjIndex:]])
-                ANS.append(['argument_1 == \"' + symbolis + '"',TheObj[TheObjIndex:]])
+                #ANS.append(['argument_1 == \"' + symbolis + '"',TheObj[TheObjIndex:]])
+                #problem with print("Z") so I need to make sure outer quotes are always '
+                ANS.append(["argument_1 == \'" + symbolis + "'",TheObj[TheObjIndex:]])
             alphatrigger = True
         #else: we attempt to match to first (why first? #1: we can't tell difference between two matches #2: if first doesn't work then our obj has too much noise)
         else:
@@ -3068,7 +3064,9 @@ def delta3META(argList):
                 TheObjIndex += stringmatching[1]
             #add here so we preserve order
             #ANS.append([target,target])
-            ANS.append(['argument_1' + '==' + '"' + target + '"',target])
+            #ANS.append(['argument_1' + '==' + '"' + target + '"',target])
+            #problem with print("Z") so I need to make sure outer quotes are always '
+            ANS.append(['argument_1' + '==' + "'" + target + "'",target])
             alphatrigger = False
     return ANS
 

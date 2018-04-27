@@ -44,8 +44,9 @@ while Descent:
         break
     else:
         #YOU HAVE TO MODIFY INPUTTEXT TO ESCAPE ALL THE FUCKING " FOR COMPOSEMETA TO WORK PROPERLY ON print("X")
-        inputtext = inputtext.replace("\"", '\\'+"\"")
-        print("inputtext check",inputtext)
+        #MAYBE NOT, I NEEED TO FUCKING SLEEP
+        #inputtext = inputtext.replace("\"", '\\'+"\"")
+        #print("inputtext check",inputtext)
         '''
         What's the plan?
 

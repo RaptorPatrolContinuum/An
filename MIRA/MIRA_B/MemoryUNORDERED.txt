@@ -2,3 +2,5 @@
 [['TOTAL_ARGUMENT == \'print(\\\\"test\\\\")\'', ['', SyntaxError('unexpected character after line continuation character', ('<string>', 1, 17, 'print(\\\\"test\\\\")'))]]]
 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print(\\"test\\")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ['[\'inputtext check print(\\\\\\\\"test\\\\\\\\")\\n\']\n', "['error is  unexpected character after line continuation character (<string>, line 1)\\n']\n", "['code died\\n']\n"]]]
 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("test")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("test")\'', 'None']]]]
+[['TOTAL_ARGUMENT == \'print(\\\\"test\\\\")\'', ['', SyntaxError('unexpected character after line continuation character', ('<string>', 1, 17, 'print(\\\\"test\\\\")'))]]]
+[['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("test")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("test")\'', 'None']]]]
