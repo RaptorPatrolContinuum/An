@@ -216,7 +216,7 @@ while Descent:
                     #print("this is guess",abstractcheck)
                     #print("args for delta3",[abstractcheck,inputtext])
                     replacementguess = delta3META([abstractcheck,inputtext])
-                    #print("guess substitution", replacementguess)
+                    print("guess substitution", replacementguess)
                     #print("composemeta arguments", replacementguess,thedelta)
                     #print("CHECKING EVAL THROUGH COMPOSE FUCK", Compose(replacementguess,thedelta))
                     metaeval = ComposeMETA([replacementguess,thedelta])
