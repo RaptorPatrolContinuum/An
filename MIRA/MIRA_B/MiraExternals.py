@@ -3506,6 +3506,24 @@ def forFix(argList):
             x += 1
     return ANS
 
+def Printdbg(argList):
+    '''
+    >make debug print function (and make it so I can debug specific functions)
+    arg1 = thing to print
+    arg2 = ON OR OFF FOR PARTICULAR FUNC
+
+    HINT: arg2 should be name of function
+    then just check if arg2 is empty or not
+    '''
+    #arg1 = thing to print
+    arg1 = argList[0]
+    #arg2 = ON OR OFF FOR PARTICULAR FUNC
+    arg2 = argList[1]
+    if len(arg2) != 0:
+        #do stuff
+        print(arg1)
+    return argList
+#Printdbg(["wtf?", "DansGame", "ON"])
 ##############################################################
 
 def printpls(obj):

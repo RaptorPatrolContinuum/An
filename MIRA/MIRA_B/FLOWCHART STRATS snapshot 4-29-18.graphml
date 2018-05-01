@@ -15,7 +15,6 @@
   <graph edgedefault="directed" id="G">
     <data key="d0"/>
     <node id="n0">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="73.4092856049956" width="246.28486161085016" x="1579.7690645593152" y="4378.578563788683"/>
@@ -34,7 +33,6 @@
       </data>
     </node>
     <node id="n1">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="421.1952478794401" width="1079.6527092150693" x="962.0739416963083" y="4291.081207556254"/>
@@ -53,13 +51,12 @@
       </data>
     </node>
     <node id="n2">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="390.220913880044" width="782.4276171532393" x="700.2757670965177" y="3860.4226278621427"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="110.025390625" x="336.2011132641196" y="-41.64218442485799">NEXT STEP IDEAS<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="110.025390625" x="336.2011132641196" y="-41.64218442485753">NEXT STEP IDEAS<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -76,7 +73,7 @@
           <y:Geometry height="280.8711713147409" width="73.99727689243014" x="1197.1586370130613" y="4344.727079086367"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="138.0" x="-136.91909564751722" y="130.43558565737067">&lt;html&gt;&lt;strike&gt;RECOGNIZING INPUTS &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="138.0" x="-136.91909564751722" y="130.4355856573702">&lt;html&gt;&lt;strike&gt;RECOGNIZING INPUTS &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -88,7 +85,6 @@
       </data>
     </node>
     <node id="n4">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="221.24836574656683" width="482.7988310968349" x="-1883.7771556312896" y="-783.8622177251398"/>
@@ -106,7 +102,6 @@
       </data>
     </node>
     <node id="n5">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="234.09979898488655" width="273.7012525192681" x="1124.671973810317" y="3888.660877044117"/>
@@ -124,7 +119,6 @@
       </data>
     </node>
     <node id="n6">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="66.5551878778906" width="215.06063863181885" x="1150.7675229692404" y="3912.8672555803496"/>
@@ -143,7 +137,6 @@
       </data>
     </node>
     <node id="n7">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="66.5551878778906" width="215.06063863181885" x="1150.7675229692404" y="4152.33001427994"/>
@@ -167,7 +160,7 @@
           <y:Geometry height="280.8711713147409" width="73.99727689243014" x="1197.1586370130613" y="934.5578191182798"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="138.0" x="-136.91909564751722" y="130.43558565737044">&lt;html&gt;&lt;strike&gt;RECOGNIZING INPUTS &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="138.0" x="-136.91909564751722" y="130.43558565737032">&lt;html&gt;&lt;strike&gt;RECOGNIZING INPUTS &lt;/strike&gt;&lt;/html&gt;<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -179,13 +172,12 @@
       </data>
     </node>
     <node id="n9">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="421.1952478794401" width="1079.6527092150693" x="962.0739416963082" y="880.9119475881675"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="537.8263546075345" y="208.59762393971994">
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="537.8263546075347" y="208.59762393972005">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -198,7 +190,6 @@
       </data>
     </node>
     <node id="n10">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="694.8735383331798" width="1387.2838923573731" x="118.19299799964278" y="1571.5401612875207"/>
@@ -269,7 +260,6 @@
       </data>
     </node>
     <node id="n12">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="613.0742858127016" width="1004.2695336921417" x="-902.3881257417653" y="-1141.5251173963757"/>
@@ -287,7 +277,6 @@
       </data>
     </node>
     <node id="n13">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="1210.3535701700757" width="2158.0166209860054" x="-5562.340006532283" y="-256.3846521199721"/>
@@ -305,7 +294,6 @@
       </data>
     </node>
     <node id="n14">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="613.0742858127016" width="1004.2695336921417" x="-1924.9297780103357" y="-1141.5251173963757"/>
@@ -323,7 +311,6 @@
       </data>
     </node>
     <node id="n15">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="74.02805831646924" width="190.64291547901007" x="-1858.345183699033" y="-1124.977816387976"/>
@@ -2061,7 +2048,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
           <y:Geometry height="30.0" width="30.0" x="103.42929318349707" y="2476.8112958661254"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="290.025390625" x="-9.252789200913753" y="65.6145060977642">WANT: SELF REFERENCE WRT CONCEPT SPACE<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="290.025390625" x="-9.252789200913867" y="65.6145060977642">WANT: SELF REFERENCE WRT CONCEPT SPACE<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -2129,7 +2116,7 @@ hint: the inputs of the [graph sequence] should just look "down one level" on th
           <y:Geometry height="30.0" width="30.0" x="1294.8878425987075" y="2890.2544811787648"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="420.80078125" x="51.801542464343584" y="5.6494140625"> my print example sucks because it needs the 'whole thing' in order to not suck<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="420.80078125" x="51.801542464343356" y="5.6494140625"> my print example sucks because it needs the 'whole thing' in order to not suck<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -3078,7 +3065,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n164">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-2401.1992432658803" y="-849.9879744900248"/>
@@ -3096,7 +3082,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n165">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-2093.716803563835" y="-849.9879744900248"/>
@@ -3114,7 +3099,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n166">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1839.544012850378" y="-1102.9637872297415"/>
@@ -3132,7 +3116,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n167">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1731.9727568555452" y="-1102.9637872297415"/>
@@ -3150,7 +3133,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n168">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1517.236442284174" y="-1102.9637872297415"/>
@@ -3168,7 +3150,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n169">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1517.236442284174" y="-1042.9637872297412"/>
@@ -3186,7 +3167,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n170">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1709.9127450572203" y="-1243.0189465097503"/>
@@ -3204,7 +3184,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n171">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1517.236442284174" y="-913.4130024774405"/>
@@ -3222,7 +3201,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n172">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-838.6391987385402" y="-1036.7704404589258"/>
@@ -3240,7 +3218,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n173">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-2244.844808596874" y="-1052.9859913029384"/>
@@ -3258,7 +3235,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n174">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-2743.432820342837" y="-405.57951101565254"/>
@@ -3276,7 +3252,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n175">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-2572.080377165226" y="-405.57951101565243"/>
@@ -3294,7 +3269,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n176">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-2401.1992432658803" y="-405.57951101565254"/>
@@ -3312,7 +3286,6 @@ LOOK FOR "REPEATS" OR USE A TIMER
       </data>
     </node>
     <node id="n177">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-5055.584025750801" y="-74.98428042792602"/>
@@ -3340,7 +3313,6 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
       </data>
     </node>
     <node id="n178">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-4908.334907623783" y="60.01571957207398"/>
@@ -3358,7 +3330,6 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
       </data>
     </node>
     <node id="n179">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-5143.700018487077" y="120.01571957207398"/>
@@ -3376,7 +3347,6 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
       </data>
     </node>
     <node id="n180">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-5064.896525750801" y="214.07821957207398"/>
@@ -3394,7 +3364,6 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
       </data>
     </node>
     <node id="n181">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-5285.896525750801" y="252.07821957207398"/>
@@ -3412,7 +3381,6 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
       </data>
     </node>
     <node id="n182">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-5197.896525750801" y="252.07821957207398"/>
@@ -3430,7 +3398,6 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
       </data>
     </node>
     <node id="n183">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-4575.43815778008" y="60.01571957207398"/>
@@ -3448,7 +3415,6 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
       </data>
     </node>
     <node id="n184">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-5226.826865513557" y="387.8120318808906"/>
@@ -3466,7 +3432,6 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
       </data>
     </node>
     <node id="n185">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-4836.5240782756655" y="188.85280619133164"/>
@@ -3484,7 +3449,6 @@ and you want X compose Y (DO Y then X), and insertion to concept space is done t
       </data>
     </node>
     <node id="n186">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-4685.162753468777" y="309.75147443331207"/>
@@ -3540,7 +3504,6 @@ C:\An&gt;git commit -a -m "fuck if I observe a Y and want to compose with X I ca
       </data>
     </node>
     <node id="n187">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-4685.162753468777" y="816.6691188337418"/>
@@ -3562,7 +3525,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n188">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1628.7675867142607" y="1151.4515354529408"/>
@@ -3580,7 +3542,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n189">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1770.1606680899931" y="1151.4515354529408"/>
@@ -3603,7 +3564,7 @@ not function = use Quine <y:LabelModel>
           <y:Geometry height="45.22129083665345" width="184.4451150398363" x="1208.956454991151" y="4554.010150002701"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="90.22255751991815" y="20.61064541832684">
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="90.22255751991815" y="20.610645418326385">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -3706,7 +3667,7 @@ not function = use Quine <y:LabelModel>
           <y:Geometry height="30.0" width="30.0" x="1404.8462281485185" y="4405.527079086367"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="122.078125" x="20.837569656702726" y="-14.515288128734937">delta V2(input, output)<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="122.078125" x="20.837569656702954" y="-14.515288128734937">delta V2(input, output)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -3757,7 +3718,7 @@ not function = use Quine <y:LabelModel>
           <y:Geometry height="53.417370517928475" width="188.0672509960159" x="1207.1453870130608" y="4358.518393827402"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="92.03362549800795" y="24.708685258964124">
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="92.03362549800795" y="24.70868525896458">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -3792,7 +3753,7 @@ not function = use Quine <y:LabelModel>
           <y:Geometry height="30.0" width="30.0" x="1150.7675229692404" y="4561.620795421028"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="696.7421875" x="-708.4149184511953" y="5.6494140625">WHEN DELTAV2(INPUT, ABSTRACTIONINPUT) == ABSTRACTIONINPUT YOU THEN HAVE IDENTIFIED SOMETHING LEGIT<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="696.7421875" x="-708.414918451195" y="5.6494140625">WHEN DELTAV2(INPUT, ABSTRACTIONINPUT) == ABSTRACTIONINPUT YOU THEN HAVE IDENTIFIED SOMETHING LEGIT<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -3804,13 +3765,12 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n202">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1628.7675867142607" y="4561.620795421028"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="502.087890625" x="-131.1014789300998" y="-30.414409356915257">LURKING MONSTER IS ALWAYS THAT DELTA V2 DEPENDS ON PROPER MORPHEMES<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="502.087890625" x="-131.10147893009957" y="-30.414409356915712">LURKING MONSTER IS ALWAYS THAT DELTA V2 DEPENDS ON PROPER MORPHEMES<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -3822,13 +3782,12 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n203">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1770.1606680899931" y="4561.620795421028"/>
           <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="504.103515625" x="-237.0517578125" y="44.60476961488757">tbh if you use characters the morphemes might "magically spring out of the blue or something"<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="504.103515625" x="-237.0517578125" y="44.60476961488712">tbh if you use characters the morphemes might "magically spring out of the blue or something"<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -3840,7 +3799,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n204">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1175.877509416101" y="4171.402372958506"/>
@@ -3858,7 +3816,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n205">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1314.777509416101" y="4171.402372958506"/>
@@ -3876,7 +3833,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n206">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="66.5551878778906" width="215.06063863181885" x="1150.7675229692404" y="4033.393399669765"/>
@@ -3895,7 +3851,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n207">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1175.877509416101" y="4052.4657583483304"/>
@@ -3913,7 +3868,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n208">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1314.777509416101" y="4052.4657583483304"/>
@@ -3931,7 +3885,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n209">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1175.877509416101" y="3931.939614258915"/>
@@ -3949,7 +3902,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n210">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1314.777509416101" y="3931.939614258915"/>
@@ -3967,7 +3919,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n211">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1030.2377384591005" y="4065.3210514664197"/>
@@ -3985,7 +3936,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n212">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1423.2060081464201" y="3990.7107765365604"/>
@@ -4003,7 +3953,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n213">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1077.4548561347092" y="3931.9396142589153"/>
@@ -4021,7 +3970,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n214">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1077.4548561347087" y="4051.6709936087104"/>
@@ -4039,7 +3987,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n215">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1077.4548561347087" y="4171.402372958506"/>
@@ -4057,7 +4004,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n216">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1608.7536909455343" y="-719.6753080642989"/>
@@ -4075,7 +4021,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n217">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1774.525280244652" y="-758.7055867880883"/>
@@ -4093,7 +4038,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n218">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1686.1835762064175" y="-758.7055867880883"/>
@@ -4111,7 +4055,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n219">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-726.6181531588866" y="-1036.7704404589258"/>
@@ -4129,7 +4072,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n220">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1171.7454634665253" y="-913.4130024774405"/>
@@ -4147,7 +4089,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n221">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2103.484617778331" y="4400.283206591181"/>
@@ -4172,7 +4113,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n222">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1630.9326578151918" y="4161.6511305159165"/>
@@ -4190,7 +4130,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n223">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="107.8435209562108" width="254.28267937613168" x="723.6966641345109" y="3895.384426381025"/>
@@ -4208,7 +4147,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n224">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="790.5322203555581" y="3931.9396142589153"/>
@@ -4226,7 +4164,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n225">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="885.5757601346099" y="3931.9396142589158"/>
@@ -4244,7 +4181,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n226">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1630.932657815192" y="4052.4657583483304"/>
@@ -4262,7 +4198,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n227">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1486.9002963038429" y="1344.5979704001468"/>
@@ -4280,7 +4215,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n228">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-418.73855036613173" y="2627.9749658791598"/>
@@ -4298,7 +4232,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n229">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-418.7385503661318" y="2674.3829192397625"/>
@@ -4316,7 +4249,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n230">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-418.7385503661318" y="2720.790872600365"/>
@@ -4334,7 +4266,6 @@ not function = use Quine <y:LabelModel>
       </data>
     </node>
     <node id="n231">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1900.0526885092163" y="1793.9407476625818"/>
@@ -4354,7 +4285,6 @@ dealing with making functions out of an arbitrary timestream like life<y:LabelMo
       </data>
     </node>
     <node id="n232">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2206.0317429486304" y="2381.774545616895"/>
@@ -4372,7 +4302,6 @@ dealing with making functions out of an arbitrary timestream like life<y:LabelMo
       </data>
     </node>
     <node id="n233">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1774.525280244652" y="-688.2380348518564"/>
@@ -4390,7 +4319,6 @@ dealing with making functions out of an arbitrary timestream like life<y:LabelMo
       </data>
     </node>
     <node id="n234">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1413.3922492228216" y="-874.3684859329747"/>
@@ -4410,7 +4338,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </node>
     <node id="n235">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1269.7685194898763" y="1612.738428653463"/>
@@ -4428,7 +4355,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </node>
     <node id="n236">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-1269.7685194898763" y="1723.05846342427"/>
@@ -4446,7 +4372,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </node>
     <node id="n237">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="3291.4145497234786" y="2859.2777559275246"/>
@@ -4464,7 +4389,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </node>
     <node id="n238">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="795.7227373488836" y="4205.129501977553"/>
@@ -5927,7 +5851,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e143" source="n165" target="n14">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5938,7 +5861,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e144" source="n164" target="n165">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5949,7 +5871,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e145" source="n166" target="n167">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5960,7 +5881,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e146" source="n167" target="n166">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5971,7 +5891,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e147" source="n160" target="n161">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5982,7 +5901,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e148" source="n14" target="n159">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -5993,7 +5911,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e149" source="n14" target="n161">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6004,7 +5921,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e150" source="n15" target="n168">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6015,7 +5931,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e151" source="n170" target="n171">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6026,7 +5941,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e152" source="n168" target="n172">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6037,7 +5951,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e153" source="n169" target="n172">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6048,7 +5961,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e154" source="n173" target="n167">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -6061,7 +5973,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e155" source="n174" target="n175">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6072,7 +5983,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e156" source="n175" target="n176">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6083,7 +5993,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e157" source="n180" target="n179">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6094,7 +6003,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e158" source="n181" target="n182">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6105,7 +6013,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e159" source="n182" target="n179">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6116,7 +6023,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e160" source="n178" target="n183">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6127,7 +6033,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e161" source="n181" target="n184">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6138,7 +6043,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e162" source="n184" target="n182">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6149,7 +6053,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e163" source="n186" target="n187">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6160,7 +6063,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e164" source="n13" target="n175">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6171,7 +6073,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e165" source="n172" target="n62">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6182,7 +6083,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e166" source="n10" target="n9">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6193,7 +6093,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e167" source="n9" target="n10">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6204,7 +6103,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e168" source="n188" target="n63">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6215,7 +6113,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e169" source="n188" target="n67">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6226,7 +6123,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e170" source="n188" target="n189">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6352,7 +6248,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e181" source="n202" target="n196">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6363,7 +6258,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e182" source="n202" target="n200">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6374,7 +6268,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e183" source="n202" target="n203">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6385,7 +6278,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e184" source="n1" target="n227">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="2.2737367544323206E-13"/>
@@ -6396,7 +6288,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e185" source="n204" target="n205">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6407,7 +6298,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e186" source="n207" target="n208">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6418,7 +6308,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e187" source="n209" target="n210">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6429,7 +6318,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e188" source="n6" target="n206">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6440,7 +6328,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e189" source="n206" target="n7">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6451,7 +6338,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e190" source="n209" target="n211">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="3.0462656564909594" ty="0.7615664141230809"/>
@@ -6462,7 +6348,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e191" source="n211" target="n204">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="3.0462656564909594" sy="1.523132828245707" tx="0.0" ty="0.0"/>
@@ -6473,7 +6358,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e192" source="n209" target="n207">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6484,7 +6368,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e193" source="n207" target="n204">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6495,7 +6378,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e194" source="n210" target="n212">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6506,7 +6388,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e195" source="n212" target="n208">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6517,7 +6398,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e196" source="n208" target="n205">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6528,7 +6408,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e197" source="n213" target="n6">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6539,7 +6418,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e198" source="n214" target="n206">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6550,7 +6428,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e199" source="n215" target="n7">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6561,7 +6438,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e200" source="n2" target="n200">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6572,7 +6448,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e201" source="n0" target="n221">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6583,7 +6458,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e202" source="n2" target="n222">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6594,7 +6468,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e203" source="n200" target="n222">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6605,7 +6478,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e204" source="n225" target="n224">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6616,7 +6488,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e205" source="n223" target="n5">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6627,7 +6498,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e206" source="n226" target="n222">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6638,7 +6508,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e207" source="n220" target="n172">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6649,7 +6518,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e208" source="n227" target="n9">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="2.2737367544323206E-13" tx="0.0" ty="0.0"/>
@@ -6660,7 +6528,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e209" source="n228" target="n108">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6671,7 +6538,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e210" source="n229" target="n228">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6682,7 +6548,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e211" source="n230" target="n229">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6693,7 +6558,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e212" source="n231" target="n89">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6704,7 +6568,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e213" source="n218" target="n220">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6715,7 +6578,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e214" source="n233" target="n14">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6726,7 +6588,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e215" source="n233" target="n217">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6737,7 +6598,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e216" source="n220" target="n216">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6748,7 +6608,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e217" source="n218" target="n234">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6759,7 +6618,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e218" source="n234" target="n220">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6770,7 +6628,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e219" source="n235" target="n160">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6781,7 +6638,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e220" source="n235" target="n236">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6792,7 +6648,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e221" source="n172" target="n219">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -6803,7 +6658,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e222" source="n237" target="n19">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
