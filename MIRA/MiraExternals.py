@@ -3041,7 +3041,7 @@ def delta2(argList):
     #need ending strat
     #generic: apply maxlongestcontig on splits until it fails
     LCont = maxlongestcontig([LHS,RHS,0,0])
-    #print("is LCont empty?",LCont)
+    print("is LCont empty?",LCont)
     ##what to do with nil answer??
     ##nullansweralready:
     if LCont == []:
@@ -3055,8 +3055,8 @@ def delta2(argList):
     
     #for each part in Connections, if NOT same parts OR either part is empty, reapply maxlongestcontig
     #then at the end stitch similar parts together
-    #print("================checking Connections")
-    #print(Connections)
+    print("================checking Connections")
+    print(Connections)
     i = 0
     for x in Connections:
         LContmin = maxlongestcontig([x[0][0],x[1][0],0,0,commrel])
@@ -3064,32 +3064,32 @@ def delta2(argList):
             pass
             i += 1
         else:
-            #print("WTF BUCK",x,LContmin)
-            #print("DELETE CURRENT X",x)
-            #print(Connections[i])
-            #print("old Con", Connections)
+            print("WTF BUCK",x,LContmin)
+            print("DELETE CURRENT X",x)
+            print(Connections[i])
+            print("old Con", Connections)
             del Connections[i]
-            #print("new Con", Connections)
+            print("new Con", Connections)
             
             #INSERT NEW X PARTS (NOTE: WE ALSO INSERT ENOUGHT EMPTY LISTS SO MAKING STATEMENT+REPLACE IS EASIER)
             #replace the current x with this:
             ##################LHS/RHS are diff, LCont is now LContmin##################
-            #print("part 1",[[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]])
-            #print("part 2",[[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]+1]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]+1]]])
-            #print("part 3",[[x[0][0][LContmin[0]+LContmin[2]+1:]],[x[1][0][LContmin[1]+LContmin[2]+1:]]])
+            print("part 1",[[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]])
+            print("part 2",[[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]+1]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]+1]]])
+            print("part 3",[[x[0][0][LContmin[0]+LContmin[2]+1:]],[x[1][0][LContmin[1]+LContmin[2]+1:]]])
             #Connections = InsertAt(Connections, [[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]], i)
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]]]], i+1)
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]+LContmin[2]:]],[x[1][0][LContmin[1]+LContmin[2]:]]], i+2)
-            #print("oh baby, oh oh baby \n", x[0][0], "\n", x[1][0], "\n", LContmin, "\n", Connections, "\n", [i, i+1, i+2])
+            print("oh baby, oh oh baby \n", x[0][0], "\n", x[1][0], "\n", LContmin, "\n", Connections, "\n", [i, i+1, i+2])
             Connections = seqsplitmin([x[0][0],x[1][0],LContmin,Connections,[i, i+1, i+2]])
-            #print("new connections")
-            #print(Connections)
+            print("new connections")
+            print(Connections)
             i += 1
     #construct statement:
     ANS = []
     symboli = 0
-    #print("what are connections?",Connections)
-    #print("ANS",ANS)
+    print("what are connections?",Connections)
+    print("ANS",ANS)
     for x in Connections:
         if x[0] == x[1]:
             ANS.append(x)
@@ -3098,7 +3098,7 @@ def delta2(argList):
             #hint: alphas are in list because list forces composemeta to do argument replacement properly
             ANS.append([["α" + str(symboli)], ["α" + str(symboli)]])
             symboli += 1
-        #print("ANS at each step", ANS)
+        print("ANS at each step", ANS)
     return ANS
 
 def seqsplitmin(argList):
@@ -3107,6 +3107,7 @@ def seqsplitmin(argList):
     LCont = argList[2]
     Connections = argList[3]
     index = argList[4]
+    print("seqsplitmin ARGLIST", argList)
     ###this is because I might as well make a generic now as well as try to optimize instead of wait for later
     #what this does is take LHS,RHS, and LCont and appends the right connections
     #if there is an empty connection, refuse to append
@@ -3114,29 +3115,46 @@ def seqsplitmin(argList):
     ANS = Connections
     #print("CHECKANS1",ANS)
     #if it's an empty connection, refuse
-    #print("trendytrendytrendy \n", LHS, "\n",RHS, "\n",LCont, "\n",Connections, "\n",index)
-    
+    #
+    print("trendytrendytrendy \n", LHS, "\n",RHS, "\n",LCont, "\n",Connections, "\n",index)
+    print("?CHECK1", LHS[:LCont[0]], "|", RHS[:LCont[1]])
+
+    #else: append
     if len(LHS[:LCont[0]]) == 0 and len(RHS[:LCont[1]]) == 0:
         pass
-    #else: append
     else:
         #ANS.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
         ANS = InsertAt(ANS,[[LHS[:LCont[0]]],[RHS[:LCont[1]]]],index[0])
 
-    #print("CHECKANS2",ANS)
+    #
+    print("CHECKANS2",ANS)
+    print("?CHECK2", LHS[LCont[0]:LCont[0]+LCont[2]], "|", RHS[LCont[1]:LCont[1]+LCont[2]])
     if len(LHS[LCont[0]:LCont[0]+LCont[2]]) == 0 and len(RHS[LCont[1]:LCont[1]+LCont[2]]) == 0:
         pass
+    #EDGE CASE: IF LCont[0] and LCont[1] are both 0, previous check will ALWAYS PASS WITH "STRING"[:0], but WE WANT TO APPEND HERE, SO JUST CHECK IF BOTH ARE 0
+    #HINT: I HAVE [-1, -1, -1] as input from delta2
+    elif LCont[0] == 0 and LCont[1] == 0 and index[2] != -1:
+        ANS = InsertAt(ANS,[[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]],index[1]-1)
     else:
         #ANS.append([[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]])
         ANS = InsertAt(ANS,[[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]],index[1])
 
-    #print("CHECKANS3",ANS)
+    #
+    print("CHECKANS3",ANS)
+    print("?CHECK3", LHS[LCont[0]+LCont[2]:], "|", RHS[LCont[1]+LCont[2]:])
     if len(LHS[LCont[0]+LCont[2]:]) == 0 and len(RHS[LCont[1]+LCont[2]:]) == 0:
         pass
+    #EDGE CASE: IF LCont[0] and LCont[1] are both 0, previous check will ALWAYS PASS WITH "STRING"[:0], but WE WANT TO APPEND HERE, SO JUST CHECK IF BOTH ARE 0
+    #HINT: I HAVE [-1, -1, -1] as input from delta2
+    elif LCont[0] == 0 and LCont[1] == 0 and index[2] != -1:
+        print("STATS AND WTF",argList)
+        print(index[2]-1)
+        ANS = InsertAt(ANS,[[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]],index[2]-1)
     else:
         ANS = InsertAt(ANS,[[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]],index[2])
 
-    #print("CHECKANS4",ANS)
+    #
+    print("CHECKANS4",ANS)
     return ANS
 
 def firstlongestcontig(argList):
@@ -3649,8 +3667,10 @@ def SeekForcemin1(argList):
         arg1 = eval(arg1)
     except:
         pass
-    #print("arg1",arg1)
-    #print("wtf",fCheck(arg1))
+    #
+    print("arg1",arg1)
+    #
+    print("wtf",fCheck(arg1))
     if fCheck(arg1) == True:
         for x in arg1:
             ANS.append(x[0])
@@ -3701,40 +3721,54 @@ def SeekForce(ArgList):
                 pass
             if fCheck(line) == True:
                 for x in line:
-                    #print("monkaS argList", ArgList)
-                    #print("what is X?",x)
-                    #print("stats", line, arg2)
+                    #
+                    print("monkaS argList", ArgList)
+                    #
+                    print("what is X?",x)
+                    #
+                    print("stats", line, arg2)
                     linemod = line
-                    #print("this is line UNFILTERED",linemod,type(linemod))
+                    #
+                    print("this is line UNFILTERED",linemod,type(linemod))
                     arg2mod = arg2
-                    #print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
+                    #
+                    print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
                     try:
                         if arg4 != []:
                             linemod = arg4([line])
-                            #print("preping for arg3, LINE",linemod)
+                            #
+                            print("preping for arg3, LINE",linemod)
                     except Exception as e:
-                        #print("wtf1 went wrong?", e)
+                        #
+                        print("wtf1 went wrong?", e)
                         pass
                     try:
                         if arg5 != []:
                             arg2mod = arg5([arg2])
-                            #print("preping for arg3, arg2",arg2mod)
+                            #
+                            print("preping for arg3, arg2",arg2mod)
                     except Exception as e:
-                        #print("wtf2 went wrong?", e)
+                        #
+                        print("wtf2 went wrong?", e)
                         pass    
                     
                     
-                    #print("stats for arg3", linemod, arg2mod)
+                    #
+                    print("stats for arg3", linemod, arg2mod)
                     try:
                         exist = arg3([linemod,arg2mod])
-                        #print("try this attempt",exist)
-                        #print("append ?",len([z for z in ANS if z == exist]) == 0)
+                        #
+                        print("try this attempt",exist)
+                        #
+                        print("append ?",len([z for z in ANS if z == exist]) == 0)
                         if len([z for z in ANS if z == exist]) == 0:
                             ANS.append(exist)
                     except Exception as e:
-                        #print("ERROR IS ",e)
+                        #
+                        print("ERROR IS ",e)
                         if e != []:
-                            #ANS.append(e)
+                            #
+                            ANS.append(e)
                             pass
                         pass
             line = rchop(fileref.readline(), '\n')
@@ -3743,7 +3777,7 @@ def SeekForce(ArgList):
 #SeekForce(['MemoryUNORDERED.txt','print("why")',delta2,SeekForcemin1,[]])
 #SeekForce(['MemoryUNORDERED.txt','argument_1 == "C"',delta2,SeekForcemin1,[]])
 #print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt','argument_1 == "b"',delta2,[],SeekForcemin1]))
-
+########print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt',"[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("f")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)'+ ", [" + "['f\\n']\n" + "]]]",delta2,[],[]]))
 def forFix(argList):
     '''
     arg1 = string

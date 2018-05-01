@@ -13,3 +13,4 @@
 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("r")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['r\\n']\n", "['already saw that 2\\n']\n"]]]
 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("r")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("r")\'', 'None']]]]
 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("r")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("r")\'', 'None']]]]
+[['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("f")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("f")\'', 'None']]]]

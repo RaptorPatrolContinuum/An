@@ -3649,8 +3649,10 @@ def SeekForcemin1(argList):
         arg1 = eval(arg1)
     except:
         pass
-    #print("arg1",arg1)
-    #print("wtf",fCheck(arg1))
+    #
+    print("arg1",arg1)
+    #
+    print("wtf",fCheck(arg1))
     if fCheck(arg1) == True:
         for x in arg1:
             ANS.append(x[0])
@@ -3701,40 +3703,54 @@ def SeekForce(ArgList):
                 pass
             if fCheck(line) == True:
                 for x in line:
-                    #print("monkaS argList", ArgList)
-                    #print("what is X?",x)
-                    #print("stats", line, arg2)
+                    #
+                    print("monkaS argList", ArgList)
+                    #
+                    print("what is X?",x)
+                    #
+                    print("stats", line, arg2)
                     linemod = line
-                    #print("this is line UNFILTERED",linemod,type(linemod))
+                    #
+                    print("this is line UNFILTERED",linemod,type(linemod))
                     arg2mod = arg2
-                    #print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
+                    #
+                    print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
                     try:
                         if arg4 != []:
                             linemod = arg4([line])
-                            #print("preping for arg3, LINE",linemod)
+                            #
+                            print("preping for arg3, LINE",linemod)
                     except Exception as e:
-                        #print("wtf1 went wrong?", e)
+                        #
+                        print("wtf1 went wrong?", e)
                         pass
                     try:
                         if arg5 != []:
                             arg2mod = arg5([arg2])
-                            #print("preping for arg3, arg2",arg2mod)
+                            #
+                            print("preping for arg3, arg2",arg2mod)
                     except Exception as e:
-                        #print("wtf2 went wrong?", e)
+                        #
+                        print("wtf2 went wrong?", e)
                         pass    
                     
                     
-                    #print("stats for arg3", linemod, arg2mod)
+                    #
+                    print("stats for arg3", linemod, arg2mod)
                     try:
                         exist = arg3([linemod,arg2mod])
-                        #print("try this attempt",exist)
-                        #print("append ?",len([z for z in ANS if z == exist]) == 0)
+                        #
+                        print("try this attempt",exist)
+                        #
+                        print("append ?",len([z for z in ANS if z == exist]) == 0)
                         if len([z for z in ANS if z == exist]) == 0:
                             ANS.append(exist)
                     except Exception as e:
-                        #print("ERROR IS ",e)
+                        #
+                        print("ERROR IS ",e)
                         if e != []:
-                            #ANS.append(e)
+                            #
+                            ANS.append(e)
                             pass
                         pass
             line = rchop(fileref.readline(), '\n')
@@ -3743,7 +3759,7 @@ def SeekForce(ArgList):
 #SeekForce(['MemoryUNORDERED.txt','print("why")',delta2,SeekForcemin1,[]])
 #SeekForce(['MemoryUNORDERED.txt','argument_1 == "C"',delta2,SeekForcemin1,[]])
 #print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt','argument_1 == "b"',delta2,[],SeekForcemin1]))
-
+########print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt',"[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("f")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)'+ ", [" + "['f\\n']\n" + "]]]",delta2,[],[]]))
 def forFix(argList):
     '''
     arg1 = string

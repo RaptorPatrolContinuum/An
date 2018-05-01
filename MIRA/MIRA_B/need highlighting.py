@@ -1,3 +1,6 @@
+[['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("f")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['f\\n']\n"]]]
+
+
 TEST X, Y
 x = [['1','1'],['2','2'],['3','3']]
 y = [['1','1'],['2','2'],['3','3']]

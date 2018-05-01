@@ -187,6 +187,7 @@ while Descent:
             #DELTA ANALYSIS:
             #deltav2 on x in combined memory and new obj
             #print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt','argument_1 == "b"',delta2]))
+            #THIS MEMcomposeinput WAS USED TO ABSTRACT THE INPUT, BUT NOW I WANT TO ABSTRACT THE INPUT OUTPUT PAIR PRODUCED BY MIRA SEEING THE EVAL OF INPUT
             MEMcomposeinput = SeekForce([MemoryUNORDERED,inputtext,delta2,SeekForcemin1,[]]) + SeekForce([memoryLong,inputtext,delta2,SeekForcemin1,[]])
             #deltav2 on pairs in new obj -> guessing similar inputs/variables (find abstractions) ->#eval using (deltav3 COMPOSE deltav2) and get answers
             #for each object in seekforce, check if new obj or x in seekforce is an abstraction by checking deltav2(obj,x in seekforce) == obj OR deltav2(obj,x in seekforce) == x in seekforce
@@ -199,8 +200,9 @@ while Descent:
             guessAbst = []
             for x in MEMcomposeinput:
                 xmod = toString([ran(x),"naive"])
+                #
+                print("args fpr thedelta", [inputtext,xmod])
                 thedelta = delta2([inputtext,xmod])
-                #print("args fpr thedelta", [inputtext,xmod])
                 #print("what's thedelta?",thedelta)
                 abstractcheck = toString([ran(thedelta),"naive"])
                 #print("what is inputtext?",inputtext)
@@ -225,7 +227,7 @@ while Descent:
                     #print("checking list comprehension2",[y for y in guessAbst if y == thedelta])
                     if len([y for y in guessAbst if y == thedelta]) == 0:
                         guessAbst.append(thedelta)
-            print("what am I guessing an abstraction to be?",guessAbst)
+            print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
             #eval using (deltav3 COMPOSE deltav2) and get answers AND WRITE THOSE DOWN TO memory
             #ComposeMETA([arg1,arg2])
             '''
