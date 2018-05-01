@@ -87,11 +87,13 @@ while Descent:
         
         '''
         #print("morphemes through cheat!", Cheat(str(inputtext)))
-
         #print("what is inputtext", inputtext)
         #print("ARGINPUT IS monkaS", argv)
+        
         #INIT OTHER CLONE AS IM MAKING A LOT OF CHANGES
         Cloneinit()
+
+        #THIS TRYBLOCK DOCUMENTS WHAT INPUT>MIRACLONE DOES
         try:
             #write input/output to memory RAM file:
             memoryfile = open(MemoryUNORDERED, 'a+')
@@ -142,6 +144,7 @@ while Descent:
             memoryfile.close()
             pass
 
+        #guessing abstractions
         #need to stop clone mira from duplicating responses:
         if Descent == True:
             #look for/through AutoPicked Universe
@@ -170,12 +173,9 @@ while Descent:
                     memoryfile.write(str([["TOTAL_ARGUMENT == '"+ x +"'", ["",e]]]) + "\n")
                     memoryfile.close()
                     pass
-            
 
             #LEXICO IMMEDIATELY BECAUSE I AM STILL TESTING
             #lexicoSort([basisname,memoryLong,MemoryUNORDERED])
-                    
-            
             
             #pattern recognition:
             #~
