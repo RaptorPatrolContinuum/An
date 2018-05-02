@@ -3047,7 +3047,8 @@ def delta2(argList):
     if LCont == []:
         #return [[['Symbol0'], [0]]]
         #return [[['α0'], [0]]]
-        return [[['α0'], ['α0']]]
+        #return [[['α0'], ['α0']]]
+        return [[[], []]]
     
     #match like segments together (try: from left to right)
     Connections = []
@@ -3057,18 +3058,36 @@ def delta2(argList):
     #then at the end stitch similar parts together
     #print("================checking Connections")
     #print(Connections)
+    oldConSize = len(Connections)
+    #print("oldconsize",oldConSize)
     i = 0
-    for x in Connections:
+    #HINT: don't modify your list that you are iterating through- shit happens. just use index to iterate through
+    #for x in Connections:
+    for y in range(len(Connections)):
+        x = Connections[y + len(Connections) - oldConSize]
+        #print("WTF IS UP WITH CONNECTIONS MISSING SOMETHIGN",Connections)
+        #print("DOUBLE CHECK x!",x)
         LContmin = maxlongestcontig([x[0][0],x[1][0],0,0,commrel])
+        #print("why did I skip somethingARGS?",[x[0][0],x[1][0],0,0,commrel])
+        #print("why did I skip something?",LContmin)
+        #print("WHAT ARE PASS CHECKS",x[0][0],x[1][0])
+        #print("WHAT ARE PASS CHECKS",x[0][0] == x[1][0])
+        #print("WHAT ARE PASS CHECKS",len(x[0][0]) == 0)
+        #print("WHAT ARE PASS CHECKS",len(x[1][0]) == 0)
+        #print("WHAT ARE PASS CHECKS",len(LContmin) == 0)
         if x[0][0] == x[1][0] or len(x[0][0]) == 0 or len(x[1][0]) == 0 or len(LContmin) == 0:
+            #print("DID I PASS HERE?")
             pass
             i += 1
         else:
-            #print("WTF BUCK",x,LContmin)
-            #print("DELETE CURRENT X",x)
-            #print(Connections[i])
+            #print("WTF BUCK",Connections)
+            displacedindex = i + len(Connections) - oldConSize
+            #print("DELETE CURRENT X| CHECK IF THIS WILL BE DIFFERENT FROM NEXT LINE \n",x, LContmin)
+            #print(Connections[i + len(Connections) - oldConSize])
+            #print("DISPLACEMENT STATS", i , len(Connections), oldConSize)
+            #print("TEST DISPLACEMENT IDEA", Connections[i + len(Connections) - oldConSize])
             #print("old Con", Connections)
-            del Connections[i]
+            del Connections[displacedindex]
             #print("new Con", Connections)
             
             #INSERT NEW X PARTS (NOTE: WE ALSO INSERT ENOUGHT EMPTY LISTS SO MAKING STATEMENT+REPLACE IS EASIER)
@@ -3081,7 +3100,7 @@ def delta2(argList):
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]]]], i+1)
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]+LContmin[2]:]],[x[1][0][LContmin[1]+LContmin[2]:]]], i+2)
             #print("oh baby, oh oh baby \n", x[0][0], "\n", x[1][0], "\n", LContmin, "\n", Connections, "\n", [i, i+1, i+2])
-            Connections = seqsplitmin([x[0][0],x[1][0],LContmin,Connections,[i, i+1, i+2]])
+            Connections = seqsplitmin([x[0][0],x[1][0],LContmin,Connections,[displacedindex, displacedindex+1, displacedindex+2]])
             #print("new connections")
             #print(Connections)
             i += 1
@@ -3091,6 +3110,8 @@ def delta2(argList):
     #print("what are connections?",Connections)
     #print("ANS",ANS)
     for x in Connections:
+        #print("if check",x[0],x[1],x[0] == x[1])
+        #print("elif check",x[0][0],x[1][0],len(x[0][0])!= 0 and len(x[1][0])!= 0)
         if x[0] == x[1]:
             ANS.append(x)
         elif len(x[0][0])!= 0 and len(x[1][0])!= 0:
@@ -3101,12 +3122,19 @@ def delta2(argList):
         #print("ANS at each step", ANS)
     return ANS
 
+#delta2(["[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("f")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['f\\n']\n" + "]]]","[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("r")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['r\\n']\n" + "]]]"])
+#toString([ran(delta2(["[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("f")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['f\\n']\n" + "]]]","[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("r")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['r\\n']\n" + "]]]"])),"naive"])	
+#delta2(['print("f")', 'print("α0")'])
+#delta2(['[[\'a\', 2]]','[[\'b\', 2]]'])
+#toString([ran(x),"naive"])
+
 def seqsplitmin(argList):
     LHS = argList[0]
     RHS = argList[1]
     LCont = argList[2]
     Connections = argList[3]
     index = argList[4]
+    #print("seqsplitmin ARGLIST =========", argList)
     ###this is because I might as well make a generic now as well as try to optimize instead of wait for later
     #what this does is take LHS,RHS, and LCont and appends the right connections
     #if there is an empty connection, refuse to append
@@ -3115,28 +3143,41 @@ def seqsplitmin(argList):
     #print("CHECKANS1",ANS)
     #if it's an empty connection, refuse
     #print("trendytrendytrendy \n", LHS, "\n",RHS, "\n",LCont, "\n",Connections, "\n",index)
-    
+    #print("?CHECK1", LHS[:LCont[0]], "|", RHS[:LCont[1]])
+
+    #else: append
     if len(LHS[:LCont[0]]) == 0 and len(RHS[:LCont[1]]) == 0:
         pass
-    #else: append
     else:
         #ANS.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
         ANS = InsertAt(ANS,[[LHS[:LCont[0]]],[RHS[:LCont[1]]]],index[0])
 
     #print("CHECKANS2",ANS)
+    #print("?CHECK2", LHS[LCont[0]:LCont[0]+LCont[2]], "|", RHS[LCont[1]:LCont[1]+LCont[2]])
     if len(LHS[LCont[0]:LCont[0]+LCont[2]]) == 0 and len(RHS[LCont[1]:LCont[1]+LCont[2]]) == 0:
         pass
+    #EDGE CASE: IF LCont[0] and LCont[1] are both 0, previous check will ALWAYS PASS WITH "STRING"[:0], but WE WANT TO APPEND HERE, SO JUST CHECK IF BOTH ARE 0
+    #HINT: I HAVE [-1, -1, -1] as input from delta2
+    elif LCont[0] == 0 and LCont[1] == 0 and index[2] != -1:
+        ANS = InsertAt(ANS,[[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]],index[1]-1)
     else:
         #ANS.append([[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]])
         ANS = InsertAt(ANS,[[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]],index[1])
 
     #print("CHECKANS3",ANS)
+    #print("?CHECK3", LHS[LCont[0]+LCont[2]:], "|", RHS[LCont[1]+LCont[2]:])
     if len(LHS[LCont[0]+LCont[2]:]) == 0 and len(RHS[LCont[1]+LCont[2]:]) == 0:
         pass
+    #EDGE CASE: IF LCont[0] and LCont[1] are both 0, previous check will ALWAYS PASS WITH "STRING"[:0], but WE WANT TO APPEND HERE, SO JUST CHECK IF BOTH ARE 0
+    #HINT: I HAVE [-1, -1, -1] as input from delta2
+    elif LCont[0] == 0 and LCont[1] == 0 and index[2] != -1:
+        #print("STATS AND WTF",argList)
+        #print(index[2]-1)
+        ANS = InsertAt(ANS,[[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]],index[2]-1)
     else:
         ANS = InsertAt(ANS,[[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]],index[2])
 
-    #print("CHECKANS4",ANS)
+    #print("CHECKANS4==========",ANS)
     return ANS
 
 def firstlongestcontig(argList):
@@ -3689,6 +3730,7 @@ def SeekForce(ArgList):
         
     ANS = []
 
+    print("SEEKFORCE ARGLIST", ArgList)
     #print("checking how to call func",arg3(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
 
     #PROBLEM: currently functions I have are single pairs, what about multiple pair functions?
@@ -3697,57 +3739,45 @@ def SeekForce(ArgList):
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
         while line:
+            #print("SEEKFORCE STATS",ANS )
             try:
                 line = eval(line)
             except:
                 pass
             if fCheck(line) == True:
                 for x in line:
-                    #
-                    print("monkaS argList", ArgList)
-                    #
-                    print("what is X?",x)
-                    #
-                    print("stats", line, arg2)
+                    #print("monkaS argList", ArgList)
+                    #print("what is X?",x)
+                    #print("stats", line, arg2)
                     linemod = line
-                    #
-                    print("this is line UNFILTERED",linemod,type(linemod))
+                    #print("this is line UNFILTERED",linemod,type(linemod))
                     arg2mod = arg2
-                    #
-                    print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
+                    #print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
                     try:
                         if arg4 != []:
                             linemod = arg4([line])
-                            #
-                            print("preping for arg3, LINE",linemod)
+                            #print("preping for arg3, LINE",linemod)
                     except Exception as e:
-                        #
-                        print("wtf1 went wrong?", e)
+                        #print("wtf1 went wrong?", e)
                         pass
                     try:
                         if arg5 != []:
                             arg2mod = arg5([arg2])
-                            #
-                            print("preping for arg3, arg2",arg2mod)
+                            #print("preping for arg3, arg2",arg2mod)
                     except Exception as e:
-                        #
-                        print("wtf2 went wrong?", e)
-                        pass    
+                        #print("wtf2 went wrong?", e)
+                        pass
                     
-                    
-                    #
-                    print("stats for arg3", linemod, arg2mod)
+                    #print("stats for arg3", linemod, arg2mod)
                     try:
                         exist = arg3([linemod,arg2mod])
-                        #
-                        print("try this attempt",exist)
-                        #
-                        print("append ?",len([z for z in ANS if z == exist]) == 0)
+                        #print("try this attempt",exist)
+                        print("SEEKFORCE APPEND",exist)
+                        #print("append ?",len([z for z in ANS if z == exist]) == 0)
                         if len([z for z in ANS if z == exist]) == 0:
                             ANS.append(exist)
                     except Exception as e:
-                        #
-                        print("ERROR IS ",e)
+                        #print("ERROR IS ",e)
                         if e != []:
                             #
                             ANS.append(e)

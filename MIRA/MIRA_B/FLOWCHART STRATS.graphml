@@ -3922,7 +3922,7 @@ not function = use Quine <y:LabelModel>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="1030.2377384591005" y="4065.3210514664197"/>
-          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:Fill color="#FF0000" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="439.22265625" x="-312.33183357264033" y="45.21899630941516">KNOW THAT INPUT "MATCHES" ON SOME LEVEL THROUGH ABSTRACTION<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -6668,7 +6668,6 @@ instead look at the audio/visual codecs or whatever for python and figure out ho
       </data>
     </edge>
     <edge id="e223" source="n6" target="n211">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>

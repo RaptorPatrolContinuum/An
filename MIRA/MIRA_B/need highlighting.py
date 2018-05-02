@@ -1,3 +1,34 @@
+"[[" + 'TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("f")\\\'\', \'None\']]\'' + ", [[" + 'TOTAL_ARGUMENT == \'print("f")\'' + "," + 'None' + "]]]]"
+"[[" + 'TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("r")\\\'\', \'None\']]\'' + ", [[" + 'TOTAL_ARGUMENT == \'print("r")\'' + "," + 'None' + "]]]]"
+
+
+delta2(["[[" + 'TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("f")\\\'\', \'None\']]\'' + ", [[" + 'TOTAL_ARGUMENT == \'print("f")\'' + "," + 'None' + "]]]]","[[" + 'TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("r")\\\'\', \'None\']]\'' + ", [[" + 'TOTAL_ARGUMENT == \'print("r")\'' + "," + 'None' + "]]]]"])
+[[['[[TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("']], [['α0'], ['α0']], [['")\\\'\', \'None\']]\', [[TOTAL_ARGUMENT == \'print("'], ['")\\\'\', \'None\']]\', [[TOTAL_ARGUMENT == \'print("']], [['α1'], ['α1']]]
+
+[
+[['[[TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("']], 
+[['α0'], ['α0']], 
+[['")\\\'\', \'None\']]\', [[TOTAL_ARGUMENT == \'print("'], ['")\\\'\', \'None\']]\', [[TOTAL_ARGUMENT == \'print("']], 
+[['α1'], ['α1']]
+]
+
+
+"[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("f")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['f\\n']\n" + "]]]"
+"[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("r")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['r\\n']\n" + "]]]"
+
+delta2(["[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("f")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['f\\n']\n" + "]]]","[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("r")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['r\\n']\n" + "]]]"])
+
+[
+[['[[Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("'], ['[[Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("']],
+[['α0'], ['α0']], 
+[["\\n']\n]]]"], ["\\n']\n]]]"]], 
+[['")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True), [[\''], ['")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True), [[\'']], 
+[['α1'], ['α1']]
+]
+
+
+
+
 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("f")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['f\\n']\n"]]]
 
 

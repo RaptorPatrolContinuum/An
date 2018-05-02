@@ -199,6 +199,7 @@ while Descent:
             #print("alpha and stout fucking up","α".encode('utf-8'))
             guessAbst = []
             for x in MEMcomposeinput:
+                print("WTF IS X",x)
                 xmod = toString([ran(x),"naive"])
                 #
                 print("args fpr thedelta", [inputtext,xmod])

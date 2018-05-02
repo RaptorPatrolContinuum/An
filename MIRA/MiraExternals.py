@@ -3730,6 +3730,7 @@ def SeekForce(ArgList):
         
     ANS = []
 
+    #print("SEEKFORCE ARGLIST", ArgList)
     #print("checking how to call func",arg3(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
 
     #PROBLEM: currently functions I have are single pairs, what about multiple pair functions?
@@ -3738,57 +3739,45 @@ def SeekForce(ArgList):
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
         while line:
+            #print("SEEKFORCE STATS",ANS )
             try:
                 line = eval(line)
             except:
                 pass
             if fCheck(line) == True:
                 for x in line:
-                    #
-                    print("monkaS argList", ArgList)
-                    #
-                    print("what is X?",x)
-                    #
-                    print("stats", line, arg2)
+                    #print("monkaS argList", ArgList)
+                    #print("what is X?",x)
+                    #print("stats", line, arg2)
                     linemod = line
-                    #
-                    print("this is line UNFILTERED",linemod,type(linemod))
+                    #print("this is line UNFILTERED",linemod,type(linemod))
                     arg2mod = arg2
-                    #
-                    print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
+                    #print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
                     try:
                         if arg4 != []:
                             linemod = arg4([line])
-                            #
-                            print("preping for arg3, LINE",linemod)
+                            #print("preping for arg3, LINE",linemod)
                     except Exception as e:
-                        #
-                        print("wtf1 went wrong?", e)
+                        #print("wtf1 went wrong?", e)
                         pass
                     try:
                         if arg5 != []:
                             arg2mod = arg5([arg2])
-                            #
-                            print("preping for arg3, arg2",arg2mod)
+                            #print("preping for arg3, arg2",arg2mod)
                     except Exception as e:
-                        #
-                        print("wtf2 went wrong?", e)
-                        pass    
+                        #print("wtf2 went wrong?", e)
+                        pass
                     
-                    
-                    #
-                    print("stats for arg3", linemod, arg2mod)
+                    #print("stats for arg3", linemod, arg2mod)
                     try:
                         exist = arg3([linemod,arg2mod])
-                        #
-                        print("try this attempt",exist)
-                        #
-                        print("append ?",len([z for z in ANS if z == exist]) == 0)
+                        #print("try this attempt",exist)
+                        #print("SEEKFORCE APPEND",exist)
+                        #print("append ?",len([z for z in ANS if z == exist]) == 0)
                         if len([z for z in ANS if z == exist]) == 0:
                             ANS.append(exist)
                     except Exception as e:
-                        #
-                        print("ERROR IS ",e)
+                        #print("ERROR IS ",e)
                         if e != []:
                             #
                             ANS.append(e)
