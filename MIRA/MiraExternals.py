@@ -3068,38 +3068,39 @@ def delta2(argList):
         print("WTF IS UP WITH CONNECTIONS MISSING SOMETHIGN",Connections)
         print("DOUBLE CHECK x!",x)
         LContmin = maxlongestcontig([x[0][0],x[1][0],0,0,commrel])
-        print("why did I skip somethingARGS?",[x[0][0],x[1][0],0,0,commrel])
-        print("why did I skip something?",LContmin)
-        print("WHAT ARE PASS CHECKS",x[0][0],x[1][0])
-        print("WHAT ARE PASS CHECKS",x[0][0] == x[1][0])
-        print("WHAT ARE PASS CHECKS",len(x[0][0]) == 0)
-        print("WHAT ARE PASS CHECKS",len(x[1][0]) == 0)
-        print("WHAT ARE PASS CHECKS",len(LContmin) == 0)
+        #print("why did I skip somethingARGS?",[x[0][0],x[1][0],0,0,commrel])
+        #print("why did I skip something?",LContmin)
+        #print("WHAT ARE PASS CHECKS",x[0][0],x[1][0])
+        #print("WHAT ARE PASS CHECKS",x[0][0] == x[1][0])
+        #print("WHAT ARE PASS CHECKS",len(x[0][0]) == 0)
+        #print("WHAT ARE PASS CHECKS",len(x[1][0]) == 0)
+        #print("WHAT ARE PASS CHECKS",len(LContmin) == 0)
         if x[0][0] == x[1][0] or len(x[0][0]) == 0 or len(x[1][0]) == 0 or len(LContmin) == 0:
             print("DID I PASS HERE?")
             pass
             i += 1
         else:
             print("WTF BUCK",Connections)
-            print("DELETE CURRENT X| CHECK IF THIS WILL BE DIFFERENT FROM NEXT LINE \n",x, LContmin)
-            print(Connections[i + len(Connections) - oldConSize])
-            print("DISPLACEMENT STATS", i , len(Connections), oldConSize)
-            print("TEST DISPLACEMENT IDEA", Connections[i + len(Connections) - oldConSize])
-            print("old Con", Connections)
-            del Connections[i + len(Connections) - oldConSize]
-            print("new Con", Connections)
+            displacedindex = i + len(Connections) - oldConSize
+            #print("DELETE CURRENT X| CHECK IF THIS WILL BE DIFFERENT FROM NEXT LINE \n",x, LContmin)
+            #print(Connections[i + len(Connections) - oldConSize])
+            #print("DISPLACEMENT STATS", i , len(Connections), oldConSize)
+            #print("TEST DISPLACEMENT IDEA", Connections[i + len(Connections) - oldConSize])
+            #print("old Con", Connections)
+            del Connections[displacedindex]
+            #print("new Con", Connections)
             
             #INSERT NEW X PARTS (NOTE: WE ALSO INSERT ENOUGHT EMPTY LISTS SO MAKING STATEMENT+REPLACE IS EASIER)
             #replace the current x with this:
             ##################LHS/RHS are diff, LCont is now LContmin##################
-            print("part 1",[[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]])
-            print("part 2",[[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]+1]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]+1]]])
-            print("part 3",[[x[0][0][LContmin[0]+LContmin[2]+1:]],[x[1][0][LContmin[1]+LContmin[2]+1:]]])
+            #print("part 1",[[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]])
+            #print("part 2",[[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]+1]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]+1]]])
+            #print("part 3",[[x[0][0][LContmin[0]+LContmin[2]+1:]],[x[1][0][LContmin[1]+LContmin[2]+1:]]])
             #Connections = InsertAt(Connections, [[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]], i)
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]]]], i+1)
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]+LContmin[2]:]],[x[1][0][LContmin[1]+LContmin[2]:]]], i+2)
             #print("oh baby, oh oh baby \n", x[0][0], "\n", x[1][0], "\n", LContmin, "\n", Connections, "\n", [i, i+1, i+2])
-            Connections = seqsplitmin([x[0][0],x[1][0],LContmin,Connections,[i, i+1, i+2]])
+            Connections = seqsplitmin([x[0][0],x[1][0],LContmin,Connections,[displacedindex, displacedindex+1, displacedindex+2]])
             print("new connections")
             print(Connections)
             i += 1
