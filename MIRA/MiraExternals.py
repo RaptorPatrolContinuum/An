@@ -3091,6 +3091,8 @@ def delta2(argList):
     print("what are connections?",Connections)
     print("ANS",ANS)
     for x in Connections:
+        print("if check",x[0],x[1],x[0] == x[1])
+        print("elif check",x[0][0],x[1][0],len(x[0][0])!= 0 and len(x[1][0])!= 0)
         if x[0] == x[1]:
             ANS.append(x)
         elif len(x[0][0])!= 0 and len(x[1][0])!= 0:
@@ -3107,16 +3109,16 @@ def seqsplitmin(argList):
     LCont = argList[2]
     Connections = argList[3]
     index = argList[4]
-    #print("seqsplitmin ARGLIST", argList)
+    print("seqsplitmin ARGLIST =========", argList)
     ###this is because I might as well make a generic now as well as try to optimize instead of wait for later
     #what this does is take LHS,RHS, and LCont and appends the right connections
     #if there is an empty connection, refuse to append
     #index is a list of indicies to add objects
     ANS = Connections
-    #print("CHECKANS1",ANS)
+    print("CHECKANS1",ANS)
     #if it's an empty connection, refuse
-    #print("trendytrendytrendy \n", LHS, "\n",RHS, "\n",LCont, "\n",Connections, "\n",index)
-    #print("?CHECK1", LHS[:LCont[0]], "|", RHS[:LCont[1]])
+    print("trendytrendytrendy \n", LHS, "\n",RHS, "\n",LCont, "\n",Connections, "\n",index)
+    print("?CHECK1", LHS[:LCont[0]], "|", RHS[:LCont[1]])
 
     #else: append
     if len(LHS[:LCont[0]]) == 0 and len(RHS[:LCont[1]]) == 0:
@@ -3125,7 +3127,7 @@ def seqsplitmin(argList):
         #ANS.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
         ANS = InsertAt(ANS,[[LHS[:LCont[0]]],[RHS[:LCont[1]]]],index[0])
 
-    #print("CHECKANS2",ANS)
+    print("CHECKANS2",ANS)
     #print("?CHECK2", LHS[LCont[0]:LCont[0]+LCont[2]], "|", RHS[LCont[1]:LCont[1]+LCont[2]])
     if len(LHS[LCont[0]:LCont[0]+LCont[2]]) == 0 and len(RHS[LCont[1]:LCont[1]+LCont[2]]) == 0:
         pass
@@ -3137,7 +3139,7 @@ def seqsplitmin(argList):
         #ANS.append([[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]])
         ANS = InsertAt(ANS,[[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]],index[1])
 
-    #print("CHECKANS3",ANS)
+    print("CHECKANS3",ANS)
     #print("?CHECK3", LHS[LCont[0]+LCont[2]:], "|", RHS[LCont[1]+LCont[2]:])
     if len(LHS[LCont[0]+LCont[2]:]) == 0 and len(RHS[LCont[1]+LCont[2]:]) == 0:
         pass
@@ -3150,7 +3152,7 @@ def seqsplitmin(argList):
     else:
         ANS = InsertAt(ANS,[[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]],index[2])
 
-    #print("CHECKANS4",ANS)
+    print("CHECKANS4==========",ANS)
     return ANS
 
 def firstlongestcontig(argList):
