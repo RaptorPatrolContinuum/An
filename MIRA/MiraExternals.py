@@ -3056,17 +3056,17 @@ def delta2(argList):
     
     #for each part in Connections, if NOT same parts OR either part is empty, reapply maxlongestcontig
     #then at the end stitch similar parts together
-    print("================checking Connections")
-    print(Connections)
+    #print("================checking Connections")
+    #print(Connections)
     oldConSize = len(Connections)
-    print("oldconsize",oldConSize)
+    #print("oldconsize",oldConSize)
     i = 0
     #HINT: don't modify your list that you are iterating through- shit happens. just use index to iterate through
     #for x in Connections:
     for y in range(len(Connections)):
         x = Connections[y + len(Connections) - oldConSize]
-        print("WTF IS UP WITH CONNECTIONS MISSING SOMETHIGN",Connections)
-        print("DOUBLE CHECK x!",x)
+        #print("WTF IS UP WITH CONNECTIONS MISSING SOMETHIGN",Connections)
+        #print("DOUBLE CHECK x!",x)
         LContmin = maxlongestcontig([x[0][0],x[1][0],0,0,commrel])
         #print("why did I skip somethingARGS?",[x[0][0],x[1][0],0,0,commrel])
         #print("why did I skip something?",LContmin)
@@ -3076,11 +3076,11 @@ def delta2(argList):
         #print("WHAT ARE PASS CHECKS",len(x[1][0]) == 0)
         #print("WHAT ARE PASS CHECKS",len(LContmin) == 0)
         if x[0][0] == x[1][0] or len(x[0][0]) == 0 or len(x[1][0]) == 0 or len(LContmin) == 0:
-            print("DID I PASS HERE?")
+            #print("DID I PASS HERE?")
             pass
             i += 1
         else:
-            print("WTF BUCK",Connections)
+            #print("WTF BUCK",Connections)
             displacedindex = i + len(Connections) - oldConSize
             #print("DELETE CURRENT X| CHECK IF THIS WILL BE DIFFERENT FROM NEXT LINE \n",x, LContmin)
             #print(Connections[i + len(Connections) - oldConSize])
@@ -3101,14 +3101,14 @@ def delta2(argList):
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]+LContmin[2]:]],[x[1][0][LContmin[1]+LContmin[2]:]]], i+2)
             #print("oh baby, oh oh baby \n", x[0][0], "\n", x[1][0], "\n", LContmin, "\n", Connections, "\n", [i, i+1, i+2])
             Connections = seqsplitmin([x[0][0],x[1][0],LContmin,Connections,[displacedindex, displacedindex+1, displacedindex+2]])
-            print("new connections")
-            print(Connections)
+            #print("new connections")
+            #print(Connections)
             i += 1
     #construct statement:
     ANS = []
     symboli = 0
-    print("what are connections?",Connections)
-    print("ANS",ANS)
+    #print("what are connections?",Connections)
+    #print("ANS",ANS)
     for x in Connections:
         #print("if check",x[0],x[1],x[0] == x[1])
         #print("elif check",x[0][0],x[1][0],len(x[0][0])!= 0 and len(x[1][0])!= 0)
@@ -3119,8 +3119,14 @@ def delta2(argList):
             #hint: alphas are in list because list forces composemeta to do argument replacement properly
             ANS.append([["α" + str(symboli)], ["α" + str(symboli)]])
             symboli += 1
-        print("ANS at each step", ANS)
+        #print("ANS at each step", ANS)
     return ANS
+
+#delta2(["[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("f")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['f\\n']\n" + "]]]","[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("r")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['r\\n']\n" + "]]]"])
+#toString([ran(delta2(["[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("f")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['f\\n']\n" + "]]]","[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("r")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['r\\n']\n" + "]]]"])),"naive"])	
+#delta2(['print("f")', 'print("α0")'])
+#delta2(['[[\'a\', 2]]','[[\'b\', 2]]'])
+#toString([ran(x),"naive"])
 
 def seqsplitmin(argList):
     LHS = argList[0]
