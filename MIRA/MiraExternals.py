@@ -3047,7 +3047,8 @@ def delta2(argList):
     if LCont == []:
         #return [[['Symbol0'], [0]]]
         #return [[['α0'], [0]]]
-        return [[['α0'], ['α0']]]
+        #return [[['α0'], ['α0']]]
+        return [[[], []]]
     
     #match like segments together (try: from left to right)
     Connections = []
@@ -3057,16 +3058,21 @@ def delta2(argList):
     #then at the end stitch similar parts together
     print("================checking Connections")
     print(Connections)
+    oldConSize = len(Connections)
+    print("oldconsize",oldConSize)
     i = 0
+    #HINT: don't modify your list that you are iterating through- shit happens. just use index to iterate through
     for x in Connections:
         LContmin = maxlongestcontig([x[0][0],x[1][0],0,0,commrel])
         if x[0][0] == x[1][0] or len(x[0][0]) == 0 or len(x[1][0]) == 0 or len(LContmin) == 0:
             pass
             i += 1
         else:
-            print("WTF BUCK",x,LContmin)
-            print("DELETE CURRENT X",x)
+            #print("WTF BUCK",x,LContmin)
+            print("DELETE CURRENT X| CHECK IF THIS WILL BE DIFFERENT FROM NEXT LINE \n",x, LContmin)
             print(Connections[i])
+            print("DISPLACEMENT STATS", i , len(Connections), oldConSize)
+            print("TEST DISPLACEMENT IDEA", Connections[i + len(Connections) - oldConSize])
             print("old Con", Connections)
             del Connections[i]
             print("new Con", Connections)
@@ -3080,7 +3086,7 @@ def delta2(argList):
             #Connections = InsertAt(Connections, [[x[0][0][:LContmin[0]]],[x[1][0][:LContmin[1]]]], i)
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]:LContmin[0]+LContmin[2]]],[x[1][0][LContmin[1]:LContmin[1]+LContmin[2]]]], i+1)
             #Connections = InsertAt(Connections, [[x[0][0][LContmin[0]+LContmin[2]:]],[x[1][0][LContmin[1]+LContmin[2]:]]], i+2)
-            print("oh baby, oh oh baby \n", x[0][0], "\n", x[1][0], "\n", LContmin, "\n", Connections, "\n", [i, i+1, i+2])
+            #print("oh baby, oh oh baby \n", x[0][0], "\n", x[1][0], "\n", LContmin, "\n", Connections, "\n", [i, i+1, i+2])
             Connections = seqsplitmin([x[0][0],x[1][0],LContmin,Connections,[i, i+1, i+2]])
             print("new connections")
             print(Connections)
@@ -3091,8 +3097,8 @@ def delta2(argList):
     print("what are connections?",Connections)
     print("ANS",ANS)
     for x in Connections:
-        print("if check",x[0],x[1],x[0] == x[1])
-        print("elif check",x[0][0],x[1][0],len(x[0][0])!= 0 and len(x[1][0])!= 0)
+        #print("if check",x[0],x[1],x[0] == x[1])
+        #print("elif check",x[0][0],x[1][0],len(x[0][0])!= 0 and len(x[1][0])!= 0)
         if x[0] == x[1]:
             ANS.append(x)
         elif len(x[0][0])!= 0 and len(x[1][0])!= 0:
@@ -3118,7 +3124,7 @@ def seqsplitmin(argList):
     print("CHECKANS1",ANS)
     #if it's an empty connection, refuse
     print("trendytrendytrendy \n", LHS, "\n",RHS, "\n",LCont, "\n",Connections, "\n",index)
-    print("?CHECK1", LHS[:LCont[0]], "|", RHS[:LCont[1]])
+    #print("?CHECK1", LHS[:LCont[0]], "|", RHS[:LCont[1]])
 
     #else: append
     if len(LHS[:LCont[0]]) == 0 and len(RHS[:LCont[1]]) == 0:
