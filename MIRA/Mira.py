@@ -201,8 +201,7 @@ while Descent:
             for x in MEMcomposeinput:
                 print("WTF IS X",x)
                 xmod = toString([ran(x),"naive"])
-                #
-                print("args fpr thedelta", [inputtext,xmod])
+                #print("args fpr thedelta", [inputtext,xmod])
                 thedelta = delta2([inputtext,xmod])
                 #print("what's thedelta?",thedelta)
                 abstractcheck = toString([ran(thedelta),"naive"])

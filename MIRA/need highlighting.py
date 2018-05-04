@@ -1,3 +1,15 @@
+
+>>> delta2([])
+[[["['"], ["['"]], [['bukD'], ['bukD']], [['α0'], ['α0']], [['n'], ['n']], [['α1'], ['α1']]]
+>>> delta2([])
+
+
+delta2(['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("bukD")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + "," + "['bukD\\n']\n",'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("rascal")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + "," + "['rascal\\n']\n"])
+
+
+
+
+
 "[[" + 'TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("f")\\\'\', \'None\']]\'' + ", [[" + 'TOTAL_ARGUMENT == \'print("f")\'' + "," + 'None' + "]]]]"
 "[[" + 'TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("r")\\\'\', \'None\']]\'' + ", [[" + 'TOTAL_ARGUMENT == \'print("r")\'' + "," + 'None' + "]]]]"
 

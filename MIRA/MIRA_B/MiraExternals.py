@@ -192,7 +192,10 @@ def toString(argList):
         #print("what is f",f)
         for x in f:
             #print("what is x",x,x[0])
-            ANS = ANS + str(x[0])
+            try:
+                ANS = ANS + str(x[0])
+            except:
+                ANS = ANS + str("")
         return ANS
     if fCheck(f) == False:
         print("f1 is function? toString", fCheck(f))
@@ -536,9 +539,9 @@ def ComposeMETA(argList):
     '''
     #check if f1,f2 are functions:
     if fCheck(f1) == False or fCheck(f2) == False:
-        print("WTF ARE THESE f1", f1 ,type(f1))
-        print("WTF ARE THESE f2", f2, type(f2))
-        print("f1 is function? COMPOSEMETA", fCheck(f1), "f2 is function?", fCheck(f2))
+        #print("WTF ARE THESE f1", f1 ,type(f1))
+        #print("WTF ARE THESE f2", f2, type(f2))
+        #print("f1 is function? COMPOSEMETA", fCheck(f1), "f2 is function?", fCheck(f2))
         return
     ALG = []
     for y in f2:
@@ -3366,8 +3369,16 @@ def delta3META(argList):
     alphatrigger = False
     ANS = []
     for x in abstractionfunc:
+        #print("what is X?",x)
         #print("=====if symbol, 'skip'",x,x[0][0][0],"α",x[0][0][0] == "α")
-        if x[0][0][0] == "α":
+        try:
+            thingcheck = x[0][0][0] == "α"
+        except:
+            thingcheck = False
+        #HAVE TO DEAL WITH EMPTY ANSWER:
+        if thingcheck == False:
+            pass
+        elif thingcheck:
             symbolis = x[0][0]
             #if we're at the end of abstractionfunc assume rest of theobj is symbol:
             if x == abstractionfunc[-1]:
@@ -3690,10 +3701,8 @@ def SeekForcemin1(argList):
         arg1 = eval(arg1)
     except:
         pass
-    #
-    print("arg1",arg1)
-    #
-    print("wtf",fCheck(arg1))
+    #print("arg1",arg1)
+    #print("wtf",fCheck(arg1))
     if fCheck(arg1) == True:
         for x in arg1:
             ANS.append(x[0])
@@ -3730,7 +3739,7 @@ def SeekForce(ArgList):
         
     ANS = []
 
-    print("SEEKFORCE ARGLIST", ArgList)
+    #print("SEEKFORCE ARGLIST", ArgList)
     #print("checking how to call func",arg3(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
 
     #PROBLEM: currently functions I have are single pairs, what about multiple pair functions?
@@ -3772,7 +3781,7 @@ def SeekForce(ArgList):
                     try:
                         exist = arg3([linemod,arg2mod])
                         #print("try this attempt",exist)
-                        print("SEEKFORCE APPEND",exist)
+                        #print("SEEKFORCE APPEND",exist)
                         #print("append ?",len([z for z in ANS if z == exist]) == 0)
                         if len([z for z in ANS if z == exist]) == 0:
                             ANS.append(exist)
