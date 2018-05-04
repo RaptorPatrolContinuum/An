@@ -3328,7 +3328,6 @@ def delta3META(argList):
     output: replacement function
     NEED THEOREM: deltav2(obj1,obj2)
         :if one obj is the abstraction of the other then the answer of deltav2 is the abstraction
-
     HINT:
     I made this meta version because delta3 was created with compose in mind but now I need to shift to ComposeMETA so I need delta3META to return right function
     HINT:
@@ -3369,16 +3368,11 @@ def delta3META(argList):
     alphatrigger = False
     ANS = []
     for x in abstractionfunc:
-        #print("what is X?",x)
         #print("=====if symbol, 'skip'",x,x[0][0][0],"α",x[0][0][0] == "α")
-        try:
-            thingcheck = x[0][0][0] == "α"
-        except:
-            thingcheck = False
-        #HAVE TO DEAL WITH EMPTY ANSWER:
-        if thingcheck == False:
+        if x[0][0] == [] and x[0][1] == []:
+            # FUCKING EDGE CASE WTF IS X [[[], []]]
             pass
-        elif thingcheck:
+        elif x[0][0][0] == "α":
             symbolis = x[0][0]
             #if we're at the end of abstractionfunc assume rest of theobj is symbol:
             if x == abstractionfunc[-1]:

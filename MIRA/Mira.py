@@ -216,18 +216,26 @@ while Descent:
                     #print("small steps you fuck",xmod) #can't encode α for some reason
                     #print("small steps you fuck2",inputtext)
                     #print("this is guess",abstractcheck)
-                    #print("args for delta3",[abstractcheck,inputtext])
+                    print("args for delta3",[abstractcheck,inputtext])
                     replacementguess = delta3META([abstractcheck,inputtext])
                     print("guess substitution", replacementguess)
                     #print("composemeta arguments", replacementguess,thedelta)
                     #print("CHECKING EVAL THROUGH COMPOSE FUCK", Compose(replacementguess,thedelta))
                     metaeval = ComposeMETA([replacementguess,thedelta])
-                    #print("CHECKING EVAL THROUGH COMPOSEMETA", metaeval)
+                    print("#1 WTF IS METAEVAL AND #2 WHY IS IT ALWAYS EMPTY",[replacementguess,thedelta])
+                    print("CHECKING EVAL THROUGH COMPOSEMETA", metaeval)
                     #print("checking list comprehension",thedelta)
                     #print("checking list comprehension2",[y for y in guessAbst if y == thedelta])
                     if len([y for y in guessAbst if y == thedelta]) == 0:
                         guessAbst.append(thedelta)
             print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
+            #new plan:
+            #for each abstraction, collect the answers
+            #then delta2 on all the answers
+            #then  SI on delta2(inputs) and delta2(outputs)
+
+
+            
             #eval using (deltav3 COMPOSE deltav2) and get answers AND WRITE THOSE DOWN TO memory
             #ComposeMETA([arg1,arg2])
             '''
