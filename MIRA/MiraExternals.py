@@ -192,7 +192,10 @@ def toString(argList):
         #print("what is f",f)
         for x in f:
             #print("what is x",x,x[0])
-            ANS = ANS + str(x[0])
+            try:
+                ANS = ANS + str(x[0])
+            except:
+                ANS = ANS + str("")
         return ANS
     if fCheck(f) == False:
         print("f1 is function? toString", fCheck(f))
