@@ -199,7 +199,7 @@ while Descent:
             #print("alpha and stout fucking up","α".encode('utf-8'))
             guessAbst = []
             for x in MEMcomposeinput:
-                print("WTF IS X",x)
+                #print("WTF IS X",x)
                 xmod = toString([ran(x),"naive"])
                 #print("args fpr thedelta", [inputtext,xmod])
                 thedelta = delta2([inputtext,xmod])
@@ -219,16 +219,18 @@ while Descent:
                     print("args for delta3",[abstractcheck,inputtext])
                     replacementguess = delta3META([abstractcheck,inputtext])
                     print("guess substitution", replacementguess)
-                    #print("composemeta arguments", replacementguess,thedelta)
+                    print("composemeta arguments", replacementguess,thedelta)
                     #print("CHECKING EVAL THROUGH COMPOSE FUCK", Compose(replacementguess,thedelta))
                     metaeval = ComposeMETA([replacementguess,thedelta])
-                    print("#1 WTF IS METAEVAL AND #2 WHY IS IT ALWAYS EMPTY",[replacementguess,thedelta])
+                    #print("#1 WTF IS METAEVAL AND #2 WHY IS IT ALWAYS EMPTY",[replacementguess,thedelta])
                     print("CHECKING EVAL THROUGH COMPOSEMETA", metaeval)
                     #print("checking list comprehension",thedelta)
                     #print("checking list comprehension2",[y for y in guessAbst if y == thedelta])
                     if len([y for y in guessAbst if y == thedelta]) == 0:
                         guessAbst.append(thedelta)
             print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
+            for x in guessAbst:
+                print("LOOKING FOR -- FUCK MY BRAIN HURTS WHY")
             #new plan:
             #for each abstraction, collect the answers
             #then delta2 on all the answers

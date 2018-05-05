@@ -654,7 +654,7 @@ def ComposeReplace(str1,str2):
                     ANS = ANS + [[str2[0],str1[1]]]
                 #print("ANSAFTER",ANS)
         except Exception as e:
-            print("what is error?",e)
+            #print("what is error?",e)
             pass
     return ANS
 
@@ -3368,8 +3368,9 @@ def delta3META(argList):
     alphatrigger = False
     ANS = []
     for x in abstractionfunc:
+        #print("wtf is X in abstractionfunc?",x)
         #print("=====if symbol, 'skip'",x,x[0][0][0],"α",x[0][0][0] == "α")
-        if x[0][0] == [] and x[0][1] == []:
+        if x[0] == [] or x[1] == []:
             # FUCKING EDGE CASE WTF IS X [[[], []]]
             pass
         elif x[0][0][0] == "α":
