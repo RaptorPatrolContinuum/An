@@ -3035,6 +3035,7 @@ def maxlongestcontig(argList):
     return ANS
 
 def delta2(argList):
+    #takes 2 strings and returns delta on what's different between two strings
     LHS = argList[0]
     RHS = argList[1]
     try:
@@ -3671,51 +3672,15 @@ def Applyfunc(argList):
     #Applyfunc([[['TOTAL_ARGUMENT == "b"', 'd'],['TOTAL_ARGUMENT == "b"', 'e'],['TOTAL_ARGUMENT == "b"', 'f']],'b'])
     return ANS
 
-def SeekForcemin1(argList):
-    '''
-    this is the first min I have for seekforce
-    PROBLEM I AM TRYING TO SOLVE:
-    right  now I have delta2(input, FUNCTION)
-    but I WANT:
-    delta2(input, function input)
-    delta2(function, function)
-    so I just need to keep the two objects similar
-
-    so this function modifies functions into just function inputs
-
-    arg1 = finite function THAT IS A STRING
-    RETURN:
-    A Finite Function,if possible; ELSE
-    a string input for function(arg3) in SeekForce
-    
-    '''
-    ANS = []
-    arg1 = argList[0]
-    #try evaling:
-    try:
-        arg1 = eval(arg1)
-    except:
-        pass
-    #print("arg1",arg1)
-    #print("wtf",fCheck(arg1))
-    if fCheck(arg1) == True:
-        for x in arg1:
-            ANS.append(x[0])
-    try:
-        if type(eval(ANS)) == list:
-            ANS = eval(ANS)
-    except:
-        ANS = str(ANS)
-    return ANS
-#print(SeekForcemin1([[['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("test")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("test")\'', 'None']]]]]))#TEST
-#print(SeekForcemin1([[['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]]))#TEST
 def SeekForce(ArgList):
     '''
     arg1 = filename
     arg2 = specifc arg
     arg3 = function to use
-    arg4 = how to modify 1st arg for arg3
-    arg5 = how to modify 2nd arg for arg3
+    arg4 = how to modify 1st arg for arg3 or []
+    hint: this is from file
+    arg5 = how to modify 2nd arg for arg3 or []
+    hint: this affects arg3
     RETURN = ??
     THIS IS SUPPOSED TO take a filename with finite functions in it, a specific argument X, and a binary function
     then it composes X with everything in the file and returns all the answers (make empty a nonrepeating answer!)
@@ -3794,6 +3759,62 @@ def SeekForce(ArgList):
 #SeekForce(['MemoryUNORDERED.txt','argument_1 == "C"',delta2,SeekForcemin1,[]])
 #print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt','argument_1 == "b"',delta2,[],SeekForcemin1]))
 ########print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt',"[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("f")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)'+ ", [" + "['f\\n']\n" + "]]]",delta2,[],[]]))
+
+def SeekForcemin1(argList):
+    '''
+    this is the first min I have for seekforce
+    PROBLEM I AM TRYING TO SOLVE:
+    right  now I have delta2(input, FUNCTION)
+    but I WANT:
+    delta2(input, function input)
+    delta2(function, function)
+    so I just need to keep the two objects similar
+
+    so this function modifies functions into just function inputs
+
+    arg1 = finite function THAT IS A STRING
+    RETURN:
+    A Finite Function,if possible; ELSE
+    a string input for function(arg3) in SeekForce
+    
+    '''
+    ANS = []
+    arg1 = argList[0]
+    #try evaling:
+    try:
+        arg1 = eval(arg1)
+    except:
+        pass
+    #print("arg1",arg1)
+    #print("wtf",fCheck(arg1))
+    if fCheck(arg1) == True:
+        for x in arg1:
+            ANS.append(x[0])
+    try:
+        if type(eval(ANS)) == list:
+            ANS = eval(ANS)
+    except:
+        ANS = str(ANS)
+    return ANS
+#print(SeekForcemin1([[['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("test")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("test")\'', 'None']]]]]))#TEST
+#print(SeekForcemin1([[['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]]))#TEST
+
+def SeekForcemin2(argList):
+    arg1 = argList[0]
+    #hint: this is line from file
+    arg2 = argList[1]
+    #hint: this is argument from SeekForce
+    #arg2 == delta2([arg1,arg2])
+    string1 = toString([ran(arg1),"naive"])
+    string2 = toString([ran(arg2),"naive"])
+    print("args",argList)
+    print("seekforcemin2function",delta2([string1,string2]))
+    #hint: arg2 in this func is our guess for abstraction
+    print("seekforcemin2check for equal",toString([ran(delta2([string1,string2])),"naive"]) == string2)
+
+#print(SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]))
+
+
 def forFix(argList):
     '''
     arg1 = string
