@@ -3807,10 +3807,15 @@ def SeekForcemin2(argList):
     #arg2 == delta2([arg1,arg2])
     string1 = toString([ran(arg1),"naive"])
     string2 = toString([ran(arg2),"naive"])
-    print("args",argList)
-    print("seekforcemin2function",delta2([string1,string2]))
+    #print("args",argList)
+    #print("seekforcemin2function",delta2([string1,string2]))
+    #print("args for equal",toString([ran(delta2([string1,string2])),"naive"]), string2)
     #hint: arg2 in this func is our guess for abstraction
-    print("seekforcemin2check for equal",toString([ran(delta2([string1,string2])),"naive"]) == string2)
+    #print("seekforcemin2check for equal",toString([ran(delta2([string1,string2])),"naive"]) == string2)
+    ANS = []
+    if toString([ran(delta2([string1,string2])),"naive"]) == string2:
+        ANS.append(string1)
+    return ANS
 
 #print(SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]))
 
