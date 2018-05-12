@@ -3737,7 +3737,7 @@ def SeekForce(ArgList):
                         #print("wtf2 went wrong?", e)
                         pass
                     
-                    #print("stats for arg3", linemod, arg2mod)
+                    print("stats for arg3", linemod, arg2mod)
                     try:
                         exist = arg3([linemod,arg2mod])
                         #print("try this attempt",exist)
@@ -3746,7 +3746,7 @@ def SeekForce(ArgList):
                         if len([z for z in ANS if z == exist]) == 0:
                             ANS.append(exist)
                     except Exception as e:
-                        #print("ERROR IS ",e)
+                        #print("ERROR IN SEEKFORCE ",e)
                         if e != []:
                             #
                             ANS.append(e)
@@ -3811,6 +3811,7 @@ def SeekForcemin2(argList):
     #print("wtf is arg1",arg1)
     string1 = toString([ran(arg1),"naive"])
     string2 = toString([ran(arg2),"naive"])
+    print("how is empty produced",string1)
     #print("wtf happens with tostring",string1)
     #print("args",argList)
     #print("seekforcemin2function",delta2([string1,string2]))
@@ -3972,14 +3973,14 @@ def maxlargestequivclasses(argList):
     arg1 = argList[0]
     deltabatch = []
     for x in range(int((len(arg1)*(len(arg1)-1))/2)):
-        #print("x",x)
-        #print(nchoose2partgen([arg1,x]))
-        print("why empties",nchoose2partgen([arg1,x])[0],nchoose2partgen([arg1,x])[1])
-        candidate = delta2([nchoose2partgen([arg1,x])[0],nchoose2partgen([arg1,x])[1]])
+        print("x",x)
+        print(nchoose2partgen([arg1,x]))
+        print("why empties",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
+        candidate = delta2([nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0]])
         deltabatch.append(candidate)
     return deltabatch
 
-#print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])]))
+print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])]))
 
 ##############################################################
 
