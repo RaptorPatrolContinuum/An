@@ -3920,24 +3920,35 @@ def nchoose2partgen(argList):
     ANS = ""
     #arg1 should be list
     arg1 = argList[0]
-    arg1size = len(argList[0])
+    #-1 here because 0 index
+    arg1size = len(argList[0])-1
     #arg2 should be index
     arg2 = argList[1]
     #task1: find out if the number is valid
-    if arg2 > (arg1size*(arg1size-1))/2:
+    #+1 here because 0 index
+    if arg2 > (arg1size*(arg1size+1))/2:
         return str(arg2) + " OUT OF BOUNDS < " + str((arg1size*(arg1size-1))/2)
     #task2: figure out which "row" the number is at
     toggle = True
     row = 0
     arg2check = arg2
     while toggle:
-        if arg2check <= arg1size:
+        #print("wtf",arg2check, arg1size - row,row)
+        if arg2check < arg1size - row:
             toggle = False
+            break
         else:
             arg2check = arg2check - arg1size + row
         row += 1
-    newlist = arg1[row:]
+    newlist = arg1[row+1:]
+    #print("whicgh index", arg1,row,newlist,arg2check)
     return [arg1[row],newlist[arg2check]]
+
+#testlist = ["A","B","C","D","E","F","G","H","I","J"]
+
+#for x in range(int((len(testlist)*(len(testlist)-1))/2)):
+#    print("x",x)
+#    print(nchoose2partgen([testlist,x]))
 #print("test partgen",nchoose2partgen([["A","B","C","D"],5]))
 
 
