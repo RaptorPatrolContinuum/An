@@ -3800,13 +3800,18 @@ def SeekForcemin1(argList):
 #print(SeekForcemin1([[['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]]))#TEST
 
 def SeekForcemin2(argList):
+    '''
+    this goes through a file and collects all the functions that have inputs that are encompassed by some abstraction
+    '''
     arg1 = argList[0]
     #hint: this is line from file
     arg2 = argList[1]
     #hint: this is argument from SeekForce
     #arg2 == delta2([arg1,arg2])
+    #print("wtf is arg1",arg1)
     string1 = toString([ran(arg1),"naive"])
     string2 = toString([ran(arg2),"naive"])
+    #print("wtf happens with tostring",string1)
     #print("args",argList)
     #print("seekforcemin2function",delta2([string1,string2]))
     #print("args for equal",toString([ran(delta2([string1,string2])),"naive"]), string2)
@@ -3817,7 +3822,7 @@ def SeekForcemin2(argList):
         ANS.append(string1)
     return ANS
 
-#print(SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]))
+print(SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]))
 
 
 def forFix(argList):
@@ -3951,6 +3956,30 @@ def nchoose2partgen(argList):
 #    print(nchoose2partgen([testlist,x]))
 #print("test partgen",nchoose2partgen([["A","B","C","D"],5]))
 
+def maxlargestequivclasses(argList):
+    '''
+    given a set, return the "largest possible" equivalence classes:
+
+    hint: equiv classes are distinct so "no overlap" <---> no "multiple versions"
+    hintb: if X in equiv class A AND in equiv class B,
+    X is ALSO in equiv class delta2(A,B) <--- this is the one I pick
+    
+    task1: pair all of them using nchoose2partgen and max length of list -> 1st batch of deltas
+    task2: pair 1st batch of deltas of them using nchoose2partgen and max length of list AND hope for no EMPTIES
+    task3: continue until next batch of deltas is empty set OR SINGLE object
+    '''
+    #set/iterable
+    arg1 = argList[0]
+    deltabatch = []
+    for x in range(int((len(arg1)*(len(arg1)-1))/2)):
+        #print("x",x)
+        #print(nchoose2partgen([arg1,x]))
+        print("why empties",nchoose2partgen([arg1,x])[0],nchoose2partgen([arg1,x])[1])
+        candidate = delta2([nchoose2partgen([arg1,x])[0],nchoose2partgen([arg1,x])[1]])
+        deltabatch.append(candidate)
+    return deltabatch
+
+#print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])]))
 
 ##############################################################
 
