@@ -3985,16 +3985,40 @@ def maxlargestequivclasses(argList):
         #print(nchoose2partgen([arg1,x]))
         try:
             #print("why empties1",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
-            #print("why empties2",eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1])
+            print("fml",nchoose2partgen([arg1,x])[0][0])
+            print("why empties2",eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1])
             #candidate = delta2([nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0]])
             candidate = delta2([eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1]])
             #print("CANDIDATE!",candidate)
-            deltabatch.append(candidate)
-        except:
+            if len([y for y in deltabatch if y == candidate]) == 0:
+                deltabatch.append(candidate)
+        except Exception as e:
+            print("largest equiv fail",e)
             pass
+    if len(deltabatch) <= 1:
+        return deltabatch
+    olddeltabatch = deltabatch
+    print("OG deltabatch",deltabatch)
+    deltabatch = []
+    while len(olddeltabatch)>1:
+        olddeltabatch = deltabatch
+        deltabatch = []
+        for x in range(int((len(olddeltabatch)*(len(olddeltabatch)-1))/2)):
+            print("x",x)
+            #print(nchoose2partgen([arg1,x]))
+            try:
+                #print("why empties1",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
+                #print("why empties2",eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1])
+                #candidate = delta2([nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0]])
+                candidate = delta2([eval(nchoose2partgen([olddeltabatch,x])[0][0])[1],eval(nchoose2partgen([olddeltabatch,x])[1][0])[1]])
+                #print("CANDIDATE!",candidate)
+                deltabatch.append(candidate)
+            except:
+                pass
     return deltabatch
 
-print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])]))
+#print(maxlargestequivclasses([[[["","print(\"test\")"]],[["","print(\"two equiv classes\")"]],[["","1+1"]],[["","2+3"]]]]))
+#print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])]))
 
 ##############################################################
 
