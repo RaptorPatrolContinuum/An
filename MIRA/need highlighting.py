@@ -1,5 +1,14 @@
 
 
+print(TotalSI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
+print(TotalSI([[[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['3','3']]],[[['1','1'],['2','2'],['3','4']],[['1','1'],['2','2'],['3','4']]]],"Auto","all"]))
+
+
+[[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['3','3']]],[[['1','1'],['2','2'],['3','4']],[['1','1'],['2','2'],['3','4']]]]
+
+
+
+
 [['argument_1==\'print("I\'m dying")\'', 'print("I\'m dying")']]
 
 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("', 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("'], ['α0', 'α0'], ['")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', '")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)']]

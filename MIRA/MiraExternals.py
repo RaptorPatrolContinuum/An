@@ -4055,7 +4055,7 @@ def TotalSI(argList):
     ANS = []
     ANStoggle = True
     if testDATA[0] == True:
-        for x in testDATA[1]:
+        for x in testDATA[1:]:
             print("what x do I go over",x)
             #if x[0] AND x[1] are both finite functions/graphs:
             while fCheck(x[0]) == True and fCheck(x[1]) == True and ANStoggle == True:
@@ -4076,6 +4076,8 @@ def TotalSI(argList):
             #hint: if they're not functions then they're atoms and they immediately pass
     return ANS
 
+#print(TotalSI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"","all"]))
+
 def totalSImin(argList):
     '''
     ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
@@ -4085,7 +4087,7 @@ def totalSImin(argList):
     
     return ANS
 
-#print(TotalSI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
+
 
 ##############################################################
 
