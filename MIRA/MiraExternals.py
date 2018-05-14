@@ -3814,8 +3814,8 @@ def SeekForcemin2(argList):
     arg2 = argList[1]
     #hint: this is argument from SeekForce
     #arg2 == delta2([arg1,arg2])
-    #print("wtf is arg1",arg1)
-    #print("SF2 args",argList)
+    print("wtf is arg1",arg1)
+    print("wtf is arg2",arg2)
     string1 = toString([ran(arg1),"naive"])
     string2 = toString([ran(arg2),"naive"])
     #print("how is empty produced",string1)
@@ -3826,12 +3826,13 @@ def SeekForcemin2(argList):
     #hint: arg2 in this func is our guess for abstraction
     #print("seekforcemin2check for equal",toString([ran(delta2([string1,string2])),"naive"]) == string2)
     ANS = []
+    print("ifcheck",toString([ran(delta2([string1,string2])),"naive"]),"|",string2,"|",toString([ran(delta2([string1,string2])),"naive"]) == string2)
     if toString([ran(delta2([string1,string2])),"naive"]) == string2:
         ANS.append(string1)
     return ANS
 
+#SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
 #print(SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]))
-
 
 def forFix(argList):
     '''
@@ -4018,6 +4019,9 @@ def maxlargestequivclasses(argList):
     return deltabatch
 
 #print(maxlargestequivclasses([[[["","print(\"test\")"]],[["","print(\"two equiv classes\")"]],[["","1+1"]],[["","2+3"]]]]))
+#SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
+#print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])]))
+#SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])
 #print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])]))
 
 ##############################################################

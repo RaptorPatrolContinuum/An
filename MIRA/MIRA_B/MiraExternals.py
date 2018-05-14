@@ -192,10 +192,16 @@ def toString(argList):
         #print("what is f",f)
         for x in f:
             #print("what is x",x,x[0])
-            try:
-                ANS = ANS + str(x[0])
-            except:
-                ANS = ANS + str("")
+            if type(x) == str:
+                try:
+                    ANS = ANS + str(x)
+                except:
+                    ANS = ANS + str("")
+            else:
+                try:
+                    ANS = ANS + str(x[0])
+                except:
+                    ANS = ANS + str("")
         return ANS
     if fCheck(f) == False:
         print("f1 is function? toString", fCheck(f))
@@ -3035,6 +3041,7 @@ def maxlongestcontig(argList):
     return ANS
 
 def delta2(argList):
+    #takes 2 strings and returns delta on what's different between two strings
     LHS = argList[0]
     RHS = argList[1]
     try:
@@ -3671,51 +3678,15 @@ def Applyfunc(argList):
     #Applyfunc([[['TOTAL_ARGUMENT == "b"', 'd'],['TOTAL_ARGUMENT == "b"', 'e'],['TOTAL_ARGUMENT == "b"', 'f']],'b'])
     return ANS
 
-def SeekForcemin1(argList):
-    '''
-    this is the first min I have for seekforce
-    PROBLEM I AM TRYING TO SOLVE:
-    right  now I have delta2(input, FUNCTION)
-    but I WANT:
-    delta2(input, function input)
-    delta2(function, function)
-    so I just need to keep the two objects similar
-
-    so this function modifies functions into just function inputs
-
-    arg1 = finite function THAT IS A STRING
-    RETURN:
-    A Finite Function,if possible; ELSE
-    a string input for function(arg3) in SeekForce
-    
-    '''
-    ANS = []
-    arg1 = argList[0]
-    #try evaling:
-    try:
-        arg1 = eval(arg1)
-    except:
-        pass
-    #print("arg1",arg1)
-    #print("wtf",fCheck(arg1))
-    if fCheck(arg1) == True:
-        for x in arg1:
-            ANS.append(x[0])
-    try:
-        if type(eval(ANS)) == list:
-            ANS = eval(ANS)
-    except:
-        ANS = str(ANS)
-    return ANS
-#print(SeekForcemin1([[['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("test")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("test")\'', 'None']]]]]))#TEST
-#print(SeekForcemin1([[['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]]))#TEST
 def SeekForce(ArgList):
     '''
     arg1 = filename
     arg2 = specifc arg
     arg3 = function to use
-    arg4 = how to modify 1st arg for arg3
-    arg5 = how to modify 2nd arg for arg3
+    arg4 = how to modify 1st arg for arg3 or []
+    hint: this is from file
+    arg5 = how to modify 2nd arg for arg3 or []
+    hint: this affects arg3
     RETURN = ??
     THIS IS SUPPOSED TO take a filename with finite functions in it, a specific argument X, and a binary function
     then it composes X with everything in the file and returns all the answers (make empty a nonrepeating answer!)
@@ -3781,7 +3752,7 @@ def SeekForce(ArgList):
                         if len([z for z in ANS if z == exist]) == 0:
                             ANS.append(exist)
                     except Exception as e:
-                        #print("ERROR IS ",e)
+                        #print("ERROR IN SEEKFORCE ",e)
                         if e != []:
                             #
                             ANS.append(e)
@@ -3794,6 +3765,74 @@ def SeekForce(ArgList):
 #SeekForce(['MemoryUNORDERED.txt','argument_1 == "C"',delta2,SeekForcemin1,[]])
 #print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt','argument_1 == "b"',delta2,[],SeekForcemin1]))
 ########print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt',"[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("f")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)'+ ", [" + "['f\\n']\n" + "]]]",delta2,[],[]]))
+
+def SeekForcemin1(argList):
+    '''
+    this is the first min I have for seekforce
+    PROBLEM I AM TRYING TO SOLVE:
+    right  now I have delta2(input, FUNCTION)
+    but I WANT:
+    delta2(input, function input)
+    delta2(function, function)
+    so I just need to keep the two objects similar
+
+    so this function modifies functions into just function inputs
+
+    arg1 = finite function THAT IS A STRING
+    RETURN:
+    A Finite Function,if possible; ELSE
+    a string input for function(arg3) in SeekForce
+    
+    '''
+    ANS = []
+    arg1 = argList[0]
+    #try evaling:
+    try:
+        arg1 = eval(arg1)
+    except:
+        pass
+    #print("arg1",arg1)
+    #print("wtf",fCheck(arg1))
+    if fCheck(arg1) == True:
+        for x in arg1:
+            ANS.append(x[0])
+    try:
+        if type(eval(ANS)) == list:
+            ANS = eval(ANS)
+    except:
+        ANS = str(ANS)
+    return ANS
+#print(SeekForcemin1([[['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("test")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("test")\'', 'None']]]]]))#TEST
+#print(SeekForcemin1([[['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']]]))#TEST
+
+def SeekForcemin2(argList):
+    '''
+    this goes through a file and collects all the functions that have inputs that are encompassed by some abstraction
+    '''
+    arg1 = argList[0]
+    #hint: this is line from file
+    arg2 = argList[1]
+    #hint: this is argument from SeekForce
+    #arg2 == delta2([arg1,arg2])
+    #print("wtf is arg1",arg1)
+    #print("SF2 args",argList)
+    string1 = toString([ran(arg1),"naive"])
+    string2 = toString([ran(arg2),"naive"])
+    #print("how is empty produced",string1)
+    #print("wtf happens with tostring",string1)
+    #print("args",argList)
+    #print("seekforcemin2function",delta2([string1,string2]))
+    #print("args for equal",toString([ran(delta2([string1,string2])),"naive"]), string2)
+    #hint: arg2 in this func is our guess for abstraction
+    #print("seekforcemin2check for equal",toString([ran(delta2([string1,string2])),"naive"]) == string2)
+    ANS = []
+    if toString([ran(delta2([string1,string2])),"naive"]) == string2:
+        ANS.append(string1)
+    return ANS
+
+#print(SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]))
+
+
 def forFix(argList):
     '''
     arg1 = string
@@ -3867,6 +3906,120 @@ def Printdbg(argList):
         print(arg1)
     return argList
 #Printdbg(["wtf?", "DansGame", "ON"])
+
+def nchoose2partgen(argList):
+    '''
+    hint:
+    list might be huge, so just index through integers
+    then this function is used to produce right object at right index
+
+    need to know:
+    max length of original iterable: (n(n-1))/2
+    need to set an order:
+    hint:
+    this is how I do it
+    n    list -> list - 0th element
+    n-1    list - 0th element -> list - 0th element - 1st element
+    n-2...
+
+    this function takes a list AND an index, then produces a number (hint: 0-indexed!) if I were to make a listing of n choose 2 objects
+    then return the pair that is at that index
+
+    task1: find out if the number is valid
+    task2: figure out which "row" the number is at
+    task3: return the right pair
+    task4: test this out quickly
+    ''' 
+    ANS = ""
+    #arg1 should be list
+    arg1 = argList[0]
+    #-1 here because 0 index
+    arg1size = len(argList[0])-1
+    #arg2 should be index
+    arg2 = argList[1]
+    #task1: find out if the number is valid
+    #+1 here because 0 index
+    if arg2 > (arg1size*(arg1size+1))/2:
+        return str(arg2) + " OUT OF BOUNDS < " + str((arg1size*(arg1size-1))/2)
+    #task2: figure out which "row" the number is at
+    toggle = True
+    row = 0
+    arg2check = arg2
+    while toggle:
+        #print("wtf",arg2check, arg1size - row,row)
+        if arg2check < arg1size - row:
+            toggle = False
+            break
+        else:
+            arg2check = arg2check - arg1size + row
+        row += 1
+    newlist = arg1[row+1:]
+    #print("whicgh index", arg1,row,newlist,arg2check)
+    return [arg1[row],newlist[arg2check]]
+
+#testlist = ["A","B","C","D","E","F","G","H","I","J"]
+
+#for x in range(int((len(testlist)*(len(testlist)-1))/2)):
+#    print("x",x)
+#    print(nchoose2partgen([testlist,x]))
+#print("test partgen",nchoose2partgen([["A","B","C","D"],5]))
+
+def maxlargestequivclasses(argList):
+    '''
+    given a set, return the "largest possible" equivalence classes:
+
+    hint: equiv classes are distinct so "no overlap" <---> no "multiple versions"
+    hintb: if X in equiv class A AND in equiv class B,
+    X is ALSO in equiv class delta2(A,B) <--- this is the one I pick
+    
+    task1: pair all of them using nchoose2partgen and max length of list -> 1st batch of deltas
+
+    task2: pair 1st batch of deltas of them using nchoose2partgen and max length of list AND hope for no EMPTIES
+    task3: continue until next batch of deltas is empty set OR SINGLE object
+    '''
+    #set/iterable
+    arg1 = argList[0]
+    deltabatch = []
+    for x in range(int((len(arg1)*(len(arg1)-1))/2)):
+        print("x",x)
+        #print(nchoose2partgen([arg1,x]))
+        try:
+            #print("why empties1",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
+            print("fml",nchoose2partgen([arg1,x])[0][0])
+            print("why empties2",eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1])
+            #candidate = delta2([nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0]])
+            candidate = delta2([eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1]])
+            #print("CANDIDATE!",candidate)
+            if len([y for y in deltabatch if y == candidate]) == 0:
+                deltabatch.append(candidate)
+        except Exception as e:
+            print("largest equiv fail",e)
+            pass
+    if len(deltabatch) <= 1:
+        return deltabatch
+    olddeltabatch = deltabatch
+    print("OG deltabatch",deltabatch)
+    deltabatch = []
+    while len(olddeltabatch)>1:
+        olddeltabatch = deltabatch
+        deltabatch = []
+        for x in range(int((len(olddeltabatch)*(len(olddeltabatch)-1))/2)):
+            print("x",x)
+            #print(nchoose2partgen([arg1,x]))
+            try:
+                #print("why empties1",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
+                #print("why empties2",eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1])
+                #candidate = delta2([nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0]])
+                candidate = delta2([eval(nchoose2partgen([olddeltabatch,x])[0][0])[1],eval(nchoose2partgen([olddeltabatch,x])[1][0])[1]])
+                #print("CANDIDATE!",candidate)
+                deltabatch.append(candidate)
+            except:
+                pass
+    return deltabatch
+
+#print(maxlargestequivclasses([[[["","print(\"test\")"]],[["","print(\"two equiv classes\")"]],[["","1+1"]],[["","2+3"]]]]))
+#print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])]))
+
 ##############################################################
 
 def printpls(obj):
