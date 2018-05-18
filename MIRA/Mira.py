@@ -231,7 +231,17 @@ while Descent:
             print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
             for x in guessAbst:
                 print("x in guessAbst",x)
-                #try to seekforce with this and something else
+                print("try to seekforce with this and something else")
+                print(SeekForce([MemoryUNORDERED,x,SeekForcemin2,[],[]]))
+                print(SeekForce([memoryLong,x,SeekForcemin2,[],[]]))
+                '''
+                plan:
+                >check if we know the answer already (whether with compose or composeMETA)
+                >else check with sense and CONFIRM or DENY expectations
+                >confirm, skip
+                >deny -> MEMORIZE AND ADD TO MEMORY
+                DONE
+                '''
             #new plan:
             #for each abstraction, collect the answers
             #then delta2 on all the answers

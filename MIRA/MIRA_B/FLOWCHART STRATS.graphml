@@ -4093,7 +4093,7 @@ not function = use Quine <y:LabelModel>
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="2103.484617778331" y="4400.283206591181"/>
           <y:Fill color="#FF00FF" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="330.68359375" x="-43.722498897820515" y="-31.286557022453962">THIS FEELS TOO FUCKING SPECIFIC AT THE MOMEMNT<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>

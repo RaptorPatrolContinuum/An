@@ -1141,8 +1141,8 @@ def ShittySI(ListItems):
                         #print("ADchecks",AD1,AD2)
                         #print("tobin AD1","{0:b}".format(AD1)[::-1])
                         #print("tobin AD2","{0:b}".format(AD2)[::-1])
-                        print("LessthanC",LessThan_C(AD1,AD2))
-                        print("len(ALLTRIGGER) == 0",len(ALLTRIGGER) == 0)
+                        #print("LessthanC",LessThan_C(AD1,AD2))
+                        #print("len(ALLTRIGGER) == 0",len(ALLTRIGGER) == 0)
                         if LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
                             return [True,PhiConstruct(Indexer,LinkPool,AutoCheck)]
                         elif len(ANS) > 0:
@@ -1150,7 +1150,7 @@ def ShittySI(ListItems):
                         else:
                             ANS.append(True)
                             ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
-                        print("WTF IS ANS1",ANS)
+                        #print("WTF IS ANS1",ANS)
             NumberIndex = NumberNew
         else:
             for H in range(0,G):
@@ -1226,6 +1226,7 @@ def ShittySI(ListItems):
         return ANS
     return ["Assume False"]
 
+#print(ShittySI([[[['A','A'],['B','B'],['C','C']],[['A','A'],['B','B'],['D','D']]],"","all"]))
 #print(ShittySI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
 
 def ShittySIBEFOREALL(ListItems):
@@ -3815,7 +3816,7 @@ def SeekForcemin2(argList):
     #hint: this is argument from SeekForce
     #arg2 == delta2([arg1,arg2])
     #print("wtf is arg1",arg1)
-    #print("SF2 args",argList)
+    #print("wtf is arg2",arg2)
     string1 = toString([ran(arg1),"naive"])
     string2 = toString([ran(arg2),"naive"])
     #print("how is empty produced",string1)
@@ -3826,12 +3827,13 @@ def SeekForcemin2(argList):
     #hint: arg2 in this func is our guess for abstraction
     #print("seekforcemin2check for equal",toString([ran(delta2([string1,string2])),"naive"]) == string2)
     ANS = []
+    #print("ifcheck",toString([ran(delta2([string1,string2])),"naive"]),"|",string2,"|",toString([ran(delta2([string1,string2])),"naive"]) == string2)
     if toString([ran(delta2([string1,string2])),"naive"]) == string2:
         ANS.append(string1)
     return ANS
 
+#SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
 #print(SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]))
-
 
 def forFix(argList):
     '''
@@ -3981,30 +3983,30 @@ def maxlargestequivclasses(argList):
     arg1 = argList[0]
     deltabatch = []
     for x in range(int((len(arg1)*(len(arg1)-1))/2)):
-        print("x",x)
+        #print("x",x)
         #print(nchoose2partgen([arg1,x]))
         try:
             #print("why empties1",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
-            print("fml",nchoose2partgen([arg1,x])[0][0])
-            print("why empties2",eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1])
+            #print("fml",nchoose2partgen([arg1,x])[0][0])
+            #print("why empties2",eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1])
             #candidate = delta2([nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0]])
             candidate = delta2([eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1]])
             #print("CANDIDATE!",candidate)
             if len([y for y in deltabatch if y == candidate]) == 0:
                 deltabatch.append(candidate)
         except Exception as e:
-            print("largest equiv fail",e)
+            #print("largest equiv fail",e)
             pass
     if len(deltabatch) <= 1:
         return deltabatch
     olddeltabatch = deltabatch
-    print("OG deltabatch",deltabatch)
+    #print("OG deltabatch",deltabatch)
     deltabatch = []
     while len(olddeltabatch)>1:
         olddeltabatch = deltabatch
         deltabatch = []
         for x in range(int((len(olddeltabatch)*(len(olddeltabatch)-1))/2)):
-            print("x",x)
+            #print("x",x)
             #print(nchoose2partgen([arg1,x]))
             try:
                 #print("why empties1",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
@@ -4018,7 +4020,74 @@ def maxlargestequivclasses(argList):
     return deltabatch
 
 #print(maxlargestequivclasses([[[["","print(\"test\")"]],[["","print(\"two equiv classes\")"]],[["","1+1"]],[["","2+3"]]]]))
+#SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
+#print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])]))
+
+###SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])
 #print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])]))
+
+def TotalSI(argList):
+    '''
+    ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
+
+    "SI downwards"
+    basically for this SI, I also check 'downwards' at each step to make sure I totally map everything properly
+    this is to solve this problem:
+    PROBLEM:
+    SI ONLY MATCHES UPPER LEVEL, WHAT IF I WANT TO MATCH AT ALL LEVELS OF BASIS (if things in basis were also functions)
+    then on the basis level you have more SI problems to go until you hit an answer OR you fail at all points
+
+    step1: SI-all A to B and return list of possible answers
+    step2: for each answer, I do this:
+    for x in ANSWER:
+        if I AND J are both finite functions/graphs:
+            SI-all I TO J in X
+            if SI-all is empty, fail this answer
+            ELSE:
+                'go downwards infinitely'
+                >define a totalSImin that does the above (for x in ANSWER I SI parts to each other) AND totalSImin calls itself until end condition
+
+    input same as ShittySI
+    PROBLEM: if I change shittySI this function might have problems
+    '''
+    testDATA = ShittySI(argList)
+    print("what is testdata?",testDATA)
+    ANS = []
+    ANStoggle = True
+    if testDATA[0] == True:
+        for x in testDATA[1:]:
+            print("what x do I go over",x)
+            #if x[0] AND x[1] are both finite functions/graphs:
+            while fCheck(x[0]) == True and fCheck(x[1]) == True and ANStoggle == True:
+                #SI-all I TO J in X
+                #ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
+                minidata = ShittySI([[x[0],x[1]],"","all"])
+                
+                #if SI-all is empty, fail this answer
+                if minidata[0] == False:
+                    #fail this answer
+                    #ANStoggle = False
+                    break
+                else:
+                    #'go downwards infinitely'
+                    #>define a totalSImin that does the above (for x in ANSWER I SI parts to each other) AND totalSImin calls itself until end condition
+                    totalSImin(argList)
+            ANS.append(x)
+            #hint: if they're not functions then they're atoms and they immediately pass
+    return ANS
+
+#print(TotalSI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"","all"]))
+
+def totalSImin(argList):
+    '''
+    ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
+    >define a totalSImin that does the above (for x in ANSWER I SI parts to each other) AND totalSImin calls itself until end condition
+    '''
+    ANS = "STUCK HERE"
+    
+    return ANS
+
+
 
 ##############################################################
 
