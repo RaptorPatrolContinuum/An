@@ -3987,7 +3987,7 @@ def maxlargestequivclasses(argList):
     #print("what is going on",range(int((len(arg1)*(len(arg1)-1))/2)))
     for x in range(int((len(arg1)*(len(arg1)-1))/2)):
         print("x",x)
-        #print(nchoose2partgen([arg1,x]))
+        print(nchoose2partgen([arg1,x]))
         try:
             #print("why empties1",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
             #print("fml",nchoose2partgen([arg1,x])[0][0])
@@ -4003,30 +4003,38 @@ def maxlargestequivclasses(argList):
             candidate = arg2(nchoose2partgen([arg1,x]))
             if len([y for y in deltabatch if y == candidate]) == 0:
                 deltabatch.append(candidate)
-            print("what is deltabatch", deltabatch)
+            #print("what is deltabatch", deltabatch)
         except Exception as e:
-            print("largest equiv fail",e)
+            print("largest equiv fail|",e)
             pass
+    print("skin tight jeans be yoru teenage dream tonight", deltabatch)
+    print("ifcheck WTF", len(deltabatch) <= 1)
+    
     if len(deltabatch) <= 1:
         return deltabatch
     olddeltabatch = deltabatch
-    #print("OG deltabatch",deltabatch)
+    print("OG deltabatch",olddeltabatch)
     deltabatch = []
     while len(olddeltabatch)>1:
-        olddeltabatch = deltabatch
         deltabatch = []
+        print("one touch",int((len(olddeltabatch)*(len(olddeltabatch)-1))/2))
         for x in range(int((len(olddeltabatch)*(len(olddeltabatch)-1))/2)):
-            #print("x",x)
-            #print(nchoose2partgen([arg1,x]))
+            print("upper x",x)
+            print(nchoose2partgen([olddeltabatch,x]))
             try:
                 #print("why empties1",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
                 #print("why empties2",eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1])
                 #candidate = delta2([nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0]])
-                candidate = delta2([eval(nchoose2partgen([olddeltabatch,x])[0][0])[1],eval(nchoose2partgen([olddeltabatch,x])[1][0])[1]])
+                ###candidate = delta2([eval(nchoose2partgen([olddeltabatch,x])[0][0])[1],eval(nchoose2partgen([olddeltabatch,x])[1][0])[1]])
                 #print("CANDIDATE!",candidate)
-                deltabatch.append(candidate)
+                ###deltabatch.append(candidate)
+                candidate = arg2(nchoose2partgen([olddeltabatch,x]))
+                if len([y for y in deltabatch if y == candidate]) == 0:
+                    deltabatch.append(candidate)
             except:
                 pass
+        olddeltabatch = deltabatch
+        print("CHANGE THINGY ==========================")
     return deltabatch
 
 #degen problems:
@@ -4038,10 +4046,10 @@ def maxlargestequivclasses(argList):
 
 #print(maxlargestequivclasses([[[["","print(\"test\")"]],[["","print(\"two equiv classes\")"]],[["","1+1"]],[["","2+3"]]]]))
 #SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
-#print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])]))
+#print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]]),maxlargestequivclassesmin1]))
 
 ###SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])
-#print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])]))
+#print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]),maxlargestequivclassesmin1]))
 
 def maxlargestequivclassesmin1(argList):
     '''
@@ -4064,28 +4072,30 @@ def maxlargestequivclassesmin1(argList):
     LHS = argList[0]
     RHS = argList[1]
     ANS = []
+    print("LHS",LHS)
+    print("RHS",RHS)
     try:
         #hint: what if its a function under eval
         if fCheck(eval(LHS)) == True and fCheck(eval(RHS)) == True:
-            for pair in fastAlgXproduct([LHS,RHS]):
-                print("this is pair",pair)
-                testthis = delta2([pair[0],pair[1]])
-                print("this is delta",testthis)
+            for pair in fastAlgXproduct([eval(LHS),eval(RHS)]):
+                #print("this is pair1",pair)
+                testthis = delta2([str(pair[0][1]),str(pair[1][1])])
+                #print("this is delta1",testthis)
                 if len([y for y in ANS if y == testthis]) == 0:
                     ANS.append(testthis)
-                print("HYPERS ANS",ANS)
+                #print("HYPERS ANS1",ANS)
     except:
         if fCheck(LHS) == True and fCheck(RHS) == True:
             for pair in fastAlgXproduct([LHS,RHS]):
-                print("this is pair",pair)
-                testthis = delta2([pair[0],pair[1]])
-                print("this is delta",testthis)
+                #print("this is pair2",pair)
+                testthis = delta2([str(pair[0][1]),str(pair[1][1])])
+                #print("this is delta2",testthis)
                 if len([y for y in ANS if y == testthis]) == 0:
                     ANS.append(testthis)
-                print("HYPERS ANS",ANS)
+                #print("HYPERS ANS2",ANS)
         else:
             ANS = delta2([str(LHS),str(RHS)])
-            print("not function means this ANS",ANS)
+            #print("not function means this ANS",ANS)
     return ANS
 
 
