@@ -3747,7 +3747,6 @@ def SeekForce(ArgList):
                     #print("stats for arg3", linemod, arg2mod)
                     try:
                         exist = arg3([linemod,arg2mod])
-                        #print("try this attempt",exist)
                         #print("SEEKFORCE APPEND",exist)
                         #print("append ?",len([z for z in ANS if z == exist]) == 0)
                         if len([z for z in ANS if z == exist]) == 0:
@@ -3819,18 +3818,15 @@ def SeekForcemin2(argList):
     #print("wtf is arg2",arg2)
     string1 = toString([ran(arg1),"naive"])
     string2 = toString([ran(arg2),"naive"])
-    #print("how is empty produced",string1)
-    #print("wtf happens with tostring",string1)
     #print("args",argList)
     #print("seekforcemin2function",delta2([string1,string2]))
     #print("args for equal",toString([ran(delta2([string1,string2])),"naive"]), string2)
     #hint: arg2 in this func is our guess for abstraction
     #print("seekforcemin2check for equal",toString([ran(delta2([string1,string2])),"naive"]) == string2)
-    ANS = []
     #print("ifcheck",toString([ran(delta2([string1,string2])),"naive"]),"|",string2,"|",toString([ran(delta2([string1,string2])),"naive"]) == string2)
     if toString([ran(delta2([string1,string2])),"naive"]) == string2:
-        ANS.append(string1)
-    return ANS
+        #ANS.append(string1)
+        return arg1
 
 #SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
 #print(SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]))

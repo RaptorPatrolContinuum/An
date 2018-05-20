@@ -1,5 +1,13 @@
 
 
+[[['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("test")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("test")\'', 'None']]]]]
+
+[
+	[
+		['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("test")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("test")\'', 'None']]]
+		]
+	]
+
 print(TotalSI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
 print(TotalSI([[[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['3','3']]],[[['1','1'],['2','2'],['3','4']],[['1','1'],['2','2'],['3','4']]]],"Auto","all"]))
 
