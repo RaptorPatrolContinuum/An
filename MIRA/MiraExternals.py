@@ -7,7 +7,7 @@ import ast
 #import sys
 from sys import *
 import time
-import mmap
+import mmap 
 import random
 import os
 import itertools
@@ -3978,24 +3978,38 @@ def maxlargestequivclasses(argList):
 
     task2: pair 1st batch of deltas of them using nchoose2partgen and max length of list AND hope for no EMPTIES
     task3: continue until next batch of deltas is empty set OR SINGLE object
+
+    hint: arg2 is the funcmod to make this shit work
     '''
     #set/iterable
     arg1 = argList[0]
+    arg2 = argList[1]
     deltabatch = []
+    #fucking degen bullshit, basically if set is len 1 my range is 0
+    if len(arg1) <= 1:
+        return arg1
+    #print("what is going on",range(int((len(arg1)*(len(arg1)-1))/2)))
     for x in range(int((len(arg1)*(len(arg1)-1))/2)):
-        #print("x",x)
+        print("x",x)
         #print(nchoose2partgen([arg1,x]))
         try:
             #print("why empties1",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
             #print("fml",nchoose2partgen([arg1,x])[0][0])
             #print("why empties2",eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1])
             #candidate = delta2([nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0]])
-            candidate = delta2([eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1]])
+            #print("I'm lost",nchoose2partgen([arg1,x]))
+            #candidate = delta2([eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1]])
             #print("CANDIDATE!",candidate)
+            #if len([y for y in deltabatch if y == candidate]) == 0:
+            #    deltabatch.append(candidate)
+
+            #want: nchoose2partgen, delta2, eval if string and right selection if function
+            candidate = arg2(nchoose2partgen([arg1,x]))
             if len([y for y in deltabatch if y == candidate]) == 0:
                 deltabatch.append(candidate)
+            print("what is deltabatch", deltabatch)
         except Exception as e:
-            #print("largest equiv fail",e)
+            print("largest equiv fail",e)
             pass
     if len(deltabatch) <= 1:
         return deltabatch
@@ -4019,12 +4033,96 @@ def maxlargestequivclasses(argList):
                 pass
     return deltabatch
 
+#degen problems:
+#print(maxlargestequivclasses(['1',maxlargestequivclassesmin1]))
+
+#hint: need set not specialized function
+#print(maxlargestequivclasses([['1','2','G','h'],maxlargestequivclassesmin1]))
+
+
 #print(maxlargestequivclasses([[[["","print(\"test\")"]],[["","print(\"two equiv classes\")"]],[["","1+1"]],[["","2+3"]]]]))
 #SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
 #print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])]))
 
 ###SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])
 #print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])]))
+
+def maxlargestequivclassesmin1(argList):
+    '''
+    hint: nchoose2partgen([olddeltabatch,x]) has a LHS and a RHS
+    want: delta2 of something
+    L and R can be string or function
+    so grid looks like this:
+                R
+    L   |  d(string,string)                                             | d(string, a coord if x in R) OR d(string, b coord if x in R)
+        |  d(a coord of y in L,string) OR d(b coord of y in R, string)  | d(a or b coord of y in L, a or b coord of x in R)
+
+    hint:TAKE: nchoose2partgen([olddeltabatch,x]) 
+
+    NOTICE!!!!!! 
+    his function is
+    delta2(b coord if y in L, b coord if x in R)
+    ELSE:
+    d(string,string)
+    '''
+    LHS = argList[0]
+    RHS = argList[1]
+    ANS = []
+    try:
+        #hint: what if its a function under eval
+        if fCheck(eval(LHS)) == True and fCheck(eval(RHS)) == True:
+            for pair in fastAlgXproduct([LHS,RHS]):
+                print("this is pair",pair)
+                testthis = delta2([pair[0],pair[1]])
+                print("this is delta",testthis)
+                if len([y for y in ANS if y == testthis]) == 0:
+                    ANS.append(testthis)
+                print("HYPERS ANS",ANS)
+    except:
+        if fCheck(LHS) == True and fCheck(RHS) == True:
+            for pair in fastAlgXproduct([LHS,RHS]):
+                print("this is pair",pair)
+                testthis = delta2([pair[0],pair[1]])
+                print("this is delta",testthis)
+                if len([y for y in ANS if y == testthis]) == 0:
+                    ANS.append(testthis)
+                print("HYPERS ANS",ANS)
+        else:
+            ANS = delta2([str(LHS),str(RHS)])
+            print("not function means this ANS",ANS)
+    return ANS
+
+
+def fastAlgXproduct(argList):
+    '''
+    hint: I need a fast cross product and I can't use nested for loops
+    problem:
+    I have list A and list B
+    answer should be list of x in A , y in B
+    '''
+    listA = argList[0]
+    listB = argList[1]
+    lenA = len(listA)
+    lenB = len(listB)
+    TOTAL = lenA * lenB
+    i = 0
+    j = 0
+    ANS = []
+    for x in range(0,int(TOTAL)):
+        print(x)
+        if j <= lenB - 1:
+            #print("wtf",[listA[i],listB[j]])
+            ANS.append([listA[i],listB[j]])
+            j += 1
+        else:
+            i += 1
+            j = 0
+            #print("wtf",[listA[i],listB[j]])
+            ANS.append([listA[i],listB[j]])
+            j += 1
+    return ANS
+
+#print(fastAlgXproduct([['1','2','3'],['A','B','C','D']]))
 
 def TotalSI(argList):
     '''

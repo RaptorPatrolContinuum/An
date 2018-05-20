@@ -68,3 +68,6 @@
 [['TOTAL_ARGUMENT == \'[["TOTAL_ARGUMENT == \'3+7\'", \'10\']]\'', [["TOTAL_ARGUMENT == '3+7'", '10']]]]
 [["Popen(['python',C:\\An\\MIRA\\Mira.py, 1+1], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['already saw that 2\\n']\n"]]]
 [['TOTAL_ARGUMENT == \'[["TOTAL_ARGUMENT == \'1+1\'", \'2\']]\'', [["TOTAL_ARGUMENT == '1+1'", '2']]]]
+[["TOTAL_ARGUMENT == '4+5'", '9']]
+[["Popen(['python',C:\\An\\MIRA\\Mira.py, 4+5], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", []]]
+[['TOTAL_ARGUMENT == \'[["TOTAL_ARGUMENT == \'4+5\'", \'9\']]\'', [["TOTAL_ARGUMENT == '4+5'", '9']]]]
