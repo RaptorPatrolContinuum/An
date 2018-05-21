@@ -1,3 +1,9 @@
+
+
+
+[y for y in ANS if y == delta2(toString([ran(z),"naive"]),toString([ran(y),"naive"]))]
+
+
 ==================== RESTART: C:\An\MIRA\MiraExternals.py ====================
 >>> SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
 wtf is arg1 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("test")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("test")\'', 'None']]]]

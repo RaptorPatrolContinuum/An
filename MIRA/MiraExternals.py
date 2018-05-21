@@ -4004,7 +4004,6 @@ def maxlargestequivclasses(argList):
             oldbatch.append(objthing)
         #print("WTF IS ORIGINAL BATCH",oldbatch,len(oldbatch))
         try:
-            
             #want: nchoose2partgen, delta2, eval if string and right selection if function
             listprep = nchoose2partgen([arg1,x])
             #print("nC2",nchoose2partgen([arg1,x]))
@@ -4021,38 +4020,9 @@ def maxlargestequivclasses(argList):
         except Exception as e:
             print("largest equiv fail|",e)
             pass
-        
     print("skin tight jeans be yoru teenage dream tonight", deltabatch)
-    '''
-    print("ifcheck WTF", len(deltabatch) <= 1)
-    if len(deltabatch) <= 1:
-        return deltabatch
-    olddeltabatch = deltabatch
-    print("OG deltabatch",olddeltabatch)
-    deltabatch = []
-    while len(olddeltabatch)>1:
-        deltabatch = []
-        print("one touch",int((len(olddeltabatch)*(len(olddeltabatch)-1))/2))
-        print("olddeltacheck",olddeltabatch)
-        for x in range(int((len(olddeltabatch)*(len(olddeltabatch)-1))/2)):
-            print("upper x",x)
-            #print(nchoose2partgen([olddeltabatch,x]))
-            try:
-                #print("why empties1",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
-                #print("why empties2",eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1])
-                #candidate = delta2([nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0]])
-                ###candidate = delta2([eval(nchoose2partgen([olddeltabatch,x])[0][0])[1],eval(nchoose2partgen([olddeltabatch,x])[1][0])[1]])
-                #print("CANDIDATE!",candidate)
-                ###deltabatch.append(candidate)
-                candidate = arg2(nchoose2partgen([olddeltabatch,x]))
-                print("candidate check",candidate)
-                if len([y for y in deltabatch if y == candidate]) == 0:
-                    deltabatch.append(candidate)
-            except:
-                pass
-        olddeltabatch = deltabatch
-        print("CHANGE THINGY ==========================")
-    '''
+    #what do I want now?
+    #use deltabatch as our list then keep making abstractions
     return deltabatch
 
 #degen problems:
@@ -4070,6 +4040,36 @@ def maxlargestequivclasses(argList):
 ###SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])
 #print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]),maxlargestequivclassesmin1]))
 
+def maxlargestequivclassesGENERIC(argList):
+    '''
+    hint:
+    the most generic would be taking a set then just delta2 on each pair as strings and not worrying about structure
+    TEST LIST:
+    ['[[\'TOTAL_ARGUMENT == \\\'print("α0")\\\'\', \'None\']]', '[[\'TOTAL_ARGUMENT == \\\'print("α0t")\\\'\', \'None\']]', '[[α0TOTAL_ARGUMENT == α1testα2', "[[α0TOTAL_ARGUMENT == α1, 'α2", "[[α0TOTAL_ARGUMENT == α1'', α2", '[["TOTAL_ARGUMENT == \'α0\'", α1', '[["TOTAL_ARGUMENT == \'α0\'", \'α1', '[["TOTAL_ARGUMENT == \'1+α0\'", \'α1', '[["TOTAL_ARGUMENT == \'α0+5\'", \'α1']
+    '''
+    LHS = argList[0]
+    RHS = argList[1]
+    THELIST = argList[2]
+    theQuestion = delta2([str(LHS),str(RHS)])
+    #hint: still use fixed point filter
+    #filteringguy = [yZ for yZ in THELIST if toString([ran(yZ),"naive"]) == delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])])]
+    filteringguy = []
+    for yZ in THELIST:
+        print("yZ",yZ)
+        print(toString([ran(yZ),"naive"]))
+        print(toString([ran(delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])])),"naive"]))
+        print(toString([ran(yZ),"naive"]) == delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])]))
+        if toString([ran(yZ),"naive"]) == toString([ran(delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])])),"naive"]):
+            filteringguy.append(yZ)
+    if len(filteringguy) == 0:
+        THELIST.append(theQuestion)
+        print("?",toString([ran(theQuestion),"naive"]))
+        print("THELIST",THELIST)
+        print("fil list",filteringguy)
+    return THELIST
+
+#maxlargestequivclasses([['[[\'TOTAL_ARGUMENT == \\\'print("α0")\\\'\', \'None\']]', '[[\'TOTAL_ARGUMENT == \\\'print("α0t")\\\'\', \'None\']]', '[[α0TOTAL_ARGUMENT == α1testα2', "[[α0TOTAL_ARGUMENT == α1, 'α2", "[[α0TOTAL_ARGUMENT == α1'', α2", '[["TOTAL_ARGUMENT == \'α0\'", α1', '[["TOTAL_ARGUMENT == \'α0\'", \'α1', '[["TOTAL_ARGUMENT == \'1+α0\'", \'α1', '[["TOTAL_ARGUMENT == \'α0+5\'", \'α1'],maxlargestequivclassesGENERIC])
+#maxlargestequivclasses([[[[['[[\'TOTAL_ARGUMENT == \\\'print("α0'], ['[[\'TOTAL_ARGUMENT == \\\'print("α0']], [['")\\\'\', \'None\']]'], ['")\\\'\', \'None\']]']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α'], ['α']], [['α1'], ['α1']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", '"], [", '"]], [['α2'], ['α2']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [["'', "], ["'', "]], [['α2'], ['α2']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [['α0'], ['α0']], [['α2'], ['α2']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']]]],maxlargestequivclassesGENERIC])
 def maxlargestequivclassesmin1(argList):
     '''
     hint: nchoose2partgen([olddeltabatch,x]) has a LHS and a RHS
