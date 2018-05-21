@@ -4001,7 +4001,10 @@ def maxlargestequivclasses(argList):
         print(nchoose2partgen([arg1,x]))
         try:
             #want: nchoose2partgen, delta2, eval if string and right selection if function
-            deltabatch = arg2(nchoose2partgen([arg1,x]))
+            listprep = nchoose2partgen([arg1,x])
+            listprep.append(deltabatch)
+            print("wtf is listprep",listprep)
+            deltabatch = arg2(listprep)
             print("nC2",nchoose2partgen([arg1,x]))
             #print("what is deltabatch", deltabatch)
         except Exception as e:
@@ -4075,7 +4078,7 @@ def maxlargestequivclassesmin1(argList):
     '''
     LHS = argList[0]
     RHS = argList[1]
-    ANS = []
+    ANS = argList[2]
     #print("LHS minX",LHS)
     #print("RHS minX",RHS)
     try:
@@ -4107,14 +4110,14 @@ def maxlargestequivclassesmin1(argList):
     #2 problems: 1: need a for loop with candidate + get rid of extra bracket problem
     #2: I need to use fixed point property as a filter not ==
     #3: fucking put this into arg2
-    print("what is OGANS")
+    print("what is OGANS",OGANS)
     for z in OGANS:
+        print("ANS QUER",ANS)
         #hint: I get rid of extra bracket using the for loop on the OG answer, then I use the fixed point property check to get rid of duplicate abstractions
+        thequalifier = [y for y in ANS if y == delta2([toString([ran(z),"naive"]),toString([ran(y),"naive"])])]
         print("filter stats")
         print("z",toString([ran(z),"naive"]))
-        print("y",toString([ran(y),"naive"]))
-        print("",delta2(toString([ran(z),"naive"]),toString([ran(y),"naive"])))
-        thequalifier = [y for y in ANS if y == delta2(toString([ran(z),"naive"]),toString([ran(y),"naive"]))]
+        print("qual",thequalifier)
         if len(thequalifier) == 0:
             ANS.append(z)
     return ANS
