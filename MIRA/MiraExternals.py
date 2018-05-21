@@ -3749,17 +3749,22 @@ def SeekForce(ArgList):
                         exist = arg3([linemod,arg2mod])
                         #print("SEEKFORCE APPEND",exist)
                         #print("append ?",len([z for z in ANS if z == exist]) == 0)
-                        if len([z for z in ANS if z == exist]) == 0:
+                        #hint: min2 has a problem with appending nonetypes so need a switch
+                        if len([z for z in ANS if z == exist]) == 0 and exist != "dontappend":
+                            #print("DONT STOP MODORENA FLASHBACK",[linemod,arg2mod])
+                            #print("HYPERS",exist)
                             ANS.append(exist)
                     except Exception as e:
                         #print("ERROR IN SEEKFORCE ",e)
                         if e != []:
-                            #
+                            #print("HYPERS2", exist)
                             ANS.append(e)
                             pass
                         pass
             line = rchop(fileref.readline(), '\n')
     return ANS
+
+#SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
 
 #SeekForce(['MemoryUNORDERED.txt','print("why")',delta2,SeekForcemin1,[]])
 #SeekForce(['MemoryUNORDERED.txt','argument_1 == "C"',delta2,SeekForcemin1,[]])
@@ -3826,7 +3831,13 @@ def SeekForcemin2(argList):
     #print("ifcheck",toString([ran(delta2([string1,string2])),"naive"]),"|",string2,"|",toString([ran(delta2([string1,string2])),"naive"]) == string2)
     if toString([ran(delta2([string1,string2])),"naive"]) == string2:
         #ANS.append(string1)
+        #print("WHEN IS IT NONE",arg1)
         return arg1
+    else:
+        #hint: return this when you don't want to append
+        return "dontappend"
+
+#SeekForcemin2([[['TOTAL_ARGUMENT == \'print(\\\\"test\\\\")\'', ['', SyntaxError('unexpected character after line continuation character', ('<string>', 1, 17, 'print(\\\\"test\\\\")'))]]], [[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]]])
 
 #SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
 #print(SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]))
@@ -3989,24 +4000,9 @@ def maxlargestequivclasses(argList):
         print("x",x)
         print(nchoose2partgen([arg1,x]))
         try:
-            #print("why empties1",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
-            #print("fml",nchoose2partgen([arg1,x])[0][0])
-            #print("why empties2",eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1])
-            #candidate = delta2([nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0]])
-            #print("I'm lost",nchoose2partgen([arg1,x]))
-            #candidate = delta2([eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1]])
-            #print("CANDIDATE!",candidate)
-            #if len([y for y in deltabatch if y == candidate]) == 0:
-            #    deltabatch.append(candidate)
-
             #want: nchoose2partgen, delta2, eval if string and right selection if function
-            candidate = arg2(nchoose2partgen([arg1,x]))
+            deltabatch = arg2(nchoose2partgen([arg1,x]))
             print("nC2",nchoose2partgen([arg1,x]))
-            print("extra brackets again with candidate and nchoose2partgen",candidate)
-            #2 problems: 1: need a for loop with candidate
-            #2: I need to use fixed point property as a filter not == 
-            if len([y for y in deltabatch if y == candidate]) == 0:
-                deltabatch.append(candidate)
             #print("what is deltabatch", deltabatch)
         except Exception as e:
             print("largest equiv fail|",e)
@@ -4052,8 +4048,9 @@ def maxlargestequivclasses(argList):
 
 
 #print(maxlargestequivclasses([[[["","print(\"test\")"]],[["","print(\"two equiv classes\")"]],[["","1+1"]],[["","2+3"]]]]))
-#SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
+#                              SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
 #print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]]),maxlargestequivclassesmin1]))
+#maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]]),maxlargestequivclassesmin1])
 
 ###SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])
 #print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]),maxlargestequivclassesmin1]))
@@ -4103,8 +4100,26 @@ def maxlargestequivclassesmin1(argList):
         else:
             ANS = delta2([str(LHS),str(RHS)])
             print("not function means this ANS",ANS)
+    #FIX ANSWER:
+    OGANS = ANS
+    ANS = []
+            
+    #2 problems: 1: need a for loop with candidate + get rid of extra bracket problem
+    #2: I need to use fixed point property as a filter not ==
+    #3: fucking put this into arg2
+    print("what is OGANS")
+    for z in OGANS:
+        #hint: I get rid of extra bracket using the for loop on the OG answer, then I use the fixed point property check to get rid of duplicate abstractions
+        print("filter stats")
+        print("z",toString([ran(z),"naive"]))
+        print("y",toString([ran(y),"naive"]))
+        print("",delta2(toString([ran(z),"naive"]),toString([ran(y),"naive"])))
+        thequalifier = [y for y in ANS if y == delta2(toString([ran(z),"naive"]),toString([ran(y),"naive"]))]
+        if len(thequalifier) == 0:
+            ANS.append(z)
     return ANS
 
+#[None, [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("are quotes in right order")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("are quotes in right order")\'', 'None']]]]]
 
 def fastAlgXproduct(argList):
     '''
