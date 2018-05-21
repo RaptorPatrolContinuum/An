@@ -1,13 +1,39 @@
 
 
-[[['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("test")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("test")\'', 'None']]]]]
+[[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['α0'], ['α0']], [['")\\\'\', \'None\']]'], ['")\\\'\', \'None\']]']]]]
+[[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['α0'], ['α0']], [['t")\\\'\', \'None\']]'], ['t")\\\'\', \'None\']]']]]]
 
-[
-	[
-		['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("test")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("test")\'', 'None']]]
-		]
-	]
+toString([ran([[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['α0'], ['α0']], [['")\\\'\', \'None\']]'], ['")\\\'\', \'None\']]']]]][0]),"naive"])
+toString([ran([[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['α0'], ['α0']], [['t")\\\'\', \'None\']]'], ['t")\\\'\', \'None\']]']]]][0]),"naive"])
 
+delta2([toString([ran([[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['α0'], ['α0']], [['")\\\'\', \'None\']]'], ['")\\\'\', \'None\']]']]]][0]),"naive"]),toString([ran([[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['α0'], ['α0']], [['t")\\\'\', \'None\']]'], ['t")\\\'\', \'None\']]']]]][0]),"naive"])])
+
+[[['[[\'TOTAL_ARGUMENT == \\\'print("α0'], ['[[\'TOTAL_ARGUMENT == \\\'print("α0']], [['")\\\'\', \'None\']]'], ['")\\\'\', \'None\']]']]]
+
+
+[[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['α0'], ['α0']], [['")\\\'\', \'None\']]'], ['")\\\'\', \'None\']]']]]]
+[[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['α0'], ['α0']], [['t")\\\'\', \'None\']]'], ['t")\\\'\', \'None\']]']]]]
+[[[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [['test'], ['test']], [['α2'], ['α2']]]]
+[[[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", '"], [", '"]], [['α2'], ['α2']]]]
+[[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['r")\\\'\', \'None\']]'], ['r")\\\'\', \'None\']]']]]]
+[[[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [["'', "], ["'', "]], [['α2'], ['α2']]]]
+[[[['[[\'TOTAL_ARGUMENT == \\\'print("r'], ['[[\'TOTAL_ARGUMENT == \\\'print("r']], [['")\\\'\', \'None\']]'], ['")\\\'\', \'None\']]']]]]
+[[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['f")\\\'\', \'None\']]'], ['f")\\\'\', \'None\']]']]]]
+[[[['[[\'TOTAL_ARGUMENT == \\\'print("f'], ['[[\'TOTAL_ARGUMENT == \\\'print("f']], [['")\\\'\', \'None\']]'], ['")\\\'\', \'None\']]']]]]
+[[[['[[\'TOTAL_ARGUMENT == \\\'print("buk'], ['[[\'TOTAL_ARGUMENT == \\\'print("buk']], [['α0'], ['α0']], [['")\\\'\', \'None\']]'], ['")\\\'\', \'None\']]']]]]
+[[[['[[\'TOTAL_ARGUMENT == \\\'print("bukD'], ['[[\'TOTAL_ARGUMENT == \\\'print("bukD']], [['")\\\'\', \'None\']]'], ['")\\\'\', \'None\']]']]]]
+[[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['α0'], ['α0']], [['ect")\\\'\', \'None\']]'], ['ect")\\\'\', \'None\']]']]]]
+[[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['α0'], ['α0']], [['l")\\\'\', \'None\']]'], ['l")\\\'\', \'None\']]']]]]
+[[[['[[\'TOTAL_ARGUMENT == \\\'print("r'], ['[[\'TOTAL_ARGUMENT == \\\'print("r']], [['α0'], ['α0']], [['")\\\'\', \'None\']]'], ['")\\\'\', \'None\']]']]]]
+[[[['[["TOTAL_ARGUMENT == \''], ['[["TOTAL_ARGUMENT == \'']], [['α0'], ['α0']], [['\'", '], ['\'", ']], [['α1'], ['α1']]]]
+[[[['[["TOTAL_ARGUMENT == \''], ['[["TOTAL_ARGUMENT == \'']], [['α0'], ['α0']], [['\'", \''], ['\'", \'']], [['α1'], ['α1']]]]
+[[[['[["TOTAL_ARGUMENT == \'1+'], ['[["TOTAL_ARGUMENT == \'1+']], [['α0'], ['α0']], [['\'", \''], ['\'", \'']], [['α1'], ['α1']]]]
+[[[['[["TOTAL_ARGUMENT == \''], ['[["TOTAL_ARGUMENT == \'']], [['α0'], ['α0']], [['+5\'", \''], ['+5\'", \'']], [['α1'], ['α1']]]]
+
+
+
+
+[[['[[[[\'[[\\\'TOTAL_ARGUMENT == \\\\\\\'print("\'], [\'[[\\\'TOTAL_ARGUMENT == \\\\\\\'print("\']], [[\'α0\'], [\'α0\']], [[\''], ['[[[[\'[[\\\'TOTAL_ARGUMENT == \\\\\\\'print("\'], [\'[[\\\'TOTAL_ARGUMENT == \\\\\\\'print("\']], [[\'α0\'], [\'α0\']], [[\'']], [['")\\\\\\\'\\\', \\\'None\\\']]\'], [\''], ['")\\\\\\\'\\\', \\\'None\\\']]\'], [\'']], [['α0'], ['α0']]]
 print(TotalSI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
 print(TotalSI([[[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['3','3']]],[[['1','1'],['2','2'],['3','4']],[['1','1'],['2','2'],['3','4']]]],"Auto","all"]))
 

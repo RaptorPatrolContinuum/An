@@ -4001,6 +4001,10 @@ def maxlargestequivclasses(argList):
 
             #want: nchoose2partgen, delta2, eval if string and right selection if function
             candidate = arg2(nchoose2partgen([arg1,x]))
+            print("nC2",nchoose2partgen([arg1,x]))
+            print("extra brackets again with candidate and nchoose2partgen",candidate)
+            #2 problems: 1: need a for loop with candidate
+            #2: I need to use fixed point property as a filter not == 
             if len([y for y in deltabatch if y == candidate]) == 0:
                 deltabatch.append(candidate)
             #print("what is deltabatch", deltabatch)
@@ -4009,7 +4013,7 @@ def maxlargestequivclasses(argList):
             pass
     print("skin tight jeans be yoru teenage dream tonight", deltabatch)
     print("ifcheck WTF", len(deltabatch) <= 1)
-    
+    '''
     if len(deltabatch) <= 1:
         return deltabatch
     olddeltabatch = deltabatch
@@ -4018,9 +4022,10 @@ def maxlargestequivclasses(argList):
     while len(olddeltabatch)>1:
         deltabatch = []
         print("one touch",int((len(olddeltabatch)*(len(olddeltabatch)-1))/2))
+        print("olddeltacheck",olddeltabatch)
         for x in range(int((len(olddeltabatch)*(len(olddeltabatch)-1))/2)):
             print("upper x",x)
-            print(nchoose2partgen([olddeltabatch,x]))
+            #print(nchoose2partgen([olddeltabatch,x]))
             try:
                 #print("why empties1",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
                 #print("why empties2",eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1])
@@ -4029,12 +4034,14 @@ def maxlargestequivclasses(argList):
                 #print("CANDIDATE!",candidate)
                 ###deltabatch.append(candidate)
                 candidate = arg2(nchoose2partgen([olddeltabatch,x]))
+                print("candidate check",candidate)
                 if len([y for y in deltabatch if y == candidate]) == 0:
                     deltabatch.append(candidate)
             except:
                 pass
         olddeltabatch = deltabatch
         print("CHANGE THINGY ==========================")
+    '''
     return deltabatch
 
 #degen problems:
@@ -4072,30 +4079,30 @@ def maxlargestequivclassesmin1(argList):
     LHS = argList[0]
     RHS = argList[1]
     ANS = []
-    print("LHS",LHS)
-    print("RHS",RHS)
+    #print("LHS minX",LHS)
+    #print("RHS minX",RHS)
     try:
         #hint: what if its a function under eval
         if fCheck(eval(LHS)) == True and fCheck(eval(RHS)) == True:
             for pair in fastAlgXproduct([eval(LHS),eval(RHS)]):
-                #print("this is pair1",pair)
+                print("this is pair1",pair)
                 testthis = delta2([str(pair[0][1]),str(pair[1][1])])
-                #print("this is delta1",testthis)
+                print("this is delta1",testthis)
                 if len([y for y in ANS if y == testthis]) == 0:
                     ANS.append(testthis)
-                #print("HYPERS ANS1",ANS)
+            print("HYPERS ANS1",ANS)
     except:
         if fCheck(LHS) == True and fCheck(RHS) == True:
             for pair in fastAlgXproduct([LHS,RHS]):
-                #print("this is pair2",pair)
+                print("this is pair2",pair)
                 testthis = delta2([str(pair[0][1]),str(pair[1][1])])
-                #print("this is delta2",testthis)
+                print("this is delta2",testthis)
                 if len([y for y in ANS if y == testthis]) == 0:
                     ANS.append(testthis)
-                #print("HYPERS ANS2",ANS)
+            print("HYPERS ANS2",ANS)
         else:
             ANS = delta2([str(LHS),str(RHS)])
-            #print("not function means this ANS",ANS)
+            print("not function means this ANS",ANS)
     return ANS
 
 
@@ -4115,7 +4122,7 @@ def fastAlgXproduct(argList):
     j = 0
     ANS = []
     for x in range(0,int(TOTAL)):
-        print(x)
+        #print(x)
         if j <= lenB - 1:
             #print("wtf",[listA[i],listB[j]])
             ANS.append([listA[i],listB[j]])
