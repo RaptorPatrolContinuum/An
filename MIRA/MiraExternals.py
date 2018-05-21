@@ -3992,27 +3992,39 @@ def maxlargestequivclasses(argList):
     arg1 = argList[0]
     arg2 = argList[1]
     deltabatch = []
+    oldbatch = []
     #fucking degen bullshit, basically if set is len 1 my range is 0
     if len(arg1) <= 1:
         return arg1
     #print("what is going on",range(int((len(arg1)*(len(arg1)-1))/2)))
     for x in range(int((len(arg1)*(len(arg1)-1))/2)):
-        print("x",x)
-        print(nchoose2partgen([arg1,x]))
+        #print("x",x)
+        oldbatch = []
+        for objthing in deltabatch:
+            oldbatch.append(objthing)
+        #print("WTF IS ORIGINAL BATCH",oldbatch,len(oldbatch))
         try:
+            
             #want: nchoose2partgen, delta2, eval if string and right selection if function
             listprep = nchoose2partgen([arg1,x])
+            #print("nC2",nchoose2partgen([arg1,x]))
             listprep.append(deltabatch)
-            print("wtf is listprep",listprep)
+            #print("wtf is listprep",listprep)
+            #maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]]),maxlargestequivclassesmin1])
             deltabatch = arg2(listprep)
-            print("nC2",nchoose2partgen([arg1,x]))
+            #print("WHAT IS LISTPRER",listprep)
+            #print("HOW THE FUCK DOES ARG2 CHANGE OLDBATCH",arg2(listprep))
             #print("what is deltabatch", deltabatch)
+            #print("why is oldbatch not matching",oldbatch)
+            print("hint", len(oldbatch), "VS", len(deltabatch))
+            print("what is deltabatch DIFF", [item for item in deltabatch if item not in oldbatch])
         except Exception as e:
             print("largest equiv fail|",e)
             pass
+        
     print("skin tight jeans be yoru teenage dream tonight", deltabatch)
-    print("ifcheck WTF", len(deltabatch) <= 1)
     '''
+    print("ifcheck WTF", len(deltabatch) <= 1)
     if len(deltabatch) <= 1:
         return deltabatch
     olddeltabatch = deltabatch
@@ -4079,30 +4091,30 @@ def maxlargestequivclassesmin1(argList):
     LHS = argList[0]
     RHS = argList[1]
     ANS = argList[2]
-    #print("LHS minX",LHS)
-    #print("RHS minX",RHS)
+    #print("LHS minX",LHS[0][1])
+    #print("RHS minX",RHS[0][1])
     try:
         #hint: what if its a function under eval
         if fCheck(eval(LHS)) == True and fCheck(eval(RHS)) == True:
             for pair in fastAlgXproduct([eval(LHS),eval(RHS)]):
-                print("this is pair1",pair)
+                #print("this is pair1",pair)
                 testthis = delta2([str(pair[0][1]),str(pair[1][1])])
-                print("this is delta1",testthis)
+                #print("this is delta1",testthis)
                 if len([y for y in ANS if y == testthis]) == 0:
                     ANS.append(testthis)
-            print("HYPERS ANS1",ANS)
+            #print("HYPERS ANS1",ANS)
     except:
         if fCheck(LHS) == True and fCheck(RHS) == True:
             for pair in fastAlgXproduct([LHS,RHS]):
-                print("this is pair2",pair)
+                #print("this is pair2",pair)
                 testthis = delta2([str(pair[0][1]),str(pair[1][1])])
-                print("this is delta2",testthis)
+                #print("this is delta2",testthis)
                 if len([y for y in ANS if y == testthis]) == 0:
                     ANS.append(testthis)
-            print("HYPERS ANS2",ANS)
+            #print("HYPERS ANS2",ANS)
         else:
             ANS = delta2([str(LHS),str(RHS)])
-            print("not function means this ANS",ANS)
+            #print("not function means this ANS",ANS)
     #FIX ANSWER:
     OGANS = ANS
     ANS = []
@@ -4110,18 +4122,20 @@ def maxlargestequivclassesmin1(argList):
     #2 problems: 1: need a for loop with candidate + get rid of extra bracket problem
     #2: I need to use fixed point property as a filter not ==
     #3: fucking put this into arg2
-    print("what is OGANS",OGANS)
+    #print("what is OGANS",OGANS)
     for z in OGANS:
-        print("ANS QUER",ANS)
+        #print("ANS QUER",ANS)
         #hint: I get rid of extra bracket using the for loop on the OG answer, then I use the fixed point property check to get rid of duplicate abstractions
         thequalifier = [y for y in ANS if y == delta2([toString([ran(z),"naive"]),toString([ran(y),"naive"])])]
-        print("filter stats")
-        print("z",toString([ran(z),"naive"]))
-        print("qual",thequalifier)
+        #print("unfiltered z",z)
+        #print("z",toString([ran(z),"naive"]))
+        #print("qual",thequalifier)
+        #print("check",len(thequalifier) == 0)
         if len(thequalifier) == 0:
             ANS.append(z)
     return ANS
 
+#maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]]),maxlargestequivclassesmin1])
 #[None, [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("are quotes in right order")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("are quotes in right order")\'', 'None']]]]]
 
 def fastAlgXproduct(argList):
