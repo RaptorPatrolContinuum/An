@@ -1,5 +1,6 @@
 
 
+print(TotalSI([[[[['A','A'],['B','B'],['C','C']]],[[['A','A'],['B','B'],['D','D']]]],"","all"]))
 
 [y for y in ANS if y == delta2(toString([ran(z),"naive"]),toString([ran(y),"naive"]))]
 

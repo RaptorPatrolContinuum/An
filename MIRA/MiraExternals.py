@@ -372,15 +372,15 @@ def AddressFunc(index,obj):
         #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
         #print("suspected wtf",index,x[1])
 
-        #print("x obj", x)
-        #print("index",index)
-        #print("x[0]",x[0])
-        #print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
-        #print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
-        #print("index ",index)
-        #print("x[1]",x[1])
-        #print("int(empty set) just dies",RelEval(index,x[1]))
-        #print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
+        print("x obj", x)
+        print("index",index)
+        print("x[0]",x[0])
+        print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
+        print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
+        print("index ",index)
+        print("x[1]",x[1])
+        print("int(empty set) just dies",RelEval(index,x[1]))
+        print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
         #print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
         #print("LINE 274 END")
         Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
@@ -676,6 +676,10 @@ def RelEval(f1,arglist):
     '''
     ANS = []
     for y in arglist:
+        print("y",y)
+        print("f1",f1)
+        print("qy",Q_(y))
+        print("?????",Compose(f1,Q_(y)))
         for x in Compose(f1,Q_(y)):
             ANS.append(x[1])
     return ANS
@@ -4009,20 +4013,16 @@ def maxlargestequivclasses(argList):
             #print("nC2",nchoose2partgen([arg1,x]))
             listprep.append(deltabatch)
             #print("wtf is listprep",listprep)
-            #maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]]),maxlargestequivclassesmin1])
             deltabatch = arg2(listprep)
-            #print("WHAT IS LISTPRER",listprep)
-            #print("HOW THE FUCK DOES ARG2 CHANGE OLDBATCH",arg2(listprep))
-            #print("what is deltabatch", deltabatch)
-            #print("why is oldbatch not matching",oldbatch)
-            print("hint", len(oldbatch), "VS", len(deltabatch))
-            print("what is deltabatch DIFF", [item for item in deltabatch if item not in oldbatch])
+            #print("hint", len(oldbatch), "VS", len(deltabatch))
+            #print("what is deltabatch DIFF", [item for item in deltabatch if item not in oldbatch])
         except Exception as e:
             print("largest equiv fail|",e)
             pass
-    print("skin tight jeans be yoru teenage dream tonight", deltabatch)
     #what do I want now?
     #use deltabatch as our list then keep making abstractions
+    #hint: don't do it since bad info will mean you will abstract into unusability anyways
+        #print("skin tight jeans be yoru teenage dream tonight", deltabatch)
     return deltabatch
 
 #degen problems:
@@ -4055,21 +4055,22 @@ def maxlargestequivclassesGENERIC(argList):
     #filteringguy = [yZ for yZ in THELIST if toString([ran(yZ),"naive"]) == delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])])]
     filteringguy = []
     for yZ in THELIST:
-        print("yZ",yZ)
-        print(toString([ran(yZ),"naive"]))
-        print(toString([ran(delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])])),"naive"]))
-        print(toString([ran(yZ),"naive"]) == delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])]))
+        #print("yZ",yZ)
+        #print(toString([ran(yZ),"naive"]))
+        #print(toString([ran(delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])])),"naive"]))
+        #print(toString([ran(yZ),"naive"]) == delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])]))
         if toString([ran(yZ),"naive"]) == toString([ran(delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])])),"naive"]):
             filteringguy.append(yZ)
     if len(filteringguy) == 0:
         THELIST.append(theQuestion)
-        print("?",toString([ran(theQuestion),"naive"]))
-        print("THELIST",THELIST)
-        print("fil list",filteringguy)
+        #print("?",toString([ran(theQuestion),"naive"]))
+        #print("THELIST",THELIST)
+        #print("fil list",filteringguy)
     return THELIST
 
 #maxlargestequivclasses([['[[\'TOTAL_ARGUMENT == \\\'print("α0")\\\'\', \'None\']]', '[[\'TOTAL_ARGUMENT == \\\'print("α0t")\\\'\', \'None\']]', '[[α0TOTAL_ARGUMENT == α1testα2', "[[α0TOTAL_ARGUMENT == α1, 'α2", "[[α0TOTAL_ARGUMENT == α1'', α2", '[["TOTAL_ARGUMENT == \'α0\'", α1', '[["TOTAL_ARGUMENT == \'α0\'", \'α1', '[["TOTAL_ARGUMENT == \'1+α0\'", \'α1', '[["TOTAL_ARGUMENT == \'α0+5\'", \'α1'],maxlargestequivclassesGENERIC])
 #maxlargestequivclasses([[[[['[[\'TOTAL_ARGUMENT == \\\'print("α0'], ['[[\'TOTAL_ARGUMENT == \\\'print("α0']], [['")\\\'\', \'None\']]'], ['")\\\'\', \'None\']]']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α'], ['α']], [['α1'], ['α1']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", '"], [", '"]], [['α2'], ['α2']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [["'', "], ["'', "]], [['α2'], ['α2']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [['α0'], ['α0']], [['α2'], ['α2']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']]]],maxlargestequivclassesGENERIC])
+
 def maxlargestequivclassesmin1(argList):
     '''
     hint: nchoose2partgen([olddeltabatch,x]) has a LHS and a RHS
@@ -4201,25 +4202,34 @@ def TotalSI(argList):
         for x in testDATA[1:]:
             print("what x do I go over",x)
             #if x[0] AND x[1] are both finite functions/graphs:
+            print("checks fail",fCheck(x[0]))
+            print("checks fail",fCheck(x[1]))
+            print("checks fail",ANStoggle)
             while fCheck(x[0]) == True and fCheck(x[1]) == True and ANStoggle == True:
-                #SI-all I TO J in X
+                print("SI-all I TO J in X",x)
                 #ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
                 minidata = ShittySI([[x[0],x[1]],"","all"])
                 
                 #if SI-all is empty, fail this answer
                 if minidata[0] == False:
                     #fail this answer
-                    #ANStoggle = False
+                    ANStoggle = False
                     break
                 else:
                     #'go downwards infinitely'
                     #>define a totalSImin that does the above (for x in ANSWER I SI parts to each other) AND totalSImin calls itself until end condition
-                    totalSImin(argList)
+                    print ("KEEO GOING",totalSImin(argList))
             ANS.append(x)
             #hint: if they're not functions then they're atoms and they immediately pass
     return ANS
 
-#print(TotalSI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"","all"]))
+#this works
+#print(TotalSI([[[['A','A'],['B','B'],['C','C']],[['A','A'],['B','B'],['D','D']]],"","all"]))
+#check if I can have a long string for elements of normal input
+#print(TotalSI([[[['Az','Az'],['Bz','Bz'],['Cz','Cz']],[['Az','Az'],['Bz','Bz'],['Dz','Dz']]],"","all"]))
+#print(TotalSI([[[[[['R','R']],[['R','R']]],[[['z','z']],[['z','z']]],[[['t','t']],[['t','t']]]],[[[['R','R']],[['R','R']]],[[['z','z']],[['z','z']]],[[['Y','Y']],[['Y','Y']]]]],"","all"]))
+#print(TotalSI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
+#print(TotalSI([[str([['1','1'],['2','2'],['3','3']]),str([['1','1'],['2','2'],['4','4']])],"Auto","all"]))
 
 def totalSImin(argList):
     '''
