@@ -166,8 +166,8 @@ def fCheck(fcandidate):
     if len(fcandidate) == 0:
         return False
     for obj in fcandidate:
-        #print("what is obj?",obj)
-        #print("len(obj)",len(obj))
+        print("what is obj?",obj)
+        print("len(obj)",len(obj))
         if len(obj) != 2:
             ANS = False
     return ANS
@@ -372,15 +372,15 @@ def AddressFunc(index,obj):
         #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
         #print("suspected wtf",index,x[1])
 
-        print("x obj", x)
-        print("index",index)
-        print("x[0]",x[0])
-        print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
-        print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
-        print("index ",index)
-        print("x[1]",x[1])
-        print("int(empty set) just dies",RelEval(index,x[1]))
-        print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
+        #print("x obj", x)
+        #print("index",index)
+        #print("x[0]",x[0])
+        #print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
+        #print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
+        #print("index ",index)
+        #print("x[1]",x[1])
+        #print("int(empty set) just dies",RelEval(index,x[1]))
+        #print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
         #print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
         #print("LINE 274 END")
         Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
@@ -675,16 +675,22 @@ def RelEval(f1,arglist):
     question: "composing" using list vs 1 obj
     '''
     ANS = []
-    for y in arglist:
-        print("y",y)
-        print("f1",f1)
-        print("qy",Q_(y))
-        print("?????",Compose(f1,Q_(y)))
-        for x in Compose(f1,Q_(y)):
+    #print("what is arglist?", arglist)
+    if type(arglist) == str:
+        for x in Compose(f1,Q_(arglist)):
             ANS.append(x[1])
+    else:
+        for y in arglist:
+            #print("y",y)
+            #print("f1",f1)
+            #print("qy",Q_(y))
+            #print("?????",Compose(f1,Q_(y)))
+            for x in Compose(f1,Q_(y)):
+                ANS.append(x[1])
     return ANS
 
     #print(RelEval([[1,2],[2,2],[7,8]],[1,2,7]))
+#print(TotalSI([[[['Az','Az'],['Bz','Bz'],['Cz','Cz']],[['Az','Az'],['Bz','Bz'],['Dz','Dz']]],"","all"]))
 
 def M_Compose(alg1, alg2):
     '''
@@ -4202,17 +4208,17 @@ def TotalSI(argList):
         for x in testDATA[1:]:
             print("what x do I go over",x)
             #if x[0] AND x[1] are both finite functions/graphs:
-            print("checks fail",fCheck(x[0]))
-            print("checks fail",fCheck(x[1]))
+            print("checks fail",fCheck(x[0]),x[0])
+            print("checks fail",fCheck(x[1]),x[1])
             print("checks fail",ANStoggle)
             while fCheck(x[0]) == True and fCheck(x[1]) == True and ANStoggle == True:
                 print("SI-all I TO J in X",x)
                 #ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
                 minidata = ShittySI([[x[0],x[1]],"","all"])
                 
-                #if SI-all is empty, fail this answer
+                print("if SI-all is empty, fail this answer",minidata)
                 if minidata[0] == False:
-                    #fail this answer
+                    print("fail this answer",minidata[0])
                     ANStoggle = False
                     break
                 else:
