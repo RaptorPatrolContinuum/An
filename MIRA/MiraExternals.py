@@ -166,9 +166,10 @@ def fCheck(fcandidate):
     if len(fcandidate) == 0:
         return False
     for obj in fcandidate:
-        print("what is obj?",obj)
-        print("len(obj)",len(obj))
-        if len(obj) != 2:
+        #print("what is obj?",obj)
+        #print("len(obj)",len(obj))
+        #print("typecheck")
+        if len(obj) != 2 or type(obj) != list:
             ANS = False
     return ANS
 
@@ -4232,7 +4233,7 @@ def TotalSI(argList):
 #this works
 #print(TotalSI([[[['A','A'],['B','B'],['C','C']],[['A','A'],['B','B'],['D','D']]],"","all"]))
 #check if I can have a long string for elements of normal input
-#print(TotalSI([[[['Az','Az'],['Bz','Bz'],['Cz','Cz']],[['Az','Az'],['Bz','Bz'],['Dz','Dz']]],"","all"]))
+#not proper format --> print(TotalSI([[[['Az','Az'],['Bz','Bz'],['Cz','Cz']],[['Az','Az'],['Bz','Bz'],['Dz','Dz']]],"","all"]))
 #print(TotalSI([[[[[['R','R']],[['R','R']]],[[['z','z']],[['z','z']]],[[['t','t']],[['t','t']]]],[[[['R','R']],[['R','R']]],[[['z','z']],[['z','z']]],[[['Y','Y']],[['Y','Y']]]]],"","all"]))
 #print(TotalSI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
 #print(TotalSI([[str([['1','1'],['2','2'],['3','3']]),str([['1','1'],['2','2'],['4','4']])],"Auto","all"]))
