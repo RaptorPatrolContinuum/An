@@ -7,7 +7,7 @@ import ast
 #import sys
 from sys import *
 import time
-import mmap
+import mmap 
 import random
 import os
 import itertools
@@ -168,7 +168,8 @@ def fCheck(fcandidate):
     for obj in fcandidate:
         #print("what is obj?",obj)
         #print("len(obj)",len(obj))
-        if len(obj) != 2:
+        #print("typecheck")
+        if len(obj) != 2 or type(obj) != list:
             ANS = False
     return ANS
 
@@ -621,7 +622,7 @@ def ComposeReplace(str1,str2):
         #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
         if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
             #
-            print("got here???")
+            #print("got here???")
             #return [str2[0],str1[1]]
             if ANS == None:
                 ANS = [[str2[0],str1[1]]]
@@ -675,12 +676,22 @@ def RelEval(f1,arglist):
     question: "composing" using list vs 1 obj
     '''
     ANS = []
-    for y in arglist:
-        for x in Compose(f1,Q_(y)):
+    #print("what is arglist?", arglist)
+    if type(arglist) == str:
+        for x in Compose(f1,Q_(arglist)):
             ANS.append(x[1])
+    else:
+        for y in arglist:
+            #print("y",y)
+            #print("f1",f1)
+            #print("qy",Q_(y))
+            #print("?????",Compose(f1,Q_(y)))
+            for x in Compose(f1,Q_(y)):
+                ANS.append(x[1])
     return ANS
 
     #print(RelEval([[1,2],[2,2],[7,8]],[1,2,7]))
+#print(TotalSI([[[['Az','Az'],['Bz','Bz'],['Cz','Cz']],[['Az','Az'],['Bz','Bz'],['Dz','Dz']]],"","all"]))
 
 def M_Compose(alg1, alg2):
     '''
@@ -3747,20 +3758,24 @@ def SeekForce(ArgList):
                     #print("stats for arg3", linemod, arg2mod)
                     try:
                         exist = arg3([linemod,arg2mod])
-                        #print("try this attempt",exist)
                         #print("SEEKFORCE APPEND",exist)
                         #print("append ?",len([z for z in ANS if z == exist]) == 0)
-                        if len([z for z in ANS if z == exist]) == 0:
+                        #hint: min2 has a problem with appending nonetypes so need a switch
+                        if len([z for z in ANS if z == exist]) == 0 and exist != "dontappend":
+                            #print("DONT STOP MODORENA FLASHBACK",[linemod,arg2mod])
+                            #print("HYPERS",exist)
                             ANS.append(exist)
                     except Exception as e:
                         #print("ERROR IN SEEKFORCE ",e)
                         if e != []:
-                            #
+                            #print("HYPERS2", exist)
                             ANS.append(e)
                             pass
                         pass
             line = rchop(fileref.readline(), '\n')
     return ANS
+
+#SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
 
 #SeekForce(['MemoryUNORDERED.txt','print("why")',delta2,SeekForcemin1,[]])
 #SeekForce(['MemoryUNORDERED.txt','argument_1 == "C"',delta2,SeekForcemin1,[]])
@@ -3810,6 +3825,7 @@ def SeekForcemin2(argList):
     '''
     this goes through a file and collects all the functions that have inputs that are encompassed by some abstraction
     '''
+    #print("WHAT IS ARGLISTSF2",argList)
     arg1 = argList[0]
     #hint: this is line from file
     arg2 = argList[1]
@@ -3819,18 +3835,21 @@ def SeekForcemin2(argList):
     #print("wtf is arg2",arg2)
     string1 = toString([ran(arg1),"naive"])
     string2 = toString([ran(arg2),"naive"])
-    #print("how is empty produced",string1)
-    #print("wtf happens with tostring",string1)
     #print("args",argList)
     #print("seekforcemin2function",delta2([string1,string2]))
     #print("args for equal",toString([ran(delta2([string1,string2])),"naive"]), string2)
     #hint: arg2 in this func is our guess for abstraction
     #print("seekforcemin2check for equal",toString([ran(delta2([string1,string2])),"naive"]) == string2)
-    ANS = []
     #print("ifcheck",toString([ran(delta2([string1,string2])),"naive"]),"|",string2,"|",toString([ran(delta2([string1,string2])),"naive"]) == string2)
     if toString([ran(delta2([string1,string2])),"naive"]) == string2:
-        ANS.append(string1)
-    return ANS
+        #ANS.append(string1)
+        #print("WHEN IS IT NONE",arg1)
+        return arg1
+    else:
+        #hint: return this when you don't want to append
+        return "dontappend"
+
+#SeekForcemin2([[['TOTAL_ARGUMENT == \'print(\\\\"test\\\\")\'', ['', SyntaxError('unexpected character after line continuation character', ('<string>', 1, 17, 'print(\\\\"test\\\\")'))]]], [[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]]])
 
 #SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
 #print(SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]))
@@ -3978,53 +3997,186 @@ def maxlargestequivclasses(argList):
 
     task2: pair 1st batch of deltas of them using nchoose2partgen and max length of list AND hope for no EMPTIES
     task3: continue until next batch of deltas is empty set OR SINGLE object
+
+    hint: arg2 is the funcmod to make this shit work
     '''
     #set/iterable
     arg1 = argList[0]
+    arg2 = argList[1]
     deltabatch = []
+    oldbatch = []
+    #fucking degen bullshit, basically if set is len 1 my range is 0
+    if len(arg1) <= 1:
+        return arg1
+    #print("what is going on",range(int((len(arg1)*(len(arg1)-1))/2)))
     for x in range(int((len(arg1)*(len(arg1)-1))/2)):
         #print("x",x)
-        #print(nchoose2partgen([arg1,x]))
+        oldbatch = []
+        for objthing in deltabatch:
+            oldbatch.append(objthing)
+        #print("WTF IS ORIGINAL BATCH",oldbatch,len(oldbatch))
         try:
-            #print("why empties1",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
-            #print("fml",nchoose2partgen([arg1,x])[0][0])
-            #print("why empties2",eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1])
-            #candidate = delta2([nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0]])
-            candidate = delta2([eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1]])
-            #print("CANDIDATE!",candidate)
-            if len([y for y in deltabatch if y == candidate]) == 0:
-                deltabatch.append(candidate)
+            #want: nchoose2partgen, delta2, eval if string and right selection if function
+            listprep = nchoose2partgen([arg1,x])
+            #print("nC2",nchoose2partgen([arg1,x]))
+            listprep.append(deltabatch)
+            #print("wtf is listprep",listprep)
+            deltabatch = arg2(listprep)
+            #print("hint", len(oldbatch), "VS", len(deltabatch))
+            #print("what is deltabatch DIFF", [item for item in deltabatch if item not in oldbatch])
         except Exception as e:
-            #print("largest equiv fail",e)
+            print("largest equiv fail|",e)
             pass
-    if len(deltabatch) <= 1:
-        return deltabatch
-    olddeltabatch = deltabatch
-    #print("OG deltabatch",deltabatch)
-    deltabatch = []
-    while len(olddeltabatch)>1:
-        olddeltabatch = deltabatch
-        deltabatch = []
-        for x in range(int((len(olddeltabatch)*(len(olddeltabatch)-1))/2)):
-            #print("x",x)
-            #print(nchoose2partgen([arg1,x]))
-            try:
-                #print("why empties1",nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0])
-                #print("why empties2",eval(nchoose2partgen([arg1,x])[0][0])[1],eval(nchoose2partgen([arg1,x])[1][0])[1])
-                #candidate = delta2([nchoose2partgen([arg1,x])[0][0],nchoose2partgen([arg1,x])[1][0]])
-                candidate = delta2([eval(nchoose2partgen([olddeltabatch,x])[0][0])[1],eval(nchoose2partgen([olddeltabatch,x])[1][0])[1]])
-                #print("CANDIDATE!",candidate)
-                deltabatch.append(candidate)
-            except:
-                pass
+    #what do I want now?
+    #use deltabatch as our list then keep making abstractions
+    #hint: don't do it since bad info will mean you will abstract into unusability anyways
+        #print("skin tight jeans be yoru teenage dream tonight", deltabatch)
     return deltabatch
 
+#degen problems:
+#print(maxlargestequivclasses(['1',maxlargestequivclassesmin1]))
+
+#hint: need set not specialized function
+#print(maxlargestequivclasses([['1','2','G','h'],maxlargestequivclassesmin1]))
+
+
 #print(maxlargestequivclasses([[[["","print(\"test\")"]],[["","print(\"two equiv classes\")"]],[["","1+1"]],[["","2+3"]]]]))
-#SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
-#print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])]))
+#                              SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
+#print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]]),maxlargestequivclassesmin1]))
+#maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]]),maxlargestequivclassesmin1])
 
 ###SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])
-#print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]])]))
+#print(maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]),maxlargestequivclassesmin1]))
+
+def maxlargestequivclassesGENERIC(argList):
+    '''
+    hint:
+    the most generic would be taking a set then just delta2 on each pair as strings and not worrying about structure
+    TEST LIST:
+    ['[[\'TOTAL_ARGUMENT == \\\'print("α0")\\\'\', \'None\']]', '[[\'TOTAL_ARGUMENT == \\\'print("α0t")\\\'\', \'None\']]', '[[α0TOTAL_ARGUMENT == α1testα2', "[[α0TOTAL_ARGUMENT == α1, 'α2", "[[α0TOTAL_ARGUMENT == α1'', α2", '[["TOTAL_ARGUMENT == \'α0\'", α1', '[["TOTAL_ARGUMENT == \'α0\'", \'α1', '[["TOTAL_ARGUMENT == \'1+α0\'", \'α1', '[["TOTAL_ARGUMENT == \'α0+5\'", \'α1']
+    '''
+    LHS = argList[0]
+    RHS = argList[1]
+    THELIST = argList[2]
+    theQuestion = delta2([str(LHS),str(RHS)])
+    #hint: still use fixed point filter
+    #filteringguy = [yZ for yZ in THELIST if toString([ran(yZ),"naive"]) == delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])])]
+    filteringguy = []
+    for yZ in THELIST:
+        #print("yZ",yZ)
+        #print(toString([ran(yZ),"naive"]))
+        #print(toString([ran(delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])])),"naive"]))
+        #print(toString([ran(yZ),"naive"]) == delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])]))
+        if toString([ran(yZ),"naive"]) == toString([ran(delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])])),"naive"]):
+            filteringguy.append(yZ)
+    if len(filteringguy) == 0:
+        THELIST.append(theQuestion)
+        #print("?",toString([ran(theQuestion),"naive"]))
+        #print("THELIST",THELIST)
+        #print("fil list",filteringguy)
+    return THELIST
+
+#maxlargestequivclasses([['[[\'TOTAL_ARGUMENT == \\\'print("α0")\\\'\', \'None\']]', '[[\'TOTAL_ARGUMENT == \\\'print("α0t")\\\'\', \'None\']]', '[[α0TOTAL_ARGUMENT == α1testα2', "[[α0TOTAL_ARGUMENT == α1, 'α2", "[[α0TOTAL_ARGUMENT == α1'', α2", '[["TOTAL_ARGUMENT == \'α0\'", α1', '[["TOTAL_ARGUMENT == \'α0\'", \'α1', '[["TOTAL_ARGUMENT == \'1+α0\'", \'α1', '[["TOTAL_ARGUMENT == \'α0+5\'", \'α1'],maxlargestequivclassesGENERIC])
+#maxlargestequivclasses([[[[['[[\'TOTAL_ARGUMENT == \\\'print("α0'], ['[[\'TOTAL_ARGUMENT == \\\'print("α0']], [['")\\\'\', \'None\']]'], ['")\\\'\', \'None\']]']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α'], ['α']], [['α1'], ['α1']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", '"], [", '"]], [['α2'], ['α2']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [["'', "], ["'', "]], [['α2'], ['α2']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [['α0'], ['α0']], [['α2'], ['α2']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']]]],maxlargestequivclassesGENERIC])
+
+def maxlargestequivclassesmin1(argList):
+    '''
+    hint: nchoose2partgen([olddeltabatch,x]) has a LHS and a RHS
+    want: delta2 of something
+    L and R can be string or function
+    so grid looks like this:
+                R
+    L   |  d(string,string)                                             | d(string, a coord if x in R) OR d(string, b coord if x in R)
+        |  d(a coord of y in L,string) OR d(b coord of y in R, string)  | d(a or b coord of y in L, a or b coord of x in R)
+
+    hint:TAKE: nchoose2partgen([olddeltabatch,x]) 
+
+    NOTICE!!!!!! 
+    his function is
+    delta2(b coord if y in L, b coord if x in R)
+    ELSE:
+    d(string,string)
+    '''
+    LHS = argList[0]
+    RHS = argList[1]
+    ANS = argList[2]
+    #print("LHS minX",LHS[0][1])
+    #print("RHS minX",RHS[0][1])
+    try:
+        #hint: what if its a function under eval
+        if fCheck(eval(LHS)) == True and fCheck(eval(RHS)) == True:
+            for pair in fastAlgXproduct([eval(LHS),eval(RHS)]):
+                #print("this is pair1",pair)
+                testthis = delta2([str(pair[0][1]),str(pair[1][1])])
+                #print("this is delta1",testthis)
+                if len([y for y in ANS if y == testthis]) == 0:
+                    ANS.append(testthis)
+            #print("HYPERS ANS1",ANS)
+    except:
+        if fCheck(LHS) == True and fCheck(RHS) == True:
+            for pair in fastAlgXproduct([LHS,RHS]):
+                #print("this is pair2",pair)
+                testthis = delta2([str(pair[0][1]),str(pair[1][1])])
+                #print("this is delta2",testthis)
+                if len([y for y in ANS if y == testthis]) == 0:
+                    ANS.append(testthis)
+            #print("HYPERS ANS2",ANS)
+        else:
+            ANS = delta2([str(LHS),str(RHS)])
+            #print("not function means this ANS",ANS)
+    #FIX ANSWER:
+    OGANS = ANS
+    ANS = []
+            
+    #2 problems: 1: need a for loop with candidate + get rid of extra bracket problem
+    #2: I need to use fixed point property as a filter not ==
+    #3: fucking put this into arg2
+    #print("what is OGANS",OGANS)
+    for z in OGANS:
+        #print("ANS QUER",ANS)
+        #hint: I get rid of extra bracket using the for loop on the OG answer, then I use the fixed point property check to get rid of duplicate abstractions
+        thequalifier = [y for y in ANS if y == delta2([toString([ran(z),"naive"]),toString([ran(y),"naive"])])]
+        #print("unfiltered z",z)
+        #print("z",toString([ran(z),"naive"]))
+        #print("qual",thequalifier)
+        #print("check",len(thequalifier) == 0)
+        if len(thequalifier) == 0:
+            ANS.append(z)
+    return ANS
+
+#maxlargestequivclasses([SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]]),maxlargestequivclassesmin1])
+#[None, [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("are quotes in right order")\\\'\', \'None\']]\'', [['TOTAL_ARGUMENT == \'print("are quotes in right order")\'', 'None']]]]]
+
+def fastAlgXproduct(argList):
+    '''
+    hint: I need a fast cross product and I can't use nested for loops
+    problem:
+    I have list A and list B
+    answer should be list of x in A , y in B
+    '''
+    listA = argList[0]
+    listB = argList[1]
+    lenA = len(listA)
+    lenB = len(listB)
+    TOTAL = lenA * lenB
+    i = 0
+    j = 0
+    ANS = []
+    for x in range(0,int(TOTAL)):
+        #print(x)
+        if j <= lenB - 1:
+            #print("wtf",[listA[i],listB[j]])
+            ANS.append([listA[i],listB[j]])
+            j += 1
+        else:
+            i += 1
+            j = 0
+            #print("wtf",[listA[i],listB[j]])
+            ANS.append([listA[i],listB[j]])
+            j += 1
+    return ANS
+
+#print(fastAlgXproduct([['1','2','3'],['A','B','C','D']]))
 
 def TotalSI(argList):
     '''
@@ -4058,25 +4210,34 @@ def TotalSI(argList):
         for x in testDATA[1:]:
             print("what x do I go over",x)
             #if x[0] AND x[1] are both finite functions/graphs:
+            print("checks fail",fCheck(x[0]),x[0])
+            print("checks fail",fCheck(x[1]),x[1])
+            print("checks fail",ANStoggle)
             while fCheck(x[0]) == True and fCheck(x[1]) == True and ANStoggle == True:
-                #SI-all I TO J in X
+                print("SI-all I TO J in X",x)
                 #ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
                 minidata = ShittySI([[x[0],x[1]],"","all"])
                 
-                #if SI-all is empty, fail this answer
+                print("if SI-all is empty, fail this answer",minidata)
                 if minidata[0] == False:
-                    #fail this answer
-                    #ANStoggle = False
+                    print("fail this answer",minidata[0])
+                    ANStoggle = False
                     break
                 else:
                     #'go downwards infinitely'
                     #>define a totalSImin that does the above (for x in ANSWER I SI parts to each other) AND totalSImin calls itself until end condition
-                    totalSImin(argList)
+                    print ("KEEO GOING",totalSImin(argList))
             ANS.append(x)
             #hint: if they're not functions then they're atoms and they immediately pass
     return ANS
 
-#print(TotalSI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"","all"]))
+#this works
+#print(TotalSI([[[['A','A'],['B','B'],['C','C']],[['A','A'],['B','B'],['D','D']]],"","all"]))
+#check if I can have a long string for elements of normal input
+#not proper format --> print(TotalSI([[[['Az','Az'],['Bz','Bz'],['Cz','Cz']],[['Az','Az'],['Bz','Bz'],['Dz','Dz']]],"","all"]))
+#print(TotalSI([[[[[['R','R']],[['R','R']]],[[['z','z']],[['z','z']]],[[['t','t']],[['t','t']]]],[[[['R','R']],[['R','R']]],[[['z','z']],[['z','z']]],[[['Y','Y']],[['Y','Y']]]]],"","all"]))
+#print(TotalSI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
+#print(TotalSI([[str([['1','1'],['2','2'],['3','3']]),str([['1','1'],['2','2'],['4','4']])],"Auto","all"]))
 
 def totalSImin(argList):
     '''

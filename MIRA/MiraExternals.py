@@ -622,7 +622,7 @@ def ComposeReplace(str1,str2):
         #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
         if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
             #
-            print("got here???")
+            #print("got here???")
             #return [str2[0],str1[1]]
             if ANS == None:
                 ANS = [[str2[0],str1[1]]]
@@ -3825,6 +3825,7 @@ def SeekForcemin2(argList):
     '''
     this goes through a file and collects all the functions that have inputs that are encompassed by some abstraction
     '''
+    #print("WHAT IS ARGLISTSF2",argList)
     arg1 = argList[0]
     #hint: this is line from file
     arg2 = argList[1]

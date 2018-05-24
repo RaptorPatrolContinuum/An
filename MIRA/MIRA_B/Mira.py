@@ -7,12 +7,8 @@ import codecs
 if sys.version_info[0] < 3:
     raise Exception("Python 3 or a more recent version is required.")
 
-#fucking rip I have to close to commit
-#file = open('INP.txt', 'r')
 fileinput = 'INP.txt'
-#basis = open('Basis.txt','r+')
 basisname = 'Basis.txt'
-#memory = open('Memory.txt','r+')
 MemoryUNORDERED = 'MemoryUNORDERED.txt'
 memoryLong = 'Memory.txt'
 
@@ -36,56 +32,12 @@ while Descent:
     except Exception as e:
         FILEinsertAt([MemoryUNORDERED,input,mapcountLINES([MemoryUNORDERED])])
         print("this is the error",e)
-        #inputtext = "exit"
         inputtext = str(input("exit or logout to leave \n"))
 
     if inputtext == "exit" or inputtext == "logout":
         raise SystemExit
         break
     else:
-        #YOU HAVE TO MODIFY INPUTTEXT TO ESCAPE ALL THE FUCKING " FOR COMPOSEMETA TO WORK PROPERLY ON print("X")
-        #MAYBE NOT, I NEEED TO FUCKING SLEEP
-        #inputtext = inputtext.replace("\"", '\\'+"\"")
-        #print("inputtext check",inputtext)
-        '''
-        What's the plan?
-
-        for U unknown, see M_U
-        eval info: M_U compose MIRA and M_U in MIRA?
-        append basus w/ M_U compose MIRA and M_U in MIRA
-        pattern recognition:
-        ~
-        \cong
-        "use delta < some # " and look in some topo space
-        append basis again
-        
-        
-
-        
-        have *I* seen this before?
-        ^^^^WTF THIS IS ALREADY A META QUESTION
-        
-        have I seen this before means:
-        MIRAMEMORY composeMETA input == REALWORLD compose input
-        question: what is REALWORLD? <-- tbhis is just arbitrary input
-        in this case, let's take python evaluation as the real world since it provides fast feedback
-        later it should be a later step in some timestream (AKA time1 is MIRA composeMETA input and REALWORLD whatever happens after that, whatever that is)
-
-        IT COULD ALSO MEAN
-        SI(object,miramemories)
-        FUCK
-        
-
-        question: what is file format for memorylist? (hint: it shouldn't be a fucking list anymore)
-        just be a list of written functions in [[a,b]] format
-
-        #should know if she knows it
-        Elem_My(inputtext,memorylist)
-        #escape = "[Elem_My("+inputtext+","+str(memorylist)+")",str(Elem_My(inputtext,memorylist))+"]"
-        escape = str(bytes("[Elem_My("+inputtext+","+str(memorylist)+"),"+str(Elem_My(inputtext,memorylist))+"]", "utf-8").decode("unicode_escape"))
-        #escape = bytes(str(Elem_My(inputtext,memorylist)), "utf-8").decode("unicode_escape")
-        
-        '''
         #print("morphemes through cheat!", Cheat(str(inputtext)))
         #print("what is inputtext", inputtext)
         #print("ARGINPUT IS monkaS", argv)
@@ -125,8 +77,6 @@ while Descent:
                     memoryfile.write(str(internaltest) + "\n")
             else:
                 #just write the OG test once
-                #[['TOTAL_ARGUMENT == "b"', 'd']]
-                #str([str(inputtext),str(eval(inputtext))]) + "\n"
                 internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",str(eval(inputtext))]]
                 orsequence2 = bisectionSearch([memoryLong,str(internaltest2),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest2)])
                 if len(orsequence2) > 0:
@@ -153,15 +103,15 @@ while Descent:
             #print("ShortMem",shortAuto)
             #print("LongMem",longAuto)
             autoPickedUniv = shortAuto + longAuto
-            print("near field is", autoPickedUniv)
+            #print("near field is", autoPickedUniv)
 
             #eval the return <--- REMEMBER TO EVAL THE RETURN (need:hint: if I have finite functions, hav ea function that takes a finite function and an input then returns what the finite function would say if given that input)
             suppANS = []
             for x in autoPickedUniv:
                 suppANSmin = Applyfunc([eval(x),inputtext])
-                print("apply test", eval(x), inputtext,suppANSmin)
+                #print("apply test", eval(x), inputtext,suppANSmin)
                 suppANS.append(x)
-            print("supposed answer",suppANS)
+            #print("supposed answer",suppANS)
             for x in suppANS:
                 try:
                     attempt = eval(x)
@@ -192,9 +142,9 @@ while Descent:
             #deltav2 on pairs in new obj -> guessing similar inputs/variables (find abstractions) ->#eval using (deltav3 COMPOSE deltav2) and get answers
             #for each object in seekforce, check if new obj or x in seekforce is an abstraction by checking deltav2(obj,x in seekforce) == obj OR deltav2(obj,x in seekforce) == x in seekforce
             #print("checking memcomposeinput",str(MEMcomposeinput).encode('utf-8'))
-            print("checking memcomposeinput HINT: before is evaling with what we know, now we guess abstraction",MEMcomposeinput)
+            #print("checking memcomposeinput HINT: before is evaling with what we know, now we guess abstraction",MEMcomposeinput)
             #print("is list?", type(MEMcomposeinput))
-            print("qhat is argv?",argv)
+            #print("qhat is argv?",argv)
             #print("checking memcomposeinput",MEMcomposeinput)
             #print("alpha and stout fucking up","α".encode('utf-8'))
             guessAbst = []
@@ -216,24 +166,30 @@ while Descent:
                     #print("small steps you fuck",xmod) #can't encode α for some reason
                     #print("small steps you fuck2",inputtext)
                     #print("this is guess",abstractcheck)
-                    print("args for delta3",[abstractcheck,inputtext])
+                    #print("args for delta3",[abstractcheck,inputtext])
                     replacementguess = delta3META([abstractcheck,inputtext])
-                    print("guess substitution", replacementguess)
-                    print("composemeta arguments", replacementguess,thedelta)
+                    #print("guess substitution", replacementguess)
+                    #print("composemeta arguments", replacementguess,thedelta)
                     #print("CHECKING EVAL THROUGH COMPOSE FUCK", Compose(replacementguess,thedelta))
                     metaeval = ComposeMETA([replacementguess,thedelta])
                     #print("#1 WTF IS METAEVAL AND #2 WHY IS IT ALWAYS EMPTY",[replacementguess,thedelta])
-                    print("CHECKING EVAL THROUGH COMPOSEMETA", metaeval)
+                    #print("CHECKING EVAL THROUGH COMPOSEMETA", metaeval)
                     #print("checking list comprehension",thedelta)
                     #print("checking list comprehension2",[y for y in guessAbst if y == thedelta])
                     if len([y for y in guessAbst if y == thedelta]) == 0:
                         guessAbst.append(thedelta)
-            print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
+            #print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
             for x in guessAbst:
                 print("x in guessAbst",x)
-                print("try to seekforce with this and something else")
-                print(SeekForce([MemoryUNORDERED,x,SeekForcemin2,[],[]]))
-                print(SeekForce([memoryLong,x,SeekForcemin2,[],[]]))
+                minforce1 = SeekForce([MemoryUNORDERED,x,SeekForcemin2,[],[]])
+                minforce2 = SeekForce([memoryLong,x,SeekForcemin2,[],[]])
+                #print("try to seekforce with this and something else")
+                #print(minforce1)
+                #print(minforce2)
+                #print("abstracting RHS once1!",maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]))
+                #print("abstracting RHS once2!",maxlargestequivclasses([minforce2,maxlargestequivclassesmin1]))
+                totalabstractions = maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]) + maxlargestequivclasses([minforce2,maxlargestequivclassesmin1])
+                print("no respect wtf",totalabstractions)
                 '''
                 plan:
                 >check if we know the answer already (whether with compose or composeMETA)
