@@ -77,7 +77,7 @@ while Descent:
                     memoryfile.write(str(internaltest) + "\n")
             else:
                 #just write the OG test once
-                internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",str(eval(inputtext))]]
+                internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",[str(eval(inputtext)),""]]]
                 orsequence2 = bisectionSearch([memoryLong,str(internaltest2),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest2)])
                 if len(orsequence2) > 0:
                     print("already saw that 2")

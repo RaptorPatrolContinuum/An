@@ -2953,7 +2953,8 @@ def delta1(argList):
     output = pytest.communicate()[0].decode()
     #print("this is error",pytest.communicate()[1].decode())
     err = pytest.communicate()[1].decode()
-    ANS.append([arg1,(output,err)])
+    #ANS.append([arg1,(output,err)])
+    ANS.append([["TOTAL_ARGUMENT == '"+ arg1 +"'",[output,err]]])
     os.remove(nametest)
     return ANS
 
