@@ -367,27 +367,29 @@ def AddressFunc(index,obj):
     
     #print("obj for reference!",obj)
     for x in obj:
-        print("LINE 274")
-        print("index stats",index)
+        #print("LINE 274")
         #print("other stats",obj,Interim)
         print("somebody is out of range1",x)
-        print("somebody is out of range2",x[0])
-        print("somebody is out of range3",RelEval(index,x[0]))
+        #print("somebody is out of range2",x[0])
+        print("somebody is out of range2",str(x[0]))
+        print("index stats",index)
+        #print("somebody is out of range3",RelEval(index,x[0]))
+        print("somebody is out of range3",RelEval(index,str(x[0])))
         print("somebody is out of range4",int(RelEval(index,x[0])[0]))
-        print("stats",x,x[0],int(RelEval(index,x[0])[0]))
-        print("suspected wtf",index,x[1])
+        #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
+        #print("suspected wtf",index,x[1])
 
-        print("x obj", x)
-        print("index",index)
-        print("x[0]",x[0])
-        print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
-        print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
-        print("index ",index)
-        print("x[1]",x[1])
-        print("int(empty set) just dies",RelEval(index,x[1]))
-        print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
-        print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
-        print("LINE 274 END")
+        #print("x obj", x)
+        #print("index",index)
+        #print("x[0]",x[0])
+        #print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
+        #print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
+        #print("index ",index)
+        #print("x[1]",x[1])
+        #print("int(empty set) just dies",RelEval(index,x[1]))
+        #print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
+        #print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+        #print("LINE 274 END")
         Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
     
     #print("more stats",obj,Interim)
@@ -531,13 +533,14 @@ def Compose(f1,f2):
     '''
     do f2 THEN f1 like the way it's written!
     '''
-    #check if f1,f2 are functions:
+    #print("check if f1,f2 are functions:",f1)
     if fCheck(f1) == False or fCheck(f2) == False:
-        print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
+        #print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
         return
     ALG = []
     for x in f2:
         for y in f1:
+            #print("x1 and y0",x[1],y[0])
             if x[1] == y[0]:
                 ALG.append([x[0],y[1]])
     return ALG
@@ -675,13 +678,15 @@ def RelEval(f1,arglist):
     "RELationEval"
     evals f1 using arglist and returns list
     f1 is finite function
-    arg is singleton
+    arg is singleton OR LIST OF SINGLETONS APPARENTLY :thinking:
 
     question: "composing" using list vs 1 obj
     '''
     ANS = []
-    print("what is arglist?", arglist)
+    #print("what is arglist?", arglist)
     if type(arglist) == str:
+        #print("f1",f1)
+        #print("the compose",Compose(f1,Q_(arglist)))
         for x in Compose(f1,Q_(arglist)):
             ANS.append(x[1])
     else:
@@ -690,6 +695,11 @@ def RelEval(f1,arglist):
             print("f1",f1)
             print("qy",Q_(y))
             print("?????",Compose(f1,Q_(y)))
+            '''
+            if type(y) == list:
+                print("tools",y)
+                print("f1",f1)
+            '''
             for x in Compose(f1,Q_(y)):
                 ANS.append(x[1])
     return ANS
@@ -4561,6 +4571,7 @@ def TotalSI(argList):
 #print(TotalSI([[[['A','A'],['B','B'],['C','C']],[['A','A'],['B','B'],['D','D']]],"","all"]))
 #check if I can have a long string for elements of normal input
 #not proper format --> print(TotalSI([[[['Az','Az'],['Bz','Bz'],['Cz','Cz']],[['Az','Az'],['Bz','Bz'],['Dz','Dz']]],"","all"]))
+
 #print(TotalSI([[[[[['R','R']],[['R','R']]],[[['z','z']],[['z','z']]],[[['t','t']],[['t','t']]]],[[[['R','R']],[['R','R']]],[[['z','z']],[['z','z']]],[[['Y','Y']],[['Y','Y']]]]],"","all"]))
 #print(TotalSI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
 #print(TotalSI([[str([['1','1'],['2','2'],['3','3']]),str([['1','1'],['2','2'],['4','4']])],"Auto","all"]))
