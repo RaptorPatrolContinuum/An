@@ -364,18 +364,20 @@ def AddressFunc(index,obj):
         return int(0)
 
     Interim = []
-    
-    #print("obj for reference!",obj)
+
+    print("INDEX",index)
+    print("obj for reference!",obj)
     for x in obj:
         #print("LINE 274")
         #print("other stats",obj,Interim)
+        print("===========")
         print("somebody is out of range1",x)
         #print("somebody is out of range2",x[0])
         print("somebody is out of range2",str(x[0]))
-        print("index stats",index)
+        #print("index stats",index)
         #print("somebody is out of range3",RelEval(index,x[0]))
         print("somebody is out of range3",RelEval(index,str(x[0])))
-        print("somebody is out of range4",int(RelEval(index,x[0])[0]))
+        print("somebody is out of range4",int(RelEval(index,str(x[0]))[0]))
         #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
         #print("suspected wtf",index,x[1])
 
@@ -390,7 +392,8 @@ def AddressFunc(index,obj):
         #print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
         #print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
         #print("LINE 274 END")
-        Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+        #Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+        Interim.append(CantorPair(int(RelEval(index,str(x[0]))[0]),int(RelEval(index,str(x[1]))[0])))
     
     #print("more stats",obj,Interim)
     ANS="1".zfill(int(max(Interim))+1)
@@ -984,6 +987,9 @@ def Vertex_(E_G):
             ANS.append(x[1])
     return ANS
 
+#ShittySI([[[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']], [['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]],"Auto","all"])
+#ShittySI([[[[['2', '0'], ['1', '1'], ['4', '0']], [['1', '0'], ['0', '1'], ['2', '0'], ['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]], [True, [['0', '0'], ['4', '1'], ['1', '2'], ['2', '3']]]],"Auto"])
+
 def ShittySI(ListItems):
     '''
 	ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
@@ -1101,8 +1107,8 @@ def ShittySI(ListItems):
                             Indexer.append([LinkPoolList[i][0],Appendage[i]])
                             i += 1
                         #print("here we test SI iwth",Appendage)
-                        #print("Indexer is", Indexer)
-                        #print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        print("Indexer is", Indexer)
+                        print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
                         #If |V_H| > |V_G|, then construct H* to use instead:
                         if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
                             #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
@@ -1183,6 +1189,17 @@ def ShittySI(ListItems):
                                 #print("AD checks prior",AD1,AD2)
                                 #print("======= DIED END")
                             else:
+                                #print("red velvet bad boy",Indexer)
+                                #print("red velvet bad boy2",LinkPool)
+                                #print("red velvet bad boy3",AutoCheck)
+                                #print("bb4",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                print("bad boy down",Minv_(Beta_(WLOG)))
+                                #problem is in phiconstruct or Minv
+                                #problem is probably in compose and quotes on that triple length thing
+                                print("F U C K1",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                print("F U C K2",HStar)
+                                print("F U C K3",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar))
+                                #AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
                                 #time to check SI:
                                 AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
                                 AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
@@ -4514,6 +4531,58 @@ def fastAlgXproduct(argList):
 
 #print(fastAlgXproduct([['1','2','3'],['A','B','C','D']]))
 
+'''
+[
+	[[['R', 'R']], [['R', 'R']]]
+]
+
+sample graph:
+[['a','a']]
+
+FOR TOTAL SI I NEED TO SI 2 graphs and within those 2 graphs each basis is ALSO a grpah
+
+print(TotalSI(
+		[
+			[
+				#this is graphX
+				[
+					#should be a pair here; OF WHICH EACH BASIS ELEMENT IS A GRAPH
+					#hint: just draw a picture
+					],
+				
+				
+				[[[['R','R']],[['R','R']]],[[['z','z']],[['z','z']]],[[['Y','Y']],[['Y','Y']]]]
+				]
+			,"","all"]
+		))
+		
+
+need 4 graphs
+A - > dot
+[['dot','dot']]
+B - > line
+[['linea','lineb']]
+C - > triangle
+[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]
+D - > another triangle
+[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]
+
+[['sqA','sqB'],['sqB','sqC'],['sqC','sqD'],['sqD','sqA']]
+		
+#print(TotalSI(
+		[
+			[
+				[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]],
+				[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']],[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]]]
+				]
+			,"","all"]
+		))
+		
+		
+print(TotalSI([[[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]],[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']],[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]]]],"","all"]))
+'''
+
+
 def TotalSI(argList):
     '''
     ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
@@ -4566,6 +4635,17 @@ def TotalSI(argList):
             ANS.append(x)
             #hint: if they're not functions then they're atoms and they immediately pass
     return ANS
+
+#THESE ALSO WORK
+#FALSE
+#ShittySI([[[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']], [['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]],"Auto"])
+#TRUE
+#ShittySI([[[[['2', '0'], ['1', '1'], ['4', '0']], [['1', '0'], ['0', '1'], ['2', '0'], ['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]], [True, [['0', '0'], ['4', '1'], ['1', '2'], ['2', '3']]]],"Auto"])
+#[[[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']], [['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]], ['Assume False']]
+#[[[['2', '0'], ['1', '1'], ['4', '0']], [['1', '0'], ['0', '1'], ['2', '0'], ['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]], [True, [['0', '0'], ['4', '1'], ['1', '2'], ['2', '3']]]]
+
+#TESTING THIS CURRENTLY
+#print(TotalSI([[[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]],[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']],[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]]]],"","all"]))
 
 #this works
 #print(TotalSI([[[['A','A'],['B','B'],['C','C']],[['A','A'],['B','B'],['D','D']]],"","all"]))
