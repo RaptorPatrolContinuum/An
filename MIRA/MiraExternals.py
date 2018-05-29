@@ -365,19 +365,19 @@ def AddressFunc(index,obj):
 
     Interim = []
 
-    print("INDEX",index)
-    print("obj for reference!",obj)
+    #print("INDEX",index)
+    #print("obj for reference!",obj)
     for x in obj:
         #print("LINE 274")
         #print("other stats",obj,Interim)
-        print("===========")
-        print("somebody is out of range1",x)
+        #print("===========")
+        #print("somebody is out of range1",x)
         #print("somebody is out of range2",x[0])
-        print("somebody is out of range2",str(x[0]))
+        #print("somebody is out of range2",str(x[0]))
         #print("index stats",index)
         #print("somebody is out of range3",RelEval(index,x[0]))
-        print("somebody is out of range3",RelEval(index,str(x[0])))
-        print("somebody is out of range4",int(RelEval(index,str(x[0]))[0]))
+        #print("somebody is out of range3",RelEval(index,str(x[0])))
+        #print("somebody is out of range4",int(RelEval(index,str(x[0]))[0]))
         #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
         #print("suspected wtf",index,x[1])
 
@@ -801,7 +801,7 @@ def VisionBasisFILE(argList):
         ANS.append([fileindexINV([basisfile,int(x[0])]),fileindexINV([basisfile,int(x[1])])])
     return ANS
 
-def EdgeSortbyLinks(E_G):
+def EdgeSortbyLinksMESSEDUP(E_G):
     Start = {}
     for x in E_G:
         if type(x[0]) != str:
@@ -814,6 +814,21 @@ def EdgeSortbyLinks(E_G):
                 Start[x[0]].append(x[1])
             else:
                 Start[x[0]] = [x[1]]
+    Filter = {}
+    for x in Start:
+        if len(Start[x]) in Filter:
+            Filter[len(Start[x])].append(x)
+        else:
+            Filter[len(Start[x])] = [x]
+    return Filter
+
+def EdgeSortbyLinks(E_G):
+    Start = {}
+    for x in E_G:
+        if x[0] in Start:
+            Start[x[0]].append(x[1])
+        else:
+            Start[x[0]] = [x[1]]
     Filter = {}
     for x in Start:
         if len(Start[x]) in Filter:
@@ -1107,8 +1122,8 @@ def ShittySI(ListItems):
                             Indexer.append([LinkPoolList[i][0],Appendage[i]])
                             i += 1
                         #print("here we test SI iwth",Appendage)
-                        print("Indexer is", Indexer)
-                        print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        #print("Indexer is", Indexer)
+                        #print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
                         #If |V_H| > |V_G|, then construct H* to use instead:
                         if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
                             #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
@@ -1189,16 +1204,18 @@ def ShittySI(ListItems):
                                 #print("AD checks prior",AD1,AD2)
                                 #print("======= DIED END")
                             else:
+                                #print("WLOG",WLOG)
+                                #print("bad boy down",Minv_(Beta_(WLOG)))
                                 #print("red velvet bad boy",Indexer)
                                 #print("red velvet bad boy2",LinkPool)
                                 #print("red velvet bad boy3",AutoCheck)
                                 #print("bb4",PhiConstruct(Indexer,LinkPool,AutoCheck))
-                                print("bad boy down",Minv_(Beta_(WLOG)))
-                                #problem is in phiconstruct or Minv
+                                #problem is Minv_
+                                #problem is in phiconstruct or Minv_ on LIST
                                 #problem is probably in compose and quotes on that triple length thing
-                                print("F U C K1",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
-                                print("F U C K2",HStar)
-                                print("F U C K3",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar))
+                                #print("F U C K1",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                #print("F U C K2",HStar)
+                                #print("F U C K3",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar))
                                 #AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
                                 #time to check SI:
                                 AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
@@ -4606,7 +4623,10 @@ def TotalSI(argList):
 
     input same as ShittySI
     PROBLEM: if I change shittySI this function might have problems
-    '''
+
+    #have to prep the data by
+    #step 1: making everything into string
+    #step 2: if parts are functions then SI on parts
     testDATA = ShittySI(argList)
     print("what is testdata?",testDATA)
     ANS = []
@@ -4634,7 +4654,35 @@ def TotalSI(argList):
                     print ("KEEO GOING",totalSImin(argList))
             ANS.append(x)
             #hint: if they're not functions then they're atoms and they immediately pass
+    #problem2: HOW TO UNDO STRINGING ????
+    '''
+    ANS = []
+    #prep graphX and graphY
+    graphX = TotalSImin1([argList[0][0]])
+    graphY = TotalSImin1([argList[0][1]])
+    firsttry = ShittySI([[graphX,graphY],argList[1],argList[2]])
+    print("1sttry", firsttry)
+
     return ANS
+
+def TotalSImin1(argList):
+    '''
+    hint: input is finite function
+    output is making sure for each pair in input that the x and y coords are strings
+    '''
+    ff = argList[0]
+    ANS = []
+    if fCheck(ff) == True:
+        for x in ff:
+            ANS.append([str(x[0]),str(x[1])])
+    else:
+        ANS = ff
+    return ANS
+
+#[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']]
+#print(TotalSImin1([[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']]]))
+#[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]]
+#print(TotalSImin1([[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]]]))
 
 #THESE ALSO WORK
 #FALSE
