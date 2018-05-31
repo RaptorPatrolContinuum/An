@@ -1031,8 +1031,8 @@ def ShittySI(ListItems):
 
     #print("REMEMBER TO ADD ZEROLINKS TO EDGESORTbyLINKS")
     #print("sort by links START")
-    #print(WLOG)
-    #print(Larger)
+    print(WLOG)
+    print(Larger)
     #print(EdgeSortbyLinks(WLOG))
     #print(EdgeSortbyLinks(Larger))
     #print(LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger)))
@@ -1264,7 +1264,7 @@ def ShittySI(ListItems):
                                 passB = False
                             if passA == True and passB == True:
                                 HStar.append(L)
-                        #print("ok check out H*!",HStar)
+                        print("ok check out H*!",HStar)
                     else:
                         HStar = Larger
                     tryit = True
@@ -1293,6 +1293,7 @@ def ShittySI(ListItems):
                             AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
                     else:
                         #time to check SI:
+                        print("what is HStar",HStar)
                         AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
                         AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar) 
                     #print("ADchecks",AD1,AD2)
@@ -4602,6 +4603,9 @@ print(TotalSI([[[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea
 
 def TotalSI(argList):
     '''
+    HUGE HINT: PLEASE DONT FUCKING HAVE ALL NUMBERS IN THIS BECAUSE ADDING A FOR LOOP FUCKS THIS FUNCTION
+
+
     ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
 
     "SI downwards"
@@ -4661,7 +4665,38 @@ def TotalSI(argList):
     graphX = TotalSImin1([argList[0][0]])
     graphY = TotalSImin1([argList[0][1]])
     firsttry = ShittySI([[graphX,graphY],argList[1],argList[2]])
-    print("1sttry", firsttry)
+    #print("1sttry", firsttry)
+    if firsttry[0] == True:
+        for x in firsttry[1]:
+            print("what is x",x)
+            #plan:
+            #check 1st and 2nd coord
+            #if they're both functions under eval try to SI them
+            #hint: everything should be strings by this function's min1 func
+            try:
+                check1 = eval(x[0])
+                check2 = eval(x[1])
+            except:
+                check1 = x[0]
+                check2 = x[1]
+            print("check1",check1)
+            print("check2",check2)
+                
+            if fCheck(check1) == True and fCheck(check2) == True:
+                #hint: all numbers -> Auto
+                #ELSE: EMPTY
+
+                #NEWHINT: FUCKING SKIP THIS AND ASSUME NOT ALL NUMBERS
+                #HUGE HINT: PLEASE DONT FUCKING HAVE ALL NUMBERS IN THIS BECAUSE ADDING A FOR LOOP FUCKS THIS FUNCTION
+                #ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
+                secondtest = ShittySI([[check1,check2]])
+                if secondtest[0] == "True":
+                    ANS.append(x)
+            else:
+                ANS.append(x)
+            #else leave them alone
+            #if SI fails then fail this answer
+            #else add to ANS
 
     return ANS
 
