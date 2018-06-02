@@ -129,6 +129,7 @@ def M_(thestr):
     return ANS
 
 def Minv_(thestr):
+    #print("check if I can handle empties",thestr)
     ANS = []
     i = 0
     for x in thestr:
@@ -163,7 +164,7 @@ def fCheck(fcandidate):
     one element of the fcandidate is not a pair
     check if each element of fcandidate is of size 2
     '''
-    if len(fcandidate) == 0:
+    if len(fcandidate) == 0 and fcandidate != []:
         return False
     for obj in fcandidate:
         #print("what is obj?",obj)
@@ -258,7 +259,7 @@ def Beta_(E_G):
     '''
     ANS = []
     #check if obj is a function:
-    if fCheck(E_G) == False:
+    if fCheck(E_G) == False and E_G != []:
         print("Beta says that obj isn't a function!", E_G)
         return
 
@@ -1251,6 +1252,10 @@ def ShittySI(ListItems):
                         i += 1
                     #print("Indexer is ", Indexer)
                     #print("Phiconstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                    #this isn't working on Auto either:
+                    #ShittySI([[[['dot', 'dot']],[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]]])
+                    #example that works
+                    #ShittySI([[[['B', 'B']],[['A', 'A'], ['C', 'C']]]])
                     #If |V_H| > |V_G|, then construct H* to use instead:
                     if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
                         #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
@@ -1258,10 +1263,23 @@ def ShittySI(ListItems):
                         for L in Larger:
                             passA = True
                             passB = True
+                            #both not true means HStar isn't being appended to
+                            #ShittySI([[[['dot', 'dot']],[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]]])
+                            print("L",L)
+                            print("COMPOSE LHS",Minv_(Beta_(WLOG)))
+                            print("phiconstruct",PhiConstruct(Indexer,LinkPool,False))
+                            print("compose",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
+                            print("L[0]",L[0])
+                            print("releval",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0]))
+                            print("L[1]",L[1])
+                            print("releval",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1]))
+                            print(len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])))
+                            print(len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])))
                             if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])) == 0:
                                 passA = False
                             if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])) == 0:
                                 passB = False
+                            
                             if passA == True and passB == True:
                                 HStar.append(L)
                         print("ok check out H*!",HStar)
