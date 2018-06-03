@@ -8,6 +8,7 @@ himitsu = [["[['dot', 'dot']]", "[['triaX', 'triaY'], ['triaY', 'triaZ'], ['tria
 
 garbanzo = []
 
+
 for x in himitsu:
     print(x)
     #print(toString([ran(x),"naive"]))

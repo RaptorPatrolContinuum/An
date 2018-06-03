@@ -1311,15 +1311,26 @@ def ShittySI(ListItems):
                             AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
                     else:
                         #time to check SI:
+                        '''
+                        question: address is failing because H* is empty set [], meaning that you have to take the cantor pair of a null coord for one of the pair coords,
+                        my solution:
+                        just intercept the error here and go to next check
+                        problem: MAKE SURE NOT TO BREAK AND TO ACTUALLY GO TO NEXT INDEX TO CHECK IT
+                        '''
                         print("what is HStar",HStar)
-                        AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
-                        AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar) 
+                        if HStar == []:
+                            fuckingskip = True
+                        else:
+                            AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                            AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar) 
                     #print("ADchecks",AD1,AD2)
                     #print("tobin AD1","{0:b}".format(AD1)[::-1])
                     #print("tobin AD2","{0:b}".format(AD2)[::-1])
                     #print("LessthanC",LessThan_C(AD1,AD2))
 
-                    if LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
+                    if fuckingskip == True:
+                        fuckingskip = False
+                    elif LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
                         return [True,PhiConstruct(Indexer,LinkPool,AutoCheck)]
                     elif len(ANS) > 0:
                         ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
