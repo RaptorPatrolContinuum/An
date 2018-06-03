@@ -1108,6 +1108,8 @@ def ShittySI(ListItems):
     
     NumberIndex = []
     ANS = []
+    #FUCK I DONT KNOW WHAT IM DOING TO THIS CODE
+    fuckingskip = False
     for G in LinkSize:
         if len(NumberIndex) > 0:
             NumberNew = []
@@ -1223,14 +1225,22 @@ def ShittySI(ListItems):
                                 AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
                         else:
                             #time to check SI:
-                            AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
-                            AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+                            '''
+                            empty HStar fix
+                            '''
+                            if HStar == []:
+                                fuckingskip = True
+                            else:
+                                AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                                AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
                         #print("ADchecks",AD1,AD2)
                         #print("tobin AD1","{0:b}".format(AD1)[::-1])
                         #print("tobin AD2","{0:b}".format(AD2)[::-1])
                         #print("LessthanC",LessThan_C(AD1,AD2))
                         #print("len(ALLTRIGGER) == 0",len(ALLTRIGGER) == 0)
-                        if LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
+                        if fuckingskip == True:
+                            fuckingskip = False
+                        elif LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
                             return [True,PhiConstruct(Indexer,LinkPool,AutoCheck)]
                         elif len(ANS) > 0:
                             ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
