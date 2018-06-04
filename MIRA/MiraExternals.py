@@ -1238,6 +1238,11 @@ def ShittySI(ListItems):
                         #print("tobin AD2","{0:b}".format(AD2)[::-1])
                         #print("LessthanC",LessThan_C(AD1,AD2))
                         #print("len(ALLTRIGGER) == 0",len(ALLTRIGGER) == 0)
+
+                        #I'm just going to do a fast fix: if HStar is empty then set fuckingskip to true
+                        if HStar == []:
+                            fuckingskip = True
+
                         if fuckingskip == True:
                             fuckingskip = False
                         elif LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
@@ -1275,8 +1280,10 @@ def ShittySI(ListItems):
                             passB = True
                             #both not true means HStar isn't being appended to
                             #ShittySI([[[['dot', 'dot']],[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]]])
+                            #ShittySI([[[['1', '1']],[['2', '3'], ['3', '4'], ['4', '2']]], "Auto"])
                             print("L",L)
                             print("COMPOSE LHS",Minv_(Beta_(WLOG)))
+                            print("INDEXER",Indexer)
                             print("phiconstruct",PhiConstruct(Indexer,LinkPool,False))
                             print("compose",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
                             print("L[0]",L[0])
@@ -1338,6 +1345,10 @@ def ShittySI(ListItems):
                     #print("tobin AD2","{0:b}".format(AD2)[::-1])
                     #print("LessthanC",LessThan_C(AD1,AD2))
 
+                    #I'm just going to do a fast fix: if HStar is empty then set fuckingskip to true
+                    if HStar == []:
+                        fuckingskip = True
+
                     if fuckingskip == True:
                         fuckingskip = False
                     elif LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
@@ -1345,6 +1356,16 @@ def ShittySI(ListItems):
                     elif len(ANS) > 0:
                         ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
                     else:
+                        print("do this by hand tomorrow",Indexer)
+                        print("HStar not empty means WTF IS GOIGN ON",HStar)
+                        print("what is fucking skip -> means I didn't catch all the flow",fuckingskip)
+                        print("INDEX",Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                        print("OBJ",WLOG)
+                        print("AD1",AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG))
+                        print("INDEX2",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                        print("OBJ2",HStar)
+                        print("AD2",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar) )
+                        print("more stats",LessThan_C(AD1,AD2))
                         ANS.append(True)
                         ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
                     print("WTF IS ANS2",ANS)
