@@ -1030,6 +1030,9 @@ def ShittySI(ListItems):
         WLOG = E_H
         Larger = E_G
 
+    #problem is "all" doesn't have 2nd element as list so have to add preans
+    preans = []
+
     #print("REMEMBER TO ADD ZEROLINKS TO EDGESORTbyLINKS")
     #print("sort by links START")
     #print(WLOG)
@@ -1248,10 +1251,12 @@ def ShittySI(ListItems):
                         elif LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
                             return [True,PhiConstruct(Indexer,LinkPool,AutoCheck)]
                         elif len(ANS) > 0:
-                            ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                            #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                            preans.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
                         else:
                             ANS.append(True)
-                            ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                            #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                            preans = [PhiConstruct(Indexer,LinkPool,AutoCheck)]
                         #print("WTF IS ANS1",ANS)
             NumberIndex = NumberNew
         else:
@@ -1354,7 +1359,8 @@ def ShittySI(ListItems):
                     elif LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
                         return [True,PhiConstruct(Indexer,LinkPool,AutoCheck)]
                     elif len(ANS) > 0:
-                        ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        preans.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
                     else:
                         #print("do this by hand tomorrow",Indexer)
                         #print("HStar not empty means WTF IS GOIGN ON",HStar)
@@ -1367,11 +1373,17 @@ def ShittySI(ListItems):
                         #print("AD2",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar) )
                         #print("more stats",LessThan_C(AD1,AD2))
                         ANS.append(True)
-                        ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        preans = [PhiConstruct(Indexer,LinkPool,AutoCheck)]
                     #print("WTF IS ANS2",ANS)
     if len(ANS) > 0:
-        return ANS
+        return ANS + [preans]
     return ["Assume False"]
+
+#print(ShittySI([[[['A','A'],['B','B'],['C','C']],[['A','A'],['B','B'],['D','D']]],"","all"]))
+#[True, [['A', 'D'], ['D', 'A'], ['B', 'B'], ['B', 'B'], ['C', 'A'], ['A', 'C']], [['B', 'D'], ['D', 'B'], ['A', 'B'], ['B', 'A'], ['C', 'A'], ['A', 'C']], [['C', 'D'], ['D', 'C'], ['A', 'B'], ['B', 'A'], ['B', 'A'], ['A', 'B']], [['A', 'D'], ['D', 'A'], ['C', 'B'], ['B', 'C'], ['B', 'A'], ['A', 'B']], [['B', 'D'], ['D', 'B'], ['C', 'B'], ['B', 'C'], ['A', 'A'], ['A', 'A']], [['C', 'D'], ['D', 'C'], ['B', 'B'], ['B', 'B'], ['A', 'A'], ['A', 'A']]]
+#print(ShittySI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
+
 
 def ShittySIbeforeTOTALSI(ListItems):
     '''
@@ -1663,10 +1675,6 @@ def ShittySIbeforeTOTALSI(ListItems):
     if len(ANS) > 0:
         return ANS
     return ["Assume False"]
-
-#print(ShittySI([[[['A','A'],['B','B'],['C','C']],[['A','A'],['B','B'],['D','D']]],"","all"]))
-#[True, [['A', 'D'], ['D', 'A'], ['B', 'B'], ['B', 'B'], ['C', 'A'], ['A', 'C']], [['B', 'D'], ['D', 'B'], ['A', 'B'], ['B', 'A'], ['C', 'A'], ['A', 'C']], [['C', 'D'], ['D', 'C'], ['A', 'B'], ['B', 'A'], ['B', 'A'], ['A', 'B']], [['A', 'D'], ['D', 'A'], ['C', 'B'], ['B', 'C'], ['B', 'A'], ['A', 'B']], [['B', 'D'], ['D', 'B'], ['C', 'B'], ['B', 'C'], ['A', 'A'], ['A', 'A']], [['C', 'D'], ['D', 'C'], ['B', 'B'], ['B', 'B'], ['A', 'A'], ['A', 'A']]]
-#print(ShittySI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
 
 def ShittySIBEFOREALL(ListItems):
     '''
@@ -4724,25 +4732,30 @@ def TotalSI(argList):
     #prep graphX and graphY
     graphX = TotalSImin1([argList[0][0]])
     graphY = TotalSImin1([argList[0][1]])
-    firsttry = ShittySI([[graphX,graphY],argList[1],argList[2]])
+    shittyprep = [[graphX,graphY],argList[1],argList[2]]
+    print("what is shittySI prep?",shittyprep)
+    firsttry = ShittySI(shittyprep)
     #print("1sttry", firsttry)
     if firsttry[0] == True:
         for x in firsttry[1]:
-            print("what is x",x)
+            print("what is x======",x)
+            print("list isn't right", len(x))
             #plan:
             #check 1st and 2nd coord
             #if they're both functions under eval try to SI them
             #hint: everything should be strings by this function's min1 func
             try:
-                check1 = eval(x[0])
-                check2 = eval(x[1])
-            except:
-                check1 = x[0]
-                check2 = x[1]
+                check1 = eval(x[0][0])
+                check2 = eval(x[1][0])
+            except Exception as e:
+                print("checks went wrong", e)
+                check1 = x[0][0]
+                check2 = x[1][0]
             print("check1",check1)
             print("check2",check2)
                 
             if fCheck(check1) == True and fCheck(check2) == True:
+                print("fcheck passed for pair")
                 #hint: all numbers -> Auto
                 #ELSE: EMPTY
 
@@ -4750,7 +4763,9 @@ def TotalSI(argList):
                 #HUGE HINT: PLEASE DONT FUCKING HAVE ALL NUMBERS IN THIS BECAUSE ADDING A FOR LOOP FUCKS THIS FUNCTION
                 #ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
                 secondtest = ShittySI([[check1,check2]])
-                if secondtest[0] == "True":
+                print("what is result of secondtest?",secondtest)
+                print("why is ans empoty then",secondtest[0] == True)
+                if secondtest[0] == True:
                     ANS.append(x)
             else:
                 ANS.append(x)
@@ -4789,6 +4804,7 @@ def TotalSImin1(argList):
 
 #TESTING THIS CURRENTLY
 #print(TotalSI([[[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]],[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']],[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]]]],"","all"]))
+
 
 #this works
 #print(TotalSI([[[['A','A'],['B','B'],['C','C']],[['A','A'],['B','B'],['D','D']]],"","all"]))
