@@ -1032,8 +1032,8 @@ def ShittySI(ListItems):
 
     #print("REMEMBER TO ADD ZEROLINKS TO EDGESORTbyLINKS")
     #print("sort by links START")
-    print(WLOG)
-    print(Larger)
+    #print(WLOG)
+    #print(Larger)
     #print(EdgeSortbyLinks(WLOG))
     #print(EdgeSortbyLinks(Larger))
     #print(LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger)))
@@ -1281,17 +1281,17 @@ def ShittySI(ListItems):
                             #both not true means HStar isn't being appended to
                             #ShittySI([[[['dot', 'dot']],[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]]])
                             #ShittySI([[[['1', '1']],[['2', '3'], ['3', '4'], ['4', '2']]], "Auto"])
-                            print("L",L)
-                            print("COMPOSE LHS",Minv_(Beta_(WLOG)))
-                            print("INDEXER",Indexer)
-                            print("phiconstruct",PhiConstruct(Indexer,LinkPool,False))
-                            print("compose",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
-                            print("L[0]",L[0])
-                            print("releval",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0]))
-                            print("L[1]",L[1])
-                            print("releval",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1]))
-                            print(len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])))
-                            print(len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])))
+                            #print("L",L)
+                            #print("COMPOSE LHS",Minv_(Beta_(WLOG)))
+                            #print("INDEXER",Indexer)
+                            #print("phiconstruct",PhiConstruct(Indexer,LinkPool,False))
+                            #print("compose",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
+                            #print("L[0]",L[0])
+                            #print("releval",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0]))
+                            #print("L[1]",L[1])
+                            #print("releval",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1]))
+                            #print(len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])))
+                            #print(len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])))
                             if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])) == 0:
                                 passA = False
                             if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])) == 0:
@@ -1299,7 +1299,7 @@ def ShittySI(ListItems):
                             
                             if passA == True and passB == True:
                                 HStar.append(L)
-                        print("ok check out H*!",HStar)
+                        #print("ok check out H*!",HStar)
                     else:
                         HStar = Larger
                     tryit = True
@@ -1334,7 +1334,7 @@ def ShittySI(ListItems):
                         just intercept the error here and go to next check
                         problem: MAKE SURE NOT TO BREAK AND TO ACTUALLY GO TO NEXT INDEX TO CHECK IT
                         '''
-                        print("what is HStar",HStar)
+                        #print("what is HStar",HStar)
                         if HStar == []:
                             fuckingskip = True
                         else:
@@ -1356,19 +1356,19 @@ def ShittySI(ListItems):
                     elif len(ANS) > 0:
                         ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
                     else:
-                        print("do this by hand tomorrow",Indexer)
-                        print("HStar not empty means WTF IS GOIGN ON",HStar)
-                        print("what is fucking skip -> means I didn't catch all the flow",fuckingskip)
-                        print("INDEX",Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
-                        print("OBJ",WLOG)
-                        print("AD1",AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG))
-                        print("INDEX2",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
-                        print("OBJ2",HStar)
-                        print("AD2",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar) )
-                        print("more stats",LessThan_C(AD1,AD2))
+                        #print("do this by hand tomorrow",Indexer)
+                        #print("HStar not empty means WTF IS GOIGN ON",HStar)
+                        #print("what is fucking skip -> means I didn't catch all the flow",fuckingskip)
+                        #print("INDEX",Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                        #print("OBJ",WLOG)
+                        #print("AD1",AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG))
+                        #print("INDEX2",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                        #print("OBJ2",HStar)
+                        #print("AD2",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar) )
+                        #print("more stats",LessThan_C(AD1,AD2))
                         ANS.append(True)
                         ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
-                    print("WTF IS ANS2",ANS)
+                    #print("WTF IS ANS2",ANS)
     if len(ANS) > 0:
         return ANS
     return ["Assume False"]
