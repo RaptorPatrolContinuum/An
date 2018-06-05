@@ -1,3 +1,24 @@
+#print(TotalSI([[[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]],[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']],[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]]]],"","all"]))
+
+
+[[[['dot', 'dot']], [['dot', 'dot']]], [[['linea', 'lineb']], [['linea', 'lineb']]], [[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']], [['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]]]
+[[[['dot', 'dot']], [['dot', 'dot']]], [[['linea', 'lineb']], [['linea', 'lineb']]], [[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']], [['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]]]
+
+
+ONE GUY LOOKS LIKE
+[[['dot', 'dot']], [['dot', 'dot']]]
+[[['linea', 'lineb']], [['linea', 'lineb']]]
+[[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']], [['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]]
+
+
+[["[['linea', 'lineb']]", "[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]"], ["[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]", "[['linea', 'lineb']]"], ["[['dot', 'dot']]", "[['linea', 'lineb']]"], ["[['linea', 'lineb']]", "[['dot', 'dot']]"], ["[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]", "[['dot', 'dot']]"], ["[['dot', 'dot']]", "[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]"]]
+[["[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]", "[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]"], ["[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]", "[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]"], ["[['dot', 'dot']]", "[['linea', 'lineb']]"], ["[['linea', 'lineb']]", "[['dot', 'dot']]"], ["[['linea', 'lineb']]", "[['dot', 'dot']]"], ["[['dot', 'dot']]", "[['linea', 'lineb']]"]]
+[["[['linea', 'lineb']]", "[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]"], ["[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]", "[['linea', 'lineb']]"], ["[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]", "[['linea', 'lineb']]"], ["[['linea', 'lineb']]", "[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"]]
+[["[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]", "[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]"], ["[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]", "[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]"], ["[['linea', 'lineb']]", "[['linea', 'lineb']]"], ["[['linea', 'lineb']]", "[['linea', 'lineb']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"]][["[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]", "[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]"], ["[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]", "[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]"], ["[['linea', 'lineb']]", "[['linea', 'lineb']]"], ["[['linea', 'lineb']]", "[['linea', 'lineb']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"]][["[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]", "[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]"], ["[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]", "[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]"], ["[['linea', 'lineb']]", "[['linea', 'lineb']]"], ["[['linea', 'lineb']]", "[['linea', 'lineb']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"]]
+
+
+
+
 [
 	[[['R', 'R']], [['R', 'R']]]
 ]
