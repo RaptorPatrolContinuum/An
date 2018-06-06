@@ -325,7 +325,7 @@ def AddressFILE(argList):
     basisfile = argList[0]
     obj = argList[1]
     #print("check arglist",argList)
-    #print("qhat is obj?",obj)
+    print("qhat is obj?",obj)
     #print("why does fcheck work on ''? ", fCheck(obj))
     '''
     if len(obj) == 0:
@@ -2880,6 +2880,7 @@ def fileindex(argList):
     #if we get here then we need to append to basis then return answer
     #print("why is basis appending twice? I should be closing the file and rereading wtf",argList)
     arg1.seek(0, 2)
+    #print("what am i aadding to basis",arg2)
     arg1.write(arg2 + "\n")
     
     arg1.close()

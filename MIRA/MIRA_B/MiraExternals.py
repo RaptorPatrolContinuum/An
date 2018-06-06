@@ -129,6 +129,7 @@ def M_(thestr):
     return ANS
 
 def Minv_(thestr):
+    #print("check if I can handle empties",thestr)
     ANS = []
     i = 0
     for x in thestr:
@@ -163,7 +164,11 @@ def fCheck(fcandidate):
     one element of the fcandidate is not a pair
     check if each element of fcandidate is of size 2
     '''
-    if len(fcandidate) == 0:
+    try:
+        len(fcandidate)
+    except:
+        return False
+    if len(fcandidate) == 0 and fcandidate != []:
         return False
     for obj in fcandidate:
         #print("what is obj?",obj)
@@ -258,7 +263,7 @@ def Beta_(E_G):
     '''
     ANS = []
     #check if obj is a function:
-    if fCheck(E_G) == False:
+    if fCheck(E_G) == False and E_G != []:
         print("Beta says that obj isn't a function!", E_G)
         return
 
@@ -320,7 +325,7 @@ def AddressFILE(argList):
     basisfile = argList[0]
     obj = argList[1]
     #print("check arglist",argList)
-    #print("qhat is obj?",obj)
+    print("qhat is obj?",obj)
     #print("why does fcheck work on ''? ", fCheck(obj))
     '''
     if len(obj) == 0:
@@ -364,12 +369,20 @@ def AddressFunc(index,obj):
         return int(0)
 
     Interim = []
-    
+
+    #print("INDEX",index)
     #print("obj for reference!",obj)
     for x in obj:
         #print("LINE 274")
-        #print("index stats",index)
         #print("other stats",obj,Interim)
+        #print("===========")
+        #print("somebody is out of range1",x)
+        #print("somebody is out of range2",x[0])
+        #print("somebody is out of range2",str(x[0]))
+        #print("index stats",index)
+        #print("somebody is out of range3",RelEval(index,x[0]))
+        #print("somebody is out of range3",RelEval(index,str(x[0])))
+        #print("somebody is out of range4",int(RelEval(index,str(x[0]))[0]))
         #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
         #print("suspected wtf",index,x[1])
 
@@ -384,7 +397,8 @@ def AddressFunc(index,obj):
         #print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
         #print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
         #print("LINE 274 END")
-        Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+        #Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+        Interim.append(CantorPair(int(RelEval(index,str(x[0]))[0]),int(RelEval(index,str(x[1]))[0])))
     
     #print("more stats",obj,Interim)
     ANS="1".zfill(int(max(Interim))+1)
@@ -527,13 +541,14 @@ def Compose(f1,f2):
     '''
     do f2 THEN f1 like the way it's written!
     '''
-    #check if f1,f2 are functions:
+    #print("check if f1,f2 are functions:",f1)
     if fCheck(f1) == False or fCheck(f2) == False:
-        print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
+        #print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
         return
     ALG = []
     for x in f2:
         for y in f1:
+            #print("x1 and y0",x[1],y[0])
             if x[1] == y[0]:
                 ALG.append([x[0],y[1]])
     return ALG
@@ -671,26 +686,34 @@ def RelEval(f1,arglist):
     "RELationEval"
     evals f1 using arglist and returns list
     f1 is finite function
-    arg is singleton
+    arg is singleton OR LIST OF SINGLETONS APPARENTLY :thinking:
 
     question: "composing" using list vs 1 obj
     '''
     ANS = []
     #print("what is arglist?", arglist)
     if type(arglist) == str:
+        #print("f1",f1)
+        #print("the compose",Compose(f1,Q_(arglist)))
         for x in Compose(f1,Q_(arglist)):
             ANS.append(x[1])
     else:
         for y in arglist:
-            #print("y",y)
-            #print("f1",f1)
-            #print("qy",Q_(y))
-            #print("?????",Compose(f1,Q_(y)))
+            print("y",y)
+            print("f1",f1)
+            print("qy",Q_(y))
+            print("?????",Compose(f1,Q_(y)))
+            '''
+            if type(y) == list:
+                print("tools",y)
+                print("f1",f1)
+            '''
             for x in Compose(f1,Q_(y)):
                 ANS.append(x[1])
     return ANS
 
-    #print(RelEval([[1,2],[2,2],[7,8]],[1,2,7]))
+#print(RelEval([[['R', 'R']], [['R', 'R']]],[['R', 'R']]))
+#print(RelEval([[1,2],[2,2],[7,8]],[1,2,7]))
 #print(TotalSI([[[['Az','Az'],['Bz','Bz'],['Cz','Cz']],[['Az','Az'],['Bz','Bz'],['Dz','Dz']]],"","all"]))
 
 def M_Compose(alg1, alg2):
@@ -783,7 +806,43 @@ def VisionBasisFILE(argList):
         ANS.append([fileindexINV([basisfile,int(x[0])]),fileindexINV([basisfile,int(x[1])])])
     return ANS
 
+def EdgeSortbyLinksMESSEDUP(E_G):
+    Start = {}
+    for x in E_G:
+        if type(x[0]) != str:
+            if str(x[0]) in Start:
+                Start[str(x[0])].append(str(x[1]))
+            else:
+                Start[str(x[0])] = [str(x[1])]
+        else:
+            if x[0] in Start:
+                Start[x[0]].append(x[1])
+            else:
+                Start[x[0]] = [x[1]]
+    Filter = {}
+    for x in Start:
+        if len(Start[x]) in Filter:
+            Filter[len(Start[x])].append(x)
+        else:
+            Filter[len(Start[x])] = [x]
+    return Filter
+
 def EdgeSortbyLinks(E_G):
+    Start = {}
+    for x in E_G:
+        if x[0] in Start:
+            Start[x[0]].append(x[1])
+        else:
+            Start[x[0]] = [x[1]]
+    Filter = {}
+    for x in Start:
+        if len(Start[x]) in Filter:
+            Filter[len(Start[x])].append(x)
+        else:
+            Filter[len(Start[x])] = [x]
+    return Filter
+
+def EdgeSortbyLinksORIGINAL(E_G):
     Start = {}
     for x in E_G:
         if x[0] in Start:
@@ -881,6 +940,8 @@ def IsAuto(E_G):
         except ValueError:
             return False
             break
+        except:
+            return False
     return True
 
 def dictMerge(dicA,dicB):
@@ -946,7 +1007,780 @@ def Vertex_(E_G):
             ANS.append(x[1])
     return ANS
 
+def ActuallyIsom(ListItems):
+    '''
+	ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
+    NOTE: THIS IS BIDIRECTIONAL ACTUALLY!! SO SAYS YES IF E_G SI E_H OR E_H SI E_G!
+    input is a list of the form: [[E_G,E_H], "Auto"]
+    says if E_G SI to some E_J in E_H
+
+    hope: just change the Lessthan componentwise to = to componentwise
+    hint: need equals to componentwise
+
+
+
+    #1: get the easy removals out of the way:
+    not same vertices
+    not same edge count
+
+    #2: IF THEY ARE ISOM, THEN AD1 lessthan componentwise AD2 AND AD2 lessthancomponentwise AD1
+    THEN
+    SAY YES OR NO
+    
+    '''
+    E_G = ListItems[0][0]
+    E_H = ListItems[0][1]
+    try:
+        ALLTRIGGER = ListItems[2]
+    except:
+        ALLTRIGGER = ""
+    #if they're exact same they're SI
+    if E_G == E_H:
+        return [True, "same"]
+    #else:
+    if len(E_G) < len(E_H):
+        return ["Assume False"]
+
+    if len(Vertex_(E_G)) != len(Vertex_(E_H)):
+        return ["Assume False"]
+
+    #since they have the same vertex count and edges it doesn't matter who is WLOG or Larger
+    WLOG = E_G
+    Larger = E_H
+    
+    #problem is "all" doesn't have 2nd element as list so have to add preans
+    preans = []
+
+    #print("REMEMBER TO ADD ZEROLINKS TO EDGESORTbyLINKS")
+    #print("sort by links START")
+    #print(WLOG)
+    #print(Larger)
+    #print(EdgeSortbyLinks(WLOG))
+    #print(EdgeSortbyLinks(Larger))
+    #print(LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger)))
+    #print("sort by links END")
+
+    LinkPool = LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger))
+    
+    #add Zerolinks to LinkPoolGen
+    #a zeronode is a node that doesn't actually link to anything (just recieves links in the graph)
+    #just check LinkPool VS Vertex_(WLOG)
+    #print("ran keys",ranDict(LinkPool)) 
+    ZeroNodes = [x for x in Vertex_(WLOG) if x not in ranDict(LinkPool)]
+    #print("Zeronodes?",ZeroNodes) 
+    for x in ZeroNodes:
+        if type(x) != str:
+            LinkPool[str(x)] = Vertex_(Larger)
+        else:
+            LinkPool[x] = Vertex_(Larger)
+    #print("LinkPool+Zeronodes?",LinkPool)
+
+    #make sure LinkPool lists contain each other when you go down the list
+    LinkPoolList = []
+    #print("OK LINKPOOL BETTER NOT BE FUCKED",LinkPool)
+    for x in LinkPool:
+        #print("LPL START======",LinkPoolList)
+        #print("what is X START",x)
+        if len(LinkPoolList) == 0:
+            LinkPoolList.append([x,LinkPool[x]])
+            #print("WHEN DOES LPL CHANGE",LinkPoolList)
+        else:
+            for y in LinkPoolList:
+                Linked = False
+                #print("stats", LinkPoolList)
+                #print("y",y)
+                ##"new object length is smaller, you add it to keep connection lengths similar"
+                #print("I don't understand <=", len(LinkPool[x]),len(y[1]))
+                if len(LinkPool[x]) <= len(y[1]):
+                    #print("GOT ADDED ALREADY WTF",LinkPoolList)
+                    LinkPoolList = InsertAt(LinkPoolList,[x,LinkPool[x]],LinkPoolList.index(y)) 
+                    #print("LPL Insert",LinkPoolList)
+                    Linked = True
+                    break
+                #append at end if largest
+                if Linked == False:
+                    LinkPoolList = LinkPoolList + [[x,LinkPool[x]]]
+                    #print("WHEN DOES LPL CHANGE2",LinkPoolList)
+                    break
+        #print("LPL END=======",LinkPoolList)
+    #print("check LinkPoolList",LinkPoolList)
+
+    LinkSize = []
+    LinkList = []
+    #LinkSize is the size of each list in LinkPool
+    #need to subtract 1 each time we append to LinkSize because we are making a choice and excluding them from the rest
+    #LinkPool is the corresponding list at the right index
+    i = 0
+    for x in LinkPoolList:
+        LinkSize.append(len(x[1])-i)
+        i += 1
+        LinkList.append(x[1])
+    #print("check linksize",LinkSize)
+    #print("check linklist",LinkList)
+
+    #print("DOUBLE CHECK LINKPOOL START")
+    #print("smaller", WLOG)
+    #print("larger", Larger)
+    #print(LinkPool)
+    #print("DOUBLE CHECK LINKPOOL END")
+
+    AutoCheck = IsAuto(WLOG) and IsAuto(Larger)
+    #print("what is LinkPoolList?",LinkPoolList)
+    
+    NumberIndex = []
+    ANS = []
+    #FUCK I DONT KNOW WHAT IM DOING TO THIS CODE
+    fuckingskip = False
+    for G in LinkSize:
+        if len(NumberIndex) > 0:
+            NumberNew = []
+            for H in range(0,G):
+                for J in NumberIndex:
+                    Appendage = J + [H]
+                    NumberNew.append(Appendage)
+                    if len(Appendage) == len(LinkPool):
+                        Indexer = []
+                        #Phiconstruct needs Indsx ran: [node,elem]
+                        i = 0
+                        for K in Appendage:
+                            Indexer.append([LinkPoolList[i][0],Appendage[i]])
+                            i += 1
+                        #print("here we test SI iwth",Appendage)
+                        #print("Indexer is", Indexer)
+                        #print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        #If |V_H| > |V_G|, then construct H* to use instead:
+                        if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
+                            #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
+                            HStar = []
+                            for L in Larger:
+                                passA = True
+                                passB = True
+                                if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])) == 0:
+                                    passA = False
+                                if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])) == 0:
+                                    passB = False
+                                if passA == True and passB == True:
+                                    HStar.append(L)
+                            #print("ok check out H*!",HStar)
+                        else:
+                            HStar = Larger
+
+                        tryit = True
+                        try: 
+                            ListItems[1]
+                        except IndexError:
+                            tryit = False
+                        if tryit == True:
+                            if ListItems[1] == "Auto":
+                                Vertex_Max = '0'
+                                #print("vertexmax lolwut",Vertex_(WLOG) + Vertex_(Larger))
+                                for NUM in Vertex_(WLOG) + Vertex_(Larger):
+                                    if int(NUM) > int(Vertex_Max):
+                                        Vertex_Max = str(NUM)
+                                #print("V_G",Vertex_(WLOG))
+                                #print("V_H",Vertex_(Larger))
+                                #print("TheMax",Vertex_Max)
+                                #print("parts for AD1",WLOG)
+                                #print("Larger",Larger)
+                                #print("Indexer",Indexer)
+                                #print("LinkPool",LinkPool)
+                                #print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                #print("need to pick right max",rchiINT(Vertex_Max))
+                                #print("basis",Minv_(rchiINT(Vertex_Max)))
+                                #print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+
+                                if len(Vertex_(Larger)) >= len(Vertex_(WLOG)):
+                                    #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
+                                    HStar = []
+                                    for L in Larger:
+                                        passA = True
+                                        passB = True
+                                        if len(RelEval(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,False)),L[0])) == 0:
+                                            passA = False
+                                        if len(RelEval(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,False)),L[1])) == 0:
+                                            passB = False
+                                        if passA == True and passB == True:
+                                            HStar.append(L)
+                                    #print("ok check out H*!",HStar)
+                                else:
+                                    HStar = Larger
+                                #print("DATA =======")
+                                #print("smaller", WLOG)
+                                #print("Larger", Larger)
+                                #print("Vertex_Max",Vertex_Max)
+                                #print("rchiINT",rchiINT(Vertex_Max))
+                                #print("Minv_",Minv_(rchiINT(Vertex_Max)))
+                                #print("Indexer IS THE PROBLEM",Indexer)
+                                #print("LinkPool",LinkPool)
+                                #print("AutoCheck",AutoCheck)
+                                #print("phi",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                #print("Compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                #print("DATA END =-=========")
+                                #print("=======died at 100MB", Minv_(rchiINT(Vertex_Max)))
+                                #print("more stats", PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                #print("ok?",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+
+                                AD1 = AddressFunc(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                                AD2 = AddressFunc(Minv_(rchiINT(Vertex_Max)),HStar)
+                                #print("stats")
+                                #print(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                                #print(Minv_(rchiINT(Vertex_Max)),HStar)
+                                #print("AD checks prior",AD1,AD2)
+                                #print("======= DIED END")
+                            else:
+                                #print("WLOG",WLOG)
+                                #print("bad boy down",Minv_(Beta_(WLOG)))
+                                #print("red velvet bad boy",Indexer)
+                                #print("red velvet bad boy2",LinkPool)
+                                #print("red velvet bad boy3",AutoCheck)
+                                #print("bb4",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                #problem is Minv_
+                                #problem is in phiconstruct or Minv_ on LIST
+                                #problem is probably in compose and quotes on that triple length thing
+                                #print("F U C K1",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                #print("F U C K2",HStar)
+                                #print("F U C K3",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar))
+                                #AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+                                #time to check SI:
+                                AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                                AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+                        else:
+                            #time to check SI:
+                            '''
+                            empty HStar fix
+                            '''
+                            if HStar == []:
+                                fuckingskip = True
+                            else:
+                                AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                                AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+                        #print("ADchecks",AD1,AD2)
+                        #print("tobin AD1","{0:b}".format(AD1)[::-1])
+                        #print("tobin AD2","{0:b}".format(AD2)[::-1])
+                        #print("LessthanC",LessThan_C(AD1,AD2))
+                        #print("len(ALLTRIGGER) == 0",len(ALLTRIGGER) == 0)
+
+                        #I'm just going to do a fast fix: if HStar is empty then set fuckingskip to true
+                        if HStar == []:
+                            fuckingskip = True
+
+                        if fuckingskip == True:
+                            fuckingskip = False
+                        elif LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
+                            return [True,PhiConstruct(Indexer,LinkPool,AutoCheck)]
+                        elif len(ANS) > 0:
+                            #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                            preans.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        else:
+                            ANS.append(True)
+                            #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                            preans = [PhiConstruct(Indexer,LinkPool,AutoCheck)]
+                        #print("WTF IS ANS1",ANS)
+            NumberIndex = NumberNew
+        else:
+            for H in range(0,G):
+                NumberIndex.append([H])
+                if len(LinkList) == 1:
+                    #print("should test tiny SI with",NumberIndex)
+                    Indexer = []
+                    #Phiconstruct needs Indsx ran: [node,elem]
+                    i = 0
+                    for K in range(0,len(LinkList)):
+                        Indexer.append([LinkPoolList[i][0],H])
+                        i += 1
+                    #print("Indexer is ", Indexer)
+                    #print("Phiconstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                    #this isn't working on Auto either:
+                    #ShittySI([[[['dot', 'dot']],[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]]])
+                    #example that works
+                    #ShittySI([[[['B', 'B']],[['A', 'A'], ['C', 'C']]]])
+                    #If |V_H| > |V_G|, then construct H* to use instead:
+                    if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
+                        #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
+                        HStar = []
+                        for L in Larger:
+                            passA = True
+                            passB = True
+                            #both not true means HStar isn't being appended to
+                            #ShittySI([[[['dot', 'dot']],[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]]])
+                            #ShittySI([[[['1', '1']],[['2', '3'], ['3', '4'], ['4', '2']]], "Auto"])
+                            #print("L",L)
+                            #print("COMPOSE LHS",Minv_(Beta_(WLOG)))
+                            #print("INDEXER",Indexer)
+                            #print("phiconstruct",PhiConstruct(Indexer,LinkPool,False))
+                            #print("compose",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
+                            #print("L[0]",L[0])
+                            #print("releval",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0]))
+                            #print("L[1]",L[1])
+                            #print("releval",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1]))
+                            #print(len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])))
+                            #print(len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])))
+                            if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])) == 0:
+                                passA = False
+                            if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])) == 0:
+                                passB = False
+                            
+                            if passA == True and passB == True:
+                                HStar.append(L)
+                        #print("ok check out H*!",HStar)
+                    else:
+                        HStar = Larger
+                    tryit = True
+                    try: 
+                        ListItems[1]
+                    except IndexError:
+                        tryit = False
+                    if tryit == True:
+                        if ListItems[1] == "Auto":
+                            Vertex_Max = '0'
+                            for NUM in Vertex_(WLOG) + Vertex_(Larger):
+                                if int(NUM) > int(Vertex_Max):
+                                    Vertex_Max = str(NUM)
+                            #print("parts for AD1",WLOG)
+                            #print("Larger",Larger)
+                            #print("Indexer",Indexer)
+                            #print("LinkPool",LinkPool)
+                            #print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                            #print("basis",Minv_(rchiINT(Vertex_Max)))
+                            #print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                            AD1 = AddressFunc(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                            AD2 = AddressFunc(Minv_(rchiINT(Vertex_Max)),HStar)
+                        else:
+                            #time to check SI:
+                            AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                            AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+                    else:
+                        #time to check SI:
+                        '''
+                        question: address is failing because H* is empty set [], meaning that you have to take the cantor pair of a null coord for one of the pair coords,
+                        my solution:
+                        just intercept the error here and go to next check
+                        problem: MAKE SURE NOT TO BREAK AND TO ACTUALLY GO TO NEXT INDEX TO CHECK IT
+                        '''
+                        #print("what is HStar",HStar)
+                        if HStar == []:
+                            fuckingskip = True
+                        else:
+                            AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                            AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar) 
+                    #print("ADchecks",AD1,AD2)
+                    #print("tobin AD1","{0:b}".format(AD1)[::-1])
+                    #print("tobin AD2","{0:b}".format(AD2)[::-1])
+                    #print("LessthanC",LessThan_C(AD1,AD2))
+
+                    #I'm just going to do a fast fix: if HStar is empty then set fuckingskip to true
+                    if HStar == []:
+                        fuckingskip = True
+
+                    if fuckingskip == True:
+                        fuckingskip = False
+                    elif LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
+                        return [True,PhiConstruct(Indexer,LinkPool,AutoCheck)]
+                    elif len(ANS) > 0:
+                        #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        preans.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                    else:
+                        #print("do this by hand tomorrow",Indexer)
+                        #print("HStar not empty means WTF IS GOIGN ON",HStar)
+                        #print("what is fucking skip -> means I didn't catch all the flow",fuckingskip)
+                        #print("INDEX",Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                        #print("OBJ",WLOG)
+                        #print("AD1",AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG))
+                        #print("INDEX2",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                        #print("OBJ2",HStar)
+                        #print("AD2",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar) )
+                        #print("more stats",LessThan_C(AD1,AD2))
+                        ANS.append(True)
+                        #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        preans = [PhiConstruct(Indexer,LinkPool,AutoCheck)]
+                    #print("WTF IS ANS2",ANS)
+    if len(ANS) > 0:
+        return ANS + [preans]
+    return ["Assume False"]
+
+#ShittySI([[[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']], [['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]],"Auto","all"])
+#ShittySI([[[[['2', '0'], ['1', '1'], ['4', '0']], [['1', '0'], ['0', '1'], ['2', '0'], ['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]], [True, [['0', '0'], ['4', '1'], ['1', '2'], ['2', '3']]]],"Auto"])
+
 def ShittySI(ListItems):
+    '''
+	ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
+    NOTE: THIS IS BIDIRECTIONAL ACTUALLY!! SO SAYS YES IF E_G SI E_H OR E_H SI E_G!
+    input is a list of the form: [[E_G,E_H], "Auto"]
+    says if E_G SI to some E_J in E_H
+    '''
+    E_G = ListItems[0][0]
+    E_H = ListItems[0][1]
+    try:
+        ALLTRIGGER = ListItems[2]
+    except:
+        ALLTRIGGER = ""
+    #if they're exact same they're SI
+    if E_G == E_H:
+        return [True, "same" ]
+    #else:
+    if len(E_G) < len(E_H):
+        WLOG = E_G
+        Larger = E_H
+    else:
+        WLOG = E_H
+        Larger = E_G
+
+    #problem is "all" doesn't have 2nd element as list so have to add preans
+    preans = []
+
+    #print("REMEMBER TO ADD ZEROLINKS TO EDGESORTbyLINKS")
+    #print("sort by links START")
+    #print(WLOG)
+    #print(Larger)
+    #print(EdgeSortbyLinks(WLOG))
+    #print(EdgeSortbyLinks(Larger))
+    #print(LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger)))
+    #print("sort by links END")
+
+    LinkPool = LinkPoolGen(EdgeSortbyLinks(WLOG),EdgeSortbyLinks(Larger))
+    
+    #add Zerolinks to LinkPoolGen
+    #a zeronode is a node that doesn't actually link to anything (just recieves links in the graph)
+    #just check LinkPool VS Vertex_(WLOG)
+    #print("ran keys",ranDict(LinkPool)) 
+    ZeroNodes = [x for x in Vertex_(WLOG) if x not in ranDict(LinkPool)]
+    #print("Zeronodes?",ZeroNodes) 
+    for x in ZeroNodes:
+        if type(x) != str:
+            LinkPool[str(x)] = Vertex_(Larger)
+        else:
+            LinkPool[x] = Vertex_(Larger)
+    #print("LinkPool+Zeronodes?",LinkPool)
+
+    #make sure LinkPool lists contain each other when you go down the list
+    LinkPoolList = []
+    #print("OK LINKPOOL BETTER NOT BE FUCKED",LinkPool)
+    for x in LinkPool:
+        #print("LPL START======",LinkPoolList)
+        #print("what is X START",x)
+        if len(LinkPoolList) == 0:
+            LinkPoolList.append([x,LinkPool[x]])
+            #print("WHEN DOES LPL CHANGE",LinkPoolList)
+        else:
+            for y in LinkPoolList:
+                Linked = False
+                #print("stats", LinkPoolList)
+                #print("y",y)
+                ##"new object length is smaller, you add it to keep connection lengths similar"
+                #print("I don't understand <=", len(LinkPool[x]),len(y[1]))
+                if len(LinkPool[x]) <= len(y[1]):
+                    #print("GOT ADDED ALREADY WTF",LinkPoolList)
+                    LinkPoolList = InsertAt(LinkPoolList,[x,LinkPool[x]],LinkPoolList.index(y)) 
+                    #print("LPL Insert",LinkPoolList)
+                    Linked = True
+                    break
+                #append at end if largest
+                if Linked == False:
+                    LinkPoolList = LinkPoolList + [[x,LinkPool[x]]]
+                    #print("WHEN DOES LPL CHANGE2",LinkPoolList)
+                    break
+        #print("LPL END=======",LinkPoolList)
+    #print("check LinkPoolList",LinkPoolList)
+
+    LinkSize = []
+    LinkList = []
+    #LinkSize is the size of each list in LinkPool
+    #need to subtract 1 each time we append to LinkSize because we are making a choice and excluding them from the rest
+    #LinkPool is the corresponding list at the right index
+    i = 0
+    for x in LinkPoolList:
+        LinkSize.append(len(x[1])-i)
+        i += 1
+        LinkList.append(x[1])
+    #print("check linksize",LinkSize)
+    #print("check linklist",LinkList)
+
+    #print("DOUBLE CHECK LINKPOOL START")
+    #print("smaller", WLOG)
+    #print("larger", Larger)
+    #print(LinkPool)
+    #print("DOUBLE CHECK LINKPOOL END")
+
+    AutoCheck = IsAuto(WLOG) and IsAuto(Larger)
+    #print("what is LinkPoolList?",LinkPoolList)
+    
+    NumberIndex = []
+    ANS = []
+    #FUCK I DONT KNOW WHAT IM DOING TO THIS CODE
+    fuckingskip = False
+    for G in LinkSize:
+        if len(NumberIndex) > 0:
+            NumberNew = []
+            for H in range(0,G):
+                for J in NumberIndex:
+                    Appendage = J + [H]
+                    NumberNew.append(Appendage)
+                    if len(Appendage) == len(LinkPool):
+                        Indexer = []
+                        #Phiconstruct needs Indsx ran: [node,elem]
+                        i = 0
+                        for K in Appendage:
+                            Indexer.append([LinkPoolList[i][0],Appendage[i]])
+                            i += 1
+                        #print("here we test SI iwth",Appendage)
+                        #print("Indexer is", Indexer)
+                        #print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        #If |V_H| > |V_G|, then construct H* to use instead:
+                        if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
+                            #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
+                            HStar = []
+                            for L in Larger:
+                                passA = True
+                                passB = True
+                                if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])) == 0:
+                                    passA = False
+                                if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])) == 0:
+                                    passB = False
+                                if passA == True and passB == True:
+                                    HStar.append(L)
+                            #print("ok check out H*!",HStar)
+                        else:
+                            HStar = Larger
+
+                        tryit = True
+                        try: 
+                            ListItems[1]
+                        except IndexError:
+                            tryit = False
+                        if tryit == True:
+                            if ListItems[1] == "Auto":
+                                Vertex_Max = '0'
+                                #print("vertexmax lolwut",Vertex_(WLOG) + Vertex_(Larger))
+                                for NUM in Vertex_(WLOG) + Vertex_(Larger):
+                                    if int(NUM) > int(Vertex_Max):
+                                        Vertex_Max = str(NUM)
+                                #print("V_G",Vertex_(WLOG))
+                                #print("V_H",Vertex_(Larger))
+                                #print("TheMax",Vertex_Max)
+                                #print("parts for AD1",WLOG)
+                                #print("Larger",Larger)
+                                #print("Indexer",Indexer)
+                                #print("LinkPool",LinkPool)
+                                #print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                #print("need to pick right max",rchiINT(Vertex_Max))
+                                #print("basis",Minv_(rchiINT(Vertex_Max)))
+                                #print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+
+                                if len(Vertex_(Larger)) >= len(Vertex_(WLOG)):
+                                    #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
+                                    HStar = []
+                                    for L in Larger:
+                                        passA = True
+                                        passB = True
+                                        if len(RelEval(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,False)),L[0])) == 0:
+                                            passA = False
+                                        if len(RelEval(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,False)),L[1])) == 0:
+                                            passB = False
+                                        if passA == True and passB == True:
+                                            HStar.append(L)
+                                    #print("ok check out H*!",HStar)
+                                else:
+                                    HStar = Larger
+                                #print("DATA =======")
+                                #print("smaller", WLOG)
+                                #print("Larger", Larger)
+                                #print("Vertex_Max",Vertex_Max)
+                                #print("rchiINT",rchiINT(Vertex_Max))
+                                #print("Minv_",Minv_(rchiINT(Vertex_Max)))
+                                #print("Indexer IS THE PROBLEM",Indexer)
+                                #print("LinkPool",LinkPool)
+                                #print("AutoCheck",AutoCheck)
+                                #print("phi",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                #print("Compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                #print("DATA END =-=========")
+                                #print("=======died at 100MB", Minv_(rchiINT(Vertex_Max)))
+                                #print("more stats", PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                #print("ok?",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+
+                                AD1 = AddressFunc(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                                AD2 = AddressFunc(Minv_(rchiINT(Vertex_Max)),HStar)
+                                #print("stats")
+                                #print(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                                #print(Minv_(rchiINT(Vertex_Max)),HStar)
+                                #print("AD checks prior",AD1,AD2)
+                                #print("======= DIED END")
+                            else:
+                                #print("WLOG",WLOG)
+                                #print("bad boy down",Minv_(Beta_(WLOG)))
+                                #print("red velvet bad boy",Indexer)
+                                #print("red velvet bad boy2",LinkPool)
+                                #print("red velvet bad boy3",AutoCheck)
+                                #print("bb4",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                #problem is Minv_
+                                #problem is in phiconstruct or Minv_ on LIST
+                                #problem is probably in compose and quotes on that triple length thing
+                                #print("F U C K1",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                #print("F U C K2",HStar)
+                                #print("F U C K3",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar))
+                                #AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+                                #time to check SI:
+                                AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                                AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+                        else:
+                            #time to check SI:
+                            '''
+                            empty HStar fix
+                            '''
+                            if HStar == []:
+                                fuckingskip = True
+                            else:
+                                AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                                AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+                        #print("ADchecks",AD1,AD2)
+                        #print("tobin AD1","{0:b}".format(AD1)[::-1])
+                        #print("tobin AD2","{0:b}".format(AD2)[::-1])
+                        #print("LessthanC",LessThan_C(AD1,AD2))
+                        #print("len(ALLTRIGGER) == 0",len(ALLTRIGGER) == 0)
+
+                        #I'm just going to do a fast fix: if HStar is empty then set fuckingskip to true
+                        if HStar == []:
+                            fuckingskip = True
+
+                        if fuckingskip == True:
+                            fuckingskip = False
+                        elif LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
+                            return [True,PhiConstruct(Indexer,LinkPool,AutoCheck)]
+                        elif len(ANS) > 0:
+                            #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                            preans.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        else:
+                            ANS.append(True)
+                            #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                            preans = [PhiConstruct(Indexer,LinkPool,AutoCheck)]
+                        #print("WTF IS ANS1",ANS)
+            NumberIndex = NumberNew
+        else:
+            for H in range(0,G):
+                NumberIndex.append([H])
+                if len(LinkList) == 1:
+                    #print("should test tiny SI with",NumberIndex)
+                    Indexer = []
+                    #Phiconstruct needs Indsx ran: [node,elem]
+                    i = 0
+                    for K in range(0,len(LinkList)):
+                        Indexer.append([LinkPoolList[i][0],H])
+                        i += 1
+                    #print("Indexer is ", Indexer)
+                    #print("Phiconstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                    #this isn't working on Auto either:
+                    #ShittySI([[[['dot', 'dot']],[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]]])
+                    #example that works
+                    #ShittySI([[[['B', 'B']],[['A', 'A'], ['C', 'C']]]])
+                    #If |V_H| > |V_G|, then construct H* to use instead:
+                    if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
+                        #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
+                        HStar = []
+                        for L in Larger:
+                            passA = True
+                            passB = True
+                            #both not true means HStar isn't being appended to
+                            #ShittySI([[[['dot', 'dot']],[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]]])
+                            #ShittySI([[[['1', '1']],[['2', '3'], ['3', '4'], ['4', '2']]], "Auto"])
+                            #print("L",L)
+                            #print("COMPOSE LHS",Minv_(Beta_(WLOG)))
+                            #print("INDEXER",Indexer)
+                            #print("phiconstruct",PhiConstruct(Indexer,LinkPool,False))
+                            #print("compose",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
+                            #print("L[0]",L[0])
+                            #print("releval",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0]))
+                            #print("L[1]",L[1])
+                            #print("releval",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1]))
+                            #print(len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])))
+                            #print(len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])))
+                            if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])) == 0:
+                                passA = False
+                            if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])) == 0:
+                                passB = False
+                            
+                            if passA == True and passB == True:
+                                HStar.append(L)
+                        #print("ok check out H*!",HStar)
+                    else:
+                        HStar = Larger
+                    tryit = True
+                    try: 
+                        ListItems[1]
+                    except IndexError:
+                        tryit = False
+                    if tryit == True:
+                        if ListItems[1] == "Auto":
+                            Vertex_Max = '0'
+                            for NUM in Vertex_(WLOG) + Vertex_(Larger):
+                                if int(NUM) > int(Vertex_Max):
+                                    Vertex_Max = str(NUM)
+                            #print("parts for AD1",WLOG)
+                            #print("Larger",Larger)
+                            #print("Indexer",Indexer)
+                            #print("LinkPool",LinkPool)
+                            #print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                            #print("basis",Minv_(rchiINT(Vertex_Max)))
+                            #print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                            AD1 = AddressFunc(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                            AD2 = AddressFunc(Minv_(rchiINT(Vertex_Max)),HStar)
+                        else:
+                            #time to check SI:
+                            AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                            AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+                    else:
+                        #time to check SI:
+                        '''
+                        question: address is failing because H* is empty set [], meaning that you have to take the cantor pair of a null coord for one of the pair coords,
+                        my solution:
+                        just intercept the error here and go to next check
+                        problem: MAKE SURE NOT TO BREAK AND TO ACTUALLY GO TO NEXT INDEX TO CHECK IT
+                        '''
+                        #print("what is HStar",HStar)
+                        if HStar == []:
+                            fuckingskip = True
+                        else:
+                            AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                            AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar) 
+                    #print("ADchecks",AD1,AD2)
+                    #print("tobin AD1","{0:b}".format(AD1)[::-1])
+                    #print("tobin AD2","{0:b}".format(AD2)[::-1])
+                    #print("LessthanC",LessThan_C(AD1,AD2))
+
+                    #I'm just going to do a fast fix: if HStar is empty then set fuckingskip to true
+                    if HStar == []:
+                        fuckingskip = True
+
+                    if fuckingskip == True:
+                        fuckingskip = False
+                    elif LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
+                        return [True,PhiConstruct(Indexer,LinkPool,AutoCheck)]
+                    elif len(ANS) > 0:
+                        #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        preans.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                    else:
+                        #print("do this by hand tomorrow",Indexer)
+                        #print("HStar not empty means WTF IS GOIGN ON",HStar)
+                        #print("what is fucking skip -> means I didn't catch all the flow",fuckingskip)
+                        #print("INDEX",Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                        #print("OBJ",WLOG)
+                        #print("AD1",AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG))
+                        #print("INDEX2",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                        #print("OBJ2",HStar)
+                        #print("AD2",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar) )
+                        #print("more stats",LessThan_C(AD1,AD2))
+                        ANS.append(True)
+                        #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        preans = [PhiConstruct(Indexer,LinkPool,AutoCheck)]
+                    #print("WTF IS ANS2",ANS)
+    if len(ANS) > 0:
+        return ANS + [preans]
+    return ["Assume False"]
+
+#print(ShittySI([[[['A','A'],['B','B'],['C','C']],[['A','A'],['B','B'],['D','D']]],"","all"]))
+#[True, [['A', 'D'], ['D', 'A'], ['B', 'B'], ['B', 'B'], ['C', 'A'], ['A', 'C']], [['B', 'D'], ['D', 'B'], ['A', 'B'], ['B', 'A'], ['C', 'A'], ['A', 'C']], [['C', 'D'], ['D', 'C'], ['A', 'B'], ['B', 'A'], ['B', 'A'], ['A', 'B']], [['A', 'D'], ['D', 'A'], ['C', 'B'], ['B', 'C'], ['B', 'A'], ['A', 'B']], [['B', 'D'], ['D', 'B'], ['C', 'B'], ['B', 'C'], ['A', 'A'], ['A', 'A']], [['C', 'D'], ['D', 'C'], ['B', 'B'], ['B', 'B'], ['A', 'A'], ['A', 'A']]]
+#print(ShittySI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
+
+
+def ShittySIbeforeTOTALSI(ListItems):
     '''
 	ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
     NOTE: THIS IS BIDIRECTIONAL ACTUALLY!! SO SAYS YES IF E_G SI E_H OR E_H SI E_G!
@@ -1236,9 +2070,6 @@ def ShittySI(ListItems):
     if len(ANS) > 0:
         return ANS
     return ["Assume False"]
-
-#print(ShittySI([[[['A','A'],['B','B'],['C','C']],[['A','A'],['B','B'],['D','D']]],"","all"]))
-#print(ShittySI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
 
 def ShittySIBEFOREALL(ListItems):
     '''
@@ -2049,6 +2880,7 @@ def fileindex(argList):
     #if we get here then we need to append to basis then return answer
     #print("why is basis appending twice? I should be closing the file and rereading wtf",argList)
     arg1.seek(0, 2)
+    #print("what am i aadding to basis",arg2)
     arg1.write(arg2 + "\n")
     
     arg1.close()
@@ -2957,6 +3789,8 @@ def delta1(argList):
     ANS.append([["TOTAL_ARGUMENT == '"+ arg1 +"'",[output,err]]])
     os.remove(nametest)
     return ANS
+
+#delta1(["print(\"rickroll\")"])
 
 def nametestFUNC(argList):
     '''
@@ -4179,8 +5013,64 @@ def fastAlgXproduct(argList):
 
 #print(fastAlgXproduct([['1','2','3'],['A','B','C','D']]))
 
+'''
+[
+	[[['R', 'R']], [['R', 'R']]]
+]
+
+sample graph:
+[['a','a']]
+
+FOR TOTAL SI I NEED TO SI 2 graphs and within those 2 graphs each basis is ALSO a grpah
+
+print(TotalSI(
+		[
+			[
+				#this is graphX
+				[
+					#should be a pair here; OF WHICH EACH BASIS ELEMENT IS A GRAPH
+					#hint: just draw a picture
+					],
+				
+				
+				[[[['R','R']],[['R','R']]],[[['z','z']],[['z','z']]],[[['Y','Y']],[['Y','Y']]]]
+				]
+			,"","all"]
+		))
+		
+
+need 4 graphs
+A - > dot
+[['dot','dot']]
+B - > line
+[['linea','lineb']]
+C - > triangle
+[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]
+D - > another triangle
+[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]
+
+[['sqA','sqB'],['sqB','sqC'],['sqC','sqD'],['sqD','sqA']]
+		
+#print(TotalSI(
+		[
+			[
+				[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]],
+				[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']],[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]]]
+				]
+			,"","all"]
+		))
+		
+		
+print(TotalSI([[[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]],[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']],[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]]]],"","all"]))
+'''
+
+
 def TotalSI(argList):
     '''
+    [[graphx,graphy],"Auto" or none, "all" or none]
+    HUGE HINT: PLEASE DONT FUCKING HAVE A LL NUMBERS IN THIS BECAUSE ADDING A FOR LOOP FUCKS THIS FUNCTION
+
+
     ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
 
     "SI downwards"
@@ -4202,7 +5092,10 @@ def TotalSI(argList):
 
     input same as ShittySI
     PROBLEM: if I change shittySI this function might have problems
-    '''
+
+    #have to prep the data by
+    #step 1: making everything into string
+    #step 2: if parts are functions then SI on parts
     testDATA = ShittySI(argList)
     print("what is testdata?",testDATA)
     ANS = []
@@ -4230,12 +5123,150 @@ def TotalSI(argList):
                     print ("KEEO GOING",totalSImin(argList))
             ANS.append(x)
             #hint: if they're not functions then they're atoms and they immediately pass
+    #problem2: HOW TO UNDO STRINGING ????
+    '''
+    ANS = []
+    #prep graphX and graphY
+    graphX = TotalSImin1([argList[0][0]])
+    graphY = TotalSImin1([argList[0][1]])
+    try:
+        arg1 = argList[1]
+    except:
+        arg1 = ""
+    #arg2 should always be all since we have to go through every option
+    arg2 = "all"
+    shittyprep = [[graphX,graphY],arg1,arg2]
+    #print("what is shittySI prep?",shittyprep)
+    firsttry = ShittySI(shittyprep)
+    #print("1sttry", firsttry)
+    if firsttry[0] == True:
+        for x in firsttry[1]:
+            #print("what is x======",x)
+            #print("list isn't right", len(x))
+            #plan:
+            #check 1st and 2nd coord
+            #if they're both functions under eval try to SI them
+            #hint: everything should be strings by this function's min1 func
+            try:
+                check1 = eval(x[0][0])
+                check2 = eval(x[1][0])
+            except Exception as e:
+                #print("checks went wrong", e)
+                check1 = x[0][0]
+                check2 = x[1][0]
+            #print("check1",check1)
+            #print("check2",check2)
+                
+            if fCheck(check1) == True and fCheck(check2) == True:
+                #print("fcheck passed for pair")
+                #hint: all numbers -> Auto
+                #ELSE: EMPTY
+
+                #NEWHINT: FUCKING SKIP THIS AND ASSUME NOT ALL NUMBERS
+                #HUGE HINT: PLEASE DONT FUCKING HAVE ALL NUMBERS IN THIS BECAUSE ADDING A FOR LOOP FUCKS THIS FUNCTION
+                #ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
+                #secondtest = ShittySI([[check1,check2]])
+                #def ActuallyIsom(ListItems):
+                #USE ACTUALLY SI BECAUSE YOU WANT ISOM NOT SI
+                secondtest = ActuallyIsom([[check1,check2]])
+                #print("what is result of secondtest?",secondtest)
+                #print("why is ans empoty then",secondtest[0] == True)
+                if secondtest[0] == True:
+                    #print("APPEND THIS",x)
+                    ANS.append(x)
+            else:
+                ANS.append(x)
+            #else leave them alone
+            #if SI fails then fail this answer
+            #else add to ANS
+
     return ANS
+
+def TotalSImin1(argList):
+    '''
+    hint: input is finite function
+    output is making sure for each pair in input that the x and y coords are strings
+    '''
+    ff = argList[0]
+    ANS = []
+    if fCheck(ff) == True:
+        for x in ff:
+            ANS.append([str(x[0]),str(x[1])])
+    else:
+        ANS = ff
+    print("TOTAL SI MIN1 ANSWER",ANS)
+    return ANS
+
+'''
+TotalSI([[[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']], [['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]],"Auto"])
+
+
+STEP 1: MAKE SI STRUCTURES
+
+[['1','2'],['2','3'],['3','1'],['3','4']]
+
+[['1b','2b'],['2b','3b'],['3b','1b']]
+
+STEP 2: REPLACE EACH INTEGER WITH A FUNCTION
+
+HINT: MAKE DIFFERENT BUT TOTALLY SI FUNCTIONS!
+
+
+1: quine dot
+[['single','single']]
+[['loner','loner']]
+
+2: line
+[['oneway','oneway']]
+[['unrequited','unrequited']]
+
+3: triangle
+[['A','B'],['B','C'],['C','A']]
+[['z','y'],['y','x'],['x','z']]
+
+
+4: square
+[['art','gallery'],['gale','wind'],['gallery','gale'],['wind','art']]
+[['tree','cow'],['bird','flight'],['cow','bird'],['flight','tree']]
+
+
+:try to test the min function as well
+[[[['single','single']],[['oneway','oneway']]],[[['oneway','oneway']],[['A','B'],['B','C'],['C','A']]],[[['A','B'],['B','C'],['C','A']],[['single','single']]],[[['A','B'],['B','C'],['C','A']],[['art','gallery'],['gale','wind'],['gallery','gale'],['wind','art']]]]
+
+[['[[\'loner\',\'loner\']]','[[\'unrequited\',\'unrequited\']]'],['[[\'unrequited\',\'unrequited\']]','[['z','y'],['y','x'],['x','z']]'],['[['z','y'],['y','x'],['x','z']]','[[\'loner\',\'loner\']]']]
+[['[['loner','loner']]','[['unrequited','unrequited']]'],['[['unrequited','unrequited']]','[['z','y'],['y','x'],['x','z']]'],['[['z','y'],['y','x'],['x','z']]','[['loner','loner']]']]
+
+TotalSI([[[['[[\'loner\',\'loner\']]','[[\'unrequited\',\'unrequited\']]'],['[[\'unrequited\',\'unrequited\']]','[[\'z\',\'y\'],[\'y\',\'x\'],[\'x\',\'z\']]'],['[[\'z\',\'y\'],[\'y\',\'x\'],[\'x\',\'z\']]','[[\'loner\',\'loner\']]']],[[[['single','single']],[['oneway','oneway']]],[[['oneway','oneway']],[['A','B'],['B','C'],['C','A']]],[[['A','B'],['B','C'],['C','A']],[['single','single']]],[[['A','B'],['B','C'],['C','A']],[['art','gallery'],['gale','wind'],['gallery','gale'],['wind','art']]]]],"","all"])
+'''
+
+#[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']]
+#print(TotalSImin1([[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']]]))
+#[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]]
+#print(TotalSImin1([[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]]]))
+
+#THESE ALSO WORK (?)
+#FALSE
+#ShittySI([[[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']], [['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]],"Auto"])
+
+#TRY TOTAL SI^ HINT: this tests the function's ability to take things AS IS since check1 and check2 are integers and NOT functions, so just assume so
+#TotalSI([[[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']], [['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]],"Auto"])
+
+#TRUE
+#ShittySI([[[[['2', '0'], ['1', '1'], ['4', '0']], [['1', '0'], ['0', '1'], ['2', '0'], ['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]], [True, [['0', '0'], ['4', '1'], ['1', '2'], ['2', '3']]]],"Auto"])
+#[[[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']], [['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]], ['Assume False']]
+#[[[['2', '0'], ['1', '1'], ['4', '0']], [['1', '0'], ['0', '1'], ['2', '0'], ['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]], [True, [['0', '0'], ['4', '1'], ['1', '2'], ['2', '3']]]]
+
+#TESTING THIS CURRENTLY
+#print(TotalSI([[[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]],[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']],[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]]]],"","all"]))
+#differentiate dots
+#print(TotalSI([[[[[['doA','doA']],[['doA','doA']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]],[[[['doB','doB']],[['doB','doB']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']],[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]]]],"","all"]))
+
 
 #this works
 #print(TotalSI([[[['A','A'],['B','B'],['C','C']],[['A','A'],['B','B'],['D','D']]],"","all"]))
 #check if I can have a long string for elements of normal input
 #not proper format --> print(TotalSI([[[['Az','Az'],['Bz','Bz'],['Cz','Cz']],[['Az','Az'],['Bz','Bz'],['Dz','Dz']]],"","all"]))
+
 #print(TotalSI([[[[[['R','R']],[['R','R']]],[[['z','z']],[['z','z']]],[[['t','t']],[['t','t']]]],[[[['R','R']],[['R','R']]],[[['z','z']],[['z','z']]],[[['Y','Y']],[['Y','Y']]]]],"","all"]))
 #print(TotalSI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
 #print(TotalSI([[str([['1','1'],['2','2'],['3','3']]),str([['1','1'],['2','2'],['4','4']])],"Auto","all"]))
