@@ -1,69 +1,36 @@
-#print(TotalSI([[[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]],[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']],[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]]]],"","all"]))
+TotalSI([[[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']], [['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]],"Auto"])
 
 
-[[[['dot', 'dot']], [['dot', 'dot']]], [[['linea', 'lineb']], [['linea', 'lineb']]], [[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']], [['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]]]
-[[[['dot', 'dot']], [['dot', 'dot']]], [[['linea', 'lineb']], [['linea', 'lineb']]], [[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']], [['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]]]
+STEP 1: MAKE SI STRUCTURES
+
+[['1','2'],['2','3'],['3','1'],['3','4']]
+
+[['1b','2b'],['2b','3b'],['3b','1b']]
+
+STEP 2: REPLACE EACH INTEGER WITH A FUNCTION
+
+HINT: MAKE DIFFERENT BUT TOTALLY SI FUNCTIONS!
 
 
-ONE GUY LOOKS LIKE
-[[['dot', 'dot']], [['dot', 'dot']]]
-[[['linea', 'lineb']], [['linea', 'lineb']]]
-[[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']], [['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]]
+1: quine dot
+[['single','single']]
+[['loner','loner']]
+
+2: line
+[['oneway','oneway']]
+[['unrequited','unrequited']]
+
+3: triangle
+[['A','B'],['B','C'],['C','A']]
+[['z','y'],['y','x'],['x','z']]
 
 
-[["[['linea', 'lineb']]", "[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]"], ["[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]", "[['linea', 'lineb']]"], ["[['dot', 'dot']]", "[['linea', 'lineb']]"], ["[['linea', 'lineb']]", "[['dot', 'dot']]"], ["[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]", "[['dot', 'dot']]"], ["[['dot', 'dot']]", "[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]"]]
-[["[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]", "[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]"], ["[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]", "[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]"], ["[['dot', 'dot']]", "[['linea', 'lineb']]"], ["[['linea', 'lineb']]", "[['dot', 'dot']]"], ["[['linea', 'lineb']]", "[['dot', 'dot']]"], ["[['dot', 'dot']]", "[['linea', 'lineb']]"]]
-[["[['linea', 'lineb']]", "[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]"], ["[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]", "[['linea', 'lineb']]"], ["[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]", "[['linea', 'lineb']]"], ["[['linea', 'lineb']]", "[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"]]
-[["[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]", "[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]"], ["[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]", "[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]"], ["[['linea', 'lineb']]", "[['linea', 'lineb']]"], ["[['linea', 'lineb']]", "[['linea', 'lineb']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"]][["[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]", "[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]"], ["[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]", "[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]"], ["[['linea', 'lineb']]", "[['linea', 'lineb']]"], ["[['linea', 'lineb']]", "[['linea', 'lineb']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"]][["[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]", "[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]"], ["[['triaX', 'triaY'], ['triaY', 'triaZ'], ['triaZ', 'triaX']]", "[['triaA', 'triaB'], ['triaB', 'triaC'], ['triaC', 'triaA']]"], ["[['linea', 'lineb']]", "[['linea', 'lineb']]"], ["[['linea', 'lineb']]", "[['linea', 'lineb']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"], ["[['dot', 'dot']]", "[['dot', 'dot']]"]]
+4: square
+[['art','gallery'],['gale','wind'],['gallery','gale'],['wind','art']]
+[['tree','cow'],['bird','flight'],['cow','bird'],['flight','tree']]
 
 
+:try to test the min function as well
+[[[['single','single']],[['oneway','oneway']]],[[['oneway','oneway']],[['A','B'],['B','C'],['C','A']]],[[['A','B'],['B','C'],['C','A']],[['single','single']]],[[['A','B'],['B','C'],['C','A']],[['art','gallery'],['gale','wind'],['gallery','gale'],['wind','art']]]]
 
-
-[
-	[[['R', 'R']], [['R', 'R']]]
-]
-
-sample graph:
-[['a','a']]
-
-FOR TOTAL SI I NEED TO SI 2 graphs and within those 2 graphs each basis is ALSO a grpah
-
-print(TotalSI(
-		[
-			[
-				#this is graphX
-				[
-					#should be a pair here; OF WHICH EACH BASIS ELEMENT IS A GRAPH
-					#hint: just draw a picture
-					],
-				
-				
-				[[[['R','R']],[['R','R']]],[[['z','z']],[['z','z']]],[[['Y','Y']],[['Y','Y']]]]
-				]
-			,"","all"]
-		))
-		
-
-need 4 graphs
-A - > dot
-[['dot','dot']]
-B - > line
-[['linea','lineb']]
-C - > triangle
-[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]
-D - > another triangle
-[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]
-
-[['sqA','sqB'],['sqB','sqC'],['sqC','sqD'],['sqD','sqA']]
-		
-#print(TotalSI(
-		[
-			[
-				[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]],
-				[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']],[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]]]
-				]
-			,"","all"]
-		))
-		
-		
-print(TotalSI([[[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]],[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']],[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]]]],"","all"]))
+[['[[\'loner\',\'loner\']]','[[\'unrequited\',\'unrequited\']]'],['[[\'unrequited\',\'unrequited\']]','[['z','y'],['y','x'],['x','z']]'],['[['z','y'],['y','x'],['x','z']]','[[\'loner\',\'loner\']]']]

@@ -5066,7 +5066,8 @@ print(TotalSI([[[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea
 
 def TotalSI(argList):
     '''
-    HUGE HINT: PLEASE DONT FUCKING HAVE ALL NUMBERS IN THIS BECAUSE ADDING A FOR LOOP FUCKS THIS FUNCTION
+    [[graphx,graphy],"Auto" or none, "all" or none]
+    HUGE HINT: PLEASE DONT FUCKING HAVE A LL NUMBERS IN THIS BECAUSE ADDING A FOR LOOP FUCKS THIS FUNCTION
 
 
     ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
@@ -5131,10 +5132,8 @@ def TotalSI(argList):
         arg1 = argList[1]
     except:
         arg1 = ""
-    try:
-        arg2 = argList[2]
-    except:
-        arg2 = ""
+    #arg2 should always be all since we have to go through every option
+    arg2 = "all"
     shittyprep = [[graphX,graphY],arg1,arg2]
     #print("what is shittySI prep?",shittyprep)
     firsttry = ShittySI(shittyprep)
@@ -5194,7 +5193,50 @@ def TotalSImin1(argList):
             ANS.append([str(x[0]),str(x[1])])
     else:
         ANS = ff
+    print("TOTAL SI MIN1 ANSWER",ANS)
     return ANS
+
+'''
+TotalSI([[[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']], [['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]],"Auto"])
+
+
+STEP 1: MAKE SI STRUCTURES
+
+[['1','2'],['2','3'],['3','1'],['3','4']]
+
+[['1b','2b'],['2b','3b'],['3b','1b']]
+
+STEP 2: REPLACE EACH INTEGER WITH A FUNCTION
+
+HINT: MAKE DIFFERENT BUT TOTALLY SI FUNCTIONS!
+
+
+1: quine dot
+[['single','single']]
+[['loner','loner']]
+
+2: line
+[['oneway','oneway']]
+[['unrequited','unrequited']]
+
+3: triangle
+[['A','B'],['B','C'],['C','A']]
+[['z','y'],['y','x'],['x','z']]
+
+
+4: square
+[['art','gallery'],['gale','wind'],['gallery','gale'],['wind','art']]
+[['tree','cow'],['bird','flight'],['cow','bird'],['flight','tree']]
+
+
+:try to test the min function as well
+[[[['single','single']],[['oneway','oneway']]],[[['oneway','oneway']],[['A','B'],['B','C'],['C','A']]],[[['A','B'],['B','C'],['C','A']],[['single','single']]],[[['A','B'],['B','C'],['C','A']],[['art','gallery'],['gale','wind'],['gallery','gale'],['wind','art']]]]
+
+[['[[\'loner\',\'loner\']]','[[\'unrequited\',\'unrequited\']]'],['[[\'unrequited\',\'unrequited\']]','[['z','y'],['y','x'],['x','z']]'],['[['z','y'],['y','x'],['x','z']]','[[\'loner\',\'loner\']]']]
+[['[['loner','loner']]','[['unrequited','unrequited']]'],['[['unrequited','unrequited']]','[['z','y'],['y','x'],['x','z']]'],['[['z','y'],['y','x'],['x','z']]','[['loner','loner']]']]
+
+TotalSI([[[['[[\'loner\',\'loner\']]','[[\'unrequited\',\'unrequited\']]'],['[[\'unrequited\',\'unrequited\']]','[[\'z\',\'y\'],[\'y\',\'x\'],[\'x\',\'z\']]'],['[[\'z\',\'y\'],[\'y\',\'x\'],[\'x\',\'z\']]','[[\'loner\',\'loner\']]']],[[[['single','single']],[['oneway','oneway']]],[[['oneway','oneway']],[['A','B'],['B','C'],['C','A']]],[[['A','B'],['B','C'],['C','A']],[['single','single']]],[[['A','B'],['B','C'],['C','A']],[['art','gallery'],['gale','wind'],['gallery','gale'],['wind','art']]]]],"","all"])
+'''
 
 #[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']]
 #print(TotalSImin1([[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']]]))
