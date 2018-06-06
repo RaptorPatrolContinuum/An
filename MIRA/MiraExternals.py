@@ -164,6 +164,10 @@ def fCheck(fcandidate):
     one element of the fcandidate is not a pair
     check if each element of fcandidate is of size 2
     '''
+    try:
+        len(fcandidate)
+    except:
+        return False
     if len(fcandidate) == 0 and fcandidate != []:
         return False
     for obj in fcandidate:
@@ -5123,7 +5127,15 @@ def TotalSI(argList):
     #prep graphX and graphY
     graphX = TotalSImin1([argList[0][0]])
     graphY = TotalSImin1([argList[0][1]])
-    shittyprep = [[graphX,graphY],argList[1],argList[2]]
+    try:
+        arg1 = argList[1]
+    except:
+        arg1 = ""
+    try:
+        arg2 = argList[2]
+    except:
+        arg2 = ""
+    shittyprep = [[graphX,graphY],arg1,arg2]
     #print("what is shittySI prep?",shittyprep)
     firsttry = ShittySI(shittyprep)
     #print("1sttry", firsttry)
@@ -5189,9 +5201,13 @@ def TotalSImin1(argList):
 #[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]]
 #print(TotalSImin1([[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]]]))
 
-#THESE ALSO WORK
+#THESE ALSO WORK (?)
 #FALSE
 #ShittySI([[[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']], [['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]],"Auto"])
+
+#TRY TOTAL SI^ HINT: this tests the function's ability to take things AS IS since check1 and check2 are integers and NOT functions, so just assume so
+#TotalSI([[[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']], [['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]],"Auto"])
+
 #TRUE
 #ShittySI([[[[['2', '0'], ['1', '1'], ['4', '0']], [['1', '0'], ['0', '1'], ['2', '0'], ['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]], [True, [['0', '0'], ['4', '1'], ['1', '2'], ['2', '3']]]],"Auto"])
 #[[[['1', '0'], ['0', '1'], ['0', '2'], ['4', '0']], [['3', '0'], ['2', '1'], ['1', '2'], ['4', '0'], ['2', '2']]], ['Assume False']]
