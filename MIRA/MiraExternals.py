@@ -1040,6 +1040,10 @@ def ActuallyIsom(ListItems):
     if len(Vertex_(E_G)) != len(Vertex_(E_H)):
         return ["Assume False"]
 
+    #since they have the same vertex count and edges it doesn't matter who is WLOG or Larger
+    WLOG = E_G
+    Larger = E_H
+    
     #problem is "all" doesn't have 2nd element as list so have to add preans
     preans = []
 
@@ -5120,13 +5124,13 @@ def TotalSI(argList):
     graphX = TotalSImin1([argList[0][0]])
     graphY = TotalSImin1([argList[0][1]])
     shittyprep = [[graphX,graphY],argList[1],argList[2]]
-    print("what is shittySI prep?",shittyprep)
+    #print("what is shittySI prep?",shittyprep)
     firsttry = ShittySI(shittyprep)
     #print("1sttry", firsttry)
     if firsttry[0] == True:
         for x in firsttry[1]:
-            print("what is x======",x)
-            print("list isn't right", len(x))
+            #print("what is x======",x)
+            #print("list isn't right", len(x))
             #plan:
             #check 1st and 2nd coord
             #if they're both functions under eval try to SI them
@@ -5135,24 +5139,28 @@ def TotalSI(argList):
                 check1 = eval(x[0][0])
                 check2 = eval(x[1][0])
             except Exception as e:
-                print("checks went wrong", e)
+                #print("checks went wrong", e)
                 check1 = x[0][0]
                 check2 = x[1][0]
-            print("check1",check1)
-            print("check2",check2)
+            #print("check1",check1)
+            #print("check2",check2)
                 
             if fCheck(check1) == True and fCheck(check2) == True:
-                print("fcheck passed for pair")
+                #print("fcheck passed for pair")
                 #hint: all numbers -> Auto
                 #ELSE: EMPTY
 
                 #NEWHINT: FUCKING SKIP THIS AND ASSUME NOT ALL NUMBERS
                 #HUGE HINT: PLEASE DONT FUCKING HAVE ALL NUMBERS IN THIS BECAUSE ADDING A FOR LOOP FUCKS THIS FUNCTION
                 #ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
-                secondtest = ShittySI([[check1,check2]])
-                print("what is result of secondtest?",secondtest)
-                print("why is ans empoty then",secondtest[0] == True)
+                #secondtest = ShittySI([[check1,check2]])
+                #def ActuallyIsom(ListItems):
+                #USE ACTUALLY SI BECAUSE YOU WANT ISOM NOT SI
+                secondtest = ActuallyIsom([[check1,check2]])
+                #print("what is result of secondtest?",secondtest)
+                #print("why is ans empoty then",secondtest[0] == True)
                 if secondtest[0] == True:
+                    #print("APPEND THIS",x)
                     ANS.append(x)
             else:
                 ANS.append(x)
@@ -5191,6 +5199,8 @@ def TotalSImin1(argList):
 
 #TESTING THIS CURRENTLY
 #print(TotalSI([[[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]],[[[['dot','dot']],[['dot','dot']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']],[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]]]],"","all"]))
+#differentiate dots
+#print(TotalSI([[[[[['doA','doA']],[['doA','doA']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']],[['triaA','triaB'],['triaB','triaC'],['triaC','triaA']]]],[[[['doB','doB']],[['doB','doB']]],[[['linea','lineb']],[['linea','lineb']]],[[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']],[['triaX','triaY'],['triaY','triaZ'],['triaZ','triaX']]]]],"","all"]))
 
 
 #this works
