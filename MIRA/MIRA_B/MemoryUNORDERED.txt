@@ -18,3 +18,6 @@
 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("UNLEASH FORCE")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['UNLEASH FORCE\\n']\n"]]]
 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("UNLEASH FORCE")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("UNLEASH FORCE")\'', ['None', '']]]]]
 [["TOTAL_ARGUMENT == '1+7'", ['8', '']]]
+[["TOTAL_ARGUMENT == '??'", ['', SyntaxError('invalid syntax', ('<string>', 1, 1, '??'))]]]
+[["Popen(['python',C:\\An\\MIRA\\Mira.py, ??], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['error is  invalid syntax (<string>, line 1)\\n']\n", "['code died\\n']\n"]]]
+[['TOTAL_ARGUMENT == \'[["TOTAL_ARGUMENT == \'??\'", [\'\', SyntaxError(\'invalid syntax\', (\'<string>\', 1, 1, \'??\'))]]]\'', [["TOTAL_ARGUMENT == '??'", ['', SyntaxError('invalid syntax', ('<string>', 1, 1, '??'))]]]]]
