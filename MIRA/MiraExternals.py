@@ -325,7 +325,7 @@ def AddressFILE(argList):
     basisfile = argList[0]
     obj = argList[1]
     #print("check arglist",argList)
-    print("qhat is obj?",obj)
+    #print("qhat is obj?",obj)
     #print("why does fcheck work on ''? ", fCheck(obj))
     '''
     if len(obj) == 0:
