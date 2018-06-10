@@ -205,6 +205,11 @@ while Descent:
             #for each abstraction, collect the answers
             #then delta2 on all the answers
             #then  SI on delta2(inputs) and delta2(outputs)
+            for x in totalabstractions:
+                print("x in totalabstractions",x)
+                #now we check for fixed point property
+                #delta2(abstractoin,otherguy) = abstraction
+                #HINT: DO y in totalabstractions VS z in SeekForce union
 
 
             
