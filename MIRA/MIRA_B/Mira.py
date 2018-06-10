@@ -190,14 +190,17 @@ while Descent:
                 #print("abstracting RHS once2!",maxlargestequivclasses([minforce2,maxlargestequivclassesmin1]))
                 totalabstractions = maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]) + maxlargestequivclasses([minforce2,maxlargestequivclassesmin1])
                 print("no respect wtf",totalabstractions)
-                '''
-                plan:
-                >check if we know the answer already (whether with compose or composeMETA)
-                >else check with sense and CONFIRM or DENY expectations
-                >confirm, skip
-                >deny -> MEMORIZE AND ADD TO MEMORY
-                DONE
-                '''
+            '''
+            plan:
+            >check if we know the answer already (whether with compose or composeMETA)
+            >else check with sense and CONFIRM or DENY expectations
+            >confirm, skip
+            >deny -> MEMORIZE AND ADD TO MEMORY
+            = might be the other way around? ^^^
+            >confirm, -> MEMORIZE AND ADD TO MEMORY
+            >deny, skip
+            DONE
+            '''
             #new plan:
             #for each abstraction, collect the answers
             #then delta2 on all the answers

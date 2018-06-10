@@ -33,4 +33,4 @@ HINT: MAKE DIFFERENT BUT TOTALLY SI FUNCTIONS!
 :try to test the min function as well
 [[[['single','single']],[['oneway','oneway']]],[[['oneway','oneway']],[['A','B'],['B','C'],['C','A']]],[[['A','B'],['B','C'],['C','A']],[['single','single']]],[[['A','B'],['B','C'],['C','A']],[['art','gallery'],['gale','wind'],['gallery','gale'],['wind','art']]]]
 
-[['[[\'loner\',\'loner\']]','[[\'unrequited\',\'unrequited\']]'],['[[\'unrequited\',\'unrequited\']]','[['z','y'],['y','x'],['x','z']]'],['[['z','y'],['y','x'],['x','z']]','[[\'loner\',\'loner\']]']]
+[['[[\'loner\',\'loner\']]','[[\'unrequited\',\'unrequited\']]'],['[[\'unrequited\',\'unrequited\']]','[[\'z\',\'y\'],[\'y\',\'x\'],[\'x\',\'z\']]'],['[[\'z\',\'y\'],[\'y\',\'x\'],[\'x\',\'z\']]','[[\'loner\',\'loner\']]']]

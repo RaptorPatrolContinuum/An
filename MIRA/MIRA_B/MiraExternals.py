@@ -3792,6 +3792,29 @@ def delta1(argList):
 
 #delta1(["print(\"rickroll\")"])
 
+def delta1MIRA(argList):
+    inputtext = argList[0]
+    miralist = ['python', OtherClone() + '\\Mira.py', inputtext]
+    #print("this should be miralist", miralist)
+
+    #print("NEED TO MAKE CLONE!",argv)
+    seesANS = []
+    with Popen(miralist, stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
+        #print("ARGINPUT IS", argv)
+        for line in p.stdout:
+            print(line, end='')
+            sees = str([line]) + "\n"
+            #print("WTF IS SEES",sees)
+            seesANS.append(sees)
+        '''
+        for line in fileinput.input():
+            print("WTF DOES THIS DO",line)
+            #process(line)
+        '''
+    internaltest = [["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, "+inputtext+"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]]
+    print("is internaltest the answer?",internaltest)
+    return "no tdone"
+
 def nametestFUNC(argList):
     '''
     arg1 = filename with extension
