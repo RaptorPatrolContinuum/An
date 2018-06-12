@@ -179,8 +179,11 @@ while Descent:
                     if len([y for y in guessAbst if y == thedelta]) == 0:
                         guessAbst.append(thedelta)
             #print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
+            abstractiondict = {}
+            icounter = 0
             for x in guessAbst:
-                print("x in guessAbst",x)
+                #print("x in guessAbst",x)
+                print("x in guessAbst",toString([ran(x),"naive"]))
                 minforce1 = SeekForce([MemoryUNORDERED,x,SeekForcemin2,[],[]])
                 minforce2 = SeekForce([memoryLong,x,SeekForcemin2,[],[]])
                 #print("try to seekforce with this and something else")
@@ -189,6 +192,8 @@ while Descent:
                 #print("abstracting RHS once1!",maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]))
                 #print("abstracting RHS once2!",maxlargestequivclasses([minforce2,maxlargestequivclassesmin1]))
                 totalabstractions = maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]) + maxlargestequivclasses([minforce2,maxlargestequivclassesmin1])
+                abstractiondict[str(icounter)] = totalabstractions
+                icounter += 1
                 print("no respect wtf",totalabstractions)
             '''
             plan:
@@ -204,12 +209,32 @@ while Descent:
             #new plan:
             #for each abstraction, collect the answers
             #then delta2 on all the answers
-            #then  SI on delta2(inputs) and delta2(outputs)
-            for x in totalabstractions:
+            #then SI on delta2(inputs) and delta2(outputs)
+            #MEMcomposeinput
+            len1 = len(abstractiondict)
+            len1int = 0
+            len2 = len(MEMcomposeinput)
+            len2int = 0
+            print("check lengths",len1,len2)
+            for x in range(len1*len2):
+                if len1int == len1:
+                    len1int = 0
+                if len2int == len2:
+                    len2int = 0
                 print("x in totalabstractions",x)
                 #now we check for fixed point property
                 #delta2(abstractoin,otherguy) = abstraction
                 #HINT: DO y in totalabstractions VS z in SeekForce union
+                print("source1",abstractiondict)
+                print("comparisons1",abstractiondict[str(len1int)])
+                print("source2",MEMcomposeinput)
+                print("comparisons2",MEMcomposeinput[len2int])
+                if delta2([abstractiondict[str(len1int)],MEMcomposeinput[len2int]]) == abstractiondict[str(len1int)]:
+                    memoryfile = open(MemoryUNORDERED, 'a+')
+                    memoryfile.write(str(abstractiondict[str(len1int)]) + "\n")
+                    memoryfile.close()
+                len1int += 1
+                len2int += 1
 
 
             

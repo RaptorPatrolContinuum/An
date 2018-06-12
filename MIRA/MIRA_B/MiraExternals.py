@@ -3812,8 +3812,7 @@ def delta1MIRA(argList):
             #process(line)
         '''
     internaltest = [["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, "+inputtext+"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]]
-    print("is internaltest the answer?",internaltest)
-    return "no tdone"
+    return internaltest
 
 def nametestFUNC(argList):
     '''

@@ -25,3 +25,5 @@
 [["Popen(['python',C:\\An\\MIRA\\Mira.py, hi], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ['["error is  name \'hi\' is not defined\\n"]\n', "['code died\\n']\n"]]]
 [['TOTAL_ARGUMENT == \'[["TOTAL_ARGUMENT == \'hi\'", [\'\', NameError("name \'hi\' is not defined",)]]]\'', [["TOTAL_ARGUMENT == 'hi'", ['', NameError("name 'hi' is not defined",)]]]]]
 [['TOTAL_ARGUMENT == \'print("rickroll")\'', ['None', '']]]
+[["TOTAL_ARGUMENT == 'print('oof')'", ['None', '']]]
+[["Popen(['python',C:\\An\\MIRA\\Mira.py, print('oof')], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['oof\\n']\n"]]]
