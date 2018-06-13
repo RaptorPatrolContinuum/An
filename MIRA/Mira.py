@@ -225,10 +225,11 @@ while Descent:
                 #now we check for fixed point property
                 #delta2(abstractoin,otherguy) = abstraction
                 #HINT: DO y in totalabstractions VS z in SeekForce union
-                print("source1",abstractiondict)
+                #print("source1",abstractiondict)
                 print("comparisons1",abstractiondict[str(len1int)])
-                print("source2",MEMcomposeinput)
+                #print("source2",MEMcomposeinput)
                 print("comparisons2",MEMcomposeinput[len2int])
+                print("pass or fail",delta2([abstractiondict[str(len1int)],MEMcomposeinput[len2int]]) == abstractiondict[str(len1int)])
                 if delta2([abstractiondict[str(len1int)],MEMcomposeinput[len2int]]) == abstractiondict[str(len1int)]:
                     memoryfile = open(MemoryUNORDERED, 'a+')
                     memoryfile.write(str(abstractiondict[str(len1int)]) + "\n")
