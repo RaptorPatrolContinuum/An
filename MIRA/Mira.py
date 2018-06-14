@@ -181,6 +181,8 @@ while Descent:
             #print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
             abstractiondict = {}
             icounter = 0
+            #since abstractiondict is a list
+            abstractioninnertotal = 0
             for x in guessAbst:
                 #print("x in guessAbst",x)
                 print("x in guessAbst",toString([ran(x),"naive"]))
@@ -194,7 +196,12 @@ while Descent:
                 totalabstractions = maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]) + maxlargestequivclasses([minforce2,maxlargestequivclassesmin1])
                 abstractiondict[str(icounter)] = totalabstractions
                 icounter += 1
+                #hint: TOTALABSTRACTIONS IS A LIST
                 print("no respect wtf",totalabstractions)
+                abstractioninnertotal += len(totalabstractions)
+                #for art in totalabstractions:
+                #    print("fCheck this shit",art)
+                #    print("fCheck this shit",fCheck(art))
             '''
             plan:
             >check if we know the answer already (whether with compose or composeMETA)
@@ -211,6 +218,7 @@ while Descent:
             #then delta2 on all the answers
             #then SI on delta2(inputs) and delta2(outputs)
             #MEMcomposeinput
+            print("double check dict",abstractiondict)
             len1 = len(abstractiondict)
             len1int = 0
             len2 = len(MEMcomposeinput)
@@ -227,8 +235,10 @@ while Descent:
                 #HINT: DO y in totalabstractions VS z in SeekForce union
                 #print("source1",abstractiondict)
                 print("comparisons1",abstractiondict[str(len1int)])
+                print("comparisons1",toString([ran(abstractiondict[str(len1int)]),"naive"]))
                 #print("source2",MEMcomposeinput)
                 print("comparisons2",MEMcomposeinput[len2int])
+                print("comparisons2",toString([ran(MEMcomposeinput[len2int]),"naive"]))
                 print("pass or fail",delta2([abstractiondict[str(len1int)],MEMcomposeinput[len2int]]) == abstractiondict[str(len1int)])
                 if delta2([abstractiondict[str(len1int)],MEMcomposeinput[len2int]]) == abstractiondict[str(len1int)]:
                     memoryfile = open(MemoryUNORDERED, 'a+')
