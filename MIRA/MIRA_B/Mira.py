@@ -103,15 +103,15 @@ while Descent:
             #print("ShortMem",shortAuto)
             #print("LongMem",longAuto)
             autoPickedUniv = shortAuto + longAuto
-            #print("near field is", autoPickedUniv)
+            print("near field is", autoPickedUniv)
 
             #eval the return <--- REMEMBER TO EVAL THE RETURN (need:hint: if I have finite functions, hav ea function that takes a finite function and an input then returns what the finite function would say if given that input)
             suppANS = []
             for x in autoPickedUniv:
                 suppANSmin = Applyfunc([eval(x),inputtext])
-                #print("apply test", eval(x), inputtext,suppANSmin)
+                print("apply test", eval(x), inputtext,suppANSmin)
                 suppANS.append(x)
-            #print("supposed answer",suppANS)
+            print("supposed answer",suppANS)
             for x in suppANS:
                 try:
                     attempt = eval(x)
@@ -181,6 +181,8 @@ while Descent:
             #print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
             abstractiondict = {}
             icounter = 0
+            #since abstractiondict is a list
+            abstractioninnertotal = 0
             for x in guessAbst:
                 #print("x in guessAbst",x)
                 print("x in guessAbst",toString([ran(x),"naive"]))
@@ -194,10 +196,12 @@ while Descent:
                 totalabstractions = maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]) + maxlargestequivclasses([minforce2,maxlargestequivclassesmin1])
                 abstractiondict[str(icounter)] = totalabstractions
                 icounter += 1
+                #hint: TOTALABSTRACTIONS IS A LIST
                 print("no respect wtf",totalabstractions)
-                for art in totalabstractions:
-                    print("fCheck this shit",art)
-                    print("fCheck this shit",fCheck(art))
+                abstractioninnertotal += len(totalabstractions)
+                #for art in totalabstractions:
+                #    print("fCheck this shit",art)
+                #    print("fCheck this shit",fCheck(art))
             '''
             plan:
             >check if we know the answer already (whether with compose or composeMETA)
