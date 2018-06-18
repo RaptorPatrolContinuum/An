@@ -224,28 +224,48 @@ while Descent:
             len2 = len(MEMcomposeinput)
             len2int = 0
             print("check lengths",len1,len2)
-            for x in range(len1*len2):
+            anothersum = 0
+            for x in range(len1):
+                #print("electric feel",len(abstractiondict[str(len1int)]))
+                anothersum += len(abstractiondict[str(len1int)])
+                len1int += 1
+            print("what is anothersum?",anothersum)
+            len1int = 0
+            len3int = 0
+            for x in range((anothersum-len1)*len2):
+                print("checkfailed why",len3int,len(abstractiondict[str(len1int)]))
+                if len3int == len(abstractiondict[str(len1int)]):
+                    len3int = 0
+                    len1int += 1
                 if len1int == len1:
                     len1int = 0
-                if len2int == len2:
-                    len2int = 0
+                    len2int += 1
+                theguy = abstractiondict[str(len1int)]
+                print('the guy is empty',theguy)
+                print("length of this guy",len(theguy))
+                if theguy == []:
+                    cleanup1 = ""
+                else:
+                    cleanup1 = abstractiondict[str(len1int)][len3int]
                 print("x in totalabstractions",x)
+                print("need fucking stats",len1int,len2int,len3int)
+                
                 #now we check for fixed point property
                 #delta2(abstractoin,otherguy) = abstraction
                 #HINT: DO y in totalabstractions VS z in SeekForce union
                 #print("source1",abstractiondict)
-                print("comparisons1",abstractiondict[str(len1int)])
-                print("comparisons1",toString([ran(abstractiondict[str(len1int)]),"naive"]))
+                print('going over',len3int)
+                print("comparisons1",cleanup1)
+                print("comparisons1",toString([ran(cleanup1),"naive"]))
                 #print("source2",MEMcomposeinput)
                 print("comparisons2",MEMcomposeinput[len2int])
                 print("comparisons2",toString([ran(MEMcomposeinput[len2int]),"naive"]))
-                print("pass or fail",delta2([abstractiondict[str(len1int)],MEMcomposeinput[len2int]]) == abstractiondict[str(len1int)])
-                if delta2([abstractiondict[str(len1int)],MEMcomposeinput[len2int]]) == abstractiondict[str(len1int)]:
+                print("pass or fail",delta2([cleanup1,MEMcomposeinput[len2int]]) == cleanup1)
+                if delta2([cleanup1,MEMcomposeinput[len2int]]) == cleanup1:
                     memoryfile = open(MemoryUNORDERED, 'a+')
-                    memoryfile.write(str(abstractiondict[str(len1int)]) + "\n")
+                    memoryfile.write(str(cleanup1) + "\n")
                     memoryfile.close()
-                len1int += 1
-                len2int += 1
+                len3int += 1
 
 
             
