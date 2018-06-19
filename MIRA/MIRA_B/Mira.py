@@ -191,14 +191,17 @@ while Descent:
                 #print("try to seekforce with this and something else")
                 #print(minforce1)
                 #print(minforce2)
-                #print("abstracting RHS once1!",maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]))
-                #print("abstracting RHS once2!",maxlargestequivclasses([minforce2,maxlargestequivclassesmin1]))
+                print("abstracting RHS once1!",maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]))
+                print("abstracting RHS once2!",maxlargestequivclasses([minforce2,maxlargestequivclassesmin1]))
                 totalabstractions = maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]) + maxlargestequivclasses([minforce2,maxlargestequivclassesmin1])
                 abstractiondict[str(icounter)] = totalabstractions
                 icounter += 1
                 #hint: TOTALABSTRACTIONS IS A LIST
                 print("no respect wtf",totalabstractions)
                 abstractioninnertotal += len(totalabstractions)
+                #having issue of not counting empties but not being able to skip them so just account for them
+                if len(totalabstractions) == 0:
+                    abstractioninnertotal += 1
                 #for art in totalabstractions:
                 #    print("fCheck this shit",art)
                 #    print("fCheck this shit",fCheck(art))
@@ -228,13 +231,20 @@ while Descent:
             for x in range(len1):
                 #print("electric feel",len(abstractiondict[str(len1int)]))
                 anothersum += len(abstractiondict[str(len1int)])
+                if len(abstractiondict[str(len1int)]) == 0:
+                    anothersum += 1
                 len1int += 1
             print("what is anothersum?",anothersum)
             len1int = 0
             len3int = 0
-            for x in range((anothersum-len1)*len2):
+            print("totalcheck",anothersum*len2)
+            for x in range(len(abstractiondict)):
+                print(abstractiondict[str(x)])
+                print(len(abstractiondict[str(x)]))
+            for x in range(anothersum*len2):
+                print("x in totalabstractions",x)
                 print("checkfailed why",len3int,len(abstractiondict[str(len1int)]))
-                if len3int == len(abstractiondict[str(len1int)]):
+                if len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0:
                     len3int = 0
                     len1int += 1
                 if len1int == len1:
@@ -246,10 +256,9 @@ while Descent:
                 if theguy == []:
                     cleanup1 = ""
                 else:
+                    print("don't tell me cause it hurts",len1int, len3int)
                     cleanup1 = abstractiondict[str(len1int)][len3int]
-                print("x in totalabstractions",x)
                 print("need fucking stats",len1int,len2int,len3int)
-                
                 #now we check for fixed point property
                 #delta2(abstractoin,otherguy) = abstraction
                 #HINT: DO y in totalabstractions VS z in SeekForce union
