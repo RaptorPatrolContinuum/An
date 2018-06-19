@@ -84,7 +84,6 @@ while Descent:
                 else:
                     memoryfile.write(str(internaltest2) + "\n")
             memoryfile.close()
-            
         except Exception as e:
             print("error is ", e)
             print("code died")
