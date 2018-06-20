@@ -84,7 +84,6 @@ while Descent:
                 else:
                     memoryfile.write(str(internaltest2) + "\n")
             memoryfile.close()
-            
         except Exception as e:
             print("error is ", e)
             print("code died")
@@ -127,13 +126,6 @@ while Descent:
             #LEXICO IMMEDIATELY BECAUSE I AM STILL TESTING
             #lexicoSort([basisname,memoryLong,MemoryUNORDERED])
             
-            #pattern recognition:
-            #~
-            #\cong (property preserved under some X)
-            #"use delta < some # " and look in some topo space
-            #append basis again
-
-            
             #DELTA ANALYSIS:
             #deltav2 on x in combined memory and new obj
             #print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDERED.txt','argument_1 == "b"',delta2]))
@@ -141,12 +133,6 @@ while Descent:
             MEMcomposeinput = SeekForce([MemoryUNORDERED,inputtext,delta2,SeekForcemin1,[]]) + SeekForce([memoryLong,inputtext,delta2,SeekForcemin1,[]])
             #deltav2 on pairs in new obj -> guessing similar inputs/variables (find abstractions) ->#eval using (deltav3 COMPOSE deltav2) and get answers
             #for each object in seekforce, check if new obj or x in seekforce is an abstraction by checking deltav2(obj,x in seekforce) == obj OR deltav2(obj,x in seekforce) == x in seekforce
-            #print("checking memcomposeinput",str(MEMcomposeinput).encode('utf-8'))
-            #print("checking memcomposeinput HINT: before is evaling with what we know, now we guess abstraction",MEMcomposeinput)
-            #print("is list?", type(MEMcomposeinput))
-            #print("qhat is argv?",argv)
-            #print("checking memcomposeinput",MEMcomposeinput)
-            #print("alpha and stout fucking up","α".encode('utf-8'))
             guessAbst = []
             for x in MEMcomposeinput:
                 #print("WTF IS X",x)
@@ -155,27 +141,11 @@ while Descent:
                 thedelta = delta2([inputtext,xmod])
                 #print("what's thedelta?",thedelta)
                 abstractcheck = toString([ran(thedelta),"naive"])
-                #print("what is inputtext?",inputtext)
-                #print("BECOME THE ONE YOU LOVE abstractcheck",abstractcheck)
-                #print("I'm abusing x as a symbol",xmod)
-                #print("abstractcheck  == inputtext",abstractcheck  == inputtext)
-                #print("abstractcheck == xmod",abstractcheck == xmod)
                 test1 = abstractcheck == inputtext
                 test2 = abstractcheck == xmod
                 if test1 or test2:
-                    #print("small steps you fuck",xmod) #can't encode α for some reason
-                    #print("small steps you fuck2",inputtext)
-                    #print("this is guess",abstractcheck)
-                    #print("args for delta3",[abstractcheck,inputtext])
                     replacementguess = delta3META([abstractcheck,inputtext])
-                    #print("guess substitution", replacementguess)
-                    #print("composemeta arguments", replacementguess,thedelta)
-                    #print("CHECKING EVAL THROUGH COMPOSE FUCK", Compose(replacementguess,thedelta))
                     metaeval = ComposeMETA([replacementguess,thedelta])
-                    #print("#1 WTF IS METAEVAL AND #2 WHY IS IT ALWAYS EMPTY",[replacementguess,thedelta])
-                    #print("CHECKING EVAL THROUGH COMPOSEMETA", metaeval)
-                    #print("checking list comprehension",thedelta)
-                    #print("checking list comprehension2",[y for y in guessAbst if y == thedelta])
                     if len([y for y in guessAbst if y == thedelta]) == 0:
                         guessAbst.append(thedelta)
             #print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
@@ -189,8 +159,6 @@ while Descent:
                 minforce1 = SeekForce([MemoryUNORDERED,x,SeekForcemin2,[],[]])
                 minforce2 = SeekForce([memoryLong,x,SeekForcemin2,[],[]])
                 #print("try to seekforce with this and something else")
-                #print(minforce1)
-                #print(minforce2)
                 print("abstracting RHS once1!",maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]))
                 print("abstracting RHS once2!",maxlargestequivclasses([minforce2,maxlargestequivclassesmin1]))
                 totalabstractions = maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]) + maxlargestequivclasses([minforce2,maxlargestequivclassesmin1])
