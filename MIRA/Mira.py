@@ -231,6 +231,19 @@ while Descent:
                 #delta2(abstractoin,otherguy) = abstraction
                 #HINT: DO y in totalabstractions VS z in SeekForce union
                 #print("source1",abstractiondict)
+
+                '''
+                problem
+                #1: i want to open memory as minimally as possible
+                #2: i don't want to commit the memory file to memory tho
+                '''
+                #HINT: 3 things to do
+                #hint2: COMPARE USING DELTAV2 AND FIXED POINT PROPERTY -> IMPLYING THAT OBJECT IS ABSTRACTION
+                #1- compare with memory
+                #match reality
+                #2- compare with MIRA
+                #3- compare with blank python
+                
                 print('going over',len3int)
                 print("comparisons1",cleanup1)
                 print("comparisons1",toString([ran(cleanup1),"naive"]))
@@ -238,10 +251,12 @@ while Descent:
                 print("comparisons2",MEMcomposeinput[len2int])
                 print("comparisons2",toString([ran(MEMcomposeinput[len2int]),"naive"]))
                 print("pass or fail",delta2([cleanup1,MEMcomposeinput[len2int]]) == cleanup1)
+                '''
                 if delta2([cleanup1,MEMcomposeinput[len2int]]) == cleanup1:
                     memoryfile = open(MemoryUNORDERED, 'a+')
                     memoryfile.write(str(cleanup1) + "\n")
                     memoryfile.close()
+                '''
                 len3int += 1
 
 
