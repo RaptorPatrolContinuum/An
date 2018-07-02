@@ -144,10 +144,14 @@ while Descent:
                 test1 = abstractcheck == inputtext
                 test2 = abstractcheck == xmod
                 if test1 or test2:
-                    replacementguess = delta3META([abstractcheck,inputtext])
-                    metaeval = ComposeMETA([replacementguess,thedelta])
+                    #unused stuff
+                    #replacementguess = delta3META([abstractcheck,inputtext])
+                    #metaeval = ComposeMETA([replacementguess,thedelta])
                     if len([y for y in guessAbst if y == thedelta]) == 0:
                         guessAbst.append(thedelta)
+            print("COMPART MEMCOMPOSE WITH GUESSABST")
+            print("MEMCOMPOSE",MEMcomposeinput)
+            print("guessAbst",guessAbst)
             #print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
             abstractiondict = {}
             icounter = 0
@@ -165,7 +169,7 @@ while Descent:
                 abstractiondict[str(icounter)] = totalabstractions
                 icounter += 1
                 #hint: TOTALABSTRACTIONS IS A LIST
-                print("no respect wtf",totalabstractions)
+                print("who cares dude",totalabstractions)
                 abstractioninnertotal += len(totalabstractions)
                 #having issue of not counting empties but not being able to skip them so just account for them
                 if len(totalabstractions) == 0:
@@ -225,6 +229,7 @@ while Descent:
                 else:
                     print("don't tell me cause it hurts",len1int, len3int)
                     cleanup1 = abstractiondict[str(len1int)][len3int]
+                    print("don't tell me cause it hurts2",cleanup1)
                 print("need fucking stats",len1int,len2int,len3int)
                 #now we check for fixed point property
                 #delta2(abstractoin,otherguy) = abstraction
@@ -244,7 +249,7 @@ while Descent:
                 #3- compare with blank python
                 
                 print("ABSTRACTION FUCNTION GUESS WITH ABSTRACTED LHS AND RHS")
-                print("ABSTRACTION GUESS:",[MEMcomposeinput[len2int],cleanup1])
+                print("ABSTRACTION GUESS:",[[MEMcomposeinput[len2int],cleanup1]])
                 '''
                 if delta2([cleanup1,MEMcomposeinput[len2int]]) == cleanup1:
                     memoryfile = open(MemoryUNORDERED, 'a+')

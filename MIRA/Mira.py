@@ -144,10 +144,14 @@ while Descent:
                 test1 = abstractcheck == inputtext
                 test2 = abstractcheck == xmod
                 if test1 or test2:
-                    replacementguess = delta3META([abstractcheck,inputtext])
-                    metaeval = ComposeMETA([replacementguess,thedelta])
+                    #unused stuff
+                    #replacementguess = delta3META([abstractcheck,inputtext])
+                    #metaeval = ComposeMETA([replacementguess,thedelta])
                     if len([y for y in guessAbst if y == thedelta]) == 0:
                         guessAbst.append(thedelta)
+            print("COMPART MEMCOMPOSE WITH GUESSABST")
+            print("MEMCOMPOSE",MEMcomposeinput)
+            print("guessAbst",guessAbst)
             #print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
             abstractiondict = {}
             icounter = 0
@@ -192,7 +196,7 @@ while Descent:
             print("double check dict",abstractiondict)
             len1 = len(abstractiondict)
             len1int = 0
-            len2 = len(MEMcomposeinput)
+            len2 = len(guessAbst)
             len2int = 0
             print("check lengths",len1,len2)
             anothersum = 0
@@ -245,7 +249,7 @@ while Descent:
                 #3- compare with blank python
                 
                 print("ABSTRACTION FUCNTION GUESS WITH ABSTRACTED LHS AND RHS")
-                print("ABSTRACTION GUESS:",[[MEMcomposeinput[len2int],cleanup1]])
+                print("ABSTRACTION GUESS:",[[guessAbst[len2int],cleanup1]])
                 '''
                 if delta2([cleanup1,MEMcomposeinput[len2int]]) == cleanup1:
                     memoryfile = open(MemoryUNORDERED, 'a+')
@@ -254,7 +258,8 @@ while Descent:
                 '''
                 len3int += 1
 
-
+            #problem: nested for loops are garbage
+            #answer: have to commit all the function guesses to a list then just open memory total (unordered + ordered) and then use fixed point property + deltav2
             
             #eval using (deltav3 COMPOSE deltav2) and get answers AND WRITE THOSE DOWN TO memory
             #ComposeMETA([arg1,arg2])
