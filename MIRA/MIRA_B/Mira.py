@@ -196,7 +196,7 @@ while Descent:
             print("double check dict",abstractiondict)
             len1 = len(abstractiondict)
             len1int = 0
-            len2 = len(MEMcomposeinput)
+            len2 = len(guessAbst)
             len2int = 0
             print("check lengths",len1,len2)
             anothersum = 0
@@ -209,6 +209,7 @@ while Descent:
             print("what is anothersum?",anothersum)
             len1int = 0
             len3int = 0
+            functionguessdict = {}
             print("totalcheck",anothersum*len2)
             for x in range(len(abstractiondict)):
                 print(abstractiondict[str(x)])
@@ -249,7 +250,8 @@ while Descent:
                 #3- compare with blank python
                 
                 print("ABSTRACTION FUCNTION GUESS WITH ABSTRACTED LHS AND RHS")
-                print("ABSTRACTION GUESS:",[[MEMcomposeinput[len2int],cleanup1]])
+                print("ABSTRACTION GUESS:",[[guessAbst[len2int],cleanup1]])
+                functionguessdict[str(x)] = [[guessAbst[len2int],cleanup1]]
                 '''
                 if delta2([cleanup1,MEMcomposeinput[len2int]]) == cleanup1:
                     memoryfile = open(MemoryUNORDERED, 'a+')
@@ -258,7 +260,18 @@ while Descent:
                 '''
                 len3int += 1
 
-
+            #problem: nested for loops are garbage
+            #answer: have to commit all the function guesses to a list then just open memory total (unordered + ordered) and then use fixed point property + deltav2
+            #open ordered
+            with open(memoryLong, 'r+') as ordered1:
+                thenextline = rchop(ordered1.readlines(), '\n')
+                for x in range(anothersum*len2):
+                    print("OK WE ARE COMPARING ",thenextline)
+                    print("AND THIS LINE",functionguessdict[str(x)])
+                
+            
+            #open unordered
+        
             
             #eval using (deltav3 COMPOSE deltav2) and get answers AND WRITE THOSE DOWN TO memory
             #ComposeMETA([arg1,arg2])

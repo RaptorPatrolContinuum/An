@@ -264,6 +264,10 @@ while Descent:
             #answer: have to commit all the function guesses to a list then just open memory total (unordered + ordered) and then use fixed point property + deltav2
             #open ordered
             with open(memoryLong, 'r+') as ordered1:
+                thenextline = rchop(ordered1.readlines(), '\n')
+                for x in range(anothersum*len2):
+                    print("OK WE ARE COMPARING ",thenextline)
+                    print("AND THIS LINE",functionguessdict[str(x)])
                 
             
             #open unordered
