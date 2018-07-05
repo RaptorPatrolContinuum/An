@@ -209,6 +209,7 @@ while Descent:
             print("what is anothersum?",anothersum)
             len1int = 0
             len3int = 0
+            functionguessdict = {}
             print("totalcheck",anothersum*len2)
             for x in range(len(abstractiondict)):
                 print(abstractiondict[str(x)])
@@ -250,6 +251,7 @@ while Descent:
                 
                 print("ABSTRACTION FUCNTION GUESS WITH ABSTRACTED LHS AND RHS")
                 print("ABSTRACTION GUESS:",[[guessAbst[len2int],cleanup1]])
+                functionguessdict[str(x)] = [[guessAbst[len2int],cleanup1]]
                 '''
                 if delta2([cleanup1,MEMcomposeinput[len2int]]) == cleanup1:
                     memoryfile = open(MemoryUNORDERED, 'a+')
@@ -260,6 +262,12 @@ while Descent:
 
             #problem: nested for loops are garbage
             #answer: have to commit all the function guesses to a list then just open memory total (unordered + ordered) and then use fixed point property + deltav2
+            #open ordered
+            with open(memoryLong, 'r+') as ordered1:
+                
+            
+            #open unordered
+        
             
             #eval using (deltav3 COMPOSE deltav2) and get answers AND WRITE THOSE DOWN TO memory
             #ComposeMETA([arg1,arg2])
