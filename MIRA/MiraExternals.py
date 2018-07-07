@@ -1298,7 +1298,7 @@ def ShittySI(ListItems):
                         elif len(ANS) > 0:
                             #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
                             preans.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
-                        else:
+                        elif LessThan_C(AD1,AD2):
                             ANS.append(True)
                             #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
                             preans = [PhiConstruct(Indexer,LinkPool,AutoCheck)]
@@ -1407,7 +1407,7 @@ def ShittySI(ListItems):
                     elif len(ANS) > 0:
                         #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
                         preans.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
-                    else:
+                    elif LessThan_C(AD1,AD2):
                         #print("do this by hand tomorrow",Indexer)
                         #print("HStar not empty means WTF IS GOIGN ON",HStar)
                         #print("what is fucking skip -> means I didn't catch all the flow",fuckingskip)
