@@ -1150,7 +1150,7 @@ def ShittySI(ListItems):
     
     NumberIndex = []
     ANS = []
-    #FUCK I DONT KNOW WHAT IM DOING TO THIS CODE
+    #print('FUCK I DONT KNOW WHAT IM DOING TO THIS CODE')
     fuckingskip = False
     for G in LinkSize:
         if len(NumberIndex) > 0:
@@ -1166,9 +1166,10 @@ def ShittySI(ListItems):
                         for K in Appendage:
                             Indexer.append([LinkPoolList[i][0],Appendage[i]])
                             i += 1
-                        #print("here we test SI iwth",Appendage)
-                        #print("Indexer is", Indexer)
-                        #print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                        print("WTF WHY IS ANS TRUE",ANS)
+                        print("here we test SI iwth",Appendage)
+                        print("Indexer is", Indexer)
+                        print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
                         #If |V_H| > |V_G|, then construct H* to use instead:
                         if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
                             #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
@@ -1182,7 +1183,7 @@ def ShittySI(ListItems):
                                     passB = False
                                 if passA == True and passB == True:
                                     HStar.append(L)
-                            #print("ok check out H*!",HStar)
+                            print("ok check out H*!",HStar)
                         else:
                             HStar = Larger
 
@@ -1194,21 +1195,22 @@ def ShittySI(ListItems):
                         if tryit == True:
                             if ListItems[1] == "Auto":
                                 Vertex_Max = '0'
-                                #print("vertexmax lolwut",Vertex_(WLOG) + Vertex_(Larger))
+                                print("vertexmax lolwut",Vertex_(WLOG) + Vertex_(Larger))
                                 for NUM in Vertex_(WLOG) + Vertex_(Larger):
                                     if int(NUM) > int(Vertex_Max):
                                         Vertex_Max = str(NUM)
-                                #print("V_G",Vertex_(WLOG))
-                                #print("V_H",Vertex_(Larger))
-                                #print("TheMax",Vertex_Max)
-                                #print("parts for AD1",WLOG)
-                                #print("Larger",Larger)
-                                #print("Indexer",Indexer)
-                                #print("LinkPool",LinkPool)
-                                #print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
-                                #print("need to pick right max",rchiINT(Vertex_Max))
-                                #print("basis",Minv_(rchiINT(Vertex_Max)))
-                                #print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                print("WTF WHY IS ANS TRUE2",ANS)
+                                print("V_G",Vertex_(WLOG))
+                                print("V_H",Vertex_(Larger))
+                                print("TheMax",Vertex_Max)
+                                print("parts for AD1",WLOG)
+                                print("Larger",Larger)
+                                print("Indexer",Indexer)
+                                print("LinkPool",LinkPool)
+                                print("PhiConstruct",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                print("need to pick right max",rchiINT(Vertex_Max))
+                                print("basis",Minv_(rchiINT(Vertex_Max)))
+                                print("compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
 
                                 if len(Vertex_(Larger)) >= len(Vertex_(WLOG)):
                                     #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
@@ -1222,45 +1224,47 @@ def ShittySI(ListItems):
                                             passB = False
                                         if passA == True and passB == True:
                                             HStar.append(L)
-                                    #print("ok check out H*!",HStar)
+                                    print("ok check out H*!",HStar)
                                 else:
                                     HStar = Larger
-                                #print("DATA =======")
-                                #print("smaller", WLOG)
-                                #print("Larger", Larger)
-                                #print("Vertex_Max",Vertex_Max)
-                                #print("rchiINT",rchiINT(Vertex_Max))
-                                #print("Minv_",Minv_(rchiINT(Vertex_Max)))
-                                #print("Indexer IS THE PROBLEM",Indexer)
-                                #print("LinkPool",LinkPool)
-                                #print("AutoCheck",AutoCheck)
-                                #print("phi",PhiConstruct(Indexer,LinkPool,AutoCheck))
-                                #print("Compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
-                                #print("DATA END =-=========")
-                                #print("=======died at 100MB", Minv_(rchiINT(Vertex_Max)))
-                                #print("more stats", PhiConstruct(Indexer,LinkPool,AutoCheck))
-                                #print("ok?",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                print("DATA =======")
+                                print("smaller", WLOG)
+                                print("Larger", Larger)
+                                print("Vertex_Max",Vertex_Max)
+                                print("rchiINT",rchiINT(Vertex_Max))
+                                print("Minv_",Minv_(rchiINT(Vertex_Max)))
+                                print("Indexer IS THE PROBLEM",Indexer)
+                                print("LinkPool",LinkPool)
+                                print("AutoCheck",AutoCheck)
+                                print("phi",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                print("Compose",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                print("DATA END =-=========")
+                                print("=======died at 100MB", Minv_(rchiINT(Vertex_Max)))
+                                print("more stats", PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                print("ok?",Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
 
                                 AD1 = AddressFunc(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
                                 AD2 = AddressFunc(Minv_(rchiINT(Vertex_Max)),HStar)
-                                #print("stats")
-                                #print(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
-                                #print(Minv_(rchiINT(Vertex_Max)),HStar)
-                                #print("AD checks prior",AD1,AD2)
-                                #print("======= DIED END")
+                                print("stats")
+                                print(Compose(Minv_(rchiINT(Vertex_Max)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                                print(Minv_(rchiINT(Vertex_Max)),HStar)
+                                print("AD checks prior",AD1,AD2)
+                                print("======= DIED END")
+                                print("WTF WHY IS ANS TRUE3",ANS)
                             else:
-                                #print("WLOG",WLOG)
-                                #print("bad boy down",Minv_(Beta_(WLOG)))
-                                #print("red velvet bad boy",Indexer)
-                                #print("red velvet bad boy2",LinkPool)
-                                #print("red velvet bad boy3",AutoCheck)
-                                #print("bb4",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                print("WTF WHY IS ANS TRUE4",ANS)
+                                print("WLOG",WLOG)
+                                print("bad boy down",Minv_(Beta_(WLOG)))
+                                print("red velvet bad boy",Indexer)
+                                print("red velvet bad boy2",LinkPool)
+                                print("red velvet bad boy3",AutoCheck)
+                                print("bb4",PhiConstruct(Indexer,LinkPool,AutoCheck))
                                 #problem is Minv_
                                 #problem is in phiconstruct or Minv_ on LIST
                                 #problem is probably in compose and quotes on that triple length thing
-                                #print("F U C K1",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
-                                #print("F U C K2",HStar)
-                                #print("F U C K3",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar))
+                                print("F U C K1",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                print("F U C K2",HStar)
+                                print("F U C K3",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar))
                                 #AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
                                 #time to check SI:
                                 AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
@@ -1275,11 +1279,12 @@ def ShittySI(ListItems):
                             else:
                                 AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
                                 AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
-                        #print("ADchecks",AD1,AD2)
-                        #print("tobin AD1","{0:b}".format(AD1)[::-1])
-                        #print("tobin AD2","{0:b}".format(AD2)[::-1])
-                        #print("LessthanC",LessThan_C(AD1,AD2))
-                        #print("len(ALLTRIGGER) == 0",len(ALLTRIGGER) == 0)
+                        print("WTF WHY IS ANS TRUE5",ANS)
+                        print("ADchecks",AD1,AD2)
+                        print("tobin AD1","{0:b}".format(AD1)[::-1])
+                        print("tobin AD2","{0:b}".format(AD2)[::-1])
+                        print("LessthanC",LessThan_C(AD1,AD2))
+                        print("len(ALLTRIGGER) == 0",len(ALLTRIGGER) == 0)
 
                         #I'm just going to do a fast fix: if HStar is empty then set fuckingskip to true
                         if HStar == []:
@@ -1288,6 +1293,7 @@ def ShittySI(ListItems):
                         if fuckingskip == True:
                             fuckingskip = False
                         elif LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
+                            print("where to look2")
                             return [True,PhiConstruct(Indexer,LinkPool,AutoCheck)]
                         elif len(ANS) > 0:
                             #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
@@ -1296,7 +1302,7 @@ def ShittySI(ListItems):
                             ANS.append(True)
                             #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
                             preans = [PhiConstruct(Indexer,LinkPool,AutoCheck)]
-                        #print("WTF IS ANS1",ANS)
+                        print("WTF IS ANS1",ANS)
             NumberIndex = NumberNew
         else:
             for H in range(0,G):
@@ -1396,6 +1402,7 @@ def ShittySI(ListItems):
                     if fuckingskip == True:
                         fuckingskip = False
                     elif LessThan_C(AD1,AD2) and len(ALLTRIGGER) == 0:
+                        print("where to look3")
                         return [True,PhiConstruct(Indexer,LinkPool,AutoCheck)]
                     elif len(ANS) > 0:
                         #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
@@ -1414,8 +1421,9 @@ def ShittySI(ListItems):
                         ANS.append(True)
                         #ANS.append(PhiConstruct(Indexer,LinkPool,AutoCheck))
                         preans = [PhiConstruct(Indexer,LinkPool,AutoCheck)]
-                    #print("WTF IS ANS2",ANS)
+                    print("WTF IS ANS2",ANS)
     if len(ANS) > 0:
+        print("where to look4")
         return ANS + [preans]
     return ["Assume False"]
 
