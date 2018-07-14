@@ -9,9 +9,9 @@ himitsu = [[['A', 'D'], ['D', 'A'], ['B', 'B'], ['B', 'B'], ['C', 'A'], ['A', 'C
 garbanzo = []
 
 
-for x in himitsu:
-    print(x)
-    #print(toString([ran(x),"naive"]))
+#for x in himitsu:
+#    print(x)
+#    #print(toString([ran(x),"naive"]))
 
 #for x in range(len(himitsu)):
 #    print(himitsu[str(x)])
@@ -20,6 +20,17 @@ for x in himitsu:
 
 #problem: have list [, []] and I want to append to the list inside the list
 #how to preserve structure?
-    
+
+#testing for + while loop to replace for + for loop
+memoryLong = 'Memory.txt'
+MemoryUNORDERED = 'MemoryUNORDERED.txt'
+with open(memoryLong, 'r+') as ordered1:
+    for line in ordered1:
+        print("ok this should be line from memoryLong")
+        print(line)
+with open(MemoryUNORDERED, 'r+') as ordered1:
+    for line in ordered1:
+        print("ok this should be line from memoryLong")
+        print(line)
 
 

@@ -263,16 +263,17 @@ while Descent:
             #problem: nested for loops are garbage
             #answer: have to commit all the function guesses to a list then just open memory total (unordered + ordered) and then use fixed point property + deltav2
             #open ordered
-            with open(memoryLong, 'r+') as ordered1:
-                guessint = 0
-                print("WTRFFFFF",mapcountLINES([memoryLong])*anothersum*len2)
-                for line in range(mapcountLINES([memoryLong])*anothersum*len2):
-                    thenextline = rchop(ordered1.readline(), '\n')
-                    if guessint == anothersum*len2:
-                        guessint = 0
-                    print("OK WE ARE COMPARING ",thenextline)
-                    print("AND THIS LINE",functionguessdict[str(guessint)])
-                    guessint += 1
+
+            #with open(memoryLong, 'r+') as ordered1:
+            #    guessint = 0
+            #    print("WTRFFFFF",mapcountLINES([memoryLong])*anothersum*len2)
+            #    for line in range(mapcountLINES([memoryLong])*anothersum*len2):
+            #        thenextline = rchop(ordered1.readline(), '\n')
+            #        if guessint == anothersum*len2:
+            #            guessint = 0
+            #        print("OK WE ARE COMPARING ",thenextline)
+            #        print("AND THIS LINE",functionguessdict[str(guessint)])
+            #        guessint += 1
                 
             
             #open unordered
