@@ -231,7 +231,7 @@ while Descent:
                     print("don't tell me cause it hurts",len1int, len3int)
                     cleanup1 = abstractiondict[str(len1int)][len3int]
                     print("don't tell me cause it hurts2",cleanup1)
-                print("need fucking stats",len1int,len2int,len3int)
+                ##print("need fucking stats",len1int,len2int,len3int)
                 #now we check for fixed point property
                 #delta2(abstractoin,otherguy) = abstraction
                 #HINT: DO y in totalabstractions VS z in SeekForce union
@@ -249,7 +249,7 @@ while Descent:
                 #2- compare with MIRA
                 #3- compare with blank python
                 
-                print("ABSTRACTION FUCNTION GUESS WITH ABSTRACTED LHS AND RHS")
+                ##print("ABSTRACTION FUCNTION GUESS WITH ABSTRACTED LHS AND RHS")
                 print("ABSTRACTION GUESS:",[[guessAbst[len2int],cleanup1]])
                 functionguessdict[str(x)] = [[guessAbst[len2int],cleanup1]]
                 '''
@@ -259,7 +259,8 @@ while Descent:
                     memoryfile.close()
                 '''
                 len3int += 1
-            print("what does functionguessdict look like",functionguessdict)
+            print("maybe not printing the dict will fix things")
+            #print("what does functionguessdict look like",functionguessdict)
             #problem: nested for loops are garbage
             #answer: have to commit all the function guesses to a list then just open memory total (unordered + ordered) and then use fixed point property + deltav2
             #open ordered
