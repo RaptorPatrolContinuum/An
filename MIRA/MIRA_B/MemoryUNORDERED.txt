@@ -89,3 +89,6 @@
 [['TOTAL_ARGUMENT == \'print("10 doors down")\'', ['None', '']]]
 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("10 doors down")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['10 doors down\\n']\n"]]]
 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("10 doors down")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("10 doors down")\'', ['None', '']]]]]
+[['TOTAL_ARGUMENT == \'print("maybe not printing the dict will fix things")\'', ['None', '']]]
+[['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("maybe not printing the dict will fix things")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['maybe not printing the dict will fix things\\n']\n"]]]
+[['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("maybe not printing the dict will fix things")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("maybe not printing the dict will fix things")\'', ['None', '']]]]]
