@@ -166,21 +166,7 @@ while Descent:
                 print("abstracting RHS once1!",maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]))
                 print("abstracting RHS once2!",maxlargestequivclasses([minforce2,maxlargestequivclassesmin1]))
                 totalabstractions = maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]) + maxlargestequivclasses([minforce2,maxlargestequivclassesmin1])
-                preventDupeAbstraction = False
-                dupeInt = 0
-                print("dictSTART",abstractiondict)
-                print("len(abstractiondict)",len(abstractiondict))
-                while dupeInt < len(abstractiondict) and len(abstractiondict) > 0:
-                    #HERE WE CHECK FOR DUPES IN THE DICT SO WE DONT REDO WORK
-                    print("dict",abstractiondict[str(dupeInt)])
-                    print("totalabs",totalabstractions)
-                    print("check from dict and from totalabstractions",abstractiondict[str(dupeInt)] == totalabstractions)
-                    if preventDupeAbstraction != False and abstractiondict[str(dupeInt)] == totalabstractions:
-                        preventDupeAbstraction = True
-                    dupeInt += 1
-                if preventDupeAbstraction == False:
-                    abstractiondict[str(icounter)] = totalabstractions
-                print("why am I adding multiple empties",icounter)
+                abstractiondict[str(icounter)] = totalabstractions
                 icounter += 1
                 #hint: TOTALABSTRACTIONS IS A LIST
                 print("TOTALABSTRACTIONS IS A LIST",totalabstractions)
