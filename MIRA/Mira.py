@@ -110,7 +110,7 @@ while Descent:
                 suppANSmin = Applyfunc([eval(x),inputtext])
                 #print("apply test", eval(x), inputtext,suppANSmin)
                 suppANS.append(x)
-            #print("supposed answer",suppANS)
+            print("supposed answer",suppANS)
             for x in suppANS:
                 try:
                     attempt = eval(x)
@@ -166,10 +166,24 @@ while Descent:
                 print("abstracting RHS once1!",maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]))
                 print("abstracting RHS once2!",maxlargestequivclasses([minforce2,maxlargestequivclassesmin1]))
                 totalabstractions = maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]) + maxlargestequivclasses([minforce2,maxlargestequivclassesmin1])
-                abstractiondict[str(icounter)] = totalabstractions
+                preventDupeAbstraction = False
+                dupeInt = 0
+                print("dictSTART",abstractiondict)
+                print("len(abstractiondict)",len(abstractiondict))
+                while dupeInt < len(abstractiondict) and len(abstractiondict) > 0:
+                    #HERE WE CHECK FOR DUPES IN THE DICT SO WE DONT REDO WORK
+                    print("dict",abstractiondict[str(dupeInt)])
+                    print("totalabs",totalabstractions)
+                    print("check from dict and from totalabstractions",abstractiondict[str(dupeInt)] == totalabstractions)
+                    if preventDupeAbstraction != False and abstractiondict[str(dupeInt)] == totalabstractions:
+                        preventDupeAbstraction = True
+                    dupeInt += 1
+
+                if preventDupeAbstraction == False:
+                    abstractiondict[str(icounter)] = totalabstractions
                 icounter += 1
                 #hint: TOTALABSTRACTIONS IS A LIST
-                print("who cares dude",totalabstractions)
+                print("TOTALABSTRACTIONS IS A LIST",totalabstractions)
                 abstractioninnertotal += len(totalabstractions)
                 #having issue of not counting empties but not being able to skip them so just account for them
                 if len(totalabstractions) == 0:
@@ -250,6 +264,8 @@ while Descent:
                 #3- compare with blank python
                 
                 ##print("ABSTRACTION FUCNTION GUESS WITH ABSTRACTED LHS AND RHS")
+                print("len2int",len2int)
+                print("who is empty",guessAbst,cleanup1)
                 print("ABSTRACTION GUESS:",[[guessAbst[len2int],cleanup1]])
                 functionguessdict[str(x)] = [[guessAbst[len2int],cleanup1]]
                 '''
@@ -259,8 +275,7 @@ while Descent:
                     memoryfile.close()
                 '''
                 len3int += 1
-            print("maybe not printing the dict will fix things")
-            #print("what does functionguessdict look like",functionguessdict)
+            print("what does functionguessdict look like",functionguessdict)
             #problem: nested for loops are garbage
             #answer: have to commit all the function guesses to a list then just open memory total (unordered + ordered) and then use fixed point property + deltav2
             #open ordered
