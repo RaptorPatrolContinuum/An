@@ -178,9 +178,9 @@ while Descent:
                     if preventDupeAbstraction != False and abstractiondict[str(dupeInt)] == totalabstractions:
                         preventDupeAbstraction = True
                     dupeInt += 1
-
                 if preventDupeAbstraction == False:
                     abstractiondict[str(icounter)] = totalabstractions
+                print("why am I adding multiple empties",icounter)
                 icounter += 1
                 #hint: TOTALABSTRACTIONS IS A LIST
                 print("TOTALABSTRACTIONS IS A LIST",totalabstractions)
@@ -225,9 +225,9 @@ while Descent:
             len3int = 0
             functionguessdict = {}
             print("totalcheck",anothersum*len2)
-            for x in range(len(abstractiondict)):
-                print(abstractiondict[str(x)])
-                print(len(abstractiondict[str(x)]))
+            #for x in range(len(abstractiondict)):
+            #    print(abstractiondict[str(x)])
+            #    print(len(abstractiondict[str(x)]))
             for x in range(anothersum*len2):
                 print("x in totalabstractions",x)
                 if len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0:

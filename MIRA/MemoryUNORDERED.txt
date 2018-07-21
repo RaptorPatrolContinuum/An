@@ -33,3 +33,6 @@
 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("beegees")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("beegees")\'', ['None', '']]]]]
 [["TOTAL_ARGUMENT == 'print('how deep is your love')'", ['None', '']]]
 [["Popen(['python',C:\\An\\MIRA\\Mira.py, print('how deep is your love')], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['how deep is your love\\n']\n"]]]
+[['TOTAL_ARGUMENT == \'print("alive nine")\'', ['None', '']]]
+[['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("alive nine")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['alive nine\\n']\n"]]]
+[['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("alive nine")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("alive nine")\'', ['None', '']]]]]
