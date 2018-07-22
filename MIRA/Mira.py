@@ -209,73 +209,77 @@ while Descent:
             print("what is anothersum?",anothersum)
             len1int = 0
             len3int = 0
-            functionguessdict = {}
+            #functionguessdict = {}
             print("totalcheck",anothersum*len2)
             #for x in range(len(abstractiondict)):
             #    print(abstractiondict[str(x)])
             #    print(len(abstractiondict[str(x)]))
-            for x in range(anothersum*len2):
-                print("x in totalabstractions",x)
-                if len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0:
-                    len3int = 0
-                    len1int += 1
-                if len1int == len1:
-                    len1int = 0
-                    len2int += 1
-                theguy = abstractiondict[str(len1int)]
-                print('the guy is empty',theguy)
-                print("length of this guy",len(theguy))
-                if theguy == []:
-                    cleanup1 = ""
-                else:
-                    print("don't tell me cause it hurts",len1int, len3int)
-                    cleanup1 = abstractiondict[str(len1int)][len3int]
-                    print("don't tell me cause it hurts2",cleanup1)
-                ##print("need fucking stats",len1int,len2int,len3int)
-                #now we check for fixed point property
-                #delta2(abstractoin,otherguy) = abstraction
-                #HINT: DO y in totalabstractions VS z in SeekForce union
-                #print("source1",abstractiondict)
+            with open("ABSTRACTFILE.txt", 'a+', encoding='utf-8') as ABSTRACTFILE:
+                for x in range(anothersum*len2):
+                    print("x in totalabstractions",x)
+                    if len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0:
+                        len3int = 0
+                        len1int += 1
+                    if len1int == len1:
+                        len1int = 0
+                        len2int += 1
+                    theguy = abstractiondict[str(len1int)]
+                    print('the guy is empty',theguy)
+                    print("length of this guy",len(theguy))
+                    if theguy == []:
+                        cleanup1 = ""
+                    else:
+                        print("don't tell me cause it hurts",len1int, len3int)
+                        cleanup1 = abstractiondict[str(len1int)][len3int]
+                        print("don't tell me cause it hurts2",cleanup1)
+                    ##print("need fucking stats",len1int,len2int,len3int)
+                    #now we check for fixed point property
+                    #delta2(abstractoin,otherguy) = abstraction
+                    #HINT: DO y in totalabstractions VS z in SeekForce union
+                    #print("source1",abstractiondict)
 
-                '''
-                problem
-                #1: i want to open memory as minimally as possible
-                #2: i don't want to commit the memory file to memory tho
-                '''
-                #HINT: 3 things to do
-                #hint2: COMPARE USING DELTAV2 AND FIXED POINT PROPERTY -> IMPLYING THAT OBJECT IS ABSTRACTION
-                #1- compare with memory
-                #match reality
-                #2- compare with MIRA
-                #3- compare with blank python
-                
-                ##print("ABSTRACTION FUCNTION GUESS WITH ABSTRACTED LHS AND RHS")
-                print("len2int",len2int)
-                print("who is empty",guessAbst,cleanup1)
-                print("ABSTRACTION GUESS:",[[guessAbst[len2int],cleanup1]])
-                functionguessdict[str(x)] = [[guessAbst[len2int],cleanup1]]
-                '''
-                if delta2([cleanup1,MEMcomposeinput[len2int]]) == cleanup1:
-                    memoryfile = open(MemoryUNORDERED, 'a+')
-                    memoryfile.write(str(cleanup1) + "\n")
-                    memoryfile.close()
-                '''
-                len3int += 1
-            print("what does functionguessdict look like",functionguessdict)
+                    '''
+                    problem
+                    #1: i want to open memory as minimally as possible
+                    #2: i don't want to commit the memory file to memory tho
+                    '''
+                    #HINT: 3 things to do
+                    #hint2: COMPARE USING DELTAV2 AND FIXED POINT PROPERTY -> IMPLYING THAT OBJECT IS ABSTRACTION
+                    #1- compare with memory
+                    #match reality
+                    #2- compare with MIRA
+                    #3- compare with blank python
+                    
+                    ##print("ABSTRACTION FUCNTION GUESS WITH ABSTRACTED LHS AND RHS")
+                    print("len2int",len2int)
+                    print("who is empty",guessAbst,cleanup1)
+                    print("ABSTRACTION GUESS:",[[guessAbst[len2int],cleanup1]])
+                    #functionguessdict[str(x)] = [[guessAbst[len2int],cleanup1]]
+                    ABSTRACTFILE.write(str([[guessAbst[len2int],cleanup1]]) + "\n")
+                    '''
+                    if delta2([cleanup1,MEMcomposeinput[len2int]]) == cleanup1:
+                        memoryfile = open(MemoryUNORDERED, 'a+')
+                        memoryfile.write(str(cleanup1) + "\n")
+                        memoryfile.close()
+                    '''
+                    len3int += 1
+            #print("what does functionguessdict look like",functionguessdict)
             #problem: nested for loops are garbage
             #answer: have to commit all the function guesses to a list then just open memory total (unordered + ordered) and then use fixed point property + deltav2
             #open ordered
+            print("NOW TO CROSS WITH MEMORY")
 
-            #with open(memoryLong, 'r+') as ordered1:
-            #    guessint = 0
-            #    print("WTRFFFFF",mapcountLINES([memoryLong])*anothersum*len2)
-            #    for line in range(mapcountLINES([memoryLong])*anothersum*len2):
-            #        thenextline = rchop(ordered1.readline(), '\n')
-            #        if guessint == anothersum*len2:
-            #            guessint = 0
-            #        print("OK WE ARE COMPARING ",thenextline)
-            #        print("AND THIS LINE",functionguessdict[str(guessint)])
-            #        guessint += 1
+            with open(memoryLong, 'r+') as ordered1:
+                guessint = 0
+                print("WTRFFFFF",mapcountLINES([memoryLong])*anothersum*len2)
+                for line in range(mapcountLINES([memoryLong])*anothersum*len2):
+                    thenextline = rchop(ordered1.readline(), '\n')
+                    if guessint == anothersum*len2:
+                        guessint = 0
+                    print("OK WE ARE COMPARING ",thenextline)
+                    #print("AND THIS LINE",functionguessdict[str(guessint)])
+                    print("AND THIS LINE",FILEindexread(["ABSTRACTFILE.txt",str(guessint)]))
+                    guessint += 1
                 
             
             #open unordered
@@ -283,6 +287,10 @@ while Descent:
             
             #eval using (deltav3 COMPOSE deltav2) and get answers AND WRITE THOSE DOWN TO memory
             #ComposeMETA([arg1,arg2])
+
+            #HERE I DELETE THE ABSTRACT FILE TO CLEANUP
+            #os.remove("ABSTRACTFILE.txt")
+            
             '''
             guess abstractions properly:
             delta2(a,b) == a OR b means the similar one is the abstraction
