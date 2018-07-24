@@ -159,17 +159,17 @@ while Descent:
             abstractioninnertotal = 0
             for x in guessAbst:
                 #print("x in guessAbst",x)
-                print("x in guessAbst",toString([ran(x),"naive"]))
+                ##print("x in guessAbst",toString([ran(x),"naive"]))
                 minforce1 = SeekForce([MemoryUNORDERED,x,SeekForcemin2,[],[]])
                 minforce2 = SeekForce([memoryLong,x,SeekForcemin2,[],[]])
                 #print("try to seekforce with this and something else")
-                print("abstracting RHS once1!",maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]))
-                print("abstracting RHS once2!",maxlargestequivclasses([minforce2,maxlargestequivclassesmin1]))
+                ##print("abstracting RHS once1!",maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]))
+                ##print("abstracting RHS once2!",maxlargestequivclasses([minforce2,maxlargestequivclassesmin1]))
                 totalabstractions = maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]) + maxlargestequivclasses([minforce2,maxlargestequivclassesmin1])
                 abstractiondict[str(icounter)] = totalabstractions
                 icounter += 1
                 #hint: TOTALABSTRACTIONS IS A LIST
-                print("TOTALABSTRACTIONS IS A LIST",totalabstractions)
+                ##print("TOTALABSTRACTIONS IS A LIST",totalabstractions)
                 abstractioninnertotal += len(totalabstractions)
                 #having issue of not counting empties but not being able to skip them so just account for them
                 if len(totalabstractions) == 0:
@@ -269,22 +269,34 @@ while Descent:
             #open ordered
             print("NOW TO CROSS WITH MEMORY")
 
-            with open(memoryLong, 'r+') as ordered1:
+            with open(MemoryUNORDERED, 'r+', encoding='utf-8') as ordered1:
+                ordered1.seek(0)
                 guessint = 0
-                print("WTRFFFFF",mapcountLINES([memoryLong])*anothersum*len2)
-                for line in range(mapcountLINES([memoryLong])*anothersum*len2):
-                    thenextline = rchop(ordered1.readline(), '\n')
+                thenextline = rchop(ordered1.readline(), '\n')
+                #hint: memorylong is only one line fuck
+                print("WTRFFFFF",mapcountLINES([MemoryUNORDERED])*anothersum*len2)
+                print("skipfactor",anothersum*len2)
+                for line in range(mapcountLINES([MemoryUNORDERED])*anothersum*len2):
                     if guessint == anothersum*len2:
+                        thenextline = rchop(ordered1.readline(), '\n')
                         guessint = 0
-                    print("OK WE ARE COMPARING ",thenextline)
+                    print("OK WE ARE COMPARING ",line,thenextline)
                     #print("AND THIS LINE",functionguessdict[str(guessint)])
-                    print("AND THIS LINE",FILEindexread(["ABSTRACTFILE.txt",str(guessint)]))
+                    #problem with encoding empty string
+                    emptycheck = FILEindexread(["ABSTRACTFILE.txt",guessint])
+                    #if len(emptycheck) > 0:
+                    #    #print("AND THIS LINE",emptycheck.encode('utf-8').format(u"\u03B1"))
+                    #    #print("AND THIS LINE",emptycheck.format(u"\u03B1"))
+                    #    print("AND THIS LINE",emptycheck)
+                    #else:
+                    #   print("AND THIS LINE",emptycheck)
+                    print("AND THIS LINE",guessint,emptycheck)
                     guessint += 1
-                
+
             
             #open unordered
-        
-            
+
+
             #eval using (deltav3 COMPOSE deltav2) and get answers AND WRITE THOSE DOWN TO memory
             #ComposeMETA([arg1,arg2])
 

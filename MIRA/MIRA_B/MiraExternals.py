@@ -2492,7 +2492,7 @@ def FILEindexread(argList):
     #PROBLEMS: LINECACHE PUTS FILE IN CACHE SO IT DOESNT SEE CHANGES AND IT HITS MEMORY MAX TOO FAST
     HINT: I FOUND A FUCKING MODULE THAT DOES THIS: linecache
     '''
-    f = open(argList[0],'r+')
+    f = open(argList[0],'r+',encoding='utf-8')
     n = argList[1]
     f.seek(0)
     for i, line in enumerate(f):

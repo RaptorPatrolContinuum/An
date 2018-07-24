@@ -9,10 +9,13 @@ himitsu = [[[[["print('"], ["print('"]], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGU
 
 garbanzo = []
 
+for x in range(mapcountLINES(['ABSTRACTFILE.txt'])):
+    print(FILEindexread(["ABSTRACTFILE.txt",x]))
+    
 
-for x in himitsu:
-    print(x)
-    #print(toString([ran(x),"naive"]))
+#for x in himitsu:
+#    print(x)
+#    #print(toString([ran(x),"naive"]))
 
 #for x in range(len(himitsu)):
 #    print(himitsu[str(x)])
