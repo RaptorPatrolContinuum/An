@@ -291,6 +291,7 @@ while Descent:
                     #else:
                     #   print("AND THIS LINE",emptycheck)
                     print("AND THIS LINE",guessint,emptycheck)
+                    print("CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem")
                     guessint += 1
 
             

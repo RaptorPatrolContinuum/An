@@ -1,0 +1,13 @@
+[['TOTAL_ARGUMENT == "b"', 'd']]
+hint:
+ON LHS
+[0][0]
+
+AND 
+ON RHS
+[0][1]
+
+THEN WRITE:
+delta2([TOTAL_ARGUMENT,])== 
+
+THEN CHECK IF IT WORKS (don't code but just check)

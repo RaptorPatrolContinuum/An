@@ -112,3 +112,5 @@
 [['TOTAL_ARGUMENT == \'print("fucking casuals")\'', ['None', '']]]
 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("fucking casuals")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['fucking casuals\\n']\n"]]]
 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("fucking casuals")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("fucking casuals")\'', ['None', '']]]]]
+[["TOTAL_ARGUMENT == 'print('crisis')'", ['None', '']]]
+[["Popen(['python',C:\\An\\MIRA\\Mira.py, print('crisis')], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['crisis\\n']\n"]]]
