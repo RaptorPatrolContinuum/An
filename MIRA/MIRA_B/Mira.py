@@ -291,6 +291,15 @@ while Descent:
                     #else:
                     #   print("AND THIS LINE",emptycheck)
                     print("AND THIS LINE",guessint,emptycheck)
+                    print("CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem")
+                    memX = eval(thenextline)[0][0]
+                    memY = eval(thenextline)[0][1]
+                    guessX = toString([ran(eval(emptycheck)[0][0]),"naive"])
+                    guessY = toString([ran(eval(emptycheck)[0][1]),"naive"])
+                    print("LHSpart1",memX,guessX)
+                    print("LHS",delta2([memX,guessX]) == guessX)
+                    print("RHSpart1",memY,guessY)
+                    print("RHS",delta2([memY,guessY]) == guessY)
                     guessint += 1
 
             

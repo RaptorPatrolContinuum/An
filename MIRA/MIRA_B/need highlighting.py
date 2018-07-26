@@ -1,4 +1,35 @@
 
+[True, 
+
+	[
+		['4', '2'], 
+		['2', '4'], 
+		['3', '3'], 
+		['0', '1'], 
+		['1', '0']
+	]
+]
+
+[
+	[
+		["[['A', 'B'], ['B', 'C'], ['C', 'A']]", "[['z','y'],['y','x'],['x','z']]"], 
+		["[['z','y'],['y','x'],['x','z']]", "[['A', 'B'], ['B', 'C'], ['C', 'A']]"], 
+		["[['single', 'single']]", "[['unrequited','unrequited']]"], 
+		["[['unrequited','unrequited']]", "[['single', 'single']]"], 
+		["[['oneway', 'oneway']]", "[['loner','loner']]"], 
+		["[['loner','loner']]", "[['oneway', 'oneway']]"]
+	], 
+	[
+		["[['A', 'B'], ['B', 'C'], ['C', 'A']]", "[['z','y'],['y','x'],['x','z']]"], 
+		["[['z','y'],['y','x'],['x','z']]", "[['A', 'B'], ['B', 'C'], ['C', 'A']]"], 
+		["[['oneway', 'oneway']]", "[['unrequited','unrequited']]"], 
+		["[['unrequited','unrequited']]", "[['oneway', 'oneway']]"], 
+		["[['single', 'single']]", "[['loner','loner']]"], 
+		["[['loner','loner']]", "[['single', 'single']]"]
+	]
+]
+
+
 
 vorposting:
 1,3
