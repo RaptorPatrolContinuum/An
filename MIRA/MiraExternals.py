@@ -4955,6 +4955,26 @@ def totalSImin(argList):
     return ANS
 
 
+def abstractionGERERAL(argList):
+    '''
+    intput: ???
+    output: ???
+    THIS FUNCTION SOLVES THIS PROBLEM:
+    
+    given:
+        general sense function that pairs inputs and outputs
+        delta2
+        an example
+        memoryfiles of finite functions
+    
+    we want:
+        abstraction guess (if any) that is checked with the memory files or sense using delta2 on LHS and RHS
+        
+    
+    '''
+
+
+
 
 ##############################################################
 
