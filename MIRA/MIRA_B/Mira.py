@@ -20,6 +20,7 @@ NEED TO WORK ON MEMORY RAM + MEMORY FILE
 Descent = True
 
 while Descent:
+    nearfield = []
     #print("how many attempts?",len(argv[1:]) > 0,argv[1:])
     try:
         if len(argv[1:]) > 0:
@@ -75,6 +76,7 @@ while Descent:
                     print("I already saw that!")
                 else:
                     memoryfile.write(str(internaltest) + "\n")
+                    nearfield.append(str(internaltest))
             else:
                 #just write the OG test once
                 internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",[str(eval(inputtext)),""]]]
@@ -83,6 +85,7 @@ while Descent:
                     print("already saw that 2")
                 else:
                     memoryfile.write(str(internaltest2) + "\n")
+                    nearfield.append(str(internaltest2))
             memoryfile.close()
         except Exception as e:
             print("error is ", e)
@@ -90,6 +93,7 @@ while Descent:
             memoryfile = open(MemoryUNORDERED, 'a+')
             #HINT: ["",e] IS BECAUSE popen has error as 2nd element
             memoryfile.write(str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'", ["",e]]]) + "\n")
+            nearfield.append(str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'", ["",e]]]))
             memoryfile.close()
             pass
 
@@ -116,10 +120,12 @@ while Descent:
                     attempt = eval(x)
                     memoryfile = open(MemoryUNORDERED, 'a+')
                     memoryfile.write(str([["TOTAL_ARGUMENT == '"+ x +"'", attempt]]) + "\n")
+                    nearfield.append(str([["TOTAL_ARGUMENT == '"+ x +"'", attempt]]))
                     memoryfile.close()
                 except Exception as e:
                     memoryfile = open(MemoryUNORDERED, 'a+')
                     memoryfile.write(str([["TOTAL_ARGUMENT == '"+ x +"'", ["",e]]]) + "\n")
+                    nearfield.append(str([["TOTAL_ARGUMENT == '"+ x +"'", ["",e]]]))
                     memoryfile.close()
                     pass
 
@@ -256,6 +262,7 @@ while Descent:
                     print("ABSTRACTION GUESS:",[[guessAbst[len2int],cleanup1]])
                     #functionguessdict[str(x)] = [[guessAbst[len2int],cleanup1]]
                     ABSTRACTFILE.write(str([[guessAbst[len2int],cleanup1]]) + "\n")
+                    nearfield.append(str([[guessAbst[len2int],cleanup1]]))
                     '''
                     if delta2([cleanup1,MEMcomposeinput[len2int]]) == cleanup1:
                         memoryfile = open(MemoryUNORDERED, 'a+')
@@ -276,11 +283,11 @@ while Descent:
                 #hint: memorylong is only one line fuck
                 print("WTRFFFFF",mapcountLINES([MemoryUNORDERED])*anothersum*len2)
                 print("skipfactor",anothersum*len2)
-                for line in range(mapcountLINES([MemoryUNORDERED])*anothersum*len2):
+                for lineint in range(mapcountLINES([MemoryUNORDERED])*anothersum*len2):
                     if guessint == anothersum*len2:
                         thenextline = rchop(ordered1.readline(), '\n')
                         guessint = 0
-                    print("OK WE ARE COMPARING ",line,thenextline)
+                    print("OK WE ARE COMPARING ",lineint,thenextline)
                     #print("AND THIS LINE",functionguessdict[str(guessint)])
                     #problem with encoding empty string
                     emptycheck = FILEindexread(["ABSTRACTFILE.txt",guessint])
@@ -310,7 +317,7 @@ while Descent:
             #ComposeMETA([arg1,arg2])
 
             #HERE I DELETE THE ABSTRACT FILE TO CLEANUP
-            #os.remove("ABSTRACTFILE.txt")
+            #FIX THISos.remove("ABSTRACTFILE.txt")
             
             '''
             guess abstractions properly:

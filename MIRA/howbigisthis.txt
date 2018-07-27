@@ -1,0 +1,1184 @@
+Python 3.6.3 (v3.6.3:2c5fed8, Oct  3 2017, 17:26:49) [MSC v.1900 32 bit (Intel)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> 
+======================== RESTART: C:\An\MIRA\Mira.py ========================
+exit or logout to leave 
+print("i")
+i
+i
+i
+i
+i
+supposed answer ['[[\'TOTAL_ARGUMENT == \\\'print("i")\\\'\', [\'None\', \'\']]]']
+COMPART MEMCOMPOSE WITH GUESSABST
+MEMCOMPOSE [[[['print('], ['print(']], [['"'], ['"']], [['α0'], ['α0']]], [[['print("'], ['print("']], [['i")'], ['i")']]], [[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['print("i")'], ['print("i")']]], [[['print('], ['print(']], [['"'], ['"']], [['α0'], ['α0']]]]
+guessAbst [[[['print("'], ['print("']], [['α0'], ['α0']]], [[['print("i")'], ['print("i")']]], [[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]]]
+double check dict {'0': [[[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]], '1': [[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]], '2': [[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]}
+check lengths 3 3
+what is anothersum? 3
+totalcheck 9
+x in totalabstractions 0
+the guy is empty [[[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]
+length of this guy 1
+don't tell me cause it hurts 0 0
+don't tell me cause it hurts2 [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]
+len2int 0
+who is empty [[[['print("'], ['print("']], [['α0'], ['α0']]], [[['print("i")'], ['print("i")']]], [[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]]] [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]
+ABSTRACTION GUESS: [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+x in totalabstractions 1
+the guy is empty [[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]
+length of this guy 1
+don't tell me cause it hurts 1 0
+don't tell me cause it hurts2 [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]
+len2int 0
+who is empty [[[['print("'], ['print("']], [['α0'], ['α0']]], [[['print("i")'], ['print("i")']]], [[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]]] [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]
+ABSTRACTION GUESS: [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+x in totalabstractions 2
+the guy is empty [[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]
+length of this guy 1
+don't tell me cause it hurts 2 0
+don't tell me cause it hurts2 [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]
+len2int 0
+who is empty [[[['print("'], ['print("']], [['α0'], ['α0']]], [[['print("i")'], ['print("i")']]], [[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]]] [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]
+ABSTRACTION GUESS: [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+x in totalabstractions 3
+the guy is empty [[[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]
+length of this guy 1
+don't tell me cause it hurts 0 0
+don't tell me cause it hurts2 [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]
+len2int 1
+who is empty [[[['print("'], ['print("']], [['α0'], ['α0']]], [[['print("i")'], ['print("i")']]], [[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]]] [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]
+ABSTRACTION GUESS: [[[[['print("i")'], ['print("i")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+x in totalabstractions 4
+the guy is empty [[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]
+length of this guy 1
+don't tell me cause it hurts 1 0
+don't tell me cause it hurts2 [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]
+len2int 1
+who is empty [[[['print("'], ['print("']], [['α0'], ['α0']]], [[['print("i")'], ['print("i")']]], [[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]]] [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]
+ABSTRACTION GUESS: [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+x in totalabstractions 5
+the guy is empty [[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]
+length of this guy 1
+don't tell me cause it hurts 2 0
+don't tell me cause it hurts2 [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]
+len2int 1
+who is empty [[[['print("'], ['print("']], [['α0'], ['α0']]], [[['print("i")'], ['print("i")']]], [[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]]] [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]
+ABSTRACTION GUESS: [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+x in totalabstractions 6
+the guy is empty [[[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]
+length of this guy 1
+don't tell me cause it hurts 0 0
+don't tell me cause it hurts2 [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]
+len2int 2
+who is empty [[[['print("'], ['print("']], [['α0'], ['α0']]], [[['print("i")'], ['print("i")']]], [[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]]] [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]
+ABSTRACTION GUESS: [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+x in totalabstractions 7
+the guy is empty [[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]
+length of this guy 1
+don't tell me cause it hurts 1 0
+don't tell me cause it hurts2 [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]
+len2int 2
+who is empty [[[['print("'], ['print("']], [['α0'], ['α0']]], [[['print("i")'], ['print("i")']]], [[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]]] [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]
+ABSTRACTION GUESS: [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+x in totalabstractions 8
+the guy is empty [[[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]
+length of this guy 1
+don't tell me cause it hurts 2 0
+don't tell me cause it hurts2 [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]
+len2int 2
+who is empty [[[['print("'], ['print("']], [['α0'], ['α0']]], [[['print("i")'], ['print("i")']]], [[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]]] [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]
+ABSTRACTION GUESS: [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+NOW TO CROSS WITH MEMORY
+WTRFFFFF 99
+skipfactor 9
+OK WE ARE COMPARING  0 [["TOTAL_ARGUMENT == 'print(f)'", ['', NameError("name 'f' is not defined",)]]]
+AND THIS LINE 0 [[[[['print()'], ['print()']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print(f)' 
+ print()
+LHS False
+RHSpart1 
+ ['', NameError("name 'f' is not defined",)] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  1 [["TOTAL_ARGUMENT == 'print(f)'", ['', NameError("name 'f' is not defined",)]]]
+AND THIS LINE 1 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print(f)' 
+ print("α0
+LHS False
+RHSpart1 
+ ['', NameError("name 'f' is not defined",)] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  2 [["TOTAL_ARGUMENT == 'print(f)'", ['', NameError("name 'f' is not defined",)]]]
+AND THIS LINE 2 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print(f)' 
+ print("α0
+LHS False
+RHSpart1 
+ ['', NameError("name 'f' is not defined",)] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  3 [["TOTAL_ARGUMENT == 'print(f)'", ['', NameError("name 'f' is not defined",)]]]
+AND THIS LINE 3 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print(f)' 
+ print("α0
+LHS False
+RHSpart1 
+ ['', NameError("name 'f' is not defined",)] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  4 [["TOTAL_ARGUMENT == 'print(f)'", ['', NameError("name 'f' is not defined",)]]]
+AND THIS LINE 4 [[[[['print("i")'], ['print("i")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print(f)' 
+ print("i")
+LHS False
+RHSpart1 
+ ['', NameError("name 'f' is not defined",)] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  5 [["TOTAL_ARGUMENT == 'print(f)'", ['', NameError("name 'f' is not defined",)]]]
+AND THIS LINE 5 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print(f)' 
+ print("i")
+LHS False
+RHSpart1 
+ ['', NameError("name 'f' is not defined",)] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  6 [["TOTAL_ARGUMENT == 'print(f)'", ['', NameError("name 'f' is not defined",)]]]
+AND THIS LINE 6 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print(f)' 
+ print("i")
+LHS False
+RHSpart1 
+ ['', NameError("name 'f' is not defined",)] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  7 [["TOTAL_ARGUMENT == 'print(f)'", ['', NameError("name 'f' is not defined",)]]]
+AND THIS LINE 7 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print(f)' 
+ print("α0")
+LHS False
+RHSpart1 
+ ['', NameError("name 'f' is not defined",)] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  8 [["TOTAL_ARGUMENT == 'print(f)'", ['', NameError("name 'f' is not defined",)]]]
+AND THIS LINE 8 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print(f)' 
+ print("α0")
+LHS False
+RHSpart1 
+ ['', NameError("name 'f' is not defined",)] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  9 [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]
+AND THIS LINE 0 [[[[['print()'], ['print()']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("tsuki")' 
+ print()
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  10 [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]
+AND THIS LINE 1 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("tsuki")' 
+ print("α0
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  11 [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]
+AND THIS LINE 2 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("tsuki")' 
+ print("α0
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  12 [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]
+AND THIS LINE 3 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("tsuki")' 
+ print("α0
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  13 [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]
+AND THIS LINE 4 [[[[['print("i")'], ['print("i")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("tsuki")' 
+ print("i")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  14 [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]
+AND THIS LINE 5 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("tsuki")' 
+ print("i")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  15 [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]
+AND THIS LINE 6 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("tsuki")' 
+ print("i")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  16 [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]
+AND THIS LINE 7 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("tsuki")' 
+ print("α0")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  17 [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]
+AND THIS LINE 8 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("tsuki")' 
+ print("α0")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  18 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['tsuki\\n']\n"]]]
+AND THIS LINE 0 [[[[['print()'], ['print()']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print()
+LHS False
+RHSpart1 
+ ["['tsuki\\n']\n"] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  19 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['tsuki\\n']\n"]]]
+AND THIS LINE 1 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0
+LHS False
+RHSpart1 
+ ["['tsuki\\n']\n"] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  20 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['tsuki\\n']\n"]]]
+AND THIS LINE 2 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0
+LHS False
+RHSpart1 
+ ["['tsuki\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  21 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['tsuki\\n']\n"]]]
+AND THIS LINE 3 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0
+LHS False
+RHSpart1 
+ ["['tsuki\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  22 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['tsuki\\n']\n"]]]
+AND THIS LINE 4 [[[[['print("i")'], ['print("i")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("i")
+LHS False
+RHSpart1 
+ ["['tsuki\\n']\n"] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  23 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['tsuki\\n']\n"]]]
+AND THIS LINE 5 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("i")
+LHS False
+RHSpart1 
+ ["['tsuki\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  24 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['tsuki\\n']\n"]]]
+AND THIS LINE 6 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("i")
+LHS False
+RHSpart1 
+ ["['tsuki\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  25 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['tsuki\\n']\n"]]]
+AND THIS LINE 7 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0")
+LHS False
+RHSpart1 
+ ["['tsuki\\n']\n"] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  26 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['tsuki\\n']\n"]]]
+AND THIS LINE 8 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("tsuki")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0")
+LHS False
+RHSpart1 
+ ["['tsuki\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  27 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("tsuki")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]]]
+AND THIS LINE 0 [[[[['print()'], ['print()']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]' 
+ print()
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  28 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("tsuki")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]]]
+AND THIS LINE 1 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]' 
+ print("α0
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  29 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("tsuki")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]]]
+AND THIS LINE 2 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]' 
+ print("α0
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  30 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("tsuki")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]]]
+AND THIS LINE 3 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]' 
+ print("α0
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  31 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("tsuki")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]]]
+AND THIS LINE 4 [[[[['print("i")'], ['print("i")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]' 
+ print("i")
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  32 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("tsuki")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]]]
+AND THIS LINE 5 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]' 
+ print("i")
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  33 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("tsuki")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]]]
+AND THIS LINE 6 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]' 
+ print("i")
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  34 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("tsuki")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]]]
+AND THIS LINE 7 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]' 
+ print("α0")
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  35 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("tsuki")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]]]
+AND THIS LINE 8 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]]' 
+ print("α0")
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("tsuki")\'', ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  36 [['TOTAL_ARGUMENT == \'print("fucking gigantic data scam")\'', ['None', '']]]
+AND THIS LINE 0 [[[[['print()'], ['print()']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("fucking gigantic data scam")' 
+ print()
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  37 [['TOTAL_ARGUMENT == \'print("fucking gigantic data scam")\'', ['None', '']]]
+AND THIS LINE 1 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("fucking gigantic data scam")' 
+ print("α0
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  38 [['TOTAL_ARGUMENT == \'print("fucking gigantic data scam")\'', ['None', '']]]
+AND THIS LINE 2 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("fucking gigantic data scam")' 
+ print("α0
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  39 [['TOTAL_ARGUMENT == \'print("fucking gigantic data scam")\'', ['None', '']]]
+AND THIS LINE 3 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("fucking gigantic data scam")' 
+ print("α0
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  40 [['TOTAL_ARGUMENT == \'print("fucking gigantic data scam")\'', ['None', '']]]
+AND THIS LINE 4 [[[[['print("i")'], ['print("i")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("fucking gigantic data scam")' 
+ print("i")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  41 [['TOTAL_ARGUMENT == \'print("fucking gigantic data scam")\'', ['None', '']]]
+AND THIS LINE 5 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("fucking gigantic data scam")' 
+ print("i")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  42 [['TOTAL_ARGUMENT == \'print("fucking gigantic data scam")\'', ['None', '']]]
+AND THIS LINE 6 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("fucking gigantic data scam")' 
+ print("i")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  43 [['TOTAL_ARGUMENT == \'print("fucking gigantic data scam")\'', ['None', '']]]
+AND THIS LINE 7 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("fucking gigantic data scam")' 
+ print("α0")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  44 [['TOTAL_ARGUMENT == \'print("fucking gigantic data scam")\'', ['None', '']]]
+AND THIS LINE 8 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("fucking gigantic data scam")' 
+ print("α0")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  45 [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]
+AND THIS LINE 0 [[[[['print()'], ['print()']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print()' 
+ print()
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  46 [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]
+AND THIS LINE 1 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print()' 
+ print("α0
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  47 [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]
+AND THIS LINE 2 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print()' 
+ print("α0
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  48 [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]
+AND THIS LINE 3 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print()' 
+ print("α0
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  49 [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]
+AND THIS LINE 4 [[[[['print("i")'], ['print("i")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print()' 
+ print("i")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  50 [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]
+AND THIS LINE 5 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print()' 
+ print("i")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  51 [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]
+AND THIS LINE 6 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print()' 
+ print("i")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  52 [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]
+AND THIS LINE 7 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print()' 
+ print("α0")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  53 [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]
+AND THIS LINE 8 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print()' 
+ print("α0")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  54 [["Popen(['python',C:\\An\\MIRA\\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['\\n']\n"]]]
+AND THIS LINE 0 [[[[['print()'], ['print()']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print()
+LHS False
+RHSpart1 
+ ["['\\n']\n"] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  55 [["Popen(['python',C:\\An\\MIRA\\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['\\n']\n"]]]
+AND THIS LINE 1 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0
+LHS False
+RHSpart1 
+ ["['\\n']\n"] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  56 [["Popen(['python',C:\\An\\MIRA\\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['\\n']\n"]]]
+AND THIS LINE 2 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0
+LHS False
+RHSpart1 
+ ["['\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  57 [["Popen(['python',C:\\An\\MIRA\\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['\\n']\n"]]]
+AND THIS LINE 3 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0
+LHS False
+RHSpart1 
+ ["['\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  58 [["Popen(['python',C:\\An\\MIRA\\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['\\n']\n"]]]
+AND THIS LINE 4 [[[[['print("i")'], ['print("i")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("i")
+LHS False
+RHSpart1 
+ ["['\\n']\n"] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  59 [["Popen(['python',C:\\An\\MIRA\\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['\\n']\n"]]]
+AND THIS LINE 5 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("i")
+LHS False
+RHSpart1 
+ ["['\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  60 [["Popen(['python',C:\\An\\MIRA\\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['\\n']\n"]]]
+AND THIS LINE 6 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("i")
+LHS False
+RHSpart1 
+ ["['\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  61 [["Popen(['python',C:\\An\\MIRA\\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['\\n']\n"]]]
+AND THIS LINE 7 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0")
+LHS False
+RHSpart1 
+ ["['\\n']\n"] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  62 [["Popen(['python',C:\\An\\MIRA\\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", ["['\\n']\n"]]]
+AND THIS LINE 8 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print()], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0")
+LHS False
+RHSpart1 
+ ["['\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  63 [['TOTAL_ARGUMENT == \'[["TOTAL_ARGUMENT == \'print()\'", [\'None\', \'\']]]\'', [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]]]
+AND THIS LINE 0 [[[[['print()'], ['print()']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[["TOTAL_ARGUMENT == 'print()'", ['None', '']]]' 
+ print()
+LHS False
+RHSpart1 
+ [["TOTAL_ARGUMENT == 'print()'", ['None', '']]] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  64 [['TOTAL_ARGUMENT == \'[["TOTAL_ARGUMENT == \'print()\'", [\'None\', \'\']]]\'', [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]]]
+AND THIS LINE 1 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[["TOTAL_ARGUMENT == 'print()'", ['None', '']]]' 
+ print("α0
+LHS False
+RHSpart1 
+ [["TOTAL_ARGUMENT == 'print()'", ['None', '']]] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  65 [['TOTAL_ARGUMENT == \'[["TOTAL_ARGUMENT == \'print()\'", [\'None\', \'\']]]\'', [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]]]
+AND THIS LINE 2 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[["TOTAL_ARGUMENT == 'print()'", ['None', '']]]' 
+ print("α0
+LHS False
+RHSpart1 
+ [["TOTAL_ARGUMENT == 'print()'", ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  66 [['TOTAL_ARGUMENT == \'[["TOTAL_ARGUMENT == \'print()\'", [\'None\', \'\']]]\'', [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]]]
+AND THIS LINE 3 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[["TOTAL_ARGUMENT == 'print()'", ['None', '']]]' 
+ print("α0
+LHS False
+RHSpart1 
+ [["TOTAL_ARGUMENT == 'print()'", ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  67 [['TOTAL_ARGUMENT == \'[["TOTAL_ARGUMENT == \'print()\'", [\'None\', \'\']]]\'', [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]]]
+AND THIS LINE 4 [[[[['print("i")'], ['print("i")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[["TOTAL_ARGUMENT == 'print()'", ['None', '']]]' 
+ print("i")
+LHS False
+RHSpart1 
+ [["TOTAL_ARGUMENT == 'print()'", ['None', '']]] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  68 [['TOTAL_ARGUMENT == \'[["TOTAL_ARGUMENT == \'print()\'", [\'None\', \'\']]]\'', [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]]]
+AND THIS LINE 5 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[["TOTAL_ARGUMENT == 'print()'", ['None', '']]]' 
+ print("i")
+LHS False
+RHSpart1 
+ [["TOTAL_ARGUMENT == 'print()'", ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  69 [['TOTAL_ARGUMENT == \'[["TOTAL_ARGUMENT == \'print()\'", [\'None\', \'\']]]\'', [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]]]
+AND THIS LINE 6 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[["TOTAL_ARGUMENT == 'print()'", ['None', '']]]' 
+ print("i")
+LHS False
+RHSpart1 
+ [["TOTAL_ARGUMENT == 'print()'", ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  70 [['TOTAL_ARGUMENT == \'[["TOTAL_ARGUMENT == \'print()\'", [\'None\', \'\']]]\'', [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]]]
+AND THIS LINE 7 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[["TOTAL_ARGUMENT == 'print()'", ['None', '']]]' 
+ print("α0")
+LHS False
+RHSpart1 
+ [["TOTAL_ARGUMENT == 'print()'", ['None', '']]] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  71 [['TOTAL_ARGUMENT == \'[["TOTAL_ARGUMENT == \'print()\'", [\'None\', \'\']]]\'', [["TOTAL_ARGUMENT == 'print()'", ['None', '']]]]]
+AND THIS LINE 8 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[["TOTAL_ARGUMENT == 'print()'", ['None', '']]]' 
+ print("α0")
+LHS False
+RHSpart1 
+ [["TOTAL_ARGUMENT == 'print()'", ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  72 [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+AND THIS LINE 0 [[[[['print()'], ['print()']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("i")' 
+ print()
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  73 [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+AND THIS LINE 1 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("i")' 
+ print("α0
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  74 [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+AND THIS LINE 2 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("i")' 
+ print("α0
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  75 [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+AND THIS LINE 3 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("i")' 
+ print("α0
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  76 [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+AND THIS LINE 4 [[[[['print("i")'], ['print("i")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("i")' 
+ print("i")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  77 [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+AND THIS LINE 5 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("i")' 
+ print("i")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  78 [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+AND THIS LINE 6 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("i")' 
+ print("i")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  79 [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+AND THIS LINE 7 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("i")' 
+ print("α0")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  80 [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+AND THIS LINE 8 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == 'print("i")' 
+ print("α0")
+LHS False
+RHSpart1 
+ ['None', ''] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  81 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['i\\n']\n"]]]
+AND THIS LINE 0 [[[[['print()'], ['print()']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print()
+LHS False
+RHSpart1 
+ ["['i\\n']\n"] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  82 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['i\\n']\n"]]]
+AND THIS LINE 1 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0
+LHS False
+RHSpart1 
+ ["['i\\n']\n"] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  83 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['i\\n']\n"]]]
+AND THIS LINE 2 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0
+LHS False
+RHSpart1 
+ ["['i\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  84 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['i\\n']\n"]]]
+AND THIS LINE 3 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0
+LHS False
+RHSpart1 
+ ["['i\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  85 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['i\\n']\n"]]]
+AND THIS LINE 4 [[[[['print("i")'], ['print("i")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("i")
+LHS False
+RHSpart1 
+ ["['i\\n']\n"] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  86 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['i\\n']\n"]]]
+AND THIS LINE 5 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("i")
+LHS False
+RHSpart1 
+ ["['i\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  87 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['i\\n']\n"]]]
+AND THIS LINE 6 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("i")
+LHS False
+RHSpart1 
+ ["['i\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  88 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['i\\n']\n"]]]
+AND THIS LINE 7 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0")
+LHS False
+RHSpart1 
+ ["['i\\n']\n"] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  89 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['i\\n']\n"]]]
+AND THIS LINE 8 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ Popen(['python',C:\An\MIRA\Mira.py, print("i")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) 
+ print("α0")
+LHS False
+RHSpart1 
+ ["['i\\n']\n"] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  90 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("i")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]]]
+AND THIS LINE 0 [[[[['print()'], ['print()']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]' 
+ print()
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  91 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("i")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]]]
+AND THIS LINE 1 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]' 
+ print("α0
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  92 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("i")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]]]
+AND THIS LINE 2 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]' 
+ print("α0
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  93 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("i")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]]]
+AND THIS LINE 3 [[[[['print("'], ['print("']], [['α0'], ['α0']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]' 
+ print("α0
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  94 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("i")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]]]
+AND THIS LINE 4 [[[[['print("i")'], ['print("i")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]' 
+ print("i")
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  95 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("i")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]]]
+AND THIS LINE 5 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]' 
+ print("i")
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  96 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("i")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]]]
+AND THIS LINE 6 [[[[['print("i")'], ['print("i")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]' 
+ print("i")
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+OK WE ARE COMPARING  97 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("i")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]]]
+AND THIS LINE 7 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[['], ['[[']], [['α0'], ['α0']], [['TOTAL_ARGUMENT == '], ['TOTAL_ARGUMENT == ']], [['α1'], ['α1']], [[", ['None', '']]]"], [", ['None', '']]]"]]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]' 
+ print("α0")
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]] 
+ [[α0TOTAL_ARGUMENT == α1, ['None', '']]]
+RHS False
+OK WE ARE COMPARING  98 [['TOTAL_ARGUMENT == \'[[\'TOTAL_ARGUMENT == \\\'print("i")\\\'\', [\'None\', \'\']]]\'', [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]]]
+AND THIS LINE 8 [[[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]], [[['[[\'TOTAL_ARGUMENT == \\\'print("'], ['[[\'TOTAL_ARGUMENT == \\\'print("']], [['i")\\\'\', [\'None\', \'\']]]'], ['i")\\\'\', [\'None\', \'\']]]']]]]]
+CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem
+LHSpart1 
+ TOTAL_ARGUMENT == '[['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]' 
+ print("α0")
+LHS False
+RHSpart1 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]] 
+ [['TOTAL_ARGUMENT == \'print("i")\'', ['None', '']]]
+RHS False
+exit or logout to leave 
