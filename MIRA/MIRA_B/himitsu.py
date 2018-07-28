@@ -9,15 +9,23 @@ himitsu = [[["[['single', 'single']]", "[['z','y'],['y','x'],['x','z']]"], ["[['
 
 garbanzo = []
 
-#'ABSTRACTFILE.txt'
+
 with open('memoryUNORDERED.txt', 'r+', encoding='utf-8') as ordered1:
     ordered1.seek(0)
-    for line in range(mapcountLINES(['ABSTRACTFILE.txt'])):
+    for line in range(mapcountLINES(['memoryUNORDERED.txt'])):
         nextguy = rchop(ordered1.readline(), '\n')
         print(eval(nextguy)[0][0])
         print(eval(nextguy)[0][1])
         #print(toString([ran(eval(nextguy)[0][0]),"naive"]))
         #print(toString([ran(eval(nextguy)[0][1]),"naive"]))
+        print("=")
+print("=================================================")
+with open('ABSTRACTFILE.txt', 'r+', encoding='utf-8') as ordered1:
+    ordered1.seek(0)
+    for line in range(mapcountLINES(['ABSTRACTFILE.txt'])):
+        nextguy = rchop(ordered1.readline(), '\n')
+        print(toString([ran(eval(nextguy)[0][0]),"naive"]))
+        print(toString([ran(eval(nextguy)[0][1]),"naive"]))
         print("=")
         
 

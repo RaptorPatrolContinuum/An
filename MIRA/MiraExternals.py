@@ -4955,9 +4955,10 @@ def totalSImin(argList):
     return ANS
 
 
-def abstractionGERERAL(argList):
+def abstractionGENERAL(argList):
     '''
     intput: ???
+        argList = [[MemoryUNORDEREDvar,memoryLongvar],inputtextvar]
     output: ???
     THIS FUNCTION SOLVES THIS PROBLEM:
     
@@ -4971,9 +4972,239 @@ def abstractionGERERAL(argList):
         abstraction guess (if any) that is checked with the memory files or sense using delta2 on LHS and RHS
         
     
+	
+    NEED:
+    memfiles as a list
+        MemoryUNORDERED var
+	memoryLong
+    inputtext var
+    ABSTRACTFILE
+    nearfield
     '''
+    MemoryUNORDEREDvar = argList[0][0]
+    memoryLongvar = argList[0][1]
+    inputtextvar = argList[1]
+
+    #look for/through AutoPicked Universe
+    shortAuto = AutoPicked([MemoryUNORDEREDvar,inputtextvar])
+    longAuto = AutoPicked([memoryLongvar,inputtextvar])
+    #print("ShortMem",shortAuto)
+    #print("LongMem",longAuto)
+    autoPickedUniv = shortAuto + longAuto
+    #print("near field is", autoPickedUniv)
+
+    #eval the return <--- REMEMBER TO EVAL THE RETURN (need:hint: if I have finite functions, hav ea function that takes a finite function and an input then returns what the finite function would say if given that input)
+    suppANS = []
+    for x in autoPickedUniv:
+        suppANSmin = Applyfunc([eval(x),inputtextvar])
+        #print("apply test", eval(x), inputtextvar,suppANSmin)
+        suppANS.append(x)
+    print("supposed answer",suppANS)
+    for x in suppANS:
+        try:
+            attempt = eval(x)
+            memoryfile = open(MemoryUNORDEREDvar, 'a+')
+            memoryfile.write(str([["TOTAL_ARGUMENT == '"+ x +"'", attempt]]) + "\n")
+            #nearfield.append(str([["TOTAL_ARGUMENT == '"+ x +"'", attempt]]))
+            memoryfile.close()
+        except Exception as e:
+            memoryfile = open(MemoryUNORDEREDvar, 'a+')
+            memoryfile.write(str([["TOTAL_ARGUMENT == '"+ x +"'", ["",e]]]) + "\n")
+            #nearfield.append(str([["TOTAL_ARGUMENT == '"+ x +"'", ["",e]]]))
+            memoryfile.close()
+            pass
+
+    #LEXICO IMMEDIATELY BECAUSE I AM STILL TESTING
+    #lexicoSort([basisname,memoryLongvar,MemoryUNORDEREDvar])
+    
+    #DELTA ANALYSIS:
+    #deltav2 on x in combined memory and new obj
+    #print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDEREDvar.txt','argument_1 == "b"',delta2]))
+    #THIS MEMcomposeinput WAS USED TO ABSTRACT THE INPUT, BUT NOW I WANT TO ABSTRACT THE INPUT OUTPUT PAIR PRODUCED BY MIRA SEEING THE EVAL OF INPUT
+    MEMcomposeinput = SeekForce([MemoryUNORDEREDvar,inputtextvar,delta2,SeekForcemin1,[]]) + SeekForce([memoryLongvar,inputtextvar,delta2,SeekForcemin1,[]])
+    #deltav2 on pairs in new obj -> guessing similar inputs/variables (find abstractions) ->#eval using (deltav3 COMPOSE deltav2) and get answers
+    #for each object in seekforce, check if new obj or x in seekforce is an abstraction by checking deltav2(obj,x in seekforce) == obj OR deltav2(obj,x in seekforce) == x in seekforce
+    guessAbst = []
+    for x in MEMcomposeinput:
+        #print("WTF IS X",x)
+        xmod = toString([ran(x),"naive"])
+        #print("args fpr thedelta", [inputtextvar,xmod])
+        thedelta = delta2([inputtextvar,xmod])
+        #print("what's thedelta?",thedelta)
+        abstractcheck = toString([ran(thedelta),"naive"])
+        test1 = abstractcheck == inputtextvar
+        test2 = abstractcheck == xmod
+        if test1 or test2:
+            #unused stuff
+            #replacementguess = delta3META([abstractcheck,inputtextvar])
+            #metaeval = ComposeMETA([replacementguess,thedelta])
+            if len([y for y in guessAbst if y == thedelta]) == 0:
+                guessAbst.append(thedelta)
+    print("COMPART MEMCOMPOSE WITH GUESSABST")
+    print("MEMCOMPOSE",MEMcomposeinput)
+    print("guessAbst",guessAbst)
+    #print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
+    abstractiondict = {}
+    icounter = 0
+    #since abstractiondict is a list
+    abstractioninnertotal = 0
+    for x in guessAbst:
+        #print("x in guessAbst",x)
+        ##print("x in guessAbst",toString([ran(x),"naive"]))
+        minforce1 = SeekForce([MemoryUNORDEREDvar,x,SeekForcemin2,[],[]])
+        minforce2 = SeekForce([memoryLongvar,x,SeekForcemin2,[],[]])
+        #print("try to seekforce with this and something else")
+        ##print("abstracting RHS once1!",maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]))
+        ##print("abstracting RHS once2!",maxlargestequivclasses([minforce2,maxlargestequivclassesmin1]))
+        totalabstractions = maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]) + maxlargestequivclasses([minforce2,maxlargestequivclassesmin1])
+        abstractiondict[str(icounter)] = totalabstractions
+        icounter += 1
+        #hint: TOTALABSTRACTIONS IS A LIST
+        ##print("TOTALABSTRACTIONS IS A LIST",totalabstractions)
+        abstractioninnertotal += len(totalabstractions)
+        #having issue of not counting empties but not being able to skip them so just account for them
+        if len(totalabstractions) == 0:
+            abstractioninnertotal += 1
+        #for art in totalabstractions:
+        #    print("fCheck this shit",art)
+        #    print("fCheck this shit",fCheck(art))
+    '''
+    plan:
+    >check if we know the answer already (whether with compose or composeMETA)
+    >else check with sense and CONFIRM or DENY expectations
+    >confirm, skip
+    >deny -> MEMORIZE AND ADD TO MEMORY
+    = might be the other way around? ^^^
+    >confirm, -> MEMORIZE AND ADD TO MEMORY
+    >deny, skip
+    DONE
+    '''
+    #new plan:
+    #for each abstraction, collect the answers
+    #then delta2 on all the answers
+    #then SI on delta2(inputs) and delta2(outputs)
+    #MEMcomposeinput
+    print("double check dict",abstractiondict)
+    len1 = len(abstractiondict)
+    len1int = 0
+    len2 = len(guessAbst)
+    len2int = 0
+    print("check lengths",len1,len2)
+    anothersum = 0
+    for x in range(len1):
+        #print("electric feel",len(abstractiondict[str(len1int)]))
+        anothersum += len(abstractiondict[str(len1int)])
+        if len(abstractiondict[str(len1int)]) == 0:
+            anothersum += 1
+        len1int += 1
+    print("what is anothersum?",anothersum)
+    len1int = 0
+    len3int = 0
+    #functionguessdict = {}
+    print("totalcheck",anothersum*len2)
+    #for x in range(len(abstractiondict)):
+    #    print(abstractiondict[str(x)])
+    #    print(len(abstractiondict[str(x)]))
+    with open("ABSTRACTFILE.txt", 'a+', encoding='utf-8') as ABSTRACTFILE:
+        for x in range(anothersum*len2):
+            print("x in totalabstractions",x)
+            if len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0:
+                len3int = 0
+                len1int += 1
+            if len1int == len1:
+                len1int = 0
+                len2int += 1
+            theguy = abstractiondict[str(len1int)]
+            print('the guy is empty',theguy)
+            print("length of this guy",len(theguy))
+            if theguy == []:
+                cleanup1 = ""
+            else:
+                print("don't tell me cause it hurts",len1int, len3int)
+                cleanup1 = abstractiondict[str(len1int)][len3int]
+                print("don't tell me cause it hurts2",cleanup1)
+            ##print("need fucking stats",len1int,len2int,len3int)
+            #now we check for fixed point property
+            #delta2(abstractoin,otherguy) = abstraction
+            #HINT: DO y in totalabstractions VS z in SeekForce union
+            #print("source1",abstractiondict)
+
+            '''
+            problem
+            #1: i want to open memory as minimally as possible
+            #2: i don't want to commit the memory file to memory tho
+            '''
+            #HINT: 3 things to do
+            #hint2: COMPARE USING DELTAV2 AND FIXED POINT PROPERTY -> IMPLYING THAT OBJECT IS ABSTRACTION
+            #1- compare with memory
+            #match reality
+            #2- compare with MIRA
+            #3- compare with blank python
+            
+            ##print("ABSTRACTION FUCNTION GUESS WITH ABSTRACTED LHS AND RHS")
+            print("len2int",len2int)
+            print("who is empty",guessAbst)
+            print("cl",cleanup1)
+            print("ABSTRACTION GUESS:",[[guessAbst[len2int],cleanup1]])
+            #functionguessdict[str(x)] = [[guessAbst[len2int],cleanup1]]
+            ABSTRACTFILE.write(str([[guessAbst[len2int],cleanup1]]) + "\n")
+            #nearfield.append(str([[guessAbst[len2int],cleanup1]]))
+            '''
+            if delta2([cleanup1,MEMcomposeinput[len2int]]) == cleanup1:
+                memoryfile = open(MemoryUNORDEREDvar, 'a+')
+                memoryfile.write(str(cleanup1) + "\n")
+                memoryfile.close()
+            '''
+            len3int += 1
+    #print("what does functionguessdict look like",functionguessdict)
+    #problem: nested for loops are garbage
+    #answer: have to commit all the function guesses to a list then just open memory total (unordered + ordered) and then use fixed point property + deltav2
+    #open ordered
+    print("NOW TO CROSS WITH MEMORY")
+
+    with open(MemoryUNORDEREDvar, 'r+', encoding='utf-8') as ordered1:
+        ordered1.seek(0)
+        guessint = 0
+        thenextline = rchop(ordered1.readline(), '\n')
+        #hint: memoryLongvar is only one line fuck
+        print("WTRFFFFF",mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2)
+        print("skipfactor",anothersum*len2)
+        for lineint in range(mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2):
+            if guessint == anothersum*len2:
+                thenextline = rchop(ordered1.readline(), '\n')
+                guessint = 0
+            print("OK WE ARE COMPARING ",lineint,thenextline)
+            #print("AND THIS LINE",functionguessdict[str(guessint)])
+            #problem with encoding empty string
+            emptycheck = FILEindexread(["ABSTRACTFILE.txt",guessint])
+            #if len(emptycheck) > 0:
+            #    #print("AND THIS LINE",emptycheck.encode('utf-8').format(u"\u03B1"))
+            #    #print("AND THIS LINE",emptycheck.format(u"\u03B1"))
+            #    print("AND THIS LINE",emptycheck)
+            #else:
+            #   print("AND THIS LINE",emptycheck)
+            print("AND THIS LINE",guessint,emptycheck)
+            print("CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem")
+            memX = eval(thenextline)[0][0]
+            memY = eval(thenextline)[0][1]
+            guessX = toString([ran(eval(emptycheck)[0][0]),"naive"])
+            guessY = toString([ran(eval(emptycheck)[0][1]),"naive"])
+            print("LHSpart1",memX,guessX)
+            print("LHS",delta2([memX,guessX]) == guessX)
+            print("RHSpart1",memY,guessY)
+            print("RHS",delta2([memY,guessY]) == guessY)
+            guessint += 1
+
+    
+    #open unordered
 
 
+    #eval using (deltav3 COMPOSE deltav2) and get answers AND WRITE THOSE DOWN TO memory
+    #ComposeMETA([arg1,arg2])
+
+    #HERE I DELETE THE ABSTRACT FILE TO CLEANUP
+    #FIX THISos.remove("ABSTRACTFILE.txt")
+    
 
 
 ##############################################################

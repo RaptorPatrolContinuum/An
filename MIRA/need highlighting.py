@@ -1,4 +1,54 @@
-[	
+
+
+[[[['["'], ['["']], [['α0'], ['α0']], [['print('], ['print(']], [['α1'], ['α1']], [['"]'], ['"]']]], [[["['"], ["['"]], [['α0'], ['α0']], [['print('], ['print(']], [['α1'], ['α1']], [["']"], ["']"]]], [[['α0'], ['α0']], [["',C:\\\\An\\\\MIRA\\\\Mira.py, print("], ["',C:\\\\An\\\\MIRA\\\\Mira.py, print("]], [['α1'], ['α1']], [[')], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)'], [')], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)']], [["']"], ["']"]]], [[["['"], ["['"]], [['α0'], ['α0']], [['print('], ['print(']], [['α1'], ['α1']], [[' s'], [' s']], [['α2'], ['α2']]], [[['["Popen([\'python\',C:\\\\An\\\\MIRA\\\\Mira.py, print('], ['["Popen([\'python\',C:\\\\An\\\\MIRA\\\\Mira.py, print(']], [[')], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)"'], [')], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)"']], [[']'], [']']]], [[['[["'], ['[["']], [['α0'], ['α0']], [['print('], ['print(']], [['α1'], ['α1']], [['", ['], ['", [']], [['α2'], ['α2']]], [[['["'], ['["']], [['α0'], ['α0']], [["print('t')"], ["print('t')"]], [['α1'], ['α1']], [['"]'], ['"]']]], [[['["Popen([\'python\',C:\\\\An\\\\MIRA\\\\Mira.py, print(\'t\')], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)"'], ['["Popen([\'python\',C:\\\\An\\\\MIRA\\\\Mira.py, print(\'t\')], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)"']], [[']'], [']']]]]
+
+
+
+
+
+
+
+
+
+
+
+
+[['TOTAL_ARGUMENT == "b"', 'd']]
+hint:
+ON LHS
+[0][0]
+
+AND 
+ON RHS
+[0][1]
+
+THEN WRITE:
+delta2([TOTAL_ARGUMENT,])== 
+
+THEN CHECK IF IT WORKS (don't code but just check)
+
+
+========================
+
+
+    NEED:
+    memfiles as a list
+	    MemoryUNORDERED var
+		memoryLong
+    inputtext var
+	ABSTRACTFILE
+	nearfield
+	
+	
+	
+=========================
+
+
+
+
+
+
+=============================================================================================[	
 	["[['loner','loner']]", "[['unrequited','unrequited']]"], 
 	["[['unrequited','unrequited']]", "[['z','y'],['y','x'],['x','z']]"], 
 	["[['z','y'],['y','x'],['x','z']]", "[['loner','loner']]"]
