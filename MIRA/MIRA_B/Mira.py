@@ -102,8 +102,13 @@ while Descent:
         if Descent == True:
             for x in nearfield:
                 print("x in nearfield",x)
-                #abstractionGENERAL([[MemoryUNORDERED,memoryLong],x])
-                abstractionGENERAL([[MemoryUNORDERED,memoryLong],inputtext])
+                print("fcheck",fCheck(eval(x)))
+                if fCheck(eval(x)):
+                    print("fcheck2",eval(x)[0][0])
+                    abstractionGENERAL([[MemoryUNORDERED,memoryLong],eval(x)[0][0]])
+                else:
+                    abstractionGENERAL([[MemoryUNORDERED,memoryLong],x])
+                #abstractionGENERAL([[MemoryUNORDERED,memoryLong],inputtext])
             '''
             guess abstractions properly:
             delta2(a,b) == a OR b means the similar one is the abstraction

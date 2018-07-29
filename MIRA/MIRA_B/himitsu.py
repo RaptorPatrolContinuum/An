@@ -14,8 +14,10 @@ with open('memoryUNORDERED.txt', 'r+', encoding='utf-8') as ordered1:
     ordered1.seek(0)
     for line in range(mapcountLINES(['memoryUNORDERED.txt'])):
         nextguy = rchop(ordered1.readline(), '\n')
-        print(eval(nextguy)[0][0])
-        print(eval(nextguy)[0][1])
+        print(eval(nextguy))
+        print(fCheck(eval(nextguy)))
+        #print(eval(nextguy)[0][0])
+        #print(eval(nextguy)[0][1])
         #print(toString([ran(eval(nextguy)[0][0]),"naive"]))
         #print(toString([ran(eval(nextguy)[0][1]),"naive"]))
         print("=")
