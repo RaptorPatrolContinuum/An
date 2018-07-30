@@ -100,13 +100,17 @@ while Descent:
         #guessing abstractions
         #need to stop clone mira from duplicating responses:
         if Descent == True:
+            print("WTF nearfield",nearfield)
             for x in nearfield:
                 print("x in nearfield",x)
                 print("fcheck",fCheck(eval(x)))
                 if fCheck(eval(x)):
                     print("fcheck2",eval(x)[0][0])
+                    print("hey hey hey",type(eval(x)[0][0]))
                     abstractionGENERAL([[MemoryUNORDERED,memoryLong],eval(x)[0][0]])
                 else:
+                    print("fcheck2BB",eval(x)[0][0])
+                    print("hey hey heyBB",type(eval(x)[0][0]))
                     abstractionGENERAL([[MemoryUNORDERED,memoryLong],x])
                 #abstractionGENERAL([[MemoryUNORDERED,memoryLong],inputtext])
             '''
