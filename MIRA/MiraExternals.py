@@ -3981,6 +3981,7 @@ def OtherClone():
     '''
     PLACE = CurrentClone()
     cwdLIST = os.getcwd()
+    basics= os.getcwd().split("\\")[:len(os.getcwd().split("\\"))-1]
     if PLACE == "MIRA":
         #print("make new file in new directory",cwdLIST + "\\MIRA_B" + "\\")
         NEW = cwdLIST + "\\MIRA_B"
@@ -4226,62 +4227,65 @@ def SeekForce(ArgList):
         
     ANS = []
 
-    #print("SEEKFORCE ARGLIST", ArgList)
-    #print("checking how to call func",arg3(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
+    print("SEEKFORCE ARGLIST", ArgList)
+    print("dogshit life",delta2(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
+    print("checking how to call func",arg3(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
+    
 
     #PROBLEM: currently functions I have are single pairs, what about multiple pair functions?
     
-    with open(arg1, "r+") as fileref:
+    with open(arg1, "r+", encoding='utf-8') as fileref:
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
         while line:
-            #print("SEEKFORCE STATS",ANS )
+            print("SEEKFORCE STATS",ANS )
             try:
                 line = eval(line)
             except:
                 pass
             if fCheck(line) == True:
                 for x in line:
-                    #print("monkaS argList", ArgList)
-                    #print("what is X?",x)
-                    #print("stats", line, arg2)
+                    print("monkaS argList", ArgList)
+                    print("what is X?",x)
+                    print("stats", line, arg2)
                     linemod = line
-                    #print("this is line UNFILTERED",linemod,type(linemod))
+                    print("this is line UNFILTERED",linemod,type(linemod))
                     arg2mod = arg2
-                    #print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
+                    print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
                     try:
                         if arg4 != []:
                             linemod = arg4([line])
-                            #print("preping for arg3, LINE",linemod)
+                            print("preping for arg3, LINE",linemod)
                     except Exception as e:
-                        #print("wtf1 went wrong?", e)
+                        print("wtf1 went wrong?", e)
                         pass
                     try:
                         if arg5 != []:
                             arg2mod = arg5([arg2])
-                            #print("preping for arg3, arg2",arg2mod)
+                            print("preping for arg3, arg2",arg2mod)
                     except Exception as e:
-                        #print("wtf2 went wrong?", e)
+                        print("wtf2 went wrong?", e)
                         pass
                     
-                    #print("stats for arg3", linemod, arg2mod)
+                    print("stats for arg3", linemod, arg2mod)
                     try:
                         exist = arg3([linemod,arg2mod])
-                        #print("SEEKFORCE APPEND",exist)
-                        #print("append ?",len([z for z in ANS if z == exist]) == 0)
+                        print("SEEKFORCE APPEND",exist)
+                        print("append ?",len([z for z in ANS if z == exist]) == 0)
                         #hint: min2 has a problem with appending nonetypes so need a switch
                         if len([z for z in ANS if z == exist]) == 0 and exist != "dontappend":
-                            #print("DONT STOP MODORENA FLASHBACK",[linemod,arg2mod])
-                            #print("HYPERS",exist)
+                            print("DONT STOP MODORENA FLASHBACK",[linemod,arg2mod])
+                            print("HYPERS",exist)
                             ANS.append(exist)
                     except Exception as e:
-                        #print("ERROR IN SEEKFORCE ",e)
+                        print("ERROR IN SEEKFORCE ",e)
                         if e != []:
-                            #print("HYPERS2", exist)
+                            print("HYPERS2", exist)
                             ANS.append(e)
                             pass
                         pass
             line = rchop(fileref.readline(), '\n')
+    print("am I getting error here?",ANS)
     return ANS
 
 #SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
@@ -5021,6 +5025,7 @@ def abstractionGENERAL(argList):
     #deltav2 on x in combined memory and new obj
     #print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDEREDvar.txt','argument_1 == "b"',delta2]))
     #THIS MEMcomposeinput WAS USED TO ABSTRACT THE INPUT, BUT NOW I WANT TO ABSTRACT THE INPUT OUTPUT PAIR PRODUCED BY MIRA SEEING THE EVAL OF INPUT
+    print("dogshit2",delta2(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
     MEMcomposeinput = SeekForce([MemoryUNORDEREDvar,inputtextvar,delta2,SeekForcemin1,[]]) + SeekForce([memoryLongvar,inputtextvar,delta2,SeekForcemin1,[]])
     #deltav2 on pairs in new obj -> guessing similar inputs/variables (find abstractions) ->#eval using (deltav3 COMPOSE deltav2) and get answers
     #for each object in seekforce, check if new obj or x in seekforce is an abstraction by checking deltav2(obj,x in seekforce) == obj OR deltav2(obj,x in seekforce) == x in seekforce
@@ -5041,7 +5046,7 @@ def abstractionGENERAL(argList):
             if len([y for y in guessAbst if y == thedelta]) == 0:
                 guessAbst.append(thedelta)
     print("COMPART MEMCOMPOSE WITH GUESSABST")
-    print("MEMCOMPOSE",MEMcomposeinput)
+    print("MEMCOMPOSE",str(MEMcomposeinput).encode('utf-8'))
     print("guessAbst",guessAbst)
     #print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
     abstractiondict = {}
@@ -5302,8 +5307,8 @@ HINT: I DONT NEED SEPARATE PROCESS BECAUSE PYTHON COMPILES A SEPARATE THINGY
 
 
 #NOT CLOSING ===== NOT COMMITTING WRITES
-testfile = '1.txt'
-basisfile = 'basis.txt'
+#testfile = '1.txt'
+#basisfile = 'basis.txt'
 
 #lexicoSortHARD([basisfile,'Memory.txt'])
 ##########

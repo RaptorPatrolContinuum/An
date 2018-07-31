@@ -1,0 +1,3 @@
+[[[[["['"], ["['"]], [['α0'], ['α0']], [['print("oof")]'], ['print("oof")]']]], '']]
+[[[[['Popen(['], ['Popen([']], [['α0'], ['α0']], [['\\Mira.py, print("oof")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)'], ['\\Mira.py, print("oof")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)']]], '']]
+[[[[['Popen(['], ['Popen([']], [['α0'], ['α0']], [['\\Mira.py, print("oof")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)'], ['\\Mira.py, print("oof")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)']]], '']]

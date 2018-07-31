@@ -21,7 +21,10 @@ Descent = True
 
 while Descent:
     nearfield = []
-    #print("how many attempts?",len(argv[1:]) > 0,argv[1:])
+    print("wtf nearfield",nearfield)
+    print("how many attempts?",len(argv[1:]) > 0,argv[1:])
+    print("descent = true means NOT cloned",Descent,os.getcwd())
+    print("this is the diff in mirab")
     try:
         if len(argv[1:]) > 0:
             inputtext = argv[1:][0]
@@ -44,7 +47,53 @@ while Descent:
         #print("ARGINPUT IS monkaS", argv)
         
         #INIT OTHER CLONE AS IM MAKING A LOT OF CHANGES
-        Cloneinit()
+        #Cloneinit()
+
+
+        #write input/output to memory RAM file:
+        memoryfile = open(MemoryUNORDERED, 'a+')
+        #stderr=subprocess.STDOUT
+        #with Popen(['python', 'test.py'], stdout=PIPE, stderr=PIPE, bufsize=1, universal_newlines=True) as p:
+        #with Popen(['python', 'Mira.py', inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
+        miralist = ['python', OtherClone() + '\\Mira.py', inputtext]
+        #print("this should be miralist", miralist)
+        print("wtf nearfield2",nearfield)
+        if Descent == True:
+            #print("NEED TO MAKE CLONE!",argv)
+            seesANS = []
+            with Popen(miralist, stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
+                #print("ARGINPUT IS", argv)
+                for line in p.stdout:
+                    print(line, end='')
+                    sees = str([line]) + "\n"
+                    #print("WTF IS SEES",sees)
+                    seesANS.append(sees)
+                '''
+                for line in fileinput.input():
+                    print("WTF DOES THIS DO",line)
+                    #process(line)
+                '''
+            internaltest = [["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, "+inputtext+"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]]
+            orsequence = bisectionSearch([memoryLong,str(internaltest),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest)])
+            if len(orsequence) > 0:
+                print("I already saw that!")
+            else:
+                memoryfile.write(str(internaltest) + "\n")
+                nearfield.append(str(internaltest))
+        else:
+            #just write the OG test once
+            internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",[str(eval(inputtext)),""]]]
+            orsequence2 = bisectionSearch([memoryLong,str(internaltest2),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest2)])
+            if len(orsequence2) > 0:
+                print("already saw that 2")
+            else:
+                memoryfile.write(str(internaltest2) + "\n")
+                nearfield.append(str(internaltest2))
+        print("wtf nearfield3",nearfield)
+        memoryfile.close()
+
+
+    
 
         #THIS TRYBLOCK DOCUMENTS WHAT INPUT>MIRACLONE DOES
         try:
@@ -55,6 +104,7 @@ while Descent:
             #with Popen(['python', 'Mira.py', inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
             miralist = ['python', OtherClone() + '\\Mira.py', inputtext]
             #print("this should be miralist", miralist)
+            print("wtf nearfield4",nearfield)
             if Descent == True:
                 #print("NEED TO MAKE CLONE!",argv)
                 seesANS = []
@@ -86,6 +136,7 @@ while Descent:
                 else:
                     memoryfile.write(str(internaltest2) + "\n")
                     nearfield.append(str(internaltest2))
+            print("wtf nearfield5",nearfield)
             memoryfile.close()
         except Exception as e:
             print("error is ", e)
@@ -95,40 +146,46 @@ while Descent:
             memoryfile.write(str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'", ["",e]]]) + "\n")
             nearfield.append(str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'", ["",e]]]))
             memoryfile.close()
+            print("wtf nearfield6",nearfield)
             pass
 
-        #guessing abstractions
         #need to stop clone mira from duplicating responses:
         if Descent == True:
-            print("WTF nearfield",nearfield)
+            #guessing abstractions
+            print("WTF nearfield7",nearfield)
+            print("dogshit3",delta2(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
             for x in nearfield:
                 print("x in nearfield",x)
                 print("fcheck",fCheck(eval(x)))
                 if fCheck(eval(x)):
                     print("fcheck2",eval(x)[0][0])
                     print("hey hey hey",type(eval(x)[0][0]))
+                    print("WHO IS SAYING THIS?",len(argv[1:]) > 0)
                     abstractionGENERAL([[MemoryUNORDERED,memoryLong],eval(x)[0][0]])
                 else:
                     print("fcheck2BB",eval(x)[0][0])
                     print("hey hey heyBB",type(eval(x)[0][0]))
+                    print("WHO IS SAYING THIS2?",len(argv[1:]) > 0)
                     abstractionGENERAL([[MemoryUNORDERED,memoryLong],x])
                 #abstractionGENERAL([[MemoryUNORDERED,memoryLong],inputtext])
-            '''
-            guess abstractions properly:
-            delta2(a,b) == a OR b means the similar one is the abstraction
-            use delta3 on the NON abstraction to get a replacement guess
-            attempt abstraction with composeMETA([delta3, delta2])
+        '''
+        guess abstractions properly:
+        delta2(a,b) == a OR b means the similar one is the abstraction
+        use delta3 on the NON abstraction to get a replacement guess
+        attempt abstraction with composeMETA([delta3, delta2])
 
-            THEN CHECK ABSTRACTION WITH REALITY <---
+        THEN CHECK ABSTRACTION WITH REALITY <---
 
-            IF ALIGNS, WRITE IT DOWN
+        IF ALIGNS, WRITE IT DOWN
 
-            THEN NEXT STEP IS PROBLEM SOLVING ON AN ABSTRACT TIMELINE WHERE YOU DONT GET INSTANT CALL-RESPONSE
+        THEN NEXT STEP IS PROBLEM SOLVING ON AN ABSTRACT TIMELINE WHERE YOU DONT GET INSTANT CALL-RESPONSE
 
-            ANOTHER THING TO DO IS TO DO INSTANT CALL-RESPONSE
-            '''
+        ANOTHER THING TO DO IS TO DO INSTANT CALL-RESPONSE
+        '''
 
-        
+        #need to stop clone mira from duplicating responses:
+        if Descent == True:
+            pass
         '''
         ==================================================================================================
         PUT ALL THE TESTING CODE PAST HERE
