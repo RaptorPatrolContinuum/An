@@ -96,7 +96,9 @@ def SynSplit(string):
 
 def ran(func):
     ANS = []
+    print('holy shit',func)
     for x in func:
+        print("why the fuck is this failing",x)
         ANS.append(x[1])
     return ANS
 
@@ -3563,6 +3565,7 @@ def maxlongestcontig(argList):
 
 def delta2(argList):
     #takes 2 strings and returns delta on what's different between two strings
+    print('might not even be calling this',argList)
     LHS = argList[0]
     RHS = argList[1]
     try:
@@ -4228,8 +4231,9 @@ def SeekForce(ArgList):
     ANS = []
 
     print("SEEKFORCE ARGLIST", ArgList)
-    print("dogshit life",delta2(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
-    print("checking how to call func",arg3(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
+    #hint: arg3 not always delta2
+    #print("dogshit life",delta2(["WTFalphaprint('')","betrprint('')"])) #arg3 should be delta2()
+    #print("checking how to call func",arg3(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
     
 
     #PROBLEM: currently functions I have are single pairs, what about multiple pair functions?
@@ -5113,13 +5117,20 @@ def abstractionGENERAL(argList):
     with open("ABSTRACTFILE.txt", 'a+', encoding='utf-8') as ABSTRACTFILE:
         for x in range(anothersum*len2):
             print("x in totalabstractions",x)
-            if len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0:
+            print("checktriggers1",len3int == len(abstractiondict[str(len1int)]))
+            print("checktriggers2",len(abstractiondict[str(len1int)]) == 0)
+            print("checktriggers3",x != 0)
+            print("checktriggers4",len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 and x != 0)
+            print("checktriggers5",(len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 ) and x != 0)
+            if (len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 )and x != 0:
                 len3int = 0
                 len1int += 1
             if len1int == len1:
                 len1int = 0
                 len2int += 1
             theguy = abstractiondict[str(len1int)]
+            print("lens",len1, len2)
+            print("lensint",len1int, len2int, len3int)
             print('the guy is empty',theguy)
             print("length of this guy",len(theguy))
             if theguy == []:
@@ -5209,7 +5220,15 @@ def abstractionGENERAL(argList):
     #ComposeMETA([arg1,arg2])
 
     #HERE I DELETE THE ABSTRACT FILE TO CLEANUP
-    #FIX THISos.remove("ABSTRACTFILE.txt")
+    #FIX THIS| could be causing problems if called repeatedly and not clearing
+    with open('ABSTRACTFILE.txt', 'r+', encoding='utf-8') as ordered1:
+        ordered1.seek(0)
+        for line in range(mapcountLINES(['ABSTRACTFILE.txt'])):
+            nextguy = rchop(ordered1.readline(), '\n')
+            print(toString([ran(eval(nextguy)[0][0]),"naive"]))
+            print(toString([ran(eval(nextguy)[0][1]),"naive"]))
+            print("=")
+    os.remove("ABSTRACTFILE.txt")
     
 
 

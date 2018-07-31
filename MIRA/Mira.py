@@ -24,7 +24,7 @@ while Descent:
     print("wtf nearfield",nearfield)
     print("how many attempts?",len(argv[1:]) > 0,argv[1:])
     print("descent = true means NOT cloned",Descent,os.getcwd())
-    print("this is the diff in miraa")
+    print("this is the diff in mirab")
     try:
         if len(argv[1:]) > 0:
             inputtext = argv[1:][0]
@@ -104,7 +104,7 @@ while Descent:
             #with Popen(['python', 'Mira.py', inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
             miralist = ['python', OtherClone() + '\\Mira.py', inputtext]
             #print("this should be miralist", miralist)
-            print("wtf nearfield2",nearfield)
+            print("wtf nearfield4",nearfield)
             if Descent == True:
                 #print("NEED TO MAKE CLONE!",argv)
                 seesANS = []
@@ -136,7 +136,7 @@ while Descent:
                 else:
                     memoryfile.write(str(internaltest2) + "\n")
                     nearfield.append(str(internaltest2))
-            print("wtf nearfield3",nearfield)
+            print("wtf nearfield5",nearfield)
             memoryfile.close()
         except Exception as e:
             print("error is ", e)
@@ -146,13 +146,13 @@ while Descent:
             memoryfile.write(str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'", ["",e]]]) + "\n")
             nearfield.append(str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'", ["",e]]]))
             memoryfile.close()
-            print("wtf nearfield4",nearfield)
+            print("wtf nearfield6",nearfield)
             pass
 
         #need to stop clone mira from duplicating responses:
         if Descent == True:
             #guessing abstractions
-            print("WTF nearfield5",nearfield)
+            print("WTF nearfield7",nearfield)
             print("dogshit3",delta2(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
             for x in nearfield:
                 print("x in nearfield",x)

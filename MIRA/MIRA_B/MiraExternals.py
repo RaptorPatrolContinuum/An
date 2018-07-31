@@ -5117,13 +5117,20 @@ def abstractionGENERAL(argList):
     with open("ABSTRACTFILE.txt", 'a+', encoding='utf-8') as ABSTRACTFILE:
         for x in range(anothersum*len2):
             print("x in totalabstractions",x)
-            if len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0:
+            print("checktriggers1",len3int == len(abstractiondict[str(len1int)]))
+            print("checktriggers2",len(abstractiondict[str(len1int)]) == 0)
+            print("checktriggers3",x != 0)
+            print("checktriggers4",len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 and x != 0)
+            print("checktriggers5",(len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 ) and x != 0)
+            if (len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 )and x != 0:
                 len3int = 0
                 len1int += 1
             if len1int == len1:
                 len1int = 0
                 len2int += 1
             theguy = abstractiondict[str(len1int)]
+            print("lens",len1, len2)
+            print("lensint",len1int, len2int, len3int)
             print('the guy is empty',theguy)
             print("length of this guy",len(theguy))
             if theguy == []:
