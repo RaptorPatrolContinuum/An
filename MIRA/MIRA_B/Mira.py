@@ -23,6 +23,7 @@ while Descent:
     nearfield = []
     print("wtf nearfield",nearfield)
     print("how many attempts?",len(argv[1:]) > 0,argv[1:])
+    print("tell me encoding",sys.stdout.encoding)
     #print("dogshit?","α")
     #print("dogshit4 wtf",delta2(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
     try:
