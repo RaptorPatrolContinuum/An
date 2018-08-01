@@ -23,8 +23,8 @@ while Descent:
     nearfield = []
     print("wtf nearfield",nearfield)
     print("how many attempts?",len(argv[1:]) > 0,argv[1:])
-    print("descent = true means NOT cloned",Descent,os.getcwd())
-    print("this is the diff in mirab")
+    #print("dogshit?","α")
+    #print("dogshit4 wtf",delta2(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
     try:
         if len(argv[1:]) > 0:
             inputtext = argv[1:][0]
@@ -47,7 +47,7 @@ while Descent:
         #print("ARGINPUT IS monkaS", argv)
         
         #INIT OTHER CLONE AS IM MAKING A LOT OF CHANGES
-        #Cloneinit()
+        Cloneinit()
 
 
         #write input/output to memory RAM file:

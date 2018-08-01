@@ -96,9 +96,7 @@ def SynSplit(string):
 
 def ran(func):
     ANS = []
-    print('holy shit',func)
     for x in func:
-        print("why the fuck is this failing",x)
         ANS.append(x[1])
     return ANS
 
@@ -3565,7 +3563,7 @@ def maxlongestcontig(argList):
 
 def delta2(argList):
     #takes 2 strings and returns delta on what's different between two strings
-    print('might not even be calling this',argList)
+    #print('might not even be calling this',argList)
     LHS = argList[0]
     RHS = argList[1]
     try:
@@ -5029,7 +5027,7 @@ def abstractionGENERAL(argList):
     #deltav2 on x in combined memory and new obj
     #print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDEREDvar.txt','argument_1 == "b"',delta2]))
     #THIS MEMcomposeinput WAS USED TO ABSTRACT THE INPUT, BUT NOW I WANT TO ABSTRACT THE INPUT OUTPUT PAIR PRODUCED BY MIRA SEEING THE EVAL OF INPUT
-    print("dogshit2",delta2(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
+    #print("dogshit2",delta2(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
     MEMcomposeinput = SeekForce([MemoryUNORDEREDvar,inputtextvar,delta2,SeekForcemin1,[]]) + SeekForce([memoryLongvar,inputtextvar,delta2,SeekForcemin1,[]])
     #deltav2 on pairs in new obj -> guessing similar inputs/variables (find abstractions) ->#eval using (deltav3 COMPOSE deltav2) and get answers
     #for each object in seekforce, check if new obj or x in seekforce is an abstraction by checking deltav2(obj,x in seekforce) == obj OR deltav2(obj,x in seekforce) == x in seekforce
@@ -5117,11 +5115,6 @@ def abstractionGENERAL(argList):
     with open("ABSTRACTFILE.txt", 'a+', encoding='utf-8') as ABSTRACTFILE:
         for x in range(anothersum*len2):
             print("x in totalabstractions",x)
-            print("checktriggers1",len3int == len(abstractiondict[str(len1int)]))
-            print("checktriggers2",len(abstractiondict[str(len1int)]) == 0)
-            print("checktriggers3",x != 0)
-            print("checktriggers4",len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 and x != 0)
-            print("checktriggers5",(len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 ) and x != 0)
             if (len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 )and x != 0:
                 len3int = 0
                 len1int += 1
@@ -5221,6 +5214,7 @@ def abstractionGENERAL(argList):
 
     #HERE I DELETE THE ABSTRACT FILE TO CLEANUP
     #FIX THIS| could be causing problems if called repeatedly and not clearing
+    print("STARTHERE")
     with open('ABSTRACTFILE.txt', 'r+', encoding='utf-8') as ordered1:
         ordered1.seek(0)
         for line in range(mapcountLINES(['ABSTRACTFILE.txt'])):
@@ -5228,6 +5222,7 @@ def abstractionGENERAL(argList):
             print(toString([ran(eval(nextguy)[0][0]),"naive"]))
             print(toString([ran(eval(nextguy)[0][1]),"naive"]))
             print("=")
+    print("ENDHERE")
     os.remove("ABSTRACTFILE.txt")
     
 
