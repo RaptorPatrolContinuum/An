@@ -75,7 +75,7 @@ while Descent:
                     #process(line)
                 '''
             internaltest = [["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, "+inputtext+"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]]
-            print("shittysearch uses eval have to double check if it fucking works properly1",shittySearch([MemoryUNORDERED,str(internaltest)]),str(internaltest))
+            #print("shittysearch uses eval have to double check if it fucking works properly1",shittySearch([MemoryUNORDERED,str(internaltest)]),str(internaltest))
             orsequence = bisectionSearch([memoryLong,str(internaltest),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest)])
             if len(orsequence) > 0:
                 print("I already saw that!")
@@ -85,7 +85,7 @@ while Descent:
         else:
             #just write the OG test once
             internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",[str(eval(inputtext)),""]]]
-            print("shittysearch uses eval have to double check if it fucking works properly2",shittySearch([MemoryUNORDERED,str(internaltest2)]),str(internaltest2))
+            #print("shittysearch uses eval have to double check if it fucking works properly2",shittySearch([MemoryUNORDERED,str(internaltest2)]),str(internaltest2))
             orsequence2 = bisectionSearch([memoryLong,str(internaltest2),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest2)])
             if len(orsequence2) > 0:
                 print("already saw that 2")
@@ -124,7 +124,7 @@ while Descent:
                         #process(line)
                     '''
                 internaltest = [["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, "+inputtext+"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]]
-                print("shittysearch uses eval have to double check if it fucking works properly3",shittySearch([MemoryUNORDERED,str(internaltest)]),str(internaltest))
+                #print("shittysearch uses eval have to double check if it fucking works properly3",shittySearch([MemoryUNORDERED,str(internaltest)]),str(internaltest))
                 orsequence = bisectionSearch([memoryLong,str(internaltest),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest)])
                 if len(orsequence) > 0:
                     print("I already saw that!")
@@ -134,7 +134,7 @@ while Descent:
             else:
                 #just write the OG test once
                 internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",[str(eval(inputtext)),""]]]
-                print("shittysearch uses eval have to double check if it fucking works properly4",shittySearch([MemoryUNORDERED,str(internaltest2)]),str(internaltest2))
+                #print("shittysearch uses eval have to double check if it fucking works properly4",shittySearch([MemoryUNORDERED,str(internaltest2)]),str(internaltest2))
                 orsequence2 = bisectionSearch([memoryLong,str(internaltest2),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest2)])
                 if len(orsequence2) > 0:
                     print("already saw that 2")

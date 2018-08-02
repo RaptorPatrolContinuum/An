@@ -2856,13 +2856,13 @@ def shittySearch(argList):
     with open(arg1,"r+",encoding='utf-8') as hotPotato:
         line = rchop(hotPotato.readline(), '\n')
         while line:
-            print("line vs arg2")
+            #print("line vs arg2")
             try:
                 a1 = str(eval(line))
                 a2 = arg2
-                print(a1, type(a1))
-                print(a2, type(a2))
-                print(a1 == a2)
+                #print(a1, type(a1))
+                #print(a2, type(a2))
+                #print(a1 == a2)
                 if a1 == a2:
                     ANS.append(index)
             except:
