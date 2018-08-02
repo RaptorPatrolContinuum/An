@@ -5198,11 +5198,20 @@ def abstractionGENERAL(argList):
             memY = eval(thenextline)[0][1]
             guessX = toString([ran(eval(emptycheck)[0][0]),"naive"])
             guessY = toString([ran(eval(emptycheck)[0][1]),"naive"])
+            LHSTest = toString([ran(delta2([memX,guessX])),"naive"]) == guessX
+            RHSTest = toString([ran(delta2([memY,guessY])),"naive"]) == guessY
             print("check types",type(memX),type(guessX))
             print("LHSpart1",memX,guessX)
-            print("LHS",toString([ran(delta2([memX,guessX])),"naive"]) == guessX)
+            print("LHS",LHSTest)
             print("RHSpart1",memY,guessY)
-            print("RHS",toString([ran(delta2([memY,guessY])),"naive"]) == guessY)
+            print("RHS",RHSTest)
+            if LHSTest and RHSTest:
+                print("this guy passed",[guessX,guessY])
+                print("thjis is actual",emptycheck)
+                #write the right qualifier
+                #[[FixedQualifier([delta2,abstraction,testguy]),result]]
+                #test using composemeta
+                
             guessint += 1
 
     
@@ -5225,7 +5234,37 @@ def abstractionGENERAL(argList):
     print("ENDHERE")
     os.remove("ABSTRACTFILE.txt")
     
+def FixedQualifier(argList):
+    '''
+    #this isn't really fixed point because wiki says f(x)=x but this is a binary function :thinking:
+    #need fixed point func so I don't write delta2(abst,test) == abst all the fucking time
+    #returns TRUE/FALSE
+    '''
+    #function to use
+    arg1 = argList[0]
+    #fixed point (aka the abstraction)
+    arg2 = argList[1]
+    #check this guy
+    arg3 = argList[2]
+    #need a min for delta2 returning func and not list
+    try:
+        arg4 = argList[3]
+        return arg4(argList)
+    except:
+        return arg1([arg2,arg3]) == arg2
 
+def FixedQualifiermin1(argList):
+    '''
+    #need a min for delta2 returning func and not list
+    '''
+    #function to use
+    arg1 = argList[0]
+    #fixed point (aka the abstraction)
+    arg2 = argList[1]
+    #check this guy
+    arg3 = argList[2]
+    return toString([ran(arg1([arg2,arg3])),"naive"]) == arg2
+    
 
 ##############################################################
 

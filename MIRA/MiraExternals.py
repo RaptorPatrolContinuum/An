@@ -5198,11 +5198,16 @@ def abstractionGENERAL(argList):
             memY = eval(thenextline)[0][1]
             guessX = toString([ran(eval(emptycheck)[0][0]),"naive"])
             guessY = toString([ran(eval(emptycheck)[0][1]),"naive"])
+            LHSTest = toString([ran(delta2([memX,guessX])),"naive"]) == guessX
+            RHSTest = toString([ran(delta2([memY,guessY])),"naive"]) == guessY
             print("check types",type(memX),type(guessX))
             print("LHSpart1",memX,guessX)
-            print("LHS",toString([ran(delta2([memX,guessX])),"naive"]) == guessX)
+            print("LHS",LHSTest)
             print("RHSpart1",memY,guessY)
-            print("RHS",toString([ran(delta2([memY,guessY])),"naive"]) == guessY)
+            print("RHS",RHSTest)
+            if LHSTest and RHSTest:
+                print("this guy passed",[guessX,guessY])
+                print("thjis is actual",emptycheck)
             guessint += 1
 
     
