@@ -630,19 +630,39 @@ def ComposeReplace(str1,str2):
     #print("test str2",str2)
     ANS = None
     if isinstance(str2[1], str):
-        total = "'" + str2[1] + "'"
-        #print("test TOTAL",total)
-        #print("TRY REPLACEMENT NOW")
-        #print(str1[0].replace("TOTAL_ARGUMENT", total))
-        #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
-        if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
-            #
-            #print("got here???")
-            #return [str2[0],str1[1]]
-            if ANS == None:
-                ANS = [[str2[0],str1[1]]]
-            else:
-                ANS = ANS + [str2[0],str1[1]]
+        #need a try block because ' VS " pairs really fuck everything and testing with ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\'oof\')"]]])
+        #and ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\"oof\")"]]])
+        #showed that just trying the other quote was ok
+        try:
+            total = "'" + str2[1] + "'"
+            #total = "\"" + str2[1] + "\""
+            #print("test TOTAL",total)
+            #print("TRY REPLACEMENT NOW")
+            #print(str1[0].replace("TOTAL_ARGUMENT", total))
+            #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+            if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
+                #
+                #print("got here???")
+                #return [str2[0],str1[1]]
+                if ANS == None:
+                    ANS = [[str2[0],str1[1]]]
+                else:
+                    ANS = ANS + [str2[0],str1[1]]
+        except:
+            #total = "'" + str2[1] + "'"
+            total = "\"" + str2[1] + "\""
+            #print("test TOTAL",total)
+            #print("TRY REPLACEMENT NOW")
+            #print(str1[0].replace("TOTAL_ARGUMENT", total))
+            #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+            if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
+                #
+                #print("got here???")
+                #return [str2[0],str1[1]]
+                if ANS == None:
+                    ANS = [[str2[0],str1[1]]]
+                else:
+                    ANS = ANS + [str2[0],str1[1]]
     elif isinstance(str2[1], list):
         #print("REAPERREAPERTHAT'SWHAT PEOPLEdetected list!!", str(str2[1]))
         i = 1
@@ -2820,6 +2840,7 @@ def mapcountLINES(argList):
 
 def shittySearch(argList):
     '''
+    HINT: FOR SOME FUCKING REASON I EVAL THE OBJ FROM THE FILE
     HINT: BASE 0
     why not
     arg1 = fileNAME to search for
@@ -2832,16 +2853,16 @@ def shittySearch(argList):
     arg2 = argList[1]
     ANS = []
     index = 0
-    with open(arg1,"r+") as hotPotato:
+    with open(arg1,"r+",encoding='utf-8') as hotPotato:
         line = rchop(hotPotato.readline(), '\n')
         while line:
-            #print("line vs arg2")
+            print("line vs arg2")
             try:
                 a1 = str(eval(line))
                 a2 = arg2
-                #print(a1, type(a1))
-                #print(a2, type(a2))
-                #print(a1 == a2)
+                print(a1, type(a1))
+                print(a2, type(a2))
+                print(a1 == a2)
                 if a1 == a2:
                     ANS.append(index)
             except:
@@ -5208,6 +5229,26 @@ def abstractionGENERAL(argList):
             if LHSTest and RHSTest:
                 print("this guy passed",[guessX,guessY])
                 print("thjis is actual",emptycheck)
+                #write the right qualifier
+                #[[FixedQualifier([delta2,abstraction,testguy]),result]]
+                #EXAMPLE-α
+                #[["TOTAL_ARGUMENT == 'print('hold the line')'", ['None', '']]]
+                #[["FixedQualifier([delta2,'print('α0')',TOTAL_ARGUMENT])",['None', '']],FixedQualifiermin1]
+                #test using composemeta
+                #hint: f1 compose f2 but do F2 THEN F1!
+                #test:
+                #ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\'oof\')"]]])
+                #returns
+                #[['noob', ['None', '']]]
+                #ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\"oof\")"]]])
+                #returns
+                #[]
+                #what do I write?
+                #[["FixedQualifier([delta2,guessX,TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]]
+                #time to write to MemoryUNORDEREDvar
+                with open(MemoryUNORDEREDvar,'a+',encoding='utf-8') as theMEMun:
+                    theMEMun.write(str([["FixedQualifier([delta2,"+guessX+",TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]]) + "\n")
+                #next step would be to check with ComposeMeta
             guessint += 1
 
     
@@ -5230,7 +5271,37 @@ def abstractionGENERAL(argList):
     print("ENDHERE")
     os.remove("ABSTRACTFILE.txt")
     
+def FixedQualifier(argList):
+    '''
+    #this isn't really fixed point because wiki says f(x)=x but this is a binary function :thinking:
+    #need fixed point func so I don't write delta2(abst,test) == abst all the fucking time
+    #returns TRUE/FALSE
+    '''
+    #function to use
+    arg1 = argList[0]
+    #fixed point (aka the abstraction)
+    arg2 = argList[1]
+    #check this guy
+    arg3 = argList[2]
+    #need a min for delta2 returning func and not list
+    try:
+        arg4 = argList[3]
+        return arg4(argList)
+    except:
+        return arg1([arg2,arg3]) == arg2
 
+def FixedQualifiermin1(argList):
+    '''
+    #need a min for delta2 returning func and not list
+    '''
+    #function to use
+    arg1 = argList[0]
+    #fixed point (aka the abstraction)
+    arg2 = argList[1]
+    #check this guy
+    arg3 = argList[2]
+    return toString([ran(arg1([arg2,arg3])),"naive"]) == arg2
+    
 
 ##############################################################
 
