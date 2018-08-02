@@ -5227,7 +5227,7 @@ def abstractionGENERAL(argList):
             print("RHSpart1",memY,guessY)
             print("RHS",RHSTest)
             if LHSTest and RHSTest:
-                print("this guy passed",[guessX,guessY])
+                print("this guy passed",[[guessX,guessY]])
                 print("thjis is actual",emptycheck)
                 #write the right qualifier
                 #[[FixedQualifier([delta2,abstraction,testguy]),result]]
@@ -5246,9 +5246,11 @@ def abstractionGENERAL(argList):
                 #what do I write?
                 #[["FixedQualifier([delta2,guessX,TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]]
                 #time to write to MemoryUNORDEREDvar
-                with open(MemoryUNORDEREDvar,'a+',encoding='utf-8') as theMEMun:
-                    theMEMun.write(str([["FixedQualifier([delta2,"+guessX+",TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]]) + "\n")
-                #next step would be to check with ComposeMeta
+                #make sure not to add duplicates
+                if len(shittySearch(['MemoryUNORDERED.txt',str([["FixedQualifier([delta2,"+guessX+",TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]])])) == 0:
+                    with open(MemoryUNORDEREDvar,'a+',encoding='utf-8') as theMEMun:
+                        theMEMun.write(str([["FixedQualifier([delta2,"+guessX+",TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]]) + "\n")
+                #next testing step would be to check with ComposeMeta
             guessint += 1
 
     
