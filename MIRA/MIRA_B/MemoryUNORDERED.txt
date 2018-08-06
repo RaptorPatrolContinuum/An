@@ -25,3 +25,4 @@
 [['FixedQualifier([delta2,[\'α0print("I still make it work")],TOTAL_ARGUMENT,FixedQualifiermin1])', '']]
 [['FixedQualifier([delta2,Popen([α0\\Mira.py, print("I still make it work")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True),TOTAL_ARGUMENT,FixedQualifiermin1])', '']]
 [['FixedQualifier([delta2,α0([α1print(α2keα3,TOTAL_ARGUMENT,FixedQualifiermin1])', '']]
+[['FixedQualifier([delta2,α0([α1print("I still make it work")],α2erα3,TOTAL_ARGUMENT,FixedQualifiermin1])', '']]

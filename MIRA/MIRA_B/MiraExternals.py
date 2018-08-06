@@ -3884,6 +3884,9 @@ def delta3(argList):
 
 def delta3META(argList):
     '''
+    #hint: this function is outdated with introduction of ComposetMeta and FixedQualifier/ having functions themselves have qualifiers as x coords
+    >hint: if you still want to use this than you just give it 2 strings (one of them the abstraction of the other) and it gives you back the replacement func if any
+
     input: (obj1,obj2)
     output: replacement function
     NEED THEOREM: deltav2(obj1,obj2)
@@ -3905,9 +3908,10 @@ def delta3META(argList):
     #plan
     #find abstraction in one of the arguments:
     abstractionfunc = delta2([arg1,arg2,commrel])
-    #print("abstr func is", abstractionfunc)
+    print("oofy",[arg1,arg2,commrel])
+    print("abstr func is", abstractionfunc)
     abstractionstr = toString([dom(abstractionfunc),"naive"])
-    #print("abstr",abstractionstr)
+    print("abstr",abstractionstr)
     if abstractionstr == arg1:
         TheObj = arg2
     elif abstractionstr == arg2:
