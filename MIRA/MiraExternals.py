@@ -580,9 +580,19 @@ def ComposeMETA(argList):
             '''
             ComposeTest = ComposeReplace(x,y)
             if ComposeTest != None:
+                #I want to eval the y coord now so I can add instructions to results
                 ALG = ALG + ComposeTest
             #if eval(ComposeReplace(x,y)):
             #    ALG.append([x[0],y[1]])
+    oldALG = ALG
+    ALG = []
+    for pair in oldALG:
+        print("attempt to eval y coords")
+        try:
+            ALG.append([pair[0],eval(pair[1])])
+        #else do nothing
+        except:
+            ALG.append([pair[0],pair[1]])
     return ALG
 
 def ComposeReplace(str1,str2):
