@@ -646,10 +646,10 @@ def ComposeReplace(str1,str2):
         try:
             total = "'" + str2[1] + "'"
             #total = "\"" + str2[1] + "\""
-            #print("test TOTAL",total)
-            #print("TRY REPLACEMENT NOW")
-            #print(str1[0].replace("TOTAL_ARGUMENT", total))
-            #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+            print("test TOTAL",total)
+            print("TRY REPLACEMENT NOW1")
+            print(str1[0].replace("TOTAL_ARGUMENT", total))
+            print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
             if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
                 #
                 #print("got here???")
@@ -661,10 +661,10 @@ def ComposeReplace(str1,str2):
         except:
             #total = "'" + str2[1] + "'"
             total = "\"" + str2[1] + "\""
-            #print("test TOTAL",total)
-            #print("TRY REPLACEMENT NOW")
-            #print(str1[0].replace("TOTAL_ARGUMENT", total))
-            #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+            print("test TOTAL",total)
+            print("TRY REPLACEMENT NOW2")
+            print(str1[0].replace("TOTAL_ARGUMENT", total))
+            print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
             if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
                 #
                 #print("got here???")
@@ -691,7 +691,7 @@ def ComposeReplace(str1,str2):
             #print("maybe z is checked twice because of input",z)
             #print("stats","argument_" + str(i),"'"+z+"'")
             #print("what is replace?",teststring.replace("argument_" + str(i), "'"+z+"'"))
-            teststring =             teststring.replace("argument_" + str(i), "'"+z+"'")
+            teststring = teststring.replace("argument_" + str(i), "'"+z+"'")
             #print("what is teststring",teststring)
             i+=1
         try:
@@ -3670,19 +3670,19 @@ def delta2(argList):
     #construct statement:
     ANS = []
     symboli = 0
-    #print("what are connections?",Connections)
-    #print("ANS",ANS)
+    print("what are connections?",Connections)
+    print("ANS",ANS)
     for x in Connections:
-        #print("if check",x[0],x[1],x[0] == x[1])
-        #print("elif check",x[0][0],x[1][0],len(x[0][0])!= 0 and len(x[1][0])!= 0)
+        print("if check",x[0],x[1],x[0] == x[1])
+        print("elif check",x[0][0],x[1][0],len(x[0][0])!= 0 and len(x[1][0])!= 0)
         if x[0] == x[1]:
             ANS.append(x)
         elif len(x[0][0])!= 0 and len(x[1][0])!= 0:
-            #ANS.append([["Symbol" + str(symboli)], [symboli]])
+            ####ANS.append([["Symbol" + str(symboli)], [symboli]])
             #hint: alphas are in list because list forces composemeta to do argument replacement properly
             ANS.append([["α" + str(symboli)], ["α" + str(symboli)]])
             symboli += 1
-        #print("ANS at each step", ANS)
+        print("ANS at each step", ANS)
     return ANS
 
 #delta2(["[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("f")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['f\\n']\n" + "]]]","[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("r")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['r\\n']\n" + "]]]"])

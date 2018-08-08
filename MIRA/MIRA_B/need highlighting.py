@@ -1,4 +1,5 @@
 
+FixedQualifier([delta2,[α0print('yoikes')],'TOTAL_ARGUMENT == 'print('yoikes')'',FixedQualifiermin1])
 
 [['Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("rip")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['rip\\n']\n"]]]
 

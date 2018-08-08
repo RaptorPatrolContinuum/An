@@ -661,10 +661,10 @@ def ComposeReplace(str1,str2):
         except:
             #total = "'" + str2[1] + "'"
             total = "\"" + str2[1] + "\""
-            #print("test TOTAL",total)
-            #print("TRY REPLACEMENT NOW")
-            #print(str1[0].replace("TOTAL_ARGUMENT", total))
-            #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+            print("test TOTAL",total)
+            print("TRY REPLACEMENT NOW")
+            print(str1[0].replace("TOTAL_ARGUMENT", total))
+            print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
             if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
                 #
                 #print("got here???")
@@ -691,7 +691,7 @@ def ComposeReplace(str1,str2):
             #print("maybe z is checked twice because of input",z)
             #print("stats","argument_" + str(i),"'"+z+"'")
             #print("what is replace?",teststring.replace("argument_" + str(i), "'"+z+"'"))
-            teststring =             teststring.replace("argument_" + str(i), "'"+z+"'")
+            teststring = teststring.replace("argument_" + str(i), "'"+z+"'")
             #print("what is teststring",teststring)
             i+=1
         try:
@@ -3884,6 +3884,9 @@ def delta3(argList):
 
 def delta3META(argList):
     '''
+    #hint: this function is outdated with introduction of ComposetMeta and FixedQualifier/ having functions themselves have qualifiers as x coords
+    >hint: if you still want to use this than you just give it 2 strings (one of them the abstraction of the other) and it gives you back the replacement func if any
+
     input: (obj1,obj2)
     output: replacement function
     NEED THEOREM: deltav2(obj1,obj2)
@@ -3905,9 +3908,10 @@ def delta3META(argList):
     #plan
     #find abstraction in one of the arguments:
     abstractionfunc = delta2([arg1,arg2,commrel])
-    #print("abstr func is", abstractionfunc)
+    print("oofy",[arg1,arg2,commrel])
+    print("abstr func is", abstractionfunc)
     abstractionstr = toString([dom(abstractionfunc),"naive"])
-    #print("abstr",abstractionstr)
+    print("abstr",abstractionstr)
     if abstractionstr == arg1:
         TheObj = arg2
     elif abstractionstr == arg2:
