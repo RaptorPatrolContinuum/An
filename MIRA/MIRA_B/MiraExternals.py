@@ -3670,11 +3670,11 @@ def delta2(argList):
     #construct statement:
     ANS = []
     symboli = 0
-    print("what are connections?",Connections)
-    print("ANS",ANS)
+    #print("what are connections?",Connections)
+    #print("ANS",ANS)
     for x in Connections:
-        print("if check",x[0],x[1],x[0] == x[1])
-        print("elif check",x[0][0],x[1][0],len(x[0][0])!= 0 and len(x[1][0])!= 0)
+        #print("if check",x[0],x[1],x[0] == x[1])
+        #print("elif check",x[0][0],x[1][0],len(x[0][0])!= 0 and len(x[1][0])!= 0)
         if x[0] == x[1]:
             ANS.append(x)
         elif len(x[0][0])!= 0 and len(x[1][0])!= 0:
@@ -3682,7 +3682,7 @@ def delta2(argList):
             #hint: alphas are in list because list forces composemeta to do argument replacement properly
             ANS.append([["α" + str(symboli)], ["α" + str(symboli)]])
             symboli += 1
-        print("ANS at each step", ANS)
+        #print("ANS at each step", ANS)
     return ANS
 
 #delta2(["[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("f")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['f\\n']\n" + "]]]","[[" + 'Popen([\'python\',C:\\An\\MIRA\\Mira.py, print("r")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)' + ", [" + "['r\\n']\n" + "]]]"])
@@ -3697,27 +3697,27 @@ def seqsplitmin(argList):
     LCont = argList[2]
     Connections = argList[3]
     index = argList[4]
-    print("seqsplitmin ARGLIST =========", argList)
+    #print("seqsplitmin ARGLIST =========", argList)
     ###this is because I might as well make a generic now as well as try to optimize instead of wait for later
     #what this does is take LHS,RHS, and LCont and appends the right connections
     #if there is an empty connection, refuse to append
     #index is a list of indicies to add objects
     ANS = Connections
-    print("CHECKANS1",ANS)
+    #print("CHECKANS1",ANS)
     #if it's an empty connection, refuse
-    print("trendytrendytrendy \n", LHS, "\n",RHS, "\n",LCont, "\n",Connections, "\n",index)
-    print("?CHECK1", LHS[:LCont[0]], "|", RHS[:LCont[1]])
+    #print("trendytrendytrendy \n", LHS, "\n",RHS, "\n",LCont, "\n",Connections, "\n",index)
+    #print("?CHECK1", LHS[:LCont[0]], "|", RHS[:LCont[1]])
 
     #else: append
     if len(LHS[:LCont[0]]) == 0 and len(RHS[:LCont[1]]) == 0:
         pass
     else:
-        print("who is this", [[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
+        #print("who is this", [[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
         #ANS.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
         ANS = InsertAt(ANS,[[LHS[:LCont[0]]],[RHS[:LCont[1]]]],index[0])
 
-    print("CHECKANS2",ANS)
-    print("?CHECK2", LHS[LCont[0]:LCont[0]+LCont[2]], "|", RHS[LCont[1]:LCont[1]+LCont[2]])
+    #print("CHECKANS2",ANS)
+    #print("?CHECK2", LHS[LCont[0]:LCont[0]+LCont[2]], "|", RHS[LCont[1]:LCont[1]+LCont[2]])
     if len(LHS[LCont[0]:LCont[0]+LCont[2]]) == 0 and len(RHS[LCont[1]:LCont[1]+LCont[2]]) == 0:
         pass
     #EDGE CASE: IF LCont[0] and LCont[1] are both 0, previous check will ALWAYS PASS WITH "STRING"[:0], but WE WANT TO APPEND HERE, SO JUST CHECK IF BOTH ARE 0
@@ -3728,20 +3728,20 @@ def seqsplitmin(argList):
         #ANS.append([[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]])
         ANS = InsertAt(ANS,[[LHS[LCont[0]:LCont[0]+LCont[2]]],[RHS[LCont[1]:LCont[1]+LCont[2]]]],index[1])
 
-    print("CHECKANS3",ANS)
-    print("?CHECK3", LHS[LCont[0]+LCont[2]:], "|", RHS[LCont[1]+LCont[2]:])
+    #print("CHECKANS3",ANS)
+    #print("?CHECK3", LHS[LCont[0]+LCont[2]:], "|", RHS[LCont[1]+LCont[2]:])
     if len(LHS[LCont[0]+LCont[2]:]) == 0 and len(RHS[LCont[1]+LCont[2]:]) == 0:
         pass
     #EDGE CASE: IF LCont[0] and LCont[1] are both 0, previous check will ALWAYS PASS WITH "STRING"[:0], but WE WANT TO APPEND HERE, SO JUST CHECK IF BOTH ARE 0
     #HINT: I HAVE [-1, -1, -1] as input from delta2
     elif LCont[0] == 0 and LCont[1] == 0 and index[2] != -1:
-        print("STATS AND WTF",argList)
-        print(index[2]-1)
+        #print("STATS AND WTF",argList)
+        #print(index[2]-1)
         ANS = InsertAt(ANS,[[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]],index[2]-1)
     else:
         ANS = InsertAt(ANS,[[LHS[LCont[0]+LCont[2]:]],[RHS[LCont[1]+LCont[2]:]]],index[2])
 
-    print("CHECKANS4==========",ANS)
+    #print("CHECKANS4==========",ANS)
     return ANS
 
 def firstlongestcontig(argList):
@@ -4264,7 +4264,7 @@ def SeekForce(ArgList):
         
     ANS = []
 
-    print("SEEKFORCE ARGLIST", ArgList)
+    #print("SEEKFORCE ARGLIST", ArgList)
     #hint: arg3 not always delta2
     #print("dogshit life",delta2(["WTFalphaprint('')","betrprint('')"])) #arg3 should be delta2()
     #print("checking how to call func",arg3(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
@@ -4276,54 +4276,54 @@ def SeekForce(ArgList):
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
         while line:
-            print("SEEKFORCE STATS",ANS )
+            #print("SEEKFORCE STATS",ANS )
             try:
                 line = eval(line)
             except:
                 pass
             if fCheck(line) == True:
                 for x in line:
-                    print("monkaS argList", ArgList)
-                    print("what is X?",x)
-                    print("stats", line, arg2)
+                    #print("monkaS argList", ArgList)
+                    #print("what is X?",x)
+                    #print("stats", line, arg2)
                     linemod = line
-                    print("this is line UNFILTERED",linemod,type(linemod))
+                    #print("this is line UNFILTERED",linemod,type(linemod))
                     arg2mod = arg2
-                    print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
+                    #print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
                     try:
                         if arg4 != []:
                             linemod = arg4([line])
-                            print("preping for arg3, LINE",linemod)
+                            #print("preping for arg3, LINE",linemod)
                     except Exception as e:
-                        print("wtf1 went wrong?", e)
+                        #print("wtf1 went wrong?", e)
                         pass
                     try:
                         if arg5 != []:
                             arg2mod = arg5([arg2])
-                            print("preping for arg3, arg2",arg2mod)
+                            #print("preping for arg3, arg2",arg2mod)
                     except Exception as e:
-                        print("wtf2 went wrong?", e)
+                        #print("wtf2 went wrong?", e)
                         pass
                     
-                    print("stats for arg3", linemod, arg2mod)
+                    #print("stats for arg3", linemod, arg2mod)
                     try:
                         exist = arg3([linemod,arg2mod])
-                        print("SEEKFORCE APPEND",exist)
-                        print("append ?",len([z for z in ANS if z == exist]) == 0)
+                        #print("SEEKFORCE APPEND",exist)
+                        #print("append ?",len([z for z in ANS if z == exist]) == 0)
                         #hint: min2 has a problem with appending nonetypes so need a switch
                         if len([z for z in ANS if z == exist]) == 0 and exist != "dontappend":
-                            print("DONT STOP MODORENA FLASHBACK",[linemod,arg2mod])
-                            print("HYPERS",exist)
+                            #print("DONT STOP MODORENA FLASHBACK",[linemod,arg2mod])
+                            #print("HYPERS",exist)
                             ANS.append(exist)
                     except Exception as e:
-                        print("ERROR IN SEEKFORCE ",e)
+                        #print("ERROR IN SEEKFORCE ",e)
                         if e != []:
-                            print("HYPERS2", exist)
+                            #print("HYPERS2", exist)
                             ANS.append(e)
                             pass
                         pass
             line = rchop(fileref.readline(), '\n')
-    print("am I getting error here?",ANS)
+    #print("am I getting error here?",ANS)
     return ANS
 
 #SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
@@ -5084,7 +5084,8 @@ def abstractionGENERAL(argList):
             if len([y for y in guessAbst if y == thedelta]) == 0:
                 guessAbst.append(thedelta)
     print("COMPART MEMCOMPOSE WITH GUESSABST")
-    print("MEMCOMPOSE",str(MEMcomposeinput).encode('utf-8'))
+    #print("MEMCOMPOSE",str(MEMcomposeinput).encode('utf-8'))
+    print("MEMCOMPOSE",str(MEMcomposeinput))
     print("guessAbst",guessAbst)
     #print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
     abstractiondict = {}
@@ -5287,6 +5288,58 @@ def abstractionGENERAL(argList):
             print("=")
     print("ENDHERE")
     os.remove("ABSTRACTFILE.txt")
+
+
+def TestCode(argList):
+    '''
+    this is to clean up MIRA from being a duplicate code fuckfest when I have to fix shit
+
+    what this does is 
+    '''
+    #write input/output to memory RAM file:
+    memoryfile = open(MemoryUNORDERED, 'a+')
+    #stderr=subprocess.STDOUT
+    #with Popen(['python', 'test.py'], stdout=PIPE, stderr=PIPE, bufsize=1, universal_newlines=True) as p:
+    #with Popen(['python', 'Mira.py', inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
+    miralist = ['python', OtherClone() + '\\Mira.py', inputtext]
+    #print("this should be miralist", miralist)
+    print("wtf nearfield2",nearfield)
+    if Descent == True:
+        #print("NEED TO MAKE CLONE!",argv)
+        seesANS = []
+        with Popen(miralist, stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
+            #print("ARGINPUT IS", argv)
+            for line in p.stdout:
+                print(line, end='')
+                sees = str([line]) + "\n"
+                #print("WTF IS SEES",sees)
+                seesANS.append(sees)
+            '''
+            for line in fileinput.input():
+                print("WTF DOES THIS DO",line)
+                #process(line)
+            '''
+        internaltest = [["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, "+inputtext+"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]]
+        #print("shittysearch uses eval have to double check if it fucking works properly1",shittySearch([MemoryUNORDERED,str(internaltest)]),str(internaltest))
+        orsequence = bisectionSearch([memoryLong,str(internaltest),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest)])
+        if len(orsequence) > 0:
+            print("I already saw that!")
+        else:
+            memoryfile.write(str(internaltest) + "\n")
+            nearfield.append(str(internaltest))
+    else:
+        #just write the OG test once
+        internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",[str(eval(inputtext)),""]]]
+        #print("shittysearch uses eval have to double check if it fucking works properly2",shittySearch([MemoryUNORDERED,str(internaltest2)]),str(internaltest2))
+        orsequence2 = bisectionSearch([memoryLong,str(internaltest2),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest2)])
+        if len(orsequence2) > 0:
+            print("already saw that 2")
+        else:
+            memoryfile.write(str(internaltest2) + "\n")
+            nearfield.append(str(internaltest2))
+    print("wtf nearfield3",nearfield)
+    memoryfile.close()
+    
     
 def FixedQualifier(argList):
     '''
@@ -5317,7 +5370,30 @@ def FixedQualifiermin1(argList):
     arg2 = argList[1]
     #check this guy
     arg3 = argList[2]
+    print("LHS guy",toString([ran(arg1([arg2,arg3])),"naive"]))
+    print("RHS guy",arg2)
     return toString([ran(arg1([arg2,arg3])),"naive"]) == arg2
+
+def strfix(argList):
+    '''
+    >figure out quote problems
+
+    >pairing quotations properly problem(?)
+    2 things to worry about: nesting and sequence
+    >another thing to worry is pairing properly?
+    >/ symbol clearing out quote in list:
+    >>> HINT: 
+    >>> len('TOTAL_ARGUMENT == "print(\'yoikes\')"')
+    35
+    conflict:
+    quotes are just being done linearly instead of in the "proper grouping"
+    >better to have a fix function than to program properly
+    >>>> think about just adding a  '\' to each quote inside the "wrong area"
+    >>new plan: recursively look if at each level the string can be evaled until you hit 'atomic bedrock'
+    >>hint: test for what quote is the first: ' or "
+    >>check for eval: else go down recursively
+
+    '''
     
 
 ##############################################################

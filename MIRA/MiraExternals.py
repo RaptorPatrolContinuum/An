@@ -646,10 +646,10 @@ def ComposeReplace(str1,str2):
         try:
             total = "'" + str2[1] + "'"
             #total = "\"" + str2[1] + "\""
-            #print("test TOTAL",total)
-            #print("TRY REPLACEMENT NOW")
-            #print(str1[0].replace("TOTAL_ARGUMENT", total))
-            #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+            print("test TOTAL",total)
+            print("TRY REPLACEMENT NOW1")
+            print(str1[0].replace("TOTAL_ARGUMENT", total))
+            print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
             if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
                 #
                 #print("got here???")
@@ -662,7 +662,7 @@ def ComposeReplace(str1,str2):
             #total = "'" + str2[1] + "'"
             total = "\"" + str2[1] + "\""
             print("test TOTAL",total)
-            print("TRY REPLACEMENT NOW")
+            print("TRY REPLACEMENT NOW2")
             print(str1[0].replace("TOTAL_ARGUMENT", total))
             print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
             if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
@@ -3678,7 +3678,7 @@ def delta2(argList):
         if x[0] == x[1]:
             ANS.append(x)
         elif len(x[0][0])!= 0 and len(x[1][0])!= 0:
-            #ANS.append([["Symbol" + str(symboli)], [symboli]])
+            ####ANS.append([["Symbol" + str(symboli)], [symboli]])
             #hint: alphas are in list because list forces composemeta to do argument replacement properly
             ANS.append([["α" + str(symboli)], ["α" + str(symboli)]])
             symboli += 1
@@ -3712,6 +3712,7 @@ def seqsplitmin(argList):
     if len(LHS[:LCont[0]]) == 0 and len(RHS[:LCont[1]]) == 0:
         pass
     else:
+        #print("who is this", [[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
         #ANS.append([[LHS[:LCont[0]]],[RHS[:LCont[1]]]])
         ANS = InsertAt(ANS,[[LHS[:LCont[0]]],[RHS[:LCont[1]]]],index[0])
 
@@ -4263,7 +4264,7 @@ def SeekForce(ArgList):
         
     ANS = []
 
-    print("SEEKFORCE ARGLIST", ArgList)
+    #print("SEEKFORCE ARGLIST", ArgList)
     #hint: arg3 not always delta2
     #print("dogshit life",delta2(["WTFalphaprint('')","betrprint('')"])) #arg3 should be delta2()
     #print("checking how to call func",arg3(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
@@ -4275,54 +4276,54 @@ def SeekForce(ArgList):
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
         while line:
-            print("SEEKFORCE STATS",ANS )
+            #print("SEEKFORCE STATS",ANS )
             try:
                 line = eval(line)
             except:
                 pass
             if fCheck(line) == True:
                 for x in line:
-                    print("monkaS argList", ArgList)
-                    print("what is X?",x)
-                    print("stats", line, arg2)
+                    #print("monkaS argList", ArgList)
+                    #print("what is X?",x)
+                    #print("stats", line, arg2)
                     linemod = line
-                    print("this is line UNFILTERED",linemod,type(linemod))
+                    #print("this is line UNFILTERED",linemod,type(linemod))
                     arg2mod = arg2
-                    print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
+                    #print("this is arg2 UNFILTERED",arg2mod,type(arg2mod))
                     try:
                         if arg4 != []:
                             linemod = arg4([line])
-                            print("preping for arg3, LINE",linemod)
+                            #print("preping for arg3, LINE",linemod)
                     except Exception as e:
-                        print("wtf1 went wrong?", e)
+                        #print("wtf1 went wrong?", e)
                         pass
                     try:
                         if arg5 != []:
                             arg2mod = arg5([arg2])
-                            print("preping for arg3, arg2",arg2mod)
+                            #print("preping for arg3, arg2",arg2mod)
                     except Exception as e:
-                        print("wtf2 went wrong?", e)
+                        #print("wtf2 went wrong?", e)
                         pass
                     
-                    print("stats for arg3", linemod, arg2mod)
+                    #print("stats for arg3", linemod, arg2mod)
                     try:
                         exist = arg3([linemod,arg2mod])
-                        print("SEEKFORCE APPEND",exist)
-                        print("append ?",len([z for z in ANS if z == exist]) == 0)
+                        #print("SEEKFORCE APPEND",exist)
+                        #print("append ?",len([z for z in ANS if z == exist]) == 0)
                         #hint: min2 has a problem with appending nonetypes so need a switch
                         if len([z for z in ANS if z == exist]) == 0 and exist != "dontappend":
-                            print("DONT STOP MODORENA FLASHBACK",[linemod,arg2mod])
-                            print("HYPERS",exist)
+                            #print("DONT STOP MODORENA FLASHBACK",[linemod,arg2mod])
+                            #print("HYPERS",exist)
                             ANS.append(exist)
                     except Exception as e:
-                        print("ERROR IN SEEKFORCE ",e)
+                        #print("ERROR IN SEEKFORCE ",e)
                         if e != []:
-                            print("HYPERS2", exist)
+                            #print("HYPERS2", exist)
                             ANS.append(e)
                             pass
                         pass
             line = rchop(fileref.readline(), '\n')
-    print("am I getting error here?",ANS)
+    #print("am I getting error here?",ANS)
     return ANS
 
 #SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
@@ -5083,7 +5084,8 @@ def abstractionGENERAL(argList):
             if len([y for y in guessAbst if y == thedelta]) == 0:
                 guessAbst.append(thedelta)
     print("COMPART MEMCOMPOSE WITH GUESSABST")
-    print("MEMCOMPOSE",str(MEMcomposeinput).encode('utf-8'))
+    #print("MEMCOMPOSE",str(MEMcomposeinput).encode('utf-8'))
+    print("MEMCOMPOSE",str(MEMcomposeinput))
     print("guessAbst",guessAbst)
     #print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
     abstractiondict = {}
@@ -5316,7 +5318,30 @@ def FixedQualifiermin1(argList):
     arg2 = argList[1]
     #check this guy
     arg3 = argList[2]
+    print("LHS guy",toString([ran(arg1([arg2,arg3])),"naive"]))
+    print("RHS guy",arg2)
     return toString([ran(arg1([arg2,arg3])),"naive"]) == arg2
+
+def strfix(argList):
+    '''
+    >figure out quote problems
+
+    >pairing quotations properly problem(?)
+    2 things to worry about: nesting and sequence
+    >another thing to worry is pairing properly?
+    >/ symbol clearing out quote in list:
+    >>> HINT: 
+    >>> len('TOTAL_ARGUMENT == "print(\'yoikes\')"')
+    35
+    conflict:
+    quotes are just being done linearly instead of in the "proper grouping"
+    >better to have a fix function than to program properly
+    >>>> think about just adding a  '\' to each quote inside the "wrong area"
+    >>new plan: recursively look if at each level the string can be evaled until you hit 'atomic bedrock'
+    >>hint: test for what quote is the first: ' or "
+    >>check for eval: else go down recursively
+
+    '''
     
 
 ##############################################################
