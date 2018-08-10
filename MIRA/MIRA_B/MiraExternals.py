@@ -5294,16 +5294,31 @@ def TestCode(argList):
     '''
     this is to clean up MIRA from being a duplicate code fuckfest when I have to fix shit
 
-    what this does is 
+    what this does is take memfilenames, input text, attempt the input text on mira, then write to memfiles.
+
+    HINT: RETURNS NEARFIELD BECAUSE I HAVE TO MAINTAIN IT AND RENAME HERE SO I DONT GET FUCKED BY SAME NAME AUSITM
+    
+    ARGLIST EXAMPLE:
+    [open(MemoryUNORDERED, 'a+'),inputtext,nearfield,memoryLong,basisname,MemoryUNORDERED]
+    #hint: in mira.py,
+    memoryLong = 'Memory.txt'
     '''
     #write input/output to memory RAM file:
-    memoryfile = open(MemoryUNORDERED, 'a+')
+    memoryfile = argList[0]
+    inputtext = argList[1]
+    nearfieldClone = argList[2]
+    memoryLong = argList[3]
+    basisname = argList[4]
+    MemoryUNORDERED = argList[5]
+    Descent = argList[6]
+
+    
     #stderr=subprocess.STDOUT
     #with Popen(['python', 'test.py'], stdout=PIPE, stderr=PIPE, bufsize=1, universal_newlines=True) as p:
     #with Popen(['python', 'Mira.py', inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
     miralist = ['python', OtherClone() + '\\Mira.py', inputtext]
     #print("this should be miralist", miralist)
-    print("wtf nearfield2",nearfield)
+    print("wtf nearfieldClone2",nearfieldClone)
     if Descent == True:
         #print("NEED TO MAKE CLONE!",argv)
         seesANS = []
@@ -5326,7 +5341,7 @@ def TestCode(argList):
             print("I already saw that!")
         else:
             memoryfile.write(str(internaltest) + "\n")
-            nearfield.append(str(internaltest))
+            nearfieldClone.append(str(internaltest))
     else:
         #just write the OG test once
         internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",[str(eval(inputtext)),""]]]
@@ -5336,9 +5351,12 @@ def TestCode(argList):
             print("already saw that 2")
         else:
             memoryfile.write(str(internaltest2) + "\n")
-            nearfield.append(str(internaltest2))
-    print("wtf nearfield3",nearfield)
+            nearfieldClone.append(str(internaltest2))
+    print("wtf nearfieldClone3",nearfieldClone)
     memoryfile.close()
+
+    #return nearfield so I can maintain it in MIRA.py
+    return nearfieldClone
     
     
 def FixedQualifier(argList):
@@ -5394,6 +5412,7 @@ def strfix(argList):
     >>check for eval: else go down recursively
 
     '''
+    
     
 
 ##############################################################

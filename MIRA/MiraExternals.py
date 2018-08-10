@@ -5288,6 +5288,76 @@ def abstractionGENERAL(argList):
             print("=")
     print("ENDHERE")
     os.remove("ABSTRACTFILE.txt")
+
+
+def TestCode(argList):
+    '''
+    this is to clean up MIRA from being a duplicate code fuckfest when I have to fix shit
+
+    what this does is take memfilenames, input text, attempt the input text on mira, then write to memfiles.
+
+    HINT: RETURNS NEARFIELD BECAUSE I HAVE TO MAINTAIN IT AND RENAME HERE SO I DONT GET FUCKED BY SAME NAME AUSITM
+    
+    ARGLIST EXAMPLE:
+    [open(MemoryUNORDERED, 'a+'),inputtext,nearfield,memoryLong,basisname,MemoryUNORDERED]
+    #hint: in mira.py,
+    memoryLong = 'Memory.txt'
+    '''
+    #write input/output to memory RAM file:
+    memoryfile = argList[0]
+    inputtext = argList[1]
+    nearfieldClone = argList[2]
+    memoryLong = argList[3]
+    basisname = argList[4]
+    MemoryUNORDERED = argList[5]
+    Descent = argList[6]
+
+    
+    #stderr=subprocess.STDOUT
+    #with Popen(['python', 'test.py'], stdout=PIPE, stderr=PIPE, bufsize=1, universal_newlines=True) as p:
+    #with Popen(['python', 'Mira.py', inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
+    miralist = ['python', OtherClone() + '\\Mira.py', inputtext]
+    #print("this should be miralist", miralist)
+    print("wtf nearfieldClone2",nearfieldClone)
+    if Descent == True:
+        #print("NEED TO MAKE CLONE!",argv)
+        seesANS = []
+        with Popen(miralist, stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
+            #print("ARGINPUT IS", argv)
+            for line in p.stdout:
+                print(line, end='')
+                sees = str([line]) + "\n"
+                #print("WTF IS SEES",sees)
+                seesANS.append(sees)
+            '''
+            for line in fileinput.input():
+                print("WTF DOES THIS DO",line)
+                #process(line)
+            '''
+        internaltest = [["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, "+inputtext+"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]]
+        #print("shittysearch uses eval have to double check if it fucking works properly1",shittySearch([MemoryUNORDERED,str(internaltest)]),str(internaltest))
+        orsequence = bisectionSearch([memoryLong,str(internaltest),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest)])
+        if len(orsequence) > 0:
+            print("I already saw that!")
+        else:
+            memoryfile.write(str(internaltest) + "\n")
+            nearfieldClone.append(str(internaltest))
+    else:
+        #just write the OG test once
+        internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",[str(eval(inputtext)),""]]]
+        #print("shittysearch uses eval have to double check if it fucking works properly2",shittySearch([MemoryUNORDERED,str(internaltest2)]),str(internaltest2))
+        orsequence2 = bisectionSearch([memoryLong,str(internaltest2),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest2)])
+        if len(orsequence2) > 0:
+            print("already saw that 2")
+        else:
+            memoryfile.write(str(internaltest2) + "\n")
+            nearfieldClone.append(str(internaltest2))
+    print("wtf nearfieldClone3",nearfieldClone)
+    memoryfile.close()
+
+    #return nearfield so I can maintain it in MIRA.py
+    return nearfieldClone
+    
     
 def FixedQualifier(argList):
     '''

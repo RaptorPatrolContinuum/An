@@ -50,99 +50,11 @@ while Descent:
         #INIT OTHER CLONE AS IM MAKING A LOT OF CHANGES
         Cloneinit()
 
-
-        #write input/output to memory RAM file:
-        memoryfile = open(MemoryUNORDERED, 'a+')
-        #stderr=subprocess.STDOUT
-        #with Popen(['python', 'test.py'], stdout=PIPE, stderr=PIPE, bufsize=1, universal_newlines=True) as p:
-        #with Popen(['python', 'Mira.py', inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
-        miralist = ['python', OtherClone() + '\\Mira.py', inputtext]
-        #print("this should be miralist", miralist)
-        print("wtf nearfield2",nearfield)
-        if Descent == True:
-            #print("NEED TO MAKE CLONE!",argv)
-            seesANS = []
-            with Popen(miralist, stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
-                #print("ARGINPUT IS", argv)
-                for line in p.stdout:
-                    print(line, end='')
-                    sees = str([line]) + "\n"
-                    #print("WTF IS SEES",sees)
-                    seesANS.append(sees)
-                '''
-                for line in fileinput.input():
-                    print("WTF DOES THIS DO",line)
-                    #process(line)
-                '''
-            internaltest = [["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, "+inputtext+"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]]
-            #print("shittysearch uses eval have to double check if it fucking works properly1",shittySearch([MemoryUNORDERED,str(internaltest)]),str(internaltest))
-            orsequence = bisectionSearch([memoryLong,str(internaltest),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest)])
-            if len(orsequence) > 0:
-                print("I already saw that!")
-            else:
-                memoryfile.write(str(internaltest) + "\n")
-                nearfield.append(str(internaltest))
-        else:
-            #just write the OG test once
-            internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",[str(eval(inputtext)),""]]]
-            #print("shittysearch uses eval have to double check if it fucking works properly2",shittySearch([MemoryUNORDERED,str(internaltest2)]),str(internaltest2))
-            orsequence2 = bisectionSearch([memoryLong,str(internaltest2),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest2)])
-            if len(orsequence2) > 0:
-                print("already saw that 2")
-            else:
-                memoryfile.write(str(internaltest2) + "\n")
-                nearfield.append(str(internaltest2))
-        print("wtf nearfield3",nearfield)
-        memoryfile.close()
-
-
-    
+        nearfield = TestCode([open(MemoryUNORDERED, 'a+'),inputtext,nearfield,memoryLong,basisname,MemoryUNORDERED,Descent])
 
         #THIS TRYBLOCK DOCUMENTS WHAT INPUT>MIRACLONE DOES
         try:
-            #write input/output to memory RAM file:
-            memoryfile = open(MemoryUNORDERED, 'a+')
-            #stderr=subprocess.STDOUT
-            #with Popen(['python', 'test.py'], stdout=PIPE, stderr=PIPE, bufsize=1, universal_newlines=True) as p:
-            #with Popen(['python', 'Mira.py', inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
-            miralist = ['python', OtherClone() + '\\Mira.py', inputtext]
-            #print("this should be miralist", miralist)
-            print("wtf nearfield4",nearfield)
-            if Descent == True:
-                #print("NEED TO MAKE CLONE!",argv)
-                seesANS = []
-                with Popen(miralist, stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
-                    #print("ARGINPUT IS", argv)
-                    for line in p.stdout:
-                        print(line, end='')
-                        sees = str([line]) + "\n"
-                        #print("WTF IS SEES",sees)
-                        seesANS.append(sees)
-                    '''
-                    for line in fileinput.input():
-                        print("WTF DOES THIS DO",line)
-                        #process(line)
-                    '''
-                internaltest = [["Popen(['python'," + str(os.getcwd()) + "\\Mira.py, "+inputtext+"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",seesANS]]
-                #print("shittysearch uses eval have to double check if it fucking works properly3",shittySearch([MemoryUNORDERED,str(internaltest)]),str(internaltest))
-                orsequence = bisectionSearch([memoryLong,str(internaltest),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest)])
-                if len(orsequence) > 0:
-                    print("I already saw that!")
-                else:
-                    memoryfile.write(str(internaltest) + "\n")
-                    nearfield.append(str(internaltest))
-            else:
-                #just write the OG test once
-                internaltest2 = [["TOTAL_ARGUMENT == '"+ str(inputtext) +"'",[str(eval(inputtext)),""]]]
-                #print("shittysearch uses eval have to double check if it fucking works properly4",shittySearch([MemoryUNORDERED,str(internaltest2)]),str(internaltest2))
-                orsequence2 = bisectionSearch([memoryLong,str(internaltest2),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest2)])
-                if len(orsequence2) > 0:
-                    print("already saw that 2")
-                else:
-                    memoryfile.write(str(internaltest2) + "\n")
-                    nearfield.append(str(internaltest2))
-            print("wtf nearfield5",nearfield)
-            memoryfile.close()
+            nearfield = TestCode([open(MemoryUNORDERED, 'a+'),inputtext,nearfield,memoryLong,basisname,MemoryUNORDERED,Descent])
         except Exception as e:
             print("error is ", e)
             print("code died")
