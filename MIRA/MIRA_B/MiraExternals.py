@@ -5415,11 +5415,9 @@ def strFix(argList):
     inputstring = argList[0]
     firststquote = ""
 
-    #figure out what kind of quote is at the beginning:
-    if str("\"" + inputstring + "\"")[0] == "\"":
-        firststquote = "double"
-    else:
-        firststquote = "single"
+
+
+    #assumptions: that the string is fixable, AKA: right amount of quotes at the right places and can be valid code by inserting \ to escape the proper quotes
 
     #now that I know what first quote is, time to force inputstring to be valid; AKA making all the inner
     #quotes that match the first quote by escaping them with \
@@ -5428,50 +5426,131 @@ def strFix(argList):
     ##problems: nesting and sequenced strings
     #step 1: remove the outer quotes
 
+    #fucking rip strorCode doesn't even need the invisible 1st quote
+
 
 def strorCode(argList):
     '''
     given a string and a position, figure out if that position would be considered as a string if put under eval
+
     '''
     inpstr = argList[0]
     index = argList[1]
 
-    double = 0
-    single = 0
-    endq = False
-    #print("single", single, "double",double)
-    #just count properly for singles and doubles. if you make a string sequence clear all info
-    for x in range(index+1):
-        endq = False
-        if inpstr[x] == '"' and double == 1:
-            double = 0
-            single = 0
-            endq = True
-        elif inpstr[x] == '"':
-            double += 1
+    newguy = str("\"" + inpstr + "\"")
 
-        if inpstr[x] == "'" and single == 1:
-            double = 0
-            single = 0
-            endq = True
-        elif inpstr[x] == "'":
-            single += 1
-        #print("single", single, "double", double, "x",inpstr[x],x)
+    #init firstquote
+    firststquote = ""
 
-    #hint: if double or single quote count is nonzero then it's string, else if its percieved as code
-    if double == 1 or single == 1 or endq == True:
-        return "string"
-    else:
-        return "code"
+    #figure out what kind of quote is at the beginning:
+    #if newguy[0] == '"':
+    #    firststquote = "double"
+    #elif newguy[0] == "'":
+    #    firststquote = "single"
 
+    #then change inpstr to be newguy to be more consistent
+    inpstr = newguy
+
+    print("she sees")
+    print(inpstr)
+    for x in range(index):
+        #hint: toggle string or code depending on if we hit another firststquote
+        #things to know: what is first quote style
+        
+        if firststquote != "":
+            print("data we know: STRI",x,inpstr[x],firststquote)
+        else:
+            print("data we know: CODE",x,inpstr[x],firststquote)
+
+        #print("so far",firststquote == "double")
+        #print("so far",inpstr[x] == '"')
+        #print("so far",firststquote == "double" and inpstr[x] == '"')
+        if firststquote == "double" and inpstr[x] == '"':
+            firststquote = ""
+        elif firststquote == "" and inpstr[x] == '"':
+            firststquote = "double"
+        if firststquote == "single" and inpstr[x] == "'":
+            firststquote = ""
+        elif firststquote == "" and inpstr[x] == "'":
+            firststquote = "single"
+            
+
+    
 #TEST "TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"
 #strorCode(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'",37])
 
-testguy = "TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"
+strorCode(["TOTAL_ARGUMENT ='    '= \"print('yoikes, don't do that')""",2+len("TOTAL_ARGUMENT ='    '= \"print('yoikes, don't do that')""")])
 
-for x in range(len(testguy)):
-    print(strorCode(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'",x]), testguy[x],x)
+#testguy2 = "TOTAL_ARGUMENT == 'print(\'yoikes, don\'t do that')'"
+#testguy2 = "TOTAL_ARGUMENT == \"print(\'yoikes, don\'t do that')\""
+testguy2 = "TOTAL_ARGUMENT ='    '= \"print('yoikes, don't do that')"""
+#^^^ this guy is a counterexample to the way I initially wrote strorCode. so have to rewrite :/
+#testguy2 = str("\"" + testguy2 + "\"")
 
+#strorCode(["TOTAL_ARGUMENT == \"print(\'yoikes, don\'t do that')\"",30,"v2"])
+#print("this is what she sees")
+#print(testguy2)
+#for x in range(len(testguy2)):
+#    #print(strorCode([testguy2,x]), testguy2[x],x)
+#    print(strorCode([testguy2,x,"v2"]), testguy2[x],x)
+
+
+#testguy = "TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"
+
+#for x in range(len(testguy)):
+#    print(strorCode(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'",x]), testguy[x],x)
+'''
+code T 0
+code O 1
+code T 2
+code A 3
+code L 4
+code _ 5
+code A 6
+code R 7
+code G 8
+code U 9
+code M 10
+code E 11
+code N 12
+code T 13
+code   14
+code = 15
+code = 16
+code   17
+string ' 18
+string p 19
+string r 20
+string i 21
+string n 22
+string t 23
+string ( 24
+string ' 25
+code y 26
+code o 27
+code i 28
+code k 29
+code e 30
+code s 31
+code , 32
+code   33
+code d 34
+code o 35
+code n 36
+string ' 37
+string t 38
+string   39
+string d 40
+string o 41
+string   42
+string t 43
+string h 44
+string a 45
+string t 46
+string ' 47
+code ) 48
+string ' 49
+'''
 ##############################################################
 
 def printpls(obj):
