@@ -5392,7 +5392,7 @@ def FixedQualifiermin1(argList):
     print("RHS guy",arg2)
     return toString([ran(arg1([arg2,arg3])),"naive"]) == arg2
 
-def strfix(argList):
+def strFix(argList):
     '''
     >figure out quote problems
 
@@ -5412,8 +5412,65 @@ def strfix(argList):
     >>check for eval: else go down recursively
 
     '''
-    
-    
+    inputstring = argList[0]
+    firststquote = ""
+
+    #figure out what kind of quote is at the beginning:
+    if str("\"" + inputstring + "\"")[0] == "\"":
+        firststquote = "double"
+    else:
+        firststquote = "single"
+
+    #now that I know what first quote is, time to force inputstring to be valid; AKA making all the inner
+    #quotes that match the first quote by escaping them with \
+
+    #then just "repeat the process" until done
+    ##problems: nesting and sequenced strings
+    #step 1: remove the outer quotes
+
+
+def strorCode(argList):
+    '''
+    given a string and a position, figure out if that position would be considered as a string if put under eval
+    '''
+    inpstr = argList[0]
+    index = argList[1]
+
+    double = 0
+    single = 0
+    endq = False
+    #print("single", single, "double",double)
+    #just count properly for singles and doubles. if you make a string sequence clear all info
+    for x in range(index+1):
+        endq = False
+        if inpstr[x] == '"' and double == 1:
+            double = 0
+            single = 0
+            endq = True
+        elif inpstr[x] == '"':
+            double += 1
+
+        if inpstr[x] == "'" and single == 1:
+            double = 0
+            single = 0
+            endq = True
+        elif inpstr[x] == "'":
+            single += 1
+        #print("single", single, "double", double, "x",inpstr[x],x)
+
+    #hint: if double or single quote count is nonzero then it's string, else if its percieved as code
+    if double == 1 or single == 1 or endq == True:
+        return "string"
+    else:
+        return "code"
+
+#TEST "TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"
+#strorCode(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'",37])
+
+testguy = "TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"
+
+for x in range(len(testguy)):
+    print(strorCode(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'",x]), testguy[x],x)
 
 ##############################################################
 

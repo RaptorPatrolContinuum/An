@@ -9,7 +9,6 @@ himitsu = [[["[['single', 'single']]", "[['z','y'],['y','x'],['x','z']]"], ["[['
 
 garbanzo = []
 
-
 with open('memoryUNORDERED.txt', 'r+', encoding='utf-8') as ordered1:
     ordered1.seek(0)
     for line in range(mapcountLINES(['memoryUNORDERED.txt'])):
@@ -33,6 +32,7 @@ with open('ABSTRACTFILE.txt', 'r+', encoding='utf-8') as ordered1:
 
 #for x in range(mapcountLINES(['ABSTRACTFILE.txt'])):
 #    print(FILEindexread(["ABSTRACTFILE.txt",x]))
+
 
 
 
