@@ -5394,6 +5394,8 @@ def FixedQualifiermin1(argList):
 
 def strFix(argList):
     '''
+    HINT: need to get raw input string by doing r"string" in the args
+
     >figure out quote problems
 
     >pairing quotations properly problem(?)
@@ -5411,11 +5413,9 @@ def strFix(argList):
     >>hint: test for what quote is the first: ' or "
     >>check for eval: else go down recursively
 
+    
     '''
-    inputstring = argList[0]
-    firststquote = ""
-
-
+    inpstr = argList[0]
 
     #assumptions: that the string is fixable, AKA: right amount of quotes at the right places and can be valid code by inserting \ to escape the proper quotes
 
@@ -5428,6 +5428,26 @@ def strFix(argList):
 
     #fucking rip strorCode doesn't even need the invisible 1st quote
 
+    #step 1: figure out sections that should be strings:
+    # (*"   "*), [*"   "*].
+    # force them to be strings by adding \ at the right spot
+
+    print("she sees", inpstr)
+    #1: check if you can pass raw string through a func
+    nestcount = {}
+    nestcount[str(charcount + "[")]= 0
+    nestcount[str(charcount + "(")]= 0
+    for x in range(len(inpstr)):
+        print("parts",x, inpstr[x])
+        if x == "[":
+            nestcount[str(charcount + "[")] += 1
+        elif x == "]":
+            nestcount[str(charcount + "[")] += -1
+        elif x == "(":
+            nestcount[str(charcount + "(")] += 1
+        elif x == ")":
+            nestcount[str(charcount + "(")] += -1
+    
 
 def strorCode(argList):
     '''
@@ -5451,20 +5471,23 @@ def strorCode(argList):
     #then change inpstr to be newguy to be more consistent
     inpstr = newguy
 
-    print("she sees")
-    print(inpstr)
+    #print("she sees")
+    #print(inpstr)
+    ANS = ""
     for x in range(index):
         #hint: toggle string or code depending on if we hit another firststquote
         #things to know: what is first quote style
-        
-        if firststquote != "":
-            print("data we know: STRI",x,inpstr[x],firststquote)
-        else:
-            print("data we know: CODE",x,inpstr[x],firststquote)
 
-        #print("so far",firststquote == "double")
-        #print("so far",inpstr[x] == '"')
-        #print("so far",firststquote == "double" and inpstr[x] == '"')
+        if firststquote != "CODE" and (inpstr[x] == '"' or inpstr[x] == "'"):
+            #print("data we know: STRI",x,inpstr[x],firststquote)
+            ANS = "STRI"
+        elif firststquote != "":
+            #print("data we know: STRI",x,inpstr[x],firststquote)
+            ANS = "STRI"
+        else:
+            #print("data we know: CODE",x,inpstr[x],firststquote)
+            ANS = "CODE"
+
         if firststquote == "double" and inpstr[x] == '"':
             firststquote = ""
         elif firststquote == "" and inpstr[x] == '"':
@@ -5473,83 +5496,73 @@ def strorCode(argList):
             firststquote = ""
         elif firststquote == "" and inpstr[x] == "'":
             firststquote = "single"
-            
+    return ANS
+        
 
-    
-#TEST "TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"
-#strorCode(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'",37])
 
+
+'''
 strorCode(["TOTAL_ARGUMENT ='    '= \"print('yoikes, don't do that')""",2+len("TOTAL_ARGUMENT ='    '= \"print('yoikes, don't do that')""")])
 
-#testguy2 = "TOTAL_ARGUMENT == 'print(\'yoikes, don\'t do that')'"
-#testguy2 = "TOTAL_ARGUMENT == \"print(\'yoikes, don\'t do that')\""
-testguy2 = "TOTAL_ARGUMENT ='    '= \"print('yoikes, don't do that')"""
-#^^^ this guy is a counterexample to the way I initially wrote strorCode. so have to rewrite :/
-#testguy2 = str("\"" + testguy2 + "\"")
-
-#strorCode(["TOTAL_ARGUMENT == \"print(\'yoikes, don\'t do that')\"",30,"v2"])
-#print("this is what she sees")
-#print(testguy2)
-#for x in range(len(testguy2)):
-#    #print(strorCode([testguy2,x]), testguy2[x],x)
-#    print(strorCode([testguy2,x,"v2"]), testguy2[x],x)
-
-
-#testguy = "TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"
-
-#for x in range(len(testguy)):
-#    print(strorCode(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'",x]), testguy[x],x)
-'''
-code T 0
-code O 1
-code T 2
-code A 3
-code L 4
-code _ 5
-code A 6
-code R 7
-code G 8
-code U 9
-code M 10
-code E 11
-code N 12
-code T 13
-code   14
-code = 15
-code = 16
-code   17
-string ' 18
-string p 19
-string r 20
-string i 21
-string n 22
-string t 23
-string ( 24
-string ' 25
-code y 26
-code o 27
-code i 28
-code k 29
-code e 30
-code s 31
-code , 32
-code   33
-code d 34
-code o 35
-code n 36
-string ' 37
-string t 38
-string   39
-string d 40
-string o 41
-string   42
-string t 43
-string h 44
-string a 45
-string t 46
-string ' 47
-code ) 48
-string ' 49
+she sees
+"TOTAL_ARGUMENT ='    '= "print('yoikes, don't do that')"
+data we know: STRI 0 " 
+data we know: STRI 1 T double
+data we know: STRI 2 O double
+data we know: STRI 3 T double
+data we know: STRI 4 A double
+data we know: STRI 5 L double
+data we know: STRI 6 _ double
+data we know: STRI 7 A double
+data we know: STRI 8 R double
+data we know: STRI 9 G double
+data we know: STRI 10 U double
+data we know: STRI 11 M double
+data we know: STRI 12 E double
+data we know: STRI 13 N double
+data we know: STRI 14 T double
+data we know: STRI 15   double
+data we know: STRI 16 = double
+data we know: STRI 17 ' double
+data we know: STRI 18   double
+data we know: STRI 19   double
+data we know: STRI 20   double
+data we know: STRI 21   double
+data we know: STRI 22 ' double
+data we know: STRI 23 = double
+data we know: STRI 24   double
+data we know: STRI 25 " double
+data we know: CODE 26 p 
+data we know: CODE 27 r 
+data we know: CODE 28 i 
+data we know: CODE 29 n 
+data we know: CODE 30 t 
+data we know: CODE 31 ( 
+data we know: STRI 32 ' 
+data we know: STRI 33 y single
+data we know: STRI 34 o single
+data we know: STRI 35 i single
+data we know: STRI 36 k single
+data we know: STRI 37 e single
+data we know: STRI 38 s single
+data we know: STRI 39 , single
+data we know: STRI 40   single
+data we know: STRI 41 d single
+data we know: STRI 42 o single
+data we know: STRI 43 n single
+data we know: STRI 44 ' single
+data we know: CODE 45 t 
+data we know: CODE 46   
+data we know: CODE 47 d 
+data we know: CODE 48 o 
+data we know: CODE 49   
+data we know: CODE 50 t 
+data we know: CODE 51 h 
+data we know: CODE 52 a 
+data we know: CODE 53 t 
+data we know: STRI 54 ' 
+data we know: STRI 55 ) single
+data we know: STRI 56 " single
 '''
 ##############################################################
 
