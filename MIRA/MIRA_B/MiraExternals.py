@@ -5445,49 +5445,158 @@ def strFix(argList):
     nestcount["["] = 0
     nestcount["("] = 0
 
+    
+    ANS = inpstr
+    print("min1 args",argList + [nestcount])
+    strFixmin1(argList + [nestcount])
+    return ANS
+
+def strFixmin1(argList):
+    '''
+    I need to stop duplicate code
+    what this does is track data as you go along a string and does extra if you're trying to nest
+
+    arglist:
+    take arglist from OG func
+    nested info to prevent infinity
+    nestcount
+    ySkip 
+    '''
+
+    try:
+        nestcount = argList[1]
+    except:
+        nestcount = {}
+    try:
+        nested = argList[2]
+    except:
+        nested = "no"
+    #init ySkip --- ySkip is for when I need to skip an entire string section but since I iterate x on a seq of integers I need to just not do anything on those integers
+    try:
+        ySkip = argList[3]
+    except:
+        ySkip = 0
+
+    #getting lots of / from python auto insert:
+    if nested == "yes":
+        inpstr = argList[0]
+    else:
+        inpstr = "%r"%argList[0]
+    print("check calls")
+    print(inpstr)
+
     #init firstquote
     firststquote = ""
     WHATIS = ""
+
+    #print("double check")
+    #print(nestcount)
+    #print(nested)
+    
     
     for x in range(len(inpstr)):
-        #print("parts",x, inpstr[x])
-        if inpstr[x] == "[":
-            nestcount["["] += 1
-        elif inpstr[x] == "]":
-            nestcount["["] += -1
-        elif inpstr[x] == "(":
-            nestcount["("] += 1
-        elif inpstr[x] == ")":
-            nestcount["("] += -1
+        #print("x vs ySkip",x,ySkip)
+        if x >= ySkip:
+            #for recursion use the original nestcount
+            if nested == "yes":
+                nestmin = nestcount["("] + nestcount["["]
+            else:
+                nestmin = 0
+            
+            #print("parts",x, inpstr[x])
+            if inpstr[x] == "[":
+                nestcount["["] += 1
+            elif inpstr[x] == "]":
+                nestcount["["] += -1
+            elif inpstr[x] == "(":
+                nestcount["("] += 1
+            elif inpstr[x] == ")":
+                nestcount["("] += -1
+    
+            #and nested == "no"
+            if nestcount["("] + nestcount["["] > nestmin:
+                #strFixmin1(argList)
+                yS = x
+                #y modified to go to the end
+                yE = x
+                #print("start to end",inpstr[yS:])
+                #need new nestcount:
+                #copy dict instead of making an alias for same dict
+                if nested == "yes":
+                    nestcountYSE = {}
+                    nestcountYSE["("] = nestcount["("]
+                    nestcountYSE["["] = nestcount["["]
+                else:
+                    nestcountYSE = nestcount.copy()
+                print("CHECK THIS WHILE FUNCTION",inpstr[yS:])
+                print("nestmin stats",nestcountYSE["("], nestcountYSE["["],nestcountYSE["("] + nestcountYSE["["],nestmin)
+                while nestcountYSE["("] + nestcountYSE["["] > nestmin:
+                    yE += 1
+                    #if you go past the end of the string return error
+                    if yE >= len(inpstr):
+                        #return "SOMETHIBNG FUCKED UP HERE"
+                        raise ValueError('INDEX FUCKED',argList,"strfixmin1")
+                    #print('inpstr VS yE:',len(inpstr),yE)
+                    if inpstr[yE] == "[":
+                        nestcountYSE["["] += 1
+                    elif inpstr[yE] == "]":
+                        nestcountYSE["["] += -1
+                    elif inpstr[yE] == "(":
+                        nestcountYSE["("] += 1
+                    elif inpstr[yE] == ")":
+                        nestcountYSE["("] += -1
+                    #print("tests failing",type(inpstr[yE]),type("["),inpstr[yE], "[",inpstr[yE] == "[")
+                    print("neststats2:", len(inpstr), inpstr[yS], inpstr[yE],"[",nestcountYSE["["],"(",nestcountYSE["("])
+                    print("nestcount",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
+                print("CHECK THIS WHILE FUNCTION END==========")
+                    
+                    
+                    
+                
+                #hint: now we update ySkip to prevent dupes
+                print("old ySkip",ySkip)
+                ySkip = yE
+                print("update ySkip",ySkip)
+                print("figure out the right splicing",yS+1,yE)
+                print("stary ",inpstr[yS+1:yE])
+                #to prevent infinity
+                if len(inpstr[yS+1:yE]) > 0:
+                    print("recurse on our proper splicing")
+                    strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes"])
 
-        #print("backslash test",inpstr[x-1] == '\\')
-        #print("backslash test",inpstr[x-1], '\\')
-        if inpstr[x-1] == '\\':
-            print("data we know: \\trig",WHATIS,x,inpstr[x],firststquote)
-        elif firststquote != "CODE" and (inpstr[x] == '"' or inpstr[x] == "'"):
-            print("data we know: STRI",x,inpstr[x],firststquote)
-            WHATIS = "STRI"
-        elif firststquote != "":
-            print("data we know: STRI",x,inpstr[x],firststquote)
-            WHATIS = "STRI"
+            #print("backslash test",inpstr[x-1] == '\\')
+            #print("backslash test",inpstr[x-1], '\\')
+            if inpstr[x-1] == '\\':
+                #print("data we know: \\trig",WHATIS,x,inpstr[x],firststquote)
+                pass
+            elif firststquote != "CODE" and (inpstr[x] == '"' or inpstr[x] == "'"):
+                #print("data we know: STRI",x,inpstr[x],firststquote)
+                WHATIS = "STRI"
+            elif firststquote != "":
+                #print("data we know: STRI",x,inpstr[x],firststquote)
+                WHATIS = "STRI"
+            else:
+                #print("data we know: CODE",x,inpstr[x],firststquote)
+                WHATIS = "CODE"
+
+            if firststquote == "double" and inpstr[x] == '"' and inpstr[x-1] != '\\':
+                firststquote = ""
+            elif firststquote == "" and inpstr[x] == '"' and inpstr[x-1] != '\\':
+                firststquote = "double"
+            if firststquote == "single" and inpstr[x] == "'" and inpstr[x-1] != '\\':
+                firststquote = ""
+            elif firststquote == "" and inpstr[x] == "'" and inpstr[x-1] != '\\':
+                firststquote = "single"
+
+            if inpstr[x] == "'" or inpstr[x] == '"':
+                #figure out what IS vs what SHOULD BE
+                pass
+            print("neststats:", x, inpstr[x],"[",nestcount["["],"(",nestcount["("], "WHATIS:",WHATIS)
         else:
-            print("data we know: CODE",x,inpstr[x],firststquote)
-            WHATIS = "CODE"
-
-        if firststquote == "double" and inpstr[x] == '"' and inpstr[x-1] != '\\':
-            firststquote = ""
-        elif firststquote == "" and inpstr[x] == '"' and inpstr[x-1] != '\\':
-            firststquote = "double"
-        if firststquote == "single" and inpstr[x] == "'" and inpstr[x-1] != '\\':
-            firststquote = ""
-        elif firststquote == "" and inpstr[x] == "'" and inpstr[x-1] != '\\':
-            firststquote = "single"
-
-        if inpstr[x] == "'" or inpstr[x] == '"':
-            #figure out what IS vs what SHOULD BE
+            #print("do nothing here", inpstr[x:ySkip])
             pass
-
-        print("neststats:", inpstr[x],"[",nestcount["["],"(",nestcount["("], "WHATIS:",WHATIS)
+        
+    return
 
 #strFix(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"])
         

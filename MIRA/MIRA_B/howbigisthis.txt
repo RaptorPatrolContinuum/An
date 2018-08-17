@@ -1,285 +1,661 @@
+0 toString([dom(delta2(["print(\'alpha\')","print(\'α0\')"])),"naive"])
+          ([dom(delta2(["print(\'alpha\')","print(\'α0\')"])),"naive"])
+           [dom(delta2(["print(\'alpha\')","print(\'α0\')"])),"naive"]
+		       (delta2(["print(\'alpha\')","print(\'α0\')"]))
+			          (["print(\'alpha\')","print(\'α0\')"])
+					   ["print(\'alpha\')","print(\'α0\')"]
+					          (\'alpha\')        (\'α0\')
+							 Python 3.6.3 (v3.6.3:2c5fed8, Oct  3 2017, 17:26:49) [MSC v.1900 32 bit (Intel)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> 
+================ RESTART: C:\An\MIRA\MIRA_B\MiraExternals.py ================
 she sees 'toString([dom(delta2(["print(\'alpha\')","print(\'α0\')"])),"naive"])'
-backslash test True
-backslash test ' \
-data we know: STRI 0 ' 
-neststats: ' [ 0 ( 0 WHATIS: STRI
-backslash test True
-backslash test ' \
-data we know: STRI 1 t single
-neststats: t [ 0 ( 0 WHATIS: STRI
-backslash test True
-backslash test t \
-data we know: STRI 2 o single
-neststats: o [ 0 ( 0 WHATIS: STRI
-backslash test True
-backslash test o \
-data we know: STRI 3 S single
-neststats: S [ 0 ( 0 WHATIS: STRI
-backslash test True
-backslash test S \
-data we know: STRI 4 t single
-neststats: t [ 0 ( 0 WHATIS: STRI
-backslash test True
-backslash test t \
-data we know: STRI 5 r single
-neststats: r [ 0 ( 0 WHATIS: STRI
-backslash test True
-backslash test r \
-data we know: STRI 6 i single
-neststats: i [ 0 ( 0 WHATIS: STRI
-backslash test True
-backslash test i \
-data we know: STRI 7 n single
-neststats: n [ 0 ( 0 WHATIS: STRI
-backslash test True
-backslash test n \
-data we know: STRI 8 g single
-neststats: g [ 0 ( 0 WHATIS: STRI
-backslash test True
-backslash test g \
-data we know: STRI 9 ( single
-neststats: ( [ 0 ( 1 WHATIS: STRI
-backslash test True
-backslash test ( \
-data we know: STRI 10 [ single
-neststats: [ [ 1 ( 1 WHATIS: STRI
-backslash test True
-backslash test [ \
-data we know: STRI 11 d single
-neststats: d [ 1 ( 1 WHATIS: STRI
-backslash test True
-backslash test d \
-data we know: STRI 12 o single
-neststats: o [ 1 ( 1 WHATIS: STRI
-backslash test True
-backslash test o \
-data we know: STRI 13 m single
-neststats: m [ 1 ( 1 WHATIS: STRI
-backslash test True
-backslash test m \
-data we know: STRI 14 ( single
-neststats: ( [ 1 ( 2 WHATIS: STRI
-backslash test True
-backslash test ( \
-data we know: STRI 15 d single
-neststats: d [ 1 ( 2 WHATIS: STRI
-backslash test True
-backslash test d \
-data we know: STRI 16 e single
-neststats: e [ 1 ( 2 WHATIS: STRI
-backslash test True
-backslash test e \
-data we know: STRI 17 l single
-neststats: l [ 1 ( 2 WHATIS: STRI
-backslash test True
-backslash test l \
-data we know: STRI 18 t single
-neststats: t [ 1 ( 2 WHATIS: STRI
-backslash test True
-backslash test t \
-data we know: STRI 19 a single
-neststats: a [ 1 ( 2 WHATIS: STRI
-backslash test True
-backslash test a \
-data we know: STRI 20 2 single
-neststats: 2 [ 1 ( 2 WHATIS: STRI
-backslash test True
-backslash test 2 \
-data we know: STRI 21 ( single
-neststats: ( [ 1 ( 3 WHATIS: STRI
-backslash test True
-backslash test ( \
-data we know: STRI 22 [ single
-neststats: [ [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test [ \
-data we know: STRI 23 " single
-neststats: " [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test " \
-data we know: STRI 24 p single
-neststats: p [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test p \
-data we know: STRI 25 r single
-neststats: r [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test r \
-data we know: STRI 26 i single
-neststats: i [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test i \
-data we know: STRI 27 n single
-neststats: n [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test n \
-data we know: STRI 28 t single
-neststats: t [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test t \
-data we know: STRI 29 ( single
-neststats: ( [ 2 ( 4 WHATIS: STRI
-backslash test True
-backslash test ( \
-data we know: STRI 30 \ single
-neststats: \ [ 2 ( 4 WHATIS: STRI
-backslash test False
-backslash test \ \
-data we know: STRI 31 ' single
-neststats: ' [ 2 ( 4 WHATIS: STRI
-backslash test True
-backslash test ' \
-data we know: CODE 32 a 
-neststats: a [ 2 ( 4 WHATIS: CODE
-backslash test True
-backslash test a \
-data we know: CODE 33 l 
-neststats: l [ 2 ( 4 WHATIS: CODE
-backslash test True
-backslash test l \
-data we know: CODE 34 p 
-neststats: p [ 2 ( 4 WHATIS: CODE
-backslash test True
-backslash test p \
-data we know: CODE 35 h 
-neststats: h [ 2 ( 4 WHATIS: CODE
-backslash test True
-backslash test h \
-data we know: CODE 36 a 
-neststats: a [ 2 ( 4 WHATIS: CODE
-backslash test True
-backslash test a \
-data we know: CODE 37 \ 
-neststats: \ [ 2 ( 4 WHATIS: CODE
-backslash test False
-backslash test \ \
-data we know: CODE 38 ' 
-neststats: ' [ 2 ( 4 WHATIS: CODE
-backslash test True
-backslash test ' \
-data we know: STRI 39 ) single
-neststats: ) [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test ) \
-data we know: STRI 40 " single
-neststats: " [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test " \
-data we know: STRI 41 , single
-neststats: , [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test , \
-data we know: STRI 42 " single
-neststats: " [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test " \
-data we know: STRI 43 p single
-neststats: p [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test p \
-data we know: STRI 44 r single
-neststats: r [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test r \
-data we know: STRI 45 i single
-neststats: i [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test i \
-data we know: STRI 46 n single
-neststats: n [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test n \
-data we know: STRI 47 t single
-neststats: t [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test t \
-data we know: STRI 48 ( single
-neststats: ( [ 2 ( 4 WHATIS: STRI
-backslash test True
-backslash test ( \
-data we know: STRI 49 \ single
-neststats: \ [ 2 ( 4 WHATIS: STRI
-backslash test False
-backslash test \ \
-data we know: STRI 50 ' single
-neststats: ' [ 2 ( 4 WHATIS: STRI
-backslash test True
-backslash test ' \
-data we know: CODE 51 α 
-neststats: α [ 2 ( 4 WHATIS: CODE
-backslash test True
-backslash test α \
-data we know: CODE 52 0 
-neststats: 0 [ 2 ( 4 WHATIS: CODE
-backslash test True
-backslash test 0 \
-data we know: CODE 53 \ 
-neststats: \ [ 2 ( 4 WHATIS: CODE
-backslash test False
-backslash test \ \
-data we know: CODE 54 ' 
-neststats: ' [ 2 ( 4 WHATIS: CODE
-backslash test True
-backslash test ' \
-data we know: STRI 55 ) single
-neststats: ) [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test ) \
-data we know: STRI 56 " single
-neststats: " [ 2 ( 3 WHATIS: STRI
-backslash test True
-backslash test " \
-data we know: STRI 57 ] single
-neststats: ] [ 1 ( 3 WHATIS: STRI
-backslash test True
-backslash test ] \
-data we know: STRI 58 ) single
-neststats: ) [ 1 ( 2 WHATIS: STRI
-backslash test True
-backslash test ) \
-data we know: STRI 59 ) single
-neststats: ) [ 1 ( 1 WHATIS: STRI
-backslash test True
-backslash test ) \
-data we know: STRI 60 , single
-neststats: , [ 1 ( 1 WHATIS: STRI
-backslash test True
-backslash test , \
-data we know: STRI 61 " single
-neststats: " [ 1 ( 1 WHATIS: STRI
-backslash test True
-backslash test " \
-data we know: STRI 62 n single
-neststats: n [ 1 ( 1 WHATIS: STRI
-backslash test True
-backslash test n \
-data we know: STRI 63 a single
-neststats: a [ 1 ( 1 WHATIS: STRI
-backslash test True
-backslash test a \
-data we know: STRI 64 i single
-neststats: i [ 1 ( 1 WHATIS: STRI
-backslash test True
-backslash test i \
-data we know: STRI 65 v single
-neststats: v [ 1 ( 1 WHATIS: STRI
-backslash test True
-backslash test v \
-data we know: STRI 66 e single
-neststats: e [ 1 ( 1 WHATIS: STRI
-backslash test True
-backslash test e \
-data we know: STRI 67 " single
-neststats: " [ 1 ( 1 WHATIS: STRI
-backslash test True
-backslash test " \
-data we know: STRI 68 ] single
-neststats: ] [ 0 ( 1 WHATIS: STRI
-backslash test True
-backslash test ] \
-data we know: STRI 69 ) single
-neststats: ) [ 0 ( 0 WHATIS: STRI
-backslash test True
-backslash test ) \
-data we know: STRI 70 ' single
-neststats: ' [ 0 ( 0 WHATIS: STRI
+min1 args ['toString([dom(delta2(["print(\'alpha\')","print(\'α0\')"])),"naive"])', {'[': 0, '(': 0}]
+check calls
+'toString([dom(delta2(["print(\'alpha\')","print(\'α0\')"])),"naive"])'
+neststats: 0 ' [ 0 ( 0 WHATIS: STRI
+neststats: 1 t [ 0 ( 0 WHATIS: STRI
+neststats: 2 o [ 0 ( 0 WHATIS: STRI
+neststats: 3 S [ 0 ( 0 WHATIS: STRI
+neststats: 4 t [ 0 ( 0 WHATIS: STRI
+neststats: 5 r [ 0 ( 0 WHATIS: STRI
+neststats: 6 i [ 0 ( 0 WHATIS: STRI
+neststats: 7 n [ 0 ( 0 WHATIS: STRI
+neststats: 8 g [ 0 ( 0 WHATIS: STRI
+CHECK THIS WHILE FUNCTION ([dom(delta2(["print(\'alpha\')","print(\'α0\')"])),"naive"])'
+nestmin stats 1 0 1 0
+neststats2: 71 ( [ [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 71 ( d [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 71 ( o [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 71 ( m [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 71 ( ( [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 71 ( d [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 71 ( e [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 71 ( l [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 71 ( t [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 71 ( a [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 71 ( 2 [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 71 ( ( [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 71 ( [ [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( " [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( p [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( r [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( i [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( n [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( t [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( ( [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( \ [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( ' [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( a [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( l [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( p [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( h [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( a [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( \ [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( ' [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( ) [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( " [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( , [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( " [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( p [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( r [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( i [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( n [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( t [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( ( [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( \ [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( ' [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( α [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( 0 [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( \ [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( ' [ 2 ( 4
+nestcount 4 2 0 True
+neststats2: 71 ( ) [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( " [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 71 ( ] [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 71 ( ) [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 71 ( ) [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 71 ( , [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 71 ( " [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 71 ( n [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 71 ( a [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 71 ( i [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 71 ( v [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 71 ( e [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 71 ( " [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 71 ( ] [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 71 ( ) [ 0 ( 0
+nestcount 0 0 0 False
+CHECK THIS WHILE FUNCTION END==========
+old ySkip 0
+update ySkip 69
+figure out the right splicing 10 69
+stary  [dom(delta2(["print(\'alpha\')","print(\'α0\')"])),"naive"]
+recurse on our proper splicing
+check calls
+[dom(delta2(["print(\'alpha\')","print(\'α0\')"])),"naive"]
+CHECK THIS WHILE FUNCTION [dom(delta2(["print(\'alpha\')","print(\'α0\')"])),"naive"]
+nestmin stats 0 1 1 0
+neststats2: 59 [ d [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 59 [ o [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 59 [ m [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 59 [ ( [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 59 [ d [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 59 [ e [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 59 [ l [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 59 [ t [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 59 [ a [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 59 [ 2 [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 59 [ ( [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 59 [ [ [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ " [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ p [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ r [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ i [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ n [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ t [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ ( [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ \ [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ ' [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ a [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ l [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ p [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ h [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ a [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ \ [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ ' [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ ) [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ " [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ , [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ " [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ p [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ r [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ i [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ n [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ t [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ ( [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ \ [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ ' [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ α [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ 0 [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ \ [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ ' [ 2 ( 3
+nestcount 3 2 0 True
+neststats2: 59 [ ) [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ " [ 2 ( 2
+nestcount 2 2 0 True
+neststats2: 59 [ ] [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 59 [ ) [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 59 [ ) [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 59 [ , [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 59 [ " [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 59 [ n [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 59 [ a [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 59 [ i [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 59 [ v [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 59 [ e [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 59 [ " [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 59 [ ] [ 0 ( 0
+nestcount 0 0 0 False
+CHECK THIS WHILE FUNCTION END==========
+old ySkip 0
+update ySkip 58
+figure out the right splicing 1 58
+stary  dom(delta2(["print(\'alpha\')","print(\'α0\')"])),"naive"
+recurse on our proper splicing
+check calls
+dom(delta2(["print(\'alpha\')","print(\'α0\')"])),"naive"
+neststats: 0 d [ 0 ( 0 WHATIS: CODE
+neststats: 1 o [ 0 ( 0 WHATIS: CODE
+neststats: 2 m [ 0 ( 0 WHATIS: CODE
+CHECK THIS WHILE FUNCTION (delta2(["print(\'alpha\')","print(\'α0\')"])),"naive"
+nestmin stats 1 0 1 0
+neststats2: 57 ( d [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 57 ( e [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 57 ( l [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 57 ( t [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 57 ( a [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 57 ( 2 [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 57 ( ( [ 0 ( 2
+nestcount 2 0 0 True
+neststats2: 57 ( [ [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( " [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( p [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( r [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( i [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( n [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( t [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( ( [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( \ [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( ' [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( a [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( l [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( p [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( h [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( a [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( \ [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( ' [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( ) [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( " [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( , [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( " [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( p [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( r [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( i [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( n [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( t [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( ( [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( \ [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( ' [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( α [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( 0 [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( \ [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( ' [ 1 ( 3
+nestcount 3 1 0 True
+neststats2: 57 ( ) [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( " [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 57 ( ] [ 0 ( 2
+nestcount 2 0 0 True
+neststats2: 57 ( ) [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 57 ( ) [ 0 ( 0
+nestcount 0 0 0 False
+CHECK THIS WHILE FUNCTION END==========
+old ySkip 0
+update ySkip 48
+figure out the right splicing 4 48
+stary  delta2(["print(\'alpha\')","print(\'α0\')"])
+recurse on our proper splicing
+check calls
+delta2(["print(\'alpha\')","print(\'α0\')"])
+neststats: 0 d [ 0 ( 0 WHATIS: CODE
+neststats: 1 e [ 0 ( 0 WHATIS: CODE
+neststats: 2 l [ 0 ( 0 WHATIS: CODE
+neststats: 3 t [ 0 ( 0 WHATIS: CODE
+neststats: 4 a [ 0 ( 0 WHATIS: CODE
+neststats: 5 2 [ 0 ( 0 WHATIS: CODE
+CHECK THIS WHILE FUNCTION (["print(\'alpha\')","print(\'α0\')"])
+nestmin stats 1 0 1 0
+neststats2: 44 ( [ [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( " [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( p [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( r [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( i [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( n [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( t [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( ( [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( \ [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( ' [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( a [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( l [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( p [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( h [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( a [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( \ [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( ' [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( ) [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( " [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( , [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( " [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( p [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( r [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( i [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( n [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( t [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( ( [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( \ [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( ' [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( α [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( 0 [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( \ [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( ' [ 1 ( 2
+nestcount 2 1 0 True
+neststats2: 44 ( ) [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( " [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 44 ( ] [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 44 ( ) [ 0 ( 0
+nestcount 0 0 0 False
+CHECK THIS WHILE FUNCTION END==========
+old ySkip 0
+update ySkip 43
+figure out the right splicing 7 43
+stary  ["print(\'alpha\')","print(\'α0\')"]
+recurse on our proper splicing
+check calls
+["print(\'alpha\')","print(\'α0\')"]
+CHECK THIS WHILE FUNCTION ["print(\'alpha\')","print(\'α0\')"]
+nestmin stats 0 1 1 0
+neststats2: 36 [ " [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ p [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ r [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ i [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ n [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ t [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ ( [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ \ [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ ' [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ a [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ l [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ p [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ h [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ a [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ \ [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ ' [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ ) [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ " [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ , [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ " [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ p [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ r [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ i [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ n [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ t [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ ( [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ \ [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ ' [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ α [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ 0 [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ \ [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ ' [ 1 ( 1
+nestcount 1 1 0 True
+neststats2: 36 [ ) [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ " [ 1 ( 0
+nestcount 0 1 0 True
+neststats2: 36 [ ] [ 0 ( 0
+nestcount 0 0 0 False
+CHECK THIS WHILE FUNCTION END==========
+old ySkip 0
+update ySkip 35
+figure out the right splicing 1 35
+stary  "print(\'alpha\')","print(\'α0\')"
+recurse on our proper splicing
+check calls
+"print(\'alpha\')","print(\'α0\')"
+neststats: 0 " [ 0 ( 0 WHATIS: STRI
+neststats: 1 p [ 0 ( 0 WHATIS: STRI
+neststats: 2 r [ 0 ( 0 WHATIS: STRI
+neststats: 3 i [ 0 ( 0 WHATIS: STRI
+neststats: 4 n [ 0 ( 0 WHATIS: STRI
+neststats: 5 t [ 0 ( 0 WHATIS: STRI
+CHECK THIS WHILE FUNCTION (\'alpha\')","print(\'α0\')"
+nestmin stats 1 0 1 0
+neststats2: 34 ( \ [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( ' [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( a [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( l [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( p [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( h [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( a [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( \ [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( ' [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( ) [ 0 ( 0
+nestcount 0 0 0 False
+CHECK THIS WHILE FUNCTION END==========
+old ySkip 0
+update ySkip 16
+figure out the right splicing 7 16
+stary  \'alpha\'
+recurse on our proper splicing
+check calls
+\'alpha\'
+neststats: 0 \ [ 0 ( 0 WHATIS: CODE
+neststats: 1 ' [ 0 ( 0 WHATIS: CODE
+neststats: 2 a [ 0 ( 0 WHATIS: CODE
+neststats: 3 l [ 0 ( 0 WHATIS: CODE
+neststats: 4 p [ 0 ( 0 WHATIS: CODE
+neststats: 5 h [ 0 ( 0 WHATIS: CODE
+neststats: 6 a [ 0 ( 0 WHATIS: CODE
+neststats: 7 \ [ 0 ( 0 WHATIS: CODE
+neststats: 8 ' [ 0 ( 0 WHATIS: CODE
+neststats: 6 ( [ 0 ( 1 WHATIS: STRI
+neststats: 16 ) [ 0 ( 0 WHATIS: STRI
+neststats: 17 " [ 0 ( 0 WHATIS: STRI
+neststats: 18 , [ 0 ( 0 WHATIS: CODE
+neststats: 19 " [ 0 ( 0 WHATIS: STRI
+neststats: 20 p [ 0 ( 0 WHATIS: STRI
+neststats: 21 r [ 0 ( 0 WHATIS: STRI
+neststats: 22 i [ 0 ( 0 WHATIS: STRI
+neststats: 23 n [ 0 ( 0 WHATIS: STRI
+neststats: 24 t [ 0 ( 0 WHATIS: STRI
+CHECK THIS WHILE FUNCTION (\'α0\')"
+nestmin stats 1 0 1 0
+neststats2: 34 ( \ [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( ' [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( α [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( 0 [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( \ [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( ' [ 0 ( 1
+nestcount 1 0 0 True
+neststats2: 34 ( ) [ 0 ( 0
+nestcount 0 0 0 False
+CHECK THIS WHILE FUNCTION END==========
+old ySkip 16
+update ySkip 32
+figure out the right splicing 26 32
+stary  \'α0\'
+recurse on our proper splicing
+check calls
+\'α0\'
+neststats: 0 \ [ 0 ( 0 WHATIS: CODE
+neststats: 1 ' [ 0 ( 0 WHATIS: CODE
+neststats: 2 α [ 0 ( 0 WHATIS: CODE
+neststats: 3 0 [ 0 ( 0 WHATIS: CODE
+neststats: 4 \ [ 0 ( 0 WHATIS: CODE
+neststats: 5 ' [ 0 ( 0 WHATIS: CODE
+neststats: 25 ( [ 0 ( 1 WHATIS: STRI
+neststats: 32 ) [ 0 ( 0 WHATIS: STRI
+neststats: 33 " [ 0 ( 0 WHATIS: STRI
+neststats: 0 [ [ 1 ( 0 WHATIS: CODE
+neststats: 35 ] [ 0 ( 0 WHATIS: CODE
+neststats: 6 ( [ 0 ( 1 WHATIS: CODE
+neststats: 43 ) [ 0 ( 0 WHATIS: CODE
+neststats: 3 ( [ 0 ( 1 WHATIS: CODE
+neststats: 48 ) [ 0 ( 0 WHATIS: CODE
+neststats: 49 , [ 0 ( 0 WHATIS: CODE
+neststats: 50 " [ 0 ( 0 WHATIS: STRI
+neststats: 51 n [ 0 ( 0 WHATIS: STRI
+neststats: 52 a [ 0 ( 0 WHATIS: STRI
+neststats: 53 i [ 0 ( 0 WHATIS: STRI
+neststats: 54 v [ 0 ( 0 WHATIS: STRI
+neststats: 55 e [ 0 ( 0 WHATIS: STRI
+neststats: 56 " [ 0 ( 0 WHATIS: STRI
+neststats: 0 [ [ 1 ( 0 WHATIS: CODE
+neststats: 58 ] [ 0 ( 0 WHATIS: CODE
+neststats: 9 ( [ 0 ( 1 WHATIS: STRI
+neststats: 69 ) [ 0 ( 0 WHATIS: STRI
+neststats: 70 ' [ 0 ( 0 WHATIS: STRI
+>>> 
