@@ -5395,6 +5395,7 @@ def FixedQualifiermin1(argList):
 def strFix(argList):
     '''
     HINT: need to get raw input string by doing r"string" in the args
+    HINT: triple quote styles are fucked???
 
     >figure out quote problems
 
@@ -5426,38 +5427,96 @@ def strFix(argList):
     ##problems: nesting and sequenced strings
     #step 1: remove the outer quotes
 
-    #fucking rip strorCode doesn't even need the invisible 1st quote
-
     #step 1: figure out sections that should be strings:
     # (*"   "*), [*"   "*].
-    # force them to be strings by adding \ at the right spo.t
+    # force them to be strings by adding \ at the right spot
 
     print("she sees", inpstr)
     #1: check if you can pass raw string through a func
+
+    #todo:
+    #nest on each string segment properly
+    #ignore \
+    #CONTRACTIONS 
+    #count " and ' in the right nesting level
+    #proper nesting between [] and ()
+    #triple quote styles
     nestcount = {}
-    nestcount[str("[")]= 0
-    nestcount[str("(")]= 0
-    for x in range(len(inpstr)):
-        print("parts",x, inpstr[x])
-        if x == "[":
-            nestcount[str("[")] += 1
-        elif x == "]":
-            nestcount[str("[")] += -1
-        elif x == "(":
-            nestcount[str("(")] += 1
-        elif x == ")":
-            nestcount[str("(")] += -1
+    nestcount["["] = 0
+    nestcount["("] = 0
+
+    #init firstquote
+    firststquote = ""
+    WHATIS = ""
     
+    for x in range(len(inpstr)):
+        #print("parts",x, inpstr[x])
+        if inpstr[x] == "[":
+            nestcount["["] += 1
+        elif inpstr[x] == "]":
+            nestcount["["] += -1
+        elif inpstr[x] == "(":
+            nestcount["("] += 1
+        elif inpstr[x] == ")":
+            nestcount["("] += -1
+
+        #print("backslash test",inpstr[x-1] == '\\')
+        #print("backslash test",inpstr[x-1], '\\')
+        if inpstr[x-1] == '\\':
+            print("data we know: \\trig",WHATIS,x,inpstr[x],firststquote)
+        elif firststquote != "CODE" and (inpstr[x] == '"' or inpstr[x] == "'"):
+            print("data we know: STRI",x,inpstr[x],firststquote)
+            WHATIS = "STRI"
+        elif firststquote != "":
+            print("data we know: STRI",x,inpstr[x],firststquote)
+            WHATIS = "STRI"
+        else:
+            print("data we know: CODE",x,inpstr[x],firststquote)
+            WHATIS = "CODE"
+
+        if firststquote == "double" and inpstr[x] == '"' and inpstr[x-1] != '\\':
+            firststquote = ""
+        elif firststquote == "" and inpstr[x] == '"' and inpstr[x-1] != '\\':
+            firststquote = "double"
+        if firststquote == "single" and inpstr[x] == "'" and inpstr[x-1] != '\\':
+            firststquote = ""
+        elif firststquote == "" and inpstr[x] == "'" and inpstr[x-1] != '\\':
+            firststquote = "single"
+
+        if inpstr[x] == "'" or inpstr[x] == '"':
+            #figure out what IS vs what SHOULD BE
+            pass
+
+        print("neststats:", inpstr[x],"[",nestcount["["],"(",nestcount["("], "WHATIS:",WHATIS)
+
+#strFix(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"])
+        
+#strFix(['print(toString([dom(delta2(["print(''alpha'')","print(''α0'')"])),"naive"]))'])
+#HINT: WE WANT
+#toString([dom(delta2(["print('alpha')","print('α0')"])),"naive"])
+#TRY: "toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])"
+#TEST: print("toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])")
+
+#now to test
+strFix(["toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])"])
 
 def strorCode(argList):
     '''
+#HINT:
+ THIS DOESNT LOOK AT RAW STRING
+ 
     given a string and a position, figure out if that position would be considered as a string if put under eval
 
+    #hint: currently this removes outer quotes so you don't get all strings
+    #should there be error for exceeding str limit?
     '''
     inpstr = argList[0]
     index = argList[1]
 
-    newguy = str("\"" + inpstr + "\"")
+    newguy = inpstr
+    #both newguys below give the whole string then everything is str since you need str to get shit running
+    #newguy = str("\"" + inpstr + "\"")
+    #newguy = "%r"%inpstr
 
     #init firstquote
     firststquote = ""
@@ -5478,27 +5537,30 @@ def strorCode(argList):
         #hint: toggle string or code depending on if we hit another firststquote
         #things to know: what is first quote style
 
-        if firststquote != "CODE" and (inpstr[x] == '"' or inpstr[x] == "'"):
-            #print("data we know: STRI",x,inpstr[x],firststquote)
+        if inpstr[x-1] == '\\':
+            print("data we know: \\trig",ANS,x,inpstr[x],firststquote)
+        elif firststquote != "CODE" and (inpstr[x] == '"' or inpstr[x] == "'"):
+            print("data we know: STRI",x,inpstr[x],firststquote)
             ANS = "STRI"
         elif firststquote != "":
-            #print("data we know: STRI",x,inpstr[x],firststquote)
+            print("data we know: STRI",x,inpstr[x],firststquote)
             ANS = "STRI"
         else:
-            #print("data we know: CODE",x,inpstr[x],firststquote)
+            print("data we know: CODE",x,inpstr[x],firststquote)
             ANS = "CODE"
 
-        if firststquote == "double" and inpstr[x] == '"':
+        if firststquote == "double" and inpstr[x] == '"' and inpstr[x-1] != '\\':
             firststquote = ""
-        elif firststquote == "" and inpstr[x] == '"':
+        elif firststquote == "" and inpstr[x] == '"' and inpstr[x-1] != '\\':
             firststquote = "double"
-        if firststquote == "single" and inpstr[x] == "'":
+        if firststquote == "single" and inpstr[x] == "'" and inpstr[x-1] != '\\':
             firststquote = ""
-        elif firststquote == "" and inpstr[x] == "'":
+        elif firststquote == "" and inpstr[x] == "'" and inpstr[x-1] != '\\':
             firststquote = "single"
     return ANS
         
-
+#old example: "TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"
+#new example: print(toString([dom(delta2(["print('alpha')","print('α0')"])),"naive"]))
 
 
 '''

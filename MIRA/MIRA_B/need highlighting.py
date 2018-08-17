@@ -1,3 +1,9 @@
+"print('alpha')"
+"print('α0')"
+WANT:
+toString([dom(delta2(["print('alpha')","print('α0')"])),"naive"])
+HAVE:
+toString([dom(delta2(["print('alpha')","print('α0')"])),"naive"])
 
 FixedQualifier([delta2,[α0print('yoikes')],'TOTAL_ARGUMENT == 'print('yoikes')'',FixedQualifiermin1])
 
