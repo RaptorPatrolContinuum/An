@@ -5415,7 +5415,7 @@ def strFix(argList):
 
     
     '''
-    inpstr = argList[0]
+    inpstr = "%r"%argList[0]
 
     #assumptions: that the string is fixable, AKA: right amount of quotes at the right places and can be valid code by inserting \ to escape the proper quotes
 
@@ -5430,23 +5430,23 @@ def strFix(argList):
 
     #step 1: figure out sections that should be strings:
     # (*"   "*), [*"   "*].
-    # force them to be strings by adding \ at the right spot
+    # force them to be strings by adding \ at the right spo.t
 
     print("she sees", inpstr)
     #1: check if you can pass raw string through a func
     nestcount = {}
-    nestcount[str(charcount + "[")]= 0
-    nestcount[str(charcount + "(")]= 0
+    nestcount[str("[")]= 0
+    nestcount[str("(")]= 0
     for x in range(len(inpstr)):
         print("parts",x, inpstr[x])
         if x == "[":
-            nestcount[str(charcount + "[")] += 1
+            nestcount[str("[")] += 1
         elif x == "]":
-            nestcount[str(charcount + "[")] += -1
+            nestcount[str("[")] += -1
         elif x == "(":
-            nestcount[str(charcount + "(")] += 1
+            nestcount[str("(")] += 1
         elif x == ")":
-            nestcount[str(charcount + "(")] += -1
+            nestcount[str("(")] += -1
     
 
 def strorCode(argList):
