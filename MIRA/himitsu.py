@@ -7,32 +7,44 @@ from MiraExternals import *
 himitsu = [[["[['single', 'single']]", "[['z','y'],['y','x'],['x','z']]"], ["[['z','y'],['y','x'],['x','z']]", "[['single', 'single']]"], ["[['oneway', 'oneway']]", "[['unrequited','unrequited']]"], ["[['unrequited','unrequited']]", "[['oneway', 'oneway']]"], ["[['A', 'B'], ['B', 'C'], ['C', 'A']]", "[['loner','loner']]"], ["[['loner','loner']]", "[['A', 'B'], ['B', 'C'], ['C', 'A']]"]], [["[['oneway', 'oneway']]", "[['z','y'],['y','x'],['x','z']]"], ["[['z','y'],['y','x'],['x','z']]", "[['oneway', 'oneway']]"], ["[['single', 'single']]", "[['unrequited','unrequited']]"], ["[['unrequited','unrequited']]", "[['single', 'single']]"], ["[['A', 'B'], ['B', 'C'], ['C', 'A']]", "[['loner','loner']]"], ["[['loner','loner']]", "[['A', 'B'], ['B', 'C'], ['C', 'A']]"]], [["[['A', 'B'], ['B', 'C'], ['C', 'A']]", "[['z','y'],['y','x'],['x','z']]"], ["[['z','y'],['y','x'],['x','z']]", "[['A', 'B'], ['B', 'C'], ['C', 'A']]"], ["[['single', 'single']]", "[['unrequited','unrequited']]"], ["[['unrequited','unrequited']]", "[['single', 'single']]"], ["[['oneway', 'oneway']]", "[['loner','loner']]"], ["[['loner','loner']]", "[['oneway', 'oneway']]"]], [["[['single', 'single']]", "[['z','y'],['y','x'],['x','z']]"], ["[['z','y'],['y','x'],['x','z']]", "[['single', 'single']]"], ["[['A', 'B'], ['B', 'C'], ['C', 'A']]", "[['unrequited','unrequited']]"], ["[['unrequited','unrequited']]", "[['A', 'B'], ['B', 'C'], ['C', 'A']]"], ["[['oneway', 'oneway']]", "[['loner','loner']]"], ["[['loner','loner']]", "[['oneway', 'oneway']]"]], [["[['oneway', 'oneway']]", "[['z','y'],['y','x'],['x','z']]"], ["[['z','y'],['y','x'],['x','z']]", "[['oneway', 'oneway']]"], ["[['A', 'B'], ['B', 'C'], ['C', 'A']]", "[['unrequited','unrequited']]"], ["[['unrequited','unrequited']]", "[['A', 'B'], ['B', 'C'], ['C', 'A']]"], ["[['single', 'single']]", "[['loner','loner']]"], ["[['loner','loner']]", "[['single', 'single']]"]], [["[['A', 'B'], ['B', 'C'], ['C', 'A']]", "[['z','y'],['y','x'],['x','z']]"], ["[['z','y'],['y','x'],['x','z']]", "[['A', 'B'], ['B', 'C'], ['C', 'A']]"], ["[['oneway', 'oneway']]", "[['unrequited','unrequited']]"], ["[['unrequited','unrequited']]", "[['oneway', 'oneway']]"], ["[['single', 'single']]", "[['loner','loner']]"], ["[['loner','loner']]", "[['single', 'single']]"]]]
 
 
-garbanzo = []
+heysiri = {'[': 0, '(': 0}
+wtfy = heysiri
+print(wtfy)
+print(wtfy["["])
+
+#s1 = "welcome\tto\tPython"
+#
+#raw_s1 = "%r"%s1
+#
+#print(raw_s1)
 
 
-with open('memoryUNORDERED.txt', 'r+', encoding='utf-8') as ordered1:
-    ordered1.seek(0)
-    for line in range(mapcountLINES(['memoryUNORDERED.txt'])):
-        nextguy = rchop(ordered1.readline(), '\n')
-        print(eval(nextguy))
-        print(fCheck(eval(nextguy)))
-        #print(eval(nextguy)[0][0])
-        #print(eval(nextguy)[0][1])
-        #print(toString([ran(eval(nextguy)[0][0]),"naive"]))
-        #print(toString([ran(eval(nextguy)[0][1]),"naive"]))
-        print("=")
-print("=================================================")
-with open('ABSTRACTFILE.txt', 'r+', encoding='utf-8') as ordered1:
-    ordered1.seek(0)
-    for line in range(mapcountLINES(['ABSTRACTFILE.txt'])):
-        nextguy = rchop(ordered1.readline(), '\n')
-        print(toString([ran(eval(nextguy)[0][0]),"naive"]))
-        print(toString([ran(eval(nextguy)[0][1]),"naive"]))
-        print("=")
+#garbanzo = []
+
+#with open('memoryUNORDERED.txt', 'r+', encoding='utf-8') as ordered1:
+#    ordered1.seek(0)
+#    for line in range(mapcountLINES(['memoryUNORDERED.txt'])):
+#        nextguy = rchop(ordered1.readline(), '\n')
+#        print(eval(nextguy))
+#        print(fCheck(eval(nextguy)))
+#        #print(eval(nextguy)[0][0])
+#        #print(eval(nextguy)[0][1])
+#        #print(toString([ran(eval(nextguy)[0][0]),"naive"]))
+#        #print(toString([ran(eval(nextguy)[0][1]),"naive"]))
+#        print("=")
+#print("=================================================")
+#with open('ABSTRACTFILE.txt', 'r+', encoding='utf-8') as ordered1:
+#    ordered1.seek(0)
+#    for line in range(mapcountLINES(['ABSTRACTFILE.txt'])):
+#        nextguy = rchop(ordered1.readline(), '\n')
+#        print(toString([ran(eval(nextguy)[0][0]),"naive"]))
+#        print(toString([ran(eval(nextguy)[0][1]),"naive"]))
+#        print("=")
         
 
 #for x in range(mapcountLINES(['ABSTRACTFILE.txt'])):
 #    print(FILEindexread(["ABSTRACTFILE.txt",x]))
+
 
 
 

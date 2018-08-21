@@ -5448,7 +5448,7 @@ def strFix(argList):
     
     ANS = inpstr
     print("min1 args",argList + [nestcount])
-    strFixmin1(argList + [nestcount])
+    ANS = strFixmin1(argList + [nestcount])
     return ANS
 
 def strFixmin1(argList):
@@ -5460,7 +5460,8 @@ def strFixmin1(argList):
     take arglist from OG func
     nested info to prevent infinity
     nestcount
-    ySkip 
+    ySkip
+    recursecount (used to figure out what print is from where)
     '''
 
     try:
@@ -5473,17 +5474,24 @@ def strFixmin1(argList):
         nested = "no"
     #init ySkip --- ySkip is for when I need to skip an entire string section but since I iterate x on a seq of integers I need to just not do anything on those integers
     try:
-        ySkip = argList[3]
+        if ySkip == "":
+            ySkip = 0
+        else:
+            ySkip = argList[3]
     except:
         ySkip = 0
+    try:
+        recursecount = argList[4]
+    except:
+        recursecount = 0        
 
     #getting lots of / from python auto insert:
     if nested == "yes":
         inpstr = argList[0]
     else:
         inpstr = "%r"%argList[0]
-    print("check calls")
-    print(inpstr)
+    print("check calls==============================")
+    print(inpstr,recursecount)
 
     #init firstquote
     firststquote = ""
@@ -5492,7 +5500,8 @@ def strFixmin1(argList):
     #print("double check")
     #print(nestcount)
     #print(nested)
-    
+
+    ANS = inpstr
     
     for x in range(len(inpstr)):
         #print("x vs ySkip",x,ySkip)
@@ -5528,8 +5537,8 @@ def strFixmin1(argList):
                     nestcountYSE["["] = nestcount["["]
                 else:
                     nestcountYSE = nestcount.copy()
-                print("CHECK THIS WHILE FUNCTION",inpstr[yS:])
-                print("nestmin stats",nestcountYSE["("], nestcountYSE["["],nestcountYSE["("] + nestcountYSE["["],nestmin)
+                #print("CHECK THIS WHILE FUNCTION",inpstr[yS:])
+                #print("nestmin stats",nestcountYSE["("], nestcountYSE["["],nestcountYSE["("] + nestcountYSE["["],nestmin)
                 while nestcountYSE["("] + nestcountYSE["["] > nestmin:
                     yE += 1
                     #if you go past the end of the string return error
@@ -5546,23 +5555,27 @@ def strFixmin1(argList):
                     elif inpstr[yE] == ")":
                         nestcountYSE["("] += -1
                     #print("tests failing",type(inpstr[yE]),type("["),inpstr[yE], "[",inpstr[yE] == "[")
-                    print("neststats2:", len(inpstr), inpstr[yS], inpstr[yE],"[",nestcountYSE["["],"(",nestcountYSE["("])
-                    print("nestcount",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
-                print("CHECK THIS WHILE FUNCTION END==========")
+                    #print("neststats2:", len(inpstr), inpstr[yS], inpstr[yE],"[",nestcountYSE["["],"(",nestcountYSE["("])
+                    #print("nestcount",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
+                #print("CHECK THIS WHILE FUNCTION END==========")
                     
                     
                     
                 
                 #hint: now we update ySkip to prevent dupes
-                print("old ySkip",ySkip)
+                #print("old ySkip",ySkip)
                 ySkip = yE
-                print("update ySkip",ySkip)
-                print("figure out the right splicing",yS+1,yE)
-                print("stary ",inpstr[yS+1:yE])
+                #print("update ySkip",ySkip)
+                #print("figure out the right splicing",yS+1,yE)
+                #print("stary ",inpstr[yS+1:yE])
                 #to prevent infinity
                 if len(inpstr[yS+1:yE]) > 0:
-                    print("recurse on our proper splicing")
-                    strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes"])
+                    ####print("recurse on our proper splicing: TOTAL", inpstr)
+                    #print("breakapart                           ",inpstr[:yS+1],inpstr[yS+1:yE],inpstr[yE:])
+                    #print("breakapart                           ",inpstr[:yS+1],"|",inpstr[yS+1:yE],"|",inpstr[yE:])
+                    ####print("what does this level see?",recursecount,strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes","",recursecount+1]))
+                    ANS = inpstr[:yS+1] + strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes","",recursecount+1]) + inpstr[yE:]
+                    ####print("what is ans",ANS)
 
             #print("backslash test",inpstr[x-1] == '\\')
             #print("backslash test",inpstr[x-1], '\\')
@@ -5591,12 +5604,13 @@ def strFixmin1(argList):
             if inpstr[x] == "'" or inpstr[x] == '"':
                 #figure out what IS vs what SHOULD BE
                 pass
-            print("neststats:", x, inpstr[x],"[",nestcount["["],"(",nestcount["("], "WHATIS:",WHATIS)
+            #print("inp STRING",inpstr)
+            ####print("neststats:", "RECURSE",recursecount, x, inpstr[x],"[",nestcount["["],"(",nestcount["("], "WHATIS:",WHATIS)
         else:
             #print("do nothing here", inpstr[x:ySkip])
             pass
         
-    return
+    return ANS
 
 #strFix(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"])
         
@@ -5607,7 +5621,10 @@ def strFixmin1(argList):
 #TEST: print("toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])")
 
 #now to test
-strFix(["toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])"])
+#input is fucking right PepeHands need one that doesnt work
+#strFix(["toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])"])
+#print("what;s the answer",strFix(["toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])"]))
+#print(strFix(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"]))
 
 def strorCode(argList):
     '''

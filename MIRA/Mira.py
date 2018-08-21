@@ -100,9 +100,6 @@ while Descent:
         ANOTHER THING TO DO IS TO DO INSTANT CALL-RESPONSE
         '''
 
-        #need to stop clone mira from duplicating responses:
-        if Descent == True:
-            pass
         '''
         ==================================================================================================
         PUT ALL THE TESTING CODE PAST HERE
