@@ -6,13 +6,20 @@ from MiraExternals import *
 #himitsu = [[['A', 'D'], ['D', 'A'], ['B', 'B'], ['B', 'B'], ['C', 'A'], ['A', 'C']], [['B', 'D'], ['D', 'B'], ['A', 'B'], ['B', 'A'], ['C', 'A'], ['A', 'C']], [['C', 'D'], ['D', 'C'], ['A', 'B'], ['B', 'A'], ['B', 'A'], ['A', 'B']], [['A', 'D'], ['D', 'A'], ['C', 'B'], ['B', 'C'], ['B', 'A'], ['A', 'B']], [['B', 'D'], ['D', 'B'], ['C', 'B'], ['B', 'C'], ['A', 'A'], ['A', 'A']], [['C', 'D'], ['D', 'C'], ['B', 'B'], ['B', 'B'], ['A', 'A'], ['A', 'A']]]
 himitsu = [[0, '[', 'CODE', ''], [1, 'd', 'CODE', ''], [2, 'o', 'CODE', ''], [3, 'm', 'CODE', ''], [4, '(', 'CODE', ''], [5, 'd', 'CODE', ''], [6, 'e', 'CODE', ''], [7, 'l', 'CODE', ''], [8, 't', 'CODE', ''], [9, 'a', 'CODE', ''], [10, '2', 'CODE', ''], [11, '(', 'CODE', ''], [12, '[', 'CODE', ''], [13, '"', 'STRI', ''], [14, 'p', 'STRI', 'double'], [15, 'r', 'STRI', 'double'], [16, 'i', 'STRI', 'double'], [17, 'n', 'STRI', 'double'], [18, 't', 'STRI', 'double'], [19, '(', 'STRI', 'double'], [20, '\\', 'STRI', 'double'], [21, "'", 'STRI', 'double'], [22, 'a', 'STRI', 'double'], [23, 'l', 'STRI', 'double'], [24, 'p', 'STRI', 'double'], [25, 'h', 'STRI', 'double'], [26, 'a', 'STRI', 'double'], [27, '\\', 'STRI', 'double'], [28, "'", 'STRI', 'double'], [29, ')', 'STRI', 'double'], [30, '"', 'STRI', 'double'], [31, ',', 'CODE', ''], [32, '"', 'STRI', ''], [33, 'p', 'STRI', 'double'], [34, 'r', 'STRI', 'double'], [35, 'i', 'STRI', 'double'], [36, 'n', 'STRI', 'double'], [37, 't', 'STRI', 'double'], [38, '(', 'STRI', 'double'], [39, '\\', 'STRI', 'double'], [40, "'", 'STRI', 'double'], [41, 'α', 'STRI', 'double'], [42, '0', 'STRI', 'double'], [43, '\\', 'STRI', 'double'], [44, "'", 'STRI', 'double'], [45, ')', 'STRI', 'double'], [46, '"', 'STRI', 'double'], [47, ']', 'CODE', ''], [48, ')', 'CODE', ''], [49, ')', 'CODE', ''], [50, ',', 'CODE', ''], [51, '"', 'STRI', ''], [52, 'n', 'STRI', 'double'], [53, 'a', 'STRI', 'double'], [54, 'i', 'STRI', 'double'], [55, 'v', 'STRI', 'double'], [56, 'e', 'STRI', 'double'], [57, '"', 'STRI', 'double'], [58, ']', 'CODE', '']]
 
-
-for x in range(10):
+maxint = 10
+#for x in range(maxint):
+x = 0
+y = 0
+while y < maxint:
+    y += 1
     print("OG",x)
+    x += 1
     if x > 3:
         x = x + 2
     print(x)
-
+    if x < 5:
+        maxint += 1
+    print("OG2",x)
 
 #heysiri = {'[': 0, '(': 0}
 #wtfy = heysiri

@@ -5493,13 +5493,18 @@ def strFixmin2(argList):
     ANS = ""
     oldANS = ""
     #this might be bad but you need to see string without outer quotes
-    for x in range(1,len(inpstr)-1):
+    #need to go to while loop since for loop max limits me from adding multiple chars to a string
+    #for x in range(1,len(inpstr)-1):
+    x = 0
+    while x < len(inpstr)-2:
+        x += 1
         #hint: toggle string or code depending on if we hit another firststquote
         #things to know: what is first quote style
 
         #modify x to accomodate xOffset if I add a backslash
         #hint: relabeling x here is temporary, next x is gonna be x+1 not x+1+ multiple offsets
-        x = x + xOffset
+        #since i switched to while loop this actually does add offset multiple times
+        #x = x + xOffset
 
         if inpstr[x-1] == '\\':
             #print("data we know: \\trig",ANS,x,inpstr[x],firststquote)
@@ -5539,12 +5544,24 @@ def strFixmin2(argList):
             print("data we know: ",ANS,x,inpstr[x],firststquote,"|VS|",strorCodeinfo[x-strXbounds[0]][0],strorCodeinfo[x-strXbounds[0]][1],strorCodeinfo[x-strXbounds[0]][2],strorCodeinfo[x-strXbounds[0]][3])
             print("whjat am I asking for|",ANS, strorCodeinfo[x-strXbounds[0]][2],firststquote != strorCodeinfo[x-strXbounds[0]][2])
             if ANS != strorCodeinfo[x-strXbounds[0]][2]:
+                #somehow inpstr here adds a lot of \
+                print("add \ to next copy (if possible. if code fails then fuck it just hope for better data elsewhere",[inpstr,x,inpstr[x-1]])
+                print("charfind",charFind([inpstr,x,inpstr[x-1]]))
+                #since x can't go to end if I add more than 1 char I have to add these pairs at the end???
+                quotepairindex = charFind([inpstr,x,inpstr[x-1]])
+                if quotepairindex:
+                    inpstr = inpstr[:quotepairindex] + "\\" + inpstr[quotepairindex:]
+                    pass
+
                 #print("time to correct: insert \ ",inpstr)
                 print("time to correct: insert \ ",inpstr[:x-1] + "\\" + inpstr[x-1:])
                 inpstr = inpstr[:x-1] + "\\" + inpstr[x-1:]
-                strY = inpstr[:x-1] + "\\" + inpstr[x-1:]
-                print("what is new inpstr?")
+                strY = inpstr
+                print("what is new inpstr?",inpstr)
+                print("what is new inpstY?",strY)
+                
                 xOffset += 1
+                x = x + xOffset
                 #flip quote type and flip answer to old versions:
                 firststquote = oldquote
                 ANS = oldANS
@@ -5557,6 +5574,7 @@ def strFixmin2(argList):
             print("data we know: ",ANS,x,inpstr[x],firststquote)
 
 #print(strFix(["TOTAL_ARGUMENT == 'print('yoikes, dont do that')'"]))
+#print(strFix(["toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])"]))
 
 def charFind(argList):
     '''
@@ -5571,7 +5589,7 @@ def charFind(argList):
 
     x = startingIndex - 1
     while x < len(inpstr)-1:
-        print("checks",x,len(inpstr))
+        #print("checks",x,len(inpstr))
         x += 1
         if inpstr[x] == testchar:
             return x
@@ -5579,8 +5597,8 @@ def charFind(argList):
     return False
 
 #TEST:
-print(charFind(["TOTAL_ARGUMENT == 'print('yoikes, dont do that')'",26,"'"]))
-print(charFind(["TOTAL_ARGUMENT == 'print('yoikes, dont do that')'",26,"?"]))
+#print(charFind(["TOTAL_ARGUMENT == 'print('yoikes, dont do that')'",26,"'"]))
+#print(charFind(["TOTAL_ARGUMENT == 'print('yoikes, dont do that')'",26,"?"]))
 
 def strFix(argList):
     '''
