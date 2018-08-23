@@ -5287,7 +5287,9 @@ def abstractionGENERAL(argList):
             print(toString([ran(eval(nextguy)[0][1]),"naive"]))
             print("=")
     print("ENDHERE")
+    
     os.remove("ABSTRACTFILE.txt")
+    os.remove(OtherClone() + "\\" + "ABSTRACTFILE.txt")
 
 
 def TestCode(argList):
@@ -5392,6 +5394,215 @@ def FixedQualifiermin1(argList):
     print("RHS guy",arg2)
     return toString([ran(arg1([arg2,arg3])),"naive"]) == arg2
 
+def strorCode(argList):
+    '''
+#HINT:
+ THIS DOESNT LOOK AT RAW STRING
+ 
+    given a string and a position, figure out if that position would be considered as a string if put under eval
+
+    #hint: currently this removes outer quotes so you don't get all strings
+    #should there be error for exceeding str limit?
+    third argument if we want info or not, trigger is "info"
+    '''
+    inpstr = argList[0]
+    index = argList[1]
+    try:
+        infocheck = argList[2]
+    except:
+        infocheck = ""
+
+    newguy = inpstr
+    #both newguys below give the whole string then everything is str since you need str to get shit running
+    #newguy = str("\"" + inpstr + "\"")
+    #newguy = "%r"%inpstr
+
+    #init firstquote
+    firststquote = ""
+
+    #figure out what kind of quote is at the beginning:
+    #if newguy[0] == '"':
+    #    firststquote = "double"
+    #elif newguy[0] == "'":
+    #    firststquote = "single"
+
+    #then change inpstr to be newguy to be more consistent
+    inpstr = newguy
+
+    #print("she sees")
+    #print(inpstr)
+    ANS = ""
+    infoANS = []
+    for x in range(index):
+        #hint: toggle string or code depending on if we hit another firststquote
+        #things to know: what is first quote style
+
+        if inpstr[x-1] == '\\':
+            #print("data we know: \\trig",ANS,x,inpstr[x],firststquote)
+            pass
+        elif firststquote != "CODE" and (inpstr[x] == '"' or inpstr[x] == "'"):
+            #print("data we know: STRI",x,inpstr[x],firststquote)
+            ANS = "STRI"
+        elif firststquote != "":
+            #print("data we know: STRI",x,inpstr[x],firststquote)
+            ANS = "STRI"
+        else:
+            #print("data we know: CODE",x,inpstr[x],firststquote)
+            ANS = "CODE"
+
+        if infocheck == "info":
+            infoANS.append([x,inpstr[x],ANS,firststquote])
+
+        if firststquote == "double" and inpstr[x] == '"' and inpstr[x-1] != '\\':
+            firststquote = ""
+        elif firststquote == "" and inpstr[x] == '"' and inpstr[x-1] != '\\':
+            firststquote = "double"
+        if firststquote == "single" and inpstr[x] == "'" and inpstr[x-1] != '\\':
+            firststquote = ""
+        elif firststquote == "" and inpstr[x] == "'" and inpstr[x-1] != '\\':
+            firststquote = "single"
+    if infocheck == "info":
+        return infoANS
+    else:
+        return ANS
+        
+#old example: "TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"
+#new example: print(toString([dom(delta2(["print('alpha')","print('α0')"])),"naive"]))
+
+def strFixmin2(argList):
+    '''
+    given:
+    strorCode "info" on substring X of string Y
+    with indices for X
+    match strorCode of X to Y so that when x in X is code or str, y in Y is also code or str
+
+    strFixmin2([strY = argList[0],strX = argList[1],strXbounds = argList[2],strorCodeinfo = argList[3]])
+    '''
+    strY = argList[0]
+    strX = argList[1]
+    strXbounds = argList[2]
+    strorCodeinfo = argList[3]
+
+    inpstr = strY
+
+    #init firstquote
+    firststquote = ""
+    oldquote = ""
+    xOffset = 0
+
+    #print("she sees")
+    #print(inpstr)
+    ANS = ""
+    oldANS = ""
+    #this might be bad but you need to see string without outer quotes
+    #need to go to while loop since for loop max limits me from adding multiple chars to a string
+    #for x in range(1,len(inpstr)-1):
+    x = 0
+    while x < len(inpstr)-2:
+        x += 1
+        #hint: toggle string or code depending on if we hit another firststquote
+        #things to know: what is first quote style
+
+        #modify x to accomodate xOffset if I add a backslash
+        #hint: relabeling x here is temporary, next x is gonna be x+1 not x+1+ multiple offsets
+        #since i switched to while loop this actually does add offset multiple times
+        #x = x + xOffset
+
+        if inpstr[x-1] == '\\':
+            #print("data we know: \\trig",ANS,x,inpstr[x],firststquote)
+            pass
+        elif firststquote != "CODE" and (inpstr[x] == '"' or inpstr[x] == "'"):
+            #print("data we know: STRI",x,inpstr[x],firststquote)
+            oldANS = ANS
+            ANS = "STRI"
+        elif firststquote != "":
+            #print("data we know: STRI",x,inpstr[x],firststquote)
+            oldANS = ANS
+            ANS = "STRI"
+        else:
+            #print("data we know: CODE",x,inpstr[x],firststquote)
+            oldANS = ANS
+            ANS = "CODE"
+
+        if firststquote == "double" and inpstr[x] == '"' and inpstr[x-1] != '\\':
+            oldquote = firststquote
+            firststquote = ""
+        elif firststquote == "" and inpstr[x] == '"' and inpstr[x-1] != '\\':
+            oldquote = firststquote
+            firststquote = "double"
+        if firststquote == "single" and inpstr[x] == "'" and inpstr[x-1] != '\\':
+            oldquote = firststquote
+            firststquote = ""
+        elif firststquote == "" and inpstr[x] == "'" and inpstr[x-1] != '\\':
+            oldquote = firststquote
+            firststquote = "single"
+
+        ###print("bounds and shit",strY,len(strY),strX,len(strX),strXbounds)
+        #print(x, strXbounds[0])
+        #print(x >= strXbounds[0])
+        #print(strXbounds[1] , x)
+        #print(strXbounds[1] > x)
+        if x >= strXbounds[0] and strXbounds[1] > x:
+            ###print("data we know: ",ANS,x,inpstr[x],firststquote,"|VS|",strorCodeinfo[x-strXbounds[0]][0],strorCodeinfo[x-strXbounds[0]][1],strorCodeinfo[x-strXbounds[0]][2],strorCodeinfo[x-strXbounds[0]][3])
+            ###print("whjat am I asking for|",ANS, strorCodeinfo[x-strXbounds[0]][2],firststquote != strorCodeinfo[x-strXbounds[0]][2])
+            if ANS != strorCodeinfo[x-strXbounds[0]][2]:
+                #somehow inpstr here adds a lot of \
+                ###print("add \ to next copy (if possible. if code fails then fuck it just hope for better data elsewhere",[inpstr,x,inpstr[x-1]])
+                ###print("charfind",charFind([inpstr,x,inpstr[x-1]]))
+                #since x can't go to end if I add more than 1 char I have to add these pairs at the end???
+                quotepairindex = charFind([inpstr,x,inpstr[x-1]])
+                if quotepairindex:
+                    inpstr = inpstr[:quotepairindex] + "\\" + inpstr[quotepairindex:]
+                    pass
+
+                #print("time to correct: insert \ ",inpstr)
+                ###print("time to correct: insert \ ",inpstr[:x-1] + "\\" + inpstr[x-1:])
+                inpstr = inpstr[:x-1] + "\\" + inpstr[x-1:]
+                strY = inpstr
+                ###print("what is new inpstr?",inpstr)
+                ###print("what is new inpstY?",strY)
+                
+                xOffset += 1
+                x = x + xOffset
+                #flip quote type and flip answer to old versions:
+                firststquote = oldquote
+                ANS = oldANS
+                
+                #guess: stri or code switches when ' or " were last present so just go back -2 and insert \
+                #since you adjusted you have to +adjust on every x value
+                #double check in himitsu
+                pass
+        else:
+            ###print("data we know: ",ANS,x,inpstr[x],firststquote)
+            pass
+
+#print(strFix(["TOTAL_ARGUMENT == 'print('yoikes, dont do that')'"]))
+#print(strFix(["toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])"]))
+
+def charFind(argList):
+    '''
+    given string and starting index, look for character that occurs after that index if any then retrun that index
+    arg1 = string
+    arg2 = startingindex
+    arg3 = char to look for
+    '''
+    inpstr = argList[0]
+    startingIndex = argList[1]
+    testchar = argList[2]
+
+    x = startingIndex - 1
+    while x < len(inpstr)-1:
+        #print("checks",x,len(inpstr))
+        x += 1
+        if inpstr[x] == testchar:
+            return x
+    #"DOIDED DUDE NO ANS"
+    return False
+
+#TEST:
+#print(charFind(["TOTAL_ARGUMENT == 'print('yoikes, dont do that')'",26,"'"]))
+#print(charFind(["TOTAL_ARGUMENT == 'print('yoikes, dont do that')'",26,"?"]))
+
 def strFix(argList):
     '''
     HINT: need to get raw input string by doing r"string" in the args
@@ -5431,7 +5642,7 @@ def strFix(argList):
     # (*"   "*), [*"   "*].
     # force them to be strings by adding \ at the right spot
 
-    print("she sees", inpstr)
+    ###print("she sees", inpstr)
     #1: check if you can pass raw string through a func
 
     #todo:
@@ -5447,7 +5658,7 @@ def strFix(argList):
 
     
     ANS = inpstr
-    print("min1 args",argList + [nestcount])
+    ###print("min1 args",argList + [nestcount])
     ANS = strFixmin1(argList + [nestcount])
     return ANS
 
@@ -5490,8 +5701,8 @@ def strFixmin1(argList):
         inpstr = argList[0]
     else:
         inpstr = "%r"%argList[0]
-    print("check calls==============================")
-    print(inpstr,recursecount)
+    ###print("check calls==============================")
+    ###print(inpstr,recursecount)
 
     #init firstquote
     firststquote = ""
@@ -5558,10 +5769,8 @@ def strFixmin1(argList):
                     #print("neststats2:", len(inpstr), inpstr[yS], inpstr[yE],"[",nestcountYSE["["],"(",nestcountYSE["("])
                     #print("nestcount",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
                 #print("CHECK THIS WHILE FUNCTION END==========")
-                    
-                    
-                    
-                
+
+         
                 #hint: now we update ySkip to prevent dupes
                 #print("old ySkip",ySkip)
                 ySkip = yE
@@ -5574,6 +5783,8 @@ def strFixmin1(argList):
                     #print("breakapart                           ",inpstr[:yS+1],inpstr[yS+1:yE],inpstr[yE:])
                     #print("breakapart                           ",inpstr[:yS+1],"|",inpstr[yS+1:yE],"|",inpstr[yE:])
                     ####print("what does this level see?",recursecount,strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes","",recursecount+1]))
+                    #print("lower level ans",strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"]))
+                    strFixmin2([inpstr,inpstr[yS+1:yE],[yS+1,yE],strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"])])
                     ANS = inpstr[:yS+1] + strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes","",recursecount+1]) + inpstr[yE:]
                     ####print("what is ans",ANS)
 
@@ -5605,16 +5816,15 @@ def strFixmin1(argList):
                 #figure out what IS vs what SHOULD BE
                 pass
             #print("inp STRING",inpstr)
-            ####print("neststats:", "RECURSE",recursecount, x, inpstr[x],"[",nestcount["["],"(",nestcount["("], "WHATIS:",WHATIS)
+            #print("neststats:", "RECURSE",recursecount, x, inpstr[x],"[",nestcount["["],"(",nestcount["("], "WHATIS:",WHATIS)
         else:
             #print("do nothing here", inpstr[x:ySkip])
             pass
-        
     return ANS
 
 #strFix(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"])
         
-#strFix(['print(toString([dom(delta2(["print(''alpha'')","print(''α0'')"])),"naive"]))'])
+
 #HINT: WE WANT
 #toString([dom(delta2(["print('alpha')","print('α0')"])),"naive"])
 #TRY: "toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])"
@@ -5622,72 +5832,11 @@ def strFixmin1(argList):
 
 #now to test
 #input is fucking right PepeHands need one that doesnt work
-#strFix(["toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])"])
+#####strFix(["toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])"])
 #print("what;s the answer",strFix(["toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])"]))
-#print(strFix(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"]))
-
-def strorCode(argList):
-    '''
-#HINT:
- THIS DOESNT LOOK AT RAW STRING
- 
-    given a string and a position, figure out if that position would be considered as a string if put under eval
-
-    #hint: currently this removes outer quotes so you don't get all strings
-    #should there be error for exceeding str limit?
-    '''
-    inpstr = argList[0]
-    index = argList[1]
-
-    newguy = inpstr
-    #both newguys below give the whole string then everything is str since you need str to get shit running
-    #newguy = str("\"" + inpstr + "\"")
-    #newguy = "%r"%inpstr
-
-    #init firstquote
-    firststquote = ""
-
-    #figure out what kind of quote is at the beginning:
-    #if newguy[0] == '"':
-    #    firststquote = "double"
-    #elif newguy[0] == "'":
-    #    firststquote = "single"
-
-    #then change inpstr to be newguy to be more consistent
-    inpstr = newguy
-
-    #print("she sees")
-    #print(inpstr)
-    ANS = ""
-    for x in range(index):
-        #hint: toggle string or code depending on if we hit another firststquote
-        #things to know: what is first quote style
-
-        if inpstr[x-1] == '\\':
-            print("data we know: \\trig",ANS,x,inpstr[x],firststquote)
-        elif firststquote != "CODE" and (inpstr[x] == '"' or inpstr[x] == "'"):
-            print("data we know: STRI",x,inpstr[x],firststquote)
-            ANS = "STRI"
-        elif firststquote != "":
-            print("data we know: STRI",x,inpstr[x],firststquote)
-            ANS = "STRI"
-        else:
-            print("data we know: CODE",x,inpstr[x],firststquote)
-            ANS = "CODE"
-
-        if firststquote == "double" and inpstr[x] == '"' and inpstr[x-1] != '\\':
-            firststquote = ""
-        elif firststquote == "" and inpstr[x] == '"' and inpstr[x-1] != '\\':
-            firststquote = "double"
-        if firststquote == "single" and inpstr[x] == "'" and inpstr[x-1] != '\\':
-            firststquote = ""
-        elif firststquote == "" and inpstr[x] == "'" and inpstr[x-1] != '\\':
-            firststquote = "single"
-    return ANS
-        
-#old example: "TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"
-#new example: print(toString([dom(delta2(["print('alpha')","print('α0')"])),"naive"]))
-
+## HINT: this is just bad info and could be fixed with a working function
+##print(strFix(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"]))
+#print(strFix(["TOTAL_ARGUMENT == 'print('yoikes, dont do that')'"]))
 
 '''
 strorCode(["TOTAL_ARGUMENT ='    '= \"print('yoikes, don't do that')""",2+len("TOTAL_ARGUMENT ='    '= \"print('yoikes, don't do that')""")])

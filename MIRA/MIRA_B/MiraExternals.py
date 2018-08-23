@@ -5287,7 +5287,9 @@ def abstractionGENERAL(argList):
             print(toString([ran(eval(nextguy)[0][1]),"naive"]))
             print("=")
     print("ENDHERE")
+    
     os.remove("ABSTRACTFILE.txt")
+    os.remove(OtherClone() + "\\" + "ABSTRACTFILE.txt")
 
 
 def TestCode(argList):
@@ -5535,18 +5537,18 @@ def strFixmin2(argList):
             oldquote = firststquote
             firststquote = "single"
 
-        print("bounds and shit",strY,len(strY),strX,len(strX),strXbounds)
+        ###print("bounds and shit",strY,len(strY),strX,len(strX),strXbounds)
         #print(x, strXbounds[0])
         #print(x >= strXbounds[0])
         #print(strXbounds[1] , x)
         #print(strXbounds[1] > x)
         if x >= strXbounds[0] and strXbounds[1] > x:
-            print("data we know: ",ANS,x,inpstr[x],firststquote,"|VS|",strorCodeinfo[x-strXbounds[0]][0],strorCodeinfo[x-strXbounds[0]][1],strorCodeinfo[x-strXbounds[0]][2],strorCodeinfo[x-strXbounds[0]][3])
-            print("whjat am I asking for|",ANS, strorCodeinfo[x-strXbounds[0]][2],firststquote != strorCodeinfo[x-strXbounds[0]][2])
+            ###print("data we know: ",ANS,x,inpstr[x],firststquote,"|VS|",strorCodeinfo[x-strXbounds[0]][0],strorCodeinfo[x-strXbounds[0]][1],strorCodeinfo[x-strXbounds[0]][2],strorCodeinfo[x-strXbounds[0]][3])
+            ###print("whjat am I asking for|",ANS, strorCodeinfo[x-strXbounds[0]][2],firststquote != strorCodeinfo[x-strXbounds[0]][2])
             if ANS != strorCodeinfo[x-strXbounds[0]][2]:
                 #somehow inpstr here adds a lot of \
-                print("add \ to next copy (if possible. if code fails then fuck it just hope for better data elsewhere",[inpstr,x,inpstr[x-1]])
-                print("charfind",charFind([inpstr,x,inpstr[x-1]]))
+                ###print("add \ to next copy (if possible. if code fails then fuck it just hope for better data elsewhere",[inpstr,x,inpstr[x-1]])
+                ###print("charfind",charFind([inpstr,x,inpstr[x-1]]))
                 #since x can't go to end if I add more than 1 char I have to add these pairs at the end???
                 quotepairindex = charFind([inpstr,x,inpstr[x-1]])
                 if quotepairindex:
@@ -5554,11 +5556,11 @@ def strFixmin2(argList):
                     pass
 
                 #print("time to correct: insert \ ",inpstr)
-                print("time to correct: insert \ ",inpstr[:x-1] + "\\" + inpstr[x-1:])
+                ###print("time to correct: insert \ ",inpstr[:x-1] + "\\" + inpstr[x-1:])
                 inpstr = inpstr[:x-1] + "\\" + inpstr[x-1:]
                 strY = inpstr
-                print("what is new inpstr?",inpstr)
-                print("what is new inpstY?",strY)
+                ###print("what is new inpstr?",inpstr)
+                ###print("what is new inpstY?",strY)
                 
                 xOffset += 1
                 x = x + xOffset
@@ -5571,7 +5573,8 @@ def strFixmin2(argList):
                 #double check in himitsu
                 pass
         else:
-            print("data we know: ",ANS,x,inpstr[x],firststquote)
+            ###print("data we know: ",ANS,x,inpstr[x],firststquote)
+            pass
 
 #print(strFix(["TOTAL_ARGUMENT == 'print('yoikes, dont do that')'"]))
 #print(strFix(["toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])"]))
@@ -5639,7 +5642,7 @@ def strFix(argList):
     # (*"   "*), [*"   "*].
     # force them to be strings by adding \ at the right spot
 
-    print("she sees", inpstr)
+    ###print("she sees", inpstr)
     #1: check if you can pass raw string through a func
 
     #todo:
@@ -5655,7 +5658,7 @@ def strFix(argList):
 
     
     ANS = inpstr
-    print("min1 args",argList + [nestcount])
+    ###print("min1 args",argList + [nestcount])
     ANS = strFixmin1(argList + [nestcount])
     return ANS
 
@@ -5698,8 +5701,8 @@ def strFixmin1(argList):
         inpstr = argList[0]
     else:
         inpstr = "%r"%argList[0]
-    print("check calls==============================")
-    print(inpstr,recursecount)
+    ###print("check calls==============================")
+    ###print(inpstr,recursecount)
 
     #init firstquote
     firststquote = ""
@@ -5817,7 +5820,6 @@ def strFixmin1(argList):
         else:
             #print("do nothing here", inpstr[x:ySkip])
             pass
-        
     return ANS
 
 #strFix(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"])
