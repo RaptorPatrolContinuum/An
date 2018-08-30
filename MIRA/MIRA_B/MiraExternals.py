@@ -646,10 +646,10 @@ def ComposeReplace(str1,str2):
         try:
             total = "'" + str2[1] + "'"
             #total = "\"" + str2[1] + "\""
-            print("test TOTAL",total)
-            print("TRY REPLACEMENT NOW1")
-            print(str1[0].replace("TOTAL_ARGUMENT", total))
-            print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+            #print("test TOTAL",total)
+            #print("TRY REPLACEMENT NOW1")
+            #print(str1[0].replace("TOTAL_ARGUMENT", total))
+            #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
             if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
                 #
                 #print("got here???")
@@ -661,10 +661,10 @@ def ComposeReplace(str1,str2):
         except:
             #total = "'" + str2[1] + "'"
             total = "\"" + str2[1] + "\""
-            print("test TOTAL",total)
-            print("TRY REPLACEMENT NOW2")
-            print(str1[0].replace("TOTAL_ARGUMENT", total))
-            print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+            #print("test TOTAL",total)
+            #print("TRY REPLACEMENT NOW2")
+            #print(str1[0].replace("TOTAL_ARGUMENT", total))
+            #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
             if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
                 #
                 #print("got here???")
@@ -5022,6 +5022,18 @@ def abstractionGENERAL(argList):
     inputtext var
     ABSTRACTFILE
     nearfield
+    sense function
+    consistency function
+        NOTE: usage is for delta checking. so idea is we have delta2 as the consistency function and we compare
+        our guesses with consistency
+
+        looks like this:
+        guesslist
+        for x in guesslist
+            compare consistency(x,sense function)
+
+        BUT THIS ONLY WORKS IF OUR SENSE FUNCTION IS LIKE CODE WHERE YOU CAN JUST RUN IT ALL THE TIME, NOT ON RECORDED SENSES WHERE
+        YOU HAVE TO COMPOSE ON THE MEMORIZED FUNCTIONS
     '''
     MemoryUNORDEREDvar = argList[0][0]
     memoryLongvar = argList[0][1]
@@ -5083,10 +5095,10 @@ def abstractionGENERAL(argList):
             #metaeval = ComposeMETA([replacementguess,thedelta])
             if len([y for y in guessAbst if y == thedelta]) == 0:
                 guessAbst.append(thedelta)
-    print("COMPART MEMCOMPOSE WITH GUESSABST")
+    #print("COMPART MEMCOMPOSE WITH GUESSABST")
     #print("MEMCOMPOSE",str(MEMcomposeinput).encode('utf-8'))
-    print("MEMCOMPOSE",str(MEMcomposeinput))
-    print("guessAbst",guessAbst)
+    #print("MEMCOMPOSE",str(MEMcomposeinput))
+    #print("guessAbst",guessAbst)
     #print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
     abstractiondict = {}
     icounter = 0
@@ -5128,12 +5140,12 @@ def abstractionGENERAL(argList):
     #then delta2 on all the answers
     #then SI on delta2(inputs) and delta2(outputs)
     #MEMcomposeinput
-    print("double check dict",abstractiondict)
+    #print("double check dict",abstractiondict)
     len1 = len(abstractiondict)
     len1int = 0
     len2 = len(guessAbst)
     len2int = 0
-    print("check lengths",len1,len2)
+    #print("check lengths",len1,len2)
     anothersum = 0
     for x in range(len1):
         #print("electric feel",len(abstractiondict[str(len1int)]))
@@ -5141,17 +5153,17 @@ def abstractionGENERAL(argList):
         if len(abstractiondict[str(len1int)]) == 0:
             anothersum += 1
         len1int += 1
-    print("what is anothersum?",anothersum)
+    #print("what is anothersum?",anothersum)
     len1int = 0
     len3int = 0
     #functionguessdict = {}
-    print("totalcheck",anothersum*len2)
+    #print("totalcheck",anothersum*len2)
     #for x in range(len(abstractiondict)):
     #    print(abstractiondict[str(x)])
     #    print(len(abstractiondict[str(x)]))
     with open("ABSTRACTFILE.txt", 'a+', encoding='utf-8') as ABSTRACTFILE:
         for x in range(anothersum*len2):
-            print("x in totalabstractions",x)
+            #print("x in totalabstractions",x)
             if (len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 )and x != 0:
                 len3int = 0
                 len1int += 1
@@ -5159,16 +5171,16 @@ def abstractionGENERAL(argList):
                 len1int = 0
                 len2int += 1
             theguy = abstractiondict[str(len1int)]
-            print("lens",len1, len2)
-            print("lensint",len1int, len2int, len3int)
-            print('the guy is empty',theguy)
-            print("length of this guy",len(theguy))
+            #print("lens",len1, len2)
+            #print("lensint",len1int, len2int, len3int)
+            #print('the guy is empty',theguy)
+            #print("length of this guy",len(theguy))
             if theguy == []:
                 cleanup1 = ""
             else:
-                print("don't tell me cause it hurts",len1int, len3int)
+                #print("don't tell me cause it hurts",len1int, len3int)
                 cleanup1 = abstractiondict[str(len1int)][len3int]
-                print("don't tell me cause it hurts2",cleanup1)
+                #print("don't tell me cause it hurts2",cleanup1)
             ##print("need fucking stats",len1int,len2int,len3int)
             #now we check for fixed point property
             #delta2(abstractoin,otherguy) = abstraction
@@ -5188,10 +5200,10 @@ def abstractionGENERAL(argList):
             #3- compare with blank python
             
             ##print("ABSTRACTION FUCNTION GUESS WITH ABSTRACTED LHS AND RHS")
-            print("len2int",len2int)
-            print("who is empty",guessAbst)
-            print("cl",cleanup1)
-            print("ABSTRACTION GUESS:",[[guessAbst[len2int],cleanup1]])
+            #print("len2int",len2int)
+            #print("who is empty",guessAbst)
+            #print("cl",cleanup1)
+            #print("ABSTRACTION GUESS:",[[guessAbst[len2int],cleanup1]])
             #functionguessdict[str(x)] = [[guessAbst[len2int],cleanup1]]
             ABSTRACTFILE.write(str([[guessAbst[len2int],cleanup1]]) + "\n")
             #nearfield.append(str([[guessAbst[len2int],cleanup1]]))
@@ -5206,20 +5218,20 @@ def abstractionGENERAL(argList):
     #problem: nested for loops are garbage
     #answer: have to commit all the function guesses to a list then just open memory total (unordered + ordered) and then use fixed point property + deltav2
     #open ordered
-    print("NOW TO CROSS WITH MEMORY")
+    #print("NOW TO CROSS WITH MEMORY")
 
     with open(MemoryUNORDEREDvar, 'r+', encoding='utf-8') as ordered1:
         ordered1.seek(0)
         guessint = 0
         thenextline = rchop(ordered1.readline(), '\n')
         #hint: memoryLongvar is only one line fuck
-        print("WTRFFFFF",mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2)
-        print("skipfactor",anothersum*len2)
+        #print("WTRFFFFF",mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2)
+        #print("skipfactor",anothersum*len2)
         for lineint in range(mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2):
             if guessint == anothersum*len2:
                 thenextline = rchop(ordered1.readline(), '\n')
                 guessint = 0
-            print("OK WE ARE COMPARING ",lineint,thenextline)
+            #print("OK WE ARE COMPARING ",lineint,thenextline)
             #print("AND THIS LINE",functionguessdict[str(guessint)])
             #problem with encoding empty string
             emptycheck = FILEindexread(["ABSTRACTFILE.txt",guessint])
@@ -5229,22 +5241,22 @@ def abstractionGENERAL(argList):
             #    print("AND THIS LINE",emptycheck)
             #else:
             #   print("AND THIS LINE",emptycheck)
-            print("AND THIS LINE",guessint,emptycheck)
-            print("CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem")
+            #print("AND THIS LINE",guessint,emptycheck)
+            #print("CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem")
             memX = eval(thenextline)[0][0]
             memY = eval(thenextline)[0][1]
             guessX = toString([ran(eval(emptycheck)[0][0]),"naive"])
             guessY = toString([ran(eval(emptycheck)[0][1]),"naive"])
             LHSTest = toString([ran(delta2([memX,guessX])),"naive"]) == guessX
             RHSTest = toString([ran(delta2([memY,guessY])),"naive"]) == guessY
-            print("check types",type(memX),type(guessX))
-            print("LHSpart1",memX,guessX)
-            print("LHS",LHSTest)
-            print("RHSpart1",memY,guessY)
-            print("RHS",RHSTest)
+            #print("check types",type(memX),type(guessX))
+            #print("LHSpart1",memX,guessX)
+            #print("LHS",LHSTest)
+            #print("RHSpart1",memY,guessY)
+            #print("RHS",RHSTest)
             if LHSTest and RHSTest:
-                print("this guy passed",[[guessX,guessY]])
-                print("thjis is actual",emptycheck)
+                #print("this guy passed",[[guessX,guessY]])
+                #print("thjis is actual",emptycheck)
                 #write the right qualifier
                 #[[FixedQualifier([delta2,abstraction,testguy]),result]]
                 #EXAMPLE-α
@@ -5278,18 +5290,21 @@ def abstractionGENERAL(argList):
 
     #HERE I DELETE THE ABSTRACT FILE TO CLEANUP
     #FIX THIS| could be causing problems if called repeatedly and not clearing
-    print("STARTHERE")
+    #print("STARTHERE")
     with open('ABSTRACTFILE.txt', 'r+', encoding='utf-8') as ordered1:
         ordered1.seek(0)
         for line in range(mapcountLINES(['ABSTRACTFILE.txt'])):
             nextguy = rchop(ordered1.readline(), '\n')
-            print(toString([ran(eval(nextguy)[0][0]),"naive"]))
-            print(toString([ran(eval(nextguy)[0][1]),"naive"]))
-            print("=")
-    print("ENDHERE")
+            #print(toString([ran(eval(nextguy)[0][0]),"naive"]))
+            #print(toString([ran(eval(nextguy)[0][1]),"naive"]))
+            #print("=")
+    #print("ENDHERE")
     
     os.remove("ABSTRACTFILE.txt")
-    os.remove(OtherClone() + "\\" + "ABSTRACTFILE.txt")
+    try:
+        os.remove(OtherClone() + "\\" + "ABSTRACTFILE.txt")
+    except:
+        pass
 
 
 def TestCode(argList):
@@ -5320,7 +5335,7 @@ def TestCode(argList):
     #with Popen(['python', 'Mira.py', inputtext], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True) as p:
     miralist = ['python', OtherClone() + '\\Mira.py', inputtext]
     #print("this should be miralist", miralist)
-    print("wtf nearfieldClone2",nearfieldClone)
+    #print("wtf nearfieldClone2",nearfieldClone)
     if Descent == True:
         #print("NEED TO MAKE CLONE!",argv)
         seesANS = []
@@ -5340,7 +5355,8 @@ def TestCode(argList):
         #print("shittysearch uses eval have to double check if it fucking works properly1",shittySearch([MemoryUNORDERED,str(internaltest)]),str(internaltest))
         orsequence = bisectionSearch([memoryLong,str(internaltest),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest)])
         if len(orsequence) > 0:
-            print("I already saw that!")
+            #print("I already saw that!")
+            pass
         else:
             memoryfile.write(str(internaltest) + "\n")
             nearfieldClone.append(str(internaltest))
@@ -5350,11 +5366,12 @@ def TestCode(argList):
         #print("shittysearch uses eval have to double check if it fucking works properly2",shittySearch([MemoryUNORDERED,str(internaltest2)]),str(internaltest2))
         orsequence2 = bisectionSearch([memoryLong,str(internaltest2),basisname]) + shittySearch([MemoryUNORDERED,str(internaltest2)])
         if len(orsequence2) > 0:
-            print("already saw that 2")
+            #print("already saw that 2")
+            pass
         else:
             memoryfile.write(str(internaltest2) + "\n")
             nearfieldClone.append(str(internaltest2))
-    print("wtf nearfieldClone3",nearfieldClone)
+    #print("wtf nearfieldClone3",nearfieldClone)
     memoryfile.close()
 
     #return nearfield so I can maintain it in MIRA.py
