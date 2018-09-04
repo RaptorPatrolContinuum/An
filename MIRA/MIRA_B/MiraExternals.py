@@ -5918,6 +5918,29 @@ data we know: STRI 54 '
 data we know: STRI 55 ) single
 data we know: STRI 56 " single
 '''
+
+
+def PosetSort(argList):
+    '''
+    idea:
+    put poset sorting in the top of memlist (so we can search faster)
+    then we poset sort so when we ask if we've seen before we can just look faster
+    also could get rid of unnecessary lines
+    '''
+    funcfilename = argList[0]
+    with open(funcfilename, "r+", encoding='utf-8') as p:
+        for x in p:
+            try:
+                evalX = eval(x)
+            except:
+                pass
+            #so x is a line that should be a func
+            #if line is 1 element and is a finite func, test the predicate (x value of finite func) and list them AND insert on top
+            print("evalX",evalX)
+            if len(evalX) == 1 and fCheck(evalX) == True:
+                print("this is evalX predicate",evalX[0][0])
+
+PosetSort(["MemoryUNORDERED.txt"])
 ##############################################################
 
 def printpls(obj):
