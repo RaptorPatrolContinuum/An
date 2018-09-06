@@ -587,7 +587,7 @@ def ComposeMETA(argList):
     oldALG = ALG
     ALG = []
     for pair in oldALG:
-        print("attempt to eval y coords")
+        print("attempt to eval y coords, ComposeMETA")
         try:
             ALG.append([pair[0],eval(pair[1])])
         #else do nothing
@@ -636,8 +636,8 @@ def ComposeReplace(str1,str2):
     evaluating properly
 
     '''
-    #print("test str1",str1)
-    #print("test str2",str2)
+    #print("test str1",str1,type(str1))
+    #print("test str2",str2,type(str2))
     ANS = None
     if isinstance(str2[1], str):
         #need a try block because ' VS " pairs really fuck everything and testing with ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\'oof\')"]]])
@@ -5928,6 +5928,12 @@ def PosetSort(argList):
     also could get rid of unnecessary lines
     '''
     funcfilename = argList[0]
+    #clone file with new name
+    clonefilename = os.getcwd() + "\\" + "GENNEW" + funcfilename
+    copy2(os.getcwd() + "\\" + funcfilename,clonefilename)
+    #iterate on line length of clone
+    clonemaxlen = mapcountLINES([clonefilename])
+    
     with open(funcfilename, "r+", encoding='utf-8') as p:
         for x in p:
             try:
@@ -5939,8 +5945,25 @@ def PosetSort(argList):
             print("evalX",evalX)
             if len(evalX) == 1 and fCheck(evalX) == True:
                 print("this is evalX predicate",evalX[0][0])
+                #written as f1 f2 but evaluated as f2 THEN f1
+                #hint: f2 is argument for f1
+                #f2 guesses: x value of something, y val of something, whole function
+                ####print("so what?",)ComposeReplace(evalX[0][0],f2)
+                #if answer is nonzero just put it in at the top
 
-PosetSort(["MemoryUNORDERED.txt"])
+                #TODO: have to update THE RIGHT functions too (aka don't extend written functions past write but do extend the poset functions)
+                cloneindex = 0
+                while cloneindex < clonemaxlen:
+                    with open(funcfilename, "r+", encoding='utf-8') as clonefile:
+                        cloneline = clonefile.read()
+                        #what to do about finite functions with length > 1?
+                        #for pair in ffunc (finite function) :)
+                    cloneindex += 1
+    #delete clone file
+    os.remove(clonefilename)
+
+    
+#PosetSort(["MemoryUNORDERED.txt"])
 ##############################################################
 
 def printpls(obj):
