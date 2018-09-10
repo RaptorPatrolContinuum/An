@@ -5944,7 +5944,8 @@ def PosetSort(argList):
             #if line is 1 element and is a finite func, test the predicate (x value of finite func) and list them AND insert on top
             print("evalX",evalX)
             if len(evalX) == 1 and fCheck(evalX) == True:
-                print("this is evalX predicate",evalX[0][0])
+                evalXpredicate = evalX[0][0]
+                print("this is evalX predicate",evalXpredicate,type(evalXpredicate))
                 #written as f1 f2 but evaluated as f2 THEN f1
                 #hint: f2 is argument for f1
                 #f2 guesses: x value of something, y val of something, whole function
@@ -5952,13 +5953,46 @@ def PosetSort(argList):
                 #if answer is nonzero just put it in at the top
 
                 #TODO: have to update THE RIGHT functions too (aka don't extend written functions past write but do extend the poset functions)
-                cloneindex = 0
-                while cloneindex < clonemaxlen:
-                    with open(funcfilename, "r+", encoding='utf-8') as clonefile:
-                        cloneline = clonefile.read()
+                cloneFileIndex = 0
+                with open(clonefilename, "r+", encoding='utf-8') as clonefile:
+                    clonefile.seek(0)
+                    while cloneFileIndex < clonemaxlen:
+                        cloneline = clonefile.readline()
+                        
                         #what to do about finite functions with length > 1?
                         #for pair in ffunc (finite function) :)
-                    cloneindex += 1
+                        print("this is evalX predicate2",evalX[0][0])
+                        print("what is cloneline?",type(cloneline),cloneline)
+                        cloneLineMaxIndex = len(cloneline)
+                        cloneLineIndex = 0
+                        while cloneLineIndex < cloneLineMaxIndex:
+                            #get live list not string
+                            try:
+                                cloneline = eval(str(cloneline))
+                            except Exception as e:
+                                print("why break:",e)
+                                break
+                            print("f",cloneline[cloneLineIndex])
+                            clonex = cloneline[cloneLineIndex][0]
+                            cloney = cloneline[cloneLineIndex][1]
+                            print("predicate",evalX[0])
+                            print("clone x",clonex,type(clonex))
+                            try:
+                                print("predicate VS clonex",ComposeReplace(evalX[0],clonex))
+                            except:
+                                print("predicate VS clonex FAILED")
+                                pass
+                            print("clone y",cloney,type(cloney))
+                            try:
+                                print("predicate VS cloney",ComposeReplace(evalX[0],cloney))
+                            except:
+                                print("predicate VS cloney FAILED")
+                                pass
+                            #cant do whole func but can concatenate later
+                            #print("cloneline",ComposeReplace(evalX[0],cloneline))
+                            
+                            
+                        cloneFileIndex += 1
     #delete clone file
     os.remove(clonefilename)
 

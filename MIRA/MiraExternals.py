@@ -587,7 +587,7 @@ def ComposeMETA(argList):
     oldALG = ALG
     ALG = []
     for pair in oldALG:
-        print("attempt to eval y coords")
+        print("attempt to eval y coords, ComposeMETA")
         try:
             ALG.append([pair[0],eval(pair[1])])
         #else do nothing
@@ -636,8 +636,8 @@ def ComposeReplace(str1,str2):
     evaluating properly
 
     '''
-    #print("test str1",str1)
-    #print("test str2",str2)
+    #print("test str1",str1,type(str1))
+    #print("test str2",str2,type(str2))
     ANS = None
     if isinstance(str2[1], str):
         #need a try block because ' VS " pairs really fuck everything and testing with ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\'oof\')"]]])
@@ -5918,6 +5918,86 @@ data we know: STRI 54 '
 data we know: STRI 55 ) single
 data we know: STRI 56 " single
 '''
+
+
+def PosetSort(argList):
+    '''
+    idea:
+    put poset sorting in the top of memlist (so we can search faster)
+    then we poset sort so when we ask if we've seen before we can just look faster
+    also could get rid of unnecessary lines
+    '''
+    funcfilename = argList[0]
+    #clone file with new name
+    clonefilename = os.getcwd() + "\\" + "GENNEW" + funcfilename
+    copy2(os.getcwd() + "\\" + funcfilename,clonefilename)
+    #iterate on line length of clone
+    clonemaxlen = mapcountLINES([clonefilename])
+    
+    with open(funcfilename, "r+", encoding='utf-8') as p:
+        for x in p:
+            try:
+                evalX = eval(x)
+            except:
+                pass
+            #so x is a line that should be a func
+            #if line is 1 element and is a finite func, test the predicate (x value of finite func) and list them AND insert on top
+            print("evalX",evalX)
+            if len(evalX) == 1 and fCheck(evalX) == True:
+                evalXpredicate = evalX[0][0]
+                print("this is evalX predicate",evalXpredicate,type(evalXpredicate))
+                #written as f1 f2 but evaluated as f2 THEN f1
+                #hint: f2 is argument for f1
+                #f2 guesses: x value of something, y val of something, whole function
+                ####print("so what?",)ComposeReplace(evalX[0][0],f2)
+                #if answer is nonzero just put it in at the top
+
+                #TODO: have to update THE RIGHT functions too (aka don't extend written functions past write but do extend the poset functions)
+                cloneFileIndex = 0
+                with open(clonefilename, "r+", encoding='utf-8') as clonefile:
+                    clonefile.seek(0)
+                    while cloneFileIndex < clonemaxlen:
+                        cloneline = clonefile.readline()
+                        
+                        #what to do about finite functions with length > 1?
+                        #for pair in ffunc (finite function) :)
+                        print("this is evalX predicate2",evalX[0][0])
+                        print("what is cloneline?",type(cloneline),cloneline)
+                        cloneLineMaxIndex = len(cloneline)
+                        cloneLineIndex = 0
+                        while cloneLineIndex < cloneLineMaxIndex:
+                            #get live list not string
+                            try:
+                                cloneline = eval(str(cloneline))
+                            except Exception as e:
+                                print("why break:",e)
+                                break
+                            print("f",cloneline[cloneLineIndex])
+                            clonex = cloneline[cloneLineIndex][0]
+                            cloney = cloneline[cloneLineIndex][1]
+                            print("predicate",evalX[0])
+                            print("clone x",clonex,type(clonex))
+                            try:
+                                print("predicate VS clonex",ComposeReplace(evalX[0],clonex))
+                            except:
+                                print("predicate VS clonex FAILED")
+                                pass
+                            print("clone y",cloney,type(cloney))
+                            try:
+                                print("predicate VS cloney",ComposeReplace(evalX[0],cloney))
+                            except:
+                                print("predicate VS cloney FAILED")
+                                pass
+                            #cant do whole func but can concatenate later
+                            #print("cloneline",ComposeReplace(evalX[0],cloneline))
+                            
+                            
+                        cloneFileIndex += 1
+    #delete clone file
+    os.remove(clonefilename)
+
+    
+#PosetSort(["MemoryUNORDERED.txt"])
 ##############################################################
 
 def printpls(obj):
