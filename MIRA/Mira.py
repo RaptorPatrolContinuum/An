@@ -31,13 +31,13 @@ while Descent:
             inputtext = argv[1:][0]
             Descent = False
         else:
-            inputtext = str(input("exit or logout to leave \n"))
+            inputtext = str(input("exit or logout to leave " + str(datetime.now()) + "\n"))
     except EOFError as e:
-        inputtext = str(input("exit or logout to leave \n"))
+        inputtext = str(input("exit or logout to leave " + str(datetime.now()) + "\n"))
     except Exception as e:
         FILEinsertAt([MemoryUNORDERED,input,mapcountLINES([MemoryUNORDERED])])
-        print("this is the error",e)
-        inputtext = str(input("exit or logout to leave \n"))
+        print("this is the error" + str(datetime.now()),e)
+        inputtext = str(input("exit or logout to leave " + str(datetime.now()) + " \n"))
 
     if inputtext == "exit" or inputtext == "logout":
         raise SystemExit
@@ -74,6 +74,10 @@ while Descent:
             for x in nearfield:
                 #print("x in nearfield",x)
                 #print("fcheck",fCheck(eval(x)))
+                #FixedQualifier([delta2,α0print("yoikes don\\\'t worry about apostrophes if you have a good enough description")],TOTAL_ARGUMENT,FixedQualifiermin1])
+                #print("x and seekForce",x,SeekForce(["MemoryUNORDERED.txt",[["FixedQualifier([delta2,['α0outα1stα2,TOTAL_ARGUMENT,FixedQualifiermin1])", '']],SeekForcemin2,[],[]]))
+                #print("x and seekForce",x,SeekForce(["MemoryUNORDERED.txt",[["FixedQualifier([delta2,["+ x + ",TOTAL_ARGUMENT,FixedQualifiermin1])", '']],SeekForcemin2,[],[]]))
+                print("x and " + str(datetime.now()) + " seekForce",x,SeekForce(['MemoryUNORDERED.txt',x,SeekForcemin3,[],[]]))
                 if fCheck(eval(x)):
                     #print("fcheck2",eval(x)[0][0])
                     #print("hey hey hey",type(eval(x)[0][0]))

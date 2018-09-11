@@ -17,6 +17,7 @@ from collections import defaultdict
 from subprocess import *
 #from linecache import *
 import fileinput
+from datetime import *
 
 if sys.version_info[0] < 3:
     raise Exception("Python 3 or a more recent version is required.")
@@ -4387,6 +4388,8 @@ def SeekForcemin2(argList):
     string1 = toString([ran(arg1),"naive"])
     string2 = toString([ran(arg2),"naive"])
     #print("args",argList)
+    #print("str1",string1,type(string1))
+    #print("str2",string2,type(string2))
     #print("seekforcemin2function",delta2([string1,string2]))
     #print("args for equal",toString([ran(delta2([string1,string2])),"naive"]), string2)
     #hint: arg2 in this func is our guess for abstraction
@@ -4405,6 +4408,63 @@ def SeekForcemin2(argList):
 #SeekForce(['MemoryUNORDERED.txt',[[['TOTAL_ARGUMENT =='], ['TOTAL_ARGUMENT ==']]],SeekForcemin2,[],[]])
 #print(SeekForce(['MemoryUNORDERED.txt',[[['print("'], ['print("']], [['α0'], ['α0']], [['")'], ['")']]],SeekForcemin2,[],[]]))
 
+def SeekForcemin3(argList):
+    '''
+    inputs???
+    returns:list of lines in target file that are abstractions for test line
+    this is to check if we already have good enough abstractions to skip bs waiting time
+    TEST
+    SeekForce(['MemoryUNORDERED.txt','print("why")',SeekForcemin3,[],[]])
+    '''
+    ANS = []
+    #print("what are my args?",argList)
+    finitefunc = argList[0]
+    #NEED RAW TEXT
+    #finitefunc = "%r"%argList[0]
+    #print("finitefunc",argList[0],type(argList[0]))
+    uniqueobj = argList[1]
+    #print(argList[1],type(argList[1]))
+    #print("Q_",Q_(uniqueobj),type(Q_(uniqueobj)))
+    Kindex = 0
+    while Kindex < len(finitefunc) and fCheck(finitefunc) == True:
+        abstq = finitefunc[Kindex][0]
+        #print("actual wtf",finitefunc,type(finitefunc))
+        #print("actual wtf2",Q_(uniqueobj),type(Q_(uniqueobj)))
+        #Kindex,len(finitefunc),fCheck(finitefunc),
+        try:
+            test1 = ComposeMETA([finitefunc,Q_(uniqueobj)])
+            ##print("composeMETA+ Quine seems like a better fit",test1,type(test1))
+            if test1 is not None:
+                ##print("pass this",test1)
+                ANS.append(test1)
+        except Exception as e:
+            ##print("whye",e)
+            pass
+        try:
+            #try raw text
+            finitefunc2 = "%r"%argList[0]
+            test2 = ComposeMETA([finitefunc2,Q_(uniqueobj)])
+            ##print("composeMETA2+ Quine seems like a better fit",test2,type(test2))
+        except Exception as e:
+            ##print("whye2",e)
+            if test2 is not None:
+                ##print("pass this",test2)
+                ANS.append(test2)
+        ##print("does ANS make sense?",ANS)
+        #print("compare these",abstq,type(abstq))
+        #print("uniqueobj",uniqueobj,type(uniqueobj))
+        #print("delta2 STANDBY",toString([ran(delta2([abstq,uniqueobj])),"naive"]),toString([ran(delta2([abstq,uniqueobj])),"naive"]) == abstq)
+        #[['FixedQualifier([delta2,([print("α0")],TOTAL_ARGUMENT,FixedQualifiermin1])', '']]
+        #if toString([ran(delta2([abstq,uniqueobj])),"naive"]) == abstq:
+        #    #print("THIS IS ABASTRACTION", abstq)
+        #    pass
+        Kindex +=1
+    ##print("====================",ANS)
+    return ANS
+
+##print("return is ",SeekForce(['MemoryUNORDERED.txt','print("why")',SeekForcemin3,[],[]]))
+#with the present memoryunordered I got [[], [[]]]
+    
 def forFix(argList):
     '''
     arg1 = string
@@ -5085,7 +5145,7 @@ def abstractionGENERAL(argList):
         xmod = toString([ran(x),"naive"])
         #print("args fpr thedelta", [inputtextvar,xmod])
         thedelta = delta2([inputtextvar,xmod])
-        #print("what's thedelta?",thedelta)
+        print("what's thedelta?" + str(datetime.now()),thedelta)
         abstractcheck = toString([ran(thedelta),"naive"])
         test1 = abstractcheck == inputtextvar
         test2 = abstractcheck == xmod
@@ -5105,7 +5165,7 @@ def abstractionGENERAL(argList):
     #since abstractiondict is a list
     abstractioninnertotal = 0
     for x in guessAbst:
-        #print("x in guessAbst",x)
+        print("x in guessAbst" + str(datetime.now()),x)
         ##print("x in guessAbst",toString([ran(x),"naive"]))
         minforce1 = SeekForce([MemoryUNORDEREDvar,x,SeekForcemin2,[],[]])
         minforce2 = SeekForce([memoryLongvar,x,SeekForcemin2,[],[]])
@@ -5147,8 +5207,9 @@ def abstractionGENERAL(argList):
     len2int = 0
     #print("check lengths",len1,len2)
     anothersum = 0
+    print("am I stuck here?" + str(datetime.now()))
     for x in range(len1):
-        #print("electric feel",len(abstractiondict[str(len1int)]))
+        print("electric feel" + str(datetime.now()),len(abstractiondict[str(len1int)]))
         anothersum += len(abstractiondict[str(len1int)])
         if len(abstractiondict[str(len1int)]) == 0:
             anothersum += 1
@@ -5163,7 +5224,7 @@ def abstractionGENERAL(argList):
     #    print(len(abstractiondict[str(x)]))
     with open("ABSTRACTFILE.txt", 'a+', encoding='utf-8') as ABSTRACTFILE:
         for x in range(anothersum*len2):
-            #print("x in totalabstractions",x)
+            print("x in totalabstractions" + str(datetime.now()),x)
             if (len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 )and x != 0:
                 len3int = 0
                 len1int += 1
@@ -5225,8 +5286,8 @@ def abstractionGENERAL(argList):
         guessint = 0
         thenextline = rchop(ordered1.readline(), '\n')
         #hint: memoryLongvar is only one line fuck
-        #print("WTRFFFFF",mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2)
-        #print("skipfactor",anothersum*len2)
+        print("WTRFFFFF" + str(datetime.now()),mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2)
+        print("skipfactor" + str(datetime.now()),anothersum*len2)
         for lineint in range(mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2):
             if guessint == anothersum*len2:
                 thenextline = rchop(ordered1.readline(), '\n')
@@ -5255,7 +5316,7 @@ def abstractionGENERAL(argList):
             #print("RHSpart1",memY,guessY)
             #print("RHS",RHSTest)
             if LHSTest and RHSTest:
-                #print("this guy passed",[[guessX,guessY]])
+                print("this guy passed" + str(datetime.now()),[[guessX,guessY]])
                 #print("thjis is actual",emptycheck)
                 #write the right qualifier
                 #[[FixedQualifier([delta2,abstraction,testguy]),result]]
