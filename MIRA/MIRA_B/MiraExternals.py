@@ -652,7 +652,6 @@ def ComposeReplace(str1,str2):
             #print(str1[0].replace("TOTAL_ARGUMENT", total))
             #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
             if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
-                #
                 #print("got here???")
                 #return [str2[0],str1[1]]
                 if ANS == None:
@@ -667,7 +666,6 @@ def ComposeReplace(str1,str2):
             #print(str1[0].replace("TOTAL_ARGUMENT", total))
             #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
             if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
-                #
                 #print("got here???")
                 #return [str2[0],str1[1]]
                 if ANS == None:
@@ -707,7 +705,7 @@ def ComposeReplace(str1,str2):
                     ANS = ANS + [[str2[0],str1[1]]]
                 #print("ANSAFTER",ANS)
         except Exception as e:
-            #print("what is error?",e)
+            print("what is error?",e)
             pass
     return ANS
 
@@ -4435,7 +4433,8 @@ def SeekForcemin3(argList):
             test1 = ComposeMETA([finitefunc,Q_(uniqueobj)])
             ##print("composeMETA+ Quine seems like a better fit",test1,type(test1))
             if test1 is not None:
-                ##print("pass this",test1)
+                print("empties wtf",[finitefunc,Q_(uniqueobj)])
+                print("pass this",test1)
                 ANS.append(test1)
         except Exception as e:
             ##print("whye",e)
@@ -4448,7 +4447,8 @@ def SeekForcemin3(argList):
         except Exception as e:
             ##print("whye2",e)
             if test2 is not None:
-                ##print("pass this",test2)
+                print("empties wtf",[finitefunc2,Q_(uniqueobj)])
+                print("pass this",test2)
                 ANS.append(test2)
         ##print("does ANS make sense?",ANS)
         #print("compare these",abstq,type(abstq))
@@ -4464,6 +4464,11 @@ def SeekForcemin3(argList):
 
 ##print("return is ",SeekForce(['MemoryUNORDERED.txt','print("why")',SeekForcemin3,[],[]]))
 #with the present memoryunordered I got [[], [[]]]
+#^^ this example is fucked I don't think you can use it properly: look at:
+
+
+#ComposeMETA([[['FixedQualifier([delta2,\'print(\"α0\")\',TOTAL_ARGUMENT,FixedQualifiermin1])', 'fix this']], [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]])
+#[['print("lost track of what I was doing")', 'fix this']]
     
 def forFix(argList):
     '''
@@ -4619,13 +4624,26 @@ def maxlargestequivclasses(argList):
     #fucking degen bullshit, basically if set is len 1 my range is 0
     if len(arg1) <= 1:
         return arg1
-    #print("what is going on",range(int((len(arg1)*(len(arg1)-1))/2)))
-    for x in range(int((len(arg1)*(len(arg1)-1))/2)):
+    maxlenwhy = int((len(arg1)*(len(arg1)-1))/2)
+    #
+    print("what is going on",range(maxlenwhy))
+    perksi = 0
+    #for x in range(min(50,maxlenwhy)):
+    for x in range(maxlenwhy):
+        perksi += 1
+        print("ninja WeirdChamp",perksi)
+        #if maxlenwhy > 500:
+        #    print("x",x)
+
         #print("x",x)
         oldbatch = []
         for objthing in deltabatch:
             oldbatch.append(objthing)
         #print("WTF IS ORIGINAL BATCH",oldbatch,len(oldbatch))
+
+        #if maxlenwhy > 500:
+        #    print("WTF IS ORIGINAL BATCH",oldbatch,len(oldbatch))
+
         try:
             #want: nchoose2partgen, delta2, eval if string and right selection if function
             listprep = nchoose2partgen([arg1,x])
@@ -4674,8 +4692,10 @@ def maxlargestequivclassesGENERIC(argList):
     #filteringguy = [yZ for yZ in THELIST if toString([ran(yZ),"naive"]) == delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])])]
     filteringguy = []
     for yZ in THELIST:
-        #print("yZ",yZ)
-        #print(toString([ran(yZ),"naive"]))
+        #
+        print("yZ",yZ)
+        #
+        print(toString([ran(yZ),"naive"]))
         #print(toString([ran(delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])])),"naive"]))
         #print(toString([ran(yZ),"naive"]) == delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])]))
         if toString([ran(yZ),"naive"]) == toString([ran(delta2([toString([ran(theQuestion),"naive"]),toString([ran(yZ),"naive"])])),"naive"]):
@@ -5158,7 +5178,7 @@ def abstractionGENERAL(argList):
     #print("COMPART MEMCOMPOSE WITH GUESSABST")
     #print("MEMCOMPOSE",str(MEMcomposeinput).encode('utf-8'))
     #print("MEMCOMPOSE",str(MEMcomposeinput))
-    #print("guessAbst",guessAbst)
+    print("guessAbst TOTAL",len(guessAbst),guessAbst)
     #print("what am I guessing an abstraction OF INPUT to be?",guessAbst)
     abstractiondict = {}
     icounter = 0
@@ -5166,17 +5186,25 @@ def abstractionGENERAL(argList):
     abstractioninnertotal = 0
     for x in guessAbst:
         print("x in guessAbst" + str(datetime.now()),x)
-        ##print("x in guessAbst",toString([ran(x),"naive"]))
+        ##
+        print("x in guessAbst",toString([ran(x),"naive"]))
         minforce1 = SeekForce([MemoryUNORDEREDvar,x,SeekForcemin2,[],[]])
         minforce2 = SeekForce([memoryLongvar,x,SeekForcemin2,[],[]])
-        #print("try to seekforce with this and something else")
-        ##print("abstracting RHS once1!",maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]))
-        ##print("abstracting RHS once2!",maxlargestequivclasses([minforce2,maxlargestequivclassesmin1]))
+        print("minforce1 args",[MemoryUNORDEREDvar,x,SeekForcemin2,[],[]])
+        print("minforce1",minforce1)
+        print("minforce2",minforce2)
+        #
+        print("try to seekforce with this and something else")
+        ##
+        print("abstracting RHS once1!",maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]))
+        ##
+        print("abstracting RHS once2!",maxlargestequivclasses([minforce2,maxlargestequivclassesmin1]))
         totalabstractions = maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]) + maxlargestequivclasses([minforce2,maxlargestequivclassesmin1])
         abstractiondict[str(icounter)] = totalabstractions
         icounter += 1
         #hint: TOTALABSTRACTIONS IS A LIST
-        ##print("TOTALABSTRACTIONS IS A LIST",totalabstractions)
+        ##
+        print("TOTALABSTRACTIONS IS A LIST",totalabstractions)
         abstractioninnertotal += len(totalabstractions)
         #having issue of not counting empties but not being able to skip them so just account for them
         if len(totalabstractions) == 0:
@@ -5201,6 +5229,7 @@ def abstractionGENERAL(argList):
     #then SI on delta2(inputs) and delta2(outputs)
     #MEMcomposeinput
     #print("double check dict",abstractiondict)
+    print("do I get past this long bs?"+ str(datetime.now()))
     len1 = len(abstractiondict)
     len1int = 0
     len2 = len(guessAbst)
@@ -5266,7 +5295,23 @@ def abstractionGENERAL(argList):
             #print("cl",cleanup1)
             #print("ABSTRACTION GUESS:",[[guessAbst[len2int],cleanup1]])
             #functionguessdict[str(x)] = [[guessAbst[len2int],cleanup1]]
-            ABSTRACTFILE.write(str([[guessAbst[len2int],cleanup1]]) + "\n")
+
+            #hint: write to 2nd file and search through that
+            with open("ABSTRACTFILE2.txt", 'a+', encoding='utf-8') as ABSTRACTFILE2:
+                print("abstractfile had too many duplicate lines")
+                stopdupe = str([[guessAbst[len2int],cleanup1]])
+                #print(stopdupe)
+                #print(["ABSTRACTFILE2.txt",stopdupe])
+                #print(shittySearch(["ABSTRACTFILE2.txt",stopdupe]))
+                #print(len(shittySearch(["ABSTRACTFILE2.txt",stopdupe])) == 0)
+                if len(shittySearch(["ABSTRACTFILE2.txt",stopdupe])) == 0:
+                    ABSTRACTFILE.write(stopdupe + "\n")
+                    ABSTRACTFILE2.write(stopdupe + "\n")
+                    print("written")
+                else:
+                    print("unwritten")
+                    pass
+                ABSTRACTFILE2.close()
             #nearfield.append(str([[guessAbst[len2int],cleanup1]]))
             '''
             if delta2([cleanup1,MEMcomposeinput[len2int]]) == cleanup1:
@@ -5289,13 +5334,18 @@ def abstractionGENERAL(argList):
         print("WTRFFFFF" + str(datetime.now()),mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2)
         print("skipfactor" + str(datetime.now()),anothersum*len2)
         for lineint in range(mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2):
-            if guessint == anothersum*len2:
+
+            #if guessint == anothersum*len2:
+            if guessint == len2:
                 thenextline = rchop(ordered1.readline(), '\n')
                 guessint = 0
+            
             #print("OK WE ARE COMPARING ",lineint,thenextline)
             #print("AND THIS LINE",functionguessdict[str(guessint)])
             #problem with encoding empty string
             emptycheck = FILEindexread(["ABSTRACTFILE.txt",guessint])
+            print("emptycheck stats",guessint,anothersum,len2,mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2)
+            print("emptycheckk",emptycheck)
             #if len(emptycheck) > 0:
             #    #print("AND THIS LINE",emptycheck.encode('utf-8').format(u"\u03B1"))
             #    #print("AND THIS LINE",emptycheck.format(u"\u03B1"))
@@ -5336,9 +5386,18 @@ def abstractionGENERAL(argList):
                 #[["FixedQualifier([delta2,guessX,TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]]
                 #time to write to MemoryUNORDEREDvar
                 #make sure not to add duplicates
-                if len(shittySearch(['MemoryUNORDERED.txt',str([["FixedQualifier([delta2,"+guessX+",TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]])])) == 0:
+                actualwtf = str([["FixedQualifier([delta2," + "\"" + str(guessX) + "\"" + ",TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]]) + "\n"
+                print("actual wtf why",actualwtf)
+                if len(shittySearch(['MemoryUNORDERED.txt',actualwtf])) == 0:
                     with open(MemoryUNORDEREDvar,'a+',encoding='utf-8') as theMEMun:
-                        theMEMun.write(str([["FixedQualifier([delta2,"+guessX+",TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]]) + "\n")
+                        print("what is guessX",guessX)
+                        
+                        #fixedmaybe = strFix([guessX])
+                        #next question: strfix( " + guessX + ")
+                        #theraw = "%r"%fixedmaybe
+                        print("try this:",actualwtf)
+                        print("need extra quotes",actualwtf)
+                        theMEMun.write(actualwtf)
                 #next testing step would be to check with ComposeMeta
             guessint += 1
 
@@ -5362,6 +5421,7 @@ def abstractionGENERAL(argList):
     #print("ENDHERE")
     
     os.remove("ABSTRACTFILE.txt")
+    os.remove("ABSTRACTFILE2.txt")
     try:
         os.remove(OtherClone() + "\\" + "ABSTRACTFILE.txt")
     except:
@@ -5445,6 +5505,7 @@ def FixedQualifier(argList):
     #need fixed point func so I don't write delta2(abst,test) == abst all the fucking time
     #returns TRUE/FALSE
     '''
+    print("why nonearg?",argList)
     #function to use
     arg1 = argList[0]
     #fixed point (aka the abstraction)
@@ -5462,6 +5523,7 @@ def FixedQualifiermin1(argList):
     '''
     #need a min for delta2 returning func and not list
     '''
+    print("fixedqualifiermin arglist",argList)
     #function to use
     arg1 = argList[0]
     #fixed point (aka the abstraction)
@@ -5987,6 +6049,7 @@ def PosetSort(argList):
     put poset sorting in the top of memlist (so we can search faster)
     then we poset sort so when we ask if we've seen before we can just look faster
     also could get rid of unnecessary lines
+    this isn't even done I don't write the function down
     '''
     funcfilename = argList[0]
     #clone file with new name

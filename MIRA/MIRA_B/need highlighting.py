@@ -1,4 +1,30 @@
-
+>> ComposeMETA([[['FixedQualifier([delta2,str(print(\"α0\")),TOTAL_ARGUMENT,FixedQualifiermin1])', 'fix this']], [['check this guy', 'check this guy']]])
+α0
+why nonearg? [<function delta2 at 0x043A76A8>, 'None', 'check this guy', <function FixedQualifiermin1 at 0x043A7E40>]
+fixedqualifiermin arglist [<function delta2 at 0x043A76A8>, 'None', 'check this guy', <function FixedQualifiermin1 at 0x043A7E40>]
+LHS guy α0e
+RHS guy None
+[]
+>>> 
+>>> [delta2,'print(\"α0\")',TOTAL_ARGUMENT,FixedQualifiermin1]
+Traceback (most recent call last):
+  File "<pyshell#12>", line 1, in <module>
+    [delta2,'print(\"α0\")',TOTAL_ARGUMENT,FixedQualifiermin1]
+NameError: name 'TOTAL_ARGUMENT' is not defined
+>>> ComposeMETA([[['FixedQualifier([delta2,\'print(\"α0\")\',TOTAL_ARGUMENT,FixedQualifiermin1])', 'fix this']], [['check this guy', 'check this guy']]])
+why nonearg? [<function delta2 at 0x043A76A8>, 'print("α0")', 'check this guy', <function FixedQualifiermin1 at 0x043A7E40>]
+fixedqualifiermin arglist [<function delta2 at 0x043A76A8>, 'print("α0")', 'check this guy', <function FixedQualifiermin1 at 0x043A7E40>]
+LHS guy α0tα1
+RHS guy print("α0")
+[]
+>>> ComposeMETA([[['FixedQualifier([delta2,str(print("α0")),TOTAL_ARGUMENT,FixedQualifiermin1])', 'fix this']], [['check this guy', 'check this guy']]])
+α0
+why nonearg? [<function delta2 at 0x043A76A8>, 'None', 'check this guy', <function FixedQualifiermin1 at 0x043A7E40>]
+fixedqualifiermin arglist [<function delta2 at 0x043A76A8>, 'None', 'check this guy', <function FixedQualifiermin1 at 0x043A7E40>]
+LHS guy α0e
+RHS guy None
+[]
+>>> 
 
 
 "print('alpha')"
