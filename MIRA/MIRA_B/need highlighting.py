@@ -1,3 +1,6 @@
+FixedQualifier([delta2,"α0\\Mira.py", α1], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True),"α0\Mira.py",FixedQualifiermin1])
+
+
 >> ComposeMETA([[['FixedQualifier([delta2,str(print(\"α0\")),TOTAL_ARGUMENT,FixedQualifiermin1])', 'fix this']], [['check this guy', 'check this guy']]])
 α0
 why nonearg? [<function delta2 at 0x043A76A8>, 'None', 'check this guy', <function FixedQualifiermin1 at 0x043A7E40>]

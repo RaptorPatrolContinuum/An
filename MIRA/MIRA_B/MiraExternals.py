@@ -5234,7 +5234,7 @@ def abstractionGENERAL(argList):
     len1int = 0
     len2 = len(guessAbst)
     len2int = 0
-    #print("check lengths",len1,len2)
+    print("check lengths",len1,len2)
     anothersum = 0
     print("am I stuck here?" + str(datetime.now()))
     for x in range(len1):
@@ -5243,7 +5243,7 @@ def abstractionGENERAL(argList):
         if len(abstractiondict[str(len1int)]) == 0:
             anothersum += 1
         len1int += 1
-    #print("what is anothersum?",anothersum)
+    print("what is anothersum?",anothersum)
     len1int = 0
     len3int = 0
     #functionguessdict = {}

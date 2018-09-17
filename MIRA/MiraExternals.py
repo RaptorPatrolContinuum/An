@@ -5234,7 +5234,7 @@ def abstractionGENERAL(argList):
     len1int = 0
     len2 = len(guessAbst)
     len2int = 0
-    #print("check lengths",len1,len2)
+    print("check lengths",len1,len2)
     anothersum = 0
     print("am I stuck here?" + str(datetime.now()))
     for x in range(len1):
@@ -5243,7 +5243,7 @@ def abstractionGENERAL(argList):
         if len(abstractiondict[str(len1int)]) == 0:
             anothersum += 1
         len1int += 1
-    #print("what is anothersum?",anothersum)
+    print("what is anothersum?",anothersum)
     len1int = 0
     len3int = 0
     #functionguessdict = {}
@@ -5252,7 +5252,8 @@ def abstractionGENERAL(argList):
     #    print(abstractiondict[str(x)])
     #    print(len(abstractiondict[str(x)]))
     with open("ABSTRACTFILE.txt", 'a+', encoding='utf-8') as ABSTRACTFILE:
-        for x in range(anothersum*len2):
+        #for x in range(anothersum*len2):
+        for x in range(len2):
             print("x in totalabstractions" + str(datetime.now()),x)
             if (len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 )and x != 0:
                 len3int = 0
@@ -5336,7 +5337,8 @@ def abstractionGENERAL(argList):
         for lineint in range(mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2):
 
             #if guessint == anothersum*len2:
-            if guessint == len2:
+            #if guessint == len2:
+            if guessint == len2-1:
                 thenextline = rchop(ordered1.readline(), '\n')
                 guessint = 0
             
