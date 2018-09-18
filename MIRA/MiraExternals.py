@@ -5252,8 +5252,7 @@ def abstractionGENERAL(argList):
     #    print(abstractiondict[str(x)])
     #    print(len(abstractiondict[str(x)]))
     with open("ABSTRACTFILE.txt", 'a+', encoding='utf-8') as ABSTRACTFILE:
-        #for x in range(anothersum*len2):
-        for x in range(len2):
+        for x in range(anothersum*len2):
             print("x in totalabstractions" + str(datetime.now()),x)
             if (len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 )and x != 0:
                 len3int = 0
@@ -5337,8 +5336,7 @@ def abstractionGENERAL(argList):
         for lineint in range(mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2):
 
             #if guessint == anothersum*len2:
-            #if guessint == len2:
-            if guessint == len2-1:
+            if guessint == len2:
                 thenextline = rchop(ordered1.readline(), '\n')
                 guessint = 0
             
@@ -5390,6 +5388,9 @@ def abstractionGENERAL(argList):
                 #make sure not to add duplicates
                 actualwtf = str([["FixedQualifier([delta2," + "\"" + str(guessX) + "\"" + ",TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]]) + "\n"
                 print("actual wtf why",actualwtf)
+                testingarglist = [actualwtf,[['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]
+                print(testingarglist)
+                print("check if I can composeMETA",ComposeMETA(testingarglist))
                 if len(shittySearch(['MemoryUNORDERED.txt',actualwtf])) == 0:
                     with open(MemoryUNORDEREDvar,'a+',encoding='utf-8') as theMEMun:
                         print("what is guessX",guessX)

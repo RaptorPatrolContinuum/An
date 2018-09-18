@@ -562,9 +562,9 @@ def ComposeMETA(argList):
     '''
     #check if f1,f2 are functions:
     if fCheck(f1) == False or fCheck(f2) == False:
-        #print("WTF ARE THESE f1", f1 ,type(f1))
-        #print("WTF ARE THESE f2", f2, type(f2))
-        #print("f1 is function? COMPOSEMETA", fCheck(f1), "f2 is function?", fCheck(f2))
+        print("WTF ARE THESE f1", f1 ,type(f1))
+        print("WTF ARE THESE f2", f2, type(f2))
+        print("f1 is function? COMPOSEMETA", fCheck(f1), "f2 is function?", fCheck(f2))
         return
     ALG = []
     for y in f2:
@@ -595,6 +595,8 @@ def ComposeMETA(argList):
         except:
             ALG.append([pair[0],pair[1]])
     return ALG
+
+#COMPOSEMETA CHECKS AND THEIR ANSWERS BECAUSE CHANGING COMPOSE REPLACE
 
 def ComposeReplace(str1,str2):
     '''
@@ -5386,8 +5388,13 @@ def abstractionGENERAL(argList):
                 #[["FixedQualifier([delta2,guessX,TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]]
                 #time to write to MemoryUNORDEREDvar
                 #make sure not to add duplicates
+                #TEST LINE
+                #print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0([α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
                 actualwtf = str([["FixedQualifier([delta2," + "\"" + str(guessX) + "\"" + ",TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]]) + "\n"
                 print("actual wtf why",actualwtf)
+                testingarglist = [eval(actualwtf),[['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]
+                print(testingarglist)
+                print("check if I can composeMETA",ComposeMETA(testingarglist))
                 if len(shittySearch(['MemoryUNORDERED.txt',actualwtf])) == 0:
                     with open(MemoryUNORDEREDvar,'a+',encoding='utf-8') as theMEMun:
                         print("what is guessX",guessX)
