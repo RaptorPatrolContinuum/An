@@ -5882,8 +5882,21 @@ def strFixmin1(argList):
         inpstr = argList[0]
     else:
         inpstr = "%r"%argList[0]
-    print("check calls==============================")
+    print("check calls============================== what is check char?",inpstr[0])
     print(inpstr,recursecount)
+    splitdecider = inpstr[0]
+    if splitdecider != "'" and splitdecider != "(" and splitdecider != "[" and splitdecider != "'":
+        wesplit = inpstr.split(",")
+        print("WE SPLIT HERE BY , CHAR THEN FIX PARTS TOGETHER")
+        print(wesplit)
+        miniQ = ""
+        for thing in wesplit:
+            if miniQ != "":
+                miniQ = miniQ + "," + thing
+            else:
+                miniQ = thing
+        print("does concatenate keep info?")
+        print(miniQ)
 
     #init firstquote
     firststquote = ""
