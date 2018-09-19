@@ -1,3 +1,73 @@
+"
+U+0022 : QUOTATION MARK
+“
+U+201C : LEFT DOUBLE QUOTATION MARK {double turned comma quotation mark}
+”
+U+201D : RIGHT DOUBLE QUOTATION MARK {double comma quotation mark}
+
+CURRENT Q:
+print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
+
+'[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]'
+  [\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\'] 
+   \'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\' 2
+                    [delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1] 3
+                     delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1 4
+                                       
+
+
+strFix(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
+
+'FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'
+				[delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1]
+				 delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1
+                                   "α2"            "lost track of what I was doing"
+								   
+IF I DO ATTEMPT SPLIT WITH , THAT MEANS I CANT HAVE COMMAS IN STRING INPUTS EVER: EX					
+delta2,"α0α1print(",α2")α3","print("lost track of what I was doing")",FixedQualifiermin1 will fail
+
+when to split?			
+
+try this:
+'delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1'.split(“,”)
+'delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1'.split(“,”)
+['delta2', '"α0α1print("α2")α3"', '"print("lost track of what I was doing")"', 'FixedQualifiermin1']
+then force each element to be a single kind: either code or string depending on if you start with " or ' or not
+
+CURRENT ANS:
+'\'FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])\''				
+ANS I WANT:			
+print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0α1print(\"α2\")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))	  
+				  
+strFix(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
+
+'\'FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])\''
+
+
+
+
+
+
+=================================================================================================================================
+>>> strFix(['FixedQualifier([delta2,"α0([α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
+start to end 			   ([delta2,"α0([α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'
+CHECK THIS WHILE FUNCTION  ([delta2,"α0([α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'
+
+
+
+
+
+
+=================================================================================================================================
+print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0[α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
+
+
+
+print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0([α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
+print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0[α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
+
+FixedQualifier([delta2,"α0([α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])
+
 FixedQualifier([delta2,"α0\\Mira.py", α1], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True),"α0\Mira.py",FixedQualifiermin1])
 
 

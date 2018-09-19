@@ -538,180 +538,6 @@ def AutoVision(number,Lval):
         print("ANS IS []???!?!?!?!?!")
     return ANS
 
-def Compose(f1,f2):
-    '''
-    do f2 THEN f1 like the way it's written!
-    '''
-    #print("check if f1,f2 are functions:",f1)
-    if fCheck(f1) == False or fCheck(f2) == False:
-        #print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
-        return
-    ALG = []
-    for x in f2:
-        for y in f1:
-            #print("x1 and y0",x[1],y[0])
-            if x[1] == y[0]:
-                ALG.append([x[0],y[1]])
-    return ALG
-
-def ComposeMETA(argList):
-    f1 = argList[0]
-    f2 = argList[1]
-    '''
-    do f2 THEN f1 like the way it's written!
-    '''
-    #check if f1,f2 are functions:
-    if fCheck(f1) == False or fCheck(f2) == False:
-        print("WTF ARE THESE f1", f1 ,type(f1))
-        print("WTF ARE THESE f2", f2, type(f2))
-        print("f1 is function? COMPOSEMETA", fCheck(f1), "f2 is function?", fCheck(f2))
-        return
-    ALG = []
-    for y in f2:
-        for x in f1:
-            #which one is the first half of the function?
-            '''
-            for x in thingy:
-            replace y[0] with x
-            AND SOMETHING ABOUT ARGUMENT_# WHERE # INCREMENTS
-            info I need:
-            the whole thing
-            parts
-            maybe write a replacer function
-            '''
-            ComposeTest = ComposeReplace(x,y)
-            if ComposeTest != None:
-                #I want to eval the y coord now so I can add instructions to results
-                ALG = ALG + ComposeTest
-            #if eval(ComposeReplace(x,y)):
-            #    ALG.append([x[0],y[1]])
-    oldALG = ALG
-    ALG = []
-    for pair in oldALG:
-        print("attempt to eval y coords, ComposeMETA")
-        try:
-            ALG.append([pair[0],eval(pair[1])])
-        #else do nothing
-        except:
-            ALG.append([pair[0],pair[1]])
-    return ALG
-
-#COMPOSEMETA CHECKS AND THEIR ANSWERS BECAUSE CHANGING COMPOSE REPLACE
-
-def ComposeReplace(str1,str2):
-    '''
-    HINT: I WRITE str1,str2 BUT I EVAULATE IN TERMS OF str2 FIRST, THEN str1
-    HINT: USE Q_() function to make things automatically functions
-
-    PICTURE:
-    FUNCTION1 COMPOSED FUNCTION2:
-     ^ where y is from
-                         ^ where x is from
-
-    HINT: DO FUNCTION2 BEFORE FUNCTION1 LIKE IN MATH
-    
-    str1 is x which is a pair
-    str2 is y which is a pair
-
-    PICTURE:
-        (Extra data from Compose:)
-         STR2             STR1
-    [y[0],y[1]] COMPOSE [x[0],x[1]]
-    GOAL:
-    eval y[0] using x[0] as argument list
-    this function just replaces argument_X in y[0] with elements of x[0] OR TOTAL_ARGUMENT of x[0] (AKA the whole thing of x[0])
-
-
-    TODO:
-    check if string or list
-        total: have to add quotes to before and after
-        per item: ???
-    adding quotes or not
-        total: ???
-        per item: might have to add quotes?
-        what to do:
-        for each item in y[1], we replace ARGUMENT_i (where is is incrementing number) in x[0]
-        PROBLEMS:
-            let's look at ARGUMENT_1== b
-            then all it's looking at is if argument_1 == b but other objects with different tails can be included
-            actually, this isn't a proble, that just means that my check needs to be better
-            
-    evaluating properly
-
-    '''
-    #print("test str1",str1,type(str1))
-    #print("test str2",str2,type(str2))
-    ANS = None
-    if isinstance(str2[1], str):
-        #need a try block because ' VS " pairs really fuck everything and testing with ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\'oof\')"]]])
-        #and ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\"oof\")"]]])
-        #showed that just trying the other quote was ok
-        try:
-            total = "'" + str2[1] + "'"
-            #total = "\"" + str2[1] + "\""
-            #print("test TOTAL",total)
-            #print("TRY REPLACEMENT NOW1")
-            #print(str1[0].replace("TOTAL_ARGUMENT", total))
-            #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
-            if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
-                #print("got here???")
-                #return [str2[0],str1[1]]
-                if ANS == None:
-                    ANS = [[str2[0],str1[1]]]
-                else:
-                    ANS = ANS + [str2[0],str1[1]]
-        except:
-            #total = "'" + str2[1] + "'"
-            total = "\"" + str2[1] + "\""
-            #print("test TOTAL",total)
-            #print("TRY REPLACEMENT NOW2")
-            #print(str1[0].replace("TOTAL_ARGUMENT", total))
-            #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
-            if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
-                #print("got here???")
-                #return [str2[0],str1[1]]
-                if ANS == None:
-                    ANS = [[str2[0],str1[1]]]
-                else:
-                    ANS = ANS + [str2[0],str1[1]]
-    elif isinstance(str2[1], list):
-        #print("REAPERREAPERTHAT'SWHAT PEOPLEdetected list!!", str(str2[1]))
-        i = 1
-        total = str(str2[1])
-        #print("x,y stats",str1,str2)
-        #print("what is being replaced",str1[0])
-        teststring = str1[0].replace("TOTAL_ARGUMENT", total)
-        #print("what is totalDARLINGINTHEFRANXX",total)
-        #print("why didn't TESTSTRING UPDATE",teststring)
-
-        #do total
-            
-
-        #do elements
-        for z in str2[1]:
-            #print("maybe z is checked twice because of input",z)
-            #print("stats","argument_" + str(i),"'"+z+"'")
-            #print("what is replace?",teststring.replace("argument_" + str(i), "'"+z+"'"))
-            teststring = teststring.replace("argument_" + str(i), "'"+z+"'")
-            #print("what is teststring",teststring)
-            i+=1
-        try:
-            #print("eval teststring",eval(teststring))
-            if eval(teststring):
-                #print("ANSBEFORE",ANS)
-                #print("WHAT IS ADDED?",[str2[0],str1[1]])
-                #return [str2[0],str1[1]]
-                if ANS == None:
-                    ANS = [[str2[0],str1[1]]]
-                else:
-                    ANS = ANS + [[str2[0],str1[1]]]
-                #print("ANSAFTER",ANS)
-        except Exception as e:
-            print("what is error?",e)
-            pass
-    return ANS
-
-
 def RelEval(f1,arglist):
     '''
     "RELationEval"
@@ -5389,7 +5215,7 @@ def abstractionGENERAL(argList):
                 #time to write to MemoryUNORDEREDvar
                 #make sure not to add duplicates
                 #TEST LINE
-                #print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0([α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
+                #print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
                 actualwtf = str([["FixedQualifier([delta2," + "\"" + str(guessX) + "\"" + ",TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]]) + "\n"
                 print("actual wtf why",actualwtf)
                 testingarglist = [eval(actualwtf),[['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]
@@ -5540,6 +5366,213 @@ def FixedQualifiermin1(argList):
     print("LHS guy",toString([ran(arg1([arg2,arg3])),"naive"]))
     print("RHS guy",arg2)
     return toString([ran(arg1([arg2,arg3])),"naive"]) == arg2
+
+def Compose(f1,f2):
+    '''
+    do f2 THEN f1 like the way it's written!
+    '''
+    #print("check if f1,f2 are functions:",f1)
+    if fCheck(f1) == False or fCheck(f2) == False:
+        #print("f1 is function? COMPOSE", fCheck(f1), "f2 is function?", fCheck(f2))
+        return
+    ALG = []
+    for x in f2:
+        for y in f1:
+            #print("x1 and y0",x[1],y[0])
+            if x[1] == y[0]:
+                ALG.append([x[0],y[1]])
+    return ALG
+
+def ComposeMETA(argList):
+    f1 = argList[0]
+    f2 = argList[1]
+    '''
+    do f2 THEN f1 like the way it's written!
+    '''
+    #check if f1,f2 are functions:
+    if fCheck(f1) == False or fCheck(f2) == False:
+        print("WTF ARE THESE f1", f1 ,type(f1))
+        print("WTF ARE THESE f2", f2, type(f2))
+        print("f1 is function? COMPOSEMETA", fCheck(f1), "f2 is function?", fCheck(f2))
+        return
+    ALG = []
+    for y in f2:
+        for x in f1:
+            #which one is the first half of the function?
+            '''
+            for x in thingy:
+            replace y[0] with x
+            AND SOMETHING ABOUT ARGUMENT_# WHERE # INCREMENTS
+            info I need:
+            the whole thing
+            parts
+            maybe write a replacer function
+            '''
+            ComposeTest = ComposeReplace(x,y)
+            if ComposeTest != None:
+                #I want to eval the y coord now so I can add instructions to results
+                ALG = ALG + ComposeTest
+            #if eval(ComposeReplace(x,y)):
+            #    ALG.append([x[0],y[1]])
+    oldALG = ALG
+    ALG = []
+    for pair in oldALG:
+        print("attempt to eval y coords, ComposeMETA")
+        try:
+            ALG.append([pair[0],eval(pair[1])])
+        #else do nothing
+        except:
+            ALG.append([pair[0],pair[1]])
+    return ALG
+
+def ComposeReplace(str1,str2):
+    '''
+    HINT: I WRITE str1,str2 BUT I EVAULATE IN TERMS OF str2 FIRST, THEN str1
+    HINT: USE Q_() function to make things automatically functions
+
+    PICTURE:
+    FUNCTION1 COMPOSED FUNCTION2:
+     ^ where y is from
+                         ^ where x is from
+
+    HINT: DO FUNCTION2 BEFORE FUNCTION1 LIKE IN MATH
+    
+    str1 is x which is a pair
+    str2 is y which is a pair
+
+    PICTURE:
+        (Extra data from Compose:)
+         STR2             STR1
+    [y[0],y[1]] COMPOSE [x[0],x[1]]
+    GOAL:
+    eval y[0] using x[0] as argument list
+    this function just replaces argument_X in y[0] with elements of x[0] OR TOTAL_ARGUMENT of x[0] (AKA the whole thing of x[0])
+
+
+    TODO:
+    check if string or list
+        total: have to add quotes to before and after
+        per item: ???
+    adding quotes or not
+        total: ???
+        per item: might have to add quotes?
+        what to do:
+        for each item in y[1], we replace ARGUMENT_i (where is is incrementing number) in x[0]
+        PROBLEMS:
+            let's look at ARGUMENT_1== b
+            then all it's looking at is if argument_1 == b but other objects with different tails can be included
+            actually, this isn't a proble, that just means that my check needs to be better
+            
+    evaluating properly
+
+    '''
+    print("test str1",str1,type(str1))
+    print("test str2",str2,type(str2))
+    ANS = None
+    if isinstance(str2[1], str):
+        #need a try block because ' VS " pairs really fuck everything and testing with ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\'oof\')"]]])
+        #and ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\"oof\")"]]])
+        #showed that just trying the other quote was ok
+        try:
+            total = "'" + str2[1] + "'"
+            #total = "\"" + str2[1] + "\""
+            print("test TOTAL",total)
+            print("TRY REPLACEMENT NOW1")
+            print(str1[0].replace("TOTAL_ARGUMENT", total))
+            #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+            if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
+                print("got here???")
+                #return [str2[0],str1[1]]
+                if ANS == None:
+                    ANS = [[str2[0],str1[1]]]
+                else:
+                    ANS = ANS + [str2[0],str1[1]]
+                print("CURRENT ANS1",ANS)
+        except:
+            #total = "'" + str2[1] + "'"
+            total = "\"" + str2[1] + "\""
+            print("test TOTAL",total)
+            print("TRY REPLACEMENT NOW2",str(str1[0]))
+            print("actual replacement|",str1[0].replace("TOTAL_ARGUMENT", total))
+            #catch mismatched parens properly when using strfix
+            print("try strfix",strFix([str1[0].replace("TOTAL_ARGUMENT", total)]))
+            print("========")
+            print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+            if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
+                print("got here???")
+                #return [str2[0],str1[1]]
+                if ANS == None:
+                    ANS = [[str2[0],str1[1]]]
+                else:
+                    ANS = ANS + [str2[0],str1[1]]
+                print("CURRENT ANS2",ANS)
+    elif isinstance(str2[1], list):
+        print("REAPERREAPERTHAT'SWHAT PEOPLEdetected list!!", str(str2[1]))
+        i = 1
+        total = str(str2[1])
+        print("x,y stats",str1,str2)
+        print("what is being replaced",str1[0])
+        teststring = str1[0].replace("TOTAL_ARGUMENT", total)
+        print("what is totalDARLINGINTHEFRANXX",total)
+        print("why didn't TESTSTRING UPDATE",teststring)
+
+        #do total
+            
+
+        #do elements
+        for z in str2[1]:
+            print("maybe z is checked twice because of input",z)
+            print("stats","argument_" + str(i),"'"+z+"'")
+            print("what is replace?",teststring.replace("argument_" + str(i), "'"+z+"'"))
+            teststring = teststring.replace("argument_" + str(i), "'"+z+"'")
+            print("what is teststring",teststring)
+            i+=1
+        try:
+            print("eval teststring",eval(teststring))
+            if eval(teststring):
+                print("ANSBEFORE",ANS)
+                print("WHAT IS ADDED?",[str2[0],str1[1]])
+                #return [str2[0],str1[1]]
+                if ANS == None:
+                    ANS = [[str2[0],str1[1]]]
+                else:
+                    ANS = ANS + [[str2[0],str1[1]]]
+                print("ANSAFTER",ANS)
+        except Exception as e:
+            print("what is error?",e)
+            pass
+    return ANS
+
+##############
+#TESTING THIS:
+#mismatched paren
+#print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0([α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
+#fixed
+#print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
+##############
+#COMPOSEMETA CHECKS AND THEIR ANSWERS BECAUSE CHANGING COMPOSE REPLACE
+#ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', 'drastic ways']]],[['noob',"print(\'oof\')"]]])
+#[['noob', ['None', 'drastic ways']]]
+##print("hearto1",ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', 'drastic ways']]],[['noob',"print(\'oof\')"]]]) == [['noob', ['None', 'drastic ways']]])
+#ComposeMETA([[['α0', 'print("test")']], [[['α0'], ['α0']]]])
+#[]
+##print("hearto2",ComposeMETA([[['α0', 'print("test")']], [[['α0'], ['α0']]]]) == [])
+#ComposeMETA([[['argument_1 == \'α0\'', 'print("test")']], [[['α0'], ['α0']]]])
+#[[['α0'], None]]
+##print("hearto3",ComposeMETA([[['argument_1 == \'α0\'', 'print("test")']], [[['α0'], ['α0']]]]) == [[['α0'], None]])
+#ComposeMETA([eval(str([['TOTAL_ARGUMENT == \'print("qhy")\'', 'None']])),Q_(str('print("qhy")'))])
+#[['print("qhy")', None]]
+##print("hearto4",ComposeMETA([eval(str([['TOTAL_ARGUMENT == \'print("qhy")\'', 'None']])),Q_(str('print("qhy")'))]) == [['print("qhy")', None]])
+#ComposeMETA([[['TOTAL_ARGUMENT == "b"', 'd'],['TOTAL_ARGUMENT == "b"', 'e'],['TOTAL_ARGUMENT == "b"', 'f']],[['a','b']]])
+#eval(e)= 2.7 the constant so fucked: [['a', 'd'], ['a', 2.718281828459045], ['a', 'f']]
+##print("hearto5",ComposeMETA([[['TOTAL_ARGUMENT == "b"', 'd'],['TOTAL_ARGUMENT == "b"', 'e'],['TOTAL_ARGUMENT == "b"', 'f']],[['a','b']]]) == [['a', 'd'], ['a', 2.718281828459045], ['a', 'f']])
+#ComposeMETA([[['FixedQualifier([delta2,\'print(\"α0\")\',TOTAL_ARGUMENT,FixedQualifiermin1])', 'fix this']], [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]])
+#[['print("lost track of what I was doing")', 'fix this']]
+##print("hearto6",ComposeMETA([[['FixedQualifier([delta2,\'print(\"α0\")\',TOTAL_ARGUMENT,FixedQualifiermin1])', 'fix this']], [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]) == [['print("lost track of what I was doing")', 'fix this']])
+#ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\'oof\')"]]])
+#[['noob', ['None', '']]]
+##print("hearto7",ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\'oof\')"]]]) == [['noob', ['None', '']]])
+#HINT: hearto1 through 7 should all return true
 
 def strorCode(argList):
     '''
@@ -5821,6 +5854,7 @@ def strFixmin1(argList):
     ySkip
     recursecount (used to figure out what print is from where)
     '''
+    #print("strFixmin1 ARGS",argList)
 
     try:
         nestcount = argList[1]
@@ -5848,8 +5882,8 @@ def strFixmin1(argList):
         inpstr = argList[0]
     else:
         inpstr = "%r"%argList[0]
-    ###print("check calls==============================")
-    ###print(inpstr,recursecount)
+    print("check calls==============================")
+    print(inpstr,recursecount)
 
     #init firstquote
     firststquote = ""
@@ -5886,7 +5920,7 @@ def strFixmin1(argList):
                 yS = x
                 #y modified to go to the end
                 yE = x
-                #print("start to end",inpstr[yS:])
+                print("start to end",inpstr[yS:])
                 #need new nestcount:
                 #copy dict instead of making an alias for same dict
                 if nested == "yes":
@@ -5895,15 +5929,24 @@ def strFixmin1(argList):
                     nestcountYSE["["] = nestcount["["]
                 else:
                     nestcountYSE = nestcount.copy()
-                #print("CHECK THIS WHILE FUNCTION",inpstr[yS:])
-                #print("nestmin stats",nestcountYSE["("], nestcountYSE["["],nestcountYSE["("] + nestcountYSE["["],nestmin)
+                print("CHECK THIS WHILE FUNCTION",inpstr[yS:])
+                print("what is nestmin and is it nested?",nestmin,nested)
+                print("nestmin stats",nestcountYSE["("], nestcountYSE["["],nestcountYSE["("] + nestcountYSE["["],nestmin)
                 while nestcountYSE["("] + nestcountYSE["["] > nestmin:
+                    print("index wtf",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
                     yE += 1
                     #if you go past the end of the string return error
+                    #print("what is inpstr, type, and len?",inpstr,type(inpstr),len(inpstr))
+                    #TEST IS BELOW
+                    #strFix(['FixedQualifier([delta2,"α0([α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
+                    #strFix(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
+                    #print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
+                    print("yE stats",yE,len(inpstr),inpstr[yE])
                     if yE >= len(inpstr):
                         #return "SOMETHIBNG FUCKED UP HERE"
                         raise ValueError('INDEX FUCKED',argList,"strfixmin1")
                     #print('inpstr VS yE:',len(inpstr),yE)
+                    print("MASAYUME",inpstr[yE] == "[",inpstr[yE] == "]",inpstr[yE] == "(",inpstr[yE] == ")")
                     if inpstr[yE] == "[":
                         nestcountYSE["["] += 1
                     elif inpstr[yE] == "]":
@@ -5913,8 +5956,8 @@ def strFixmin1(argList):
                     elif inpstr[yE] == ")":
                         nestcountYSE["("] += -1
                     #print("tests failing",type(inpstr[yE]),type("["),inpstr[yE], "[",inpstr[yE] == "[")
-                    #print("neststats2:", len(inpstr), inpstr[yS], inpstr[yE],"[",nestcountYSE["["],"(",nestcountYSE["("])
-                    #print("nestcount",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
+                    print("neststats2:", len(inpstr), inpstr[yS], inpstr[yE],"[",nestcountYSE["["],"(",nestcountYSE["("])
+                    print("nestcount",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
                 #print("CHECK THIS WHILE FUNCTION END==========")
 
          
