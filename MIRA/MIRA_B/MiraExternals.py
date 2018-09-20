@@ -5938,6 +5938,7 @@ def strFixmin1(argList):
     print("check calls============================== what is check char?",inpstr[0])
     print(inpstr,recursecount)
 
+    
     #here we split between normal operations and splitting by , if string looks suitable
     splitdecider = inpstr[0]
     if splitdecider != "'" and splitdecider != "(" and splitdecider != "[" and splitdecider != "'":
@@ -5945,8 +5946,9 @@ def strFixmin1(argList):
         print("WE SPLIT HERE BY , CHAR THEN FIX PARTS TOGETHER")
         print(wesplit)
         wesplitIndex = 0
+        partialOffset = 0
         for substringguy in wesplit:
-            print("NEED TO GET INDICES",inpstr[wesplitIndex:wesplitIndex+len(substringguy)])
+            print("NEED TO GET INDICES",inpstr[wesplitIndex+partialOffset:wesplitIndex+len(substringguy)+partialOffset])
             print("LEN WTF",substringguy, len(substringguy))
             #partialfix = strFixmin2([inpstr,inpstr[wesplitIndex:wesplitIndex+len(substringguy)],[wesplitIndex, wesplitIndex+len(substringguy)]])
             try:
@@ -5961,9 +5963,9 @@ def strFixmin1(argList):
             #compare the original and modified and insert the difference AND modify the start values of modified?
             #need length of og str
             OGstrlen = len(inpstr)
-            partialOffset = 0
+            
             compareIndex = 0
-            while compareIndex < OGstrlen:
+            while compareIndex < OGstrlen-partialOffset:
                 print("WHILE LOOP",compareIndex, len(inpstr),compareIndex < len(inpstr))
                 print("OOR",inpstr[compareIndex+partialOffset])
                 print("OOR2",partialfix[compareIndex+partialOffset])
