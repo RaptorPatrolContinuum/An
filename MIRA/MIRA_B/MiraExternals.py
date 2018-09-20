@@ -5948,18 +5948,27 @@ def strFixmin1(argList):
         for substringguy in wesplit:
             print("NEED TO GET INDICES",inpstr[wesplitIndex:wesplitIndex+len(substringguy)])
             print("LEN WTF",substringguy, len(substringguy))
-            partialfix = strFixmin2([inpstr,inpstr[wesplitIndex:wesplitIndex+len(substringguy)],[wesplitIndex, wesplitIndex+len(substringguy)]])
+            #partialfix = strFixmin2([inpstr,inpstr[wesplitIndex:wesplitIndex+len(substringguy)],[wesplitIndex, wesplitIndex+len(substringguy)]])
+            try:
+                partialfix = strFixmin2([inpstr,inpstr[wesplitIndex+partialOffset:wesplitIndex+len(substringguy)+partialOffset],[wesplitIndex+partialOffset, wesplitIndex+len(substringguy)+partialOffset]])
+            except:
+                partialfix = strFixmin2([inpstr,inpstr[wesplitIndex:wesplitIndex+len(substringguy)],[wesplitIndex, wesplitIndex+len(substringguy)]])
             print("OGSTR",inpstr)
             #+1 here for missing , char
             wesplitIndex += len(substringguy) + 1
 
             #UPDATE inpstr and indices accordingly
             #compare the original and modified and insert the difference AND modify the start values of modified?
+            #need length of og str
+            OGstrlen = len(inpstr)
             partialOffset = 0
             compareIndex = 0
-            while compareIndex < len(inpstr):
-                print("compare the original and modified and insert the difference",inpstr[compareIndex] ,partialfix[compareIndex],inpstr[compareIndex+partialOffset] != partialfix[compareIndex])
-                if inpstr[compareIndex] != partialfix[compareIndex]:
+            while compareIndex < OGstrlen:
+                print("WHILE LOOP",compareIndex, len(inpstr),compareIndex < len(inpstr))
+                print("OOR",inpstr[compareIndex+partialOffset])
+                print("OOR2",partialfix[compareIndex+partialOffset])
+                print("compare the original and modified and insert the difference",inpstr[compareIndex+partialOffset] ,partialfix[compareIndex+partialOffset],inpstr[compareIndex+partialOffset] != partialfix[compareIndex+partialOffset])
+                if inpstr[compareIndex+partialOffset] != partialfix[compareIndex+partialOffset]:
                     print("INSERT!  ",inpstr)
                     print("first",inpstr[:compareIndex+partialOffset])
                     print("second",partialfix[compareIndex+partialOffset])
