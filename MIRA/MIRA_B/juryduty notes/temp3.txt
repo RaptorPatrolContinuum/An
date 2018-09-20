@@ -1,0 +1,29 @@
+WHERE IS STRFIXMIN2 USED
+'FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'
+"α0α1print("α2")α3"
+'FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'[23:42]
+
+strFixmin2(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])','FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'[23:42],[23, 42],strorCode(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'[23:42],len('FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'[23:42]),"info"])])
+>>> print(strFixmin2(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])','FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'[23:42],[23, 42],strorCode(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'[23:42],len('FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'[23:42]),"info"])]))
+
+#check strorcode and info
+strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"])
+strorCode(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])',len('FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'[23:42]),"info"])
+strorCode(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])',[23,42],"info"])
+
+
+
+
+strFixmin2([inpstr,inpstr[yS+1:yE],[yS+1,yE],strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"])])
+           [inpstr,inpstr[yS+1:yE],[yS+1,yE],strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"])]
+
+'FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'
+strFixmin2([inpstr,inpstr[yS+1:yE],[yS+1,yE],strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"])])
+
+strFixmin2(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])','FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'[23:42],[23, 42],strorCode(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'[23:42],len('FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'[23:42]),"info"])])
+
+[23, 42]
+'\'FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])\'', 
+'[delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1]', 
+[16, 105], 
+[[0, '[', 'CODE', ''], [1, 'd', 'CODE', ''], [2, 'e', 'CODE', ''], [3, 'l', 'CODE', ''], [4, 't', 'CODE', ''], [5, 'a', 'CODE', ''], [6, '2', 'CODE', ''], [7, ',', 'CODE', ''], [8, '"', 'STRI', ''], [9, 'α', 'STRI', 'double'], [10, '0', 'STRI', 'double'], [11, 'α', 'STRI', 'double'], [12, '1', 'STRI', 'double'], [13, 'p', 'STRI', 'double'], [14, 'r', 'STRI', 'double'], [15, 'i', 'STRI', 'double'], [16, 'n', 'STRI', 'double'], [17, 't', 'STRI', 'double'], [18, '(', 'STRI', 'double'], [19, '"', 'STRI', 'double'], [20, 'α', 'CODE', ''], [21, '2', 'CODE', ''], [22, '"', 'STRI', ''], [23, ')', 'STRI', 'double'], [24, 'α', 'STRI', 'double'], [25, '3', 'STRI', 'double'], [26, '"', 'STRI', 'double'], [27, ',', 'CODE', ''], [28, '"', 'STRI', ''], [29, 'p', 'STRI', 'double'], [30, 'r', 'STRI', 'double'], [31, 'i', 'STRI', 'double'], [32, 'n', 'STRI', 'double'], [33, 't', 'STRI', 'double'], [34, '(', 'STRI', 'double'], [35, '"', 'STRI', 'double'], [36, 'l', 'CODE', ''], [37, 'o', 'CODE', ''], [38, 's', 'CODE', ''], [39, 't', 'CODE', ''], [40, ' ', 'CODE', ''], [41, 't', 'CODE', ''], [42, 'r', 'CODE', ''], [43, 'a', 'CODE', ''], [44, 'c', 'CODE', ''], [45, 'k', 'CODE', ''], [46, ' ', 'CODE', ''], [47, 'o', 'CODE', ''], [48, 'f', 'CODE', ''], [49, ' ', 'CODE', ''], [50, 'w', 'CODE', ''], [51, 'h', 'CODE', ''], [52, 'a', 'CODE', ''], [53, 't', 'CODE', ''], [54, ' ', 'CODE', ''], [55, 'I', 'CODE', ''], [56, ' ', 'CODE', ''], [57, 'w', 'CODE', ''], [58, 'a', 'CODE', ''], [59, 's', 'CODE', ''], [60, ' ', 'CODE', ''], [61, 'd', 'CODE', ''], [62, 'o', 'CODE', ''], [63, 'i', 'CODE', ''], [64, 'n', 'CODE', ''], [65, 'g', 'CODE', ''], [66, '"', 'STRI', ''], [67, ')', 'STRI', 'double'], [68, '"', 'STRI', 'double'], [69, ',', 'CODE', ''], [70, 'F', 'CODE', ''], [71, 'i', 'CODE', ''], [72, 'x', 'CODE', ''], [73, 'e', 'CODE', ''], [74, 'd', 'CODE', ''], [75, 'Q', 'CODE', ''], [76, 'u', 'CODE', ''], [77, 'a', 'CODE', ''], [78, 'l', 'CODE', ''], [79, 'i', 'CODE', ''], [80, 'f', 'CODE', ''], [81, 'i', 'CODE', ''], [82, 'e', 'CODE', ''], [83, 'r', 'CODE', ''], [84, 'm', 'CODE', ''], [85, 'i', 'CODE', ''], [86, 'n', 'CODE', ''], [87, '1', 'CODE', ''], [88, ']', 'CODE', '']]]

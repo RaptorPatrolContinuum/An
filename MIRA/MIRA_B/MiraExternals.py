@@ -5584,9 +5584,16 @@ def strorCode(argList):
     #hint: currently this removes outer quotes so you don't get all strings
     #should there be error for exceeding str limit?
     third argument if we want info or not, trigger is "info"
+
+    args:
+    original string
+    subset string
+    length (if starting from index 0) OR list of 2 integers, the start/stop of the subset string
+    "info" or blank -- info returns all the relevant code or str info
     '''
     inpstr = argList[0]
     index = argList[1]
+    
     try:
         infocheck = argList[2]
     except:
@@ -5613,7 +5620,18 @@ def strorCode(argList):
     #print(inpstr)
     ANS = ""
     infoANS = []
-    for x in range(index):
+
+    #if arg2 is a specific index range:
+    if type(index) == list:
+        if len(index) == 2:
+            xRange = range(index[0],index[1])
+        else:
+            print("RANGE IS FUCKED")
+            xRange = range(index)
+    else:
+        xRange = range(index)
+    
+    for x in xRange:
         #hint: toggle string or code depending on if we hit another firststquote
         #things to know: what is first quote style
 
@@ -5645,6 +5663,14 @@ def strorCode(argList):
         return infoANS
     else:
         return ANS
+
+#STRORCODE EXAMPLE AND ANSWERS
+#>>> strorCode(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])',len('FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'[23:42]),"info"])
+#[[0, 'F', 'CODE', ''], [1, 'i', 'CODE', ''], [2, 'x', 'CODE', ''], [3, 'e', 'CODE', ''], [4, 'd', 'CODE', ''], [5, 'Q', 'CODE', ''], [6, 'u', 'CODE', ''], [7, 'a', 'CODE', ''], [8, 'l', 'CODE', ''], [9, 'i', 'CODE', ''], [10, 'f', 'CODE', ''], [11, 'i', 'CODE', ''], [12, 'e', 'CODE', ''], [13, 'r', 'CODE', ''], [14, '(', 'CODE', ''], [15, '[', 'CODE', ''], [16, 'd', 'CODE', ''], [17, 'e', 'CODE', ''], [18, 'l', 'CODE', '']]
+#>>> strorCode(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])',[23,42],"info"])
+#[[23, '"', 'STRI', ''], [24, 'α', 'STRI', 'double'], [25, '0', 'STRI', 'double'], [26, 'α', 'STRI', 'double'], [27, '1', 'STRI', 'double'], [28, 'p', 'STRI', 'double'], [29, 'r', 'STRI', 'double'], [30, 'i', 'STRI', 'double'], [31, 'n', 'STRI', 'double'], [32, 't', 'STRI', 'double'], [33, '(', 'STRI', 'double'], [34, '"', 'STRI', 'double'], [35, 'α', 'CODE', ''], [36, '2', 'CODE', ''], [37, '"', 'STRI', ''], [38, ')', 'STRI', 'double'], [39, 'α', 'STRI', 'double'], [40, '3', 'STRI', 'double'], [41, '"', 'STRI', 'double']]
+
+    
         
 #old example: "TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"
 #new example: print(toString([dom(delta2(["print('alpha')","print('α0')"])),"naive"]))
@@ -5656,6 +5682,7 @@ def strFixmin2(argList):
     with indices for X
     match strorCode of X to Y so that when x in X is code or str, y in Y is also code or str
 
+    ARGS:
     strFixmin2([strY = argList[0],strX = argList[1],strXbounds = argList[2],strorCodeinfo = argList[3]])
     '''
     strY = argList[0]
@@ -5678,6 +5705,7 @@ def strFixmin2(argList):
     #need to go to while loop since for loop max limits me from adding multiple chars to a string
     #for x in range(1,len(inpstr)-1):
     x = 0
+    print("bounds and shitOG",strY,len(strY),strX,len(strX),strXbounds)
     while x < len(inpstr)-2:
         x += 1
         #hint: toggle string or code depending on if we hit another firststquote
@@ -5725,6 +5753,8 @@ def strFixmin2(argList):
         if x >= strXbounds[0] and strXbounds[1] > x:
             ###print("data we know: ",ANS,x,inpstr[x],firststquote,"|VS|",strorCodeinfo[x-strXbounds[0]][0],strorCodeinfo[x-strXbounds[0]][1],strorCodeinfo[x-strXbounds[0]][2],strorCodeinfo[x-strXbounds[0]][3])
             ###print("whjat am I asking for|",ANS, strorCodeinfo[x-strXbounds[0]][2],firststquote != strorCodeinfo[x-strXbounds[0]][2])
+            print("what is this",ANS, strorCodeinfo[x-strXbounds[0]][2])
+            print("what is this",ANS != strorCodeinfo[x-strXbounds[0]][2])
             if ANS != strorCodeinfo[x-strXbounds[0]][2]:
                 #somehow inpstr here adds a lot of \
                 ###print("add \ to next copy (if possible. if code fails then fuck it just hope for better data elsewhere",[inpstr,x,inpstr[x-1]])
@@ -5753,7 +5783,8 @@ def strFixmin2(argList):
                 #double check in himitsu
                 pass
         else:
-            ###print("data we know: ",ANS,x,inpstr[x],firststquote)
+            ###
+            print("data we know: ",ANS,x,inpstr[x],firststquote)
             pass
 
 #print(strFix(["TOTAL_ARGUMENT == 'print('yoikes, dont do that')'"]))
@@ -5882,8 +5913,11 @@ def strFixmin1(argList):
         inpstr = argList[0]
     else:
         inpstr = "%r"%argList[0]
+
     print("check calls============================== what is check char?",inpstr[0])
     print(inpstr,recursecount)
+
+    #here we split between normal operations and splitting by , if string looks suitable
     splitdecider = inpstr[0]
     if splitdecider != "'" and splitdecider != "(" and splitdecider != "[" and splitdecider != "'":
         wesplit = inpstr.split(",")
@@ -5897,133 +5931,137 @@ def strFixmin1(argList):
                 miniQ = thing
         print("does concatenate keep info?")
         print(miniQ)
+        print("JUST RETURN A STRING TO MAKE FUNCTION HAPPY")
+        ANS = inpstr[:yS+1] + strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes","",recursecount+1]) + inpstr[yE:]
+    else:
+        #init firstquote
+        firststquote = ""
+        WHATIS = ""
 
-    #init firstquote
-    firststquote = ""
-    WHATIS = ""
+        #print("double check")
+        #print(nestcount)
+        #print(nested)
 
-    #print("double check")
-    #print(nestcount)
-    #print(nested)
-
-    ANS = inpstr
+        ANS = inpstr
     
-    for x in range(len(inpstr)):
-        #print("x vs ySkip",x,ySkip)
-        if x >= ySkip:
-            #for recursion use the original nestcount
-            if nested == "yes":
-                nestmin = nestcount["("] + nestcount["["]
-            else:
-                nestmin = 0
-            
-            #print("parts",x, inpstr[x])
-            if inpstr[x] == "[":
-                nestcount["["] += 1
-            elif inpstr[x] == "]":
-                nestcount["["] += -1
-            elif inpstr[x] == "(":
-                nestcount["("] += 1
-            elif inpstr[x] == ")":
-                nestcount["("] += -1
-    
-            #and nested == "no"
-            if nestcount["("] + nestcount["["] > nestmin:
-                #strFixmin1(argList)
-                yS = x
-                #y modified to go to the end
-                yE = x
-                print("start to end",inpstr[yS:])
-                #need new nestcount:
-                #copy dict instead of making an alias for same dict
+        for x in range(len(inpstr)):
+            #print("x vs ySkip",x,ySkip)
+            if x >= ySkip:
+                #for recursion use the original nestcount
                 if nested == "yes":
-                    nestcountYSE = {}
-                    nestcountYSE["("] = nestcount["("]
-                    nestcountYSE["["] = nestcount["["]
+                    nestmin = nestcount["("] + nestcount["["]
                 else:
-                    nestcountYSE = nestcount.copy()
-                print("CHECK THIS WHILE FUNCTION",inpstr[yS:])
-                print("what is nestmin and is it nested?",nestmin,nested)
-                print("nestmin stats",nestcountYSE["("], nestcountYSE["["],nestcountYSE["("] + nestcountYSE["["],nestmin)
-                while nestcountYSE["("] + nestcountYSE["["] > nestmin:
-                    print("index wtf",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
-                    yE += 1
-                    #if you go past the end of the string return error
-                    #print("what is inpstr, type, and len?",inpstr,type(inpstr),len(inpstr))
-                    #TEST IS BELOW
-                    #strFix(['FixedQualifier([delta2,"α0([α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
-                    #strFix(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
-                    #print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
-                    print("yE stats",yE,len(inpstr),inpstr[yE])
-                    if yE >= len(inpstr):
-                        #return "SOMETHIBNG FUCKED UP HERE"
-                        raise ValueError('INDEX FUCKED',argList,"strfixmin1")
-                    #print('inpstr VS yE:',len(inpstr),yE)
-                    print("MASAYUME",inpstr[yE] == "[",inpstr[yE] == "]",inpstr[yE] == "(",inpstr[yE] == ")")
-                    if inpstr[yE] == "[":
-                        nestcountYSE["["] += 1
-                    elif inpstr[yE] == "]":
-                        nestcountYSE["["] += -1
-                    elif inpstr[yE] == "(":
-                        nestcountYSE["("] += 1
-                    elif inpstr[yE] == ")":
-                        nestcountYSE["("] += -1
-                    #print("tests failing",type(inpstr[yE]),type("["),inpstr[yE], "[",inpstr[yE] == "[")
-                    print("neststats2:", len(inpstr), inpstr[yS], inpstr[yE],"[",nestcountYSE["["],"(",nestcountYSE["("])
-                    print("nestcount",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
-                #print("CHECK THIS WHILE FUNCTION END==========")
+                    nestmin = 0
+                
+                #print("parts",x, inpstr[x])
+                if inpstr[x] == "[":
+                    nestcount["["] += 1
+                elif inpstr[x] == "]":
+                    nestcount["["] += -1
+                elif inpstr[x] == "(":
+                    nestcount["("] += 1
+                elif inpstr[x] == ")":
+                    nestcount["("] += -1
+        
+                #and nested == "no"
+                if nestcount["("] + nestcount["["] > nestmin:
+                    #strFixmin1(argList)
+                    yS = x
+                    #y modified to go to the end
+                    yE = x
+                    print("start to end",inpstr[yS:])
+                    #need new nestcount:
+                    #copy dict instead of making an alias for same dict
+                    if nested == "yes":
+                        nestcountYSE = {}
+                        nestcountYSE["("] = nestcount["("]
+                        nestcountYSE["["] = nestcount["["]
+                    else:
+                        nestcountYSE = nestcount.copy()
+                    print("CHECK THIS WHILE FUNCTION",inpstr[yS:])
+                    print("what is nestmin and is it nested?",nestmin,nested)
+                    print("nestmin stats",nestcountYSE["("], nestcountYSE["["],nestcountYSE["("] + nestcountYSE["["],nestmin)
+                    while nestcountYSE["("] + nestcountYSE["["] > nestmin:
+                        print("index wtf",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
+                        yE += 1
+                        #if you go past the end of the string return error
+                        #print("what is inpstr, type, and len?",inpstr,type(inpstr),len(inpstr))
+                        #TEST IS BELOW
+                        #strFix(['FixedQualifier([delta2,"α0([α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
+                        #strFix(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
+                        #print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
+                        print("yE stats",yE,len(inpstr),inpstr[yE])
+                        if yE >= len(inpstr):
+                            #return "SOMETHIBNG FUCKED UP HERE"
+                            raise ValueError('INDEX FUCKED',argList,"strfixmin1")
+                        #print('inpstr VS yE:',len(inpstr),yE)
+                        print("MASAYUME",inpstr[yE] == "[",inpstr[yE] == "]",inpstr[yE] == "(",inpstr[yE] == ")")
+                        if inpstr[yE] == "[":
+                            nestcountYSE["["] += 1
+                        elif inpstr[yE] == "]":
+                            nestcountYSE["["] += -1
+                        elif inpstr[yE] == "(":
+                            nestcountYSE["("] += 1
+                        elif inpstr[yE] == ")":
+                            nestcountYSE["("] += -1
+                        #print("tests failing",type(inpstr[yE]),997type("["),inpstr[yE], "[",inpstr[yE] == "[")
+                        print("neststats2:", len(inpstr), inpstr[yS], inpstr[yE],"[",nestcountYSE["["],"(",nestcountYSE["("])
+                        print("nestcount",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
+                    #print("CHECK THIS WHILE FUNCTION END==========")
 
-         
-                #hint: now we update ySkip to prevent dupes
-                #print("old ySkip",ySkip)
-                ySkip = yE
-                #print("update ySkip",ySkip)
-                #print("figure out the right splicing",yS+1,yE)
-                #print("stary ",inpstr[yS+1:yE])
-                #to prevent infinity
-                if len(inpstr[yS+1:yE]) > 0:
-                    ####print("recurse on our proper splicing: TOTAL", inpstr)
-                    #print("breakapart                           ",inpstr[:yS+1],inpstr[yS+1:yE],inpstr[yE:])
-                    #print("breakapart                           ",inpstr[:yS+1],"|",inpstr[yS+1:yE],"|",inpstr[yE:])
-                    ####print("what does this level see?",recursecount,strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes","",recursecount+1]))
-                    #print("lower level ans",strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"]))
-                    strFixmin2([inpstr,inpstr[yS+1:yE],[yS+1,yE],strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"])])
-                    ANS = inpstr[:yS+1] + strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes","",recursecount+1]) + inpstr[yE:]
-                    ####print("what is ans",ANS)
+             
+                    #hint: now we update ySkip to prevent dupes
+                    #print("old ySkip",ySkip)
+                    ySkip = yE
+                    #print("update ySkip",ySkip)
+                    #print("figure out the right splicing",yS+1,yE)
+                    #print("stary ",inpstr[yS+1:yE])
+                    #to prevent infinity
+                    if len(inpstr[yS+1:yE]) > 0:
+                        ####print("recurse on our proper splicing: TOTAL", inpstr)
+                        #print("breakapart                           ",inpstr[:yS+1],inpstr[yS+1:yE],inpstr[yE:])
+                        #print("breakapart                           ",inpstr[:yS+1],"|",inpstr[yS+1:yE],"|",inpstr[yE:])
+                        ####print("what does this level see?",recursecount,strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes","",recursecount+1]))
+                        #print("lower level ans",strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"]))
+                        print("AM I EVEN USING STRFIXMIN2???")
+                        #strFixmin2([inpstr,inpstr[yS+1:yE],[yS+1,yE],strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"])])
+                        #print("what does strfixmin2 args look like?",[inpstr,inpstr[yS+1:yE],[yS+1,yE],strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"])])
+                        ANS = inpstr[:yS+1] + strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes","",recursecount+1]) + inpstr[yE:]
+                        ####print("what is ans",ANS)
 
-            #print("backslash test",inpstr[x-1] == '\\')
-            #print("backslash test",inpstr[x-1], '\\')
-            if inpstr[x-1] == '\\':
-                #print("data we know: \\trig",WHATIS,x,inpstr[x],firststquote)
-                pass
-            elif firststquote != "CODE" and (inpstr[x] == '"' or inpstr[x] == "'"):
-                #print("data we know: STRI",x,inpstr[x],firststquote)
-                WHATIS = "STRI"
-            elif firststquote != "":
-                #print("data we know: STRI",x,inpstr[x],firststquote)
-                WHATIS = "STRI"
+                #print("backslash test",inpstr[x-1] == '\\')
+                #print("backslash test",inpstr[x-1], '\\')
+                if inpstr[x-1] == '\\':
+                    #print("data we know: \\trig",WHATIS,x,inpstr[x],firststquote)
+                    pass
+                elif firststquote != "CODE" and (inpstr[x] == '"' or inpstr[x] == "'"):
+                    #print("data we know: STRI",x,inpstr[x],firststquote)
+                    WHATIS = "STRI"
+                elif firststquote != "":
+                    #print("data we know: STRI",x,inpstr[x],firststquote)
+                    WHATIS = "STRI"
+                else:
+                    #print("data we know: CODE",x,inpstr[x],firststquote)
+                    WHATIS = "CODE"
+
+                if firststquote == "double" and inpstr[x] == '"' and inpstr[x-1] != '\\':
+                    firststquote = ""
+                elif firststquote == "" and inpstr[x] == '"' and inpstr[x-1] != '\\':
+                    firststquote = "double"
+                if firststquote == "single" and inpstr[x] == "'" and inpstr[x-1] != '\\':
+                    firststquote = ""
+                elif firststquote == "" and inpstr[x] == "'" and inpstr[x-1] != '\\':
+                    firststquote = "single"
+
+                if inpstr[x] == "'" or inpstr[x] == '"':
+                    #figure out what IS vs what SHOULD BE
+                    pass
+                #print("inp STRING",inpstr)
+                #print("neststats:", "RECURSE",recursecount, x, inpstr[x],"[",nestcount["["],"(",nestcount["("], "WHATIS:",WHATIS)
             else:
-                #print("data we know: CODE",x,inpstr[x],firststquote)
-                WHATIS = "CODE"
-
-            if firststquote == "double" and inpstr[x] == '"' and inpstr[x-1] != '\\':
-                firststquote = ""
-            elif firststquote == "" and inpstr[x] == '"' and inpstr[x-1] != '\\':
-                firststquote = "double"
-            if firststquote == "single" and inpstr[x] == "'" and inpstr[x-1] != '\\':
-                firststquote = ""
-            elif firststquote == "" and inpstr[x] == "'" and inpstr[x-1] != '\\':
-                firststquote = "single"
-
-            if inpstr[x] == "'" or inpstr[x] == '"':
-                #figure out what IS vs what SHOULD BE
+                #print("do nothing here", inpstr[x:ySkip])
                 pass
-            #print("inp STRING",inpstr)
-            #print("neststats:", "RECURSE",recursecount, x, inpstr[x],"[",nestcount["["],"(",nestcount["("], "WHATIS:",WHATIS)
-        else:
-            #print("do nothing here", inpstr[x:ySkip])
-            pass
-    return ANS
+        return ANS
 
 #strFix(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"])
         

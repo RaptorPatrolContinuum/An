@@ -1,0 +1,496 @@
+strFix(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
+
+
+strFix([str(eval('[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'))])
+
+
+print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
+
+'[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]'
+  [\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\'] 
+   \'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\' 2
+                    [delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1] 3
+                     delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1 4
+                                       "α2" 5
+
+strFix(['FixedQualifier([delta2,"α0([α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
+check calls==============================
+'FixedQualifier([delta2,"α0([α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])' 0
+start to end ([delta2,"α0([α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'
+CHECK THIS WHILE FUNCTION ([delta2,"α0([α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'
+what is nestmin and is it nested? 0 no
+nestmin stats 1 0 1 0
+index wtf 1 0 0 True
+yE stats 16 109 [
+MASAYUME True False False False
+neststats2: 109 ( [ [ 1 ( 1
+nestcount 1 1 0 True
+index wtf 1 1 0 True
+yE stats 17 109 d
+MASAYUME False False False False
+neststats2: 109 ( d [ 1 ( 1
+nestcount 1 1 0 True
+index wtf 1 1 0 True
+yE stats 18 109 e
+MASAYUME False False False False
+neststats2: 109 ( e [ 1 ( 1
+nestcount 1 1 0 True
+index wtf 1 1 0 True
+yE stats 19 109 l
+MASAYUME False False False False
+neststats2: 109 ( l [ 1 ( 1
+nestcount 1 1 0 True
+index wtf 1 1 0 True
+yE stats 20 109 t
+MASAYUME False False False False
+neststats2: 109 ( t [ 1 ( 1
+nestcount 1 1 0 True
+index wtf 1 1 0 True
+yE stats 21 109 a
+MASAYUME False False False False
+neststats2: 109 ( a [ 1 ( 1
+nestcount 1 1 0 True
+index wtf 1 1 0 True
+yE stats 22 109 2
+MASAYUME False False False False
+neststats2: 109 ( 2 [ 1 ( 1
+nestcount 1 1 0 True
+index wtf 1 1 0 True
+yE stats 23 109 ,
+MASAYUME False False False False
+neststats2: 109 ( , [ 1 ( 1
+nestcount 1 1 0 True
+index wtf 1 1 0 True
+yE stats 24 109 "
+MASAYUME False False False False
+neststats2: 109 ( " [ 1 ( 1
+nestcount 1 1 0 True
+index wtf 1 1 0 True
+yE stats 25 109 α
+MASAYUME False False False False
+neststats2: 109 ( α [ 1 ( 1
+nestcount 1 1 0 True
+index wtf 1 1 0 True
+yE stats 26 109 0
+MASAYUME False False False False
+neststats2: 109 ( 0 [ 1 ( 1
+nestcount 1 1 0 True
+index wtf 1 1 0 True
+yE stats 27 109 (
+MASAYUME False False True False
+neststats2: 109 ( ( [ 1 ( 2
+nestcount 2 1 0 True
+index wtf 2 1 0 True
+yE stats 28 109 [
+MASAYUME True False False False
+neststats2: 109 ( [ [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 29 109 α
+MASAYUME False False False False
+neststats2: 109 ( α [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 30 109 1
+MASAYUME False False False False
+neststats2: 109 ( 1 [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 31 109 p
+MASAYUME False False False False
+neststats2: 109 ( p [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 32 109 r
+MASAYUME False False False False
+neststats2: 109 ( r [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 33 109 i
+MASAYUME False False False False
+neststats2: 109 ( i [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 34 109 n
+MASAYUME False False False False
+neststats2: 109 ( n [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 35 109 t
+MASAYUME False False False False
+neststats2: 109 ( t [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 36 109 (
+MASAYUME False False True False
+neststats2: 109 ( ( [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 37 109 "
+MASAYUME False False False False
+neststats2: 109 ( " [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 38 109 α
+MASAYUME False False False False
+neststats2: 109 ( α [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 39 109 2
+MASAYUME False False False False
+neststats2: 109 ( 2 [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 40 109 "
+MASAYUME False False False False
+neststats2: 109 ( " [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 41 109 )
+MASAYUME False False False True
+neststats2: 109 ( ) [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 42 109 α
+MASAYUME False False False False
+neststats2: 109 ( α [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 43 109 3
+MASAYUME False False False False
+neststats2: 109 ( 3 [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 44 109 "
+MASAYUME False False False False
+neststats2: 109 ( " [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 45 109 ,
+MASAYUME False False False False
+neststats2: 109 ( , [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 46 109 "
+MASAYUME False False False False
+neststats2: 109 ( " [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 47 109 p
+MASAYUME False False False False
+neststats2: 109 ( p [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 48 109 r
+MASAYUME False False False False
+neststats2: 109 ( r [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 49 109 i
+MASAYUME False False False False
+neststats2: 109 ( i [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 50 109 n
+MASAYUME False False False False
+neststats2: 109 ( n [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 51 109 t
+MASAYUME False False False False
+neststats2: 109 ( t [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 52 109 (
+MASAYUME False False True False
+neststats2: 109 ( ( [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 53 109 "
+MASAYUME False False False False
+neststats2: 109 ( " [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 54 109 l
+MASAYUME False False False False
+neststats2: 109 ( l [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 55 109 o
+MASAYUME False False False False
+neststats2: 109 ( o [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 56 109 s
+MASAYUME False False False False
+neststats2: 109 ( s [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 57 109 t
+MASAYUME False False False False
+neststats2: 109 ( t [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 58 109  
+MASAYUME False False False False
+neststats2: 109 (   [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 59 109 t
+MASAYUME False False False False
+neststats2: 109 ( t [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 60 109 r
+MASAYUME False False False False
+neststats2: 109 ( r [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 61 109 a
+MASAYUME False False False False
+neststats2: 109 ( a [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 62 109 c
+MASAYUME False False False False
+neststats2: 109 ( c [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 63 109 k
+MASAYUME False False False False
+neststats2: 109 ( k [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 64 109  
+MASAYUME False False False False
+neststats2: 109 (   [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 65 109 o
+MASAYUME False False False False
+neststats2: 109 ( o [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 66 109 f
+MASAYUME False False False False
+neststats2: 109 ( f [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 67 109  
+MASAYUME False False False False
+neststats2: 109 (   [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 68 109 w
+MASAYUME False False False False
+neststats2: 109 ( w [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 69 109 h
+MASAYUME False False False False
+neststats2: 109 ( h [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 70 109 a
+MASAYUME False False False False
+neststats2: 109 ( a [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 71 109 t
+MASAYUME False False False False
+neststats2: 109 ( t [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 72 109  
+MASAYUME False False False False
+neststats2: 109 (   [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 73 109 I
+MASAYUME False False False False
+neststats2: 109 ( I [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 74 109  
+MASAYUME False False False False
+neststats2: 109 (   [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 75 109 w
+MASAYUME False False False False
+neststats2: 109 ( w [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 76 109 a
+MASAYUME False False False False
+neststats2: 109 ( a [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 77 109 s
+MASAYUME False False False False
+neststats2: 109 ( s [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 78 109  
+MASAYUME False False False False
+neststats2: 109 (   [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 79 109 d
+MASAYUME False False False False
+neststats2: 109 ( d [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 80 109 o
+MASAYUME False False False False
+neststats2: 109 ( o [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 81 109 i
+MASAYUME False False False False
+neststats2: 109 ( i [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 82 109 n
+MASAYUME False False False False
+neststats2: 109 ( n [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 83 109 g
+MASAYUME False False False False
+neststats2: 109 ( g [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 84 109 "
+MASAYUME False False False False
+neststats2: 109 ( " [ 2 ( 3
+nestcount 3 2 0 True
+index wtf 3 2 0 True
+yE stats 85 109 )
+MASAYUME False False False True
+neststats2: 109 ( ) [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 86 109 "
+MASAYUME False False False False
+neststats2: 109 ( " [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 87 109 ,
+MASAYUME False False False False
+neststats2: 109 ( , [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 88 109 F
+MASAYUME False False False False
+neststats2: 109 ( F [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 89 109 i
+MASAYUME False False False False
+neststats2: 109 ( i [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 90 109 x
+MASAYUME False False False False
+neststats2: 109 ( x [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 91 109 e
+MASAYUME False False False False
+neststats2: 109 ( e [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 92 109 d
+MASAYUME False False False False
+neststats2: 109 ( d [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 93 109 Q
+MASAYUME False False False False
+neststats2: 109 ( Q [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 94 109 u
+MASAYUME False False False False
+neststats2: 109 ( u [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 95 109 a
+MASAYUME False False False False
+neststats2: 109 ( a [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 96 109 l
+MASAYUME False False False False
+neststats2: 109 ( l [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 97 109 i
+MASAYUME False False False False
+neststats2: 109 ( i [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 98 109 f
+MASAYUME False False False False
+neststats2: 109 ( f [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 99 109 i
+MASAYUME False False False False
+neststats2: 109 ( i [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 100 109 e
+MASAYUME False False False False
+neststats2: 109 ( e [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 101 109 r
+MASAYUME False False False False
+neststats2: 109 ( r [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 102 109 m
+MASAYUME False False False False
+neststats2: 109 ( m [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 103 109 i
+MASAYUME False False False False
+neststats2: 109 ( i [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 104 109 n
+MASAYUME False False False False
+neststats2: 109 ( n [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 105 109 1
+MASAYUME False False False False
+neststats2: 109 ( 1 [ 2 ( 2
+nestcount 2 2 0 True
+index wtf 2 2 0 True
+yE stats 106 109 ]
+MASAYUME False True False False
+neststats2: 109 ( ] [ 1 ( 2
+nestcount 2 1 0 True
+index wtf 2 1 0 True
+yE stats 107 109 )
+MASAYUME False False False True
+neststats2: 109 ( ) [ 1 ( 1
+nestcount 1 1 0 True
+index wtf 1 1 0 True
+yE stats 108 109 '
+MASAYUME False False False False
+neststats2: 109 ( ' [ 1 ( 1
+nestcount 1 1 0 True
+index wtf 1 1 0 True
+Traceback (most recent call last):
+  File "<pyshell#1>", line 1, in <module>
+    strFix(['FixedQualifier([delta2,"α0([α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
+  File "C:\An\MIRA\MIRA_B\MiraExternals.py", line 5842, in strFix
+    ANS = strFixmin1(argList + [nestcount])
+  File "C:\An\MIRA\MIRA_B\MiraExternals.py", line 5943, in strFixmin1
+    print("yE stats",yE,len(inpstr),inpstr[yE])
+IndexError: string index out of range

@@ -1,0 +1,2 @@
+delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1 2
+delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1
