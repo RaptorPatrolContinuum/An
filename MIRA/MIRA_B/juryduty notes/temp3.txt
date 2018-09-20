@@ -1,3 +1,9 @@
+>>> "CHECK, FOR      ,  SPACE SPLITS".split(",")
+   ['CHECK', ' FOR      ', '  SPACE SPLITS']
+	"CHECK, FOR      ,  SPACE SPLITS"
+     CHECK 
+	 hint: need to +1 for each ,
+	
 WHERE IS STRFIXMIN2 USED
 'FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'
 "α0α1print("α2")α3"

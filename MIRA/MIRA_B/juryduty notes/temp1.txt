@@ -1,5 +1,8 @@
 strFix(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
 
+	 5
+01234I5
+
 
 strFix([str(eval('[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'))])
 

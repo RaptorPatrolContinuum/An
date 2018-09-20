@@ -5677,6 +5677,7 @@ def strorCode(argList):
 
 def strFixmin2(argList):
     '''
+    #this forces substring X to be match first kind of substring (kind is code or string)
     given:
     strorCode "info" on substring X of string Y
     with indices for X
@@ -5685,10 +5686,16 @@ def strFixmin2(argList):
     ARGS:
     strFixmin2([strY = argList[0],strX = argList[1],strXbounds = argList[2],strorCodeinfo = argList[3]])
     '''
+    print("strfoxmin2 ARGLIST",argList)
     strY = argList[0]
     strX = argList[1]
     strXbounds = argList[2]
-    strorCodeinfo = argList[3]
+    try:
+        strorCodeinfo = argList[3]
+    except:
+        pass
+    subsetCodeInfo = strorCode([strY,strXbounds,"info"])
+    #print("does this work?",subsetCodeInfo)
 
     inpstr = strY
 
@@ -5706,6 +5713,8 @@ def strFixmin2(argList):
     #for x in range(1,len(inpstr)-1):
     x = 0
     print("bounds and shitOG",strY,len(strY),strX,len(strX),strXbounds)
+    subsetIndex = 0
+    print("CURRRENT STRING",inpstr)
     while x < len(inpstr)-2:
         x += 1
         #hint: toggle string or code depending on if we hit another firststquote
@@ -5753,39 +5762,51 @@ def strFixmin2(argList):
         if x >= strXbounds[0] and strXbounds[1] > x:
             ###print("data we know: ",ANS,x,inpstr[x],firststquote,"|VS|",strorCodeinfo[x-strXbounds[0]][0],strorCodeinfo[x-strXbounds[0]][1],strorCodeinfo[x-strXbounds[0]][2],strorCodeinfo[x-strXbounds[0]][3])
             ###print("whjat am I asking for|",ANS, strorCodeinfo[x-strXbounds[0]][2],firststquote != strorCodeinfo[x-strXbounds[0]][2])
-            print("what is this",ANS, strorCodeinfo[x-strXbounds[0]][2])
-            print("what is this",ANS != strorCodeinfo[x-strXbounds[0]][2])
-            if ANS != strorCodeinfo[x-strXbounds[0]][2]:
+            #print("what is this",ANS, strorCodeinfo[x-strXbounds[0]][2])
+            #print("what is this",ANS != strorCodeinfo[x-strXbounds[0]][2])
+            
+            #print("this should be proper subset index with info",subsetCodeInfo[subsetIndex][2])
+            #print("new comparison",ANS, "VS",subsetCodeInfo[subsetIndex][2],"VS",oldANS)
+            print("new comparison",ANS, "VS",oldANS,inpstr[x])
+            if ANS != oldANS:
                 #somehow inpstr here adds a lot of \
                 ###print("add \ to next copy (if possible. if code fails then fuck it just hope for better data elsewhere",[inpstr,x,inpstr[x-1]])
                 ###print("charfind",charFind([inpstr,x,inpstr[x-1]]))
                 #since x can't go to end if I add more than 1 char I have to add these pairs at the end???
-                quotepairindex = charFind([inpstr,x,inpstr[x-1]])
-                if quotepairindex:
-                    inpstr = inpstr[:quotepairindex] + "\\" + inpstr[quotepairindex:]
-                    pass
+                #quotepairindex = charFind([inpstr,x,inpstr[x-1]])
+                #if quotepairindex:
+                #    inpstr = inpstr[:quotepairindex] + "\\" + inpstr[quotepairindex:]
+                #    pass
 
-                #print("time to correct: insert \ ",inpstr)
-                ###print("time to correct: insert \ ",inpstr[:x-1] + "\\" + inpstr[x-1:])
-                inpstr = inpstr[:x-1] + "\\" + inpstr[x-1:]
-                strY = inpstr
-                ###print("what is new inpstr?",inpstr)
-                ###print("what is new inpstY?",strY)
-                
-                xOffset += 1
-                x = x + xOffset
-                #flip quote type and flip answer to old versions:
-                firststquote = oldquote
-                ANS = oldANS
+                #init so you don't add \ at the beginning:
+                if subsetIndex != 0:
+                    print("old string",inpstr)
+                    ###
+                    print("time to correct: insert \ ",inpstr[:x-1] + "\\" + inpstr[x-1:])
+                    inpstr = inpstr[:x-1] + "\\" + inpstr[x-1:]
+                    strY = inpstr
+                    ###
+                    print("what is new inpstr?",inpstr)
+                    ###
+                    print("what is new inpstY?",strY)
+                    
+                    xOffset += 1
+                    x = x + xOffset
+                    #flip quote type and flip answer to old versions:
+                    firststquote = oldquote
+                    ANS = oldANS
                 
                 #guess: stri or code switches when ' or " were last present so just go back -2 and insert \
                 #since you adjusted you have to +adjust on every x value
                 #double check in himitsu
                 pass
+            subsetIndex += 1
         else:
             ###
             print("data we know: ",ANS,x,inpstr[x],firststquote)
             pass
+    print("strfoxmin2",inpstr)
+    return inpstr
 
 #print(strFix(["TOTAL_ARGUMENT == 'print('yoikes, dont do that')'"]))
 #print(strFix(["toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])"]))
@@ -5923,16 +5944,34 @@ def strFixmin1(argList):
         wesplit = inpstr.split(",")
         print("WE SPLIT HERE BY , CHAR THEN FIX PARTS TOGETHER")
         print(wesplit)
-        miniQ = ""
-        for thing in wesplit:
-            if miniQ != "":
-                miniQ = miniQ + "," + thing
-            else:
-                miniQ = thing
-        print("does concatenate keep info?")
-        print(miniQ)
+        wesplitIndex = 0
+        for substringguy in wesplit:
+            print("NEED TO GET INDICES",inpstr[wesplitIndex:wesplitIndex+len(substringguy)])
+            print("LEN WTF",substringguy, len(substringguy))
+            partialfix = strFixmin2([inpstr,inpstr[wesplitIndex:wesplitIndex+len(substringguy)],[wesplitIndex, wesplitIndex+len(substringguy)]])
+            print("OGSTR",inpstr)
+            #+1 here for missing , char
+            wesplitIndex += len(substringguy) + 1
+
+            #UPDATE inpstr and indices accordingly
+            #compare the original and modified and insert the difference AND modify the start values of modified?
+            partialOffset = 0
+            compareIndex = 0
+            while compareIndex < len(inpstr):
+                print("compare the original and modified and insert the difference",inpstr[compareIndex] ,partialfix[compareIndex],inpstr[compareIndex+partialOffset] != partialfix[compareIndex])
+                if inpstr[compareIndex] != partialfix[compareIndex]:
+                    print("INSERT!  ",inpstr)
+                    print("first",inpstr[:compareIndex+partialOffset])
+                    print("second",partialfix[compareIndex+partialOffset])
+                    print("third",inpstr[compareIndex+partialOffset:])
+                    inpstr = inpstr[:compareIndex+partialOffset] + partialfix[compareIndex+partialOffset] + inpstr[compareIndex+partialOffset:]
+                    print("INSERTED!",inpstr)
+                    partialOffset += 1
+                    pass
+                compareIndex += 1
+
         print("JUST RETURN A STRING TO MAKE FUNCTION HAPPY")
-        ANS = inpstr[:yS+1] + strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes","",recursecount+1]) + inpstr[yE:]
+        return inpstr
     else:
         #init firstquote
         firststquote = ""
