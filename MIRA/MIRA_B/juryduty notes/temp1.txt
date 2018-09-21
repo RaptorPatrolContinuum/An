@@ -1,5 +1,16 @@
 strFix(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
 
+
+
+eval(strFix(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])']))
+hint: beginning and end \ force the return of strFix to be evaled as a string
+'\'FixedQualifier([delta2,"α0α1print(\\"α2\\")α3","print(\\"lost track of what I was doing\\")",FixedQualifiermin1])\''
+but eval without beginning and end \ works
+'FixedQualifier([delta2,"α0α1print(\\"α2\\")α3","print(\\"lost track of what I was doing\\")",FixedQualifiermin1])'
+bukD
+
+
+
 	 5
 01234I5
 
