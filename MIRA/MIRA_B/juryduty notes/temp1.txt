@@ -1,3 +1,12 @@
+strFixmin2(['\\\'FixedQualifier([delta2,"α0\\\\\\\\Mira.py, print("α1")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)",TOTAL_ARGUMENT,FixedQualifiermin1', "\\'FixedQualifier([delta2", [0, 24]])
+
+strFix(['FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])'])
+strFix([str([['print("lost track of what I was doing")', 'print("lost track of what I was doing")']])])
+
+
+NEW TEST:
+strFix([str([[['FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])', '']], [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]])])
+
 strFix(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
 
 

@@ -5,6 +5,8 @@ U+201C : LEFT DOUBLE QUOTATION MARK {double turned comma quotation mark}
 ”
 U+201D : RIGHT DOUBLE QUOTATION MARK {double comma quotation mark}
 
+'[[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']], [[\'print("lost track of what I was doing")\', \'print("lost track of what I was doing")\']]]'
+
 CURRENT Q:
 print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
 

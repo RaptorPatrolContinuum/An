@@ -5216,28 +5216,12 @@ def abstractionGENERAL(argList):
                 #make sure not to add duplicates
                 #TEST LINE
                 #print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
-                actualwtf = str([["FixedQualifier([delta2," + "\"" + str(guessX) + "\"" + ",TOTAL_ARGUMENT,FixedQualifiermin1])",guessY]]) + "\n"
-                print("actual wtf why",actualwtf)
-                testingarglist = [eval(actualwtf),[['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]
-                print(testingarglist)
-                print("check if I can composeMETA",ComposeMETA(testingarglist))
-                if len(shittySearch(['MemoryUNORDERED.txt',actualwtf])) == 0:
-                    with open(MemoryUNORDEREDvar,'a+',encoding='utf-8') as theMEMun:
-                        print("what is guessX",guessX)
-                        
-                        #fixedmaybe = strFix([guessX])
-                        #next question: strfix( " + guessX + ")
-                        #theraw = "%r"%fixedmaybe
-                        print("try this:",actualwtf)
-                        print("need extra quotes",actualwtf)
-                        theMEMun.write(actualwtf)
+                abstractionGENERALmin1([guessX,guessY,MemoryUNORDEREDvar,"STRFIX"])
                 #next testing step would be to check with ComposeMeta
             guessint += 1
 
     
     #open unordered
-
-
     #eval using (deltav3 COMPOSE deltav2) and get answers AND WRITE THOSE DOWN TO memory
     #ComposeMETA([arg1,arg2])
 
@@ -5260,6 +5244,43 @@ def abstractionGENERAL(argList):
     except:
         pass
 
+def abstractionGENERALmin1(argList):
+    '''
+    dont want to make multiple try blocks and introduce error prone code so just bear with me
+    takes input of ???
+    and returns ???
+    '''
+    guessXvar = argList[0]
+    guessYvar = argList[1]
+    MemoryUNORDEREDvar2 =argList[2]
+    #THIS TOGGLES if I attempt strfix or not, to use strfix just say "strfix"
+    try:
+        STRFIXTOGGLE = argList[3]
+    except:
+        STRFIXTOGGLE = ""
+
+    actualwtf = str([["FixedQualifier([delta2," + "\"" + str(guessXvar) + "\"" + ",TOTAL_ARGUMENT,FixedQualifiermin1])",guessYvar]]) + "\n"
+    print("actual wtf why",actualwtf)
+    if STRFIXTOGGLE == "STRFIX":
+        try:
+            actualwtf = strFix([actualwtf])
+            print("actual wtf why FIXED",actualwtf)
+        except Exception as e:
+            print("STRFIX FAILED",e)
+    #else: do nothing AKA write nothing
+
+    testingarglist = [actualwtf,[['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]
+    print("YAWNING",testingarglist)
+    print("check if I can composeMETA",ComposeMETA(testingarglist))
+    if len(shittySearch([MemoryUNORDEREDvar2,actualwtf])) == 0:
+        with open(MemoryUNORDEREDvar2,'a+',encoding='utf-8') as theMEMun:
+            print("what is guessX",guessXvar)
+            #fixedmaybe = strFix([guessX])
+            #next question: strfix( " + guessX + ")
+            #theraw = "%r"%fixedmaybe
+            print("try this:",actualwtf)
+            print("need extra quotes",actualwtf)
+            theMEMun.write(actualwtf)
 
 def TestCode(argList):
     '''
@@ -5338,7 +5359,7 @@ def FixedQualifier(argList):
     #need fixed point func so I don't write delta2(abst,test) == abst all the fucking time
     #returns TRUE/FALSE
     '''
-    print("why nonearg?",argList)
+    #print("why nonearg?",argList)
     #function to use
     arg1 = argList[0]
     #fixed point (aka the abstraction)
@@ -5356,15 +5377,15 @@ def FixedQualifiermin1(argList):
     '''
     #need a min for delta2 returning func and not list
     '''
-    print("fixedqualifiermin arglist",argList)
+    #print("fixedqualifiermin arglist",argList)
     #function to use
     arg1 = argList[0]
     #fixed point (aka the abstraction)
     arg2 = argList[1]
     #check this guy
     arg3 = argList[2]
-    print("LHS guy",toString([ran(arg1([arg2,arg3])),"naive"]))
-    print("RHS guy",arg2)
+    #print("LHS guy",toString([ran(arg1([arg2,arg3])),"naive"]))
+    #print("RHS guy",arg2)
     return toString([ran(arg1([arg2,arg3])),"naive"]) == arg2
 
 def Compose(f1,f2):
@@ -5391,9 +5412,9 @@ def ComposeMETA(argList):
     '''
     #check if f1,f2 are functions:
     if fCheck(f1) == False or fCheck(f2) == False:
-        print("WTF ARE THESE f1", f1 ,type(f1))
-        print("WTF ARE THESE f2", f2, type(f2))
-        print("f1 is function? COMPOSEMETA", fCheck(f1), "f2 is function?", fCheck(f2))
+        #print("WTF ARE THESE f1", f1 ,type(f1))
+        #print("WTF ARE THESE f2", f2, type(f2))
+        #print("f1 is function? COMPOSEMETA", fCheck(f1), "f2 is function?", fCheck(f2))
         return
     ALG = []
     for y in f2:
@@ -5417,7 +5438,7 @@ def ComposeMETA(argList):
     oldALG = ALG
     ALG = []
     for pair in oldALG:
-        print("attempt to eval y coords, ComposeMETA")
+        #print("attempt to eval y coords, ComposeMETA")
         try:
             ALG.append([pair[0],eval(pair[1])])
         #else do nothing
@@ -5466,8 +5487,8 @@ def ComposeReplace(str1,str2):
     evaluating properly
 
     '''
-    print("test str1",str1,type(str1))
-    print("test str2",str2,type(str2))
+    #print("test str1",str1,type(str1))
+    #print("test str2",str2,type(str2))
     ANS = None
     if isinstance(str2[1], str):
         #need a try block because ' VS " pairs really fuck everything and testing with ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\'oof\')"]]])
@@ -5476,12 +5497,12 @@ def ComposeReplace(str1,str2):
         try:
             total = "'" + str2[1] + "'"
             #total = "\"" + str2[1] + "\""
-            print("test TOTAL",total)
-            print("TRY REPLACEMENT NOW1")
-            print(str1[0].replace("TOTAL_ARGUMENT", total))
-            print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+            #print("test TOTAL",total)
+            #print("TRY REPLACEMENT NOW1")
+            #print(str1[0].replace("TOTAL_ARGUMENT", total))
+            #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
             if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
-                print("got here???")
+                #print("got here???")
                 #return [str2[0],str1[1]]
                 if ANS == None:
                     ANS = [[str2[0],str1[1]]]
@@ -5491,53 +5512,53 @@ def ComposeReplace(str1,str2):
         except:
             #total = "'" + str2[1] + "'"
             total = "\"" + str2[1] + "\""
-            print("test TOTAL",total)
-            print("TRY REPLACEMENT NOW2",str(str1[0]))
-            print("actual replacement|",str1[0].replace("TOTAL_ARGUMENT", total))
+            #print("test TOTAL",total)
+            #print("TRY REPLACEMENT NOW2",str(str1[0]))
+            #print("actual replacement|",str1[0].replace("TOTAL_ARGUMENT", total))
             #catch mismatched parens properly when using strfix
-            print("try strfix",strFix([str1[0].replace("TOTAL_ARGUMENT", total)]))
-            print("========")
-            print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
+            #print("try strfix",strFix([str1[0].replace("TOTAL_ARGUMENT", total)]))
+            #print("========")
+            #print(eval(str1[0].replace("TOTAL_ARGUMENT", total)))
             if eval(str1[0].replace("TOTAL_ARGUMENT", total)):
-                print("got here???")
+                #print("got here???")
                 #return [str2[0],str1[1]]
                 if ANS == None:
                     ANS = [[str2[0],str1[1]]]
                 else:
                     ANS = ANS + [str2[0],str1[1]]
-                print("CURRENT ANS2",ANS)
+                #print("CURRENT ANS2",ANS)
     elif isinstance(str2[1], list):
-        print("REAPERREAPERTHAT'SWHAT PEOPLEdetected list!!", str(str2[1]))
+        #print("REAPERREAPERTHAT'SWHAT PEOPLEdetected list!!", str(str2[1]))
         i = 1
         total = str(str2[1])
-        print("x,y stats",str1,str2)
-        print("what is being replaced",str1[0])
+        #print("x,y stats",str1,str2)
+        #print("what is being replaced",str1[0])
         teststring = str1[0].replace("TOTAL_ARGUMENT", total)
-        print("what is totalDARLINGINTHEFRANXX",total)
-        print("why didn't TESTSTRING UPDATE",teststring)
+        #print("what is totalDARLINGINTHEFRANXX",total)
+        #print("why didn't TESTSTRING UPDATE",teststring)
 
         #do total
             
 
         #do elements
         for z in str2[1]:
-            print("maybe z is checked twice because of input",z)
-            print("stats","argument_" + str(i),"'"+z+"'")
-            print("what is replace?",teststring.replace("argument_" + str(i), "'"+z+"'"))
+            #print("maybe z is checked twice because of input",z)
+            #print("stats","argument_" + str(i),"'"+z+"'")
+            #print("what is replace?",teststring.replace("argument_" + str(i), "'"+z+"'"))
             teststring = teststring.replace("argument_" + str(i), "'"+z+"'")
-            print("what is teststring",teststring)
+            #print("what is teststring",teststring)
             i+=1
         try:
-            print("eval teststring",eval(teststring))
+            #print("eval teststring",eval(teststring))
             if eval(teststring):
-                print("ANSBEFORE",ANS)
-                print("WHAT IS ADDED?",[str2[0],str1[1]])
+                #print("ANSBEFORE",ANS)
+                #print("WHAT IS ADDED?",[str2[0],str1[1]])
                 #return [str2[0],str1[1]]
                 if ANS == None:
                     ANS = [[str2[0],str1[1]]]
                 else:
                     ANS = ANS + [[str2[0],str1[1]]]
-                print("ANSAFTER",ANS)
+                #print("ANSAFTER",ANS)
         except Exception as e:
             print("what is error?",e)
             pass
@@ -5584,9 +5605,16 @@ def strorCode(argList):
     #hint: currently this removes outer quotes so you don't get all strings
     #should there be error for exceeding str limit?
     third argument if we want info or not, trigger is "info"
+
+    args:
+    original string
+    subset string
+    length (if starting from index 0) OR list of 2 integers, the start/stop of the subset string
+    "info" or blank -- info returns all the relevant code or str info
     '''
     inpstr = argList[0]
     index = argList[1]
+    
     try:
         infocheck = argList[2]
     except:
@@ -5613,7 +5641,18 @@ def strorCode(argList):
     #print(inpstr)
     ANS = ""
     infoANS = []
-    for x in range(index):
+
+    #if arg2 is a specific index range:
+    if type(index) == list:
+        if len(index) == 2:
+            xRange = range(index[0],index[1])
+        else:
+            print("RANGE IS FUCKED")
+            xRange = range(index)
+    else:
+        xRange = range(index)
+    
+    for x in xRange:
         #hint: toggle string or code depending on if we hit another firststquote
         #things to know: what is first quote style
 
@@ -5645,23 +5684,44 @@ def strorCode(argList):
         return infoANS
     else:
         return ANS
+
+#STRORCODE EXAMPLE AND ANSWERS
+#>>> strorCode(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])',len('FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'[23:42]),"info"])
+#[[0, 'F', 'CODE', ''], [1, 'i', 'CODE', ''], [2, 'x', 'CODE', ''], [3, 'e', 'CODE', ''], [4, 'd', 'CODE', ''], [5, 'Q', 'CODE', ''], [6, 'u', 'CODE', ''], [7, 'a', 'CODE', ''], [8, 'l', 'CODE', ''], [9, 'i', 'CODE', ''], [10, 'f', 'CODE', ''], [11, 'i', 'CODE', ''], [12, 'e', 'CODE', ''], [13, 'r', 'CODE', ''], [14, '(', 'CODE', ''], [15, '[', 'CODE', ''], [16, 'd', 'CODE', ''], [17, 'e', 'CODE', ''], [18, 'l', 'CODE', '']]
+#>>> strorCode(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])',[23,42],"info"])
+#[[23, '"', 'STRI', ''], [24, 'α', 'STRI', 'double'], [25, '0', 'STRI', 'double'], [26, 'α', 'STRI', 'double'], [27, '1', 'STRI', 'double'], [28, 'p', 'STRI', 'double'], [29, 'r', 'STRI', 'double'], [30, 'i', 'STRI', 'double'], [31, 'n', 'STRI', 'double'], [32, 't', 'STRI', 'double'], [33, '(', 'STRI', 'double'], [34, '"', 'STRI', 'double'], [35, 'α', 'CODE', ''], [36, '2', 'CODE', ''], [37, '"', 'STRI', ''], [38, ')', 'STRI', 'double'], [39, 'α', 'STRI', 'double'], [40, '3', 'STRI', 'double'], [41, '"', 'STRI', 'double']]
+
+    
         
 #old example: "TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"
 #new example: print(toString([dom(delta2(["print('alpha')","print('α0')"])),"naive"]))
 
 def strFixmin2(argList):
     '''
+    #this forces substring X to be match first kind of substring (kind is code or string)
     given:
     strorCode "info" on substring X of string Y
     with indices for X
     match strorCode of X to Y so that when x in X is code or str, y in Y is also code or str
 
+    ARGS:
     strFixmin2([strY = argList[0],strX = argList[1],strXbounds = argList[2],strorCodeinfo = argList[3]])
     '''
+    #
+    print("strfoxmin2 ARGLIST",argList)
     strY = argList[0]
-    strX = argList[1]
+    strX = '%r'%argList[1]
     strXbounds = argList[2]
-    strorCodeinfo = argList[3]
+    try:
+        strorCodeinfo = argList[3]
+    except:
+        pass
+    fbounds = [strY,strXbounds,"info"]
+    #print("bounds are fucked",fbounds)
+    #print("WTF IS STRY THEN ",strY)
+    #print("WTF IS STRY THEN 2",'%r'%fbounds[0])
+    subsetCodeInfo = strorCode(fbounds)
+    #print("does this work?",subsetCodeInfo)
 
     inpstr = strY
 
@@ -5678,6 +5738,24 @@ def strFixmin2(argList):
     #need to go to while loop since for loop max limits me from adding multiple chars to a string
     #for x in range(1,len(inpstr)-1):
     x = 0
+    #print("bounds and shitOG",strY,len(strY),strX,len(strX),strXbounds)
+    subsetIndex = 0
+    #print("CURRRENT STRING",inpstr)
+
+    #raw offset: I have to add this because of this edge case:
+    #raw:
+    #'\\\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\\\', \\\'\\\''[0] -> '\\'
+    #not raw:
+    #'\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\''[0] -> "'"
+    #so I'm off by one
+    #just check if first char of subsetCodeInfo is \ and next is " or '
+    rawOffset = 0
+    #print(subsetCodeInfo[0][1],'\\',subsetCodeInfo[0][1] == '\\')
+    #print(subsetCodeInfo[1][1], "'",subsetCodeInfo[1][1] == "'")
+    #print(subsetCodeInfo[1][1], '"',subsetCodeInfo[1][1] == '"')
+    #print(subsetCodeInfo[0][1] == '\\' and (subsetCodeInfo[1][1] == "'" or subsetCodeInfo[1][1] == '"'))
+    #if subsetCodeInfo[0][1] == '\\' and (subsetCodeInfo[1][1] == "'" or subsetCodeInfo[1][1] == '"'):
+    #    rawOffset += 1
     while x < len(inpstr)-2:
         x += 1
         #hint: toggle string or code depending on if we hit another firststquote
@@ -5722,39 +5800,62 @@ def strFixmin2(argList):
         #print(x >= strXbounds[0])
         #print(strXbounds[1] , x)
         #print(strXbounds[1] > x)
+
         if x >= strXbounds[0] and strXbounds[1] > x:
             ###print("data we know: ",ANS,x,inpstr[x],firststquote,"|VS|",strorCodeinfo[x-strXbounds[0]][0],strorCodeinfo[x-strXbounds[0]][1],strorCodeinfo[x-strXbounds[0]][2],strorCodeinfo[x-strXbounds[0]][3])
             ###print("whjat am I asking for|",ANS, strorCodeinfo[x-strXbounds[0]][2],firststquote != strorCodeinfo[x-strXbounds[0]][2])
-            if ANS != strorCodeinfo[x-strXbounds[0]][2]:
+            #print("what is this",ANS, strorCodeinfo[x-strXbounds[0]][2])
+            #print("what is this",ANS != strorCodeinfo[x-strXbounds[0]][2])
+            
+            #print("this should be proper subset index with info",subsetCodeInfo[subsetIndex][2])
+            #,"VS",oldANS
+            #print("comparing what",inpstr[x], "VS",subsetCodeInfo[subsetIndex+rawOffset])
+            #print("new comparison",ANS, "VS",subsetCodeInfo[subsetIndex+rawOffset][2])
+            #
+            print("new comparison",ANS, "VS",oldANS,"VS",inpstr[x])
+
+            # FUCKING RETARD YOU NEED TO COMPARE IT WITH ITSELF NOT WITH subsetCodeInfo
+            if ANS != oldANS:
+            #if ANS != subsetCodeInfo[subsetIndex+rawOffset][2]:
                 #somehow inpstr here adds a lot of \
                 ###print("add \ to next copy (if possible. if code fails then fuck it just hope for better data elsewhere",[inpstr,x,inpstr[x-1]])
                 ###print("charfind",charFind([inpstr,x,inpstr[x-1]]))
                 #since x can't go to end if I add more than 1 char I have to add these pairs at the end???
-                quotepairindex = charFind([inpstr,x,inpstr[x-1]])
-                if quotepairindex:
-                    inpstr = inpstr[:quotepairindex] + "\\" + inpstr[quotepairindex:]
-                    pass
+                #quotepairindex = charFind([inpstr,x,inpstr[x-1]])
+                #if quotepairindex:
+                #    inpstr = inpstr[:quotepairindex] + "\\" + inpstr[quotepairindex:]
+                #    pass
 
-                #print("time to correct: insert \ ",inpstr)
-                ###print("time to correct: insert \ ",inpstr[:x-1] + "\\" + inpstr[x-1:])
-                inpstr = inpstr[:x-1] + "\\" + inpstr[x-1:]
-                strY = inpstr
-                ###print("what is new inpstr?",inpstr)
-                ###print("what is new inpstY?",strY)
-                
-                xOffset += 1
-                x = x + xOffset
-                #flip quote type and flip answer to old versions:
-                firststquote = oldquote
-                ANS = oldANS
+                #init so you don't add \ at the beginning:
+                if subsetIndex != 0:
+                    #
+                    print("old string                ",inpstr)
+                    #
+                    print("time to correct: insert \ ",inpstr[:x-1] + "\\" + inpstr[x-1:])
+                    inpstr = inpstr[:x-1] + "\\" + inpstr[x-1:]
+                    strY = inpstr
+                    ###
+                    print("what is new inpstr?       ",inpstr)
+                    ###
+                    print("what is new inpstY?",strY)
+                    
+                    xOffset += 1
+                    x = x + xOffset
+                    #flip quote type and flip answer to old versions:
+                    firststquote = oldquote
+                #ANS = oldANS
+                oldANS = ANS
                 
                 #guess: stri or code switches when ' or " were last present so just go back -2 and insert \
                 #since you adjusted you have to +adjust on every x value
                 #double check in himitsu
                 pass
+            subsetIndex += 1
         else:
             ###print("data we know: ",ANS,x,inpstr[x],firststquote)
             pass
+    #print("strfoxmin2 ANS",inpstr)
+    return inpstr
 
 #print(strFix(["TOTAL_ARGUMENT == 'print('yoikes, dont do that')'"]))
 #print(strFix(["toString([dom(delta2([" + "\"print('alpha')\"" + "," + "\"print('α0')\"" + "]))," + "\"naive\"" + "])"]))
@@ -5785,6 +5886,13 @@ def charFind(argList):
 
 def strFix(argList):
     '''
+    CAVEATS:
+    string needs properly paired parens and brackets
+    tell future self the new caveat that commas splitting in strings is gonna be error
+        might also be a problem with whitespaces
+    comma in the wrong place will fuck over split
+    
+
     HINT: need to get raw input string by doing r"string" in the args
     HINT: triple quote styles are fucked???
 
@@ -5836,11 +5944,14 @@ def strFix(argList):
     nestcount["["] = 0
     nestcount["("] = 0
 
-    
-    ANS = inpstr
     ###print("min1 args",argList + [nestcount])
-    ANS = strFixmin1(argList + [nestcount])
-    return ANS
+    #
+    
+    #print("WHATS THE RAW STRING","%r"%inpstr)
+    fixedstr = strFixmin1(argList + [nestcount])[1:-1]
+    #print("does eval work at this stage?",eval(fixedstr))
+    #need to cut off start and ending \ because I get raw:
+    return fixedstr
 
 def strFixmin1(argList):
     '''
@@ -5854,6 +5965,7 @@ def strFixmin1(argList):
     ySkip
     recursecount (used to figure out what print is from where)
     '''
+    #print("strFixmin1 ARGS",argList)
 
     try:
         nestcount = argList[1]
@@ -5881,135 +5993,204 @@ def strFixmin1(argList):
         inpstr = argList[0]
     else:
         inpstr = "%r"%argList[0]
-    print("check calls==============================")
-    print(inpstr,recursecount)
 
-    #init firstquote
-    firststquote = ""
-    WHATIS = ""
+    #print("check calls============================== what is check char?",inpstr[0])
+    #print(inpstr,recursecount)
 
-    #print("double check")
-    #print(nestcount)
-    #print(nested)
-
-    ANS = inpstr
     
-    for x in range(len(inpstr)):
-        #print("x vs ySkip",x,ySkip)
-        if x >= ySkip:
-            #for recursion use the original nestcount
-            if nested == "yes":
-                nestmin = nestcount["("] + nestcount["["]
-            else:
-                nestmin = 0
+    #here we split between normal operations and splitting by , if string looks suitable
+    splitdecider = inpstr[0]
+    if splitdecider != "'" and splitdecider != "(" and splitdecider != "[" and splitdecider != "'":
+        wesplit = inpstr.split(",")
+        #
+        print("WE SPLIT HERE BY , CHAR THEN FIX PARTS TOGETHER")
+        #
+        print(wesplit)
+        wesplitIndex = 0
+        partialOffset = 0
+        for substringguy in wesplit:
+            #print("NEED TO GET INDICES",inpstr[wesplitIndex+partialOffset:wesplitIndex+len(substringguy)+partialOffset])
+            #print("LEN WTF",substringguy, len(substringguy))
+            #partialfix = strFixmin2([inpstr,inpstr[wesplitIndex:wesplitIndex+len(substringguy)],[wesplitIndex, wesplitIndex+len(substringguy)]])
+            print("how did args get fucked",[inpstr,inpstr[wesplitIndex+partialOffset:wesplitIndex+len(substringguy)+partialOffset],[wesplitIndex+partialOffset, wesplitIndex+len(substringguy)+partialOffset]])
+            partialfix = strFixmin2([inpstr,inpstr[wesplitIndex+partialOffset:wesplitIndex+len(substringguy)+partialOffset],[wesplitIndex+partialOffset, wesplitIndex+len(substringguy)+partialOffset]])
+            #try:
+            #    partialfix = strFixmin2([inpstr,inpstr[wesplitIndex+partialOffset:wesplitIndex+len(substringguy)+partialOffset],[wesplitIndex+partialOffset, wesplitIndex+len(substringguy)+partialOffset]])
+            #except:
+            #    partialfix = strFixmin2([inpstr,inpstr[wesplitIndex:wesplitIndex+len(substringguy)],[wesplitIndex, wesplitIndex+len(substringguy)]])
+
+            #print("OGSTR",inpstr)
+            #+1 here for missing , char
+            wesplitIndex += len(substringguy) + 1
+
+            #UPDATE inpstr and indices accordingly
+            #compare the original and modified and insert the difference AND modify the start values of modified?
+            #need length of og str
+            OGstrlen = len(inpstr)
             
-            #print("parts",x, inpstr[x])
-            if inpstr[x] == "[":
-                nestcount["["] += 1
-            elif inpstr[x] == "]":
-                nestcount["["] += -1
-            elif inpstr[x] == "(":
-                nestcount["("] += 1
-            elif inpstr[x] == ")":
-                nestcount["("] += -1
+            compareIndex = 0
+            while compareIndex < OGstrlen-partialOffset:
+                #print("WHILE LOOP",compareIndex, len(inpstr),compareIndex < len(inpstr))
+                #print("OOR",inpstr[compareIndex+partialOffset])
+                #print("OOR2",partialfix[compareIndex+partialOffset])
+                #print("compare the original and modified and insert the difference",inpstr[compareIndex+partialOffset] ,partialfix[compareIndex+partialOffset],inpstr[compareIndex+partialOffset] != partialfix[compareIndex+partialOffset])
+                if inpstr[compareIndex+partialOffset] != partialfix[compareIndex+partialOffset]:
+                    #print("INSERT!  ",inpstr)
+                    #print("first",inpstr[:compareIndex+partialOffset])
+                    #print("second",partialfix[compareIndex+partialOffset])
+                    #print("third",inpstr[compareIndex+partialOffset:])
+                    inpstr = inpstr[:compareIndex+partialOffset] + partialfix[compareIndex+partialOffset] + inpstr[compareIndex+partialOffset:]
+                    #print("INSERTED!",inpstr)
+                    partialOffset += 1
+                    pass
+                compareIndex += 1
+
+        #print("JUST RETURN A STRING TO MAKE FUNCTION HAPPY")
+        return inpstr
+    else:
+        #init firstquote
+        firststquote = ""
+        WHATIS = ""
+
+        #print("double check")
+        #print(nestcount)
+        #print(nested)
+
+        ANS = inpstr
     
-            #and nested == "no"
-            if nestcount["("] + nestcount["["] > nestmin:
-                #strFixmin1(argList)
-                yS = x
-                #y modified to go to the end
-                yE = x
-                print("start to end",inpstr[yS:])
-                #need new nestcount:
-                #copy dict instead of making an alias for same dict
+        for x in range(len(inpstr)):
+            #print("x vs ySkip",x,ySkip)
+            if x >= ySkip:
+                #for recursion use the original nestcount
                 if nested == "yes":
-                    nestcountYSE = {}
-                    nestcountYSE["("] = nestcount["("]
-                    nestcountYSE["["] = nestcount["["]
+                    nestmin = nestcount["("] + nestcount["["]
                 else:
-                    nestcountYSE = nestcount.copy()
-                print("CHECK THIS WHILE FUNCTION",inpstr[yS:])
-                print("what is nestmin and is it nested?",nestmin,nested)
-                print("nestmin stats",nestcountYSE["("], nestcountYSE["["],nestcountYSE["("] + nestcountYSE["["],nestmin)
-                while nestcountYSE["("] + nestcountYSE["["] > nestmin:
-                    print("index wtf",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
-                    yE += 1
-                    #if you go past the end of the string return error
-                    #print("what is inpstr, type, and len?",inpstr,type(inpstr),len(inpstr))
-                    #TEST IS BELOW
-                    #strFix(['FixedQualifier([delta2,"α0([α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
-                    #strFix(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
-                    #print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
-                    print("yE stats",yE,len(inpstr),inpstr[yE])
-                    if yE >= len(inpstr):
-                        #return "SOMETHIBNG FUCKED UP HERE"
-                        raise ValueError('INDEX FUCKED',argList,"strfixmin1")
-                    #print('inpstr VS yE:',len(inpstr),yE)
-                    print("MASAYUME",inpstr[yE] == "[",inpstr[yE] == "]",inpstr[yE] == "(",inpstr[yE] == ")")
-                    if inpstr[yE] == "[":
-                        nestcountYSE["["] += 1
-                    elif inpstr[yE] == "]":
-                        nestcountYSE["["] += -1
-                    elif inpstr[yE] == "(":
-                        nestcountYSE["("] += 1
-                    elif inpstr[yE] == ")":
-                        nestcountYSE["("] += -1
-                    #print("tests failing",type(inpstr[yE]),type("["),inpstr[yE], "[",inpstr[yE] == "[")
-                    print("neststats2:", len(inpstr), inpstr[yS], inpstr[yE],"[",nestcountYSE["["],"(",nestcountYSE["("])
-                    print("nestcount",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
-                #print("CHECK THIS WHILE FUNCTION END==========")
+                    nestmin = 0
+                
+                #print("parts",x, inpstr[x])
+                if inpstr[x] == "[":
+                    nestcount["["] += 1
+                elif inpstr[x] == "]":
+                    nestcount["["] += -1
+                elif inpstr[x] == "(":
+                    nestcount["("] += 1
+                elif inpstr[x] == ")":
+                    nestcount["("] += -1
+        
+                #and nested == "no"
+                if nestcount["("] + nestcount["["] > nestmin:
+                    #strFixmin1(argList)
+                    yS = x
+                    #y modified to go to the end
+                    yE = x
+                    #print("start to end",inpstr[yS:])
+                    #need new nestcount:
+                    #copy dict instead of making an alias for same dict
+                    if nested == "yes":
+                        nestcountYSE = {}
+                        nestcountYSE["("] = nestcount["("]
+                        nestcountYSE["["] = nestcount["["]
+                    else:
+                        nestcountYSE = nestcount.copy()
+                    #print("CHECK THIS WHILE FUNCTION",inpstr[yS:])
+                    #print("what is nestmin and is it nested?",nestmin,nested)
+                    #print("nestmin stats",nestcountYSE["("], nestcountYSE["["],nestcountYSE["("] + nestcountYSE["["],nestmin)
+                    while nestcountYSE["("] + nestcountYSE["["] > nestmin:
+                        #print("index wtf",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
+                        yE += 1
+                        #if you go past the end of the string return error
+                        #print("what is inpstr, type, and len?",inpstr,type(inpstr),len(inpstr))
+                        #TEST IS BELOW
+                        #strFix(['FixedQualifier([delta2,"α0([α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
+                        #strFix(['FixedQualifier([delta2,"α0α1print("α2")α3","print("lost track of what I was doing")",FixedQualifiermin1])'])
+                        #print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
+                        #print("yE stats",yE,len(inpstr),inpstr[yE])
+                        if yE >= len(inpstr):
+                            #return "SOMETHIBNG FUCKED UP HERE"
+                            raise ValueError('INDEX FUCKED',argList,"strfixmin1")
+                        #print('inpstr VS yE:',len(inpstr),yE)
+                        #print("MASAYUME",inpstr[yE] == "[",inpstr[yE] == "]",inpstr[yE] == "(",inpstr[yE] == ")")
+                        if inpstr[yE] == "[":
+                            nestcountYSE["["] += 1
+                        elif inpstr[yE] == "]":
+                            nestcountYSE["["] += -1
+                        elif inpstr[yE] == "(":
+                            nestcountYSE["("] += 1
+                        elif inpstr[yE] == ")":
+                            nestcountYSE["("] += -1
+                        #print("tests failing",type(inpstr[yE]),997type("["),inpstr[yE], "[",inpstr[yE] == "[")
+                        #print("neststats2:", len(inpstr), inpstr[yS], inpstr[yE],"[",nestcountYSE["["],"(",nestcountYSE["("])
+                        #print("nestcount",nestcountYSE["("], nestcountYSE["["], nestmin,nestcountYSE["("] + nestcountYSE["["] > nestmin)
+                    #print("CHECK THIS WHILE FUNCTION END==========")
 
-         
-                #hint: now we update ySkip to prevent dupes
-                #print("old ySkip",ySkip)
-                ySkip = yE
-                #print("update ySkip",ySkip)
-                #print("figure out the right splicing",yS+1,yE)
-                #print("stary ",inpstr[yS+1:yE])
-                #to prevent infinity
-                if len(inpstr[yS+1:yE]) > 0:
-                    ####print("recurse on our proper splicing: TOTAL", inpstr)
-                    #print("breakapart                           ",inpstr[:yS+1],inpstr[yS+1:yE],inpstr[yE:])
-                    #print("breakapart                           ",inpstr[:yS+1],"|",inpstr[yS+1:yE],"|",inpstr[yE:])
-                    ####print("what does this level see?",recursecount,strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes","",recursecount+1]))
-                    #print("lower level ans",strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"]))
-                    strFixmin2([inpstr,inpstr[yS+1:yE],[yS+1,yE],strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"])])
-                    ANS = inpstr[:yS+1] + strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes","",recursecount+1]) + inpstr[yE:]
-                    ####print("what is ans",ANS)
+             
+                    #hint: now we update ySkip to prevent dupes
+                    #print("old ySkip",ySkip)
+                    ySkip = yE
+                    #print("update ySkip",ySkip)
+                    #print("figure out the right splicing",yS+1,yE)
+                    #print("stary ",inpstr[yS+1:yE])
+                    #to prevent infinity
+                    if len(inpstr[yS+1:yE]) > 0:
+                        ####print("recurse on our proper splicing: TOTAL", inpstr)
+                        #print("breakapart                           ",inpstr[:yS+1],inpstr[yS+1:yE],inpstr[yE:])
+                        #print("breakapart                           ",inpstr[:yS+1],"|",inpstr[yS+1:yE],"|",inpstr[yE:])
+                        ####print("what does this level see?",recursecount,strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes","",recursecount+1]))
+                        #print("lower level ans",strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"]))
+                        #print("AM I EVEN USING STRFIXMIN2???")
+                        #strFixmin2([inpstr,inpstr[yS+1:yE],[yS+1,yE],strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"])])
+                        #print("what does strfixmin2 args look like?",[inpstr,inpstr[yS+1:yE],[yS+1,yE],strorCode([inpstr[yS+1:yE],len(inpstr[yS+1:yE]),"info"])])
+                        fragileegoA = ANS
+                        #print("what's the rawA?",'%r'%fragileegoA)
+                        ANS = inpstr[:yS+1] + strFixmin1([inpstr[yS+1:yE],nestcountYSE,"yes","",recursecount+1]) + inpstr[yE:]
+                        fragileegoB = ANS
+                        #print("what's the rawB?",'%r'%fragileegoB)
+                        ####print("what is ans",ANS)
 
-            #print("backslash test",inpstr[x-1] == '\\')
-            #print("backslash test",inpstr[x-1], '\\')
-            if inpstr[x-1] == '\\':
-                #print("data we know: \\trig",WHATIS,x,inpstr[x],firststquote)
-                pass
-            elif firststquote != "CODE" and (inpstr[x] == '"' or inpstr[x] == "'"):
-                #print("data we know: STRI",x,inpstr[x],firststquote)
-                WHATIS = "STRI"
-            elif firststquote != "":
-                #print("data we know: STRI",x,inpstr[x],firststquote)
-                WHATIS = "STRI"
+                #print("backslash test",inpstr[x-1] == '\\')
+                #print("backslash test",inpstr[x-1], '\\')
+                if inpstr[x-1] == '\\':
+                    #print("data we know: \\trig",WHATIS,x,inpstr[x],firststquote)
+                    pass
+                elif firststquote != "CODE" and (inpstr[x] == '"' or inpstr[x] == "'"):
+                    #print("data we know: STRI",x,inpstr[x],firststquote)
+                    WHATIS = "STRI"
+                elif firststquote != "":
+                    #print("data we know: STRI",x,inpstr[x],firststquote)
+                    WHATIS = "STRI"
+                else:
+                    #print("data we know: CODE",x,inpstr[x],firststquote)
+                    WHATIS = "CODE"
+
+                if firststquote == "double" and inpstr[x] == '"' and inpstr[x-1] != '\\':
+                    firststquote = ""
+                elif firststquote == "" and inpstr[x] == '"' and inpstr[x-1] != '\\':
+                    firststquote = "double"
+                if firststquote == "single" and inpstr[x] == "'" and inpstr[x-1] != '\\':
+                    firststquote = ""
+                elif firststquote == "" and inpstr[x] == "'" and inpstr[x-1] != '\\':
+                    firststquote = "single"
+
+                if inpstr[x] == "'" or inpstr[x] == '"':
+                    #figure out what IS vs what SHOULD BE
+                    pass
+                #print("inp STRING",inpstr)
+                #print("neststats:", "RECURSE",recursecount, x, inpstr[x],"[",nestcount["["],"(",nestcount["("], "WHATIS:",WHATIS)
+                #print("what is ans WHY EXTRA BACKSLASH",ANS)
             else:
-                #print("data we know: CODE",x,inpstr[x],firststquote)
-                WHATIS = "CODE"
-
-            if firststquote == "double" and inpstr[x] == '"' and inpstr[x-1] != '\\':
-                firststquote = ""
-            elif firststquote == "" and inpstr[x] == '"' and inpstr[x-1] != '\\':
-                firststquote = "double"
-            if firststquote == "single" and inpstr[x] == "'" and inpstr[x-1] != '\\':
-                firststquote = ""
-            elif firststquote == "" and inpstr[x] == "'" and inpstr[x-1] != '\\':
-                firststquote = "single"
-
-            if inpstr[x] == "'" or inpstr[x] == '"':
-                #figure out what IS vs what SHOULD BE
+                #print("do nothing here", inpstr[x:ySkip])
                 pass
-            #print("inp STRING",inpstr)
-            #print("neststats:", "RECURSE",recursecount, x, inpstr[x],"[",nestcount["["],"(",nestcount["("], "WHATIS:",WHATIS)
-        else:
-            #print("do nothing here", inpstr[x:ySkip])
-            pass
-    return ANS
+        #print("WTF HAPPENED",ANS,type(ANS))
+        fragileego = ANS
+        #print("what's the raw?",'%r'%fragileego)
+        #print("YYYYYYYYYYYYY")
+        #print("can I eval this?",eval(ANS))
+        #print(eval('FixedQualifier([delta2,"α0α1print(\\"α2\\")α3","print(\\"lost track of what I was doing\\")",FixedQualifiermin1])'))
+        #print("YYYYYYYYYYYYYEEEEEEEEEEEEEE")
+        #print("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+        #print("WHAT THE ACTUAL FUCK",eval('FixedQualifier([delta2,"α0α1print(\\"α2\\")α3","print(\\"lost track of what I was doing\\")",FixedQualifiermin1])'))
+        #print("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+        return ANS
 
 #strFix(["TOTAL_ARGUMENT == 'print('yoikes, don't do that')'"])
         
