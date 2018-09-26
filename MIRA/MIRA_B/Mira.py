@@ -60,6 +60,7 @@ while Descent:
             #print("code died")
             memoryfile = open(MemoryUNORDERED, 'a+')
             #HINT: ["",e] IS BECAUSE popen has error as 2nd element
+            print("insertionline7",str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'", ["",e]]]) + "\n")
             memoryfile.write(str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'", ["",e]]]) + "\n")
             nearfield.append(str([["TOTAL_ARGUMENT == '"+ str(inputtext) +"'", ["",e]]]))
             memoryfile.close()

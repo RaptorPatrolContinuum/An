@@ -2605,6 +2605,8 @@ def lexicoSort(argList):
                 ########print("if x == insertionkey:", x , insertionkey)
                 if x == insertionkey:
                     ########print("sanity check1",x,insertionkey,stopwhen, timetostop)
+                    print("insertionline1",insertionline)
+                    #if len(shittySearch([arg2,insertionline])) == 0:
                     MEMFILECLEAN.write(insertionline + "\n")
                     ########print("readline is RESET to next line after I write")
                     insertline = InsertKey.readline()
@@ -2623,7 +2625,12 @@ def lexicoSort(argList):
                     while x == insertionkey and stopwhen <= timetostop:
                         ########print("sanity check2",x,insertionkey,stopwhen, timetostop)
                         #yes = insert
-                        MEMFILECLEAN.write(insertionline + "\n")
+                        print("insertionline2",insertionline)
+                        print("THIS IS A DEFINITE PROBLEM")
+                        print(shittySearch([arg2,insertionline]))
+                        print(len(shittySearch([arg2,insertionline])) == 0)
+                        if len(shittySearch([arg2,insertionline])) == 0:
+                            MEMFILECLEAN.write(insertionline + "\n")
                         ########print("attempt to read another line")
                         insertline = InsertKey.readline()
                         stopwhen += 1
@@ -2645,10 +2652,12 @@ def lexicoSort(argList):
                         except:
                             pass
                         #no = keep variable for later
+                    print("insertionline3",OGline)
                     MEMFILECLEAN.write(OGline)
                     #read new line
                 else:
                     ########print("sanity check3",x,insertionkey)
+                    print("insertionline4",OGline)
                     MEMFILECLEAN.write(OGline)
     #hint: remember to delete InsertKey
     InsertKey.close()
@@ -3126,12 +3135,14 @@ def FILEinsertAt(ArgList):
                     #print("=")
                     #print(insertedline)
                     #print("=")
+                    print("insertionline5",insertedline)
                     arg1New.write(insertedline)
                     arg1New.write(oldline)
                 else:
                     #print("where do I go?2",i,arg3)
                     oldline = arg1Old.readline()
                     #print("checkoldline",oldline)
+                    print("insertionline6",oldline)
                     arg1New.write(oldline)
         #delete old file
         os.remove(arg1)
@@ -3157,8 +3168,10 @@ def FILEinsertAt(ArgList):
             #print("does arg2 have newline char?",arg2)
             for x in range(diff-1):
                 print('inserting empty line',x)
+                print('insertionline8',"\n")
                 appending.write("\n")
             #then append the object
+            print('insertionline9',arg2+"\n")
             appending.write(arg2+"\n")
             #close the file
             appending.close()
@@ -4966,11 +4979,13 @@ def abstractionGENERAL(argList):
         try:
             attempt = eval(x)
             memoryfile = open(MemoryUNORDEREDvar, 'a+')
+            print('insertionline10',str([["TOTAL_ARGUMENT == '"+ x +"'", attempt]]) + "\n")
             memoryfile.write(str([["TOTAL_ARGUMENT == '"+ x +"'", attempt]]) + "\n")
             #nearfield.append(str([["TOTAL_ARGUMENT == '"+ x +"'", attempt]]))
             memoryfile.close()
         except Exception as e:
             memoryfile = open(MemoryUNORDEREDvar, 'a+')
+            print('insertionline11',str([["TOTAL_ARGUMENT == '"+ x +"'", ["",e]]]) + "\n")
             memoryfile.write(str([["TOTAL_ARGUMENT == '"+ x +"'", ["",e]]]) + "\n")
             #nearfield.append(str([["TOTAL_ARGUMENT == '"+ x +"'", ["",e]]]))
             memoryfile.close()
@@ -4984,7 +4999,11 @@ def abstractionGENERAL(argList):
     #print("NOW TO TEST SEEKFORCE",SeekForce(['MemoryUNORDEREDvar.txt','argument_1 == "b"',delta2]))
     #THIS MEMcomposeinput WAS USED TO ABSTRACT THE INPUT, BUT NOW I WANT TO ABSTRACT THE INPUT OUTPUT PAIR PRODUCED BY MIRA SEEING THE EVAL OF INPUT
     #print("dogshit2",delta2(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
+    #with open(MemoryUNORDEREDvar,'a+',encoding='utf-8') as theMEMun:
+    #    theMEMun.write(str([["THIS IS CULPRIT",""]]) + "\n")
     MEMcomposeinput = SeekForce([MemoryUNORDEREDvar,inputtextvar,delta2,SeekForcemin1,[]]) + SeekForce([memoryLongvar,inputtextvar,delta2,SeekForcemin1,[]])
+    #with open(MemoryUNORDEREDvar,'a+',encoding='utf-8') as theMEMun:
+    #    theMEMun.write(str([["THIS IS CULPRITEND",""]]) + "\n")
     #deltav2 on pairs in new obj -> guessing similar inputs/variables (find abstractions) ->#eval using (deltav3 COMPOSE deltav2) and get answers
     #for each object in seekforce, check if new obj or x in seekforce is an abstraction by checking deltav2(obj,x in seekforce) == obj OR deltav2(obj,x in seekforce) == x in seekforce
     guessAbst = []
@@ -5133,6 +5152,7 @@ def abstractionGENERAL(argList):
                 #print(shittySearch(["ABSTRACTFILE2.txt",stopdupe]))
                 #print(len(shittySearch(["ABSTRACTFILE2.txt",stopdupe])) == 0)
                 if len(shittySearch(["ABSTRACTFILE2.txt",stopdupe])) == 0:
+                    print('insertionline12',stopdupe + "\n")
                     ABSTRACTFILE.write(stopdupe + "\n")
                     ABSTRACTFILE2.write(stopdupe + "\n")
                     print("written")
@@ -5154,6 +5174,7 @@ def abstractionGENERAL(argList):
     #open ordered
     #print("NOW TO CROSS WITH MEMORY")
 
+    writeNoDupes = []
     with open(MemoryUNORDEREDvar, 'r+', encoding='utf-8') as ordered1:
         ordered1.seek(0)
         guessint = 0
@@ -5174,6 +5195,13 @@ def abstractionGENERAL(argList):
             emptycheck = FILEindexread(["ABSTRACTFILE.txt",guessint])
             print("emptycheck stats",guessint,anothersum,len2,mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2)
             print("emptycheckk",emptycheck)
+            
+            print("thenextline",thenextline)
+            print("nextlineraw","%r"%thenextline)
+            #print("reprthenextline",repr(thenextline))
+            #print("reprthenextline",eval(eval(repr(thenextline))),type(eval(eval(repr(thenextline)))))
+            #print("reprthenextline",eval(eval(repr(thenextline)))[0])
+            #print("reprthenextline",eval(eval(repr(thenextline)))[0][0])
             #if len(emptycheck) > 0:
             #    #print("AND THIS LINE",emptycheck.encode('utf-8').format(u"\u03B1"))
             #    #print("AND THIS LINE",emptycheck.format(u"\u03B1"))
@@ -5182,8 +5210,19 @@ def abstractionGENERAL(argList):
             #   print("AND THIS LINE",emptycheck)
             #print("AND THIS LINE",guessint,emptycheck)
             #print("CHECK IS TO TRY delta2 single point condition on both LHS and RHS then if they both pass, write into mem")
-            memX = eval(thenextline)[0][0]
-            memY = eval(thenextline)[0][1]
+
+            #special characters destroy the meaning so just do try block and if it fails to []
+            try:
+                memX = eval(thenextline)[0][0]
+            except:
+                memX = []
+            #memX = eval(eval(repr(thenextline)))[0][0]
+            #
+            try:
+                memY = eval(thenextline)[0][1]
+            except:
+                memY = []
+            #memY = eval(eval(repr(thenextline)))[0][1]
             guessX = toString([ran(eval(emptycheck)[0][0]),"naive"])
             guessY = toString([ran(eval(emptycheck)[0][1]),"naive"])
             LHSTest = toString([ran(delta2([memX,guessX])),"naive"]) == guessX
@@ -5216,9 +5255,24 @@ def abstractionGENERAL(argList):
                 #make sure not to add duplicates
                 #TEST LINE
                 #print(ComposeMETA([eval('[[\'FixedQualifier([delta2,"α0α1print("α2")α3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]\n'), [['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]))
-                abstractionGENERALmin1([guessX,guessY,MemoryUNORDEREDvar,"STRFIX"])
+                possibleDupe = abstractionGENERALmin1([guessX,guessY,MemoryUNORDEREDvar,"STRFIX"])
+                dupeList = [y for y in writeNoDupes if y == possibleDupe]
+                print("FILTER THIS INSTEAD",possibleDupe)
+                print("dupeList",dupeList)
+                print("len",len(dupeList))
+                if len(dupeList) == 0:
+                    writeNoDupes.append(possibleDupe)
                 #next testing step would be to check with ComposeMeta
             guessint += 1
+    #now I can look through MemoryUNORDEREDvar to check for dupes
+    with open(MemoryUNORDEREDvar, 'a+', encoding='utf-8') as ordered1:
+        for candidate in writeNoDupes:
+            print("hope for no dupes",candidate)
+            print(len(shittySearch([MemoryUNORDEREDvar,candidate])))
+            print(len(shittySearch([MemoryUNORDEREDvar,candidate])) == 0)
+            if len(shittySearch([MemoryUNORDEREDvar,candidate])) == 0:
+                ordered1.write(candidate + "\n")
+        
 
     
     #open unordered
@@ -5237,7 +5291,9 @@ def abstractionGENERAL(argList):
             #print("=")
     #print("ENDHERE")
     
+    #
     os.remove("ABSTRACTFILE.txt")
+    #
     os.remove("ABSTRACTFILE2.txt")
     try:
         os.remove(OtherClone() + "\\" + "ABSTRACTFILE.txt")
@@ -5252,14 +5308,14 @@ def abstractionGENERALmin1(argList):
     '''
     guessXvar = argList[0]
     guessYvar = argList[1]
-    MemoryUNORDEREDvar2 =argList[2]
+    MemoryUNORDEREDvar2 = argList[2]
     #THIS TOGGLES if I attempt strfix or not, to use strfix just say "strfix"
     try:
         STRFIXTOGGLE = argList[3]
     except:
         STRFIXTOGGLE = ""
 
-    actualwtf = str([["FixedQualifier([delta2," + "\"" + str(guessXvar) + "\"" + ",TOTAL_ARGUMENT,FixedQualifiermin1])",guessYvar]]) + "\n"
+    actualwtf = str([["FixedQualifier([delta2," + "\"" + str(guessXvar) + "\"" + ",TOTAL_ARGUMENT,FixedQualifiermin1])",guessYvar]])
     print("actual wtf why",actualwtf)
     if STRFIXTOGGLE == "STRFIX":
         try:
@@ -5272,15 +5328,22 @@ def abstractionGENERALmin1(argList):
     testingarglist = [actualwtf,[['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]
     print("YAWNING",testingarglist)
     print("check if I can composeMETA",ComposeMETA(testingarglist))
-    if len(shittySearch([MemoryUNORDEREDvar2,actualwtf])) == 0:
-        with open(MemoryUNORDEREDvar2,'a+',encoding='utf-8') as theMEMun:
-            print("what is guessX",guessXvar)
-            #fixedmaybe = strFix([guessX])
-            #next question: strfix( " + guessX + ")
-            #theraw = "%r"%fixedmaybe
-            print("try this:",actualwtf)
-            print("need extra quotes",actualwtf)
-            theMEMun.write(actualwtf)
+    print("AINT NOTHING BUT A MISTAKE",shittySearch([MemoryUNORDEREDvar2,actualwtf]))
+    #can't write here because can't search in opened file so will have to write later
+    #if len(shittySearch([MemoryUNORDEREDvar2,actualwtf])) == 0:
+    #    with open(MemoryUNORDEREDvar2,'a+',encoding='utf-8') as theMEMun:
+    #        #print("what is guessX",guessXvar)
+    #        #fixedmaybe = strFix([guessX])
+    #        #next question: strfix( " + guessX + ")
+    #        #theraw = "%r"%fixedmaybe
+
+    #        print("try this:",actualwtf)
+    #        print("need extra quotes",actualwtf)
+    #        theMEMun.write(actualwtf + "\n")
+    return actualwtf
+
+            
+            
 
 def TestCode(argList):
     '''
@@ -5811,8 +5874,7 @@ def strFixmin2(argList):
             #,"VS",oldANS
             #print("comparing what",inpstr[x], "VS",subsetCodeInfo[subsetIndex+rawOffset])
             #print("new comparison",ANS, "VS",subsetCodeInfo[subsetIndex+rawOffset][2])
-            #
-            print("new comparison",ANS, "VS",oldANS,"VS",inpstr[x])
+            #print("new comparison",ANS, "VS",oldANS,"VS",inpstr[x])
 
             # FUCKING RETARD YOU NEED TO COMPARE IT WITH ITSELF NOT WITH subsetCodeInfo
             if ANS != oldANS:
