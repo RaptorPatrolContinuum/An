@@ -5215,12 +5215,14 @@ def abstractionGENERAL(argList):
             try:
                 memX = eval(thenextline)[0][0]
             except:
+                print("thenextline failed!X",thenextline)
                 memX = []
             #memX = eval(eval(repr(thenextline)))[0][0]
             #
             try:
                 memY = eval(thenextline)[0][1]
             except:
+                print("thenextline failed!Y",thenextline)
                 memY = []
             #memY = eval(eval(repr(thenextline)))[0][1]
             guessX = toString([ran(eval(emptycheck)[0][0]),"naive"])
