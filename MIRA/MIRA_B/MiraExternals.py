@@ -3177,6 +3177,8 @@ def FILEinsertAt(ArgList):
             appending.close()
     #hint: arg1Old closed by with
     arg1New.close()
+    os.remove(arg1New)
+    
     '''
     #doesn't work for some reason when I nest functions:
     for line in fileinput.input(arg1, inplace=1):
