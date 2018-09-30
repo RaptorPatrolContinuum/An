@@ -67,8 +67,8 @@ while Descent:
             #print("wtf nearfield6",nearfield)
             pass
 
-        print("#need to stop clone mira from duplicating responses:",len(SeekForce(['MemoryUNORDERED.txt',x,SeekForcemin3,[],[]])))
-        if Descent == True and len(SeekForce(['MemoryUNORDERED.txt',x,SeekForcemin3,[],[]])) == 0:
+        
+        if Descent == True:
             #guessing abstractions
             #print("WTF nearfield7",nearfield)
             #print("dogshit3",delta2(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
@@ -79,7 +79,8 @@ while Descent:
                 #print("x and seekForce",x,SeekForce(["MemoryUNORDERED.txt",[["FixedQualifier([delta2,['α0outα1stα2,TOTAL_ARGUMENT,FixedQualifiermin1])", '']],SeekForcemin2,[],[]]))
                 #print("x and seekForce",x,SeekForce(["MemoryUNORDERED.txt",[["FixedQualifier([delta2,["+ x + ",TOTAL_ARGUMENT,FixedQualifiermin1])", '']],SeekForcemin2,[],[]]))
                 #print("x and " + str(datetime.now()) + " seekForce",x,"SEEFCORCE NEXE:",SeekForce(['MemoryUNORDERED.txt',x,SeekForcemin3,[],[]]))
-                if fCheck(eval(x)):
+                print("#need to stop clone mira from duplicating responses:",len(SeekForce(['MemoryUNORDERED.txt',x,SeekForcemin3,[],[]])))
+                if fCheck(eval(x)) and len(SeekForce(['MemoryUNORDERED.txt',x,SeekForcemin3,[],[]])) == 0:
                     #print("fcheck2",eval(x)[0][0])
                     #print("hey hey hey",type(eval(x)[0][0]))
                     #print("WHO IS SAYING THIS?",len(argv[1:]) > 0)

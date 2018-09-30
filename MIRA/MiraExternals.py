@@ -3177,6 +3177,8 @@ def FILEinsertAt(ArgList):
             appending.close()
     #hint: arg1Old closed by with
     arg1New.close()
+    #os.remove(arg1New)
+    
     '''
     #doesn't work for some reason when I nest functions:
     for line in fileinput.input(arg1, inplace=1):
@@ -5625,7 +5627,7 @@ def ComposeReplace(str1,str2):
                     ANS = ANS + [[str2[0],str1[1]]]
                 #print("ANSAFTER",ANS)
         except Exception as e:
-            print("what is error?",e)
+            print("what is error composeREPLACE?",e.args)
             pass
     return ANS
 
