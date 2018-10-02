@@ -84,12 +84,12 @@ while Descent:
                     #print("fcheck2",eval(x)[0][0])
                     #print("hey hey hey",type(eval(x)[0][0]))
                     #print("WHO IS SAYING THIS?",len(argv[1:]) > 0)
-                    abstractionGENERAL([[MemoryUNORDERED,memoryLong],eval(x)[0][0]])
+                    abstractionGENERAL([[MemoryUNORDERED,memoryLong,eval,delta2],eval(x)[0][0]])
                 else:
                     #print("fcheck2BB",eval(x)[0][0])
                     #print("hey hey heyBB",type(eval(x)[0][0]))
                     #print("WHO IS SAYING THIS2?",len(argv[1:]) > 0)
-                    abstractionGENERAL([[MemoryUNORDERED,memoryLong],x])
+                    abstractionGENERAL([[MemoryUNORDERED,memoryLong,eval,delta2],x])
                 #abstractionGENERAL([[MemoryUNORDERED,memoryLong],inputtext])
         '''
         guess abstractions properly:

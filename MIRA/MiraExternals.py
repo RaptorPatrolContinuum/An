@@ -4957,10 +4957,24 @@ def abstractionGENERAL(argList):
 
         BUT THIS ONLY WORKS IF OUR SENSE FUNCTION IS LIKE CODE WHERE YOU CAN JUST RUN IT ALL THE TIME, NOT ON RECORDED SENSES WHERE
         YOU HAVE TO COMPOSE ON THE MEMORIZED FUNCTIONS
+
+    EXAMPLE:
+    abstractionGENERAL([[MemoryUNORDERED,memoryLong,eval,delta2],eval(x)[0][0]])
     '''
     MemoryUNORDEREDvar = argList[0][0]
     memoryLongvar = argList[0][1]
     inputtextvar = argList[1]
+    try:
+        inputfunc = argList[0][2]
+    except:
+        print("INPUT NOT IN ABSTRACTIONGENERAL")
+        inputfunc = eval
+    try:
+        consistencyfunc = argList[0][3]
+    except:
+        print("CONSISTENCYFUNC NOT IN ABSTRACTIONGENERAL")
+        consistencyfunc = delta2
+    
 
     #look for/through AutoPicked Universe
     shortAuto = AutoPicked([MemoryUNORDEREDvar,inputtextvar])
@@ -4973,13 +4987,13 @@ def abstractionGENERAL(argList):
     #eval the return <--- REMEMBER TO EVAL THE RETURN (need:hint: if I have finite functions, hav ea function that takes a finite function and an input then returns what the finite function would say if given that input)
     suppANS = []
     for x in autoPickedUniv:
-        suppANSmin = Applyfunc([eval(x),inputtextvar])
+        suppANSmin = Applyfunc([inputfunc(x),inputtextvar])
         #print("apply test", eval(x), inputtextvar,suppANSmin)
         suppANS.append(x)
     print("supposed answer",suppANS)
     for x in suppANS:
         try:
-            attempt = eval(x)
+            attempt = inputfunc(x)
             memoryfile = open(MemoryUNORDEREDvar, 'a+')
             print('insertionline10',str([["TOTAL_ARGUMENT == '"+ x +"'", attempt]]) + "\n")
             memoryfile.write(str([["TOTAL_ARGUMENT == '"+ x +"'", attempt]]) + "\n")
@@ -5003,7 +5017,7 @@ def abstractionGENERAL(argList):
     #print("dogshit2",delta2(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
     #with open(MemoryUNORDEREDvar,'a+',encoding='utf-8') as theMEMun:
     #    theMEMun.write(str([["THIS IS CULPRIT",""]]) + "\n")
-    MEMcomposeinput = SeekForce([MemoryUNORDEREDvar,inputtextvar,delta2,SeekForcemin1,[]]) + SeekForce([memoryLongvar,inputtextvar,delta2,SeekForcemin1,[]])
+    MEMcomposeinput = SeekForce([MemoryUNORDEREDvar,inputtextvar,consistencyfunc,SeekForcemin1,[]]) + SeekForce([memoryLongvar,inputtextvar,consistencyfunc,SeekForcemin1,[]])
     #with open(MemoryUNORDEREDvar,'a+',encoding='utf-8') as theMEMun:
     #    theMEMun.write(str([["THIS IS CULPRITEND",""]]) + "\n")
     #deltav2 on pairs in new obj -> guessing similar inputs/variables (find abstractions) ->#eval using (deltav3 COMPOSE deltav2) and get answers
@@ -5013,7 +5027,7 @@ def abstractionGENERAL(argList):
         #print("WTF IS X",x)
         xmod = toString([ran(x),"naive"])
         #print("args fpr thedelta", [inputtextvar,xmod])
-        thedelta = delta2([inputtextvar,xmod])
+        thedelta = consistencyfunc([inputtextvar,xmod])
         print("what's thedelta?" + str(datetime.now()),thedelta)
         abstractcheck = toString([ran(thedelta),"naive"])
         test1 = abstractcheck == inputtextvar
@@ -5195,11 +5209,11 @@ def abstractionGENERAL(argList):
             #print("AND THIS LINE",functionguessdict[str(guessint)])
             #problem with encoding empty string
             emptycheck = FILEindexread(["ABSTRACTFILE.txt",guessint])
-            print("emptycheck stats",guessint,anothersum,len2,mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2)
-            print("emptycheckk",emptycheck)
+            #print("emptycheck stats",guessint,anothersum,len2,mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2)
+            #print("emptycheckk",emptycheck)
             
-            print("thenextline",thenextline)
-            print("nextlineraw","%r"%thenextline)
+            #print("thenextline",thenextline)
+            #print("nextlineraw","%r"%thenextline)
             #print("reprthenextline",repr(thenextline))
             #print("reprthenextline",eval(eval(repr(thenextline))),type(eval(eval(repr(thenextline)))))
             #print("reprthenextline",eval(eval(repr(thenextline)))[0])
@@ -5215,22 +5229,22 @@ def abstractionGENERAL(argList):
 
             #special characters destroy the meaning so just do try block and if it fails to []
             try:
-                memX = eval(thenextline)[0][0]
+                memX = inputfunc(thenextline)[0][0]
             except:
-                print("thenextline failed!X",thenextline)
+                #print("thenextline failed!X",thenextline)
                 memX = []
             #memX = eval(eval(repr(thenextline)))[0][0]
             #
             try:
-                memY = eval(thenextline)[0][1]
+                memY = inputfunc(thenextline)[0][1]
             except:
-                print("thenextline failed!Y",thenextline)
+                #print("thenextline failed!Y",thenextline)
                 memY = []
             #memY = eval(eval(repr(thenextline)))[0][1]
-            guessX = toString([ran(eval(emptycheck)[0][0]),"naive"])
-            guessY = toString([ran(eval(emptycheck)[0][1]),"naive"])
-            LHSTest = toString([ran(delta2([memX,guessX])),"naive"]) == guessX
-            RHSTest = toString([ran(delta2([memY,guessY])),"naive"]) == guessY
+            guessX = toString([ran(inputfunc(emptycheck)[0][0]),"naive"])
+            guessY = toString([ran(inputfunc(emptycheck)[0][1]),"naive"])
+            LHSTest = toString([ran(consistencyfunc([memX,guessX])),"naive"]) == guessX
+            RHSTest = toString([ran(consistencyfunc([memY,guessY])),"naive"]) == guessY
             #print("check types",type(memX),type(guessX))
             #print("LHSpart1",memX,guessX)
             #print("LHS",LHSTest)
@@ -5301,6 +5315,7 @@ def abstractionGENERAL(argList):
     os.remove("ABSTRACTFILE2.txt")
     try:
         os.remove(OtherClone() + "\\" + "ABSTRACTFILE.txt")
+        os.remove(OtherClone() + "\\" + "ABSTRACTFILE2.txt")
     except:
         pass
 

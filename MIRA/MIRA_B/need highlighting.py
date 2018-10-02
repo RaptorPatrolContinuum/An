@@ -1,3 +1,141 @@
+def abstractionGENERAL(argList):
+
+    MemoryUNORDEREDvar = argList[0][0]
+    memoryLongvar = argList[0][1]
+    inputtextvar = argList[1]
+
+    #look for/through AutoPicked Universe
+    shortAuto = AutoPicked([MemoryUNORDEREDvar,inputtextvar])
+    longAuto = AutoPicked([memoryLongvar,inputtextvar])
+    autoPickedUniv = shortAuto + longAuto
+
+    #eval the return <--- REMEMBER TO EVAL THE RETURN (need:hint: if I have finite functions, hav ea function that takes a finite function and an input then returns what the finite function would say if given that input)
+    suppANS = []
+    for x in autoPickedUniv:
+        suppANSmin = Applyfunc([eval(x),inputtextvar])
+        suppANS.append(x)
+    print("supposed answer",suppANS)
+    for x in suppANS:
+        try:
+            attempt = eval(x)
+            memoryfile = open(MemoryUNORDEREDvar, 'a+')
+            print('insertionline10',str([["TOTAL_ARGUMENT == '"+ x +"'", attempt]]) + "\n")
+            memoryfile.write(str([["TOTAL_ARGUMENT == '"+ x +"'", attempt]]) + "\n")
+            memoryfile.close()
+        except Exception as e:
+            memoryfile = open(MemoryUNORDEREDvar, 'a+')
+            print('insertionline11',str([["TOTAL_ARGUMENT == '"+ x +"'", ["",e]]]) + "\n")
+            memoryfile.write(str([["TOTAL_ARGUMENT == '"+ x +"'", ["",e]]]) + "\n")
+            memoryfile.close()
+            pass
+
+    MEMcomposeinput = SeekForce([MemoryUNORDEREDvar,inputtextvar,delta2,SeekForcemin1,[]]) + SeekForce([memoryLongvar,inputtextvar,delta2,SeekForcemin1,[]])
+    guessAbst = []
+    for x in MEMcomposeinput:
+        xmod = toString([ran(x),"naive"])
+        thedelta = delta2([inputtextvar,xmod])
+        print("what's thedelta?" + str(datetime.now()),thedelta)
+        abstractcheck = toString([ran(thedelta),"naive"])
+        test1 = abstractcheck == inputtextvar
+        test2 = abstractcheck == xmod
+        if test1 or test2:
+            if len([y for y in guessAbst if y == thedelta]) == 0:
+                guessAbst.append(thedelta)
+    print("guessAbst TOTAL",len(guessAbst),guessAbst)
+    abstractiondict = {}
+    icounter = 0
+    abstractioninnertotal = 0
+    for x in guessAbst:
+        minforce1 = SeekForce([MemoryUNORDEREDvar,x,SeekForcemin2,[],[]])
+        minforce2 = SeekForce([memoryLongvar,x,SeekForcemin2,[],[]])
+        totalabstractions = maxlargestequivclasses([minforce1,maxlargestequivclassesmin1]) + maxlargestequivclasses([minforce2,maxlargestequivclassesmin1])
+        abstractiondict[str(icounter)] = totalabstractions
+        icounter += 1
+        abstractioninnertotal += len(totalabstractions)
+        if len(totalabstractions) == 0:
+            abstractioninnertotal += 1
+    len1 = len(abstractiondict)
+    len1int = 0
+    len2 = len(guessAbst)
+    len2int = 0
+    anothersum = 0
+    for x in range(len1):
+        anothersum += len(abstractiondict[str(len1int)])
+        if len(abstractiondict[str(len1int)]) == 0:
+            anothersum += 1
+        len1int += 1
+    len1int = 0
+    len3int = 0
+    with open("ABSTRACTFILE.txt", 'a+', encoding='utf-8') as ABSTRACTFILE:
+        for x in range(anothersum*len2):
+            if (len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 )and x != 0:
+                len3int = 0
+                len1int += 1
+            if len1int == len1:
+                len1int = 0
+                len2int += 1
+            theguy = abstractiondict[str(len1int)]
+            if theguy == []:
+                cleanup1 = ""
+            else:
+                cleanup1 = abstractiondict[str(len1int)][len3int]
+            with open("ABSTRACTFILE2.txt", 'a+', encoding='utf-8') as ABSTRACTFILE2:
+                print("abstractfile had too many duplicate lines")
+                stopdupe = str([[guessAbst[len2int],cleanup1]])
+                if len(shittySearch(["ABSTRACTFILE2.txt",stopdupe])) == 0:
+                    print('insertionline12',stopdupe + "\n")
+                    ABSTRACTFILE.write(stopdupe + "\n")
+                    ABSTRACTFILE2.write(stopdupe + "\n")
+                    print("written")
+                else:
+                    print("unwritten")
+                    pass
+                ABSTRACTFILE2.close()
+            len3int += 1
+    writeNoDupes = []
+    with open(MemoryUNORDEREDvar, 'r+', encoding='utf-8') as ordered1:
+        ordered1.seek(0)
+        guessint = 0
+        thenextline = rchop(ordered1.readline(), '\n')
+        for lineint in range(mapcountLINES([MemoryUNORDEREDvar])*anothersum*len2):
+            if guessint == len2:
+                thenextline = rchop(ordered1.readline(), '\n')
+                guessint = 0
+            emptycheck = FILEindexread(["ABSTRACTFILE.txt",guessint])
+            try:
+                memX = eval(thenextline)[0][0]
+            except:
+                memX = []
+            try:
+                memY = eval(thenextline)[0][1]
+            except:
+                memY = []
+            guessX = toString([ran(eval(emptycheck)[0][0]),"naive"])
+            guessY = toString([ran(eval(emptycheck)[0][1]),"naive"])
+            LHSTest = toString([ran(delta2([memX,guessX])),"naive"]) == guessX
+            RHSTest = toString([ran(delta2([memY,guessY])),"naive"]) == guessY
+            if LHSTest and RHSTest:
+                possibleDupe = abstractionGENERALmin1([guessX,guessY,MemoryUNORDEREDvar,"STRFIX"])
+                dupeList = [y for y in writeNoDupes if y == possibleDupe]
+                if len(dupeList) == 0:
+                    writeNoDupes.append(possibleDupe)
+            guessint += 1
+    with open(MemoryUNORDEREDvar, 'a+', encoding='utf-8') as ordered1:
+        for candidate in writeNoDupes:
+            if len(shittySearch([MemoryUNORDEREDvar,candidate])) == 0:
+                ordered1.write(candidate + "\n")
+
+    with open('ABSTRACTFILE.txt', 'r+', encoding='utf-8') as ordered1:
+        ordered1.seek(0)
+        for line in range(mapcountLINES(['ABSTRACTFILE.txt'])):
+            nextguy = rchop(ordered1.readline(), '\n')
+    os.remove("ABSTRACTFILE.txt")
+    os.remove("ABSTRACTFILE2.txt")
+    try:
+        os.remove(OtherClone() + "\\" + "ABSTRACTFILE.txt")
+    except:
+        pass
+
 "
 U+0022 : QUOTATION MARK
 “
