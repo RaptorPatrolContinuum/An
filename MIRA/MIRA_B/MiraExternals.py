@@ -6433,6 +6433,63 @@ def PosetSort(argList):
 
     
 #PosetSort(["MemoryUNORDERED.txt"])
+
+def subsetSI(argList):
+    '''
+    what this does is take two graphs A,B and compares all subgraphs a in A and all subgraphs b in B and attempts:
+    SI(a,b)
+    if SI fails then (construct a diff(maybe???))? we can do stuff to graphs a and b
+        what do you want to do?
+        I want a "SI graph difference" on a and b
+        try to subsetSI between a and b then union the differences. the set of all differences ON THE MAXIMAL SI BETWEEN (is maximal even right choice?) a and b is the difference with respect to the maximal specified between a and b
+        then... ????? <problem is "difference" already is unique depending on if you have many choices for maximal between a and b>
+        then you concatenate all the diffs
+    then do it for all subgraphs in a and b
+    pick the maximal SI betwen A and B (we can have combinations of a's and b's) and then make a "SI graph difference"
+    goal is to construct largest subset SI between graphs A and B
+
+    THIS IS SO COMPUTATIONALLY EXPENSIVE (needs to be inbuilt limit)
+    step 1:
+    compare all a,b
+    step 2:
+    figure out how the fuck to make the SI graph difference work
+    '''
+    graphX = argList[0]
+    graphY = argList[1]
+    #check if x and y are graphs
+    if fCheck(graphX) != True:
+        print("graphX not ff!",graphX)
+    if fCheck(graphY) != True:
+        print("graphY not ff!",graphY)
+        
+    edgecountX = len(graphX)
+    edgecountY = len(graphY)
+    #strategy: use binary notation to get to all subsets AND use them as indices
+    #kjeep in mind computational expense so limit to like 10?
+    #hint: "{0:b}".format(30)
+    xIndex = 0
+    yIndex = 0
+    #have to match missing digits for binary
+
+    #TODO: write down graph examples
+    #run this to check indices
+    #when this is doen and can run on actual single point nodes in graphs finish IsomGraphDiff since it needs this
+    #clean out safari on phone and mira logs on desktop
+    
+    while x < 2**edgecountX:
+        while y < 2**edgecountY:
+            print("test indices here", edgecountX,edgecountY)
+            print("test indices hereB", "{0:b}".format(edgecountX),"{0:b}".format(edgecountY))
+            yIndex += 1
+        xIndex += 1
+
+def IsomGraphDiff(argList):
+    '''
+    Isom graph differnce function
+    '''
+    graphX = argList[0]
+    graphY = argList[1]
+    
 ##############################################################
 
 def printpls(obj):
