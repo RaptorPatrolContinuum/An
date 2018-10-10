@@ -5116,7 +5116,7 @@ def abstractionGENERAL(argList):
     #    print(len(abstractiondict[str(x)]))
     with open("ABSTRACTFILE.txt", 'a+', encoding='utf-8') as ABSTRACTFILE:
         for x in range(anothersum*len2):
-            print("x in totalabstractions" + str(datetime.now()),x)
+            #print("x in totalabstractions" + str(datetime.now()),x)
             if (len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 )and x != 0:
                 len3int = 0
                 len1int += 1
@@ -5161,7 +5161,7 @@ def abstractionGENERAL(argList):
 
             #hint: write to 2nd file and search through that
             with open("ABSTRACTFILE2.txt", 'a+', encoding='utf-8') as ABSTRACTFILE2:
-                print("abstractfile had too many duplicate lines")
+                #print("abstractfile had too many duplicate lines")
                 stopdupe = str([[guessAbst[len2int],cleanup1]])
                 #print(stopdupe)
                 #print(["ABSTRACTFILE2.txt",stopdupe])
@@ -5171,9 +5171,9 @@ def abstractionGENERAL(argList):
                     print('insertionline12',stopdupe + "\n")
                     ABSTRACTFILE.write(stopdupe + "\n")
                     ABSTRACTFILE2.write(stopdupe + "\n")
-                    print("written")
+                    #print("written")
                 else:
-                    print("unwritten")
+                    #print("unwritten")
                     pass
                 ABSTRACTFILE2.close()
             #nearfield.append(str([[guessAbst[len2int],cleanup1]]))
@@ -5285,9 +5285,9 @@ def abstractionGENERAL(argList):
     #now I can look through MemoryUNORDEREDvar to check for dupes
     with open(MemoryUNORDEREDvar, 'a+', encoding='utf-8') as ordered1:
         for candidate in writeNoDupes:
-            print("hope for no dupes",candidate)
-            print(len(shittySearch([MemoryUNORDEREDvar,candidate])))
-            print(len(shittySearch([MemoryUNORDEREDvar,candidate])) == 0)
+            #print("hope for no dupes",candidate)
+            #print(len(shittySearch([MemoryUNORDEREDvar,candidate])))
+            #print(len(shittySearch([MemoryUNORDEREDvar,candidate])) == 0)
             if len(shittySearch([MemoryUNORDEREDvar,candidate])) == 0:
                 ordered1.write(candidate + "\n")
         
@@ -5345,9 +5345,9 @@ def abstractionGENERALmin1(argList):
     #else: do nothing AKA write nothing
 
     testingarglist = [actualwtf,[['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]
-    print("YAWNING",testingarglist)
-    print("check if I can composeMETA",ComposeMETA(testingarglist))
-    print("AINT NOTHING BUT A MISTAKE",shittySearch([MemoryUNORDEREDvar2,actualwtf]))
+    #print("YAWNING",testingarglist)
+    #print("check if I can composeMETA",ComposeMETA(testingarglist))
+    #print("AINT NOTHING BUT A MISTAKE",shittySearch([MemoryUNORDEREDvar2,actualwtf]))
     #can't write here because can't search in opened file so will have to write later
     #if len(shittySearch([MemoryUNORDEREDvar2,actualwtf])) == 0:
     #    with open(MemoryUNORDEREDvar2,'a+',encoding='utf-8') as theMEMun:
