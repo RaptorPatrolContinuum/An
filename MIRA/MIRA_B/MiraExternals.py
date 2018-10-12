@@ -904,7 +904,7 @@ def ActuallyIsom(ListItems):
 
 def ShittySI(ListItems):
     '''
-	ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
+	ShittySI([[GraphX,GraphY],"Auto" OR "" (which means empty), "all" or EMPTY])
     NOTE: THIS IS BIDIRECTIONAL ACTUALLY!! SO SAYS YES IF E_G SI E_H OR E_H SI E_G!
     input is a list of the form: [[E_G,E_H], "Auto"]
     says if E_G SI to some E_J in E_H
@@ -6467,8 +6467,10 @@ def subsetSI(argList):
     #strategy: use binary notation to get to all subsets AND use them as indices
     #kjeep in mind computational expense so limit to like 10?
     #hint: "{0:b}".format(30)
-    xIndex = 0
-    yIndex = 0
+
+    #hint: start at 1 since 0 is empty set
+    xIndex = 1
+    yIndex = 1
     #have to match missing digits for binary
 
     #TODO: write down graph examples
@@ -6476,13 +6478,84 @@ def subsetSI(argList):
     #when this is doen and can run on actual single point nodes in graphs finish IsomGraphDiff since it needs this
     #clean out safari on phone and mira logs on desktop
     
-    while x < 2**edgecountX:
-        while y < 2**edgecountY:
-            print("test indices here", edgecountX,edgecountY)
-            print("test indices hereB", "{0:b}".format(edgecountX),"{0:b}".format(edgecountY))
+    while xIndex < 2**edgecountX:
+        binX = "{0:b}".format(xIndex)
+        #subsetSImin2(argList)
+        #takes binary number -> this counts the number of ones in a binary representation
+        graphXSize = subsetSImin2([binX])
+        #make sure size of both subgraphs are the same since I want ISOM
+        #also if size(y) > size(x) skip rest of y since y increases (woo I can save time!)
+        #init graphYsize so ball gets rolling
+        graphYSize = 0
+        print("test inputsX",[graphX,binX])
+        graphXsubset = subsetSImin1([graphX,binX])
+        print("test thisX",graphXsubset)
+        while yIndex < 2**edgecountY and graphYSize <= graphXSize:
+            binY = "{0:b}".format(yIndex)
+            graphYSize = subsetSImin2([binY])
+            print("test indices here"+str(datetime.now()), edgecountX,edgecountY)
+            print("test indices hereB", binX,binY)
+            print("test inputsY",[graphY,binY])
+            graphYsubset = subsetSImin1([graphY,binY])
+            print("test thisY",graphYsubset)
+            print("SI inputs",[[graphXsubset,graphYsubset],"","all"])
+            print("NOW TO SI",ShittySI([[graphXsubset,graphYsubset],"","all"]))
             yIndex += 1
         xIndex += 1
 
+#REMEMBER TO RELABEL THESE
+#["",""],["",""],
+#EX1
+#
+EX1A = [["A","B"],["B","A"],["C","A"],["A","C"],["B","C"],["C","B"],["B","D"],["D","B"],["A","D"],["D","A"]]
+#
+EX1B = [["A","B"],["B","A"],["B","C"],["C","B"],["A","C"],["C","A"],["C","D"],["D","C"],["A","D"],["D","A"],["B","D"],["D","B"]]
+#EX2
+#[["A","B"],["B","A"],["B","E"],["E","B"],["B","C"],["C","B"],["C","D"],["D","C"],["D","E"],["E","D"]]
+#[["A","C"],["C","A"],["C","E"],["E","C"],["E","D"],["D","E"],["A","D"],["D","A"],["A","F"],["F","A"],["B","C"],["C","B"]]
+#EX2
+#[["B","A"],["A","B"],["A","D"],["D","A"],["A","E"],["E","A"],["A","C"],["C","A"]]
+#[["A","E"],["E","A"],["F","E"],["E","F"],["D","E"],["E","D"],["B","E"],["E","B"],["C","E"],["E","C"]]
+
+#subsetSI([EX1A,EX1B])
+
+def subsetSImin2(argList):
+    '''
+    takes binary number ->this counts the number of ones in a binary representation
+    0101010 -> 3
+    01 -> 1
+    0 -> 0
+    this is so we can have equal edge counts for subsetSI
+    hint 53 is 110101
+    '''
+    ANS = 0
+    theNumber = argList[0]
+    for x in theNumber:
+        #print("what's x",x,x == 1,type(x),type(1))
+        if int(x) == 1:
+           ANS += 1
+    return ANS
+    
+
+def subsetSImin1(argList):
+    '''
+    this function takes a graph (fintie func) and a number in binary
+    this should return the subset of the graph defined by the binary
+    warning: binary goes from right to left so you have to do a minus on the graph since graph goes left to right
+    '''
+    graphXvar = argList[0]
+    binXvar = argList[1]
+    ANS = []
+    
+    #form the right subsets
+    #print("xstats",argList)
+    for x in range(len(binXvar)):
+        #print("testcheck",binXvar[x],type(binXvar[x]),binXvar[x] == "1")
+        if binXvar[x] == "1":
+            #print("check this out",x,x+1,graphXvar[-(x+1)])
+            ANS.insert(0,graphXvar[-(x+1)])
+    return ANS
+#subsetSImin1([[["A","B"],["B","A"],["C","A"],["A","C"],["B","C"],["C","B"],["B","D"],["D","B"],["A","D"],["D","A"]],"{0:b}".format(5)])
 def IsomGraphDiff(argList):
     '''
     Isom graph differnce function

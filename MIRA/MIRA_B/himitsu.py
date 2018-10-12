@@ -8,25 +8,16 @@ from MiraExternals import *
 #himitsu = [[[['α0'], ['α0']], [['(['], ['([']], [['α1'], ['α1']], [['print("'], ['print("']], [['α2'], ['α2']], [['")'], ['")']], [['α3'], ['α3']]], [[["['"], ["['"]], [['α0'], ['α0']], [['print("'], ['print("']], [['α1'], ['α1']], [[' wor'], [' wor']], [['α2'], ['α2']]], [[['α0'], ['α0']], [['\\Mira.py, print("'], ['\\Mira.py, print("']], [['α1'], ['α1']], [['")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)'], ['")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)']]], [[['α0'], ['α0']], [['(['], ['([']], [['α1'], ['α1']], [['print("'], ['print("']], [['α2'], ['α2']], [[' wor'], [' wor']], [['α3'], ['α3']]], [[["Popen(['python',C:\\"], ["Popen(['python',C:\\"]], [['α0'], ['α0']], [['], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)'], ['], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)']]], [[['α0'], ['α0']], [['(['], ['([']], [['α1'], ['α1']], [['out'], ['out']], [['α2'], ['α2']], [['st'], ['st']], [['α3'], ['α3']]], [[['α0'], ['α0']], [['\\Mira.py, '], ['\\Mira.py, ']], [['α1'], ['α1']], [['], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)'], ['], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)']]], [[['α0'], ['α0']], [['e'], ['e']], [['α1'], ['α1']], [["['p"], ["['p"]], [['α2'], ['α2']], [['in'], ['in']], [['α3'], ['α3']]], [[['α0'], ['α0']], [['(['], ['([']], [['α1'], ['α1']], [['print("'], ['print("']], [['α2'], ['α2']], [['do'], ['do']], [['α3'], ['α3']]], [[['α0'], ['α0']], [['(['], ['([']], [['α1'], ['α1']], [['print("'], ['print("']], [['α2'], ['α2']], [['")],'], ['")],']], [['α3'], ['α3']]], [[["['"], ["['"]], [['α0'], ['α0']], [['print("'], ['print("']], [['α1'], ['α1']], [['out'], ['out']], [['α2'], ['α2']]], [[['α0'], ['α0']], [['(['], ['([']], [['α1'], ['α1']], [['print("'], ['print("']], [['α2'], ['α2']], [['out'], ['out']], [['α3'], ['α3']]], [[["['"], ["['"]], [['α0'], ['α0']], [['print("around the world")]'], ['print("around the world")]']]], [[['Popen(['], ['Popen([']], [['α0'], ['α0']], [['\\Mira.py, print("around the world")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)'], ['\\Mira.py, print("around the world")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)']]]]
 himitsu = [[0, '\\', 'CODE', ''], [1, "'", 'CODE', ''], [2, 'p', 'CODE', ''], [3, 'r', 'CODE', ''], [4, 'i', 'CODE', ''], [5, 'n', 'CODE', ''], [6, 't', 'CODE', ''], [7, '(', 'CODE', ''], [8, '"', 'STRI', ''], [9, 'l', 'STRI', 'double'], [10, 'o', 'STRI', 'double'], [11, 's', 'STRI', 'double'], [12, 't', 'STRI', 'double'], [13, ' ', 'STRI', 'double'], [14, 't', 'STRI', 'double'], [15, 'r', 'STRI', 'double'], [16, 'a', 'STRI', 'double'], [17, 'c', 'STRI', 'double'], [18, 'k', 'STRI', 'double'], [19, ' ', 'STRI', 'double'], [20, 'o', 'STRI', 'double'], [21, 'f', 'STRI', 'double'], [22, ' ', 'STRI', 'double'], [23, 'w', 'STRI', 'double'], [24, 'h', 'STRI', 'double'], [25, 'a', 'STRI', 'double'], [26, 't', 'STRI', 'double'], [27, ' ', 'STRI', 'double'], [28, 'I', 'STRI', 'double'], [29, ' ', 'STRI', 'double'], [30, 'w', 'STRI', 'double'], [31, 'a', 'STRI', 'double'], [32, 's', 'STRI', 'double'], [33, ' ', 'STRI', 'double'], [34, 'd', 'STRI', 'double'], [35, 'o', 'STRI', 'double'], [36, 'i', 'STRI', 'double'], [37, 'n', 'STRI', 'double'], [38, 'g', 'STRI', 'double'], [39, '"', 'STRI', 'double'], [40, ')', 'CODE', ''], [41, '\\', 'CODE', ''], [42, "'", 'CODE', '']]
 
-#REMEMBER TO RELABEL THESE
-#["",""],["",""],
-#EX1
-#[["A","B"],["B","A"],["C","A"],["A","C"],["B","C"],["C","B"],["B","D"],["D","B"],["A","D"],["D","A"]]
-#[["A","B"],["B","A"],["B","C"],["C","B"],["A","C"],["C","A"],["C","D"],["D","C"],["A","D"],["D","A"],["B","D"],["D","B"]]
-#EX2
-#[["A","B"],["B","A"],["B","E"],["E","B"],["B","C"],["C","B"],["C","D"],["D","C"],["D","E"],["E","D"]]
-#[["A","C"],["C","A"],["C","E"],["E","C"],["E","D"],["D","E"],["A","D"],["D","A"],["A","F"],["F","A"],["B","C"],["C","B"]]
-#EX2
-#[["B","A"],["A","B"],["A","D"],["D","A"],["A","E"],["E","A"],["A","C"],["C","A"]]
-#[["A","E"],["E","A"],["F","E"],["E","F"],["D","E"],["E","D"],["B","E"],["E","B"],["C","E"],["E","C"]]
+
 
 
 for x in himitsu:
-    print(x,type(x))
+    #print(x,type(x))
     #print(len(x))
     #print(toString([ran(x),"naive"]))
     #for y in x:
     #    print(y,type(y))
+    pass
 
 maxint = 10
 #for x in range(maxint):
