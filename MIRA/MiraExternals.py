@@ -371,34 +371,58 @@ def AddressFunc(index,obj):
 
     Interim = []
 
-    #print("INDEX",index)
+    #
+    print("INDEX",index)
     #print("obj for reference!",obj)
     for x in obj:
-        #print("LINE 274")
-        #print("other stats",obj,Interim)
-        #print("===========")
-        #print("somebody is out of range1",x)
-        #print("somebody is out of range2",x[0])
-        #print("somebody is out of range2",str(x[0]))
-        #print("index stats",index)
-        #print("somebody is out of range3",RelEval(index,x[0]))
-        #print("somebody is out of range3",RelEval(index,str(x[0])))
-        #print("somebody is out of range4",int(RelEval(index,str(x[0]))[0]))
-        #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
-        #print("suspected wtf",index,x[1])
+        #
+        print("LINE 274")
+        #
+        print("other stats",obj,Interim)
+        #
+        print("===========")
+        #
+        print("somebody is out of range1",x)
+        #
+        print("somebody is out of range2",x[0])
+        #
+        print("somebody is out of range2",str(x[0]))
+        #
+        print("index stats",index)
+        #
+        print("somebody is out of range3",RelEval(index,x[0]))
+        #
+        print("somebody is out of range3",RelEval(index,str(x[0])))
+        #
+        print("somebody is out of range4",int(RelEval(index,str(x[0]))[0]))
+        #
+        print("stats",x,x[0],int(RelEval(index,x[0])[0]))
+        #
+        print("suspected wtf",index,x[1])
 
-        #print("x obj", x)
-        #print("index",index)
-        #print("x[0]",x[0])
-        #print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
-        #print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
-        #print("index ",index)
-        #print("x[1]",x[1])
-        #print("int(empty set) just dies",RelEval(index,x[1]))
-        #print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
-        #print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
-        #print("LINE 274 END")
-        #Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+        #
+        print("x obj", x)
+        #
+        print("index",index)
+        #
+        print("x[0]",x[0])
+        #
+        print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
+        #
+        print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
+        #
+        print("index ",index)
+        #
+        print("x[1]",x[1])
+        #
+        print("int(empty set) just dies",RelEval(index,x[1]))
+        #
+        print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
+        #
+        print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+        #
+        print("LINE 274 END")
+        #####Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
         Interim.append(CantorPair(int(RelEval(index,str(x[0]))[0]),int(RelEval(index,str(x[1]))[0])))
     
     #print("more stats",obj,Interim)
@@ -904,7 +928,7 @@ def ActuallyIsom(ListItems):
 
 def ShittySI(ListItems):
     '''
-	ShittySI([[GraphX,GraphY],"Auto" OR EMPTY, "all" or EMPTY])
+	ShittySI([[GraphX,GraphY],"Auto" OR "" (which means empty), "all" or EMPTY])
     NOTE: THIS IS BIDIRECTIONAL ACTUALLY!! SO SAYS YES IF E_G SI E_H OR E_H SI E_G!
     input is a list of the form: [[E_G,E_H], "Auto"]
     says if E_G SI to some E_J in E_H
@@ -1031,16 +1055,32 @@ def ShittySI(ListItems):
                         if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
                             #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
                             HStar = []
+                            print("whats larger=======================",Larger)
                             for L in Larger:
+                                print("what;s L",L)
                                 passA = True
                                 passB = True
+                                print("Minv and phiconstruct",Minv_(Beta_(WLOG)))
+                                print("phicosntruct",PhiConstruct(Indexer,LinkPool,False))
+                                print("what failsA",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
+                                print("what failsA2",L[0])
+                                print("what failsA3",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0]))
+                                print("what failsA4",len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])))
+                                print("what fails2",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
+                                print("what fails2",L[1])
+                                print("what fails2",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1]))
+                                print("what fails2",len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])))
                                 if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])) == 0:
                                     passA = False
                                 if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])) == 0:
                                     passB = False
                                 if passA == True and passB == True:
                                     HStar.append(L)
-                            #print("ok check out H*!",HStar)
+                            #this is failing
+                            #ShittySI([[[['A', 'D'], ['D', 'A']], [['A', 'D'], ['B', 'D'], ['D', 'B']]], '', 'all'])
+                            #ShittySI([[[['Z', 'Y'], ['Y', 'Z']], [['A', 'D'], ['B', 'D'], ['D', 'B']]], '', 'all'])
+                            #
+                            print("ok check out H*!",HStar)
                         else:
                             HStar = Larger
 
@@ -1109,20 +1149,32 @@ def ShittySI(ListItems):
                                 #print("======= DIED END")
                                 #print("WTF WHY IS ANS TRUE3",ANS)
                             else:
-                                #print("WTF WHY IS ANS TRUE4",ANS)
-                                #print("WLOG",WLOG)
-                                #print("bad boy down",Minv_(Beta_(WLOG)))
-                                #print("red velvet bad boy",Indexer)
-                                #print("red velvet bad boy2",LinkPool)
-                                #print("red velvet bad boy3",AutoCheck)
-                                #print("bb4",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                #
+                                print("WTF WHY IS ANS TRUE4",ANS)
+                                #
+                                print("WLOG",WLOG)
+                                #
+                                print("bad boy down",Minv_(Beta_(WLOG)))
+                                #
+                                print("red velvet bad boy",Indexer)
+                                #
+                                print("red velvet bad boy2",LinkPool)
+                                #
+                                print("red velvet bad boy3",AutoCheck)
+                                #
+                                print("bb4",PhiConstruct(Indexer,LinkPool,AutoCheck))
                                 ##problem is Minv_
                                 ##problem is in phiconstruct or Minv_ on LIST
                                 ##problem is probably in compose and quotes on that triple length thing
-                                #print("F U C K1",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
-                                #print("F U C K2",HStar)
-                                #print("F U C K3",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar))
-                                #AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+                                #
+                                print("F U C K1",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                #
+                                print("F U C K2",HStar)
+                                #
+                                print("F U C K3 args",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+                                #
+                                print("F U C K3",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar))
+                                ######AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
                                 #time to check SI:
                                 AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
                                 AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
@@ -5116,7 +5168,7 @@ def abstractionGENERAL(argList):
     #    print(len(abstractiondict[str(x)]))
     with open("ABSTRACTFILE.txt", 'a+', encoding='utf-8') as ABSTRACTFILE:
         for x in range(anothersum*len2):
-            print("x in totalabstractions" + str(datetime.now()),x)
+            #print("x in totalabstractions" + str(datetime.now()),x)
             if (len3int == len(abstractiondict[str(len1int)]) or len(abstractiondict[str(len1int)]) == 0 )and x != 0:
                 len3int = 0
                 len1int += 1
@@ -5161,7 +5213,7 @@ def abstractionGENERAL(argList):
 
             #hint: write to 2nd file and search through that
             with open("ABSTRACTFILE2.txt", 'a+', encoding='utf-8') as ABSTRACTFILE2:
-                print("abstractfile had too many duplicate lines")
+                #print("abstractfile had too many duplicate lines")
                 stopdupe = str([[guessAbst[len2int],cleanup1]])
                 #print(stopdupe)
                 #print(["ABSTRACTFILE2.txt",stopdupe])
@@ -5171,9 +5223,9 @@ def abstractionGENERAL(argList):
                     print('insertionline12',stopdupe + "\n")
                     ABSTRACTFILE.write(stopdupe + "\n")
                     ABSTRACTFILE2.write(stopdupe + "\n")
-                    print("written")
+                    #print("written")
                 else:
-                    print("unwritten")
+                    #print("unwritten")
                     pass
                 ABSTRACTFILE2.close()
             #nearfield.append(str([[guessAbst[len2int],cleanup1]]))
@@ -5285,9 +5337,9 @@ def abstractionGENERAL(argList):
     #now I can look through MemoryUNORDEREDvar to check for dupes
     with open(MemoryUNORDEREDvar, 'a+', encoding='utf-8') as ordered1:
         for candidate in writeNoDupes:
-            print("hope for no dupes",candidate)
-            print(len(shittySearch([MemoryUNORDEREDvar,candidate])))
-            print(len(shittySearch([MemoryUNORDEREDvar,candidate])) == 0)
+            #print("hope for no dupes",candidate)
+            #print(len(shittySearch([MemoryUNORDEREDvar,candidate])))
+            #print(len(shittySearch([MemoryUNORDEREDvar,candidate])) == 0)
             if len(shittySearch([MemoryUNORDEREDvar,candidate])) == 0:
                 ordered1.write(candidate + "\n")
         
@@ -5345,9 +5397,9 @@ def abstractionGENERALmin1(argList):
     #else: do nothing AKA write nothing
 
     testingarglist = [actualwtf,[['print("lost track of what I was doing")', 'print("lost track of what I was doing")']]]
-    print("YAWNING",testingarglist)
-    print("check if I can composeMETA",ComposeMETA(testingarglist))
-    print("AINT NOTHING BUT A MISTAKE",shittySearch([MemoryUNORDEREDvar2,actualwtf]))
+    #print("YAWNING",testingarglist)
+    #print("check if I can composeMETA",ComposeMETA(testingarglist))
+    #print("AINT NOTHING BUT A MISTAKE",shittySearch([MemoryUNORDEREDvar2,actualwtf]))
     #can't write here because can't search in opened file so will have to write later
     #if len(shittySearch([MemoryUNORDEREDvar2,actualwtf])) == 0:
     #    with open(MemoryUNORDEREDvar2,'a+',encoding='utf-8') as theMEMun:
@@ -6433,6 +6485,136 @@ def PosetSort(argList):
 
     
 #PosetSort(["MemoryUNORDERED.txt"])
+
+def subsetSI(argList):
+    '''
+    what this does is take two graphs A,B and compares all subgraphs a in A and all subgraphs b in B and attempts:
+    SI(a,b)
+    if SI fails then (construct a diff(maybe???))? we can do stuff to graphs a and b
+        what do you want to do?
+        I want a "SI graph difference" on a and b
+        try to subsetSI between a and b then union the differences. the set of all differences ON THE MAXIMAL SI BETWEEN (is maximal even right choice?) a and b is the difference with respect to the maximal specified between a and b
+        then... ????? <problem is "difference" already is unique depending on if you have many choices for maximal between a and b>
+        then you concatenate all the diffs
+    then do it for all subgraphs in a and b
+    pick the maximal SI betwen A and B (we can have combinations of a's and b's) and then make a "SI graph difference"
+    goal is to construct largest subset SI between graphs A and B
+
+    THIS IS SO COMPUTATIONALLY EXPENSIVE (needs to be inbuilt limit)
+    step 1:
+    compare all a,b
+    step 2:
+    figure out how the fuck to make the SI graph difference work
+    '''
+    graphX = argList[0]
+    graphY = argList[1]
+    #check if x and y are graphs
+    if fCheck(graphX) != True:
+        print("graphX not ff!",graphX)
+    if fCheck(graphY) != True:
+        print("graphY not ff!",graphY)
+        
+    edgecountX = len(graphX)
+    edgecountY = len(graphY)
+    #strategy: use binary notation to get to all subsets AND use them as indices
+    #kjeep in mind computational expense so limit to like 10?
+    #hint: "{0:b}".format(30)
+
+    #hint: start at 1 since 0 is empty set
+    xIndex = 1
+    yIndex = 1
+    #have to match missing digits for binary
+
+    #TODO: write down graph examples
+    #run this to check indices
+    #when this is doen and can run on actual single point nodes in graphs finish IsomGraphDiff since it needs this
+    #clean out safari on phone and mira logs on desktop
+    
+    while xIndex < 2**edgecountX:
+        binX = "{0:b}".format(xIndex)
+        #subsetSImin2(argList)
+        #takes binary number -> this counts the number of ones in a binary representation
+        graphXSize = subsetSImin2([binX])
+        #make sure size of both subgraphs are the same since I want ISOM
+        #also if size(y) > size(x) skip rest of y since y increases (woo I can save time!)
+        #init graphYsize so ball gets rolling
+        graphYSize = 0
+        print("test inputsX",[graphX,binX])
+        graphXsubset = subsetSImin1([graphX,binX])
+        print("test thisX",graphXsubset)
+        while yIndex < 2**edgecountY and graphYSize <= graphXSize:
+            binY = "{0:b}".format(yIndex)
+            graphYSize = subsetSImin2([binY])
+            print("test indices here"+str(datetime.now()), edgecountX,edgecountY)
+            print("test indices hereB", binX,binY)
+            print("test inputsY",[graphY,binY])
+            graphYsubset = subsetSImin1([graphY,binY])
+            print("test thisY",graphYsubset)
+            print("SI inputs",[[graphXsubset,graphYsubset],"","all"])
+            print("NOW TO SI",ShittySI([[graphXsubset,graphYsubset],"","all"]))
+            yIndex += 1
+        xIndex += 1
+
+#REMEMBER TO RELABEL THESE
+#["",""],["",""],
+#EX1
+#
+EX1A = [["A","B"],["B","A"],["C","A"],["A","C"],["B","C"],["C","B"],["B","D"],["D","B"],["A","D"],["D","A"]]
+#
+EX1B = [["A","B"],["B","A"],["B","C"],["C","B"],["A","C"],["C","A"],["C","D"],["D","C"],["A","D"],["D","A"],["B","D"],["D","B"]]
+#EX2
+#[["A","B"],["B","A"],["B","E"],["E","B"],["B","C"],["C","B"],["C","D"],["D","C"],["D","E"],["E","D"]]
+#[["A","C"],["C","A"],["C","E"],["E","C"],["E","D"],["D","E"],["A","D"],["D","A"],["A","F"],["F","A"],["B","C"],["C","B"]]
+#EX2
+#[["B","A"],["A","B"],["A","D"],["D","A"],["A","E"],["E","A"],["A","C"],["C","A"]]
+#[["A","E"],["E","A"],["F","E"],["E","F"],["D","E"],["E","D"],["B","E"],["E","B"],["C","E"],["E","C"]]
+
+#subsetSI([EX1A,EX1B])
+
+def subsetSImin2(argList):
+    '''
+    takes binary number ->this counts the number of ones in a binary representation
+    0101010 -> 3
+    01 -> 1
+    0 -> 0
+    this is so we can have equal edge counts for subsetSI
+    hint 53 is 110101
+    '''
+    ANS = 0
+    theNumber = argList[0]
+    for x in theNumber:
+        #print("what's x",x,x == 1,type(x),type(1))
+        if int(x) == 1:
+           ANS += 1
+    return ANS
+    
+
+def subsetSImin1(argList):
+    '''
+    this function takes a graph (fintie func) and a number in binary
+    this should return the subset of the graph defined by the binary
+    warning: binary goes from right to left so you have to do a minus on the graph since graph goes left to right
+    '''
+    graphXvar = argList[0]
+    binXvar = argList[1]
+    ANS = []
+    
+    #form the right subsets
+    #print("xstats",argList)
+    for x in range(len(binXvar)):
+        #print("testcheck",binXvar[x],type(binXvar[x]),binXvar[x] == "1")
+        if binXvar[x] == "1":
+            #print("check this out",x,x+1,graphXvar[-(x+1)])
+            ANS.insert(0,graphXvar[-(x+1)])
+    return ANS
+#subsetSImin1([[["A","B"],["B","A"],["C","A"],["A","C"],["B","C"],["C","B"],["B","D"],["D","B"],["A","D"],["D","A"]],"{0:b}".format(5)])
+def IsomGraphDiff(argList):
+    '''
+    Isom graph differnce function
+    '''
+    graphX = argList[0]
+    graphY = argList[1]
+    
 ##############################################################
 
 def printpls(obj):

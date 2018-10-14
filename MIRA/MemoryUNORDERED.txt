@@ -70,3 +70,6 @@
 [['FixedQualifier([delta2,"[\'α0print("α1th α2",TOTAL_ARGUMENT,FixedQualifiermin1])', '']]
 [['TOTAL_ARGUMENT == \'print("imaishi")\'', ['None', '']]]
 [['Popen([\'python\',C:\\An\\MIRA\\MIRA_B\\Mira.py, print("imaishi")], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', ["['imaishi\\n']\n", "['imaishi\\n']\n"]]]
+[[\\'FixedQualifier([delta2,"[\\\'α0print(\"\α1")],α\2",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]
+[['FixedQualifier([delta2,"[\'α0print("α1derα2",TOTAL_ARGUMENT,FixedQualifiermin1])', '']]
+[['FixedQualifier([delta2,"[\'α0print("α1ishα2",TOTAL_ARGUMENT,FixedQualifiermin1])', '']]
