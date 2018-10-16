@@ -371,57 +371,33 @@ def AddressFunc(index,obj):
 
     Interim = []
 
-    #
-    print("INDEX",index)
+    #print("INDEX",index)
     #print("obj for reference!",obj)
     for x in obj:
-        #
-        print("LINE 274")
-        #
-        print("other stats",obj,Interim)
-        #
-        print("===========")
-        #
-        print("somebody is out of range1",x)
-        #
-        print("somebody is out of range2",x[0])
-        #
-        print("somebody is out of range2",str(x[0]))
-        #
-        print("index stats",index)
-        #
-        print("somebody is out of range3",RelEval(index,x[0]))
-        #
-        print("somebody is out of range3",RelEval(index,str(x[0])))
-        #
-        print("somebody is out of range4",int(RelEval(index,str(x[0]))[0]))
-        #
-        print("stats",x,x[0],int(RelEval(index,x[0])[0]))
-        #
-        print("suspected wtf",index,x[1])
+        #print("LINE 274")
+        #print("other stats",obj,Interim)
+        #print("===========")
+        #print("somebody is out of range1",x)
+        #print("somebody is out of range2",x[0])
+        #print("somebody is out of range2",str(x[0]))
+        #print("index stats",index)
+        #print("somebody is out of range3",RelEval(index,x[0]))
+        #print("somebody is out of range3",RelEval(index,str(x[0])))
+        #print("somebody is out of range4",int(RelEval(index,str(x[0]))[0]))
+        #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
+        #print("suspected wtf",index,x[1])
 
-        #
-        print("x obj", x)
-        #
-        print("index",index)
-        #
-        print("x[0]",x[0])
-        #
-        print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
-        #
-        print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
-        #
-        print("index ",index)
-        #
-        print("x[1]",x[1])
-        #
-        print("int(empty set) just dies",RelEval(index,x[1]))
-        #
-        print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
-        #
-        print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
-        #
-        print("LINE 274 END")
+        #print("x obj", x)
+        #print("index",index)
+        #print("x[0]",x[0])
+        #print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
+        #print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
+        #print("index ",index)
+        #print("x[1]",x[1])
+        #print("int(empty set) just dies",RelEval(index,x[1]))
+        #print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
+        #print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+        #print("LINE 274 END")
         #####Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
         Interim.append(CantorPair(int(RelEval(index,str(x[0]))[0]),int(RelEval(index,str(x[1]))[0])))
     
@@ -1055,21 +1031,23 @@ def ShittySI(ListItems):
                         if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
                             #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
                             HStar = []
+                            #
                             print("whats larger=======================",Larger)
                             for L in Larger:
-                                print("what;s L",L)
+                                #print("what;s L",L)
                                 passA = True
                                 passB = True
-                                print("Minv and phiconstruct",Minv_(Beta_(WLOG)))
-                                print("phicosntruct",PhiConstruct(Indexer,LinkPool,False))
-                                print("what failsA",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
-                                print("what failsA2",L[0])
-                                print("what failsA3",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0]))
-                                print("what failsA4",len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])))
-                                print("what fails2",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
-                                print("what fails2",L[1])
-                                print("what fails2",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1]))
-                                print("what fails2",len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])))
+                                #print("Minv and phiconstruct",Minv_(Beta_(WLOG)))
+                                #print("phi args",Indexer,LinkPool,False)
+                                #print("phicosntruct",PhiConstruct(Indexer,LinkPool,False))
+                                #print("what failsA",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
+                                #print("what failsA2",L[0])
+                                #print("what failsA3",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0]))
+                                #print("what failsA4",len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])))
+                                #print("what fails2",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
+                                #print("what fails2",L[1])
+                                #print("what fails2",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1]))
+                                #print("what fails2",len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])))
                                 if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])) == 0:
                                     passA = False
                                 if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])) == 0:
@@ -1149,33 +1127,32 @@ def ShittySI(ListItems):
                                 #print("======= DIED END")
                                 #print("WTF WHY IS ANS TRUE3",ANS)
                             else:
-                                #
-                                print("WTF WHY IS ANS TRUE4",ANS)
-                                #
-                                print("WLOG",WLOG)
-                                #
-                                print("bad boy down",Minv_(Beta_(WLOG)))
-                                #
-                                print("red velvet bad boy",Indexer)
-                                #
-                                print("red velvet bad boy2",LinkPool)
-                                #
-                                print("red velvet bad boy3",AutoCheck)
-                                #
-                                print("bb4",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                #print("WTF WHY IS ANS TRUE4",ANS)
+                                #print("WLOG",WLOG)
+                                #print("bad boy down",Minv_(Beta_(WLOG)))
+                                #print("red velvet bad boy",Indexer)
+                                #print("red velvet bad boy2",LinkPool)
+                                #print("red velvet bad boy3",AutoCheck)
+                                #print("bb4",PhiConstruct(Indexer,LinkPool,AutoCheck))
                                 ##problem is Minv_
                                 ##problem is in phiconstruct or Minv_ on LIST
                                 ##problem is probably in compose and quotes on that triple length thing
-                                #
-                                print("F U C K1",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
-                                #
-                                print("F U C K2",HStar)
-                                #
-                                print("F U C K3 args",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
-                                #
-                                print("F U C K3",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar))
+                                #print("F U C K1",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                #print("F U C K2",HStar)
+                                #print("F U C K3 args",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+                                #print("F U C K3",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar))
                                 ######AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
                                 #time to check SI:
+                                #another error ShittySI([[[['C', 'B'], ['D', 'A']], [['D', 'C'], ['D', 'B']]], '', 'all'])
+                                #LOOK TO SEE IF INDEXERS HAVE TO BE INITIAL PORTIONS OF OTHER INDEXERS
+                                print("AD1 INDEXER",Minv_(Beta_(HStar)))
+                                print("AD2 INDEXER",Minv_(Beta_(WLOG)))
+                                print("PhiCONSTRUCT!",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                print("tester1",ShittySImin1([Minv_(Beta_(HStar)),WLOG]))
+                                print("tester2",ShittySImin1([Minv_(Beta_(WLOG)),HStar]))
+                                if ShittySImin1([Minv_(Beta_(HStar)),WLOG]) == False or ShittySImin1([Minv_(Beta_(WLOG)),HStar]) == False:
+                                    print("set HStar to avoid error message since we have proper H*, proper phi guess so just avoid address error")
+                                    HStar = []
                                 '''
                                 empty HStar fix
                                 '''
@@ -1346,6 +1323,40 @@ def ShittySI(ListItems):
 #[True, [['A', 'D'], ['D', 'A'], ['B', 'B'], ['B', 'B'], ['C', 'A'], ['A', 'C']], [['B', 'D'], ['D', 'B'], ['A', 'B'], ['B', 'A'], ['C', 'A'], ['A', 'C']], [['C', 'D'], ['D', 'C'], ['A', 'B'], ['B', 'A'], ['B', 'A'], ['A', 'B']], [['A', 'D'], ['D', 'A'], ['C', 'B'], ['B', 'C'], ['B', 'A'], ['A', 'B']], [['B', 'D'], ['D', 'B'], ['C', 'B'], ['B', 'C'], ['A', 'A'], ['A', 'A']], [['C', 'D'], ['D', 'C'], ['B', 'B'], ['B', 'B'], ['A', 'A'], ['A', 'A']]]
 #print(ShittySI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
 
+def ShittySImin1(argList):
+    '''
+    NOTE:
+    I think the indexer and the H* are being built ok/normally, it's just that they are NOT solutions so some vertices of WLOG and HStar are NOT being mapped for addressfunc
+    PLAN:
+    this should test if address will fail beforehand
+    then in main func just set HStar to be empty so it skips addressfunc
+    ACTION:
+    takes indexer and graph (which is WLOG or HStar)
+    #AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+    #AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+    check if I accidentally changed RelEval to kill func
+    Interim.append(CantorPair(int(RelEval(index,str(x[0]))[0]),int(RelEval(index,str(x[1]))[0])))
+    '''
+    indexer = argList[0]
+    graph = argList[1]
+
+    #assume it works
+    ANS = True
+    #make vertex of graph and check for validity
+    print("graph",graph)
+    print("vertices",Vertex_(graph))
+    for node in Vertex_(graph):
+        print("node",node)
+        print("indexer",indexer)
+        try:
+            int(RelEval(indexer,str(node))[0])
+            print("node passed!")
+            pass
+        except:
+            print("node failed!")
+            ANS = False
+    return ANS
+            
 
 def ShittySIbeforeTOTALSI(ListItems):
     '''
