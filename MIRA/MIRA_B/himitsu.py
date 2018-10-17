@@ -12,6 +12,11 @@ himitsu = [[0, '\\', 'CODE', ''], [1, "'", 'CODE', ''], [2, 'p', 'CODE', ''], [3
 #for x in itertools.combinations([["A","B"],["B","A"],["B","C"],["C","B"],["A","C"],["C","A"],["C","D"],["D","C"],["A","D"],["D","A"],["B","D"],["D","B"]],3):
 #    print("x",x)
 
+#for x in combinations([["A","B"],["B","A"],["B","C"],["C","B"],["A","C"],["C","A"],["C","D"],["D","C"],["A","D"],["D","A"],["B","D"],["D","B"]],3):
+#    print("x",x)
+
+print(nth(combinations([["A","B"],["B","A"],["B","C"],["C","B"],["A","C"],["C","A"],["C","D"],["D","C"],["A","D"],["D","A"],["B","D"],["D","B"]],3),23))
+
 for x in himitsu:
     #print(x,type(x))
     #print(len(x))

@@ -10,7 +10,8 @@ import time
 import mmap 
 import random
 import os
-import itertools
+#import itertools
+from itertools import *
 from shutil import *
 
 from collections import defaultdict
@@ -25,6 +26,10 @@ if sys.version_info[0] < 3:
 #file = open('INP.txt', 'r')
 #basis = open('Basis.txt', 'r+')
 #memory = open('Memory.txt', 'r+')
+
+def nth(iterable, n, default=None):
+    "Returns the nth item or a default value"
+    return next(islice(iterable, n, None), default)
 
 def ARB(function, replacelist): 
     '''
@@ -6631,17 +6636,57 @@ def subsetSI(argList):
     smallLen = len(WLOG)
     #just iterate down through both lengths until you hit maximal SI sizes
     #can't do nested for loops:
-    largerInit = longLen
+    #largerInit = longLen
+    #HINT: IF I WANT SI (and not subset SI) THE SMALLER SIZE DETERMINES LARGER SUBSET SIZE
+    #IM RETARDED SINCE SI MEANS THAT THE SUBGRAPHS HAVE TO BE THE SAME SIZE ALL YOU HAVE TO DO IS GO THROUGH MAXSIZE OF SMALLER -> 0 AND JUST USE CHOOSE TO MAKE YOUR SUBGRAPHS
+    largerInit = smallLen
     smallerInit = smallLen
+
+    while smallerInit>0:
+        print("ok so we need to compare all the graphs of this size between Larger and WLOG",smallerInit)
+        print("choose stats",longLen,smallLen,smallerInit)
+        largerGraphMax = choose(longLen, smallerInit)
+        smallerGraphMax = choose(smallLen, smallerInit)
+        print("know max of Larger choose",largerGraphMax)
+        print("know max of smaller choose",smallerGraphMax)
+        largerGraphMaxIndex = 0
+        smallerGraphMaxIndex = 0
+        print("NOTE:iterate through both graphmaxes and use nth to get right subgraph to start SI",largerGraphMaxIndex,largerGraphMax)
+        print("2nd while check ",smallerGraphMaxIndex,smallerGraphMax)
+        while largerGraphMaxIndex < largerGraphMax:
+            while smallerGraphMaxIndex < smallerGraphMax:
+                print("OK, these should be the nth args for the graphs",largerGraphMaxIndex,smallerGraphMaxIndex)
+                smallerGraphMaxIndex += 1
+            #reset smaller so we go through everything in larger
+            smallerGraphMaxIndex = 0
+            largerGraphMaxIndex += 1
+        smallerInit += -1
+
+    '''
     while largerInit>0:
         #print("what is larger doing?",largerInit)
         while smallerInit>0:
             print("TEST CROSS!",largerInit,smallerInit)
+            largerGraphMax = choose(longLen, largerInit)
+            smallerGraphMax = choose(smallLen, smallerInit)
+            largerGraphMaxInit = 0
+            smallerGraphMaxInit = 0
+            print("know max of largergraph",largerGraphMax)
+            print("know max of smallgraph",smallerGraphMax)
+            while largerGraphMaxInit < largerGraphMax:
+                while smallerGraphMaxInit < smallerGraphMax:
+                    largerboundcheck = nth(combinations(Larger,largerInit),largerGraphMaxInit)
+                    smallerboundcheck = nth(combinations(WLOG,smallerInit),smallerGraphMaxInit)
+                    print("TEST OUT THESE BOUNDS",largerGraphMaxInit,smallerGraphMaxInit)
+                    print("largesubgraph",largerboundcheck)
+                    print("smallsubgraph",smallerboundcheck)
+                    smallerGraphMaxInit += 1
+                largerGraphMaxInit += 1
             smallerInit += -1
         largerInit += -1
         #reset smallerInit for inner while works again
         smallerInit = smallLen
-    
+    '''
 
 #REMEMBER TO RELABEL THESE
 #["",""],["",""],
@@ -6696,6 +6741,21 @@ def subsetSImin1(argList):
             ANS.insert(0,graphXvar[-(x+1)])
     return ANS
 #subsetSImin1([[["A","B"],["B","A"],["C","A"],["A","C"],["B","C"],["C","B"],["B","D"],["D","B"],["A","D"],["D","A"]],"{0:b}".format(5)])
+#https://stackoverflow.com/questions/3025162/statistics-combinations-in-python
+def choose(n, k):
+    """
+    A fast way to calculate binomial coefficients by Andrew Dalke (contrib).
+    """
+    if 0 <= k <= n:
+        ntok = 1
+        ktok = 1
+        for t in range(1, min(k, n - k) + 1):
+            ntok *= n
+            ktok *= t
+            n -= 1
+        return ntok // ktok
+    else:
+        return 0
 def IsomGraphDiff(argList):
     '''
     Isom graph differnce function
