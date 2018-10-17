@@ -6561,60 +6561,7 @@ def subsetSI(argList):
     #run this to check indices
     #when this is doen and can run on actual single point nodes in graphs finish IsomGraphDiff since it needs this
     #clean out safari on phone and mira logs on desktop
-    '''
-    #dont be a dumbass if you want the maxlargest start counting from top
-    if MAXtoggle == "MAX":
-        #reset starting indices,closure condition, and +1 or -1
 
-        #maybe I WANT to start max? when do I ever start from bottom?
-        #>>> print list(itertools.permutations([1,2,3], 2))
-        xIndex = "WJAT THE FOARA"
-        yIndex = "WJAT THE FOARA"
-        #hint less than and greater than have some kind of symmetry
-        xCloseLess = "WJAT THE FOARA"
-        xCloseGreater = "WJAT THE FOARA"
-        yCloseLess = "WJAT THE FOARA"
-        yCloseGreater = "WJAT THE FOARA"
-        xIntMod = "WJAT THE FOARA"
-        yIntMod = "WJAT THE FOARA"
-    else:
-        #keep old closure condition, and +1
-        xIndex = 1
-        yIndex = 1
-        #hint less than and greater than have some kind of symmetry
-        xCloseLess = xIndex
-        xCloseGreater = 2**edgecountX
-        yCloseLess = yIndex
-        yCloseGreater = 2**edgecountY
-        xIntMod = "WJAT THE FOARA"
-        yIntMod = "WJAT THE FOARA"
-    
-    while xIndex < 2**edgecountX:
-        binX = "{0:b}".format(xIndex)
-        #subsetSImin2(argList)
-        #takes binary number -> this counts the number of ones in a binary representation
-        graphXSize = subsetSImin2([binX])
-        #make sure size of both subgraphs are the same since I want ISOM
-        #also if size(y) > size(x) skip rest of y since y increases (woo I can save time!)
-        #init graphYsize so ball gets rolling
-        graphYSize = 0
-        print("test inputsX",[graphX,binX])
-        graphXsubset = subsetSImin1([graphX,binX])
-        print("test thisX",graphXsubset)
-        while yIndex < 2**edgecountY and graphYSize <= graphXSize:
-            binY = "{0:b}".format(yIndex)
-            graphYSize = subsetSImin2([binY])
-            print("test indices here"+str(datetime.now()), edgecountX,edgecountY)
-            print("test indices hereB", binX,binY)
-            print("test inputsX",[graphX,binX])
-            print("test inputsY",[graphY,binY])
-            graphYsubset = subsetSImin1([graphY,binY])
-            print("test thisY",graphYsubset)
-            print("SI inputs",[[graphXsubset,graphYsubset],"","all"])
-            print("NOW TO SI",ShittySI([[graphXsubset,graphYsubset],"","all"]))
-            yIndex += 1
-        xIndex += 1
-    '''
     #new strat: use itertools to make the subgraphs then just try to find SIMAX
     #figure out which graph is "LARGER" (vertex wise)
     #2 versions
@@ -6641,53 +6588,45 @@ def subsetSI(argList):
     #IM RETARDED SINCE SI MEANS THAT THE SUBGRAPHS HAVE TO BE THE SAME SIZE ALL YOU HAVE TO DO IS GO THROUGH MAXSIZE OF SMALLER -> 0 AND JUST USE CHOOSE TO MAKE YOUR SUBGRAPHS
     largerInit = smallLen
     smallerInit = smallLen
+    print("larger",Larger)
+    print("WLOG",WLOG)
 
+    ANS = []
+    ANSmin = []
     while smallerInit>0:
-        print("ok so we need to compare all the graphs of this size between Larger and WLOG",smallerInit)
-        print("choose stats",longLen,smallLen,smallerInit)
+        #print("ok so we need to compare all the graphs of this size between Larger and WLOG",smallerInit)
+        #print("choose stats",longLen,smallLen,smallerInit)
         largerGraphMax = choose(longLen, smallerInit)
         smallerGraphMax = choose(smallLen, smallerInit)
-        print("know max of Larger choose",largerGraphMax)
-        print("know max of smaller choose",smallerGraphMax)
+        #print("know max of Larger choose",largerGraphMax)
+        #print("know max of smaller choose",smallerGraphMax)
         largerGraphMaxIndex = 0
         smallerGraphMaxIndex = 0
-        print("NOTE:iterate through both graphmaxes and use nth to get right subgraph to start SI",largerGraphMaxIndex,largerGraphMax)
-        print("2nd while check ",smallerGraphMaxIndex,smallerGraphMax)
+        #print("NOTE:iterate through both graphmaxes and use nth to get right subgraph to start SI",largerGraphMaxIndex,largerGraphMax)
+        #print("2nd while check ",smallerGraphMaxIndex,smallerGraphMax)
         while largerGraphMaxIndex < largerGraphMax:
             while smallerGraphMaxIndex < smallerGraphMax:
-                print("OK, these should be the nth args for the graphs",largerGraphMaxIndex,smallerGraphMaxIndex)
+                #print("OK, these should be the nth args for the graphs",largerGraphMaxIndex,smallerGraphMaxIndex)
+                largerSUBGRAPH = list(nth(combinations(Larger,smallerInit),largerGraphMaxIndex))
+                smallerSUBGRAPH = list(nth(combinations(WLOG,smallerInit),smallerGraphMaxIndex))
+                #print("#now that we have the right indices, let's check if nth works LRAGER",largerSUBGRAPH)
+                #print("#now that we have the right indices, let's check if nth works SMALLER",smallerSUBGRAPH)
+                shittySIsays = ShittySI([[largerSUBGRAPH,smallerSUBGRAPH],"","all"])
+                #print("let's see what ShittySI says",shittySIsays)
+                if shittySIsays[0] == True:
+                    #filter out dupes????
+                    #[y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]
+                    #actually dont filter because the subgraphs are different
+                    ANS.append([largerSUBGRAPH,smallerSUBGRAPH,shittySIsays])
                 smallerGraphMaxIndex += 1
             #reset smaller so we go through everything in larger
             smallerGraphMaxIndex = 0
             largerGraphMaxIndex += 1
+        #stop at the highest level:
+        if len(ANS) != 0:
+            return ANS
         smallerInit += -1
-
-    '''
-    while largerInit>0:
-        #print("what is larger doing?",largerInit)
-        while smallerInit>0:
-            print("TEST CROSS!",largerInit,smallerInit)
-            largerGraphMax = choose(longLen, largerInit)
-            smallerGraphMax = choose(smallLen, smallerInit)
-            largerGraphMaxInit = 0
-            smallerGraphMaxInit = 0
-            print("know max of largergraph",largerGraphMax)
-            print("know max of smallgraph",smallerGraphMax)
-            while largerGraphMaxInit < largerGraphMax:
-                while smallerGraphMaxInit < smallerGraphMax:
-                    largerboundcheck = nth(combinations(Larger,largerInit),largerGraphMaxInit)
-                    smallerboundcheck = nth(combinations(WLOG,smallerInit),smallerGraphMaxInit)
-                    print("TEST OUT THESE BOUNDS",largerGraphMaxInit,smallerGraphMaxInit)
-                    print("largesubgraph",largerboundcheck)
-                    print("smallsubgraph",smallerboundcheck)
-                    smallerGraphMaxInit += 1
-                largerGraphMaxInit += 1
-            smallerInit += -1
-        largerInit += -1
-        #reset smallerInit for inner while works again
-        smallerInit = smallLen
-    '''
-
+    return ANS
 #REMEMBER TO RELABEL THESE
 #["",""],["",""],
 #EX1
