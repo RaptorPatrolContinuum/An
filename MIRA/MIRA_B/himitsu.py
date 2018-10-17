@@ -9,7 +9,8 @@ from MiraExternals import *
 himitsu = [[0, '\\', 'CODE', ''], [1, "'", 'CODE', ''], [2, 'p', 'CODE', ''], [3, 'r', 'CODE', ''], [4, 'i', 'CODE', ''], [5, 'n', 'CODE', ''], [6, 't', 'CODE', ''], [7, '(', 'CODE', ''], [8, '"', 'STRI', ''], [9, 'l', 'STRI', 'double'], [10, 'o', 'STRI', 'double'], [11, 's', 'STRI', 'double'], [12, 't', 'STRI', 'double'], [13, ' ', 'STRI', 'double'], [14, 't', 'STRI', 'double'], [15, 'r', 'STRI', 'double'], [16, 'a', 'STRI', 'double'], [17, 'c', 'STRI', 'double'], [18, 'k', 'STRI', 'double'], [19, ' ', 'STRI', 'double'], [20, 'o', 'STRI', 'double'], [21, 'f', 'STRI', 'double'], [22, ' ', 'STRI', 'double'], [23, 'w', 'STRI', 'double'], [24, 'h', 'STRI', 'double'], [25, 'a', 'STRI', 'double'], [26, 't', 'STRI', 'double'], [27, ' ', 'STRI', 'double'], [28, 'I', 'STRI', 'double'], [29, ' ', 'STRI', 'double'], [30, 'w', 'STRI', 'double'], [31, 'a', 'STRI', 'double'], [32, 's', 'STRI', 'double'], [33, ' ', 'STRI', 'double'], [34, 'd', 'STRI', 'double'], [35, 'o', 'STRI', 'double'], [36, 'i', 'STRI', 'double'], [37, 'n', 'STRI', 'double'], [38, 'g', 'STRI', 'double'], [39, '"', 'STRI', 'double'], [40, ')', 'CODE', ''], [41, '\\', 'CODE', ''], [42, "'", 'CODE', '']]
 
 
-
+#for x in itertools.combinations([["A","B"],["B","A"],["B","C"],["C","B"],["A","C"],["C","A"],["C","D"],["D","C"],["A","D"],["D","A"],["B","D"],["D","B"]],3):
+#    print("x",x)
 
 for x in himitsu:
     #print(x,type(x))

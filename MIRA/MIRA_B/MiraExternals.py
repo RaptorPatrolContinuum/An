@@ -1145,13 +1145,13 @@ def ShittySI(ListItems):
                                 #time to check SI:
                                 #another error ShittySI([[[['C', 'B'], ['D', 'A']], [['D', 'C'], ['D', 'B']]], '', 'all'])
                                 #LOOK TO SEE IF INDEXERS HAVE TO BE INITIAL PORTIONS OF OTHER INDEXERS
-                                print("AD1 INDEXER",Minv_(Beta_(HStar)))
-                                print("AD2 INDEXER",Minv_(Beta_(WLOG)))
-                                print("PhiCONSTRUCT!",PhiConstruct(Indexer,LinkPool,AutoCheck))
-                                print("tester1",ShittySImin1([Minv_(Beta_(HStar)),WLOG]))
-                                print("tester2",ShittySImin1([Minv_(Beta_(WLOG)),HStar]))
                                 if ShittySImin1([Minv_(Beta_(HStar)),WLOG]) == False or ShittySImin1([Minv_(Beta_(WLOG)),HStar]) == False:
-                                    print("set HStar to avoid error message since we have proper H*, proper phi guess so just avoid address error")
+                                    #print("AD1 INDEXER",Minv_(Beta_(HStar)))
+                                    #print("AD2 INDEXER",Minv_(Beta_(WLOG)))
+                                    #print("PhiCONSTRUCT!",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                    #print("tester1",ShittySImin1([Minv_(Beta_(HStar)),WLOG]))
+                                    #print("tester2",ShittySImin1([Minv_(Beta_(WLOG)),HStar]))
+                                    #print("set HStar to avoid error message since we have proper H*, proper phi guess so just avoid address error")
                                     HStar = []
                                 '''
                                 empty HStar fix
@@ -1343,17 +1343,17 @@ def ShittySImin1(argList):
     #assume it works
     ANS = True
     #make vertex of graph and check for validity
-    print("graph",graph)
-    print("vertices",Vertex_(graph))
+    #print("graph",graph)
+    #print("vertices",Vertex_(graph))
     for node in Vertex_(graph):
-        print("node",node)
-        print("indexer",indexer)
+        #print("node",node)
+        #print("indexer",indexer)
         try:
             int(RelEval(indexer,str(node))[0])
-            print("node passed!")
+            #print("node passed!")
             pass
         except:
-            print("node failed!")
+            #print("node failed!")
             ANS = False
     return ANS
             
@@ -6522,9 +6522,19 @@ def subsetSI(argList):
     compare all a,b
     step 2:
     figure out how the fuck to make the SI graph difference work
+    [graphX,graphY,["MAX"]]
     '''
     graphX = argList[0]
     graphY = argList[1]
+    try:
+        MAXtoggle = argList[2][0]
+    except:
+        MAXtoggle = ""
+
+    if fCheck(graphX) == False or fCheck(graphY) == False:
+        print("ONE GRAPH FOR subsetSI SUCKS", argList)
+        return 
+    
     #check if x and y are graphs
     if fCheck(graphX) != True:
         print("graphX not ff!",graphX)
@@ -6538,14 +6548,41 @@ def subsetSI(argList):
     #hint: "{0:b}".format(30)
 
     #hint: start at 1 since 0 is empty set
-    xIndex = 1
-    yIndex = 1
+    #xIndex = 1
+    #yIndex = 1
     #have to match missing digits for binary
 
     #TODO: write down graph examples
     #run this to check indices
     #when this is doen and can run on actual single point nodes in graphs finish IsomGraphDiff since it needs this
     #clean out safari on phone and mira logs on desktop
+    '''
+    #dont be a dumbass if you want the maxlargest start counting from top
+    if MAXtoggle == "MAX":
+        #reset starting indices,closure condition, and +1 or -1
+
+        #maybe I WANT to start max? when do I ever start from bottom?
+        #>>> print list(itertools.permutations([1,2,3], 2))
+        xIndex = "WJAT THE FOARA"
+        yIndex = "WJAT THE FOARA"
+        #hint less than and greater than have some kind of symmetry
+        xCloseLess = "WJAT THE FOARA"
+        xCloseGreater = "WJAT THE FOARA"
+        yCloseLess = "WJAT THE FOARA"
+        yCloseGreater = "WJAT THE FOARA"
+        xIntMod = "WJAT THE FOARA"
+        yIntMod = "WJAT THE FOARA"
+    else:
+        #keep old closure condition, and +1
+        xIndex = 1
+        yIndex = 1
+        #hint less than and greater than have some kind of symmetry
+        xCloseLess = xIndex
+        xCloseGreater = 2**edgecountX
+        yCloseLess = yIndex
+        yCloseGreater = 2**edgecountY
+        xIntMod = "WJAT THE FOARA"
+        yIntMod = "WJAT THE FOARA"
     
     while xIndex < 2**edgecountX:
         binX = "{0:b}".format(xIndex)
@@ -6564,6 +6601,7 @@ def subsetSI(argList):
             graphYSize = subsetSImin2([binY])
             print("test indices here"+str(datetime.now()), edgecountX,edgecountY)
             print("test indices hereB", binX,binY)
+            print("test inputsX",[graphX,binX])
             print("test inputsY",[graphY,binY])
             graphYsubset = subsetSImin1([graphY,binY])
             print("test thisY",graphYsubset)
@@ -6571,6 +6609,39 @@ def subsetSI(argList):
             print("NOW TO SI",ShittySI([[graphXsubset,graphYsubset],"","all"]))
             yIndex += 1
         xIndex += 1
+    '''
+    #new strat: use itertools to make the subgraphs then just try to find SIMAX
+    #figure out which graph is "LARGER" (vertex wise)
+    #2 versions
+    #version 1 is to get maximal SI set between A and B (use this for IsomGraphDiff)
+    #version 2 is to just look for what subsets are si between A and B
+
+    #if Vertex_(graphY) > Vertex_(graphX):
+    #if you want to use vertex it "kinda" has a chance to "encompass" the other graph but more likely its just the larger
+    #vertex graph has some subgraph that matches to the smaller vertex subgraph
+    #since I use len in shittySI I should use it here to maintain consistency
+    if len(graphY) > len(graphX):
+        Larger = graphY
+        WLOG = graphX
+    else:
+        Larger = graphX
+        WLOG = graphY
+    #version 1 is to get maximal SI set between A and B (use this for IsomGraphDiff)
+    longLen = len(Larger)
+    smallLen = len(WLOG)
+    #just iterate down through both lengths until you hit maximal SI sizes
+    #can't do nested for loops:
+    largerInit = longLen
+    smallerInit = smallLen
+    while largerInit>0:
+        #print("what is larger doing?",largerInit)
+        while smallerInit>0:
+            print("TEST CROSS!",largerInit,smallerInit)
+            smallerInit += -1
+        largerInit += -1
+        #reset smallerInit for inner while works again
+        smallerInit = smallLen
+    
 
 #REMEMBER TO RELABEL THESE
 #["",""],["",""],
