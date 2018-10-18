@@ -6642,6 +6642,7 @@ EX1B = [["A","B"],["B","A"],["B","C"],["C","B"],["A","C"],["C","A"],["C","D"],["
 #[["A","E"],["E","A"],["F","E"],["E","F"],["D","E"],["E","D"],["B","E"],["E","B"],["C","E"],["E","C"]]
 
 #subsetSI([EX1A,EX1B])
+#IsomGraphDiff([EX1A,EX1B])
 
 def subsetSImin2(argList):
     '''
@@ -6681,6 +6682,7 @@ def subsetSImin1(argList):
     return ANS
 #subsetSImin1([[["A","B"],["B","A"],["C","A"],["A","C"],["B","C"],["C","B"],["B","D"],["D","B"],["A","D"],["D","A"]],"{0:b}".format(5)])
 #https://stackoverflow.com/questions/3025162/statistics-combinations-in-python
+
 def choose(n, k):
     """
     A fast way to calculate binomial coefficients by Andrew Dalke (contrib).
@@ -6695,12 +6697,80 @@ def choose(n, k):
         return ntok // ktok
     else:
         return 0
-def IsomGraphDiff(argList):
+
+def GraphDiffST(argList):
     '''
-    Isom graph differnce function
+    standard graph diff is just filtering out common edges/nodes
+    graphx, graphy
+    RETURN graphx - graphy:
     '''
     graphX = argList[0]
     graphY = argList[1]
+    #check if x and y are graphs
+    if fCheck(graphX) != True:
+        print("graphX not ff!",graphX)
+    if fCheck(graphY) != True:
+        print("graphY not ff!",graphY)
+    ANS = [y for y in graphX if len([z for z in graphY if z == y]) < 1]
+    return ANS
+
+#EX:
+#[['',''],]
+#TRYA = [['A','B'],['B','A'],['B','C'],['D','A'],['A','D']]
+#TRYB = [['A','B'],['B','A'],['A','C'],['C','A'],['B','C'],['C','B']]
+#GraphDiffST([TRYA,TRYB])
+#ANSWERS
+#GraphDiffST([TRYA,TRYB])
+#[['D', 'A'], ['A', 'D']]
+#GraphDiffST([TRYB,TRYA])
+#[['A', 'C'], ['C', 'A'], ['C', 'B']]
+
+
+#IsomGraphDiff([EX1A,EX1B])
+def IsomGraphDiff(argList):
+    '''
+    Isom graph differnce function
+    hint or not? if you compose a graph with phi properly you get the translated graph? (as in nodes are named the same)
+    '''
+    graphX = argList[0]
+    graphY = argList[1]
+
+    #check if x and y are graphs
+    if fCheck(graphX) != True:
+        print("graphX not ff!",graphX)
+    if fCheck(graphY) != True:
+        print("graphY not ff!",graphY)
+
+    #set largest and WLOG since subsetSI returns largestsubgraph, smallestsubgraph, phi
+    if len(graphY) > len(graphX):
+        Larger = graphY
+        WLOG = graphX
+    else:
+        Larger = graphX
+        WLOG = graphY
+
+    ANS = []
+    maxLargestIsom = subsetSI([Larger,WLOG])
+    for x in maxLargestIsom:
+        print("x",x)
+        #cant have nested for loops
+        countCandidates = len(x[2][1])
+        candidatesIndex = 0
+        #hint: isomgraphdiff w.r.t x subset X and y subset Y is
+        #X\x union Y\y where \ is the "graph subtraction" func
+        #note: it doesn't matter if x and y are SI in a ton of ways we just want to know that they are SI since x,y are the only defining aspects of the IsomDiff
+        ANS.append([x[0],x[1],GraphDiffST([Larger,x[0]]) + GraphDiffST([WLOG,x[1]])])
+        #while candidatesIndex < countCandidates:
+        #    print("check the data I have:",graphX,graphY)
+        #    print("data2wice", x[0],x[1])
+        #    print("data3rice",x[2][1])
+        #    print("for each candidate, I probably want to compose one graph with phi then subtract the composed graph with the uncomposed graph and vice versa then union to get the isom diff")
+        #    #hint: isomgraphdiff w.r.t x subset X and y subset Y is 
+        #    #X\x union Y\y where \ is the "graph subtraction" func
+        #    #note: it doesn't matter if x and y are SI in a ton of ways we just want to know that they are SI since x,y are the only defining aspects of the IsomDiff
+        #    ANS.append([x[0],x[1],GraphDiffST([Larger,x[0]]) + GraphDiffST([WLOG,x[1]])])
+        #    candidatesIndex += 1
+    return ANS
     
 ##############################################################
 

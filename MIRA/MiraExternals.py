@@ -10,7 +10,8 @@ import time
 import mmap 
 import random
 import os
-import itertools
+#import itertools
+from itertools import *
 from shutil import *
 
 from collections import defaultdict
@@ -25,6 +26,10 @@ if sys.version_info[0] < 3:
 #file = open('INP.txt', 'r')
 #basis = open('Basis.txt', 'r+')
 #memory = open('Memory.txt', 'r+')
+
+def nth(iterable, n, default=None):
+    "Returns the nth item or a default value"
+    return next(islice(iterable, n, None), default)
 
 def ARB(function, replacelist): 
     '''
@@ -371,57 +376,33 @@ def AddressFunc(index,obj):
 
     Interim = []
 
-    #
-    print("INDEX",index)
+    #print("INDEX",index)
     #print("obj for reference!",obj)
     for x in obj:
-        #
-        print("LINE 274")
-        #
-        print("other stats",obj,Interim)
-        #
-        print("===========")
-        #
-        print("somebody is out of range1",x)
-        #
-        print("somebody is out of range2",x[0])
-        #
-        print("somebody is out of range2",str(x[0]))
-        #
-        print("index stats",index)
-        #
-        print("somebody is out of range3",RelEval(index,x[0]))
-        #
-        print("somebody is out of range3",RelEval(index,str(x[0])))
-        #
-        print("somebody is out of range4",int(RelEval(index,str(x[0]))[0]))
-        #
-        print("stats",x,x[0],int(RelEval(index,x[0])[0]))
-        #
-        print("suspected wtf",index,x[1])
+        #print("LINE 274")
+        #print("other stats",obj,Interim)
+        #print("===========")
+        #print("somebody is out of range1",x)
+        #print("somebody is out of range2",x[0])
+        #print("somebody is out of range2",str(x[0]))
+        #print("index stats",index)
+        #print("somebody is out of range3",RelEval(index,x[0]))
+        #print("somebody is out of range3",RelEval(index,str(x[0])))
+        #print("somebody is out of range4",int(RelEval(index,str(x[0]))[0]))
+        #print("stats",x,x[0],int(RelEval(index,x[0])[0]))
+        #print("suspected wtf",index,x[1])
 
-        #
-        print("x obj", x)
-        #
-        print("index",index)
-        #
-        print("x[0]",x[0])
-        #
-        print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
-        #
-        print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
-        #
-        print("index ",index)
-        #
-        print("x[1]",x[1])
-        #
-        print("int(empty set) just dies",RelEval(index,x[1]))
-        #
-        print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
-        #
-        print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
-        #
-        print("LINE 274 END")
+        #print("x obj", x)
+        #print("index",index)
+        #print("x[0]",x[0])
+        #print("so weird I need to do this by hand maybe",RelEval(index,x[0]))
+        #print("Cantor 1st coord",int(RelEval(index,x[0])[0]))
+        #print("index ",index)
+        #print("x[1]",x[1])
+        #print("int(empty set) just dies",RelEval(index,x[1]))
+        #print("Cantor 2nd coord",int(RelEval(index,x[1])[0]))
+        #print("the pair",CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
+        #print("LINE 274 END")
         #####Interim.append(CantorPair(int(RelEval(index,x[0])[0]),int(RelEval(index,x[1])[0])))
         Interim.append(CantorPair(int(RelEval(index,str(x[0]))[0]),int(RelEval(index,str(x[1]))[0])))
     
@@ -1055,21 +1036,23 @@ def ShittySI(ListItems):
                         if len(Vertex_(Larger)) > len(Vertex_(WLOG)):
                             #H* is the list of pairs in E_H s.t. indexer \circ phi doesn't fail:
                             HStar = []
+                            #
                             print("whats larger=======================",Larger)
                             for L in Larger:
-                                print("what;s L",L)
+                                #print("what;s L",L)
                                 passA = True
                                 passB = True
-                                print("Minv and phiconstruct",Minv_(Beta_(WLOG)))
-                                print("phicosntruct",PhiConstruct(Indexer,LinkPool,False))
-                                print("what failsA",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
-                                print("what failsA2",L[0])
-                                print("what failsA3",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0]))
-                                print("what failsA4",len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])))
-                                print("what fails2",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
-                                print("what fails2",L[1])
-                                print("what fails2",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1]))
-                                print("what fails2",len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])))
+                                #print("Minv and phiconstruct",Minv_(Beta_(WLOG)))
+                                #print("phi args",Indexer,LinkPool,False)
+                                #print("phicosntruct",PhiConstruct(Indexer,LinkPool,False))
+                                #print("what failsA",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
+                                #print("what failsA2",L[0])
+                                #print("what failsA3",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0]))
+                                #print("what failsA4",len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])))
+                                #print("what fails2",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)))
+                                #print("what fails2",L[1])
+                                #print("what fails2",RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1]))
+                                #print("what fails2",len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])))
                                 if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[0])) == 0:
                                     passA = False
                                 if len(RelEval(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,False)),L[1])) == 0:
@@ -1149,35 +1132,40 @@ def ShittySI(ListItems):
                                 #print("======= DIED END")
                                 #print("WTF WHY IS ANS TRUE3",ANS)
                             else:
-                                #
-                                print("WTF WHY IS ANS TRUE4",ANS)
-                                #
-                                print("WLOG",WLOG)
-                                #
-                                print("bad boy down",Minv_(Beta_(WLOG)))
-                                #
-                                print("red velvet bad boy",Indexer)
-                                #
-                                print("red velvet bad boy2",LinkPool)
-                                #
-                                print("red velvet bad boy3",AutoCheck)
-                                #
-                                print("bb4",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                #print("WTF WHY IS ANS TRUE4",ANS)
+                                #print("WLOG",WLOG)
+                                #print("bad boy down",Minv_(Beta_(WLOG)))
+                                #print("red velvet bad boy",Indexer)
+                                #print("red velvet bad boy2",LinkPool)
+                                #print("red velvet bad boy3",AutoCheck)
+                                #print("bb4",PhiConstruct(Indexer,LinkPool,AutoCheck))
                                 ##problem is Minv_
                                 ##problem is in phiconstruct or Minv_ on LIST
                                 ##problem is probably in compose and quotes on that triple length thing
-                                #
-                                print("F U C K1",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
-                                #
-                                print("F U C K2",HStar)
-                                #
-                                print("F U C K3 args",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
-                                #
-                                print("F U C K3",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar))
+                                #print("F U C K1",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)))
+                                #print("F U C K2",HStar)
+                                #print("F U C K3 args",Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+                                #print("F U C K3",AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar))
                                 ######AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
                                 #time to check SI:
-                                AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
-                                AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+                                #another error ShittySI([[[['C', 'B'], ['D', 'A']], [['D', 'C'], ['D', 'B']]], '', 'all'])
+                                #LOOK TO SEE IF INDEXERS HAVE TO BE INITIAL PORTIONS OF OTHER INDEXERS
+                                if ShittySImin1([Minv_(Beta_(HStar)),WLOG]) == False or ShittySImin1([Minv_(Beta_(WLOG)),HStar]) == False:
+                                    #print("AD1 INDEXER",Minv_(Beta_(HStar)))
+                                    #print("AD2 INDEXER",Minv_(Beta_(WLOG)))
+                                    #print("PhiCONSTRUCT!",PhiConstruct(Indexer,LinkPool,AutoCheck))
+                                    #print("tester1",ShittySImin1([Minv_(Beta_(HStar)),WLOG]))
+                                    #print("tester2",ShittySImin1([Minv_(Beta_(WLOG)),HStar]))
+                                    #print("set HStar to avoid error message since we have proper H*, proper phi guess so just avoid address error")
+                                    HStar = []
+                                '''
+                                empty HStar fix
+                                '''
+                                if HStar == []:
+                                    fuckingskip = True
+                                else:
+                                    AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+                                    AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
                         else:
                             #time to check SI:
                             '''
@@ -1340,6 +1328,40 @@ def ShittySI(ListItems):
 #[True, [['A', 'D'], ['D', 'A'], ['B', 'B'], ['B', 'B'], ['C', 'A'], ['A', 'C']], [['B', 'D'], ['D', 'B'], ['A', 'B'], ['B', 'A'], ['C', 'A'], ['A', 'C']], [['C', 'D'], ['D', 'C'], ['A', 'B'], ['B', 'A'], ['B', 'A'], ['A', 'B']], [['A', 'D'], ['D', 'A'], ['C', 'B'], ['B', 'C'], ['B', 'A'], ['A', 'B']], [['B', 'D'], ['D', 'B'], ['C', 'B'], ['B', 'C'], ['A', 'A'], ['A', 'A']], [['C', 'D'], ['D', 'C'], ['B', 'B'], ['B', 'B'], ['A', 'A'], ['A', 'A']]]
 #print(ShittySI([[[['1','1'],['2','2'],['3','3']],[['1','1'],['2','2'],['4','4']]],"Auto","all"]))
 
+def ShittySImin1(argList):
+    '''
+    NOTE:
+    I think the indexer and the H* are being built ok/normally, it's just that they are NOT solutions so some vertices of WLOG and HStar are NOT being mapped for addressfunc
+    PLAN:
+    this should test if address will fail beforehand
+    then in main func just set HStar to be empty so it skips addressfunc
+    ACTION:
+    takes indexer and graph (which is WLOG or HStar)
+    #AD1 = AddressFunc(Compose(Minv_(Beta_(HStar)),PhiConstruct(Indexer,LinkPool,AutoCheck)),WLOG)
+    #AD2 = AddressFunc(Compose(Minv_(Beta_(WLOG)),PhiConstruct(Indexer,LinkPool,AutoCheck)),HStar)
+    check if I accidentally changed RelEval to kill func
+    Interim.append(CantorPair(int(RelEval(index,str(x[0]))[0]),int(RelEval(index,str(x[1]))[0])))
+    '''
+    indexer = argList[0]
+    graph = argList[1]
+
+    #assume it works
+    ANS = True
+    #make vertex of graph and check for validity
+    #print("graph",graph)
+    #print("vertices",Vertex_(graph))
+    for node in Vertex_(graph):
+        #print("node",node)
+        #print("indexer",indexer)
+        try:
+            int(RelEval(indexer,str(node))[0])
+            #print("node passed!")
+            pass
+        except:
+            #print("node failed!")
+            ANS = False
+    return ANS
+            
 
 def ShittySIbeforeTOTALSI(ListItems):
     '''
@@ -6505,9 +6527,19 @@ def subsetSI(argList):
     compare all a,b
     step 2:
     figure out how the fuck to make the SI graph difference work
+    [graphX,graphY,["MAX"]]
     '''
     graphX = argList[0]
     graphY = argList[1]
+    try:
+        MAXtoggle = argList[2][0]
+    except:
+        MAXtoggle = ""
+
+    if fCheck(graphX) == False or fCheck(graphY) == False:
+        print("ONE GRAPH FOR subsetSI SUCKS", argList)
+        return 
+    
     #check if x and y are graphs
     if fCheck(graphX) != True:
         print("graphX not ff!",graphX)
@@ -6521,40 +6553,80 @@ def subsetSI(argList):
     #hint: "{0:b}".format(30)
 
     #hint: start at 1 since 0 is empty set
-    xIndex = 1
-    yIndex = 1
+    #xIndex = 1
+    #yIndex = 1
     #have to match missing digits for binary
 
     #TODO: write down graph examples
     #run this to check indices
     #when this is doen and can run on actual single point nodes in graphs finish IsomGraphDiff since it needs this
     #clean out safari on phone and mira logs on desktop
-    
-    while xIndex < 2**edgecountX:
-        binX = "{0:b}".format(xIndex)
-        #subsetSImin2(argList)
-        #takes binary number -> this counts the number of ones in a binary representation
-        graphXSize = subsetSImin2([binX])
-        #make sure size of both subgraphs are the same since I want ISOM
-        #also if size(y) > size(x) skip rest of y since y increases (woo I can save time!)
-        #init graphYsize so ball gets rolling
-        graphYSize = 0
-        print("test inputsX",[graphX,binX])
-        graphXsubset = subsetSImin1([graphX,binX])
-        print("test thisX",graphXsubset)
-        while yIndex < 2**edgecountY and graphYSize <= graphXSize:
-            binY = "{0:b}".format(yIndex)
-            graphYSize = subsetSImin2([binY])
-            print("test indices here"+str(datetime.now()), edgecountX,edgecountY)
-            print("test indices hereB", binX,binY)
-            print("test inputsY",[graphY,binY])
-            graphYsubset = subsetSImin1([graphY,binY])
-            print("test thisY",graphYsubset)
-            print("SI inputs",[[graphXsubset,graphYsubset],"","all"])
-            print("NOW TO SI",ShittySI([[graphXsubset,graphYsubset],"","all"]))
-            yIndex += 1
-        xIndex += 1
 
+    #new strat: use itertools to make the subgraphs then just try to find SIMAX
+    #figure out which graph is "LARGER" (vertex wise)
+    #2 versions
+    #version 1 is to get maximal SI set between A and B (use this for IsomGraphDiff)
+    #version 2 is to just look for what subsets are si between A and B
+
+    #if Vertex_(graphY) > Vertex_(graphX):
+    #if you want to use vertex it "kinda" has a chance to "encompass" the other graph but more likely its just the larger
+    #vertex graph has some subgraph that matches to the smaller vertex subgraph
+    #since I use len in shittySI I should use it here to maintain consistency
+    if len(graphY) > len(graphX):
+        Larger = graphY
+        WLOG = graphX
+    else:
+        Larger = graphX
+        WLOG = graphY
+    #version 1 is to get maximal SI set between A and B (use this for IsomGraphDiff)
+    longLen = len(Larger)
+    smallLen = len(WLOG)
+    #just iterate down through both lengths until you hit maximal SI sizes
+    #can't do nested for loops:
+    #largerInit = longLen
+    #HINT: IF I WANT SI (and not subset SI) THE SMALLER SIZE DETERMINES LARGER SUBSET SIZE
+    #IM RETARDED SINCE SI MEANS THAT THE SUBGRAPHS HAVE TO BE THE SAME SIZE ALL YOU HAVE TO DO IS GO THROUGH MAXSIZE OF SMALLER -> 0 AND JUST USE CHOOSE TO MAKE YOUR SUBGRAPHS
+    largerInit = smallLen
+    smallerInit = smallLen
+    print("larger",Larger)
+    print("WLOG",WLOG)
+
+    ANS = []
+    ANSmin = []
+    while smallerInit>0:
+        #print("ok so we need to compare all the graphs of this size between Larger and WLOG",smallerInit)
+        #print("choose stats",longLen,smallLen,smallerInit)
+        largerGraphMax = choose(longLen, smallerInit)
+        smallerGraphMax = choose(smallLen, smallerInit)
+        #print("know max of Larger choose",largerGraphMax)
+        #print("know max of smaller choose",smallerGraphMax)
+        largerGraphMaxIndex = 0
+        smallerGraphMaxIndex = 0
+        #print("NOTE:iterate through both graphmaxes and use nth to get right subgraph to start SI",largerGraphMaxIndex,largerGraphMax)
+        #print("2nd while check ",smallerGraphMaxIndex,smallerGraphMax)
+        while largerGraphMaxIndex < largerGraphMax:
+            while smallerGraphMaxIndex < smallerGraphMax:
+                #print("OK, these should be the nth args for the graphs",largerGraphMaxIndex,smallerGraphMaxIndex)
+                largerSUBGRAPH = list(nth(combinations(Larger,smallerInit),largerGraphMaxIndex))
+                smallerSUBGRAPH = list(nth(combinations(WLOG,smallerInit),smallerGraphMaxIndex))
+                #print("#now that we have the right indices, let's check if nth works LRAGER",largerSUBGRAPH)
+                #print("#now that we have the right indices, let's check if nth works SMALLER",smallerSUBGRAPH)
+                shittySIsays = ShittySI([[largerSUBGRAPH,smallerSUBGRAPH],"","all"])
+                #print("let's see what ShittySI says",shittySIsays)
+                if shittySIsays[0] == True:
+                    #filter out dupes????
+                    #[y for y in os.listdir(cwdLIST) if y != "__pycache__" and os.path.isdir(os.getcwd()+ "\\" +y) == False]
+                    #actually dont filter because the subgraphs are different
+                    ANS.append([largerSUBGRAPH,smallerSUBGRAPH,shittySIsays])
+                smallerGraphMaxIndex += 1
+            #reset smaller so we go through everything in larger
+            smallerGraphMaxIndex = 0
+            largerGraphMaxIndex += 1
+        #stop at the highest level:
+        if len(ANS) != 0:
+            return ANS
+        smallerInit += -1
+    return ANS
 #REMEMBER TO RELABEL THESE
 #["",""],["",""],
 #EX1
@@ -6570,6 +6642,7 @@ EX1B = [["A","B"],["B","A"],["B","C"],["C","B"],["A","C"],["C","A"],["C","D"],["
 #[["A","E"],["E","A"],["F","E"],["E","F"],["D","E"],["E","D"],["B","E"],["E","B"],["C","E"],["E","C"]]
 
 #subsetSI([EX1A,EX1B])
+#IsomGraphDiff([EX1A,EX1B])
 
 def subsetSImin2(argList):
     '''
@@ -6608,12 +6681,96 @@ def subsetSImin1(argList):
             ANS.insert(0,graphXvar[-(x+1)])
     return ANS
 #subsetSImin1([[["A","B"],["B","A"],["C","A"],["A","C"],["B","C"],["C","B"],["B","D"],["D","B"],["A","D"],["D","A"]],"{0:b}".format(5)])
-def IsomGraphDiff(argList):
+#https://stackoverflow.com/questions/3025162/statistics-combinations-in-python
+
+def choose(n, k):
+    """
+    A fast way to calculate binomial coefficients by Andrew Dalke (contrib).
+    """
+    if 0 <= k <= n:
+        ntok = 1
+        ktok = 1
+        for t in range(1, min(k, n - k) + 1):
+            ntok *= n
+            ktok *= t
+            n -= 1
+        return ntok // ktok
+    else:
+        return 0
+
+def GraphDiffST(argList):
     '''
-    Isom graph differnce function
+    standard graph diff is just filtering out common edges/nodes
+    graphx, graphy
+    RETURN graphx - graphy:
     '''
     graphX = argList[0]
     graphY = argList[1]
+    #check if x and y are graphs
+    if fCheck(graphX) != True:
+        print("graphX not ff!",graphX)
+    if fCheck(graphY) != True:
+        print("graphY not ff!",graphY)
+    ANS = [y for y in graphX if len([z for z in graphY if z == y]) < 1]
+    return ANS
+
+#EX:
+#[['',''],]
+#TRYA = [['A','B'],['B','A'],['B','C'],['D','A'],['A','D']]
+#TRYB = [['A','B'],['B','A'],['A','C'],['C','A'],['B','C'],['C','B']]
+#GraphDiffST([TRYA,TRYB])
+#ANSWERS
+#GraphDiffST([TRYA,TRYB])
+#[['D', 'A'], ['A', 'D']]
+#GraphDiffST([TRYB,TRYA])
+#[['A', 'C'], ['C', 'A'], ['C', 'B']]
+
+
+#IsomGraphDiff([EX1A,EX1B])
+def IsomGraphDiff(argList):
+    '''
+    Isom graph differnce function
+    hint or not? if you compose a graph with phi properly you get the translated graph? (as in nodes are named the same)
+    '''
+    graphX = argList[0]
+    graphY = argList[1]
+
+    #check if x and y are graphs
+    if fCheck(graphX) != True:
+        print("graphX not ff!",graphX)
+    if fCheck(graphY) != True:
+        print("graphY not ff!",graphY)
+
+    #set largest and WLOG since subsetSI returns largestsubgraph, smallestsubgraph, phi
+    if len(graphY) > len(graphX):
+        Larger = graphY
+        WLOG = graphX
+    else:
+        Larger = graphX
+        WLOG = graphY
+
+    ANS = []
+    maxLargestIsom = subsetSI([Larger,WLOG])
+    for x in maxLargestIsom:
+        print("x",x)
+        #cant have nested for loops
+        countCandidates = len(x[2][1])
+        candidatesIndex = 0
+        #hint: isomgraphdiff w.r.t x subset X and y subset Y is
+        #X\x union Y\y where \ is the "graph subtraction" func
+        #note: it doesn't matter if x and y are SI in a ton of ways we just want to know that they are SI since x,y are the only defining aspects of the IsomDiff
+        ANS.append([x[0],x[1],GraphDiffST([Larger,x[0]]) + GraphDiffST([WLOG,x[1]])])
+        #while candidatesIndex < countCandidates:
+        #    print("check the data I have:",graphX,graphY)
+        #    print("data2wice", x[0],x[1])
+        #    print("data3rice",x[2][1])
+        #    print("for each candidate, I probably want to compose one graph with phi then subtract the composed graph with the uncomposed graph and vice versa then union to get the isom diff")
+        #    #hint: isomgraphdiff w.r.t x subset X and y subset Y is 
+        #    #X\x union Y\y where \ is the "graph subtraction" func
+        #    #note: it doesn't matter if x and y are SI in a ton of ways we just want to know that they are SI since x,y are the only defining aspects of the IsomDiff
+        #    ANS.append([x[0],x[1],GraphDiffST([Larger,x[0]]) + GraphDiffST([WLOG,x[1]])])
+        #    candidatesIndex += 1
+    return ANS
     
 ##############################################################
 
