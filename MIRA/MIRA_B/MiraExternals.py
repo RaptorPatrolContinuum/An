@@ -6426,9 +6426,153 @@ data we know: STRI 54 '
 data we know: STRI 55 ) single
 data we know: STRI 56 " single
 '''
-
-
 def PosetSort(argList):
+    '''
+    HINT:
+    BINARY REL NEEDS TO BE IN THIS FORM:
+        binrelation([,])
+
+    takes a [filaname, binary relation]
+    EX:
+    PosetSort(["MemoryUNORDERED.txt",subsetSI])
+
+    what this does:
+    then tries to write a finite func such that
+    filename composeMETA Q_(binary relation) -> results in filename (the finite function set) returning the right answer for the binary relation
+
+    3 parts:
+    part 1: make set X:
+    set X is composed of
+    finite functions
+    all the pairs of the finite functions
+    all the x,y coords of the pairs
+
+    part 2:
+    size of setX permutation 2 -> left hand coord BIN REL right hand coord
+
+    part 3:
+    then write down in filename/ffset what the answer in part 2 is
+    make sure that it forces
+    filename composeMETA Q_(binary relation)
+    to return the right answer
+    '''
+    fffilename = argList[0]
+    binrelation = argList[1]
+
+    fffilenamelinecount = mapcountLINES([fffilename])
+    fffileIndex = 0
+    '''
+    ==
+    miniproblem:
+    need proper list to feed into permutations
+    hint:
+    feed the iterable as a list of numbers
+    #1: to reference whole, we just have the number of the [line]
+    #2: to reference pair, we have line then pair -> [line,pair]
+    #2: to reference pair coord, we have line,pair,coord -> [line,pair,coord]
+    then list is a list of single, double and triple coordinates
+    when I permute and get pairs of 2 i just go as far as I can based on the length of the tuple
+    ==
+    '''
+    permIndexList = []
+    with open(fffilename, "r+", encoding='utf-8') as fffile:
+        #now that we know maxlines we check if each line is a finite function (ff)
+        #then if line is a ff, we also know each pair has an x and y coord
+        #we need this info for the bijection so we dont actually handle all the datasize
+        print("where did I go wrong",fffileIndex, fffilenamelinecount)
+        fffile.seek(0)
+        while fffileIndex < fffilenamelinecount:
+            #need the raw line
+            #[:-1] is to remove the \n for each line
+            ffnext = "%r"%fffile.readline()[:-1]
+            print("am I getting raw line?",ffnext)
+            try:
+                #
+                print(eval(ffnext))
+                #print(type(eval(ffnext)))
+                print("evalstr",eval(str(ffnext)))
+                #
+                print("double eval",fCheck(eval(eval(ffnext))))
+                if fCheck(eval(eval(ffnext))) == True:
+                    #len(eval(str(ffnext)))
+                    #print("insert total line")
+                    pairIndex = 0
+                    for pair in eval(eval(ffnext)):
+                        #insert line pairs
+                        permIndexList.append([fffileIndex,pairIndex])
+                        #insert line coords as well
+                        permIndexList.append([fffileIndex,pairIndex,0])
+                        permIndexList.append([fffileIndex,pairIndex,1])
+                        pairIndex += 1
+                    permIndexList.append([fffileIndex])
+            except Exception as e:
+                print("last line of error",e)
+                print("eval didn't work on this line", ffnext)
+                permIndexList.append([fffileIndex])
+            fffileIndex += 1
+    print("OK, what does permIndexList look like?",len(permIndexList),permIndexList)
+    print("test permutations")
+    fffilenameOGCOPY = os.getcwd() + "\\" + "OGCOPY" + fffilename
+    print("copy file because reasons", copy2(fffilename, fffilenameOGCOPY))
+    for paircomparison in itertools.permutations(permIndexList,2):
+        print("==========")
+        print("paircomparison",paircomparison)
+        #attempt the binary relation then write it down at the end becaues I am fucking laxy and I dont even preserve indices anymore when I just make a copy for min1 to go through
+        #filename composeMETA Q_(binary relation) -> results in filename (the finite function set) returning the right answer for the binary relation
+        arg1prep = PosetSortmin1([fffilenameOGCOPY,paircomparison[0]])
+        arg2prep = PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])
+        #print("whats the type",type(arg1prep))
+        print("arg1 is ff?",fCheck(arg1prep))
+        print("arg1 is ff?",type(arg1prep),arg1prep)
+        print("arg2 is ff?",fCheck(arg2prep))
+        print("arg2 is ff?",type(arg2prep),arg2prep)
+        print("ATTEMPT!",binrelation([PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]),PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])]))
+    print("delete copied file because reasons",os.remove(fffilenameOGCOPY))
+'''
+PosetSort(["MemoryUNORDERED.txt",subsetSI])
+'''
+
+def PosetSortmin1(argList):
+    '''
+    TAKE:
+    OGCOPY filename
+    the tuple for the index
+
+    
+    this is supposed to take the args from permIndexList and convert them properly to:
+    total FF(finite func)
+    FF pair
+    FF pair coordinate
+
+    hint: just sort by the list length!
+    '''
+    OGCOPYfilename = argList[0]
+    testguy = argList[1]
+    if len(testguy) == 3:
+        try:
+            testline = eval(FILEindexread([OGCOPYfilename,testguy[0]]))
+            returnANS = testline[testguy[1]][testguy[2]]
+            #print("what is testline pairelem?",returnANS)
+            return returnANS
+        except Exception as e:
+            print("posetsortmin1 err0 len3",e)
+            print("posetsortmin1 died len3",argList)
+    elif len(testguy) == 2:
+        try:
+            testline = eval(FILEindexread([OGCOPYfilename,testguy[0]]))
+            returnANS = testline[testguy[1]]
+            #print("what is testline pair?",returnANS)
+            return returnANS
+        except Exception as e:
+            print("posetsortmin1 err0",e)
+            print("posetsortmin1 died",argList)
+    elif len(testguy) == 1:
+        return FILEindexread([OGCOPYfilename,testguy[0]])
+    else:
+        print("ERROR IN PosetSortmin1",argList)
+#test
+#PosetSortmin1(["MemoryUNORDERED.txt",[79, 0, 1]])
+def PosetSortOLD(argList):
     '''
     idea:
     put poset sorting in the top of memlist (so we can search faster)
@@ -6731,6 +6875,8 @@ def IsomGraphDiff(argList):
     '''
     Isom graph differnce function
     hint or not? if you compose a graph with phi properly you get the translated graph? (as in nodes are named the same)
+    returns maximal x subset X and maximal y subset Y such that
+    x SI y AND the graph diff of X \ x and Y \ y
     '''
     graphX = argList[0]
     graphY = argList[1]
