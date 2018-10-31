@@ -6527,6 +6527,12 @@ def PosetSort(argList):
         print("arg2 is ff?",fCheck(arg2prep))
         print("arg2 is ff?",type(arg2prep),arg2prep)
         print("ATTEMPT!",binrelation([PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]),PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])]))
+        '''
+        hint: I have to write down a finite func answer for compose NOT composeMETA because finding an abstraction that works for composeMETA is L I T E R A L L Y  SI so absolute garbage to even attempt
+        just write down
+        [[search query,eval(search query)]]
+        THEN ADD COMPOSE BACK TO MIRA.PY IN ONE OF THE SUGGESTIONS!
+        '''
     print("delete copied file because reasons",os.remove(fffilenameOGCOPY))
 '''
 PosetSort(["MemoryUNORDERED.txt",subsetSI])
