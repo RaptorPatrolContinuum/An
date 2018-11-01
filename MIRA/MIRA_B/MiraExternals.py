@@ -6484,7 +6484,10 @@ def PosetSort(argList):
         while fffileIndex < fffilenamelinecount:
             #need the raw line
             #[:-1] is to remove the \n for each line
-            ffnext = "%r"%fffile.readline()[:-1]
+            #ffnext = "%r"%fffile.readline()[:-1]
+            #SEEKFORCE DOESNT USE RAWLINE TO TRY EVAL W/O RAWLINE
+            ffnext = rchop(fffile.readline(),'\n')
+            #
             print("am I getting raw line?",ffnext)
             try:
                 #
@@ -6519,14 +6522,19 @@ def PosetSort(argList):
         print("paircomparison",paircomparison)
         #attempt the binary relation then write it down at the end becaues I am fucking laxy and I dont even preserve indices anymore when I just make a copy for min1 to go through
         #filename composeMETA Q_(binary relation) -> results in filename (the finite function set) returning the right answer for the binary relation
-        arg1prep = PosetSortmin1([fffilenameOGCOPY,paircomparison[0]])
-        arg2prep = PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])
+        try:
+            arg1prep = eval(PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]))
+        except:
+            arg1prep = PosetSortmin1([fffilenameOGCOPY,paircomparison[0]])
+        try:
+            arg2prep = eval(PosetSortmin1([fffilenameOGCOPY,paircomparison[1]]))
+        except:
+            arg2prep = PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])
         #print("whats the type",type(arg1prep))
-        print("arg1 is ff?",fCheck(arg1prep))
-        print("arg1 is ff?",type(arg1prep),arg1prep)
-        print("arg2 is ff?",fCheck(arg2prep))
-        print("arg2 is ff?",type(arg2prep),arg2prep)
-        print("ATTEMPT!",binrelation([PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]),PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])]))
+        print("arg1 is ff?",fCheck(arg1prep),type(arg1prep),arg1prep)
+        print("arg2 is ff?",fCheck(arg2prep),type(arg2prep),arg2prep)
+        #print("ATTEMPT!",binrelation([PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]),PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])]))
+        print("ATTEMPT!",binrelation([arg1prep,arg2prep]))
         '''
         hint: I have to write down a finite func answer for compose NOT composeMETA because finding an abstraction that works for composeMETA is L I T E R A L L Y  SI so absolute garbage to even attempt
         just write down
