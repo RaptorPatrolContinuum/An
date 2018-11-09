@@ -6540,6 +6540,23 @@ def PosetSort(argList):
         just write down
         [[search query,eval(search query)]]
         THEN ADD COMPOSE BACK TO MIRA.PY IN ONE OF THE SUGGESTIONS!
+
+
+        #1: subset SI is a dogshit question since all I have right now are single pair functions
+        #2:fix general
+        #3: there were like 2-5 more things to do
+
+
+        WHAT DO DO
+        A:
+            make test function for poset sort
+                make it compare the lengths of lines
+        B:
+            then in poset sort make sure to write down the right pair and close func
+        C:
+            then introduce normal compose into abstraction GENERAL
+        D:
+            regenerate info/check if you write that one function wrong
         '''
     print("delete copied file because reasons",os.remove(fffilenameOGCOPY))
 '''
