@@ -6489,18 +6489,19 @@ def PosetSort(argList):
             ffnext = rchop(fffile.readline(),'\n')
             #
             print("am I getting raw line?",ffnext)
+            #
             try:
-                #
-                print(eval(ffnext))
+                #print(eval(ffnext))
                 #print(type(eval(ffnext)))
                 print("evalstr",eval(str(ffnext)))
-                #
-                print("double eval",fCheck(eval(eval(ffnext))))
-                if fCheck(eval(eval(ffnext))) == True:
+                #print("double eval",fCheck(eval(eval(ffnext))))
+                #if fCheck(eval(eval(ffnext))) == True:
+                if fCheck(eval(str(ffnext))) == True:
                     #len(eval(str(ffnext)))
-                    #print("insert total line")
+                    #
+                    print("insert total line")
                     pairIndex = 0
-                    for pair in eval(eval(ffnext)):
+                    for pair in eval(str(ffnext)):
                         #insert line pairs
                         permIndexList.append([fffileIndex,pairIndex])
                         #insert line coords as well
@@ -6508,8 +6509,9 @@ def PosetSort(argList):
                         permIndexList.append([fffileIndex,pairIndex,1])
                         pairIndex += 1
                     permIndexList.append([fffileIndex])
+                    print("permindex is fucked",permIndexList)
             except Exception as e:
-                print("last line of error",e)
+                print("last line of error",str(e))
                 print("eval didn't work on this line", ffnext)
                 permIndexList.append([fffileIndex])
             fffileIndex += 1
@@ -6531,6 +6533,8 @@ def PosetSort(argList):
         except:
             arg2prep = PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])
         #
+        print("what are these guys doing1",PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]))
+        print("what are these guys doing2",PosetSortmin1([fffilenameOGCOPY,paircomparison[1]]))
         print("ATTEMPT!",binrelation([PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]),PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])]))
         '''
         #print("whats the type",type(arg1prep))
