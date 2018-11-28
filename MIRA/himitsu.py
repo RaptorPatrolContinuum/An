@@ -19,12 +19,50 @@ himitsu = [[[['A', 'B'], ['B', 'A'], ['B', 'C'], ['C', 'B'], ['A', 'C'], ['C', '
 #print(nth(combinations([["A","B"],["B","A"],["B","C"],["C","B"],["A","C"],["C","A"],["C","D"],["D","C"],["A","D"],["D","A"],["B","D"],["D","B"]],3),23))
 
 for x in himitsu:
-    print(x,type(x))
+    #print(x,type(x))
     #print(len(x))
     #print(toString([ran(x),"naive"]))
     #for y in x:
     #    print(y,type(y))
     pass
+
+def FILEDELATINDEX(argList):
+    '''
+    function to insert text at a specific line in file
+    arg1 = fileNAME
+    arg2 = index to DELETE at (index starts at 0)
+
+    HINT: this closes the file to fileinput works
+    needs 'import fileinput'
+    '''
+    arg1 = argList[0]
+    COPYNAME = "COPY" + arg1
+    arg2 = argList[1]
+    #make clone
+    copy2(arg1, COPYNAME)
+    maxCount = mapcountLINES([COPYNAME])
+    #remove original
+    os.remove(arg1)
+    #open file
+    with open(arg1,'a+',encoding='utf-8') as arg1REDO:
+        with open(COPYNAME,'a+',encoding='utf-8') as COPYREAD:
+            COPYREAD.seek(0)
+            i = 0
+            while i <= maxCount:
+                print("what is i?",i)
+                copyline = COPYREAD.readline()
+                print("#now read from the copy",copyline)
+                #get to this line and delete
+                if i == arg2:
+                    print("I pass here")
+                    pass
+                else:
+                    print("write to arg1REDO",copyline)
+                    arg1REDO.write(copyline)
+                i += 1
+    os.remove(COPYNAME)
+#FILEDELATINDEX(["TIMELOG.txt",3])
+#TEST AND DELETE A FEW LINES
 
 maxint = 10
 #for x in range(maxint):

@@ -6530,11 +6530,29 @@ def PosetSort(argList):
             arg2prep = eval(PosetSortmin1([fffilenameOGCOPY,paircomparison[1]]))
         except:
             arg2prep = PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])
+        #
+        print("ATTEMPT!",binrelation([PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]),PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])]))
+        '''
         #print("whats the type",type(arg1prep))
         print("arg1 is ff?",fCheck(arg1prep),type(arg1prep),arg1prep)
         print("arg2 is ff?",fCheck(arg2prep),type(arg2prep),arg2prep)
-        #print("ATTEMPT!",binrelation([PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]),PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])]))
+        
         print("ATTEMPT!",binrelation([arg1prep,arg2prep]))
+        writeEX = str(binrelation.__name__)+"(["+str(arg1prep)+","+str(arg2prep)+"])"
+        print("THIS IS WHAT I WRITE DOWN",writeEX)
+        try:
+            print("can I eval writeEX?",writeEX)
+            writerighthandside = eval(writeEX)
+            print("IM LOOKING FOR THIS",)
+            writeEXLINE = "["+str(binrelation.__name__)+"(["+str(arg1prep)+","+str(arg2prep)+"])," + str(writerighthandside) + "]"
+            #ok so I have a copied file but if i append to bottom should be lazy/fine
+            with open(fffilename, "a+", encoding='utf-8') as FILETHING:
+                FILETHING.seek(0)
+                print("ok i will write this!",writeEXLINE)
+                FILETHING.write(writeEXLINE + "\n")
+        except Exception as e:
+            print("error in writeEX",e)
+        '''
         '''
         hint: I have to write down a finite func answer for compose NOT composeMETA because finding an abstraction that works for composeMETA is L I T E R A L L Y  SI so absolute garbage to even attempt
         just write down
@@ -6553,15 +6571,42 @@ def PosetSort(argList):
                 make it compare the lengths of lines
         B:
             then in poset sort make sure to write down the right pair and close func
+        B.1:
+            fuck man i cant introduce shitty lines with this func so make sure you dont do that now
         C:
             then introduce normal compose into abstraction GENERAL
         D:
             regenerate info/check if you write that one function wrong
+
+        HINT:
+        HAVE A QUERY LABELED D (for desc)
+            form Q' = Q_(D)
+        also have your 2nd argument (ffunctions or inners)
+            form F' = Q_(func) OR F' = Q_(inner)
+        then attempt:
+            Q' COMPOSE/COMPOSEMETA F'
+        WRITE DOWN IF:
+            Q' COMPOSE/COMPOSEMETA F'
+            is evaluatable
+        
         '''
     print("delete copied file because reasons",os.remove(fffilenameOGCOPY))
 '''
 PosetSort(["MemoryUNORDERED.txt",subsetSI])
+i had a shit test for posetsort...
+PosetSort(["MemoryUNORDERED.txt",PosetSortTEST1])
 '''
+
+def PosetSortTEST1(argList):
+    '''
+    need a binary test that doesnt fuck main func up
+    '''
+    part1 = str(argList[0])
+    part2 = str(argList[1])
+    print("TESTING THIS",argList)
+    print("checktypes", type(part1),type(part2),)
+    print("check return",len(part1),len(part2),len(part1) < len(part2))
+    return len(part1) < len(part2)
 
 def PosetSortmin1(argList):
     '''
