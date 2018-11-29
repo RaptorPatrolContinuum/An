@@ -6473,6 +6473,7 @@ def PosetSort(argList):
     then list is a list of single, double and triple coordinates
     when I permute and get pairs of 2 i just go as far as I can based on the length of the tuple
     ==
+    PosetSort(["MemoryUNORDERED.txt",PosetSortTEST1])
     '''
     permIndexList = []
     with open(fffilename, "r+", encoding='utf-8') as fffile:
@@ -6493,15 +6494,14 @@ def PosetSort(argList):
             try:
                 #print(eval(ffnext))
                 #print(type(eval(ffnext)))
-                print("evalstr",eval(str(ffnext)))
-                #print("double eval",fCheck(eval(eval(ffnext))))
-                #if fCheck(eval(eval(ffnext))) == True:
-                if fCheck(eval(str(ffnext))) == True:
+                evalstrtest = eval(str(ffnext))
+                print("evalstr",evalstrtest)
+                if fCheck(evalstrtest) == True:
                     #len(eval(str(ffnext)))
                     #
                     print("insert total line")
                     pairIndex = 0
-                    for pair in eval(str(ffnext)):
+                    for pair in evalstrtest:
                         #insert line pairs
                         permIndexList.append([fffileIndex,pairIndex])
                         #insert line coords as well
@@ -6535,28 +6535,21 @@ def PosetSort(argList):
         #
         print("what are these guys doing1",PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]))
         print("what are these guys doing2",PosetSortmin1([fffilenameOGCOPY,paircomparison[1]]))
-        print("ATTEMPT!",binrelation([PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]),PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])]))
         '''
-        #print("whats the type",type(arg1prep))
-        print("arg1 is ff?",fCheck(arg1prep),type(arg1prep),arg1prep)
-        print("arg2 is ff?",fCheck(arg2prep),type(arg2prep),arg2prep)
-        
-        print("ATTEMPT!",binrelation([arg1prep,arg2prep]))
-        writeEX = str(binrelation.__name__)+"(["+str(arg1prep)+","+str(arg2prep)+"])"
-        print("THIS IS WHAT I WRITE DOWN",writeEX)
+        other problem
+        2 versions of this:
+        >Poset with ordering relation as a binary relation supplied in the arglist
+        >Poset with ordering taken from just smashing 2 parts together using quine and compose/composeMETA
+        ^^^ 2nd version could just be supplied as arg dude
+        '''
         try:
-            print("can I eval writeEX?",writeEX)
-            writerighthandside = eval(writeEX)
-            print("IM LOOKING FOR THIS",)
-            writeEXLINE = "["+str(binrelation.__name__)+"(["+str(arg1prep)+","+str(arg2prep)+"])," + str(writerighthandside) + "]"
-            #ok so I have a copied file but if i append to bottom should be lazy/fine
-            with open(fffilename, "a+", encoding='utf-8') as FILETHING:
-                FILETHING.seek(0)
-                print("ok i will write this!",writeEXLINE)
-                FILETHING.write(writeEXLINE + "\n")
+            toWrite = binrelation([PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]),PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])])
+            print("write attempt!",toWrite)
+            #write it
+            with open(fffilename, "a+", encoding='utf-8') as memfile:
+                memfile.write(toWrite + '\n')
         except Exception as e:
-            print("error in writeEX",e)
-        '''
+            print("error after binrel",str(e))
         '''
         hint: I have to write down a finite func answer for compose NOT composeMETA because finding an abstraction that works for composeMETA is L I T E R A L L Y  SI so absolute garbage to even attempt
         just write down
@@ -6599,6 +6592,7 @@ def PosetSort(argList):
 PosetSort(["MemoryUNORDERED.txt",subsetSI])
 i had a shit test for posetsort...
 PosetSort(["MemoryUNORDERED.txt",PosetSortTEST1])
+PosetSort(["MemoryUNORDERED.txt",PosetSortminENDO])
 '''
 
 def PosetSortTEST1(argList):
@@ -6608,7 +6602,7 @@ def PosetSortTEST1(argList):
     part1 = str(argList[0])
     part2 = str(argList[1])
     print("TESTING THIS",argList)
-    print("checktypes", type(part1),type(part2),)
+    print("checktypes", type(part1),type(part2))
     print("check return",len(part1),len(part2),len(part1) < len(part2))
     return len(part1) < len(part2)
 
@@ -6652,6 +6646,36 @@ def PosetSortmin1(argList):
         print("ERROR IN PosetSortmin1",argList)
 #test
 #PosetSortmin1(["MemoryUNORDERED.txt",[79, 0, 1]])
+def PosetSortminENDO(argList):
+    '''
+    ENDO for getting the args and funcs from inside the file
+    HINT:
+    HAVE A QUERY LABELED D (for desc)
+        form Q' = Q_(D)
+    also have your 2nd argument (ffunctions or inners)
+        form F' = Q_(func) OR F' = Q_(inner)
+    then attempt:
+        Q' COMPOSE/COMPOSEMETA F'
+    WRITE DOWN IF:
+        Q' COMPOSE/COMPOSEMETA F'
+        is evaluatable
+    '''
+    positionZERO = argList[0]
+    positionONE = argList[1]
+    #prep0 = str(Q_(positionZERO))
+    prep0 = Q_(positionZERO)
+    print("prep0",type(prep0),prep0)
+    #prep1 = str(Q_(positionONE))
+    prep1 = Q_(positionONE)
+    print("prep1",type(prep1),prep1)
+    try:
+        writethis = ComposeMETA([prep0,prep1])
+        print("ComposeMETA",writethis)
+        return writethis
+    except Exception as e:
+        print("err in PosetSortminENDO",str(e))
+    #PosetSort(["MemoryUNORDERED.txt",PosetSortminENDO])
+    
 def PosetSortOLD(argList):
     '''
     idea:
