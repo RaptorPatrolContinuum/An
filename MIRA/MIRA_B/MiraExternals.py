@@ -6541,13 +6541,16 @@ def PosetSort(argList):
         >Poset with ordering relation as a binary relation supplied in the arglist
         >Poset with ordering taken from just smashing 2 parts together using quine and compose/composeMETA
         ^^^ 2nd version could just be supplied as arg dude
+        PosetSort(["MemoryUNORDERED.txt",PosetSortminENDO])
         '''
         try:
             toWrite = binrelation([PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]),PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])])
-            print("write attempt!",toWrite)
-            #write it
-            with open(fffilename, "a+", encoding='utf-8') as memfile:
-                memfile.write(toWrite + '\n')
+            print("write attempt before write!",toWrite)
+            #write it if not NONE or []
+            if toWrite != NONE or toWrite != []:
+                with open(fffilename, "a+", encoding='utf-8') as memfile:
+                    print("write attempt!",toWrite)
+                    memfile.write(str(toWrite) + '\n')
         except Exception as e:
             print("error after binrel",str(e))
         '''
