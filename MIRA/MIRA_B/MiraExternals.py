@@ -6547,7 +6547,7 @@ def PosetSort(argList):
             toWrite = binrelation([PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]),PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])])
             print("write attempt before write!",toWrite)
             #write it if not NONE or []
-            if toWrite != NONE or toWrite != []:
+            if toWrite != None and toWrite != []:
                 with open(fffilename, "a+", encoding='utf-8') as memfile:
                     print("write attempt!",toWrite)
                     memfile.write(str(toWrite) + '\n')
@@ -6566,9 +6566,6 @@ def PosetSort(argList):
 
 
         WHAT DO DO
-        A:
-            make test function for poset sort
-                make it compare the lengths of lines
         B:
             then in poset sort make sure to write down the right pair and close func
         B.1:
