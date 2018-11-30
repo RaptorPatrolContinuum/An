@@ -6564,17 +6564,6 @@ def PosetSort(argList):
         #2:fix general
         #3: there were like 2-5 more things to do
 
-
-        WHAT DO DO
-        B:
-            then in poset sort make sure to write down the right pair and close func
-        B.1:
-            fuck man i cant introduce shitty lines with this func so make sure you dont do that now
-        C:
-            then introduce normal compose into abstraction GENERAL
-        D:
-            regenerate info/check if you write that one function wrong
-
         HINT:
         HAVE A QUERY LABELED D (for desc)
             form Q' = Q_(D)
@@ -6674,6 +6663,13 @@ def PosetSortminENDO(argList):
         return writethis
     except Exception as e:
         print("err in PosetSortminENDO",str(e))
+    #version for just compose (if meta fails we fallback to normal compose)
+    try:
+        writethis = Compose(prep0,prep1)
+        print("ComposeLOOKHERE",writethis)
+        return writethis
+    except Exception as e:
+        print("err in PosetSortminENDO2",str(e))
     #PosetSort(["MemoryUNORDERED.txt",PosetSortminENDO])
     
 def PosetSortOLD(argList):
