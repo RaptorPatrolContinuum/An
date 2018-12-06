@@ -6489,17 +6489,17 @@ def PosetSort(argList):
             #SEEKFORCE DOESNT USE RAWLINE TO TRY EVAL W/O RAWLINE
             ffnext = rchop(fffile.readline(),'\n')
             #
-            print("am I getting raw line?",ffnext)
+            ##print("am I getting raw line?",ffnext)
             #
             try:
                 #print(eval(ffnext))
                 #print(type(eval(ffnext)))
                 evalstrtest = eval(str(ffnext))
-                print("evalstr",evalstrtest)
+                ##print("evalstr",evalstrtest)
                 if fCheck(evalstrtest) == True:
                     #len(eval(str(ffnext)))
                     #
-                    print("insert total line")
+                    ##print("insert total line")
                     pairIndex = 0
                     for pair in evalstrtest:
                         #insert line pairs
@@ -6509,19 +6509,19 @@ def PosetSort(argList):
                         permIndexList.append([fffileIndex,pairIndex,1])
                         pairIndex += 1
                     permIndexList.append([fffileIndex])
-                    print("permindex is fucked",permIndexList)
+                    ##print("permindex is fucked",permIndexList)
             except Exception as e:
                 print("last line of error",str(e))
                 print("eval didn't work on this line", ffnext)
                 permIndexList.append([fffileIndex])
             fffileIndex += 1
-    print("OK, what does permIndexList look like?",len(permIndexList),permIndexList)
-    print("test permutations")
+    ##print("OK, what does permIndexList look like?",len(permIndexList),permIndexList)
+    ##print("test permutations")
     fffilenameOGCOPY = os.getcwd() + "\\" + "OGCOPY" + fffilename
-    print("copy file because reasons", copy2(fffilename, fffilenameOGCOPY))
+    ##print("copy file because reasons", copy2(fffilename, fffilenameOGCOPY))
     for paircomparison in itertools.permutations(permIndexList,2):
-        print("==========")
-        print("paircomparison",paircomparison)
+        ##print("==========")
+        ##print("paircomparison",paircomparison)
         #attempt the binary relation then write it down at the end becaues I am fucking laxy and I dont even preserve indices anymore when I just make a copy for min1 to go through
         #filename composeMETA Q_(binary relation) -> results in filename (the finite function set) returning the right answer for the binary relation
         try:
@@ -6533,8 +6533,8 @@ def PosetSort(argList):
         except:
             arg2prep = PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])
         #
-        print("what are these guys doing1",PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]))
-        print("what are these guys doing2",PosetSortmin1([fffilenameOGCOPY,paircomparison[1]]))
+        ##print("what are these guys doing1",PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]))
+        ##print("what are these guys doing2",PosetSortmin1([fffilenameOGCOPY,paircomparison[1]]))
         '''
         other problem
         2 versions of this:
@@ -6545,11 +6545,11 @@ def PosetSort(argList):
         '''
         try:
             toWrite = binrelation([PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]),PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])])
-            print("write attempt before write!",toWrite)
+            ##print("write attempt before write!",toWrite)
             #write it if not NONE or []
             if toWrite != None and toWrite != []:
                 with open(fffilename, "a+", encoding='utf-8') as memfile:
-                    print("write attempt!",toWrite)
+                    ##print("write attempt!",toWrite)
                     memfile.write(str(toWrite) + '\n')
         except Exception as e:
             print("error after binrel",str(e))
@@ -6576,7 +6576,7 @@ def PosetSort(argList):
             is evaluatable
         
         '''
-    print("delete copied file because reasons",os.remove(fffilenameOGCOPY))
+    ##print("delete copied file because reasons",os.remove(fffilenameOGCOPY))
 '''
 PosetSort(["MemoryUNORDERED.txt",subsetSI])
 i had a shit test for posetsort...
@@ -6653,20 +6653,20 @@ def PosetSortminENDO(argList):
     positionONE = argList[1]
     #prep0 = str(Q_(positionZERO))
     prep0 = Q_(positionZERO)
-    print("prep0",type(prep0),prep0)
+    ##print("prep0",type(prep0),prep0)
     #prep1 = str(Q_(positionONE))
     prep1 = Q_(positionONE)
-    print("prep1",type(prep1),prep1)
+    ##print("prep1",type(prep1),prep1)
     try:
         writethis = ComposeMETA([prep0,prep1])
-        print("ComposeMETA",writethis)
+        ##print("ComposeMETA",writethis)
         return writethis
     except Exception as e:
         print("err in PosetSortminENDO",str(e))
     #version for just compose (if meta fails we fallback to normal compose)
     try:
         writethis = Compose(prep0,prep1)
-        print("ComposeLOOKHERE",writethis)
+        ##print("ComposeLOOKHERE",writethis)
         return writethis
     except Exception as e:
         print("err in PosetSortminENDO2",str(e))
