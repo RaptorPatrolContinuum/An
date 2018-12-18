@@ -6473,7 +6473,8 @@ def PosetSort(argList):
     then list is a list of single, double and triple coordinates
     when I permute and get pairs of 2 i just go as far as I can based on the length of the tuple
     ==
-    PosetSort(["MemoryUNORDERED.txt",PosetSortTEST1])
+    PosetSort(["MemoryUNORDERED.txt",PosetSortTEST1]) <--- this sucks use ENDO
+    PosetSort(["MemoryUNORDERED.txt",PosetSortminENDO])
     '''
     permIndexList = []
     with open(fffilename, "r+", encoding='utf-8') as fffile:
@@ -6518,7 +6519,7 @@ def PosetSort(argList):
     ##print("OK, what does permIndexList look like?",len(permIndexList),permIndexList)
     ##print("test permutations")
     fffilenameOGCOPY = os.getcwd() + "\\" + "OGCOPY" + fffilename
-    ##print("copy file because reasons", copy2(fffilename, fffilenameOGCOPY))
+    print("copy file because reasons ACTUALLY IMPORTANT", copy2(fffilename, fffilenameOGCOPY))
     for paircomparison in itertools.permutations(permIndexList,2):
         ##print("==========")
         ##print("paircomparison",paircomparison)
@@ -6576,7 +6577,7 @@ def PosetSort(argList):
             is evaluatable
         
         '''
-    ##print("delete copied file because reasons",os.remove(fffilenameOGCOPY))
+    print("delete copied file because reasons ACTUALLY IMPORTANT",os.remove(fffilenameOGCOPY))
 '''
 PosetSort(["MemoryUNORDERED.txt",subsetSI])
 i had a shit test for posetsort...
@@ -6662,7 +6663,10 @@ def PosetSortminENDO(argList):
         ##print("ComposeMETA",writethis)
         return writethis
     except Exception as e:
-        print("err in PosetSortminENDO",str(e))
+        #ComposeMETA is gonna fail too much to be readable errors
+        #print("err in PosetSortminENDO",str(e))
+        #print("PosetSortminENDO arglist is",argList)
+        pass
     #version for just compose (if meta fails we fallback to normal compose)
     try:
         writethis = Compose(prep0,prep1)
