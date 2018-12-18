@@ -2760,6 +2760,7 @@ def mapcountLINES(argList):
 
 def shittySearch(argList):
     '''
+    HINT: this needs to be renamed to something like EVALsearch
     HINT: FOR SOME FUCKING REASON I EVAL THE OBJ FROM THE FILE
     HINT: BASE 0
     why not
@@ -2773,9 +2774,11 @@ def shittySearch(argList):
     arg2 = argList[1]
     ANS = []
     index = 0
+    searchMax = mapcountLINES([arg1])
     with open(arg1,"r+",encoding='utf-8') as hotPotato:
         line = rchop(hotPotato.readline(), '\n')
-        while line:
+        #while line:
+        while index < searchMax:
             #print("line vs arg2")
             try:
                 a1 = str(eval(line))
@@ -2792,6 +2795,42 @@ def shittySearch(argList):
     return ANS
 
 #print("bullyhunters omegalul",shittySearch(['MemoryUnordered.txt',str([['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']])]))
+
+def simpleSearch(argList):
+    '''
+    need to prevent writing duplicate lines that DO NOT NEED TO BE EVALED LIKE IN SHITTY SEARCH
+    '''
+    '''
+    HINT: this needs to be renamed to something like EVALsearch
+    HINT: FOR SOME FUCKING REASON I EVAL THE OBJ FROM THE FILE
+    HINT: BASE 0
+    why not
+    arg1 = fileNAME to search for
+    arg2 = obj to search
+   
+    '''
+    #arg1 = fileNAME
+    arg1 = argList[0]
+    #arg2 = obj to insert
+    arg2 = argList[1]
+    ANS = []
+    index = 0
+    searchMax = mapcountLINES([arg1])
+    with open(arg1,"r+",encoding='utf-8') as hotPotato:
+        line = rchop(hotPotato.readline(), '\n')
+        while index < searchMax:
+            #print("line vs arg2")
+            try:
+                a2 = arg2
+                #print("simple1",a2, type(a2))
+                #print("simple2",line == a2)
+                if line == a2:
+                    ANS.append(index)
+            except:
+                pass
+            line = rchop(hotPotato.readline(), '\n')
+            index += 1
+    return ANS
 
 def bisectionSearch(argList):
     '''
@@ -6546,12 +6585,27 @@ def PosetSort(argList):
         '''
         try:
             toWrite = binrelation([PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]),PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])])
+            #HAVE TO CHECK FOR DUPES
+            '''
+            ok to remove dupes, just write each new line to the copy
+            then search through the copy since it would be updated with the new lines too
+            '''
+            #SimpleSearch([filename,linetolookfor])
+            print("doublecheck dupe data",[fffilenameOGCOPY,str(toWrite)])
+            notDupe = shittySearch([fffilenameOGCOPY,str(toWrite)])
+            print("what is notDupe",notDupe)
+            #i might need a SECOND COPY TO SEAARCH THROUGH HOLY SHIT
             ##print("write attempt before write!",toWrite)
             #write it if not NONE or []
-            if toWrite != None and toWrite != []:
+            #and not a dupe
+            if toWrite != None and toWrite != [] and len(notDupe) == 0:
                 with open(fffilename, "a+", encoding='utf-8') as memfile:
                     ##print("write attempt!",toWrite)
                     memfile.write(str(toWrite) + '\n')
+                #update the copy
+                with open(fffilenameOGCOPY, "a+", encoding='utf-8') as copyfile:
+                    ##print("write attempt!",toWrite)
+                    copyfile.write(str(toWrite) + '\n')
         except Exception as e:
             print("error after binrel",str(e))
         '''
@@ -6675,7 +6729,7 @@ def PosetSortminENDO(argList):
     except Exception as e:
         print("err in PosetSortminENDO2",str(e))
     #PosetSort(["MemoryUNORDERED.txt",PosetSortminENDO])
-    
+
 def PosetSortOLD(argList):
     '''
     idea:

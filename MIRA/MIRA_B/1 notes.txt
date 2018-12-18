@@ -1,3 +1,7 @@
+testing random funcs i find in miraexternals:
+SIZEα
+
+
 SIZE+
 SIZEZ
 
