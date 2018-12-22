@@ -6558,7 +6558,8 @@ def PosetSort(argList):
     ##print("OK, what does permIndexList look like?",len(permIndexList),permIndexList)
     ##print("test permutations")
     fffilenameOGCOPY = os.getcwd() + "\\" + "OGCOPY" + fffilename
-    print("copy file because reasons ACTUALLY IMPORTANT", copy2(fffilename, fffilenameOGCOPY))
+    copy2(fffilename, fffilenameOGCOPY)
+    #print("copy file because reasons ACTUALLY IMPORTANT")
     for paircomparison in itertools.permutations(permIndexList,2):
         ##print("==========")
         ##print("paircomparison",paircomparison)
@@ -6591,9 +6592,9 @@ def PosetSort(argList):
             then search through the copy since it would be updated with the new lines too
             '''
             #SimpleSearch([filename,linetolookfor])
-            print("doublecheck dupe data",[fffilenameOGCOPY,str(toWrite)])
+            #print("doublecheck dupe data",[fffilenameOGCOPY,str(toWrite)])
             notDupe = shittySearch([fffilenameOGCOPY,str(toWrite)])
-            print("what is notDupe",notDupe)
+            #print("what is notDupe",notDupe)
             #i might need a SECOND COPY TO SEAARCH THROUGH HOLY SHIT
             ##print("write attempt before write!",toWrite)
             #write it if not NONE or []
@@ -6631,7 +6632,8 @@ def PosetSort(argList):
             is evaluatable
         
         '''
-    print("delete copied file because reasons ACTUALLY IMPORTANT",os.remove(fffilenameOGCOPY))
+    os.remove(fffilenameOGCOPY)
+    #print("delete copied file because reasons ACTUALLY IMPORTANT")
 '''
 PosetSort(["MemoryUNORDERED.txt",subsetSI])
 i had a shit test for posetsort...
