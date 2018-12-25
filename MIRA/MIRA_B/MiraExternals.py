@@ -4140,10 +4140,13 @@ C:\An>git commit -a -m "fuck if I observe a Y and want to compose with X I canno
     else:
         composeprep = Q_(arg2)
 
+    searchMax = mapcountLINES([arg1])
+    index = 0
     with open(arg1, "r+") as fileref:
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
-        while line:
+        #while line: <--- this fails on empty line and think if the file has an empty line then continues
+        while index < searchMax:
             #print("THIS IS the LINE", line) #type(line)
             #print("THIS IS ARG2 AFTER EVAL CHECK",arg2) #type(arg2)
             #print("arglist is", ArgList)
@@ -4166,6 +4169,7 @@ C:\An>git commit -a -m "fuck if I observe a Y and want to compose with X I canno
                     pass
                 pass
             line = rchop(fileref.readline(), '\n')
+            index += 1
     return ANS
 #print("FINAL ANSWER", AutoPicked(['MemoryUNORDERED.txt',"[['a',['b']],['Z',['f','AF']]]"]))
 #print(AutoPicked(['MemoryUNORDERED.txt',"what the"]))
@@ -5413,13 +5417,13 @@ def abstractionGENERAL(argList):
     #HERE I DELETE THE ABSTRACT FILE TO CLEANUP
     #FIX THIS| could be causing problems if called repeatedly and not clearing
     #print("STARTHERE")
-    with open('ABSTRACTFILE.txt', 'r+', encoding='utf-8') as ordered1:
-        ordered1.seek(0)
-        for line in range(mapcountLINES(['ABSTRACTFILE.txt'])):
-            nextguy = rchop(ordered1.readline(), '\n')
-            #print(toString([ran(eval(nextguy)[0][0]),"naive"]))
-            #print(toString([ran(eval(nextguy)[0][1]),"naive"]))
-            #print("=")
+    #with open('ABSTRACTFILE.txt', 'r+', encoding='utf-8') as ordered1:
+    #    ordered1.seek(0)
+    #    for line in range(mapcountLINES(['ABSTRACTFILE.txt'])):
+    #        nextguy = rchop(ordered1.readline(), '\n')
+    #        #print(toString([ran(eval(nextguy)[0][0]),"naive"]))
+    #        #print(toString([ran(eval(nextguy)[0][1]),"naive"]))
+    #        #print("=")
     #print("ENDHERE")
     
     #
