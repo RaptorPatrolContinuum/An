@@ -2760,7 +2760,6 @@ def mapcountLINES(argList):
 
 def shittySearch(argList):
     '''
-    HINT: this needs to be renamed to something like EVALsearch
     HINT: FOR SOME FUCKING REASON I EVAL THE OBJ FROM THE FILE
     HINT: BASE 0
     why not
@@ -2774,11 +2773,9 @@ def shittySearch(argList):
     arg2 = argList[1]
     ANS = []
     index = 0
-    searchMax = mapcountLINES([arg1])
     with open(arg1,"r+",encoding='utf-8') as hotPotato:
         line = rchop(hotPotato.readline(), '\n')
-        #while line:
-        while index < searchMax:
+        while line:
             #print("line vs arg2")
             try:
                 a1 = str(eval(line))
@@ -2795,42 +2792,6 @@ def shittySearch(argList):
     return ANS
 
 #print("bullyhunters omegalul",shittySearch(['MemoryUnordered.txt',str([['argument_1 == "b"', 'd'],['argument_2 == "AF"', 'Y'],[str('TOTAL_ARGUMENT' + '==' + str(['f','AF'])),'TOTALCHECK']])]))
-
-def simpleSearch(argList):
-    '''
-    need to prevent writing duplicate lines that DO NOT NEED TO BE EVALED LIKE IN SHITTY SEARCH
-    '''
-    '''
-    HINT: this needs to be renamed to something like EVALsearch
-    HINT: FOR SOME FUCKING REASON I EVAL THE OBJ FROM THE FILE
-    HINT: BASE 0
-    why not
-    arg1 = fileNAME to search for
-    arg2 = obj to search
-   
-    '''
-    #arg1 = fileNAME
-    arg1 = argList[0]
-    #arg2 = obj to insert
-    arg2 = argList[1]
-    ANS = []
-    index = 0
-    searchMax = mapcountLINES([arg1])
-    with open(arg1,"r+",encoding='utf-8') as hotPotato:
-        line = rchop(hotPotato.readline(), '\n')
-        while index < searchMax:
-            #print("line vs arg2")
-            try:
-                a2 = arg2
-                #print("simple1",a2, type(a2))
-                #print("simple2",line == a2)
-                if line == a2:
-                    ANS.append(index)
-            except:
-                pass
-            line = rchop(hotPotato.readline(), '\n')
-            index += 1
-    return ANS
 
 def bisectionSearch(argList):
     '''
@@ -4140,13 +4101,10 @@ C:\An>git commit -a -m "fuck if I observe a Y and want to compose with X I canno
     else:
         composeprep = Q_(arg2)
 
-    searchMax = mapcountLINES([arg1])
-    index = 0
     with open(arg1, "r+") as fileref:
         fileref.seek(0)
         line = rchop(fileref.readline(), '\n')
-        #while line: <--- this fails on empty line and think if the file has an empty line then continues
-        while index < searchMax:
+        while line:
             #print("THIS IS the LINE", line) #type(line)
             #print("THIS IS ARG2 AFTER EVAL CHECK",arg2) #type(arg2)
             #print("arglist is", ArgList)
@@ -4169,7 +4127,6 @@ C:\An>git commit -a -m "fuck if I observe a Y and want to compose with X I canno
                     pass
                 pass
             line = rchop(fileref.readline(), '\n')
-            index += 1
     return ANS
 #print("FINAL ANSWER", AutoPicked(['MemoryUNORDERED.txt',"[['a',['b']],['Z',['f','AF']]]"]))
 #print(AutoPicked(['MemoryUNORDERED.txt',"what the"]))
@@ -5417,13 +5374,13 @@ def abstractionGENERAL(argList):
     #HERE I DELETE THE ABSTRACT FILE TO CLEANUP
     #FIX THIS| could be causing problems if called repeatedly and not clearing
     #print("STARTHERE")
-    #with open('ABSTRACTFILE.txt', 'r+', encoding='utf-8') as ordered1:
-    #    ordered1.seek(0)
-    #    for line in range(mapcountLINES(['ABSTRACTFILE.txt'])):
-    #        nextguy = rchop(ordered1.readline(), '\n')
-    #        #print(toString([ran(eval(nextguy)[0][0]),"naive"]))
-    #        #print(toString([ran(eval(nextguy)[0][1]),"naive"]))
-    #        #print("=")
+    with open('ABSTRACTFILE.txt', 'r+', encoding='utf-8') as ordered1:
+        ordered1.seek(0)
+        for line in range(mapcountLINES(['ABSTRACTFILE.txt'])):
+            nextguy = rchop(ordered1.readline(), '\n')
+            #print(toString([ran(eval(nextguy)[0][0]),"naive"]))
+            #print(toString([ran(eval(nextguy)[0][1]),"naive"]))
+            #print("=")
     #print("ENDHERE")
     
     #
@@ -6469,274 +6426,9 @@ data we know: STRI 54 '
 data we know: STRI 55 ) single
 data we know: STRI 56 " single
 '''
+
+
 def PosetSort(argList):
-    '''
-    HINT:
-    BINARY REL NEEDS TO BE IN THIS FORM:
-        binrelation([,])
-
-    takes a [filaname, binary relation]
-    EX:
-    PosetSort(["MemoryUNORDERED.txt",subsetSI])
-
-    what this does:
-    then tries to write a finite func such that
-    filename composeMETA Q_(binary relation) -> results in filename (the finite function set) returning the right answer for the binary relation
-
-    3 parts:
-    part 1: make set X:
-    set X is composed of
-    finite functions
-    all the pairs of the finite functions
-    all the x,y coords of the pairs
-
-    part 2:
-    size of setX permutation 2 -> left hand coord BIN REL right hand coord
-
-    part 3:
-    then write down in filename/ffset what the answer in part 2 is
-    make sure that it forces
-    filename composeMETA Q_(binary relation)
-    to return the right answer
-    '''
-    fffilename = argList[0]
-    binrelation = argList[1]
-
-    fffilenamelinecount = mapcountLINES([fffilename])
-    fffileIndex = 0
-    '''
-    ==
-    miniproblem:
-    need proper list to feed into permutations
-    hint:
-    feed the iterable as a list of numbers
-    #1: to reference whole, we just have the number of the [line]
-    #2: to reference pair, we have line then pair -> [line,pair]
-    #2: to reference pair coord, we have line,pair,coord -> [line,pair,coord]
-    then list is a list of single, double and triple coordinates
-    when I permute and get pairs of 2 i just go as far as I can based on the length of the tuple
-    ==
-    PosetSort(["MemoryUNORDERED.txt",PosetSortTEST1]) <--- this sucks use ENDO
-    PosetSort(["MemoryUNORDERED.txt",PosetSortminENDO])
-    '''
-    permIndexList = []
-    with open(fffilename, "r+", encoding='utf-8') as fffile:
-        #now that we know maxlines we check if each line is a finite function (ff)
-        #then if line is a ff, we also know each pair has an x and y coord
-        #we need this info for the bijection so we dont actually handle all the datasize
-        print("where did I go wrong",fffileIndex, fffilenamelinecount)
-        fffile.seek(0)
-        while fffileIndex < fffilenamelinecount:
-            #need the raw line
-            #[:-1] is to remove the \n for each line
-            #ffnext = "%r"%fffile.readline()[:-1]
-            #SEEKFORCE DOESNT USE RAWLINE TO TRY EVAL W/O RAWLINE
-            ffnext = rchop(fffile.readline(),'\n')
-            #
-            ##print("am I getting raw line?",ffnext)
-            #
-            try:
-                #print(eval(ffnext))
-                #print(type(eval(ffnext)))
-                evalstrtest = eval(str(ffnext))
-                ##print("evalstr",evalstrtest)
-                if fCheck(evalstrtest) == True:
-                    #len(eval(str(ffnext)))
-                    #
-                    ##print("insert total line")
-                    pairIndex = 0
-                    for pair in evalstrtest:
-                        #insert line pairs
-                        permIndexList.append([fffileIndex,pairIndex])
-                        #insert line coords as well
-                        permIndexList.append([fffileIndex,pairIndex,0])
-                        permIndexList.append([fffileIndex,pairIndex,1])
-                        pairIndex += 1
-                    permIndexList.append([fffileIndex])
-                    ##print("permindex is fucked",permIndexList)
-            except Exception as e:
-                print("last line of error",str(e))
-                print("eval didn't work on this line", ffnext)
-                permIndexList.append([fffileIndex])
-            fffileIndex += 1
-    ##print("OK, what does permIndexList look like?",len(permIndexList),permIndexList)
-    ##print("test permutations")
-    fffilenameOGCOPY = os.getcwd() + "\\" + "OGCOPY" + fffilename
-    copy2(fffilename, fffilenameOGCOPY)
-    #print("copy file because reasons ACTUALLY IMPORTANT")
-    for paircomparison in itertools.permutations(permIndexList,2):
-        ##print("==========")
-        ##print("paircomparison",paircomparison)
-        #attempt the binary relation then write it down at the end becaues I am fucking laxy and I dont even preserve indices anymore when I just make a copy for min1 to go through
-        #filename composeMETA Q_(binary relation) -> results in filename (the finite function set) returning the right answer for the binary relation
-        try:
-            arg1prep = eval(PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]))
-        except:
-            arg1prep = PosetSortmin1([fffilenameOGCOPY,paircomparison[0]])
-        try:
-            arg2prep = eval(PosetSortmin1([fffilenameOGCOPY,paircomparison[1]]))
-        except:
-            arg2prep = PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])
-        #
-        ##print("what are these guys doing1",PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]))
-        ##print("what are these guys doing2",PosetSortmin1([fffilenameOGCOPY,paircomparison[1]]))
-        '''
-        other problem
-        2 versions of this:
-        >Poset with ordering relation as a binary relation supplied in the arglist
-        >Poset with ordering taken from just smashing 2 parts together using quine and compose/composeMETA
-        ^^^ 2nd version could just be supplied as arg dude
-        PosetSort(["MemoryUNORDERED.txt",PosetSortminENDO])
-        '''
-        try:
-            toWrite = binrelation([PosetSortmin1([fffilenameOGCOPY,paircomparison[0]]),PosetSortmin1([fffilenameOGCOPY,paircomparison[1]])])
-            #HAVE TO CHECK FOR DUPES
-            '''
-            ok to remove dupes, just write each new line to the copy
-            then search through the copy since it would be updated with the new lines too
-            '''
-            #SimpleSearch([filename,linetolookfor])
-            #print("doublecheck dupe data",[fffilenameOGCOPY,str(toWrite)])
-            notDupe = shittySearch([fffilenameOGCOPY,str(toWrite)])
-            #print("what is notDupe",notDupe)
-            #i might need a SECOND COPY TO SEAARCH THROUGH HOLY SHIT
-            ##print("write attempt before write!",toWrite)
-            #write it if not NONE or []
-            #and not a dupe
-            if toWrite != None and toWrite != [] and len(notDupe) == 0:
-                with open(fffilename, "a+", encoding='utf-8') as memfile:
-                    ##print("write attempt!",toWrite)
-                    memfile.write(str(toWrite) + '\n')
-                #update the copy
-                with open(fffilenameOGCOPY, "a+", encoding='utf-8') as copyfile:
-                    ##print("write attempt!",toWrite)
-                    copyfile.write(str(toWrite) + '\n')
-        except Exception as e:
-            print("error after binrel",str(e))
-        '''
-        hint: I have to write down a finite func answer for compose NOT composeMETA because finding an abstraction that works for composeMETA is L I T E R A L L Y  SI so absolute garbage to even attempt
-        just write down
-        [[search query,eval(search query)]]
-        THEN ADD COMPOSE BACK TO MIRA.PY IN ONE OF THE SUGGESTIONS!
-
-
-        #1: subset SI is a dogshit question since all I have right now are single pair functions
-        #2:fix general
-        #3: there were like 2-5 more things to do
-
-        HINT:
-        HAVE A QUERY LABELED D (for desc)
-            form Q' = Q_(D)
-        also have your 2nd argument (ffunctions or inners)
-            form F' = Q_(func) OR F' = Q_(inner)
-        then attempt:
-            Q' COMPOSE/COMPOSEMETA F'
-        WRITE DOWN IF:
-            Q' COMPOSE/COMPOSEMETA F'
-            is evaluatable
-        
-        '''
-    os.remove(fffilenameOGCOPY)
-    #print("delete copied file because reasons ACTUALLY IMPORTANT")
-'''
-PosetSort(["MemoryUNORDERED.txt",subsetSI])
-i had a shit test for posetsort...
-PosetSort(["MemoryUNORDERED.txt",PosetSortTEST1])
-PosetSort(["MemoryUNORDERED.txt",PosetSortminENDO])
-'''
-
-def PosetSortTEST1(argList):
-    '''
-    need a binary test that doesnt fuck main func up
-    '''
-    part1 = str(argList[0])
-    part2 = str(argList[1])
-    print("TESTING THIS",argList)
-    print("checktypes", type(part1),type(part2))
-    print("check return",len(part1),len(part2),len(part1) < len(part2))
-    return len(part1) < len(part2)
-
-def PosetSortmin1(argList):
-    '''
-    TAKE:
-    OGCOPY filename
-    the tuple for the index
-
-    
-    this is supposed to take the args from permIndexList and convert them properly to:
-    total FF(finite func)
-    FF pair
-    FF pair coordinate
-
-    hint: just sort by the list length!
-    '''
-    OGCOPYfilename = argList[0]
-    testguy = argList[1]
-    if len(testguy) == 3:
-        try:
-            testline = eval(FILEindexread([OGCOPYfilename,testguy[0]]))
-            returnANS = testline[testguy[1]][testguy[2]]
-            #print("what is testline pairelem?",returnANS)
-            return returnANS
-        except Exception as e:
-            print("posetsortmin1 err0 len3",e)
-            print("posetsortmin1 died len3",argList)
-    elif len(testguy) == 2:
-        try:
-            testline = eval(FILEindexread([OGCOPYfilename,testguy[0]]))
-            returnANS = testline[testguy[1]]
-            #print("what is testline pair?",returnANS)
-            return returnANS
-        except Exception as e:
-            print("posetsortmin1 err0",e)
-            print("posetsortmin1 died",argList)
-    elif len(testguy) == 1:
-        return FILEindexread([OGCOPYfilename,testguy[0]])
-    else:
-        print("ERROR IN PosetSortmin1",argList)
-#test
-#PosetSortmin1(["MemoryUNORDERED.txt",[79, 0, 1]])
-def PosetSortminENDO(argList):
-    '''
-    ENDO for getting the args and funcs from inside the file
-    HINT:
-    HAVE A QUERY LABELED D (for desc)
-        form Q' = Q_(D)
-    also have your 2nd argument (ffunctions or inners)
-        form F' = Q_(func) OR F' = Q_(inner)
-    then attempt:
-        Q' COMPOSE/COMPOSEMETA F'
-    WRITE DOWN IF:
-        Q' COMPOSE/COMPOSEMETA F'
-        is evaluatable
-    '''
-    positionZERO = argList[0]
-    positionONE = argList[1]
-    #prep0 = str(Q_(positionZERO))
-    prep0 = Q_(positionZERO)
-    ##print("prep0",type(prep0),prep0)
-    #prep1 = str(Q_(positionONE))
-    prep1 = Q_(positionONE)
-    ##print("prep1",type(prep1),prep1)
-    try:
-        writethis = ComposeMETA([prep0,prep1])
-        ##print("ComposeMETA",writethis)
-        return writethis
-    except Exception as e:
-        #ComposeMETA is gonna fail too much to be readable errors
-        #print("err in PosetSortminENDO",str(e))
-        #print("PosetSortminENDO arglist is",argList)
-        pass
-    #version for just compose (if meta fails we fallback to normal compose)
-    try:
-        writethis = Compose(prep0,prep1)
-        ##print("ComposeLOOKHERE",writethis)
-        return writethis
-    except Exception as e:
-        print("err in PosetSortminENDO2",str(e))
-    #PosetSort(["MemoryUNORDERED.txt",PosetSortminENDO])
-
-def PosetSortOLD(argList):
     '''
     idea:
     put poset sorting in the top of memlist (so we can search faster)
@@ -7039,8 +6731,6 @@ def IsomGraphDiff(argList):
     '''
     Isom graph differnce function
     hint or not? if you compose a graph with phi properly you get the translated graph? (as in nodes are named the same)
-    returns maximal x subset X and maximal y subset Y such that
-    x SI y AND the graph diff of X \ x and Y \ y
     '''
     graphX = argList[0]
     graphY = argList[1]
