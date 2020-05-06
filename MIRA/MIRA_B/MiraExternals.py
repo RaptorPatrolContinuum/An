@@ -5585,6 +5585,8 @@ def ComposeMETA(argList):
             parts
             maybe write a replacer function
             '''
+            #print("args for composereplace",x)
+            #print("args for composereplacey",y)
             ComposeTest = ComposeReplace(x,y)
             if ComposeTest != None:
                 #I want to eval the y coord now so I can add instructions to results
@@ -5599,6 +5601,7 @@ def ComposeMETA(argList):
             ALG.append([pair[0],eval(pair[1])])
         #else do nothing
         except:
+            #print("so that means that most of these guys are failing")
             ALG.append([pair[0],pair[1]])
     return ALG
 
@@ -5643,7 +5646,7 @@ def ComposeReplace(str1,str2):
     evaluating properly
 
     '''
-    #print("test str1",str1,type(str1))
+    #("test str1",str1,type(str1))
     #print("test str2",str2,type(str2))
     ANS = None
     if isinstance(str2[1], str):
@@ -5750,6 +5753,19 @@ def ComposeReplace(str1,str2):
 #[['noob', ['None', '']]]
 ##print("hearto7",ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\'oof\')"]]]) == [['noob', ['None', '']]])
 #HINT: hearto1 through 7 should all return true
+
+'''
+ComposeMETA([[["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]],[['noob',"print(\'oof\')"]]])
+    [
+        [
+            ["FixedQualifier([delta2,\"print(\'α0\')\",TOTAL_ARGUMENT,FixedQualifiermin1])",['None', '']]
+                ],
+        [
+            ['noob',"print(\'oof\')"]
+            ]
+    ]
+
+'''
 
 def strorCode(argList):
     '''

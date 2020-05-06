@@ -1,3 +1,11 @@
+args for composereplace ['FixedQualifier([delta2,"print(\'α0\')",TOTAL_ARGUMENT,FixedQualifiermin1])', ['None', 'drastic ways']]
+args for composereplacey ['noob', "print('oof')"] 
+
+ComposeReplace(['FixedQualifier([delta2,"print(\'α0\')",TOTAL_ARGUMENT,FixedQualifiermin1])', ['None', 'drastic ways']],['noob', "print('oof')"])
+
+>>> ComposeReplace(['FixedQualifier([delta2,"print(\'α0\')",TOTAL_ARGUMENT,FixedQualifiermin1])', ['None', 'drastic ways']],['noob', "print('oof')"])
+[['noob', ['None', 'drastic ways']]]
+
 def abstractionGENERAL(argList):
 
     MemoryUNORDEREDvar = argList[0][0]
