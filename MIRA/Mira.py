@@ -73,7 +73,7 @@ while Descent:
             #print("WTF nearfield7",nearfield)
             #print("dogshit3",delta2(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
             for x in nearfield:
-                #print("x in nearfield",x)
+                print("x in nearfield",x)
                 #print("fcheck",fCheck(eval(x)))
                 #FixedQualifier([delta2,α0print("yoikes don\\\'t worry about apostrophes if you have a good enough description")],TOTAL_ARGUMENT,FixedQualifiermin1])
                 #print("x and seekForce",x,SeekForce(["MemoryUNORDERED.txt",[["FixedQualifier([delta2,['α0outα1stα2,TOTAL_ARGUMENT,FixedQualifiermin1])", '']],SeekForcemin2,[],[]]))

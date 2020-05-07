@@ -5719,6 +5719,8 @@ def ComposeReplace(str1,str2):
                     ANS = ANS + [[str2[0],str1[1]]]
                 #print("ANSAFTER",ANS)
         except Exception as e:
+            print("ANSBEFORE",ANS)
+            print("WHAT IS ADDED?",[str2[0],str1[1]])
             print("what is error composeREPLACE?",e.args)
             pass
     return ANS

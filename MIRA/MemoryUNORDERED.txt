@@ -106,3 +106,5 @@
 [[\\'FixedQualifier([delta2,"α0what α1TOTAL_ARGUMENTα2aliα3",TOTAL_ARGUMENT,FixedQualifiermin1])\', \'\']]
 [["TOTAL_ARGUMENT == '0+9'", ['9', '']]]
 [["Popen(['python',C:\\An\\MIRA\\MIRA_B\\Mira.py, 0+9], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)", []]]
+[['TOTAL_ARGUMENT == \'"check nearfield"\'', ['check nearfield', '']]]
+[['Popen([\'python\',C:\\An\\MIRA\\MIRA_B\\Mira.py, "check nearfield"], stdout=PIPE, stderr=STDOUT, bufsize=1, universal_newlines=True)', []]]

@@ -4025,6 +4025,7 @@ def AutoPicked(ArgList):
     arg2 = line to find autopicked universe
     RETURN = ??
     WHAT THIS IS SUPPOSED TO DO IS MAKE THE AUTOPICKED UNIVERSE, BUT I AM SUPPOSED TO CHECK THROUGH Long and UNORDERED FILES
+    #autopicked makes the nonempty universe of (x in memoryfile composed with inputtextvar finite func)
 
 OTHER PROBLEM
 problem:
@@ -5051,6 +5052,7 @@ def abstractionGENERAL(argList):
     
 
     #look for/through AutoPicked Universe
+    #autopicked makes the nonempty universe of (x in memoryfile composed with inputtextvar finite func)
     shortAuto = AutoPicked([MemoryUNORDEREDvar,inputtextvar])
     longAuto = AutoPicked([memoryLongvar,inputtextvar])
     #print("ShortMem",shortAuto)
@@ -5719,6 +5721,8 @@ def ComposeReplace(str1,str2):
                     ANS = ANS + [[str2[0],str1[1]]]
                 #print("ANSAFTER",ANS)
         except Exception as e:
+            print("ANSBEFORE",ANS)
+            print("WHAT IS ADDED?",[str2[0],str1[1]])
             print("what is error composeREPLACE?",e.args)
             pass
     return ANS
