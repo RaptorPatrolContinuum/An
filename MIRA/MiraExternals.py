@@ -4025,6 +4025,7 @@ def AutoPicked(ArgList):
     arg2 = line to find autopicked universe
     RETURN = ??
     WHAT THIS IS SUPPOSED TO DO IS MAKE THE AUTOPICKED UNIVERSE, BUT I AM SUPPOSED TO CHECK THROUGH Long and UNORDERED FILES
+    #autopicked makes the nonempty universe of (x in memoryfile composed with inputtextvar finite func)
 
 OTHER PROBLEM
 problem:
@@ -5051,6 +5052,7 @@ def abstractionGENERAL(argList):
     
 
     #look for/through AutoPicked Universe
+    #autopicked makes the nonempty universe of (x in memoryfile composed with inputtextvar finite func)
     shortAuto = AutoPicked([MemoryUNORDEREDvar,inputtextvar])
     longAuto = AutoPicked([memoryLongvar,inputtextvar])
     #print("ShortMem",shortAuto)
@@ -5061,7 +5063,7 @@ def abstractionGENERAL(argList):
     #eval the return <--- REMEMBER TO EVAL THE RETURN (need:hint: if I have finite functions, hav ea function that takes a finite function and an input then returns what the finite function would say if given that input)
     suppANS = []
     for x in autoPickedUniv:
-        suppANSmin = Applyfunc([inputfunc(x),inputtextvar])
+        #suppANSmin = Applyfunc([inputfunc(x),inputtextvar])
         #print("apply test", eval(x), inputtextvar,suppANSmin)
         suppANS.append(x)
     print("supposed answer",suppANS)

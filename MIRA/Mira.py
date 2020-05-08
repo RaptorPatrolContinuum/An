@@ -55,6 +55,7 @@ while Descent:
         #THIS TRYBLOCK DOCUMENTS WHAT INPUT>MIRACLONE DOES
         try:
             nearfield = TestCode([open(MemoryUNORDERED, 'a+'),inputtext,nearfield,memoryLong,basisname,MemoryUNORDERED,Descent])
+            #what nearfield does is take memfilenames, input text, attempt the input text on mira, then write to memfiles.
         except Exception as e:
             #print("error is ", e)
             #print("code died")
@@ -73,7 +74,7 @@ while Descent:
             #print("WTF nearfield7",nearfield)
             #print("dogshit3",delta2(["alphaprint('')","betrprint('')"])) #arg3 should be delta2()
             for x in nearfield:
-                print("x in nearfield",x)
+                #print("x in nearfield",x)
                 #print("fcheck",fCheck(eval(x)))
                 #FixedQualifier([delta2,α0print("yoikes don\\\'t worry about apostrophes if you have a good enough description")],TOTAL_ARGUMENT,FixedQualifiermin1])
                 #print("x and seekForce",x,SeekForce(["MemoryUNORDERED.txt",[["FixedQualifier([delta2,['α0outα1stα2,TOTAL_ARGUMENT,FixedQualifiermin1])", '']],SeekForcemin2,[],[]]))
@@ -85,11 +86,13 @@ while Descent:
                     #print("hey hey hey",type(eval(x)[0][0]))
                     #print("WHO IS SAYING THIS?",len(argv[1:]) > 0)
                     abstractionGENERAL([[MemoryUNORDERED,memoryLong,eval,delta2],eval(x)[0][0]])
+                    #abstractionGENERAL makes an abstraction guess (if any) that is checked with the memory files or sense using delta2 on LHS and RHS
                 else:
                     #print("fcheck2BB",eval(x)[0][0])
                     #print("hey hey heyBB",type(eval(x)[0][0]))
                     #print("WHO IS SAYING THIS2?",len(argv[1:]) > 0)
                     abstractionGENERAL([[MemoryUNORDERED,memoryLong,eval,delta2],x])
+                    #abstractionGENERAL makes an abstraction guess (if any) that is checked with the memory files or sense using delta2 on LHS and RHS
                 #abstractionGENERAL([[MemoryUNORDERED,memoryLong],inputtext])
         '''
         guess abstractions properly:

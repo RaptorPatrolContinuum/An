@@ -5063,7 +5063,7 @@ def abstractionGENERAL(argList):
     #eval the return <--- REMEMBER TO EVAL THE RETURN (need:hint: if I have finite functions, hav ea function that takes a finite function and an input then returns what the finite function would say if given that input)
     suppANS = []
     for x in autoPickedUniv:
-        suppANSmin = Applyfunc([inputfunc(x),inputtextvar])
+        #suppANSmin = Applyfunc([inputfunc(x),inputtextvar])
         #print("apply test", eval(x), inputtextvar,suppANSmin)
         suppANS.append(x)
     print("supposed answer",suppANS)
@@ -5721,8 +5721,8 @@ def ComposeReplace(str1,str2):
                     ANS = ANS + [[str2[0],str1[1]]]
                 #print("ANSAFTER",ANS)
         except Exception as e:
-            print("ANSBEFORE",ANS)
-            print("WHAT IS ADDED?",[str2[0],str1[1]])
+            #print("ANSBEFORE",ANS) should be none since this is in err block
+            #print("WHAT IS ADDED?",[str2[0],str1[1]])
             print("what is error composeREPLACE?",e.args)
             pass
     return ANS
